@@ -1,0 +1,45 @@
+:root {
+    --primary-color:  rgb(252, 177, 2);
+    --secondary-color: rgb(98, 49, 158);
+}
+
+body {
+    background-color: var(--primary-color);
+    height: 100vh;
+}
+
+p {
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+
+.header {
+    margin-bottom: 100px;
+    background-color: var(--secondary-color);   
+    display: flex;
+}
+
+.header a {
+    padding: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.header a:hover {
+    background-color: var(--primary-color);
+}
+
+.container {
+    width: 100%;
+    background-color: rgb(242, 244, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 20px;
+}
+
+.number-container {
+    display: flex;
+    gap: 5%;
+}
