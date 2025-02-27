@@ -14,58 +14,8 @@ session_start();
 </head>
 <body>
     <div class="header">
-        <a href="#" id="login">Log in</a>
-        <a href="#" id="signup">Sign up</a>
-    </div>
-
-    <!-- LOGIN FORM -->
-    <div class="log-in center-column">
-        <form action="login.php" method="POST">
-            <div class="input">
-                <label for="email">Email</label>
-                <input type="email" name="email" required>
-            </div>
-            <div class="input">
-                <label for="password">Password</label>
-                <input type="password" name="password" required>
-            </div>
-            <button type="submit">Log In</button>
-        </form>
-        <?php
-        if (isset($_SESSION['login_message'])) {
-            echo "<p style='color: red'>" . $_SESSION['login_message'] . "</p>";
-            unset($_SESSION['login_message']);
-        }
-        ?>
-    </div>
-
-    <!-- SIGNUP FORM -->
-    <div class="sign-up center-column">
-        <form action="signup.php" method="POST">
-            <div class="input">
-                <label for="username">Username</label>
-                <input type="text" name="username" required>
-            </div>
-            <div class="input">
-                <label for="email">Email</label>
-                <input type="email" name="email" required>
-            </div>
-            <div class="input">
-                <label for="new_password">Create password</label>
-                <input type="password" name="new_password" required>
-            </div>
-            <div class="input">
-                <label for="confirm_password">Confirm password</label>
-                <input type="password" name="confirm_password" required>    
-            </div>
-            <button type="submit">Sign Up</button>
-        </form>
-        <?php
-        if (isset($_SESSION['signup_message'])) {
-            echo "<p style='color: red'>" . $_SESSION['signup_message'] . "</p>";
-            unset($_SESSION['signup_message']);
-        }
-        ?>
+        <a href="../app/views/client/login.php" id="login">Log in</a>
+        <a href="../app/views/client/signup.php" id="signup">Sign up</a>
     </div>
 
     <!-- <script src="landing_page.js"></script> -->
