@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="sign-up center-column">
-        <form action="../../controllers/client/auth.php" method="POST">
+        <form action="../../controllers/client/clientInfo.php" method="POST">
             <div class="input">
                 <label for="">First Name</label>
                 <input type="text" name="first_name" required>
@@ -29,15 +29,15 @@
             </div>
             <div class="input">
                 <label for="new_password">Address</label>
-                <input type="password" name="address" required>
+                <input type="text" name="address" required>
             </div>
             <div class="input">
                 <label for="confirm_password">Contact Number</label>
-                <input type="password" name="contact_number" required>    
+                <input type="number" name="contact_number" required>    
             </div>
             <div class="input">
                 <label for="confirm_password">Company Name</label>
-                <input type="password" name="company_name">    
+                <input type="text" name="company_name">    
             </div>
             <button type="submit" name="client_info">Proceed</button>
         </form>

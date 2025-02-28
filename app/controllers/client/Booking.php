@@ -1,6 +1,7 @@
 <?php
 require_once '../../../config/database.php';
 require_once '../../models/client/Booking.php';
+session_start();
 
 class BookingController {
     private $bookingModel;
@@ -11,6 +12,25 @@ class BookingController {
 
     public function addBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses) {
         return $this->bookingModel->createBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses);
+    }
+
+    public function checkClientInfo($user_id) {
+        return $this->bookingModel->checkClientInfo($user_id);
+    }
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    $user_id = $_GET["user_id"];
+
+    $controller = new BookingController($pdo);
+    $result = $controller->checkClientInfo($user_id);
+
+    if ($result) {
+        header("Location: ../../views/client/booking.php");
+        exit();
+    } else {
+        header("Location: ../../views/client/clientInfo.php");
+        exit();
     }
 }
 

@@ -7,6 +7,8 @@ if (!isset($_SESSION["username"])) {
     header("Location: ../../../public/index.php");
     exit();
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +24,8 @@ if (!isset($_SESSION["username"])) {
 
     <div class="header">
         <a href="#">My Past Trips</a>
-        <a href="booking_schedule.php?id=1">My Schedule</a>
+        <a href="booking_schedule.php?id=1">Upcoming Trips</a>
+        <a href="../../controllers/client/Booking.php?user_id=<?php echo $_SESSION["user_id"] ?>" id="bookATrip">Book a Trip</a>
         <a href="logout.php">Logout</a>
     </div>
     
@@ -58,6 +61,8 @@ if (!isset($_SESSION["username"])) {
 
         
     </div>
+
+    <script src="../../../public/js/booking.js"></script>
 
 </body>
 </html>

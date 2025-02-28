@@ -48,9 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login"])) {
     $password = trim($_POST["password"]);
 
     $controller = new AuthController($pdo);
-    $message = $controller->login($username, $password);
-
+    
     if (!empty($username) && !empty($password)) {
+        $message = $controller->login($username, $password);
         if ($message === "Login successfully!") {
             echo "Login successfully!";
             header("Location: ../../views/client/booking.php");
