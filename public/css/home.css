@@ -1,0 +1,109 @@
+:root {
+    --primary-color:  #5db434;
+    --dark-primary-color: #017e04;
+    --secondary-color: #f6b416;
+}
+
+body {
+    display: flex;
+}
+
+.side-bar {
+    width: 20%;
+    height: 100vh;
+    padding: 20px;
+    background-color: #e1e1e1;
+}
+
+.side-bar .company-name p {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.side-bar .menu {
+    margin-top: 16px;   
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.side-bar .menu a { 
+    padding: 8px;
+}
+
+.main-section {
+    width: 80%;
+    padding: 20px;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.header {
+    justify-content: space-between;
+    align-items: center;
+    height: 7vh;
+    padding: 0 30px;    
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1);
+}
+
+.header input {
+    width: 60%;
+}
+
+.header p {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.header a {
+    padding: 6px;
+    border-radius: 6px;
+    width: 80px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.overview {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;    
+    gap: 16px;
+}
+
+.overview .card {
+    height: 7vh;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1);
+    flex: 1;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.trip-history {
+    width: 100%;
+}
+
+.trip-history table {
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 1400px) {
+    body {
+        font-size: 1.2rem;
+    }
+}

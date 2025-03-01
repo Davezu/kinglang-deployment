@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,11 +18,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="../../../public/css/styles.css">
-    <link rel="stylesheet" href="../../../public/css/login-signup.css">
+    <link rel="stylesheet" href="../../../public/css/home.css">
+    <link rel="stylesheet" href="../../../public/css/booking.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="sign-up center-column">
+
+    <div class="side-bar">
+        <div class="company-name"><p>KingLang Transport</p></div>
+        <div class="menu">
+            <a href="#">Dashboard</a>
+            <a href="#">My Bookings</a>
+            <a href="../../controllers/client/Booking.php?user_id=<?php echo $_SESSION["user_id"] ?>">Book a Trip</a>
+        </div>
+    </div>
+
+    <div class="main-section">
+        <div class="header">
+            <p class="username">Welcome, <?php echo $_SESSION["username"] ?></p>
+            <input type="text" name="search" id="search" placeholder="Search Bookings">
+            <a href="logout.php">Logout</a>
+        </div>
         <form action="../../controllers/client/clientInfo.php" method="POST">
             <div class="input">
                 <label for="">First Name</label>
@@ -42,7 +63,6 @@
             <button type="submit" name="client_info">Proceed</button>
         </form>
     </div>
-</body>
-</html>
+    
 </body>
 </html>

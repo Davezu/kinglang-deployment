@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["client_info"])) {
     $last_name = trim($_POST["last_name"]);
     $address = trim($_POST["address"]);
     $contact_number = trim($_POST["contact_number"]);
-    $company_name = trim($_POST["company_name"]) || "none";
+    $company_name = trim($_POST["company_name"]) ? trim($_POST["company_name"]) : "none";
 
     if (empty($first_name) || empty($last_name) || empty($address) || empty($contact_number)) {
         echo "Incomplete information";

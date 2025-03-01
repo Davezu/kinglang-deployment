@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login"])) {
     $controller = new AuthController($pdo);
     $message = $controller->login($username, $password);
     if ($message === "Login successfully!") {
-        header("Location: ../../views/client/booking.php");
+        header("Location: ../../views/client/home.php");
         exit();
     } else {
         $_SESSION["entered_username"] = $username;

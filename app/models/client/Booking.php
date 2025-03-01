@@ -22,16 +22,27 @@ class Booking {
         }
     }
 
-    public function createBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses) {
+    public function getClientID($user_id) {
         try {
-            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses)");
+            $stmt = $this->conn->prepare("SELECT client_id FROM users WHERE user_id = :user_id");
+            $stmt->execute([":user_id" => $user_id]);
+            return $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            return "Database error";
+        }
+    }
+
+    public function createBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id) {
+        try {
+            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, client_id) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :client_id)");
             return $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
                 ":end_of_tour" => $end_of_tour,
                 ":destination" => $destination,
                 ":pickup_point" => $pickup_point,
                 ":number_of_days" => $number_of_days,
-                ":number_of_buses" => $number_of_buses
+                ":number_of_buses" => $number_of_buses,
+                ":client_id" => $client_id
             ]);
         } catch (PDOException $e) {
             return false;

@@ -21,11 +21,11 @@ class Auth {
         return $stmt->fetch() ? true : false;
     }
 
-    function isValidPassword($password) {
-        $pattern = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
+    // function isValidPassword($password) {
+    //     $pattern = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
     
-        return preg_match($pattern, $password);
-    }
+    //     return preg_match($pattern, $password);
+    // }
 
     public function register($username, $email, $password) {
         if ($this->usernameExist($username)) {
@@ -36,9 +36,9 @@ class Auth {
             return "Email already exists!";
         }
 
-        if (!$this->isValidPassword($password)) {
-            return "Invalid password.";
-        }   
+        // if (!$this->isValidPassword($password)) {
+        //     return "Invalid password.";
+        // }   
 
         try {
             $stmt = $this->conn->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
