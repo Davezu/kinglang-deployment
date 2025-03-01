@@ -24,44 +24,53 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["signup"])) {
     $password = trim($_POST["new_password"]);
     $confirm_password = trim($_POST["confirm_password"]);
 
-    if ($password !== $confirm_password) {
-        echo "Password did not match";
+    if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
+        $_SESSION["signup_message"] = "Please fill out all fields";
+        header("Location: ../../views/client/signup.php");
         exit();
     }
 
-    if (!empty($username) && !empty($email) && !empty($password)) {
-        $hashed_password = password_hash($confirm_password, PASSWORD_BCRYPT);
+    if ($password !== $confirm_password) {
+        $_SESSION["signup_message"] = "Password did not match";
+        header("Location: ../../views/client/signup.php");
+        exit();
+    }
+   
+    $hashed_password = password_hash($confirm_password, PASSWORD_BCRYPT);
 
-        $controller = new AuthController($pdo);
-        $message = $controller->register($username, $email, $hashed_password);
+    $controller = new AuthController($pdo);
+    $message = $controller->register($username, $email, $hashed_password);
 
-        if ($message === "Signup successfully!") {
-            echo "Signup successfully!";
-        } else {
-            echo "<script>alert('$message');</script>";
-        }
+    if ($message === "Signup successfully!") {
+        $_SESSION["signup_message"] = $message;
+        header("Location: ../../views/client/signup.php");
+        exit();
+    } else {
+        $_SESSION["signup_message"] = $message;
+        header("Location: ../../views/client/signup.php");
+        exit();
     }
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login"])) {
     $username = trim($_POST["username"]);
     $password = trim($_POST["password"]);
+    
+    if (empty($username) || empty($password)) {
+        header("Location: ../../views/client/login.php");
+        exit();
+    } 
 
     $controller = new AuthController($pdo);
-    
-    if (!empty($username) && !empty($password)) {
-        $message = $controller->login($username, $password);
-        if ($message === "Login successfully!") {
-            echo "Login successfully!";
-            header("Location: ../../views/client/booking.php");
-            exit();
-        } else {
-            echo "<script>alert('$message')</script>";
-        }
+    $message = $controller->login($username, $password);
+    if ($message === "Login successfully!") {
+        header("Location: ../../views/client/booking.php");
+        exit();
     } else {
-        echo "<script>alert('Username and password cannot be empty!')</script>";
+        $_SESSION["entered_username"] = $username;
+        $_SESSION["message"] = $message;
+        header("Location: ../../views/client/login.php");
         exit();
     }
-    
 }
 ?>

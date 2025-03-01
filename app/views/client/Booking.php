@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-
-// if (!isset($_SESSION["username"]) && !isset($_SESSION["user_id"]) && !empty($_SESSION["username"] && !empty($_SESSION["user_id"]))) {
-if (!isset($_SESSION["username"])) {    
+if (!isset($_SESSION["user_id"])) {    
     header("Location: ../../../public/index.php");
     exit();
 }

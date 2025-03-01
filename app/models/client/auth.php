@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 class Auth {
     private $conn;
 
@@ -12,10 +15,30 @@ class Auth {
         return $stmt->fetch() ? true : false;
     }
 
+    public function usernameExist($username) {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
+        $stmt->execute([":username" => $username]);
+        return $stmt->fetch() ? true : false;
+    }
+
+    function isValidPassword($password) {
+        $pattern = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
+    
+        return preg_match($pattern, $password);
+    }
+
     public function register($username, $email, $password) {
+        if ($this->usernameExist($username)) {
+            return "Username already exsits!";
+        }
+
         if ($this->emailExist($email)) {
             return "Email already exists!";
         }
+
+        if (!$this->isValidPassword($password)) {
+            return "Invalid password.";
+        }   
 
         try {
             $stmt = $this->conn->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
@@ -30,7 +53,7 @@ class Auth {
             }
             return "Error signing up.";
         } catch (PDOException $e) {
-            return false;
+            return "Database error.";
         }
     }
 
@@ -46,13 +69,12 @@ class Auth {
             }
 
             if ($user && password_verify($password, $user["password"])) {
-                session_start();
 
                 $_SESSION["username"] = $user["username"];
                 $_SESSION["user_id"] = $user["user_id"];
                 return "Login successfully!";
             } 
-            return "Incorrect password";
+            return "Incorrect password!";
         } catch (PDOException $e) {
             return false;
         }
