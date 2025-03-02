@@ -2,7 +2,7 @@
 
 session_start();
 
-class Auth {
+class AuthModel {
     private $conn;
 
     public function __construct($db) {

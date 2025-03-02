@@ -69,5 +69,6 @@ if (!isset($_SESSION["user_id"])) {
 
     </div>
 
+    <script src="../../../public/js/booking.js"></script>
 </body>
 </html>

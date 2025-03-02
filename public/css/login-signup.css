@@ -105,6 +105,13 @@ body {
     height: 100%;
 }
 
+form button {
+    border-radius: 25px;
+    padding: 16px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
 .log-in,
 .sign-up {
     display: flex;
@@ -140,17 +147,6 @@ form a {
 .input label {
     display: flex;
     justify-content: space-between;
-}
-
-.agree {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
-}
-
-.agree input {
-    width: 16px;
 }
 
 .login-button {

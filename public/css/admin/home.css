@@ -1,0 +1,32 @@
+body {
+    padding: 20px 20px 0;
+}
+
+.main-container {
+    width: 100%;
+    display: flex;
+
+}
+
+.side-bar {
+    height: 100%;
+    width: 10%;
+}
+
+.dashboard {
+    width: 90%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .profile-section {
+    display: flex;
+    gap: 16px;
+}
+
+.cards {
+    width: 100%;
+}

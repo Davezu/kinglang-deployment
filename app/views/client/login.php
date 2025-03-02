@@ -63,9 +63,6 @@ if (isset($_SESSION["user_id"])) {
                     <input type="password" name="password" requred>
                     <p class="sub-message">Use 8 or more characters with a mix of letters, numbers, & symbols</p>
                 </div>
-                <div class="agree">
-                    <input type="checkbox" name="" id="agree"><label for="agree">Agree to our <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a></label>
-                </div>
                 <div class="login-button">
                     <button type="submit" name="login">Log In</button>
                     <p>Need an account? <a href="signup.php">Create one</a></p>

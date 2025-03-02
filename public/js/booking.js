@@ -1,12 +1,9 @@
-const bookingForm = document.querySelector(".container");
-const bookingButton = document.getElementById("bookATrip");
+console.log("Test");
 
-bookingButton.addEventListener("click", () => {
-    bookingForm.style.display = "flex";
-});
+const today = new Date();
 
-document.addEventListener("click", (event) => {
-    if (event.target === bookingForm) {
-        bookingForm.style.display = "none";
-    }
-});
+today.setDate(today.getDate() + 3);
+
+const minDate = today.toISOString().split("T")[0];
+
+document.getElementById("date_of_tour").min = minDate;
