@@ -40,7 +40,7 @@ if (isset($_SESSION["user_id"])) {
             <div class="overlay"><p class="content">YOUR ON-THE-GO TOURIST BUS RENTAL!</p></div>
         </div>
         <div class="sign-up center-column">
-            <form action="../../controllers/client/auth.php" method="POST">
+            <form action="../../controllers/client/AuthController.php" method="POST">
                 <div class="message">
                     <p class="welcome">Create an account</p>
                     <p class="sub-message">Already have an account? <a href="login.php" style="color: var(--secondary-color);">Log In</a></p>

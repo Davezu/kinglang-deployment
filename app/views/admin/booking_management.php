@@ -73,7 +73,7 @@ require_once "../../controllers/admin/BookingManagementController.php";
 
             <p>Total Cost: <span id="totalCostDisplay"></span></p>
 
-            <button type="submit" id="confirm">Confirm</button>
+            <button type="submit" id="confirm">Send Quote</button>
         </form>
     </div>
 

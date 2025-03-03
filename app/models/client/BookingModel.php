@@ -48,6 +48,16 @@ class Booking {
             return false;
         }
     }
+
+    public function getBookingRequest($client_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM bookings WHERE client_id = :client_id");
+            $stmt->execute([":client_id" => $client_id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return "Database error";
+        }
+    }
 }
 
 

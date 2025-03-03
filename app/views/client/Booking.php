@@ -23,8 +23,8 @@ if (!isset($_SESSION["user_id"])) {
         <div class="company-name"><p>KingLang Transport</p></div>
         <div class="menu">
             <a href="home.php">Dashboard</a>
-            <a href="#">My Bookings</a>
-            <a href="../../controllers/client/Booking.php?user_id=<?php echo $_SESSION["user_id"] ?>">Book a Trip</a>
+            <a href="booking_requests.php">My Bookings</a>
+            <a href="../../controllers/client/BookingController.php?user_id=<?php echo $_SESSION["user_id"] ?>">Book a Trip</a>
         </div>
     </div>
 
@@ -36,10 +36,10 @@ if (!isset($_SESSION["user_id"])) {
             <a href="logout.php">Logout</a>
         </div>
 
-        <form action="../../controllers/client/Booking.php" method="POST" class="center-row">
+        <form action="../../controllers/client/BookingController.php" method="POST" class="center-row">
             <input type="hidden" name="id" value="1">
             <div class="input">
-                <label for="date_of_tour">Date of Tour:</label>
+                <label for="date_of_tour">Date of Tour</label>
                 <input type="date" name="date_of_tour" id="date_of_tour" palceholder="Date of Tour" required>
             </div>
             <div class="input">

@@ -1,11 +1,10 @@
 <?php
-session_start();
+require_once "../../controllers/client/BookingController.php";
 
 if (!isset($_SESSION["user_id"])) {    
     header("Location: ../../../public/index.php");
     exit();
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -22,8 +21,8 @@ if (!isset($_SESSION["user_id"])) {
     <div class="side-bar">
         <div class="company-name"><p>KingLang Transport</p></div>
         <div class="menu">
-            <a href="#">Dashboard</a>
-            <a href="booking_requests.php">My Bookings</a>
+            <a href="home.php">Dashboard</a>
+            <a href="">My Bookings</a>
             <a href="../../controllers/client/BookingController.php?user_id=<?php echo $_SESSION["user_id"] ?>">Book a Trip</a>
         </div>
     </div>
@@ -39,11 +38,20 @@ if (!isset($_SESSION["user_id"])) {
             <div class="card">Pending Payments</div>
             <div class="card">Confirmed Bookings</div>      
         </div>
-        <div class="trip-history">  
+        <div class="booking_requests">  
             <table>
                 <thead>
-                    <tr><th>Destination</th><th>Date of Tour</th><th>Payemnt Status</th></tr>
+                    <tr><th>Destination</th><th>Date of Tour</th><th>Total Cost</th></tr>
                 </thead>
+                <tbody>
+                    <?php foreach ($bookings as $booking): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($booking["destination"]); ?></td>
+                            <td><?= htmlspecialchars($booking["date_of_tour"]); ?></td>
+                            <td><?= htmlspecialchars($booking["total_cost"]); ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
             </table>
         </div>
     </div>

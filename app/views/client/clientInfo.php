@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +26,9 @@ session_start();
     <div class="side-bar">
         <div class="company-name"><p>KingLang Transport</p></div>
         <div class="menu">
-            <a href="#">Dashboard</a>
-            <a href="#">My Bookings</a>
-            <a href="../../controllers/client/Booking.php?user_id=<?php echo $_SESSION["user_id"] ?>">Book a Trip</a>
+            <a href="home.php">Dashboard</a>
+            <a href="booking_requests.php">My Bookings</a>
+            <a href="../../controllers/client/BookingController.php?user_id=<?php echo $_SESSION["user_id"] ?>">Book a Trip</a>
         </div>
     </div>
 
@@ -39,7 +38,7 @@ session_start();
             <input type="text" name="search" id="search" placeholder="Search Bookings">
             <a href="logout.php">Logout</a>
         </div>
-        <form action="../../controllers/client/clientInfo.php" method="POST">
+        <form action="../../controllers/client/ClientInfoController.php" method="POST">
             <div class="input">
                 <label for="">First Name</label>
                 <input type="text" name="first_name" required>

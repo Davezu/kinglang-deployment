@@ -37,7 +37,7 @@ if (isset($_SESSION["user_id"])) {
             <div class="overlay"><p class="content">YOUR ON-THE-GO TOURIST BUS RENTAL!</p></div>
         </div>
         <div class="log-in center-column">
-            <form action="../../controllers/client/auth.php" method="POST">
+            <form action="../../controllers/client/AuthController.php" method="POST">
                 <div class="message">
                     <p class="welcome">Welcome Back!</p>
                     <p class="sub-message">Please login to continue to your account.</p>

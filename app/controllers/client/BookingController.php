@@ -21,9 +21,13 @@ class BookingController {
     public function getClientID($user_id) {
         return $this->bookingModel->getClientID($user_id);
     }
+
+    public function getBookingRequest($client_id) {
+        return $this->bookingModel->getBookingRequest($client_id);
+    }
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "GET") {
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["user_id"])) {
     $user_id = $_GET["user_id"];
 
     $controller = new BookingController($pdo);
@@ -35,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     } else {
         header("Location: ../../views/client/clientInfo.php");
         exit();
-    }
+    }   
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
@@ -65,4 +69,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
         echo "All fields are required.";
     }
 } 
+
+$controller = new BookingController($pdo);
+
+$client_info_exists = $controller->checkClientInfo($_SESSION["user_id"]);
+
+$client_id = $controller->getClientID($_SESSION["user_id"]);
+$bookings = $controller->getBookingRequest($client_id);
 ?>
