@@ -1,6 +1,6 @@
 <?php
 require_once '../../../config/database.php';
-require_once '../../controllers/client/auth.php';
+require_once '../../controllers/client/AuthController.php';
 
 
 if (isset($_SESSION["user_id"])) {

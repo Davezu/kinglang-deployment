@@ -1,6 +1,6 @@
 <?php
 require_once "../../../config/database.php";
-require_once "../../models/client/clientInfo.php";
+require_once "../../models/client/ClientInfoModel.php";
 
 class ClientInfoController {
     private $info;

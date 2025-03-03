@@ -1,5 +1,5 @@
 <?php
-require_once "../../models/admin/bookings.php";
+require_once "../../models/admin/BookingManagementModel.php";
 require_once "../../../config/database.php";
 
 class BookingManagementController {

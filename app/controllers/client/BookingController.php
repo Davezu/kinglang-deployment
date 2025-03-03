@@ -1,6 +1,6 @@
 <?php
 require_once '../../../config/database.php';
-require_once '../../models/client/Booking.php';
+require_once '../../models/client/BookingModel.php';
 session_start();
 
 class BookingController {

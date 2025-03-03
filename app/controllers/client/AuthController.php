@@ -1,6 +1,6 @@
 <?php
 require_once '../../../config/database.php';
-require_once '../../models/client/auth.php';
+require_once '../../models/client/AuthModel.php';
 
 class AuthController {
     private $auth;
