@@ -1,9 +1,8 @@
 :root {
-    --primary-color:  rgb(252, 177, 2);
-    --secondary-color: rgb(98, 49, 158);
-    --text-color: rgb(255, 255, 255);
+    --primary-color:  #5db434;
+    --dark-primary-color: #017e04;
+    --secondary-color: #f6b416;
 }
-
 .center-column {
     display: flex;
     flex-direction: column;

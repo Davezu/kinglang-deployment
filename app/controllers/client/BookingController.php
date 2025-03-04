@@ -25,6 +25,8 @@ class BookingController {
     public function getBookingRequest($client_id) {
         return $this->bookingModel->getBookingRequest($client_id);
     }
+
+        
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["user_id"])) {

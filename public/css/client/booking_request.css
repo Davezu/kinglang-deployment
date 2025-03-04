@@ -1,0 +1,57 @@
+:root {
+    --primary-color:  #5db434;
+    --dark-primary-color: #017e04;
+    --secondary-color: #f6b416;
+}
+
+table {
+    width: 100%; 
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border-bottom: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+table button {
+    text-align: left;
+}
+
+table form {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.payment-modal {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.payment-content {
+    width: 400px;
+    border-radius: 8px;
+}
+
+.payment-content button {
+    padding: 16px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    color: white;
+}
+
+.amount-payment {
+    cursor: pointer;
+}
+
+#amount {
+    font-weight: 600;
+}
+
