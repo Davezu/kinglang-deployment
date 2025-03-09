@@ -26,7 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = $controller->addPayment($booking_id, $client_id, $amount, $payment_method);
 
     if ($result) {
-        echo "Payment added successfully";
+        header("Location: ../../views/client/booking_requests.php");
+        exit();
     } else {
         echo "Adding payment failed";
     }

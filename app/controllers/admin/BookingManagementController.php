@@ -1,37 +1,32 @@
 <?php
-require_once "../../models/admin/BookingManagementModel.php";
-require_once "../../../config/database.php";
+require_once __DIR__ . "/../../models/admin/BookingManagementModel.php";
 
 class BookingManagementController {
-    private $booking;
+    private $bookingModel;
 
-    public function __construct($db) {
-        $this->booking = new BookingManagementModel($db);
+    public function __construct() {
+        $this->bookingModel = new BookingManagementModel();
     }
 
     public function getAllBookings() {
-        return $this->booking->getAllBookings();
+        $bookings = $this->bookingModel->getAllBookings();
+        require_once __DIR__ . "/../../views/admin/booking_management.php";
     }
 
-    public function sendQuote($booking_id, $total_cost) {
-        return $this->booking->sendQuote($booking_id, $total_cost);
+    public function sendQuote() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $total_cost = $_POST["total_cost"];
+            $booking_id = $_POST["booking_id"];
+        
+            $result = $this->bookingModel->sendQuote($booking_id, $total_cost);
+        
+            if (!$result) $_SESSION["send_quote_message"] = "Sending quote failed: {$result}";
+        
+            $_SESSION["send_quote_message"] = "Sending quote successfully!";
+            header("Location: /admin/bookings");
+            exit();
+        }
     } 
 
-}
-
-$controller = new BookingManagementController($pdo);
-$bookings = $controller->getAllBookings();
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $total_cost = $_POST["total_cost"];
-    $booking_id = $_POST["booking_id"];
-
-    $result = $controller->sendQuote($booking_id, $total_cost);
-
-    if (!$result) $_SESSION["send_quote_message"] = "Sending quote failed: {$result}";
-
-    $_SESSION["send_quote_message"] = "Sending quote successfully!";
-    header("Location: ../../views/admin/booking_management.php");
-    exit();
 }
 ?>

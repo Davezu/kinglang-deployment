@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 if (isset($_SESSION["user_id"])) {
     header("Location: booking.php");
     exit();
@@ -23,12 +21,12 @@ if (isset($_SESSION["user_id"])) {
             <img src="../../../public/images/logo.png" alt="">
         </div>
         <div class="navbar">
-            <a href="../../../public/index.php">Home</a>
+            <a href="/home">Home</a>
             <a href="#">About</a>
         </div>
         <div class="buttons">
-            <a href="login.php" class="bg-primary">Log In</a>
-            <a href="signup.php">Sign up</a>
+            <a href="/home/login" class="bg-primary">Log In</a>
+            <a href="/home/signup">Sign up</a>
         </div>
     </div>
     <div class="container center-row">
@@ -37,7 +35,7 @@ if (isset($_SESSION["user_id"])) {
             <div class="overlay"><p class="content">YOUR ON-THE-GO TOURIST BUS RENTAL!</p></div>
         </div>
         <div class="log-in center-column">
-            <form action="../../controllers/client/AuthController.php" method="POST">
+            <form action="/client/login" method="POST">
                 <div class="message">
                     <p class="welcome">Welcome Back!</p>
                     <p class="sub-message">Please login to continue to your account.</p>

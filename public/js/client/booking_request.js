@@ -1,13 +1,26 @@
+// function updatePastBookings() {
+//     fetch("../../../app/controllers/client/BookingController.php")
+//     .then(response => response.text())
+//     .then(data => console.log(data))
+//     .catch(error => console.error(error));
+// }
+
+// window.onload = updatePastBookings;
+
+console.log("hello");
+
 document.addEventListener("DOMContentLoaded", () => {
+
     const totalCosts = Array.from(document.querySelectorAll(".total-cost")).map(cost => cost.textContent);
 
     document.querySelectorAll(".total-cost").forEach((cost, i) => {
-        const formattedCost = new Intl.NumberFormat("en-PH", {
-            style: "currency",
-            currency: "PHP"  
-        }).format(totalCosts[i]);
+        cost.textContent = formatNumber(totalCosts[i]);
+    });
 
-        cost.textContent = formattedCost;
+    const balance = Array.from(document.querySelectorAll(".balance")).map(balance => balance.textContent);
+
+    document.querySelectorAll(".balance").forEach((bal, i) => {
+        bal.textContent = formatNumber(balance[i]);
     });
 });
 
@@ -24,8 +37,7 @@ const amountInput = document.getElementById("amountInput");
 openPaymentModalButton.forEach(button => {
     button.addEventListener("click", function (event) {
         event.preventDefault();
-
-        paymentModal.style.display = "flex";
+        
         const totalCost = this.getAttribute("data-amount");
         const bookingID = this.getAttribute("data-bookingID");
         const clientID = this.getAttribute("data-clientID");
@@ -44,8 +56,6 @@ document.addEventListener("click", (event) => {
 });
 
 
-
-
 document.querySelectorAll(".amount-payment").forEach(amount => {
     amount.addEventListener("click", (event) => {
         const amt = event.currentTarget.querySelector(".amount");
@@ -61,4 +71,28 @@ function formatNumber(number) {
         style: "currency",
         currency: "PHP"
     }).format(number);
-}
+};
+
+document.getElementById("status").addEventListener("change", function () {
+    const status = this.value;
+    // if (status) {
+        let segments = window.location.pathname.split("/"); 
+
+        if (segments.length >= 3) {
+            let newPath = `/home/bookings/${segments[3] || "1"}/${status || ""}`.replace(/\/+$/, "");
+            window.location.href = newPath;
+            console.log(newPath);
+        }   
+    // }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    let segments = window.location.pathname.split("/");
+    let status = segments[segments.length - 1];
+
+    let statusSelect = document.getElementById("status");
+
+    if (statusSelect.querySelector(`option[value=${status}]`)) {
+        statusSelect.value = status;
+    }
+})

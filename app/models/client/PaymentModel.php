@@ -32,6 +32,8 @@ class PaymentModel {
             $stmt->execute([":booking_id" => $booking_id]);
             $total_cost = $stmt->fetch(PDO::FETCH_ASSOC)["total_cost"] ?? 0;
 
+            $balance = $total_cost - $total_paid;
+
             $new_status = "Unpaid";
             if ($total_paid > 0 && $total_paid < $total_cost) {
                 $new_status = "partially paid";
@@ -39,10 +41,11 @@ class PaymentModel {
                 $new_status = "paid";
             }
 
-            $stmt = $this->conn->prepare("UPDATE bookings SET payment_status = :payment_status, status = 'confirmed' WHERE booking_id = :booking_id");
+            $stmt = $this->conn->prepare("UPDATE bookings SET payment_status = :payment_status, status = 'confirmed', balance = :balance WHERE booking_id = :booking_id");
             $stmt->execute([
                 ":payment_status" => $new_status,
-                ":booking_id" => $booking_id 
+                ":booking_id" => $booking_id ,
+                ":balance" => $balance
             ]);
 
         } catch (PDOException $e) {

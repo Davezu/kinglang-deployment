@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,9 +32,9 @@ session_start();
         <div class="header">
             <p class="username">Welcome, <?php echo $_SESSION["username"] ?></p>
             <input type="text" name="search" id="search" placeholder="Search Bookings">
-            <a href="logout.php">Logout</a>
+            <a href="/logout">Logout</a>
         </div>
-        <form action="../../controllers/client/ClientInfoController.php" method="POST">
+        <form action="/contact/submit" method="POST">
             <div class="input">
                 <label for="">First Name</label>
                 <input type="text" name="first_name" required>

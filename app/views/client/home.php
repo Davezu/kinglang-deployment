@@ -1,12 +1,10 @@
 <?php
-session_start();
-
 if (!isset($_SESSION["user_id"])) {    
-    header("Location: ../../../public/index.php");
+    header("Location: /home");
     exit();
 }
 
-
+print_r($_SESSION["user_id"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +21,8 @@ if (!isset($_SESSION["user_id"])) {
         <div class="company-name"><p>KingLang Transport</p></div>
         <div class="menu">
             <a href="#">Dashboard</a>
-            <a href="booking_requests.php">My Bookings</a>
-            <a href="../../controllers/client/BookingController.php?user_id=<?php echo $_SESSION["user_id"] ?>">Book a Trip</a>
+            <a href="/home/bookings/<?= $_SESSION["user_id"] ?>">My Bookings</a>
+            <a href="/home/book/<?= $_SESSION['user_id']; ?>">Book a Trip</a>
         </div>
     </div>
 
@@ -32,7 +30,7 @@ if (!isset($_SESSION["user_id"])) {
         <div class="header">
             <p class="username">Welcome, <?php echo $_SESSION["username"] ?></p>
             <input type="text" name="search" id="search" placeholder="Search Bookings">
-            <a href="logout.php">Logout</a>
+            <a href="/logout">Logout</a>
         </div>
         <div class="overview">
             <div class="card">Upcoming Trip</div>

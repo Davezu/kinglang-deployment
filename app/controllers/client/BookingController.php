@@ -1,81 +1,100 @@
 <?php
-require_once '../../../config/database.php';
-require_once '../../models/client/BookingModel.php';
-session_start();
+require_once __DIR__ . '/../../models/client/BookingModel.php';
 
 class BookingController {
     private $bookingModel;
 
-    public function __construct($db) {
-        $this->bookingModel = new Booking($db);
+    public function __construct() {
+        $this->bookingModel = new Booking();
     }
 
-    public function addBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id) {
-        return $this->bookingModel->createBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id);
+    public function bookingForm() {
+        require_once __DIR__ . "/../../views/client/booking.php";
     }
 
-    public function checkClientInfo($user_id) {
-        return $this->bookingModel->checkClientInfo($user_id);
+    public function requestBooking() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
+            $date_of_tour = trim($_POST["date_of_tour"]);
+            $destination = trim($_POST["destination"]);
+            $pickup_point = trim($_POST["pickup_point"]);
+            $number_of_days = trim($_POST["number_of_days"]);
+            $number_of_buses = trim($_POST["number_of_buses"]);
+            $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
+        
+            if (!empty($date_of_tour) && !empty($destination) && !empty($pickup_point) && !empty($number_of_days) && !empty($number_of_buses)) {
+                $client_id = $this->bookingModel->getClientID($_SESSION["user_id"]);
+                $result = $this->bookingModel->requestBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id);
+        
+                if ($result) {
+                    $_SESSION["booking_message"] = "Request booking successfully!";
+                    header("Location: /home/book");
+                    exit();
+                } else {
+                    $_SESSION["booking_message"] = "Failed to add booking.";
+                    header("Location: /home/book");
+                    exit();
+                }
+            } else {
+                $_SESSION["booking_message"] = "All fields are required.";
+                header("Location: /home/book");
+                exit();
+            }
+        }
+    }
+
+    public function isClientInfoExists($user_id) {
+        $result = $this->bookingModel->checkClientInfo($user_id);
+    
+        if ($result) {
+            header("Location: /home/book");
+            exit();
+        } else {
+            header("Location: /home/contact");
+            exit();
+        }   
     }
 
     public function getClientID($user_id) {
         return $this->bookingModel->getClientID($user_id);
     }
 
-    public function getBookingRequest($client_id) {
-        return $this->bookingModel->getBookingRequest($client_id);
+    public function getAllBookings($client_id, $status) {
+        // $status = isset($_GET["status"]) ? $_GET["status"] : "";
+        $bookings = $this->bookingModel->getAllBookings($client_id, $status);
+        require_once __DIR__ . "/../../views/client/booking_requests.php";
     }
 
+    public function updatePastBookings() {
+        return $this->bookingModel->updatePastBookings();
+    }
+
+    public function clientInfoForm() {
+        require_once __DIR__ . "/../../views/client/client_info_form.php";
+    }
+
+    public function addClient() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["client_info"])) {
+            $first_name = trim($_POST["first_name"]);
+            $last_name = trim($_POST["last_name"]);
+            $address = trim($_POST["address"]);
+            $contact_number = trim($_POST["contact_number"]);
+            $company_name = trim($_POST["company_name"]) ? trim($_POST["company_name"]) : "none";
+        
+            if (empty($first_name) || empty($last_name) || empty($address) || empty($contact_number)) {
+                echo "Incomplete information";
+                exit();
+            }
+        
+            $message = $this->bookingModel->addClient($first_name, $last_name, $address, $contact_number, $company_name);
+        
+            if ($message === "Client info added successfully!") {
+                header("Location: /home/book");
+                exit();
+            } else {
+                echo "<script>alert('$message')</script>";
+            }
+        }
+    }
         
 }
-
-if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["user_id"])) {
-    $user_id = $_GET["user_id"];
-
-    $controller = new BookingController($pdo);
-    $result = $controller->checkClientInfo($user_id);
-
-    if ($result) {
-        header("Location: ../../views/client/booking.php");
-        exit();
-    } else {
-        header("Location: ../../views/client/clientInfo.php");
-        exit();
-    }   
-}
-
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
-    $date_of_tour = trim($_POST["date_of_tour"]);
-    $destination = trim($_POST["destination"]);
-    $pickup_point = trim($_POST["pickup_point"]);
-    $number_of_days = trim($_POST["number_of_days"]);
-    $number_of_buses = trim($_POST["number_of_buses"]);
-    $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
-
-    if (!empty($date_of_tour) && !empty($destination) && !empty($pickup_point) && !empty($number_of_days) && !empty($number_of_buses)) {
-        $controller = new BookingController($pdo);
-
-        $client_id = $controller->getClientID($_SESSION["user_id"]);
-        $result = $controller->addBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id);
-
-        if ($result) {
-            $_SESSION["booking_message"] = "Request booking successfully!";
-            header("Location: ../../views/client/booking.php");
-            exit();
-        } else {
-            $_SESSION["booking_message"] = "Failed to add booking.";
-            header("Location: ../../views/client/booking.php");
-            exit();
-        }
-    } else {
-        echo "All fields are required.";
-    }
-} 
-
-$controller = new BookingController($pdo);
-
-$client_info_exists = $controller->checkClientInfo($_SESSION["user_id"]);
-
-$client_id = $controller->getClientID($_SESSION["user_id"]);
-$bookings = $controller->getBookingRequest($client_id);
 ?>

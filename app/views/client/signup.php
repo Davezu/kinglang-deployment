@@ -1,6 +1,6 @@
 <?php
-require_once '../../../config/database.php';
-require_once '../../controllers/client/AuthController.php';
+require_once __DIR__ . '/../../../config/database.php';
+require_once __DIR__ . '/../../controllers/client/AuthController.php';
 
 
 if (isset($_SESSION["user_id"])) {
@@ -25,12 +25,12 @@ if (isset($_SESSION["user_id"])) {
         </div>
         <div class="navbar">
             <a href="avbar">
-            <a href="../../../public/index.php">Home</a>
+            <a href="/home">Home</a>
             <a href="#">About</a>
         </div>
         <div class="buttons">
-            <a href="login.php">Log In</a>
-            <a href="signup.php" class="bg-primary">Sign up</a>
+            <a href="/home/login">Log In</a>
+            <a href="/home/signup" class="bg-primary">Sign up</a>
         </div>
     </div>
 
@@ -40,7 +40,7 @@ if (isset($_SESSION["user_id"])) {
             <div class="overlay"><p class="content">YOUR ON-THE-GO TOURIST BUS RENTAL!</p></div>
         </div>
         <div class="sign-up center-column">
-            <form action="../../controllers/client/AuthController.php" method="POST">
+            <form action="/client/signup" method="POST">
                 <div class="message">
                     <p class="welcome">Create an account</p>
                     <p class="sub-message">Already have an account? <a href="login.php" style="color: var(--secondary-color);">Log In</a></p>

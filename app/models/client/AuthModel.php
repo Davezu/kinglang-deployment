@@ -1,12 +1,13 @@
 <?php
-
+require_once __DIR__ . "/../../../config/database.php";
 session_start();
 
-class AuthModel {
+class ClientAuthModel {
     private $conn;
 
-    public function __construct($db) {
-        $this->conn = $db;
+    public function __construct() {
+        global $pdo;
+        $this->conn = $pdo  ;
     }
 
     public function emailExist($email) {
@@ -27,7 +28,7 @@ class AuthModel {
     //     return preg_match($pattern, $password);
     // }
 
-    public function register($username, $email, $password) {
+    public function signup($username, $email, $password) {
         if ($this->usernameExist($username)) {
             return "Username already exsits!";
         }
@@ -72,6 +73,7 @@ class AuthModel {
 
                 $_SESSION["username"] = $user["username"];
                 $_SESSION["user_id"] = $user["user_id"];
+                
                 return "Login successfully!";
             } 
             return "Incorrect password!";
