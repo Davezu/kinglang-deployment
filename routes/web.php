@@ -61,6 +61,16 @@ switch ($request) {
     case "/request-booking":
         $bookingController->requestBooking();
         break;
+    case (preg_match("#^/home/bookings/(\d+)(?:/([a-zA-Z0-9]+))?$#", $request, $matches) ? true : false):
+        $user_id = intval($matches[1]); 
+        $client_id = $bookingController->getClientID($user_id);
+        $status = $matches[2] ?? "";
+        $bookingController->getAllBookings($client_id, $status);
+        break;
+
+    case "/payment/process":
+        $bookingController->addPayment();
+        break;
 
     // admin
     case "/admin/bookings":
@@ -81,13 +91,6 @@ switch ($request) {
         break;
     case "/send-quote":
         $adminBookingController->sendQuote();
-        break;
-    
-    case (preg_match("#^/home/bookings/(\d+)(?:/([a-zA-Z0-9]+))?$#", $request, $matches) ? true : false):
-        $user_id = intval($matches[1]); 
-        $client_id = $bookingController->getClientID($user_id);
-        $status = $matches[2] ?? "";
-        $bookingController->getAllBookings($client_id, $status);
         break;
         
 

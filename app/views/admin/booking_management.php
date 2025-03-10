@@ -7,10 +7,6 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
     header("Location: /admin/login");
     exit(); 
 }
-
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +21,48 @@ echo "</pre>";
     <title>Document</title>
 </head>
 <body>
+    <div class="modal fade payment-calculator" aria-labelledby="calcualtorModal" tabindex="-1" id="calculatorModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form action="/send-quote" method="post" class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Total Cost Calculator</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="distance" class="form-label">Distance (KM)</label>    
+                        <input type="number" step="0.01" name="distance" id="distance" class="form-control" required>
+                    </div>  
+                    <div class="mb-3">
+                        <label for="diesel" class="form-label">Diesel Price Per Liter</label>
+                        <input type="number" min="0"  step="0.01" name="diesel" id="diesel" class="form-control" required>       
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col">
+                            <label for="numberOfDays" class="form-label">Number of Days</label>
+                            <input type="number" min="0" name="number_of_days" id="numberOfDays" class="form-control" disabled>
+                        </div>
+                        <div class="col">
+                            <label for="numberOfBuses" class="form-label">Number of Buses</label>
+                            <input type="number" name="number_of_buses" id="numberOfBuses" class="form-control" disabled> 
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="total_cost" id="totalCost">
+                    <input type="hidden" name="booking_id" id="bookingID">
+
+                    <p class="form-text">Total Cost: <span id="totalCostDisplay" class="text-success"></span></p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" id="confirm" class="btn btn-outline-success btn-sm">Send Quote</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
     <div class="side-bar">
         <div class="company-name"><p>KingLang Transport</p></div>
         <div class="menu">
@@ -42,11 +80,12 @@ echo "</pre>";
     </div>
 
     <div class="container-fluid">
-        <table class="table">
+        <table class="table table-hover">
             <thead>
-                <tr><th>Client Name</th><th>Contact Number</th><th>Destination</th><th>Pick-up Point</th><th>Date of Tour</th><th>End of Tour</th><th>Days</th><th>Buses</th><th>Status</th><th>Payment Status</th><th>Action</th></tr>
+                <tr><th>Client Name</th><th>Contact Number</th><th>Destination</th><th>Pick-up Point</th><th>Date of Tour</th><th>End of Tour</th><th>Days</th><th>Buses</th><th>Remarks</th><th>Payment Status</th><th>Action</th></tr>
             </thead>
             <tbody class="table-group-divider">
+                <?php if (!empty($bookings) && is_array($bookings)): ?>
                 <?php foreach ($bookings as $booking): ?>
                     <tr>
                         <td><?= htmlspecialchars($booking["client_name"]); ?></td>
@@ -61,17 +100,17 @@ echo "</pre>";
                         <td><?= htmlspecialchars($booking["payment_status"]); ?></td>
                         <td>
                             <?php if ($booking["status"] === "pending" && $booking["total_cost"] === NULL): ?>
-                                <form action="../../controllers/admin/BookingManagementController.php" method="post">
+                                <form action="" method="post">
                                     <input type="hidden" name="booking_id" value="<?= $booking["booking_id"]; ?>">
-                                    <div class="button-group">
+                                    <div class="btn-group w-100">
                                         <button 
-                                            type="submit" name="status" class="calculateTotalCost"
+                                            type="button" name="status"
+                                            class="btn btn-outline-success btn-sm open-payment-modal calculateTotalCost" data-bs-toggle="modal" data-bs-target="#calculatorModal"
                                             data-days="<?= htmlspecialchars($booking["number_of_days"]); ?>"
                                             data-buses="<?= htmlspecialchars($booking["number_of_buses"]); ?>"
                                             data-bookingID="<?= htmlspecialchars($booking["booking_id"]); ?>"
-                                            style="background-color: green; color: white;"
                                         >Compute</button>
-                                        <button type="submit" name="status" style="background-color: red; color: white;">Reject</button>
+                                        <button type="submit" name="status" class="btn btn-outline-danger btn-sm">Reject</button>
                                     </div>
                                 </form>
                             <?php else: ?>
@@ -80,38 +119,11 @@ echo "</pre>";
                         </td>
                     </tr>
                 <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
     
-
-    <div class="payment-calculator">
-        <form action="/send-quote" method="post">
-            <div class="input">
-                <label for="distance">Distance (KM)</label>    
-                <input type="number" step="0.01" name="distance" id="distance" required>
-            </div>  
-            <div class="input">
-                <label for="diesel">Diesel Price Per Liter</label>
-                <input type="number" min="0"  step="0.01" name="diesel" id="diesel" required>       
-            </div>
-            <div class="input">
-                <label for="numberOfDays">Number of Days</label>
-                <input type="number" min="0" name="number_of_days" id="numberOfDays" disabled>
-            </div>
-            <div class="input">
-                <label for="numberOfBuses">Number of Buses</label>
-                <input type="number" name="number_of_buses" id="numberOfBuses" disabled> 
-            </div>
-
-            <input type="hidden" name="total_cost" id="totalCost">
-            <input type="hidden" name="booking_id" id="bookingID">
-
-            <p>Total Cost: <span id="totalCostDisplay"></span></p>
-
-            <button type="submit" id="confirm">Send Quote</button>
-        </form>
-    </div>
 
     <script src="../../../public/js/admin/booking_management.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

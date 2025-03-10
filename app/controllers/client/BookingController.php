@@ -95,6 +95,24 @@ class BookingController {
             }
         }
     }
+
+    public function addPayment() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $booking_id = $_POST["booking_id"];
+            $client_id = $_POST["client_id"];
+            $amount = $_POST["amount"];
+            $payment_method = $_POST["payment_method"];
+        
+            $result = $this->bookingModel->addPayment($booking_id, $client_id, $amount, $payment_method);
+        
+            if ($result) {
+                header("Location: /home/bookings/" . $_SESSION["user_id"]);
+                exit();
+            } else {
+                echo "Adding payment failed";
+            }
+        }
+    }
         
 }
 ?>

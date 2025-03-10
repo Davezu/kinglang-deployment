@@ -16,7 +16,7 @@ if (!isset($_SESSION["user_id"])) {
     <!-- <link rel="stylesheet" href="../../../public/css/styles.css">
     <link rel="stylesheet" href="../../../public/css/home.css">
     <link rel="stylesheet" href="../../../public/css/client/booking_request.css"> -->
-    <title>Document</title>
+    <title>Bookings</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-success" data-bs-theme="dark">
@@ -29,7 +29,7 @@ if (!isset($_SESSION["user_id"])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="home.php" class="nav-link">Home</a>
+                        <a href="/client/home" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" aria-current="page">My Bookings</a>
@@ -38,6 +38,11 @@ if (!isset($_SESSION["user_id"])) {
                         <a href="/home/book/<?= $_SESSION["user_id"]; ?>" class="nav-link">Book a Trip</a>
                     </li>
                 </ul>
+                <ul class="navbar-nav d-flex">
+                    <li class="nav-item">
+                        <a href="/logout" class="btn btn-outline-warning">Logout</a>
+                    </li>
+                </ul>  
             </div>
         </div>
     </nav>
@@ -66,7 +71,7 @@ if (!isset($_SESSION["user_id"])) {
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
-                    <tr><th>Destination</th><th>Date of Tour</th><th>End of Tour</th><th>Days</th><th>Buses</th><th>Total Cost</th><th>Balance</th><th>Status</th><th>Action</th></tr>
+                    <tr><th>Destination</th><th>Date of Tour</th><th>End of Tour</th><th>Days</th><th>Buses</th><th>Total Cost</th><th>Balance</th><th>Remarks</th><th>Action</th></tr>
                 </thead>
                 <tbody class="table-group-divider"  >
                     <?php if (!empty($bookings) && is_array($bookings)): ?>
@@ -110,9 +115,9 @@ if (!isset($_SESSION["user_id"])) {
         </div>
     </div>
 
-    <div class="modal fade payment-modal" id="paymentModal" tabindex="-1" aria-labelledby="paymentModal">
+    <div class="modal fade payment-modal" aria-labelledby="paymentModal" tabindex="-1" id="paymentModal">
         <div class="modal-dialog modal-dialog-centered">
-            <form class="payment-content modal-content" action="../../controllers/client/PaymentController.php" method="post">
+            <form class="payment-content modal-content" action="/payment/process" method="post">
 
                 <div class="modal-header">
                     <h3 class="modal-title">Payment</h3>
