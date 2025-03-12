@@ -50,6 +50,9 @@ switch ($request) {
     case "/contact/submit":
         $bookingController->addClient();
         break;
+    case "/get-available-buses":
+        $bookingController->findAvailableBuses();
+        break;
     case "/home/book":
         $bookingController->bookingForm();
         $bookingController->updatePastBookings();
@@ -94,6 +97,11 @@ switch ($request) {
         break;
         
 
+
+    case "/favicon.ico":
+        http_response_code(204); // No Content (prevents errors)
+        exit();
+        break;
 
     default:
         require_once __DIR__ . "/../404.php";

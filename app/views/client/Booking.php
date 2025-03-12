@@ -49,7 +49,7 @@ if (!isset($_SESSION["user_id"])) {
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4 border rounded">
-                <form action="/request-booking" method="POST" class="mt-4">
+                <form action="/request-booking" id="bookingForm" method="POST" class="mt-4">
                     <input type="hidden" name="id" value="1">
                     <div class="mb-3">  
                         <label for="date_of_tour" class="form-label">Date of Tour</label>
@@ -74,8 +74,12 @@ if (!isset($_SESSION["user_id"])) {
                         </div>
                     </div>
 
+                    <div class="mb-4">
+                        <div id="busSelection">hello</div>
+                    </div>
+
                     <div class="row mb-4">
-                        <div class="col">   
+                        <div class="col">           
                             <button type="submit" name="submit_booking" class="btn btn-primary">Book Now</button>
                         </div>
                         <div class="col">

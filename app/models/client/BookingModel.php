@@ -35,20 +35,58 @@ class Booking {
         }
     }
 
-    public function requestBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id) {
+    public function requestBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id, $bus_id) {
         try {
-            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, client_id) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :client_id)");
+            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, client_id, bus_id) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :client_id, :bus_id)");
             return $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
                 ":end_of_tour" => $end_of_tour,
                 ":destination" => $destination,
                 ":pickup_point" => $pickup_point,
-                ":number_of_days" => $number_of_days,
+                ":number_of_days" => $number_of_days,   
                 ":number_of_buses" => $number_of_buses,
-                ":client_id" => $client_id
+                ":client_id" => $client_id,
+                ":bus_id" => $bus_id
             ]);
         } catch (PDOException $e) {
             return false;
+        }
+    }
+
+    public function findAvailableBuses($date_of_tour, $number_of_days) {
+        $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
+
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT b.bus_id, b.bus_name, b.capacity
+                FROM buses b
+                WHERE b.status = 'active'
+                AND b.bus_id NOT IN (
+                    SELECT bus_id 
+                    FROM bookings
+                    WHERE status = 'confirmed'
+                    AND (
+                        (date_of_tour <= :date_of_tour AND end_of_tour >= :date_of_tour)
+                        OR
+                        (date_of_tour <= :end_of_tour AND end_of_tour >= :end_of_tour)
+                        OR
+                        (date_of_tour <= :date_of_tour AND end_of_tour >= :end_of_tour)
+                    )
+                )   
+            ");
+
+            $stmt->execute([
+                ":date_of_tour" => $date_of_tour,
+                ":date_of_tour" => $date_of_tour,
+                ":end_of_tour" => $end_of_tour,
+                ":end_of_tour" => $end_of_tour,
+                ":date_of_tour" => $date_of_tour,
+                ":end_of_tour" => $end_of_tour
+            ]);
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return "Database error: $e";
         }
     }
 
@@ -161,6 +199,8 @@ class Booking {
             return "Database error";
         }
     }
+
+    
 }
 
 

@@ -19,11 +19,12 @@ class BookingController {
             $pickup_point = trim($_POST["pickup_point"]);
             $number_of_days = trim($_POST["number_of_days"]);
             $number_of_buses = trim($_POST["number_of_buses"]);
+            $bus_id = $_POST["bus_id"];
             $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
         
             if (!empty($date_of_tour) && !empty($destination) && !empty($pickup_point) && !empty($number_of_days) && !empty($number_of_buses)) {
                 $client_id = $this->bookingModel->getClientID($_SESSION["user_id"]);
-                $result = $this->bookingModel->requestBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id);
+                $result = $this->bookingModel->requestBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id, $bus_id);
         
                 if ($result) {
                     $_SESSION["booking_message"] = "Request booking successfully!";
@@ -38,6 +39,24 @@ class BookingController {
                 $_SESSION["booking_message"] = "All fields are required.";
                 header("Location: /home/book");
                 exit();
+            }
+        }
+    }
+
+    public function findAvailableBuses() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $data = json_decode(file_get_contents("php://input"), true);
+            $date_of_tour = $data["date_of_tour"];
+            $number_of_days = $data["number_of_days"];     
+
+            $buses = $this->bookingModel->findAvailableBuses($date_of_tour, $number_of_days);
+
+            header("Content-Type: application/json");
+
+            if (!empty($buses)) {
+                echo json_encode(['success' => true, 'buses' => $buses]);
+            } else {
+                echo json_encode(['success' => false]);
             }
         }
     }
@@ -59,7 +78,6 @@ class BookingController {
     }
 
     public function getAllBookings($client_id, $status) {
-        // $status = isset($_GET["status"]) ? $_GET["status"] : "";
         $bookings = $this->bookingModel->getAllBookings($client_id, $status);
         require_once __DIR__ . "/../../views/client/booking_requests.php";
     }
