@@ -55,7 +55,6 @@ switch ($request) {
         break;
     case "/home/book":
         $bookingController->bookingForm();
-        $bookingController->updatePastBookings();
         break;
     case (preg_match("#^/home/book/\d+$#", $request) ? true : false):
         $user_id = intval($segments[2]);
@@ -64,11 +63,18 @@ switch ($request) {
     case "/request-booking":
         $bookingController->requestBooking();
         break;
-    case (preg_match("#^/home/bookings/(\d+)(?:/([a-zA-Z0-9]+))?$#", $request, $matches) ? true : false):
-        $user_id = intval($matches[1]); 
-        $client_id = $bookingController->getClientID($user_id);
-        $status = $matches[2] ?? "";
-        $bookingController->getAllBookings($client_id, $status);
+    // case (preg_match("#^/home/bookings/(\d+)(?:/([a-zA-Z0-9]+))?$#", $request, $matches) ? true : false):
+    //     $user_id = intval($matches[1]); 
+    //     $client_id = $bookingController->getClientID($user_id);
+    //     $status = $matches[2] ?? "";
+    //     $bookingController->getAllBookings($client_id, $status);
+    //     $bookingController->updatePastBookings();
+    //     break;
+    case "/home/booking-requests":
+        $bookingController->showBookingRequestTable();
+        break;
+    case "/home/get-booking-requests":
+        $bookingController->getAllBookings();
         break;
 
     case "/payment/process":
@@ -78,6 +84,7 @@ switch ($request) {
     // admin
     case "/admin/bookings":
         $adminBookingController->getAllBookings();
+        $bookingController->updatePastBookings();
         break;
     case "/admin/login":
         $adminAuthController->loginForm();

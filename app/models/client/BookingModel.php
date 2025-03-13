@@ -35,21 +35,31 @@ class Booking {
         }
     }
 
-    public function requestBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id, $bus_id) {
+    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id, $bus_ids) {
+        $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
+
         try {
-            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, client_id, bus_id) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :client_id, :bus_id)");
-            return $stmt->execute([
+            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, client_id) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :client_id)");
+            $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
                 ":end_of_tour" => $end_of_tour,
                 ":destination" => $destination,
                 ":pickup_point" => $pickup_point,
-                ":number_of_days" => $number_of_days,   
+                ":number_of_days" => $number_of_days,       
                 ":number_of_buses" => $number_of_buses,
-                ":client_id" => $client_id,
-                ":bus_id" => $bus_id
+                ":client_id" => $client_id
             ]);
+
+            $booking_id = $this->conn->lastInsertID();
+            
+            foreach ($bus_ids as $bus_id) {
+                $stmt = $this->conn->prepare("INSERT INTO booking_buses (booking_id, bus_id) VALUES (:booking_id, :bus_id)");
+                $stmt->execute([":booking_id" => $booking_id, ":bus_id" => $bus_id]);
+            }
+
+            return "success";
         } catch (PDOException $e) {
-            return false;
+            return "Database error: $e";
         }
     }
 
@@ -62,15 +72,16 @@ class Booking {
                 FROM buses b
                 WHERE b.status = 'active'
                 AND b.bus_id NOT IN (
-                    SELECT bus_id 
-                    FROM bookings
+                    SELECT bb.bus_id 
+                    FROM bookings bo
+                    JOIN booking_buses bb ON bo.booking_id = bb.booking_id  
                     WHERE status = 'confirmed'
                     AND (
-                        (date_of_tour <= :date_of_tour AND end_of_tour >= :date_of_tour)
+                        (bo.date_of_tour <= :date_of_tour AND bo.end_of_tour >= :date_of_tour)
                         OR
-                        (date_of_tour <= :end_of_tour AND end_of_tour >= :end_of_tour)
+                        (bo.date_of_tour <= :end_of_tour AND bo.end_of_tour >= :end_of_tour)
                         OR
-                        (date_of_tour <= :date_of_tour AND end_of_tour >= :end_of_tour)
+                        (bo.date_of_tour <= :date_of_tour AND bo.end_of_tour >= :end_of_tour)
                     )
                 )   
             ");
@@ -112,13 +123,11 @@ class Booking {
 
     public function updatePastBookings() {
         try {
-            $current_date = date("Y-m-d");
-
-            $stmt = $this->conn->prepare("UPDATE bookings SET status = 'completed' WHERE end_of_tour < :current_date AND status != 'completed' AND balance = 0");
-            $stmt->execute([":current_date" => $current_date]);
+            $stmt = $this->conn->prepare("UPDATE bookings SET status = 'completed' WHERE end_of_tour < CURDATE() AND status != 'completed' AND balance = 0");
+            $stmt->execute();
             return "Updated successfully!";
         } catch (PDOException $e) {
-            return "Error";
+            return "Database error: $e";
         }
     }
 

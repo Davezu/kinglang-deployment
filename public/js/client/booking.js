@@ -1,12 +1,11 @@
 const today = new Date();
 
 today.setDate(today.getDate() + 3);
-
 const minDate = today.toISOString().split("T")[0];
+document.getElementById("date_of_tour").min = minDate;      
 
-document.getElementById("date_of_tour").min = minDate;  
 
-// submit booking
+// find available buses
 document.getElementById("date_of_tour").addEventListener("input", findAvailableBuses);
 document.getElementById("number_of_days").addEventListener("input", findAvailableBuses);
 
@@ -29,9 +28,10 @@ async function findAvailableBuses() {
         const busSelectionDiv = document.getElementById("busSelection");
     
         if (data.success && data.buses.length > 0) {
-            let options = `<label for="bus_id">Choose a Bus:</label><select id="bus_id" name="bus_id">`;
+            console.log(data.buses);
+            let options = `<label for="bus_id">Choose a Bus:</label><br>`;
             data.buses.forEach(bus => {
-                options += `<option value="${bus.bus_id}">${bus.bus_name} - ${bus.capacity} seats</option>`;
+                options += `<input type="checkbox" name="bus_ids[]" value="${bus.bus_id}">${bus.bus_name} - ${bus.capacity} seats <br>`;
             });
             options += `</select>`;
             busSelectionDiv.innerHTML = options;
@@ -42,3 +42,48 @@ async function findAvailableBuses() {
         console.error("Error fetching data: ", error.message);
     }
 }
+
+// submit booking 
+document.getElementById("bookingForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    console.log("test");
+
+    const numberOfBuses = document.getElementById("number_of_buses").value;
+    const selectedBuses = Array.from(document.querySelectorAll("input[name='bus_ids[]']:checked")).map(bus => bus.value);
+
+    console.log("selected buses: ", selectedBuses.length);
+    console.log("number of buses: ", numberOfBuses);
+
+    if (parseInt(numberOfBuses) !== selectedBuses.length) return;
+    
+    const formData = {
+        dateOfTour: document.getElementById("date_of_tour")?.value,
+        destination: document.getElementById("destination")?.value,
+        pickupPoint: document.getElementById("pickup_point")?.value,
+        numberOfBuses,
+        numberOfDays: document.getElementById("number_of_days")?.value,
+        busIds: selectedBuses
+    }
+
+    try {
+        console.log("nagfefetch");
+        const response = await fetch("/request-booking", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            document.querySelector(".booking-message").textContent = data.message;
+            this.reset();
+            document.getElementById("busSelection").innerHTML = "";
+        } else {
+            document.querySelector(".booking-message").textContent = data.message;
+        }
+    } catch (error) {
+        console.error("Error fetching data: ", error.message);
+    }
+});

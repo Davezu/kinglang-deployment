@@ -58,17 +58,27 @@ if (!isset($_SESSION["user_id"])) {
                         <span class="input-group-text" id="basic-addon1">Status</span>
                         <select name="status" id="status" class="form-select">
                             <option value="">All</option>
-                            <option value="pending" <?= isset($_GET["status"]) && $_GET["status"] === "pending" ? "selected" : "" ?>>Pending</option>
-                            <option value="confirmed" <?= isset($_GET["status"]) && $_GET["status"] === "confirmed" ? "selected" : "" ?>>Confirmed</option>
-                            <option value="canceled" <?= isset($_GET["status"]) && $_GET["status"] === "canceled" ? "selected" : "" ?>>Canceled</option>
-                            <option value="rejected" <?= isset($_GET["status"]) && $_GET["status"] === "rejected" ? "selected" : "" ?>>Rejected</option>
-                            <option value="completed" <?= isset($_GET["status"]) && $_GET["status"] === "completed" ? "selected" : "" ?>>Completed</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="canceled">Canceled</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="completed">Completed</option>
                         </select>
                     </div>
                 </form>
             </div>
         </div>
         <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr><th>Destination</th><th>Date of Tour</th><th>End of Tour</th><th>Days</th><th>Buses</th><th>Total Cost</th><th>Balance</th><th>Remarks</th><th>Action</th></tr>
+                </thead>
+                <tbody class="table-gro" id="tableBody">
+
+                </tbody>
+            </table>
+        </div>
+        <!-- <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr><th>Destination</th><th>Date of Tour</th><th>End of Tour</th><th>Days</th><th>Buses</th><th>Total Cost</th><th>Balance</th><th>Remarks</th><th>Action</th></tr>
@@ -89,7 +99,15 @@ if (!isset($_SESSION["user_id"])) {
                                 <?php if ($booking["total_cost"] !== NULL && $booking["payment_status"] !== "paid" && $booking["status"] !== "completed"): ?>
                                     <form action="" method="post">
                                         <div class="btn-group w-100">
-                                            <button data-amount="<?= $booking["total_cost"] ?>" data-bookingID="<?= $booking["booking_id"] ?>" data-clientID="<?= $booking["client_id"]; ?>" class="btn btn-outline-success btn-sm open-payment-modal" data-bs-toggle="modal" data-bs-target="#paymentModal">Pay</button>
+                                            <button 
+                                                data-amount="<?= $booking["total_cost"] ?>" 
+                                                
+                                                data-bookingID="<?= $booking["booking_id"] ?>" 
+                                                data-clientID="<?= $booking["client_id"]; ?>" 
+                                                class="btn btn-outline-success btn-sm open-payment-modal" 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#paymentModal">
+                                                Pay</button>
                                             <button type="button" class="btn btn-outline-primary btn-sm">Reschedule</button>  
                                             <button type="button" class="btn btn-outline-danger btn-sm">Cancel</button>
                                         </div>
@@ -112,7 +130,7 @@ if (!isset($_SESSION["user_id"])) {
                     <?php endif; ?>
                 </tbody>
             </table>
-        </div>
+        </div> -->
     </div>
 
     <div class="modal fade payment-modal" aria-labelledby="paymentModal" tabindex="-1" id="paymentModal">

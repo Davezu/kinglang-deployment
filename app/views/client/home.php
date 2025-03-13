@@ -29,7 +29,7 @@ if (!isset($_SESSION["user_id"])) {
                         <a href="/client/home" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/home/bookings/<?= $_SESSION["user_id"] ?>" class="nav-link" aria-current="page">My Bookings</a>
+                        <a href="/home/booking-requests" class="nav-link" aria-current="page">My Bookings</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Book a Trip</a>

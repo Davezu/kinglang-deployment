@@ -13,32 +13,26 @@ class BookingController {
     }
 
     public function requestBooking() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
-            $date_of_tour = trim($_POST["date_of_tour"]);
-            $destination = trim($_POST["destination"]);
-            $pickup_point = trim($_POST["pickup_point"]);
-            $number_of_days = trim($_POST["number_of_days"]);
-            $number_of_buses = trim($_POST["number_of_buses"]);
-            $bus_id = $_POST["bus_id"];
-            $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $data = json_decode(file_get_contents("php://input"), true);
+            $date_of_tour = $data["dateOfTour"];
+            $destination = $data["destination"];
+            $pickup_point = $data["pickupPoint"];
+            $number_of_buses = $data["numberOfBuses"];
+            $number_of_days = $data["numberOfDays"];
+            $bus_ids = $data["busIds"];
         
-            if (!empty($date_of_tour) && !empty($destination) && !empty($pickup_point) && !empty($number_of_days) && !empty($number_of_buses)) {
-                $client_id = $this->bookingModel->getClientID($_SESSION["user_id"]);
-                $result = $this->bookingModel->requestBooking($date_of_tour, $end_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id, $bus_id);
-        
-                if ($result) {
-                    $_SESSION["booking_message"] = "Request booking successfully!";
-                    header("Location: /home/book");
-                    exit();
-                } else {
-                    $_SESSION["booking_message"] = "Failed to add booking.";
-                    header("Location: /home/book");
-                    exit();
-                }
+            $client_id = $this->bookingModel->getClientID($_SESSION["user_id"]);
+            $result = $this->bookingModel->requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id, $bus_ids);
+            
+            header("Content-Type: application/json");
+
+            if ($result === "success") {
+                // $_SESSION["booking_message"] = "Booking request sent successfully!";
+                echo json_encode(["success" => true, "message" => "Booking request sent successfully!"]);
             } else {
-                $_SESSION["booking_message"] = "All fields are required.";
-                header("Location: /home/book");
-                exit();
+                // $_SESSION["booking_message"] = "Failed to add booking.";
+                echo json_encode(["success" => false, "message" => $result]);
             }
         }
     }
@@ -77,8 +71,23 @@ class BookingController {
         return $this->bookingModel->getClientID($user_id);
     }
 
-    public function getAllBookings($client_id, $status) {
+    public function getAllBookings() {
+        $data = json_decode(file_get_contents("php://input"), true);
+        $status = $data["status"];
+
+        $client_id = $this->bookingModel->getClientID($_SESSION["user_id"]);
         $bookings = $this->bookingModel->getAllBookings($client_id, $status);
+
+        header("Content-Type: application/json");
+
+        if (is_array($bookings)) {
+            echo json_encode(["success" => true, "bookings" => $bookings]);
+        } else {
+            echo json_encode(["success" => false, "message" => $bookings]);
+        }
+    }
+
+    public function showBookingRequestTable() {
         require_once __DIR__ . "/../../views/client/booking_requests.php";
     }
 
