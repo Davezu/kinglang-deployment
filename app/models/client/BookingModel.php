@@ -104,13 +104,13 @@ class Booking {
     public function getAllBookings($client_id, $status = "") {
         try {
             if (!empty($status)) {
-                $stmt = $this->conn->prepare("SELECT * FROM bookings WHERE client_id = :client_id AND status = :status ORDER BY date_of_tour DESC");
+                $stmt = $this->conn->prepare("SELECT * FROM bookings WHERE client_id = :client_id AND status = :status ORDER BY status");
                 $stmt->execute([
                     ":client_id" => $client_id,
                     ":status" => $status
                 ]);
             } else {
-                $stmt = $this->conn->prepare("SELECT * FROM bookings WHERE client_id = :client_id ORDER BY date_of_tour DESC");
+                $stmt = $this->conn->prepare("SELECT * FROM bookings WHERE client_id = :client_id ORDER BY status");
                 $stmt->execute([ ":client_id" => $client_id ]);
             }
 

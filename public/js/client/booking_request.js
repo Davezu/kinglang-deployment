@@ -23,8 +23,10 @@
 //     });
 // });
 
-const openPaymentModalButton = document.querySelectorAll(".open-payment-modal");
-const paymentModal = document.querySelector(".payment-modal");
+// get all of booking record
+document.addEventListener("DOMContentLoaded", getAllBookings);
+document.getElementById("status").addEventListener("change", getAllBookings);
+
 
 const fullAmount = document.getElementById("fullAmount");
 const partialAmount = document.getElementById("partialAmount");
@@ -33,28 +35,12 @@ const bookingIDinput = document.getElementById("bookingID");
 const clientIDinput = document.getElementById("clientID");
 const amountInput = document.getElementById("amountInput");
 
-// open the payment modal and get the value associated with row selected
-openPaymentModalButton.forEach(button => {
-    button.addEventListener("click", function (event) {
-        event.preventDefault();
-        
-        const totalCost = this.getAttribute("data-amount");
-        const bookingID = this.getAttribute("data-bookingID");
-        const clientID = this.getAttribute("data-clientID");
-
-        fullAmount.textContent = formatNumber(totalCost);
-        partialAmount.textContent = formatNumber(totalCost / 2);
-        bookingIDinput.value = bookingID;
-        clientIDinput.value = clientID;
-    });
-});
-
 // closing the modal
-document.addEventListener("click", (event) => {
-    if (event.target === paymentModal) {
-        paymentModal.style.display = "none";
-    }
-});
+// document.addEventListener("click", (event) => {
+//     if (event.target === paymentModal) {
+//         paymentModal.style.display = "none";
+//     }
+// });
 
 // getting the actual value of the selected formatted currency and place it in the hidden input to insert in database
 document.querySelectorAll(".amount-payment").forEach(amount => {
@@ -67,11 +53,29 @@ document.querySelectorAll(".amount-payment").forEach(amount => {
     })
 });
 
+const openPaymentModalButton = document.getElementsByClassName("open-payment");
+const paymentModal = document.querySelector(".payment-modal");
+console.log(openPaymentModalButton);
 
-document.getElementById("status").addEventListener("change", getAllBookings);
+// open the payment modal and get the value associated with row selected
+Array.from(openPaymentModalButton).forEach(button => {
+    console.log("test");
+    button.addEventListener("click", function () {
+        console.log("test");
+        const totalCost = this.getAttribute("data-total-cost");
+        const bookingID = this.getAttribute("data-booking-id");
+        const clientID = this.getAttribute("data-client-id");
 
-// get all of booking record
-document.addEventListener("DOMContentLoaded", getAllBookings);
+        console.log("total cost: ", totalCost);
+        console.log("booking id: ", bookingID);
+        console.log("client id: ", clientID);
+
+        fullAmount.textContent = formatNumber(totalCost);
+        partialAmount.textContent = formatNumber(totalCost / 2);
+        bookingIDinput.value = bookingID;
+        clientIDinput.value = clientID;
+    });
+});
 
 async function getAllBookings() {
     const status = this.value || "";
@@ -131,28 +135,38 @@ function formatNumber(number) {
     }).format(number);
 };
 
-function createPayReschedCancelButton(td, booking) {
+function createPayReschedCancelButton(td, booking) {    
     const btnGroup = document.createElement("div");
     const payButton = document.createElement("button");
     const reschedButton = document.createElement("button");
     const cancelButton = document.createElement("button");
 
-    btnGroup.classList.add("w-100");
-    btnGroup.classList.add("btn-group");
+    btnGroup.classList.add("container");
+    btnGroup.classList.add("d-flex");
+    btnGroup.classList.add("gap-2");
 
     payButton.classList.add("btn");
-    payButton.classList.add("btn-outline-success");
+    payButton.classList.add("btn-success");
     payButton.classList.add("btn-sm");
+    payButton.classList.add("open-payment");
+    payButton.classList.add("w-100");
 
     reschedButton.classList.add("btn");
-    reschedButton.classList.add("btn-outline-primary");
+    reschedButton.classList.add("btn-primary");
+    reschedButton.classList.add("w-100");
     reschedButton.classList.add("btn-sm");
 
     cancelButton.classList.add("btn");
-    cancelButton.classList.add("btn-outline-danger");
+    cancelButton.classList.add("btn-danger");
+    cancelButton.classList.add("w-100");
     cancelButton.classList.add("btn-sm");
 
     payButton.setAttribute("data-booking-id", booking.booking_id);
+    payButton.setAttribute("data-total-cost", booking.total_cost);
+    payButton.setAttribute("data-client-id", booking.client_id);
+
+    payButton.setAttribute("data-bs-toggle", "modal");
+    payButton.setAttribute("data-bs-target", "#paymentModal");
 
     payButton.textContent = "Pay";
     reschedButton.textContent = "Resched";
@@ -168,3 +182,4 @@ function createPayReschedCancelButton(td, booking) {
 
     td.appendChild(btnGroup);
 }
+

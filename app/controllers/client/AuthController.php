@@ -17,6 +17,10 @@ class ClientAuthController {
         require_once __DIR__ . "/../../views/client/signup.php";
     }
 
+    public function manageAccountForm() {
+        require_once __DIR__ . "/../../views/client/user_account.php";
+    }
+
     public function signup() {
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["signup"])) {
             $username = trim($_POST["username"]);
@@ -65,13 +69,49 @@ class ClientAuthController {
             $message = $this->authModel->login($username, $password);
 
             if ($message === "Login successfully!") {
-                header("Location: /client/home");
+                header("Location: /home/booking-requests");
                 exit();
             } else {
                 $_SESSION["entered_username"] = $username;
                 $_SESSION["message"] = $message;
                 header("Location: /home/login");
                 exit();
+            }
+        }
+    }
+
+    public function getClientInformation() {
+        $info = $this->authModel->getClientInformation();
+
+        header("Content-Type: application/json");
+
+        if (is_array($info)) {
+            echo json_encode(['success' => true, 'info' => $info]);
+        } else {
+            echo json_encode(['success' => false, 'message' => $info]);
+        }
+    }
+
+    public function updateClientInformation() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $data = json_decode(file_get_contents("php://input"), true);
+
+            $first_name = $data["firstName"];
+            $last_name = $data["lastName"];
+            $contact_number = $data["contactNumber"];
+            $company_name = $data["companyName"];
+            $address = $data["address"];
+            $email_address = $data["email"];
+            $username = $data["username"];
+
+            $result = $this->authModel->updateClientInformation($first_name, $last_name, $address, $contact_number, $company_name, $email_address, $username);
+
+            header("Content-Type: application/json");
+
+            if ($result === "success") {
+                echo json_encode(['success' => true, 'message' => 'Updated successfully!']);
+            } else {
+                echo json_encode(['success' => false, 'message' => $result]);
             }
         }
     }

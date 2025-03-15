@@ -14,7 +14,7 @@ calculateTotalCostButton.forEach(button => {
     button.addEventListener("click", function (event) {
         event.preventDefault();
 
-        calculatorModal.style.display = "flex";
+        // calculatorModal.style.display = "flex";
 
         days.value = this.getAttribute("data-days");
         buses.value = this.getAttribute("data-buses");
@@ -22,11 +22,11 @@ calculateTotalCostButton.forEach(button => {
     });
 })
 
-document.addEventListener("click", (event) => {
-    if (event.target === calculatorModal) {
-        calculatorModal.style.display = "none";
-    }
-});
+// document.addEventListener("click", (event) => {
+//     if (event.target === calculatorModal) {
+//         calculatorModal.style.display = "none";
+//     }
+// });
 
 function calculateTotalCost() {
     day = parseFloat(days.value) || 0;

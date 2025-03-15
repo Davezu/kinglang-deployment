@@ -39,6 +39,15 @@ switch ($request) {
     case "/client/home":
         require_once __DIR__ . "/../app/views/client/home.php";
         break;
+    case "/my-account":
+        $clientAuthController->manageAccountForm();
+        break;
+    case "/get-client-information":
+        $clientAuthController->getClientInformation();
+        break;
+    case "/update-client-information":
+        $clientAuthController->updateClientInformation();
+        break;
     case "/logout":
         $clientAuthController->logout();
         break;

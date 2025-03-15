@@ -72,6 +72,7 @@ class ClientAuthModel {
             if ($user && password_verify($password, $user["password"])) {
 
                 $_SESSION["username"] = $user["username"];
+                $_SESSION["email"] = $user["email"];
                 $_SESSION["user_id"] = $user["user_id"];
                 
                 return "Login successfully!";
@@ -79,6 +80,65 @@ class ClientAuthModel {
             return "Incorrect password!";
         } catch (PDOException $e) {
             return false;
+        }
+    }
+
+    public function getClientID($user_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT client_id FROM users WHERE user_id = :user_id");
+            $stmt->execute([":user_id" => $user_id]);
+            return $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            return "Database error";
+        }
+    }
+
+    public function getClientInformation() {
+        $client_id = $this->getClientID($_SESSION["user_id"]);
+
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM clients WHERE client_id = :client_id");
+            $stmt->execute([":client_id" => $client_id]);
+
+            $client = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE user_id = :user_id");
+            $stmt->execute([":user_id" => $_SESSION["user_id"]]);
+            
+            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return ['user' => $user, 'client' => $client];
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
+
+    public function updateClientInformation($first_name, $last_name, $address, $contact_number, $company_name, $email_address, $username) {
+        $client_id = $this->getClientID($_SESSION["user_id"]);
+
+        try {
+            $stmt = $this->conn->prepare("UPDATE clients SET first_name = :first_name, last_name = :last_name, address = :address, contact_number = :contact_number, company_name = :company_name WHERE client_id = :client_id");
+            $stmt->execute([
+                ":first_name" => $first_name,
+                ":last_name" => $last_name,
+                ":address" => $address,
+                "contact_number" => $contact_number,
+                ":company_name" => $company_name,
+                ":client_id" => $client_id
+            ]);
+
+            $stmt = $this->conn->prepare("UPDATE users SET email = :email, username = :username WHERE user_id = :user_id");
+            $stmt->execute([
+                ":email" => $email_address,
+                ":username" => $username,
+                ":user_id" => $_SESSION["user_id"]
+            ]);
+
+            $_SESSION["username"] = $username;    
+
+            return "success";
+        } catch (PDOException $e) {
+            return "Database error: $e";
         }
     }
 }

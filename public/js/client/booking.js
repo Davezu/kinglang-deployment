@@ -67,7 +67,6 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     }
 
     try {
-        console.log("nagfefetch");
         const response = await fetch("/request-booking", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
