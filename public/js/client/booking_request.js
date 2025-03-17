@@ -1,27 +1,9 @@
-// function updatePastBookings() {
-//     fetch("../../../app/controllers/client/BookingController.php")
-//     .then(response => response.text())
-//     .then(data => console.log(data))
-//     .catch(error => console.error(error));
-// }
 
-// window.onload = updatePastBookings;
-
-// format currency column (total cost, balance)
-// document.addEventListener("DOMContentLoaded", () => {
-
-//     const totalCosts = Array.from(document.querySelectorAll(".total-cost")).map(cost => cost.textContent);
-
-//     document.querySelectorAll(".total-cost").forEach((cost, i) => {
-//         cost.textContent = formatNumber(totalCosts[i]);
-//     });
-
-//     const balance = Array.from(document.querySelectorAll(".balance")).map(balance => balance.textContent);
-
-//     document.querySelectorAll(".balance").forEach((bal, i) => {
-//         bal.textContent = formatNumber(balance[i]);
-//     });
-// });
+// disable past dates in date of tour input
+const today = new Date();
+today.setDate(today.getDate() + 3);
+const minDate = today.toISOString().split("T")[0];
+document.getElementById("date_of_tour").min = minDate; 
 
 // get all of booking record
 document.addEventListener("DOMContentLoaded", getAllBookings);
@@ -35,13 +17,6 @@ const bookingIDinput = document.getElementById("bookingID");
 const clientIDinput = document.getElementById("clientID");
 const amountInput = document.getElementById("amountInput");
 
-// closing the modal
-// document.addEventListener("click", (event) => {
-//     if (event.target === paymentModal) {
-//         paymentModal.style.display = "none";
-//     }
-// });
-
 // getting the actual value of the selected formatted currency and place it in the hidden input to insert in database
 document.querySelectorAll(".amount-payment").forEach(amount => {
     amount.addEventListener("click", (event) => {
@@ -53,28 +28,31 @@ document.querySelectorAll(".amount-payment").forEach(amount => {
     })
 });
 
-const openPaymentModalButton = document.getElementsByClassName("open-payment");
+const openPaymentModalButton = document.getElementsByClassName("open-payment-modal");
 const paymentModal = document.querySelector(".payment-modal");
 console.log(openPaymentModalButton);
 
+
 // open the payment modal and get the value associated with row selected
-Array.from(openPaymentModalButton).forEach(button => {
-    console.log("test");
-    button.addEventListener("click", function () {
+document.querySelectorAll(".btn-container").forEach(container => {
+    console.log(container)
+    container.addEventListener("click", function (e) {
         console.log("test");
-        const totalCost = this.getAttribute("data-total-cost");
-        const bookingID = this.getAttribute("data-booking-id");
-        const clientID = this.getAttribute("data-client-id");
+        if (e.target.contains('open-payment-modal')) {
+            const totalCost = this.getAttribute("data-total-cost");
+            const bookingID = this.getAttribute("data-booking-id");
+            const clientID = this.getAttribute("data-client-id");
 
-        console.log("total cost: ", totalCost);
-        console.log("booking id: ", bookingID);
-        console.log("client id: ", clientID);
+            console.log("total cost: ", totalCost);
+            console.log("booking id: ", bookingID);
+            console.log("client id: ", clientID);
 
-        fullAmount.textContent = formatNumber(totalCost);
-        partialAmount.textContent = formatNumber(totalCost / 2);
-        bookingIDinput.value = bookingID;
-        clientIDinput.value = clientID;
-    });
+            fullAmount.textContent = formatNumber(totalCost);
+            partialAmount.textContent = formatNumber(totalCost / 2);
+            bookingIDinput.value = bookingID;
+            clientIDinput.value = clientID;
+        }
+    })
 });
 
 async function getAllBookings() {
@@ -141,14 +119,12 @@ function createPayReschedCancelButton(td, booking) {
     const reschedButton = document.createElement("button");
     const cancelButton = document.createElement("button");
 
-    btnGroup.classList.add("container");
-    btnGroup.classList.add("d-flex");
-    btnGroup.classList.add("gap-2");
+    btnGroup.classList.add("container", "btn-container", "d-flex", "gap-2");
 
+    payButton.classList.add("open-payment-modal");
     payButton.classList.add("btn");
     payButton.classList.add("btn-success");
     payButton.classList.add("btn-sm");
-    payButton.classList.add("open-payment");
     payButton.classList.add("w-100");
 
     reschedButton.classList.add("btn");
@@ -168,6 +144,14 @@ function createPayReschedCancelButton(td, booking) {
     payButton.setAttribute("data-bs-toggle", "modal");
     payButton.setAttribute("data-bs-target", "#paymentModal");
 
+    reschedButton.setAttribute("data-booking-id", booking.booking_id);
+    reschedButton.setAttribute("data-client-id", booking.client_id);
+    reschedButton.setAttribute("data-days", booking.number_of_days);
+    reschedButton.setAttribute("data-buses", booking.number_of_buses);
+
+    reschedButton.setAttribute("data-bs-toggle", "modal");
+    reschedButton.setAttribute("data-bs-target", "#reschedModal");
+
     payButton.textContent = "Pay";
     reschedButton.textContent = "Resched";
     cancelButton.textContent = "Cancel";
@@ -181,5 +165,133 @@ function createPayReschedCancelButton(td, booking) {
     }
 
     td.appendChild(btnGroup);
+
+    payButton.addEventListener("click", function () {
+        document.getElementById("amount").textContent = "";
+        const totalCost = this.getAttribute("data-total-cost");
+        const bookingID = this.getAttribute("data-booking-id");
+        const clientID = this.getAttribute("data-client-id");
+
+        console.log("total cost: ", totalCost);
+        console.log("booking id: ", bookingID);
+        console.log("client id: ", clientID);
+
+        document.getElementById("fullAmnt").style.display = "block";  
+        document.getElementById("downPayment").textContent = "Down Payment";
+        
+        if (parseFloat(booking.balance) < parseFloat(booking.total_cost)) {
+            document.getElementById("fullAmnt").style.display = "none";   
+            document.getElementById("downPayment").textContent = "Final Payment";
+        } else {
+            fullAmount.textContent = formatNumber(totalCost);
+        }
+        partialAmount.textContent = formatNumber(totalCost / 2);
+        bookingIDinput.value = bookingID;
+        clientIDinput.value = clientID;
+    });
+
+    reschedButton.addEventListener("click", function () {
+        document.getElementById("messageElement").textContent = "";
+        document.getElementById("date_of_tour").value = ""; 
+
+        const bookingId = this.getAttribute("data-booking-id");
+        const bookingClientId = this.getAttribute("data-client-id");
+        const days = this.getAttribute("data-days");
+        const buses = this.getAttribute("data-buses");
+
+        document.getElementById("reschedBookingId").value = bookingId;
+        document.getElementById("reschedClientId").value = bookingClientId;
+        document.getElementById("number_of_days").value = days;
+        document.getElementById("numberOfBuses").value = buses;
+    });
 }
 
+document.getElementById("reschedForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const newDateOfTour = document.getElementById("date_of_tour").value;
+    const numberOfDays = document.getElementById("number_of_days").value;
+    const numberOfBuses = document.getElementById("numberOfBuses").value;
+    const bookingId = document.getElementById("reschedBookingId").value;
+    const clientId = document.getElementById("reschedClientId").value;
+
+    try {
+        const response = await fetch("/request-resched-booking", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ dateOfTour: newDateOfTour, numberOfDays, numberOfBuses, bookingId, clientId })
+        });
+
+        const data = await response.json();
+        
+        document.getElementById("messageElement").classList.add(data.success ? "text-success" : "text-danger");   
+        document.getElementById("messageElement").textContent = data.success ? data.message : data.message;
+
+        getAllBookings();   
+
+    } catch (error) {
+        console.error("Error fetching data: ", error.message);
+    }
+
+});
+
+
+
+
+// function createPayReschedCancelButton(td, booking) {    
+//     const buttons = {
+//         pay: createButton('Pay', 'success', 'open-payment-modal'),
+//         resched: createButton('Resched', 'primary'),
+//         cancel: createButton('Cancel', 'danger')
+//     };
+
+//     const btnGroup = document.createElement('div');
+//     btnGroup.className = 'container btn-container d-flex gap-2';
+
+//     // Set payment button attributes
+//     Object.entries({
+//         'booking-id': booking.booking_id,
+//         'total-cost': booking.total_cost,
+//         'client-id': booking.client_id,
+//         'bs-toggle': 'modal',
+//         'bs-target': '#paymentModal'
+//     }).forEach(([key, value]) => buttons.pay.dataset[key] = value);
+
+//     // Determine which buttons to show
+//     if (booking.status === 'pending' && booking.total_cost === null) {
+//         btnGroup.append(buttons.resched, buttons.cancel);
+//     } else if (booking.totalCost !== null && booking.payment_status !== 'paid' && booking.status !== 'completed') {
+//         btnGroup.append(buttons.pay, buttons.resched, buttons.cancel);
+//     } else {
+//         btnGroup.textContent = 'No action needed';
+//     }
+
+//     td.appendChild(btnGroup);
+
+//     // Payment button click handler
+//     buttons.pay.addEventListener('click', function() {
+//         const totalCost = this.dataset.totalCost;
+//         const bookingId = this.dataset.bookingId;
+//         const clientId = this.dataset.clientId;
+
+//         document.getElementById('amount').textContent = '';
+//         document.getElementById('fullAmnt').style.display = 
+//             parseFloat(booking.balance) < parseFloat(booking.total_cost) ? 'none' : 'block';
+//         document.getElementById('downPayment').textContent = 
+//             parseFloat(booking.balance) < parseFloat(booking.total_cost) ? 'Final Payment' : 'Down Payment';
+
+//         if (document.getElementById('fullAmnt').style.display === 'block') {
+//             fullAmount.textContent = formatNumber(totalCost);
+//         }
+//         partialAmount.textContent = formatNumber(totalCost / 2);
+//         bookingIDinput.value = bookingId;
+//         clientIDinput.value = clientId;
+//     });
+// }
+
+// function createButton(text, style, ...additionalClasses) {
+//     const button = document.createElement('button');
+//     button.className = `btn btn-${style} w-100 btn-sm ${additionalClasses.join(' ')}`.trim();
+//     button.textContent = text;
+//     return button;
+// }

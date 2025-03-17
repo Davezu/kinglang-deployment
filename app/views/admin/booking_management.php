@@ -15,9 +15,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../../../public/css/styles.css">
-    <link rel="stylesheet" href="../../../public/css/home.css">
-    <link rel="stylesheet" href="../../../public/css/admin/booking_management.css"> -->
+    <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
     <title>Document</title>
 </head>
 <body>
@@ -61,71 +59,63 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
             </form>
         </div>
     </div>
-
     
-    <div class="side-bar">
-        <div class="company-name"><p>KingLang Transport</p></div>
-        <div class="menu">
-            <a href="#">Booking Requests</a>
-        </div>
-    </div>
+    <?php include_once __DIR__ . "/../assets/admin_sidebar.php"; ?>
 
-    <div class="main-section">
-        <div class="header">
-            <p class="username">Welcome, [Admin]</p>
-            <input type="text" name="search" id="search" placeholder="Search Bookings">
-            <a href="/admin/logout">Logout</a>
+    <div class="content collapsed" id="content">
+        <div class="container-fluid p-4">
+            <h3>Bookings</h3>
+            <?php include_once __DIR__ . "/../assets/admin_navtab.php"; ?>
+            <div class="table-responsive-xl">
+                <table class="table table-hover">
+                    <thead>
+                        <tr><th>Client Name</th><th>Contact Number</th><th>Destination</th><th>Pick-up Point</th><th>Date of Tour</th><th>End of Tour</th><th>Days</th><th>Buses</th><th>Remarks</th><th>Payment Status</th><th>Action</th></tr>
+                    </thead>
+                    <tbody class="table-group-divider" id="tableBody">
+                        <!-- <?php if (!empty($bookings) && is_array($bookings)): ?>
+                        <?php foreach ($bookings as $booking): ?> -->
+                            <!-- <tr>
+                                <td><?= htmlspecialchars($booking["client_name"]); ?></td>
+                                <td><?= htmlspecialchars($booking["contact_number"]); ?></td>
+                                <td><?= htmlspecialchars($booking["destination"]); ?></td>
+                                <td><?= htmlspecialchars($booking["pickup_point"]); ?></td>
+                                <td><?= htmlspecialchars($booking["date_of_tour"]); ?></td>
+                                <td><?= htmlspecialchars($booking["end_of_tour"]); ?></td>
+                                <td><?= htmlspecialchars($booking["number_of_days"]); ?></td>
+                                <td><?= htmlspecialchars($booking["number_of_buses"]); ?></td>
+                                <td><?= htmlspecialchars($booking["status"]); ?></td>
+                                <td><?= htmlspecialchars($booking["payment_status"]); ?></td>
+                                <td>
+                                    <?php if ($booking["status"] === "pending" && $booking["total_cost"] === NULL): ?>
+                                        <form action="" method="post">
+                                            <input type="hidden" name="booking_id" value="<?= $booking["booking_id"]; ?>">
+                                            <div class="btn-group w-100">
+                                                <button 
+                                                    type="button" name="status"
+                                                    class="btn btn-outline-success btn-sm open-payment-modal calculateTotalCost" data-bs-toggle="modal" data-bs-target="#calculatorModal"
+                                                    data-days="<?= htmlspecialchars($booking["number_of_days"]); ?>"
+                                                    data-buses="<?= htmlspecialchars($booking["number_of_buses"]); ?>"
+                                                    data-bookingID="<?= htmlspecialchars($booking["booking_id"]); ?>"
+                                                >Compute</button>
+                                                <button type="submit" name="status" class="btn btn-outline-danger btn-sm">Reject</button>
+                                            </div>
+                                        </form>
+                                    <?php else: ?>
+                                        <span>No action needed</span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        <?php endif; ?> -->
+                    </tbody>
+                </table>
+            </div>
         </div>
-        
-    </div>
-
-    <div class="container-fluid">
-        <table class="table table-hover">
-            <thead>
-                <tr><th>Client Name</th><th>Contact Number</th><th>Destination</th><th>Pick-up Point</th><th>Date of Tour</th><th>End of Tour</th><th>Days</th><th>Buses</th><th>Remarks</th><th>Payment Status</th><th>Action</th></tr>
-            </thead>
-            <tbody class="table-group-divider">
-                <?php if (!empty($bookings) && is_array($bookings)): ?>
-                <?php foreach ($bookings as $booking): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($booking["client_name"]); ?></td>
-                        <td><?= htmlspecialchars($booking["contact_number"]); ?></td>
-                        <td><?= htmlspecialchars($booking["destination"]); ?></td>
-                        <td><?= htmlspecialchars($booking["pickup_point"]); ?></td>
-                        <td><?= htmlspecialchars($booking["date_of_tour"]); ?></td>
-                        <td><?= htmlspecialchars($booking["end_of_tour"]); ?></td>
-                        <td><?= htmlspecialchars($booking["number_of_days"]); ?></td>
-                        <td><?= htmlspecialchars($booking["number_of_buses"]); ?></td>
-                        <td><?= htmlspecialchars($booking["status"]); ?></td>
-                        <td><?= htmlspecialchars($booking["payment_status"]); ?></td>
-                        <td>
-                            <?php if ($booking["status"] === "pending" && $booking["total_cost"] === NULL): ?>
-                                <form action="" method="post">
-                                    <input type="hidden" name="booking_id" value="<?= $booking["booking_id"]; ?>">
-                                    <div class="btn-group w-100">
-                                        <button 
-                                            type="button" name="status"
-                                            class="btn btn-outline-success btn-sm open-payment-modal calculateTotalCost" data-bs-toggle="modal" data-bs-target="#calculatorModal"
-                                            data-days="<?= htmlspecialchars($booking["number_of_days"]); ?>"
-                                            data-buses="<?= htmlspecialchars($booking["number_of_buses"]); ?>"
-                                            data-bookingID="<?= htmlspecialchars($booking["booking_id"]); ?>"
-                                        >Compute</button>
-                                        <button type="submit" name="status" class="btn btn-outline-danger btn-sm">Reject</button>
-                                    </div>
-                                </form>
-                            <?php else: ?>
-                                <span>No action needed</span>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
     </div>
     
 
     <script src="../../../public/js/admin/booking_management.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../../../public/js/admin/sidebar.js"></script>
+    <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

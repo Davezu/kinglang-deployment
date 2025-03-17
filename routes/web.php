@@ -14,8 +14,8 @@ $adminBookingController = new BookingManagementController();
 require_once __DIR__ . "/../app/controllers/admin/AuthController.php";
 $adminAuthController = new AuthController();
 
-$request = $_SERVER["REQUEST_URI"];
 
+$request = $_SERVER["REQUEST_URI"];
 $segments = explode("/", trim($request, "/"));
 
 switch ($request) {
@@ -72,18 +72,14 @@ switch ($request) {
     case "/request-booking":
         $bookingController->requestBooking();
         break;
-    // case (preg_match("#^/home/bookings/(\d+)(?:/([a-zA-Z0-9]+))?$#", $request, $matches) ? true : false):
-    //     $user_id = intval($matches[1]); 
-    //     $client_id = $bookingController->getClientID($user_id);
-    //     $status = $matches[2] ?? "";
-    //     $bookingController->getAllBookings($client_id, $status);
-    //     $bookingController->updatePastBookings();
-    //     break;
     case "/home/booking-requests":
         $bookingController->showBookingRequestTable();
         break;
     case "/home/get-booking-requests":
         $bookingController->getAllBookings();
+        break;
+    case "/request-resched-booking":
+        $bookingController->requestReschedBooking();
         break;
 
     case "/payment/process":
@@ -106,12 +102,23 @@ switch ($request) {
         break;
     case "/admin/dashboard":
         // $adminAuthController->adminDashBoard(); 
-        $adminBookingController->getAllBookings(); // ito muna
+        $adminBookingController->showBookingTable(); // ito muna
+        break;
+    case "/admin/booking-requests":
+        $adminBookingController->showBookingTable();
         break;
     case "/send-quote":
         $adminBookingController->sendQuote();
         break;
-        
+    case "/admin/resched-requests":
+        $adminBookingController->showReschedRequestTable();
+        break;
+    case "/admin/get-resched-requests":
+        $adminBookingController->getReschedRequests();
+        break;
+    case "/admin/confirm-resched-request":
+        $adminBookingController->confirmReschedRequest();
+        break;
 
 
     case "/favicon.ico":

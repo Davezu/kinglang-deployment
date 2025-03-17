@@ -35,10 +35,41 @@ class Booking {
         }
     }
 
-    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id, $bus_ids) {
+    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id) {
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
 
         try {
+            $stmt = $this->conn->prepare("
+                SELECT bus_id
+                FROM buses
+                WHERE status = 'active'
+                AND bus_id NOT IN (
+                    SELECT bb.bus_id
+                    FROM booking_buses bb
+                    JOIN bookings bo ON bb.booking_id = bo.booking_id
+                    WHERE bo.status = 'confirmed'
+                    AND (
+                        (bo.date_of_tour <= :date_of_tour AND bo.end_of_tour >= :date_of_tour)
+                        OR
+                        (bo.date_of_tour <= :end_of_tour AND bo.end_of_tour >= :end_of_tour)
+                        OR
+                        (bo.date_of_tour >= :date_of_tour AND bo.end_of_tour <= :end_of_tour)
+                    )
+                )
+                LIMIT :number_of_buses;
+            ");
+            
+            $stmt->bindParam(":date_of_tour", $date_of_tour);
+            $stmt->bindParam(":end_of_tour", $end_of_tour);
+            $stmt->bindParam(":number_of_buses", $number_of_buses, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $available_buses = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+            if (count($available_buses) < $number_of_buses) {
+                return "Not enough buses available.";
+            }
+
             $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, client_id) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :client_id)");
             $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
@@ -52,7 +83,7 @@ class Booking {
 
             $booking_id = $this->conn->lastInsertID();
             
-            foreach ($bus_ids as $bus_id) {
+            foreach ($available_buses as $bus_id) {
                 $stmt = $this->conn->prepare("INSERT INTO booking_buses (booking_id, bus_id) VALUES (:booking_id, :bus_id)");
                 $stmt->execute([":booking_id" => $booking_id, ":bus_id" => $bus_id]);
             }
@@ -63,39 +94,99 @@ class Booking {
         }
     }
 
-    public function findAvailableBuses($date_of_tour, $number_of_days) {
+    public function requestReschedBooking($number_of_days, $number_of_buses, $date_of_tour, $booking_id, $client_id) {
+        // update booking   
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
 
+        try {  
+            $bus_is_available = $this->findAvailableBuses($date_of_tour, $end_of_tour, $number_of_buses);
+
+            if (!$bus_is_available) return "Not enough available buses.";
+
+            if ($this->bookingIsNotConfirmed($booking_id)) {
+                $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, end_of_tour = :end_of_tour WHERE booking_id = :booking_id");
+                $stmt->execute([
+                    ":date_of_tour" => $date_of_tour,
+                    ":end_of_tour" => $end_of_tour,
+                    ":booking_id" => $booking_id
+                ]);
+                return "rescheduled";
+            } 
+
+            $stmt = $this->conn->prepare("INSERT INTO reschedule_requests (new_date_of_tour, new_end_of_tour, booking_id, client_id) VALUES (:new_date_of_tour, :new_end_of_tour, :booking_id, :client_id)");
+            $stmt->execute([
+                ":new_date_of_tour" => $date_of_tour,
+                ":new_end_of_tour" => $end_of_tour,
+                ":booking_id" => $booking_id,
+                ":client_id" => $client_id
+            ]);
+
+            return "success";
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
+
+    public function reschedBooking($number_of_days, $date_of_tour, $booking_id) {
+        $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
+        try {
+            // not done yet
+            foreach ($available_buses as $bus_id) {
+                $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, number_of_days = :number_of_days, number_of_buses = :nubmer_of_buses WHERE booking_id = :booking_id");
+            }
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
+
+    public function bookingIsNotConfirmed($booking_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM bookings WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+            $booking = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($booking["status"] === "confirmed" || $booking["total_cost"] !== NULL) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
+
+    public function findAvailableBuses($date_of_tour, $end_of_tour, $number_of_buses) {
         try {
             $stmt = $this->conn->prepare("
-                SELECT b.bus_id, b.bus_name, b.capacity
-                FROM buses b
-                WHERE b.status = 'active'
-                AND b.bus_id NOT IN (
-                    SELECT bb.bus_id 
-                    FROM bookings bo
-                    JOIN booking_buses bb ON bo.booking_id = bb.booking_id  
-                    WHERE status = 'confirmed'
+                SELECT bus_id
+                FROM buses
+                WHERE status = 'active'
+                AND bus_id NOT IN (
+                    SELECT bb.bus_id
+                    FROM booking_buses bb
+                    JOIN bookings bo ON bb.booking_id = bo.booking_id
+                    WHERE bo.status = 'confirmed' 
                     AND (
                         (bo.date_of_tour <= :date_of_tour AND bo.end_of_tour >= :date_of_tour)
                         OR
                         (bo.date_of_tour <= :end_of_tour AND bo.end_of_tour >= :end_of_tour)
                         OR
-                        (bo.date_of_tour <= :date_of_tour AND bo.end_of_tour >= :end_of_tour)
+                        (bo.date_of_tour >= :date_of_tour AND bo.end_of_tour <= :end_of_tour)
                     )
-                )   
+                )
+                LIMIT :number_of_buses;
             ");
+            $stmt->bindParam(":date_of_tour", $date_of_tour);
+            $stmt->bindParam(":end_of_tour", $end_of_tour);
+            $stmt->bindParam(":number_of_buses", $number_of_buses, PDO::PARAM_INT);
+            $stmt->execute();
 
-            $stmt->execute([
-                ":date_of_tour" => $date_of_tour,
-                ":date_of_tour" => $date_of_tour,
-                ":end_of_tour" => $end_of_tour,
-                ":end_of_tour" => $end_of_tour,
-                ":date_of_tour" => $date_of_tour,
-                ":end_of_tour" => $end_of_tour
-            ]);
+            $available_buses = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (count($available_buses) < $number_of_buses) {
+                return false;
+            }
+
+            return true;        
         } catch (PDOException $e) {
             return "Database error: $e";
         }
@@ -184,11 +275,11 @@ class Booking {
             $stmt->execute([":booking_id" => $booking_id]);
             $total_paid = $stmt->fetch(PDO::FETCH_ASSOC)["total_paid"] ?? 0;
 
-            $stmt = $this->conn->prepare("SELECT total_cost FROM bookings WHERE booking_id = :booking_id");
+            $stmt = $this->conn->prepare("SELECT total_cost, balance FROM bookings WHERE booking_id = :booking_id");
             $stmt->execute([":booking_id" => $booking_id]);
             $total_cost = $stmt->fetch(PDO::FETCH_ASSOC)["total_cost"] ?? 0;
 
-            $balance = $total_cost - $total_paid;
+            $balance = $total_cost - $total_paid;   
 
             $new_status = "Unpaid";
             if ($total_paid > 0 && $total_paid < $total_cost) {
@@ -200,7 +291,7 @@ class Booking {
             $stmt = $this->conn->prepare("UPDATE bookings SET payment_status = :payment_status, status = 'confirmed', balance = :balance WHERE booking_id = :booking_id");
             $stmt->execute([
                 ":payment_status" => $new_status,
-                ":booking_id" => $booking_id ,
+                ":booking_id" => $booking_id,
                 ":balance" => $balance
             ]);
 

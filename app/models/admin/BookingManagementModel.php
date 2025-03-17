@@ -38,5 +38,39 @@ class BookingManagementModel {
             return "Database error";
         }
     }
+
+    public function getReschedRequests() {
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT r.request_id, r.booking_id, CONCAT(c.first_name, ' ', c.last_name) AS client_name, c.contact_number, r.new_date_of_tour, r.new_end_of_tour, r.status
+                FROM reschedule_requests r
+                JOIN clients c ON r.client_id = c.client_id
+                ORDER BY r.new_date_of_tour DESC
+            ");
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        }  catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
+
+    public function confirmReschedRequest($request_id, $booking_id, $new_date_of_tour, $new_end_of_tour) {
+        try {
+            $stmt = $this->conn->prepare("UPDATE reschedule_requests SET status = 'confirmed' WHERE request_id = :request_id");
+            $result = $stmt->execute([":request_id" => $request_id]);
+
+            $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :new_date_of_tour, end_of_tour = :new_end_of_tour WHERE booking_id = :booking_id");
+            $result = $stmt->execute([
+                ":new_date_of_tour" => $new_date_of_tour,
+                ":new_end_of_tour" => $new_end_of_tour,
+                ":booking_id" => $booking_id
+            ]);
+
+            return "success";
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
 }
 ?>

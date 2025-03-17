@@ -18,12 +18,11 @@ class BookingController {
             $date_of_tour = $data["dateOfTour"];
             $destination = $data["destination"];
             $pickup_point = $data["pickupPoint"];
-            $number_of_buses = $data["numberOfBuses"];
-            $number_of_days = $data["numberOfDays"];
-            $bus_ids = $data["busIds"];
+            $number_of_buses = (int) $data["numberOfBuses"];
+            $number_of_days = (int) $data["numberOfDays"];
         
             $client_id = $this->bookingModel->getClientID($_SESSION["user_id"]);
-            $result = $this->bookingModel->requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id, $bus_ids);
+            $result = $this->bookingModel->requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $client_id);
             
             header("Content-Type: application/json");
 
@@ -37,23 +36,55 @@ class BookingController {
         }
     }
 
-    public function findAvailableBuses() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $data = json_decode(file_get_contents("php://input"), true);
-            $date_of_tour = $data["date_of_tour"];
-            $number_of_days = $data["number_of_days"];     
+    public function requestReschedBooking() {
+        $data = json_decode(file_get_contents("php://input"), true);
+        $number_of_days = (int) $data["numberOfDays"];
+        $number_of_buses = (int) $data["numberOfBuses"];
+        $date_of_tour = $data["dateOfTour"];
+        $booking_id = (int) $data["bookingId"];
+        $client_id = (int) $data["clientId"];
 
-            $buses = $this->bookingModel->findAvailableBuses($date_of_tour, $number_of_days);
+        $result = $this->bookingModel->requestReschedBooking($number_of_days, $number_of_buses, $date_of_tour, $booking_id, $client_id);
 
-            header("Content-Type: application/json");
+        header("Content-Type: application/json");
 
-            if (!empty($buses)) {
-                echo json_encode(['success' => true, 'buses' => $buses]);
-            } else {
-                echo json_encode(['success' => false]);
-            }
+        if ($result === "success") {
+            echo json_encode(["success" => true, "message" => "Booking reschedule request sent successfully."]);
+        } elseif ($result === "rescheduled") {
+            echo json_encode(["success" => true, "message" => "Booking rescheduled successfully!"]);
+        } else {
+            echo json_encode(["success" => false, "message" => $result]);
         }
     }
+
+    public function reschedBooking() {
+
+        $result = $this->authModel->reschedBooking($number_of_days, $date_of_tour);
+
+        if ($result === "success") {
+            echo json_encode(["success" => true, "message" => "Booking reschedule request sent successfully."]);
+        } else {
+            echo json_encode(["success" => false, "message" => $result]);
+        }
+    }
+
+    // public function findAvailableBuses() { if the system will let the client select their prefered bus
+    //     if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    //         $data = json_decode(file_get_contents("php://input"), true);
+    //         $date_of_tour = $data["date_of_tour"];
+    //         $number_of_days = $data["number_of_days"];     
+
+    //         $buses = $this->bookingModel->findAvailableBuses($date_of_tour, $number_of_days);
+
+    //         header("Content-Type: application/json");
+
+    //         if (!empty($buses)) {
+    //             echo json_encode(['success' => true, 'buses' => $buses]);
+    //         } else {
+    //             echo json_encode(['success' => false]);
+    //         }
+    //     }
+    // }
 
     public function isClientInfoExists($user_id) {
         $result = $this->bookingModel->checkClientInfo($user_id);
@@ -133,7 +164,7 @@ class BookingController {
             $result = $this->bookingModel->addPayment($booking_id, $client_id, $amount, $payment_method);
         
             if ($result) {
-                header("Location: /home/bookings/" . $_SESSION["user_id"]);
+                header("Location: /home/booking-requests");
                 exit();
             } else {
                 echo "Adding payment failed";

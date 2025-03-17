@@ -14,6 +14,7 @@ if (!isset($_SESSION["user_id"])) {
     <!-- <link rel="stylesheet" href="../../../public/css/styles.css">
     <link rel="stylesheet" href="../../../public/css/home.css">
     <link rel="stylesheet" href="../../../public/css/booking.css"> -->
+    <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
     <title>Book a Trip</title>
 </head>
 <body>
