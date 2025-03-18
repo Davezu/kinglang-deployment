@@ -21,7 +21,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
 <body>
     <div class="modal fade payment-calculator" aria-labelledby="calcualtorModal" tabindex="-1" id="calculatorModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <form action="/send-quote" method="post" class="modal-content">
+            <form action="/send-quote" method="post" class="modal-content" id="calculatorForm">
                 <div class="modal-header">
                     <h3 class="modal-title">Total Cost Calculator</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -54,7 +54,10 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" id="confirm" class="btn btn-outline-success btn-sm">Send Quote</button>
+                    <div class="container-fluid d-flex justify-content-between">
+                        <button type="submit" id="confirm" class="btn btn-outline-success btn-sm">Send Quote</button>
+                        <p id="messageElement"></p>
+                    </div>
                 </div>
             </form>
         </div>
@@ -66,47 +69,35 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
         <div class="container-fluid p-4">
             <h3>Bookings</h3>
             <?php include_once __DIR__ . "/../assets/admin_navtab.php"; ?>
+            <div class="input-group w-25 w-md-50 my-3">
+                <span class="input-group-text" id="basic-addon1">Filter by Status</span>
+                <select name="status" id="statusSelect" class="form-select">
+                    <option value="all">All</option>
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="canceled">Canceled</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
             <div class="table-responsive-xl">
                 <table class="table table-hover">
                     <thead>
-                        <tr><th>Client Name</th><th>Contact Number</th><th>Destination</th><th>Pick-up Point</th><th>Date of Tour</th><th>End of Tour</th><th>Days</th><th>Buses</th><th>Remarks</th><th>Payment Status</th><th>Action</th></tr>
+                        <tr>
+                            <th class="sort" data-order="asc" data-column="client_name">Client Name</th>
+                            <th class="sort" data-order="asc" data-column="contact_number">Contact Number</th>
+                            <th class="sort" data-order="asc" data-column="destination">Destination</th>
+                            <th class="sort" data-order="asc" data-column="pickup_point">Pick-up Point</th>
+                            <th class="sort" data-order="asc" data-column="date_of_tour">Date of Tour</th>
+                            <th class="sort" data-order="asc" data-column="end_of_tour">End of Tour</th>
+                            <th class="sort" data-order="asc" data-column="number_of_days">Days</th>
+                            <th class="sort" data-order="asc" data-column="number_of_buses">Buses</th>
+                            <th class="sort" data-order="asc" data-column="status">Remarks</th>
+                            <th class="sort" data-order="asc" data-column="payment_status">Payment Status</th>
+                            <th style="text-align: center">Action</th></tr>
                     </thead>
-                    <tbody class="table-group-divider" id="tableBody">
-                        <!-- <?php if (!empty($bookings) && is_array($bookings)): ?>
-                        <?php foreach ($bookings as $booking): ?> -->
-                            <!-- <tr>
-                                <td><?= htmlspecialchars($booking["client_name"]); ?></td>
-                                <td><?= htmlspecialchars($booking["contact_number"]); ?></td>
-                                <td><?= htmlspecialchars($booking["destination"]); ?></td>
-                                <td><?= htmlspecialchars($booking["pickup_point"]); ?></td>
-                                <td><?= htmlspecialchars($booking["date_of_tour"]); ?></td>
-                                <td><?= htmlspecialchars($booking["end_of_tour"]); ?></td>
-                                <td><?= htmlspecialchars($booking["number_of_days"]); ?></td>
-                                <td><?= htmlspecialchars($booking["number_of_buses"]); ?></td>
-                                <td><?= htmlspecialchars($booking["status"]); ?></td>
-                                <td><?= htmlspecialchars($booking["payment_status"]); ?></td>
-                                <td>
-                                    <?php if ($booking["status"] === "pending" && $booking["total_cost"] === NULL): ?>
-                                        <form action="" method="post">
-                                            <input type="hidden" name="booking_id" value="<?= $booking["booking_id"]; ?>">
-                                            <div class="btn-group w-100">
-                                                <button 
-                                                    type="button" name="status"
-                                                    class="btn btn-outline-success btn-sm open-payment-modal calculateTotalCost" data-bs-toggle="modal" data-bs-target="#calculatorModal"
-                                                    data-days="<?= htmlspecialchars($booking["number_of_days"]); ?>"
-                                                    data-buses="<?= htmlspecialchars($booking["number_of_buses"]); ?>"
-                                                    data-bookingID="<?= htmlspecialchars($booking["booking_id"]); ?>"
-                                                >Compute</button>
-                                                <button type="submit" name="status" class="btn btn-outline-danger btn-sm">Reject</button>
-                                            </div>
-                                        </form>
-                                    <?php else: ?>
-                                        <span>No action needed</span>
-                                    <?php endif; ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                        <?php endif; ?> -->
+                    <tbody id="tableBody">
+                       
                     </tbody>
                 </table>
             </div>
@@ -114,6 +105,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
     </div>
     
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="../../../public/js/admin/booking_management.js"></script>
     <script src="../../../public/js/admin/sidebar.js"></script>
     <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>

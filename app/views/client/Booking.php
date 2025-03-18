@@ -60,13 +60,9 @@ if (!isset($_SESSION["user_id"])) {
                             <div id="busSelection"></div>
                         </div>
 
-                        <div class="row mb-4">
-                            <div class="col">           
-                                <button type="submit" name="submit_booking" class="btn btn-primary">Book Now</button>
-                            </div>
-                            <div class="col">
-                                <p class="booking-message" style="color: green"><?php echo isset($_SESSION["booking_message"]) ? $_SESSION["booking_message"] : ""; ?></p>
-                            </div>
+                        <div class="container-fluid d-flex justify-content-between align-items-center mb-4 gap">
+                            <button type="submit" name="submit_booking" class="btn btn-primary">Book Now</button>
+                            <p class="booking-message" style="color: green"></p>
                         </div>
                     </form>
                 </div>

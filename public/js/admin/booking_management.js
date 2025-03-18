@@ -1,4 +1,45 @@
-document.addEventListener("DOMContentLoaded", renderBookings);
+document.addEventListener("DOMContentLoaded", async function () {
+    const bookings = await getAllBookings("all", "asc", "client_name");    
+    renderBookings(bookings);
+});
+
+document.getElementById("statusSelect").addEventListener("change", async function () {
+    const status = this.value;  
+    console.log(status);    
+    const bookings = await getAllBookings(status, "asc", "client_name");
+    renderBookings(bookings);
+});
+
+document.querySelectorAll(".sort").forEach(button => {
+    button.style.cursor = "pointer";
+
+    button.addEventListener("click", async function () {
+        const status = document.getElementById("statusSelect").value;
+        const column = this.getAttribute("data-column");
+        const order = this.getAttribute("data-order");
+
+        const bookings = await getAllBookings(status, order, column);
+        console.log(bookings);
+        renderBookings(bookings);
+        
+        this.setAttribute("data-order", order === "asc" ? "desc" : "asc");
+
+        // try {
+        //     const response = await fetch("/admin/order-bookings", {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify({ column, order })
+        //     });
+
+        //     const data = await response.json();
+        //     renderBookings(data.bookings);
+
+        //     this.setAttribute("data-order", order === "asc" ? "desc" : "asc");
+        // } catch (error) {
+        //     console.error(error);
+        // }
+    });
+});
 
 const calculateTotalCostButton = document.querySelectorAll(".calculateTotalCost");
 const distance = document.getElementById("distance");
@@ -9,18 +50,6 @@ const totalCostDisplay = document.getElementById("totalCostDisplay");
 
 const bookingID = document.getElementById("bookingID");
 const totalCost = document.getElementById("totalCost");
-
-const calculatorModal = document.querySelector(".payment-calculator");
-
-calculateTotalCostButton.forEach(button => {
-    button.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        days.value = this.getAttribute("data-days");
-        buses.value = this.getAttribute("data-buses");
-        bookingID.value = this.getAttribute("data-bookingID");
-    });
-})
 
 function calculateTotalCost() {
     day = parseFloat(days.value) || 0;
@@ -50,21 +79,27 @@ diesel.addEventListener("input", calculateTotalCost);
     });
 });
 
-async function getAllBookings() {
+async function getAllBookings(status, order, column) {
     try {
-        const response = await fetch("/admin/bookings");
+        const response = await fetch("/admin/bookings", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ status, order, column })
+        });
+
         const data = await response.json();
+        console.log(data);
 
         if (data.success) {
-            return data.bookings;
+            return await data.bookings;
         }
     } catch (error) {
         console.error(error);
     }
 }
 
-async function renderBookings() {
-    const bookings = await getAllBookings();
+async function renderBookings(bookings) {
+    // const bookings = await getAllBookings();
 
     const tbody = document.getElementById("tableBody");
     tbody.innerHTML = "";
@@ -94,7 +129,71 @@ async function renderBookings() {
         statusCell.textContent = booking.status;
         paymentStatusCell.textContent = booking.payment_status; 
 
-        row.append(clientNameCell, contactNumberCell, destinationCell, pickupPointCell, dateOfTourCell, endOfTourCell, numberOfDaysCell, numberOfBusesCell, statusCell, paymentStatusCell);
+        row.append(clientNameCell, contactNumberCell, destinationCell, pickupPointCell, dateOfTourCell, endOfTourCell, numberOfDaysCell, numberOfBusesCell, statusCell, paymentStatusCell, actionButton(booking));
         tbody.appendChild(row);
     });
 }
+
+function actionButton(booking) {
+    const actionCell = document.createElement("td");
+    const buttonGroup = document.createElement("div");
+    const computeButton = document.createElement("button");
+    const rejectButton = document.createElement("button");
+
+    buttonGroup.classList.add("d-flex", "gap-2");
+    computeButton.classList.add("btn", "btn-success", "btn-sm", "w-100", "calculateTotalCost");
+    rejectButton.classList.add("btn", "btn-danger", "btn-sm", "w-100");
+
+    computeButton.textContent = "Compute";
+    rejectButton.textContent = "Reject";
+
+    computeButton.setAttribute("data-days", booking.number_of_days);
+    computeButton.setAttribute("data-buses", booking.number_of_buses);
+    computeButton.setAttribute("data-booking-id", booking.booking_id);
+
+    computeButton.setAttribute("data-bs-toggle", "modal");
+    computeButton.setAttribute("data-bs-target", "#calculatorModal");
+
+    computeButton.addEventListener("click", function () {
+        days.value = this.getAttribute("data-days");
+        buses.value = this.getAttribute("data-buses");
+        bookingID.value = this.getAttribute("data-booking-id");
+    });
+
+    if (booking.total_cost === null || parseFloat(booking.total_cost) === 0) {
+        buttonGroup.append(computeButton, rejectButton);
+    } else {
+        buttonGroup.textContent = "No action needed";
+    }
+    actionCell.appendChild(buttonGroup);
+
+    return actionCell;
+} 
+
+document.getElementById("calculatorForm").addEventListener("submit", async function (event) {
+    event.preventDefault(); 
+
+    const formData = new FormData(this);
+    const bookingId = formData.get("booking_id");
+    const totalCost = formData.get("total_cost");
+
+    console.log(bookingId, totalCost);
+
+    try {
+        const response = await fetch("/admin/send-quote", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ totalCost, bookingId })
+        });
+    
+        const data = await response.json();
+    
+        document.getElementById("messageElement").classList.add(data.success ? "text-success" : "text-danger");   
+        document.getElementById("messageElement").textContent = data.success ? data.message : data.message;
+        renderBookings();
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+

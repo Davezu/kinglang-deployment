@@ -9,7 +9,12 @@ class BookingManagementController {
     }
 
     public function getAllBookings() {
-        $bookings = $this->bookingModel->getAllBookings();
+        $data = json_decode(file_get_contents("php://input"), true);
+        $staus = $data["status"];
+        $column = $data["column"];
+        $order = $data["order"];
+
+        $bookings = $this->bookingModel->getAllBookings($staus, $column, $order);
 
         header("Content-Type: application/json");
 
@@ -20,22 +25,45 @@ class BookingManagementController {
         }
     }
 
+    // public function orderBookings() {
+    //     if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    //         $data = json_decode(file_get_contents("php://input"), true);
+    //         $column = $data["column"];
+    //         $order = $data["order"];
+        
+    //         $bookings = $this->bookingModel->orderBookings($column, $order);
+        
+    //         header("Content-Type: application/json");
+        
+    //         if (is_array($bookings)) {
+    //             echo json_encode(["success" => true, "bookings" => $bookings]);
+    //         } else {
+    //             echo json_encode(["success" => false, "message" => $bookings]);
+    //         }
+    //     }
+    // }
+
+
+
     public function showBookingTable() {
         require_once __DIR__ . "/../../views/admin/booking_management.php";
     }
 
     public function sendQuote() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $total_cost = $_POST["total_cost"];
-            $booking_id = $_POST["booking_id"];
+            $data = json_decode(file_get_contents("php://input"), true);
+            $total_cost = $data["totalCost"];
+            $booking_id = $data["bookingId"];
         
             $result = $this->bookingModel->sendQuote($booking_id, $total_cost);
         
-            if (!$result) $_SESSION["send_quote_message"] = "Sending quote failed: {$result}";
-        
-            $_SESSION["send_quote_message"] = "Sending quote successfully!";
-            header("Location: /admin/bookings");
-            exit();
+            header("Content-Type: application/json");
+            
+            if ($result === "success") {
+                echo json_encode(["success" => true, "message" => "Quote sent successfully!"]);
+            } else {
+                echo json_encode(["success" => false, "message" => $result]);
+            }
         }
     } 
 

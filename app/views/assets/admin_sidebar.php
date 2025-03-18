@@ -6,14 +6,16 @@
     <title>Bootstrap Sidebar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/066bf74adc.js" crossorigin="anonymous"></script>
     <style>
         .sidebar {
             position: fixed;
             top: 0;
             left: 0;
             height: 100vh;
-            background: #212529;
-            color: white;
+            background: #fff;
+            color: black;
+            box-shadow: 5px 0 15px rgba(25, 188, 63, 0.32);
             transition: width 0.3s;
             z-index: 1000;
             display: flex;
@@ -39,10 +41,15 @@
             min-width: 250px; /* Match expanded width */
         }
 
+        .sidebar-header img {
+            position: absolute;
+            left: 1rem;
+        }
+
         .brand-text {
             margin: 0;
             position: absolute;
-            left: 1rem;
+            left: 4rem;
             opacity: 1;
             transition: opacity 0.3s;
         }
@@ -50,7 +57,7 @@
         .toggle-btn {
             background: transparent;
             border: none;
-            color: white;
+            color: black;
             cursor: pointer;
             padding: 0.5rem;
             position: absolute;
@@ -60,14 +67,15 @@
 
         .sidebar.collapsed .toggle-btn {
             left: 0.75rem; /* Center when collapsed */
+            opacity: 0;
         }
 
         .toggle-btn:hover {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(0, 0, 0, 0.8);
         }
 
         .sidebar-link {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(0, 0, 0, 0.8);
             text-decoration: none;
             padding: 0.8rem 1rem;
             display: flex;
@@ -77,10 +85,20 @@
             min-width: 250px; /* Match expanded width */
         }
 
-        .sidebar-link:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
+        .sidebar-link .icon {
+            min-width: 2rem;
+            text-align: center;
         }
+
+        .sidebar-link:hover {
+            color: black;
+            background: #d1f7c4;
+        }
+
+        .sidebar-link.active {
+            color: black;
+            background: #d1f7c4;
+        }   
 
         .sidebar-link i {
             font-size: 1.25rem;
@@ -137,8 +155,9 @@
 <body>
     <div class="sidebar collapsed" id="sidebar">
         <!-- Sidebar Header -->
-        <div class="sidebar-header">
-            <h5 class="brand-text menu-text">Menu</h5>
+        <div class="sidebar-header border-bottom border-secondary">
+            <img src="../../../../public/images/main-logo.png" alt="logo" height="30px">
+            <h5 class="brand-text menu-text">KingLang</h5>
             <button class="toggle-btn" id="toggleBtn">
                 <i class="bi bi-chevron-right fs-4"></i>
             </button>
@@ -146,27 +165,39 @@
 
         <div class="sidebar-content">
             <!-- Sidebar Menu -->
-            <div class="sidebar-menu py-2">
-                <a href="#" class="sidebar-link">
-                    <i class="bi bi-house-door"></i>
-                    <span class="menu-text">Home</span>
-                </a>
-                <a href="#" class="sidebar-link">
+            <div class="sidebar-menu pb-2 ">
+                <a href="/admin/dashboard" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'dashboard' ? 'active' : ''; ?>">
+                    <i class="bi bi-grid"></i>
+                    <span class="menu-text">Dashboard</span>
+                </a>   
+                <a href="#" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'admin/clients' ? 'active' : ''; ?>">
                     <i class="bi bi-people"></i>
-                    <span class="menu-text">Users</span>
+                    <span class="menu-text">Clients</span>
+                </a>
+                <a href="/admin/booking-requests" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'booking-requests' || basename($_SERVER["PHP_SELF"]) == 'resched-requests' ? 'active' : ''; ?>">
+                    <i class="bi bi-journals fs-5"></i>
+                    <span class="menu-text">Bookings</span>
+                </a>
+                <a href="#" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'booking' ? 'active' : ''; ?>">
+                    <i class="bi bi-wallet2"></i>
+                    <span class="menu-text">Payments</span>
+                </a>
+                <a href="#" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'booking' ? 'active' : ''; ?>">
+                    <i class="bi bi-clipboard-data"></i>
+                    <span class="menu-text">Reports</span>  
                 </a>
                 <a href="#" class="sidebar-link">
                     <i class="bi bi-gear"></i>
                     <span class="menu-text">Settings</span>
                 </a>
-                <a href="#" class="sidebar-link">
-                    <i class="bi bi-question-circle"></i>
-                    <span class="menu-text">Help</span>
-                </a>
             </div>
 
             <!-- Sidebar Footer -->
             <div class="border-top border-secondary">
+                <a href="#" class="sidebar-link">
+                    <i class="bi bi-question-circle"></i>
+                    <span class="menu-text">Help</span>
+                </a>
                 <a href="/admin/logout" class="sidebar-link">
                     <i class="bi bi-box-arrow-left"></i>
                     <span class="menu-text">Logout</span>

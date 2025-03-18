@@ -91,6 +91,9 @@ switch ($request) {
         $adminBookingController->getAllBookings();
         $bookingController->updatePastBookings();
         break;
+    case "/admin/order-bookings":
+        $adminBookingController->orderBookings();
+        break;
     case "/admin/login":
         $adminAuthController->loginForm();
         break;
@@ -107,7 +110,7 @@ switch ($request) {
     case "/admin/booking-requests":
         $adminBookingController->showBookingTable();
         break;
-    case "/send-quote":
+    case "/admin/send-quote":
         $adminBookingController->sendQuote();
         break;
     case "/admin/resched-requests":
