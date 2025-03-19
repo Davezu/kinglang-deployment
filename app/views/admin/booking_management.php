@@ -3,7 +3,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
 
 // session_start();
 
-if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
+if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super admin") {
     header("Location: /admin/login");
     exit(); 
 }
@@ -17,13 +17,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
     <title>Document</title>
-    <style>
-        table tr th,
-        table tr td {
-            font-size: .90rem;
-            color: #6c757d;
-        }
-    </style>
+    
 </head>
 <body> 
     <div class="modal fade payment-calculator" aria-labelledby="calcualtorModal" tabindex="-1" id="calculatorModal" aria-hidden="true">
@@ -74,10 +68,13 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
 
     <div class="content collapsed" id="content">
         <div class="container-fluid p-4">
-            <h3>Bookings</h3>
+            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
+                <h3>Booking Management</h3>
+                <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
+            </div>
             <?php include_once __DIR__ . "/../assets/admin_navtab.php"; ?>
             <div class="input-group w-25 w-md-50 my-3">
-                <span class="input-group-text" id="basic-addon1">Filter by Status</span>
+                <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Status</span>
                 <select name="status" id="statusSelect" class="form-select">
                     <option value="all">All</option>
                     <option value="pending">Pending</option>
@@ -101,7 +98,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
                             <th class="sort" data-order="asc" data-column="number_of_buses">Buses</th>
                             <th class="sort" data-order="asc" data-column="status">Remarks</th>
                             <th class="sort" data-order="asc" data-column="payment_status">Payment Status</th>
-                            <th class="sort" style="text-align: center">Action</th></tr>
+                            <th class="sort" style="text-align: center; width: 15%;">Action</th></tr>
                     </thead>
                     <tbody id="tableBody"> 
                        

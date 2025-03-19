@@ -55,7 +55,7 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     // console.log("selected buses: ", selectedBuses.length);
     // console.log("number of buses: ", numberOfBuses);
 
-    // if (parseInt(numberOfBuses) !== selectedBuses.length) return;
+    // if (parseInt(numberOfBuses) !== selectedBuses.length) return;i
     
     const formData = {
         dateOfTour: document.getElementById("date_of_tour")?.value,

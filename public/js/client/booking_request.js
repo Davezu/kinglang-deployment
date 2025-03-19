@@ -5,6 +5,14 @@ today.setDate(today.getDate() + 3);
 const minDate = today.toISOString().split("T")[0];
 document.getElementById("date_of_tour").min = minDate; 
 
+function formatDate(date) {
+    return new Date(date).toLocaleDateString("en-US", {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+}
+
 // get all of booking record
 document.addEventListener("DOMContentLoaded", async function () {
     const bookings = await getAllBookings("all", "date_of_tour", "asc");
@@ -121,8 +129,8 @@ function renderBookings(bookings) {
         const remarksCell = document.createElement("td");
 
         destinationCell.textContent = booking.destination;
-        dateOfTourCell.textContent = booking.date_of_tour;
-        endOfTourCell.textContent = booking.end_of_tour;
+        dateOfTourCell.textContent = formatDate(booking.date_of_tour);
+        endOfTourCell.textContent = formatDate(booking.end_of_tour);
         daysCell.textContent = booking.number_of_days;
         busesCell.textContent = booking.number_of_buses;
         totalCostCell.textContent = formatNumber(booking.total_cost);
@@ -142,16 +150,19 @@ function actionCell(booking) {
     const cancelButton = document.createElement("button");
 
     btnGroup.classList.add("container", "btn-container", "d-flex", "gap-2");
-    payButton.classList.add("open-payment-modal", "btn", "btn-success", "btn-sm", "w-100");
-    reschedButton.classList.add("btn", "btn-primary", "w-100", "btn-sm");
-    cancelButton.classList.add("btn", "btn-danger", "w-100", "btn-sm");
+    payButton.classList.add("open-payment-modal", "btn", "bg-success-subtle", "text-success", "fw-bold", "w-100");
+    reschedButton.classList.add("btn", "bg-primary-subtle", "w-100", "fw-bold", "text-primary");
+    cancelButton.classList.add("btn", "bg-danger-subtle", "w-100", "fw-bold", "text-danger");
 
+    
+    payButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     payButton.setAttribute("data-booking-id", booking.booking_id);
     payButton.setAttribute("data-total-cost", booking.total_cost);
     payButton.setAttribute("data-client-id", booking.client_id);
     payButton.setAttribute("data-bs-toggle", "modal");
     payButton.setAttribute("data-bs-target", "#paymentModal");
 
+    reschedButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     reschedButton.setAttribute("data-booking-id", booking.booking_id);
     reschedButton.setAttribute("data-client-id", booking.client_id);
     reschedButton.setAttribute("data-days", booking.number_of_days);
@@ -159,6 +170,8 @@ function actionCell(booking) {
 
     reschedButton.setAttribute("data-bs-toggle", "modal");
     reschedButton.setAttribute("data-bs-target", "#reschedModal");
+
+    cancelButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
     payButton.textContent = "Pay";
     reschedButton.textContent = "Resched";
@@ -334,11 +347,12 @@ document.getElementById("reschedForm").addEventListener("submit", async (e) => {
 
         const data = await response.json();
         
-        document.getElementById("messageElement").classList.add(data.success ? "text-success" : "text-danger");   
+        document.getElementById("messageElement").style.color = data.success ? "green" : "red";  
         document.getElementById("messageElement").textContent = data.success ? data.message : data.message;
 
-        getAllBookings();   
-
+        const status = document.getElementById("statusSelect").value;
+        const bookings = await getAllBookings(status, "date_of_tour", "asc");   
+        renderBookings(bookings);
     } catch (error) {
         console.error("Error fetching data: ", error.message);
     }

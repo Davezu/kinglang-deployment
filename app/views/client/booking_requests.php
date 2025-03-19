@@ -30,7 +30,7 @@ if (!isset($_SESSION["user_id"])) {
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
             <div class="input-group w-25 my-3">
-                <span class="input-group-text" id="basic-addon1">Filter by Status</span>
+                <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Status</span>
                 <select name="status" id="statusSelect" class="form-select">
                     <option value="all">All</option>
                     <option value="pending">Pending</option>
@@ -41,8 +41,8 @@ if (!isset($_SESSION["user_id"])) {
                 </select>
             </div>
         
-            <div class="table-responsive-xl rounded">
-                <table class="table table-hover">
+            <div class="table-responsive-xl">
+                <table class="table table-hover overflow-hidden rounded">
                     <thead>
                         <tr>
                             <th class="sort" data-order="asc" data-column="destination">Destination</th>
@@ -53,7 +53,7 @@ if (!isset($_SESSION["user_id"])) {
                             <th class="sort" data-order="asc" data-column="total_cost">Total Cost</th>
                             <th class="sort" data-order="asc" data-column="balance">Balance</th>
                             <th class="sort" data-order="asc" data-column="status">Remarks</th>
-                            <th class="sort" style="text-align: center;">Action</th>
+                            <th class="sort" style="text-align: center; width: 20%;">Action</th>
                         </tr>
                     </thead>
                     <tbody class="table-group" id="tableBody">
@@ -125,7 +125,7 @@ if (!isset($_SESSION["user_id"])) {
                     <input type="hidden" name="" id="number_of_days">
                     <div class="mb-3">
                         <label for="" class="form-label">New Date of Tour</label>
-                        <input type="date" name="" id="date_of_tour" class="form-control">
+                        <input type="date" name="" id="date_of_tour" class="form-control" required>
                     </div>
                 </div>
                                         

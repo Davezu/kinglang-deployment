@@ -15,7 +15,7 @@ class BookingManagementModel {
         $status = in_array($status, $allowed_status) ? $status : "";
         $status == "all" ? $status = "" : $status = " WHERE b.status = '$status'";
 
-        $allowed_columns = ["client_name", "contact_number", "destination", "pickup_point", "date_of_tour", "end_of_tour", "number_of_days", "number_of_buses", "status", "payment_status", "total_cost"];
+        $allowed_columns = ["booking_id", "client_name", "contact_number", "destination", "pickup_point", "date_of_tour", "end_of_tour", "number_of_days", "number_of_buses", "status", "payment_status", "total_cost"];
         $column = in_array($column, $allowed_columns) ? $column : "client_name";
         $order = $order === "asc" ? "ASC" : "DESC";
 
@@ -53,7 +53,7 @@ class BookingManagementModel {
         $status = in_array($status, $allowed_status) ? $status : "";
         $status == "all" ? $status = "" : $status = " WHERE r.status = '$status'";
 
-        $allowed_columns = ["client_name", "contact_number", "new_date_of_tour", "new_end_of_tour", "status"];
+        $allowed_columns = ["booking_id", "client_name", "contact_number", "new_date_of_tour", "new_end_of_tour", "status"];
         $column = in_array($column, $allowed_columns) ? $column : "client_name";
         $order = $order === "asc" ? "ASC" : "DESC";
 

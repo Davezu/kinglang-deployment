@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async function () {
-    const requests = await getReschedRequest('all', 'asc', 'client_name');
+    const requests = await getReschedRequest('all', 'asc', 'booking_id');
     renderReschedRequest(requests);
 }); 
 
@@ -25,6 +25,14 @@ document.querySelectorAll('.sort').forEach(button => {
         this.setAttribute('data-order', order === 'asc' ? 'desc' : 'asc');
     });
 });
+
+function formatDate(date) {
+    return new Date(date).toLocaleDateString("en-US", {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+}
 
 async function getReschedRequest(status, order, column) {
     try {
@@ -61,8 +69,8 @@ async function renderReschedRequest(requests) {
 
         clientNameCell.textContent = request.client_name;
         clientContactCell.textContent = request.contact_number;
-        dateOfTourCell.textContent = request.new_date_of_tour;
-        endOfTourCell.textContent = request.new_end_of_tour;
+        dateOfTourCell.textContent = formatDate(request.new_date_of_tour);
+        endOfTourCell.textContent = formatDate(request.new_end_of_tour);
         statusCell.textContent = request.status;
 
         row.append(clientNameCell, clientContactCell, dateOfTourCell, endOfTourCell, statusCell, actionButtons(request));
@@ -76,9 +84,11 @@ function actionButtons(request) {
     const confirmButton = document.createElement('button');
     const rejectButton = document.createElement('button');
 
-    buttonGroup.classList.add('d-flex', 'gap-2');
+    buttonGroup.classList.add('d-flex', 'gap-2');   
 
-    confirmButton.classList.add('btn', 'btn-success', 'btn-sm', 'w-100', 'approve');
+    confirmButton.classList.add('btn', 'bg-success-subtle', 'text-success', 'btn-sm', 'fw-bold', 'w-100', 'approve');
+    confirmButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
+
     confirmButton.textContent = 'Confrim';
 
     confirmButton.addEventListener('click', async () => {
@@ -95,11 +105,13 @@ function actionButtons(request) {
 
         const data = await response.json();
         if (data.success) {
-            renderReschedRequest();
+            const requests = await getReschedRequest('all', 'asc', 'client_name');
+            renderReschedRequest(requests);
         }
     });
 
-    rejectButton.classList.add('btn', 'btn-danger', 'btn-sm', 'w-100', 'decline');
+    rejectButton.classList.add('btn', 'bg-danger-subtle', 'text-danger', 'w-100', 'fw-bold', 'decline');
+    rejectButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     rejectButton.textContent = 'Reject';
 
 

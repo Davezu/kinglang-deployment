@@ -69,6 +69,8 @@ class ClientAuthController {
             $message = $this->authModel->login($username, $password);
 
             if ($message === "Login successfully!") {
+                unset($_SESSION["entered_username"]);
+                unset($_SESSION["message"]);
                 header("Location: /home/booking-requests");
                 exit();
             } else {

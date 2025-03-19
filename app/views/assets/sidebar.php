@@ -1,51 +1,3 @@
-<!-- <link rel="stylesheet" href="../../../public/css/client/booking_request.css"> 
-<div class="sidebar" id="sidebar">
-    <div class="wrapper">
-    <div class="brand">
-        <div class="name-logo">
-            <img src="../../../public/images/main-logo.png" alt="icon" height="30px">
-            <span class="text">KingLang</span>
-        </div>
-        <div class="toggle-container">
-            <i class="toggle-btn bi bi-layout-sidebar-inset" id="toggle-btn"></i>
-        </div>
-    </div>
-    <nav class="nav flex-column">
-        <a href="/home/booking-requests" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'booking-requests' ? 'active' : '' ?>">
-            <i class="bi bi-journals icon fs-5"></i>
-            <span class="text">My Bookings</span>
-        </a>
-        <a href="/home/book/<?= $_SESSION["user_id"]; ?>" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'book' ? 'active' : '' ?>">
-            <i class="bi bi-journal-plus icon fs-5"></i>
-            <span class="text">Book a Trip</span>
-        </a>
-        <a href="/my-account" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'my-account' ? 'active' : '' ?>">
-            <i class="bi bi-person-fill icon fs-5"></i>
-            <span class="text">My Account</span>
-        </a>
-        <a href="#" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == '#' ? 'active' : '' ?>">
-            <i class="bi bi-chat-square-quote-fill icon fs-5"></i>
-            <span class="text">Feedback & Support</span>
-        </a>
-    </nav>
-    </div>
-
-    <nav class="nav flex-column">
-        <a href="#" class="nav-link">
-            <i class="bi bi-question-circle icon fs-5"></i>
-            <span class="text">Help</span>
-        </a>
-        <a href="/logout" class="nav-link">
-            <i class="bi bi-box-arrow-right icon fs-5"></i>
-            <span class="text">Log out</span>
-        </a>
-    </nav>
-
-</div>
-
-<script src="/../../../public/js/client/design.js"></script> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/066bf74adc.js" crossorigin="anonymous"></script>
     <style>
+        .custom-tooltip {
+            --bs-tooltip-bg: #d1f7c4; /* Custom background color */
+            --bs-tooltip-color: black; /* Custom text color */
+        }
+
         .sidebar {
             position: fixed;
             top: 0;
@@ -69,6 +26,7 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden; /* Prevent horizontal scroll */
+            border-radius: 0 10px 10px 0;
         }
 
         .sidebar.collapsed {
@@ -163,6 +121,26 @@
             opacity: 0;
         }
 
+        /* .sidebar.collapsed .sidebar-link {
+            position: relative;
+        } */
+
+        .sidebar.collapsed .sidebar-link .tooltips {
+            visibility: hidden;
+            position: absolute;
+            left: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #d1f7c4;
+            color: black;
+            padding: 0.5rem;
+            width: 150px;
+        }
+
+        .sidebar.collapsed .sidebar-link:hover .tooltips  {
+            visibility: visible;
+        }
+
         .sidebar-content {
             flex: 1;
             display: flex;
@@ -195,7 +173,7 @@
                 opacity: 0;
             }
             .toggle-btn {
-                left: 0.75rem;
+                display: none;
             }
         }
     </style>

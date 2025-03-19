@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    const bookings = await getAllBookings("all", "asc", "client_name");    
+    const bookings = await getAllBookings("all", "asc", "booking_id");    
     renderBookings(bookings);
 });
 
@@ -41,6 +41,14 @@ document.querySelectorAll(".sort").forEach(button => {
         // }
     });
 });
+
+function formatDate(date) {
+    return new Date(date).toLocaleDateString("en-US", {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+}
 
 const calculateTotalCostButton = document.querySelectorAll(".calculateTotalCost");
 const distance = document.getElementById("distance");
@@ -123,8 +131,8 @@ async function renderBookings(bookings) {
         contactNumberCell.textContent = booking.contact_number;
         destinationCell.textContent = booking.destination;
         pickupPointCell.textContent = booking.pickup_point;
-        dateOfTourCell.textContent = booking.date_of_tour;
-        endOfTourCell.textContent = booking.end_of_tour;
+        dateOfTourCell.textContent = formatDate(booking.date_of_tour);
+        endOfTourCell.textContent = formatDate(booking.end_of_tour);
         numberOfDaysCell.textContent = booking.number_of_days;
         numberOfBusesCell.textContent = booking.number_of_buses;
         statusCell.textContent = booking.status;
@@ -142,8 +150,9 @@ function actionButton(booking) {
     const rejectButton = document.createElement("button");
 
     buttonGroup.classList.add("d-flex", "gap-2", "align-items-center");
-    computeButton.classList.add("btn", "btn-success", "btn-sm", "w-100", "calculateTotalCost");
-    rejectButton.classList.add("btn", "btn-danger", "btn-sm", "w-100");
+
+    computeButton.classList.add("btn", "bg-success-subtle", "text-success", "btn-sm", "fw-bold", "w-100", "calculateTotalCost");
+    rejectButton.classList.add("btn", "bg-danger-subtle", "text-danger", "btn-sm", "fw-bold", "w-100");
     rejectButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
     computeButton.textContent = "Compute";
@@ -191,9 +200,12 @@ document.getElementById("calculatorForm").addEventListener("submit", async funct
     
         const data = await response.json();
     
-        document.getElementById("messageElement").classList.add(data.success ? "text-success" : "text-danger");   
+        document.getElementById("messageElement").style.color = data.success ? "green" : "red";   
         document.getElementById("messageElement").textContent = data.success ? data.message : data.message;
-        renderBookings();
+        
+        const status = document.getElementById("statusSelect").value;
+        const bookings = getAllBookings(status, "asc", "booking_id");
+        renderBookings(bookings);
     } catch (error) {
         console.error(error);
     }

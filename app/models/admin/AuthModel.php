@@ -22,6 +22,7 @@ class AuthModel {
 
             if ($user && password_verify($password, $user["password"])) {
                 $_SESSION["role"] = $user["role"];
+                $_SESSION["admin_username"] = $user["username"];
                 return true;
             } 
             
