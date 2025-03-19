@@ -1,8 +1,38 @@
-document.addEventListener('DOMContentLoaded', renderReschedRequest); 
+document.addEventListener('DOMContentLoaded', async function () {
+    const requests = await getReschedRequest('all', 'asc', 'client_name');
+    renderReschedRequest(requests);
+}); 
 
-async function getReschedRequest() {
+document.getElementById('statusSelect').addEventListener('change', async function () {
+    const status = this.value;
+    console.log(status);
+    const requests = await getReschedRequest(status, 'asc', 'client_name');
+    renderReschedRequest(requests);
+});
+
+document.querySelectorAll('.sort').forEach(button => {
+    button.style.cursor = 'pointer';
+    button.style.backgroundColor = '#d1f7c4';
+
+    button.addEventListener('click', async function () {
+        const status = document.getElementById('statusSelect').value;
+        const column = this.getAttribute('data-column');
+        const order = this.getAttribute('data-order');
+
+        const requests = await getReschedRequest(status, order, column);
+        renderReschedRequest(requests);
+
+        this.setAttribute('data-order', order === 'asc' ? 'desc' : 'asc');
+    });
+});
+
+async function getReschedRequest(status, order, column) {
     try {
-        const response = await fetch("/admin/get-resched-requests");
+        const response = await fetch("/admin/get-resched-requests", {
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status, order, column })
+        });
 
         const data = await response.json();
         console.log(data.requests);
@@ -14,8 +44,8 @@ async function getReschedRequest() {
     }
 }
 
-async function renderReschedRequest() {
-    const requests = await getReschedRequest();
+async function renderReschedRequest(requests) {
+    // const requests = await getReschedRequest();
     console.log(requests);
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = '';
@@ -84,3 +114,4 @@ function actionButtons(request) {
     
     return actionCell;
 }
+

@@ -35,22 +35,6 @@ class BookingManagementModel {
         }
     }
 
-    // public function orderBookings($column, $order) {
-    //     try {
-    //         $stmt = $this->conn->prepare("
-    //         SELECT b.booking_id, CONCAT(c.first_name, ' ', c.last_name) AS client_name, c.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, b.number_of_days, b.number_of_buses, b.status, b.payment_status, b.total_cost
-    //         FROM bookings b
-    //         JOIN clients c ON b.client_id = c.client_id
-    //         ORDER BY $column $order
-    //         ");
-    //         $stmt->execute();
-            
-    //         return $stmt->fetchAll(PDO::FETCH_ASSOC); 
-    //     }  catch (PDOException $e) {
-    //         return "Database error";
-    //     }
-    // }
-
     public function sendQuote($booking_id, $total_cost) {
         try {
             $stmt = $this->conn->prepare("UPDATE bookings SET total_cost = :total_cost, balance = :total_cost WHERE booking_id = :booking_id");
@@ -64,13 +48,22 @@ class BookingManagementModel {
         }
     }
 
-    public function getReschedRequests() {
+    public function getReschedRequests($status, $column, $order) {
+        $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "all"];
+        $status = in_array($status, $allowed_status) ? $status : "";
+        $status == "all" ? $status = "" : $status = " WHERE r.status = '$status'";
+
+        $allowed_columns = ["client_name", "contact_number", "new_date_of_tour", "new_end_of_tour", "status"];
+        $column = in_array($column, $allowed_columns) ? $column : "client_name";
+        $order = $order === "asc" ? "ASC" : "DESC";
+
         try {
             $stmt = $this->conn->prepare("
                 SELECT r.request_id, r.booking_id, CONCAT(c.first_name, ' ', c.last_name) AS client_name, c.contact_number, r.new_date_of_tour, r.new_end_of_tour, r.status
                 FROM reschedule_requests r
                 JOIN clients c ON r.client_id = c.client_id
-                ORDER BY r.new_date_of_tour DESC
+                $status
+                ORDER BY $column $order
             ");
             $stmt->execute();
             

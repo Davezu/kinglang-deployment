@@ -6,9 +6,35 @@ const minDate = today.toISOString().split("T")[0];
 document.getElementById("date_of_tour").min = minDate; 
 
 // get all of booking record
-document.addEventListener("DOMContentLoaded", getAllBookings);
-document.getElementById("status").addEventListener("change", getAllBookings);
+document.addEventListener("DOMContentLoaded", async function () {
+    const bookings = await getAllBookings("all", "date_of_tour", "asc");
+    renderBookings(bookings);
+});
 
+// filter booking record by status
+document.getElementById("statusSelect").addEventListener("change", async function () {
+    const status = this.value;
+    const bookings = await getAllBookings(status, "date_of_tour", "asc");
+    renderBookings(bookings);
+});
+
+// sort booking record by column
+document.querySelectorAll(".sort").forEach(button => {
+    button.style.cursor = "pointer";
+    button.style.backgroundColor = "#d1f7c4";
+
+    button.addEventListener("click", async function () {
+        const status = document.getElementById("statusSelect").value;
+        const column = this.getAttribute("data-column");
+        const order = this.getAttribute("data-order");
+
+        const bookings = await getAllBookings(status, column, order);
+        console.log(bookings);
+        renderBookings(bookings);   
+
+        this.setAttribute("data-order", order === "asc" ? "desc" : "asc");
+    });
+});
 
 const fullAmount = document.getElementById("fullAmount");
 const partialAmount = document.getElementById("partialAmount");
@@ -55,14 +81,12 @@ document.querySelectorAll(".btn-container").forEach(container => {
     })
 });
 
-async function getAllBookings() {
-    const status = this.value || "";
-
+async function getAllBookings(status, column, order) {
     try {
         const response = await fetch("/home/get-booking-requests", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ status: status })
+            body: JSON.stringify({ status, column, order })
         });
 
         const data = await response.json();
@@ -71,39 +95,125 @@ async function getAllBookings() {
         tbody.innerHTML = "";   
 
         if (data.success) {
-            data.bookings.forEach(booking => {
-                const tr = document.createElement("tr");
-
-                const destinationCell = document.createElement("td");
-                const dateOfTourCell = document.createElement("td");
-                const endOfTourCell = document.createElement("td");
-                const daysCell = document.createElement("td");
-                const busesCell = document.createElement("td");
-                const totalCostCell = document.createElement("td");
-                const balanceCell = document.createElement("td");
-                const remarksCell = document.createElement("td");
-                const actionCell = document.createElement("td");
-
-                destinationCell.textContent = booking.destination;
-                endOfTourCell.textContent = booking.end_of_tour;
-                dateOfTourCell.textContent = booking.date_of_tour;
-                daysCell.textContent = booking.number_of_days;
-                busesCell.textContent = booking.number_of_buses;
-                totalCostCell.textContent = formatNumber(booking.total_cost);
-                balanceCell.textContent = formatNumber(booking.balance);
-                remarksCell.textContent = booking.status;
-
-                createPayReschedCancelButton(actionCell, booking);
-
-                tr.append(destinationCell, dateOfTourCell, endOfTourCell, daysCell, busesCell, totalCostCell, balanceCell, remarksCell, actionCell);
-                tbody.appendChild(tr);
-            });
+            return data.bookings;
         } else {
             console.log(data.message);
         }
     } catch (error) {
         console.error("Error fetching data: ", error.message);
     }
+}
+
+function renderBookings(bookings) {
+    const tbody = document.getElementById("tableBody");
+    tbody.innerHTML = "";
+
+    bookings.forEach(booking => {
+        const tr = document.createElement("tr");
+
+        const destinationCell = document.createElement("td");
+        const dateOfTourCell = document.createElement("td");
+        const endOfTourCell = document.createElement("td");
+        const daysCell = document.createElement("td");
+        const busesCell = document.createElement("td");
+        const totalCostCell = document.createElement("td");
+        const balanceCell = document.createElement("td");
+        const remarksCell = document.createElement("td");
+
+        destinationCell.textContent = booking.destination;
+        dateOfTourCell.textContent = booking.date_of_tour;
+        endOfTourCell.textContent = booking.end_of_tour;
+        daysCell.textContent = booking.number_of_days;
+        busesCell.textContent = booking.number_of_buses;
+        totalCostCell.textContent = formatNumber(booking.total_cost);
+        balanceCell.textContent = formatNumber(booking.balance);
+        remarksCell.textContent = booking.status;
+
+        tr.append(destinationCell, dateOfTourCell, endOfTourCell, daysCell, busesCell, totalCostCell, balanceCell, remarksCell, actionCell(booking));
+        tbody.appendChild(tr);
+    });
+}
+
+function actionCell(booking) {
+    const td = document.createElement("td");
+    const btnGroup = document.createElement("div");
+    const payButton = document.createElement("button");
+    const reschedButton = document.createElement("button");
+    const cancelButton = document.createElement("button");
+
+    btnGroup.classList.add("container", "btn-container", "d-flex", "gap-2");
+    payButton.classList.add("open-payment-modal", "btn", "btn-success", "btn-sm", "w-100");
+    reschedButton.classList.add("btn", "btn-primary", "w-100", "btn-sm");
+    cancelButton.classList.add("btn", "btn-danger", "w-100", "btn-sm");
+
+    payButton.setAttribute("data-booking-id", booking.booking_id);
+    payButton.setAttribute("data-total-cost", booking.total_cost);
+    payButton.setAttribute("data-client-id", booking.client_id);
+    payButton.setAttribute("data-bs-toggle", "modal");
+    payButton.setAttribute("data-bs-target", "#paymentModal");
+
+    reschedButton.setAttribute("data-booking-id", booking.booking_id);
+    reschedButton.setAttribute("data-client-id", booking.client_id);
+    reschedButton.setAttribute("data-days", booking.number_of_days);
+    reschedButton.setAttribute("data-buses", booking.number_of_buses);
+
+    reschedButton.setAttribute("data-bs-toggle", "modal");
+    reschedButton.setAttribute("data-bs-target", "#reschedModal");
+
+    payButton.textContent = "Pay";
+    reschedButton.textContent = "Resched";
+    cancelButton.textContent = "Cancel";
+
+    if (booking.status === "pending" && booking.total_cost === null) {
+        btnGroup.append(reschedButton, cancelButton);
+    } else if (booking.totalCost !== null && booking.payment_status !== "paid" && booking.status !== "completed") {
+        btnGroup.append(payButton, reschedButton, cancelButton);
+    } else {
+        btnGroup.textContent = "No action needed";
+    }
+
+    td.appendChild(btnGroup);
+
+    payButton.addEventListener("click", function () {
+        document.getElementById("amount").textContent = "";
+        const totalCost = this.getAttribute("data-total-cost");
+        const bookingID = this.getAttribute("data-booking-id");
+        const clientID = this.getAttribute("data-client-id");
+
+        console.log("total cost: ", totalCost);
+        console.log("booking id: ", bookingID);
+        console.log("client id: ", clientID);
+
+        document.getElementById("fullAmnt").style.display = "block";  
+        document.getElementById("downPayment").textContent = "Down Payment";
+        
+        if (parseFloat(booking.balance) < parseFloat(booking.total_cost)) {
+            document.getElementById("fullAmnt").style.display = "none";   
+            document.getElementById("downPayment").textContent = "Final Payment";
+        } else {
+            fullAmount.textContent = formatNumber(totalCost);
+        }
+        partialAmount.textContent = formatNumber(totalCost / 2);
+        bookingIDinput.value = bookingID;
+        clientIDinput.value = clientID;
+    });
+
+    reschedButton.addEventListener("click", function () {
+        document.getElementById("messageElement").textContent = "";
+        document.getElementById("date_of_tour").value = ""; 
+
+        const bookingId = this.getAttribute("data-booking-id");
+        const bookingClientId = this.getAttribute("data-client-id");
+        const days = this.getAttribute("data-days");
+        const buses = this.getAttribute("data-buses");
+
+        document.getElementById("reschedBookingId").value = bookingId;
+        document.getElementById("reschedClientId").value = bookingClientId;
+        document.getElementById("number_of_days").value = days;
+        document.getElementById("numberOfBuses").value = buses;
+    });
+
+    return td;
 }
 
 function formatNumber(number) {

@@ -7,17 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="d-flex">
-        <?php include_once __DIR__ . "/../assets/sidebar.php"; ?>
+    <?php include_once __DIR__ . "/../assets/sidebar.php"; ?>
 
-        <div class="flex-grow-1 p-0 m-0">
-            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-4 m-0">
+    <div class="content collapsed" id="content">
+
+        <div class="container-fluid p-4">
+            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
                 <div class="p-0">
                     <h3>Welcome, <span class="text-capitalize text-success"><?= $_SESSION["username"]; ?></span></h3>
                 </div>
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
-            <div class="container-fluid border hv-100">
+            <div class="container-fluid border rounded hv-100 my-3">
                 <div class="container w-50">
                     <form action="" id="userForm" class="mt-4">
                         <input type="hidden" name="id" value="1">
@@ -77,5 +78,6 @@
 
     <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="../../../public/js/client/user_account.js"></script>
+    <script src="../../../public/js/assets/sidebar.js"></script>
 </body>
 </html>

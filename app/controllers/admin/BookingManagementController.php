@@ -72,7 +72,12 @@ class BookingManagementController {
     }
 
     public function getReschedRequests() {
-        $reschedRequests = $this->bookingModel->getReschedRequests();
+        $data = json_decode(file_get_contents("php://input"), true);
+        $status = $data["status"];
+        $order = $data["order"];
+        $column = $data["column"];
+
+        $reschedRequests = $this->bookingModel->getReschedRequests($status, $column, $order);
 
         header("Content-Type: application/json");
 

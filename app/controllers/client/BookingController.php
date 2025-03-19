@@ -105,9 +105,11 @@ class BookingController {
     public function getAllBookings() {
         $data = json_decode(file_get_contents("php://input"), true);
         $status = $data["status"];
+        $column = $data["column"];
+        $order = $data["order"];
 
         $client_id = $this->bookingModel->getClientID($_SESSION["user_id"]);
-        $bookings = $this->bookingModel->getAllBookings($client_id, $status);
+        $bookings = $this->bookingModel->getAllBookings($client_id, $status, $column, $order);
 
         header("Content-Type: application/json");
 

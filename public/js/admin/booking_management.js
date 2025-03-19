@@ -12,6 +12,7 @@ document.getElementById("statusSelect").addEventListener("change", async functio
 
 document.querySelectorAll(".sort").forEach(button => {
     button.style.cursor = "pointer";
+    button.style.backgroundColor = "#d1f7c4";
 
     button.addEventListener("click", async function () {
         const status = document.getElementById("statusSelect").value;
@@ -91,7 +92,7 @@ async function getAllBookings(status, order, column) {
         console.log(data);
 
         if (data.success) {
-            return await data.bookings;
+            return data.bookings;
         }
     } catch (error) {
         console.error(error);
@@ -140,9 +141,10 @@ function actionButton(booking) {
     const computeButton = document.createElement("button");
     const rejectButton = document.createElement("button");
 
-    buttonGroup.classList.add("d-flex", "gap-2");
+    buttonGroup.classList.add("d-flex", "gap-2", "align-items-center");
     computeButton.classList.add("btn", "btn-success", "btn-sm", "w-100", "calculateTotalCost");
     rejectButton.classList.add("btn", "btn-danger", "btn-sm", "w-100");
+    rejectButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
     computeButton.textContent = "Compute";
     rejectButton.textContent = "Reject";
@@ -150,6 +152,7 @@ function actionButton(booking) {
     computeButton.setAttribute("data-days", booking.number_of_days);
     computeButton.setAttribute("data-buses", booking.number_of_buses);
     computeButton.setAttribute("data-booking-id", booking.booking_id);
+    computeButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
     computeButton.setAttribute("data-bs-toggle", "modal");
     computeButton.setAttribute("data-bs-target", "#calculatorModal");

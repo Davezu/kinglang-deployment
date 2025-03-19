@@ -17,8 +17,15 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
     <title>Document</title>
+    <style>
+        table tr th,
+        table tr td {
+            font-size: .90rem;
+            color: #6c757d;
+        }
+    </style>
 </head>
-<body>
+<body> 
     <div class="modal fade payment-calculator" aria-labelledby="calcualtorModal" tabindex="-1" id="calculatorModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form action="/send-quote" method="post" class="modal-content" id="calculatorForm">
@@ -80,8 +87,8 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
                     <option value="completed">Completed</option>
                 </select>
             </div>
-            <div class="table-responsive-xl">
-                <table class="table table-hover">
+            <div class="table-responsive-xl" >
+                <table class="table table-hover text-secondary overflow-hidden border rounded px-4">
                     <thead>
                         <tr>
                             <th class="sort" data-order="asc" data-column="client_name">Client Name</th>
@@ -94,9 +101,9 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
                             <th class="sort" data-order="asc" data-column="number_of_buses">Buses</th>
                             <th class="sort" data-order="asc" data-column="status">Remarks</th>
                             <th class="sort" data-order="asc" data-column="payment_status">Payment Status</th>
-                            <th style="text-align: center">Action</th></tr>
+                            <th class="sort" style="text-align: center">Action</th></tr>
                     </thead>
-                    <tbody id="tableBody">
+                    <tbody id="tableBody"> 
                        
                     </tbody>
                 </table>
@@ -107,7 +114,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super_admin") {
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="../../../public/js/admin/booking_management.js"></script>
-    <script src="../../../public/js/admin/sidebar.js"></script>
+    <script src="../../../public/js/assets/sidebar.js"></script>
     <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

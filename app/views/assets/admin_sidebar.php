@@ -19,6 +19,7 @@
             transition: width 0.3s;
             z-index: 1000;
             display: flex;
+            border-radius: 0 10px 10px 0;
             flex-direction: column;
             overflow-x: hidden; /* Prevent horizontal scroll */
         }
@@ -156,7 +157,7 @@
     <div class="sidebar collapsed" id="sidebar">
         <!-- Sidebar Header -->
         <div class="sidebar-header border-bottom border-secondary">
-            <img src="../../../../public/images/main-logo.png" alt="logo" height="30px">
+            <img src="../../../../public/images/main-logo.png" alt="logo" height="35px">
             <h5 class="brand-text menu-text">KingLang</h5>
             <button class="toggle-btn" id="toggleBtn">
                 <i class="bi bi-chevron-right fs-4"></i>
