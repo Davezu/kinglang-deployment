@@ -7,7 +7,7 @@ class ClientAuthModel {
 
     public function __construct() {
         global $pdo;
-        $this->conn = $pdo  ;
+        $this->conn = $pdo;
     }
 
     public function emailExist($email) {
@@ -16,9 +16,9 @@ class ClientAuthModel {
         return $stmt->fetch() ? true : false;
     }
 
-    public function usernameExist($username) {
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
-        $stmt->execute([":username" => $username]);
+    public function usernameExist($contact_number) {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE contact_number = :contact_number");
+        $stmt->execute([":contact_number" => $contact_number]);
         return $stmt->fetch() ? true : false;
     }
 
@@ -28,13 +28,13 @@ class ClientAuthModel {
     //     return preg_match($pattern, $password);
     // }
 
-    public function signup($username, $email, $password) {
-        if ($this->usernameExist($username)) {
-            return "Username already exsits!";
+    public function signup($first_name, $last_name, $email, $contact_number, $password) {
+        if ($this->emailExist($email)) {
+            return "Email already exists.";
         }
 
-        if ($this->emailExist($email)) {
-            return "Email already exists!";
+        if ($this->usernameExist($contact_number)) {
+            return "Contact number already exsits.";
         }
 
         // if (!$this->isValidPassword($password)) {
@@ -42,44 +42,42 @@ class ClientAuthModel {
         // }   
 
         try {
-            $stmt = $this->conn->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
+            $stmt = $this->conn->prepare("INSERT INTO users (first_name, last_name, email, contact_number, password) VALUES (:first_name, :last_name, :email, :contact_number, :password)");
             $result = $stmt->execute([
-                ":username" => $username,
+                ":first_name" => $first_name,
+                ":last_name" => $last_name,
                 ":email" => $email,
+                ":contact_number" => $contact_number,
                 ":password" => $password
             ]);
-
-            if ($result) {
-                return "Signup successfully!";
-            }
-            return "Error signing up.";
+            
+            return "success";
         } catch (PDOException $e) {
             return "Database error.";
         }
     }
 
-    public function login($username, $password) {
+    public function login($email, $password) {
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
-            $stmt->execute([":username" => $username]);
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
+            $stmt->execute([":email" => $email]);
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$user) {
-                return "Username not found!";
+                return "Email not found.";
             }
 
             if ($user && password_verify($password, $user["password"])) {
-
-                $_SESSION["username"] = $user["username"];
                 $_SESSION["email"] = $user["email"];
                 $_SESSION["user_id"] = $user["user_id"];
+                $_SESSION["client_name"] = $user["first_name"] . " " . $user["last_name"];
                 
-                return "Login successfully!";
+                return "success";
             } 
-            return "Incorrect password!";
+            return "Incorrect password.";
         } catch (PDOException $e) {
-            return false;
+            return "Database error";
         }
     }
 
@@ -94,47 +92,31 @@ class ClientAuthModel {
     }
 
     public function getClientInformation() {
-        $client_id = $this->getClientID($_SESSION["user_id"]);
-
+        $user_id = $_SESSION["user_id"];
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM clients WHERE client_id = :client_id");
-            $stmt->execute([":client_id" => $client_id]);
+            $stmt = $this->conn->prepare("SELECT first_name, last_name, email, contact_number FROM users WHERE user_id = :user_id");
+            $stmt->execute([":user_id" => $user_id]);
 
             $client = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $stmt = $this->conn->prepare("SELECT * FROM users WHERE user_id = :user_id");
-            $stmt->execute([":user_id" => $_SESSION["user_id"]]);
-            
-            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            return ['user' => $user, 'client' => $client];
+            return $client;
         } catch (PDOException $e) {
             return "Database error: $e";
         }
     }
 
-    public function updateClientInformation($first_name, $last_name, $address, $contact_number, $company_name, $email_address, $username) {
-        $client_id = $this->getClientID($_SESSION["user_id"]);
-
+    public function updateClientInformation($first_name, $last_name, $contact_number, $email_address) {
         try {
-            $stmt = $this->conn->prepare("UPDATE clients SET first_name = :first_name, last_name = :last_name, address = :address, contact_number = :contact_number, company_name = :company_name WHERE client_id = :client_id");
+            $stmt = $this->conn->prepare("UPDATE users SET first_name = :first_name, last_name = :last_name, email = :email, contact_number = :contact_number WHERE user_id = :user_id");
             $stmt->execute([
                 ":first_name" => $first_name,
                 ":last_name" => $last_name,
-                ":address" => $address,
-                "contact_number" => $contact_number,
-                ":company_name" => $company_name,
-                ":client_id" => $client_id
-            ]);
-
-            $stmt = $this->conn->prepare("UPDATE users SET email = :email, username = :username WHERE user_id = :user_id");
-            $stmt->execute([
                 ":email" => $email_address,
-                ":username" => $username,
+                ":contact_number" => $contact_number,
                 ":user_id" => $_SESSION["user_id"]
             ]);
 
-            $_SESSION["username"] = $username;    
+            $_SESSION["client_name"] = $first_name . " " . $last_name;    
 
             return "success";
         } catch (PDOException $e) {

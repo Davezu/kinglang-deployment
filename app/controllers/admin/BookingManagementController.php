@@ -25,26 +25,6 @@ class BookingManagementController {
         }
     }
 
-    // public function orderBookings() {
-    //     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    //         $data = json_decode(file_get_contents("php://input"), true);
-    //         $column = $data["column"];
-    //         $order = $data["order"];
-        
-    //         $bookings = $this->bookingModel->orderBookings($column, $order);
-        
-    //         header("Content-Type: application/json");
-        
-    //         if (is_array($bookings)) {
-    //             echo json_encode(["success" => true, "bookings" => $bookings]);
-    //         } else {
-    //             echo json_encode(["success" => false, "message" => $bookings]);
-    //         }
-    //     }
-    // }
-
-
-
     public function showBookingTable() {
         require_once __DIR__ . "/../../views/admin/booking_management.php";
     }

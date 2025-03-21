@@ -1,32 +1,16 @@
-:root {
-    --primary-color:  #5db434;
-    --dark-primary-color: #017e04;
-    --secondary-color: #f6b416;
-}
-
-.bg-primary {
-    background-color: var(--primary-color);
-    color: white !important;
-}
-
-
-body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+* {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+/* header */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     height: 7vh;
-    padding: 0 30px;
-    width: 100%;
-    border-bottom: 1px solid gray;
-    background-color: white;
+}
+
+.header a {
+    text-decoration: none;
 }
 
 .header .logo {
@@ -38,44 +22,39 @@ body {
     width: 100%;
 }
 
-.header .navbar {
-    display: flex;
-    gap: 25px;
+.header a.btn {
+    width: 100px;   
 }
 
-.header .navbar a {
-    color: var(--dark-primary-color);
-}
 
-.header .buttons {
-    display: flex;
-    gap: 16px;
-}
-
-.header .buttons a {
-    border: 1px solid black;
-    padding: 6px;
-    border-radius: 6px;
-    width: 80px;
-    text-align: center;
-}
-
-.container {
-    width: 100%;
+/* content */
+.content {
     height: 93vh;
 }
 
-.images {
+.content .image-container {
     width: 60%;
-    height: 100%;
-    position: relative;
+    height: 100%;     
+    position: relative;  
 }
 
-.images img {
+.image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 15% 100%;
+}
+
+.form-container {
+    width: 40%;
+    height: 100%;
+}
+
+.form-container button {
+    background: #5db434;
+}
+
+.form-container button:hover {
+    background: #017e04;
 }
 
 .overlay {
@@ -83,91 +62,11 @@ body {
     inset: 0;
 }
 
-.overlay .content {
+.overlay .overlay-text {
     position: absolute;
-    font-size: 4rem;
+    color: #017e04;
+    font-size: 3.5rem;
     width: 90%;
-    font-weight: 600;
     bottom: 5%;
     left: 5%;
-    color: var(--dark-primary-color);
-}
-
-.log-in,
-.sign-up {
-    width: 40%;     
-    height: 100%;
-}
-
-.log-in form,
-.sign-up form {
-    width: 80%;
-    height: 100%;
-}
-
-form button {
-    border-radius: 25px;
-    padding: 16px;
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.log-in,
-.sign-up {
-    display: flex;
-}
-
-form a {
-    text-decoration: underline;
-}
-
-.message {
-    display: flex;
-    gap: 8px;
-    flex-direction: column;
-    margin-bottom: 12px;
-}
-
-.welcome {
-    font-size: 30px;
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-.sub-message {
-    font-size: 14px;
-    color: var(--secondary-color);
-}
-
-.input label,
-.input p {
-    color: gray;
-}
-
-.input label {
-    display: flex;
-    justify-content: space-between;
-}
-
-.login-button {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.button-message {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-}
-
-
-
-
-@media (min-width: 1440px) {
-    .log-in form,
-    .sign-up form {
-        width: 60%;
-    }
 }

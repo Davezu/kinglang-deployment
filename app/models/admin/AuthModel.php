@@ -9,24 +9,35 @@ class AuthModel {
         $this->conn = $pdo;
     }
 
-    public function login($username, $password) {
+    public function emailExists($email) {
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
-            $stmt->execute([":username" => $username]);
+            $stmt = $this->conn->prepare("SELECT email FROM users WHERE email = :email AND role = 'Super Admin'");
+            $stmt->execute([":email" => $email]);
+            return $stmt->fetch() ? true : false;
+        } catch (PDOException $e) {
+            return "Database error.";
+        }
+    }
+
+    public function login($email, $password) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email AND role = 'Super Admin'");
+            $stmt->execute([":email" => $email]);
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$user) {
-                return false;
+                return "Email not found.";
             }
 
             if ($user && password_verify($password, $user["password"])) {
                 $_SESSION["role"] = $user["role"];
-                $_SESSION["admin_username"] = $user["username"];
-                return true;
+                $_SESSION["admin_name"] = $user["first_name"] . " " . $user["last_name"];
+    
+                return "success";
             } 
-            
-            return false;
+
+            return "Incorrect password";
         } catch (PDOException $e) {
             return "Database error: $e";
         }

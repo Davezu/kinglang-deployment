@@ -14,7 +14,7 @@
         <div class="container-fluid p-4">
             <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
                 <div class="p-0">
-                    <h3>Welcome, <span class="text-capitalize text-success"><?= $_SESSION["username"]; ?></span></h3>
+                    <h3>Welcome, <span class="text-capitalize text-success"><?= $_SESSION["client_name"]; ?></span></h3>
                 </div>
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
@@ -26,26 +26,12 @@
                         <div class="row mb-3 g-3">
                             <div class="col">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" name="first_name" id="firstName" class="form-control" value="" required>
+                                <input type="text" name="" id="firstName" class="form-control" value="" required>
                             </div>
                             <div class="col">
-                                <label for="number_of_buses" class="form-label">Last Name</label>
-                                <input type="text" name="number_of_buses" id="lastName" class="form-control" required>
+                                <label for="" class="form-label">Last Name</label>
+                                <input type="text" name="" id="lastName" class="form-control" required>
                             </div>
-                        </div>
-                        <div class="row mb-3 g-3">
-                            <div class="col">
-                                <label for="firstName" class="form-label">Username</label>
-                                <input type="text" name="first_name" id="username" class="form-control" required>
-                            </div>
-                            <div class="col">
-                                <label for="number_of_buses" class="form-label">Company Name</label>
-                                <input type="text" name="number_of_buses" id="companyName" class="form-control">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="pickup_point" class="form-label">Address</label>
-                            <input type="text" name="pickup_point" id="address" class="form-control" required>
                         </div>
                         <div class="row mb-3 g-3">
                             <div class="col">
@@ -53,8 +39,8 @@
                                 <input type="text" name="number_of_days" id="email" class="form-control" required>
                             </div> 
                             <div class="col">
-                                <label for="number_of_buses" class="form-label">Phone Number</label>
-                                <input type="text" name="number_of_buses" id="contactNumber" class="form-control" required>
+                                <label for="" class="form-label">Phone Number</label>
+                                <input type="text" name="" id="contactNumber" class="form-control" required>
                             </div>
                         </div>
 
@@ -62,7 +48,7 @@
                             <div id="busSelection"></div>
                         </div>
 
-                        <div class="row mb-4">
+                        <div class="row mb-4">  
                             <div class="col">           
                                 <button type="submit" name="submit_booking" class="btn btn-success">Edit</button>
                             </div>

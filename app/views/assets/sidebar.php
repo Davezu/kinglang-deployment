@@ -196,7 +196,7 @@
                     <i class="bi bi-journals fs-5"></i>
                     <span class="menu-text">My Bookings</span>
                 </a>
-                <a href="/home/book/<?= $_SESSION["user_id"]; ?>" class="sidebar-link <?= basename($_SERVER['PHP_SELF']) == 'book' ? 'active' : '' ?>">
+                <a href="/home/book" class="sidebar-link <?= basename($_SERVER['PHP_SELF']) == 'book' ? 'active' : '' ?>">
                     <i class="bi bi-journal-plus fs-5"></i>
                     <span class="menu-text">Book a Trip</span>
                 </a>

@@ -65,10 +65,7 @@ switch ($request) {
     case "/home/book":
         $bookingController->bookingForm();
         break;
-    case (preg_match("#^/home/book/\d+$#", $request) ? true : false):
-        $user_id = intval($segments[2]);
-        $bookingController->isClientInfoExists($user_id);
-        break;
+        
     case "/request-booking":
         $bookingController->requestBooking();
         break;
@@ -91,13 +88,10 @@ switch ($request) {
         $adminBookingController->getAllBookings();
         $bookingController->updatePastBookings();
         break;
-    case "/admin/order-bookings":
-        $adminBookingController->orderBookings();
-        break;
     case "/admin/login":
         $adminAuthController->loginForm();
         break;
-    case "/admin/login/process":
+    case "/admin/submit-login":
         $adminAuthController->login();
         break;
     case "/admin/logout":

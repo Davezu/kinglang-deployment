@@ -177,9 +177,9 @@ function actionCell(booking) {
     reschedButton.textContent = "Resched";
     cancelButton.textContent = "Cancel";
 
-    if (booking.status === "pending" && booking.total_cost === null) {
+    if (booking.status === "Pending" && parseFloat(booking.total_cost) === 0) {
         btnGroup.append(reschedButton, cancelButton);
-    } else if (booking.totalCost !== null && booking.payment_status !== "paid" && booking.status !== "completed") {
+    } else if (booking.totalCost !== null && booking.payment_status !== "Paid" && booking.status !== "Completed") {
         btnGroup.append(payButton, reschedButton, cancelButton);
     } else {
         btnGroup.textContent = "No action needed";
@@ -236,99 +236,6 @@ function formatNumber(number) {
     }).format(number);
 };
 
-function createPayReschedCancelButton(td, booking) {    
-    const btnGroup = document.createElement("div");
-    const payButton = document.createElement("button");
-    const reschedButton = document.createElement("button");
-    const cancelButton = document.createElement("button");
-
-    btnGroup.classList.add("container", "btn-container", "d-flex", "gap-2");
-
-    payButton.classList.add("open-payment-modal");
-    payButton.classList.add("btn");
-    payButton.classList.add("btn-success");
-    payButton.classList.add("btn-sm");
-    payButton.classList.add("w-100");
-
-    reschedButton.classList.add("btn");
-    reschedButton.classList.add("btn-primary");
-    reschedButton.classList.add("w-100");
-    reschedButton.classList.add("btn-sm");
-
-    cancelButton.classList.add("btn");
-    cancelButton.classList.add("btn-danger");
-    cancelButton.classList.add("w-100");
-    cancelButton.classList.add("btn-sm");
-
-    payButton.setAttribute("data-booking-id", booking.booking_id);
-    payButton.setAttribute("data-total-cost", booking.total_cost);
-    payButton.setAttribute("data-client-id", booking.client_id);
-
-    payButton.setAttribute("data-bs-toggle", "modal");
-    payButton.setAttribute("data-bs-target", "#paymentModal");
-
-    reschedButton.setAttribute("data-booking-id", booking.booking_id);
-    reschedButton.setAttribute("data-client-id", booking.client_id);
-    reschedButton.setAttribute("data-days", booking.number_of_days);
-    reschedButton.setAttribute("data-buses", booking.number_of_buses);
-
-    reschedButton.setAttribute("data-bs-toggle", "modal");
-    reschedButton.setAttribute("data-bs-target", "#reschedModal");
-
-    payButton.textContent = "Pay";
-    reschedButton.textContent = "Resched";
-    cancelButton.textContent = "Cancel";
-
-    if (booking.status === "pending" && booking.total_cost === null) {
-        btnGroup.append(reschedButton, cancelButton);
-    } else if (booking.totalCost !== null && booking.payment_status !== "paid" && booking.status !== "completed") {
-        btnGroup.append(payButton, reschedButton, cancelButton);
-    } else {
-        btnGroup.textContent = "No action needed";
-    }
-
-    td.appendChild(btnGroup);
-
-    payButton.addEventListener("click", function () {
-        document.getElementById("amount").textContent = "";
-        const totalCost = this.getAttribute("data-total-cost");
-        const bookingID = this.getAttribute("data-booking-id");
-        const clientID = this.getAttribute("data-client-id");
-
-        console.log("total cost: ", totalCost);
-        console.log("booking id: ", bookingID);
-        console.log("client id: ", clientID);
-
-        document.getElementById("fullAmnt").style.display = "block";  
-        document.getElementById("downPayment").textContent = "Down Payment";
-        
-        if (parseFloat(booking.balance) < parseFloat(booking.total_cost)) {
-            document.getElementById("fullAmnt").style.display = "none";   
-            document.getElementById("downPayment").textContent = "Final Payment";
-        } else {
-            fullAmount.textContent = formatNumber(totalCost);
-        }
-        partialAmount.textContent = formatNumber(totalCost / 2);
-        bookingIDinput.value = bookingID;
-        clientIDinput.value = clientID;
-    });
-
-    reschedButton.addEventListener("click", function () {
-        document.getElementById("messageElement").textContent = "";
-        document.getElementById("date_of_tour").value = ""; 
-
-        const bookingId = this.getAttribute("data-booking-id");
-        const bookingClientId = this.getAttribute("data-client-id");
-        const days = this.getAttribute("data-days");
-        const buses = this.getAttribute("data-buses");
-
-        document.getElementById("reschedBookingId").value = bookingId;
-        document.getElementById("reschedClientId").value = bookingClientId;
-        document.getElementById("number_of_days").value = days;
-        document.getElementById("numberOfBuses").value = buses;
-    });
-}
-
 document.getElementById("reschedForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -358,64 +265,3 @@ document.getElementById("reschedForm").addEventListener("submit", async (e) => {
     }
 
 });
-
-
-
-
-// function createPayReschedCancelButton(td, booking) {    
-//     const buttons = {
-//         pay: createButton('Pay', 'success', 'open-payment-modal'),
-//         resched: createButton('Resched', 'primary'),
-//         cancel: createButton('Cancel', 'danger')
-//     };
-
-//     const btnGroup = document.createElement('div');
-//     btnGroup.className = 'container btn-container d-flex gap-2';
-
-//     // Set payment button attributes
-//     Object.entries({
-//         'booking-id': booking.booking_id,
-//         'total-cost': booking.total_cost,
-//         'client-id': booking.client_id,
-//         'bs-toggle': 'modal',
-//         'bs-target': '#paymentModal'
-//     }).forEach(([key, value]) => buttons.pay.dataset[key] = value);
-
-//     // Determine which buttons to show
-//     if (booking.status === 'pending' && booking.total_cost === null) {
-//         btnGroup.append(buttons.resched, buttons.cancel);
-//     } else if (booking.totalCost !== null && booking.payment_status !== 'paid' && booking.status !== 'completed') {
-//         btnGroup.append(buttons.pay, buttons.resched, buttons.cancel);
-//     } else {
-//         btnGroup.textContent = 'No action needed';
-//     }
-
-//     td.appendChild(btnGroup);
-
-//     // Payment button click handler
-//     buttons.pay.addEventListener('click', function() {
-//         const totalCost = this.dataset.totalCost;
-//         const bookingId = this.dataset.bookingId;
-//         const clientId = this.dataset.clientId;
-
-//         document.getElementById('amount').textContent = '';
-//         document.getElementById('fullAmnt').style.display = 
-//             parseFloat(booking.balance) < parseFloat(booking.total_cost) ? 'none' : 'block';
-//         document.getElementById('downPayment').textContent = 
-//             parseFloat(booking.balance) < parseFloat(booking.total_cost) ? 'Final Payment' : 'Down Payment';
-
-//         if (document.getElementById('fullAmnt').style.display === 'block') {
-//             fullAmount.textContent = formatNumber(totalCost);
-//         }
-//         partialAmount.textContent = formatNumber(totalCost / 2);
-//         bookingIDinput.value = bookingId;
-//         clientIDinput.value = clientId;
-//     });
-// }
-
-// function createButton(text, style, ...additionalClasses) {
-//     const button = document.createElement('button');
-//     button.className = `btn btn-${style} w-100 btn-sm ${additionalClasses.join(' ')}`.trim();
-//     button.textContent = text;
-//     return button;
-// }

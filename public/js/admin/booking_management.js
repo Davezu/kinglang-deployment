@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    const bookings = await getAllBookings("all", "asc", "booking_id");    
+    const bookings = await getAllBookings("All", "asc", "booking_id");    
     renderBookings(bookings);
 });
 
@@ -24,21 +24,6 @@ document.querySelectorAll(".sort").forEach(button => {
         renderBookings(bookings);
         
         this.setAttribute("data-order", order === "asc" ? "desc" : "asc");
-
-        // try {
-        //     const response = await fetch("/admin/order-bookings", {
-        //         method: "POST",
-        //         headers: { "Content-Type": "application/json" },
-        //         body: JSON.stringify({ column, order })
-        //     });
-
-        //     const data = await response.json();
-        //     renderBookings(data.bookings);
-
-        //     this.setAttribute("data-order", order === "asc" ? "desc" : "asc");
-        // } catch (error) {
-        //     console.error(error);
-        // }
     });
 });
 
@@ -126,6 +111,26 @@ async function renderBookings(bookings) {
         const numberOfBusesCell = document.createElement("td");
         const statusCell = document.createElement("td");
         const paymentStatusCell = document.createElement("td");
+
+        const paymentStatusBadge = document.createElement("span");
+        paymentStatusBadge.textContent = booking.payment_status;
+        if (booking.payment_status === "Paid") {
+            paymentStatusBadge.classList.add("badge", "bg-success-subtle", "text-success", "w-100", "p-2");
+        } else if (booking.payment_status === "Partially Paid") {
+            paymentStatusBadge.classList.add("badge", "bg-info-subtle", "text-info", "w-100", "p-2");
+        } else {
+            paymentStatusBadge.classList.add("badge", "bg-danger-subtle", "text-danger", "w-100", "p-2");
+        }
+        
+        const statusBadge = document.createElement("span");
+        statusBadge.textContent = booking.status;
+        if (booking.status === "Confirmed") {
+            statusBadge.classList.add("badge", "bg-success-subtle", "text-success", "w-100", "p-2");
+        } else if (booking.status === "Pending") {
+            statusBadge.classList.add("badge", "bg-info-subtle", "text-info", "w-100", "p-2");
+        } else {
+            statusBadge.classList.add("badge", "bg-danger-subtle", "text-danger", "w-100", "p-2");
+        }
         
         clientNameCell.textContent = booking.client_name;
         contactNumberCell.textContent = booking.contact_number;
@@ -135,8 +140,9 @@ async function renderBookings(bookings) {
         endOfTourCell.textContent = formatDate(booking.end_of_tour);
         numberOfDaysCell.textContent = booking.number_of_days;
         numberOfBusesCell.textContent = booking.number_of_buses;
-        statusCell.textContent = booking.status;
-        paymentStatusCell.textContent = booking.payment_status; 
+        
+        statusCell.appendChild(statusBadge);
+        paymentStatusCell.appendChild(paymentStatusBadge); 
 
         row.append(clientNameCell, contactNumberCell, destinationCell, pickupPointCell, dateOfTourCell, endOfTourCell, numberOfDaysCell, numberOfBusesCell, statusCell, paymentStatusCell, actionButton(booking));
         tbody.appendChild(row);
@@ -182,6 +188,7 @@ function actionButton(booking) {
     return actionCell;
 } 
 
+// sending quote
 document.getElementById("calculatorForm").addEventListener("submit", async function (event) {
     event.preventDefault(); 
 
@@ -204,7 +211,7 @@ document.getElementById("calculatorForm").addEventListener("submit", async funct
         document.getElementById("messageElement").textContent = data.success ? data.message : data.message;
         
         const status = document.getElementById("statusSelect").value;
-        const bookings = getAllBookings(status, "asc", "booking_id");
+        const bookings = await getAllBookings(status, "asc", "booking_id");
         renderBookings(bookings);
     } catch (error) {
         console.error(error);

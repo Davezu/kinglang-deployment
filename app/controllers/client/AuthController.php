@@ -22,75 +22,80 @@ class ClientAuthController {
     }
 
     public function signup() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["signup"])) {
-            $username = trim($_POST["username"]);
-            $email = trim($_POST["email"]);
-            $password = trim($_POST["new_password"]);
-            $confirm_password = trim($_POST["confirm_password"]);
-            
-            if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
-                $_SESSION["signup_message"] = "Please fill out all fields";
-                header("Location: /home/signup");
-                exit();
-            }
-        
-            if ($password !== $confirm_password) {
-                $_SESSION["signup_message"] = "Password did not match";
-                header("Location: /home/signup");
-                exit();
-            }
-           
-            $hashed_password = password_hash($confirm_password, PASSWORD_BCRYPT);
+        header("Content-Type: application/json");
 
-            $message = $this->authModel->signup($username, $email, $hashed_password);
+        $data = json_decode(file_get_contents("php://input"), true);
         
-            if ($message === "Signup successfully!") {
-                $_SESSION["signup_message"] = $message;
-                header("Location: /home/signup");
-                exit();
-            } else {
-                $_SESSION["signup_message"] = $message;
-                header("Location: /home/signup");
-                exit();
-            }
+        $first_name = trim($data["firstName"]);
+        $last_name = trim($data["lastName"]);
+        $email = trim($data["email"]);
+        $contact_number = trim($data["contactNumber"]);
+        $password = trim($data["password"]);
+        $confirm_password = trim($data["confirmPassword"]);
+        
+        if (empty($first_name) || empty($last_name) || empty($email) || empty($contact_number) || empty($password) || empty($confirm_password)) {
+            echo json_encode(["success" => false, "message" => "Please fill out all fields."]);
+            return;
         }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo json_encode(["success" => false, "message" => "Invalid email address."]);
+            return;
+         }
+    
+        if ($password !== $confirm_password) {
+            echo json_encode(["success" => false, "message" => "Password did not match."]);
+            return;
+        }
+        
+        $hashed_password = password_hash($confirm_password, PASSWORD_BCRYPT);
+
+        $message = $this->authModel->signup($first_name, $last_name, $email, $contact_number, $hashed_password);
+    
+        if ($message === "success") {
+            echo json_encode(["success" => true, "message" => "Sign up successfully."]);
+        } else {
+            echo json_encode(["success" => false, "message" => $message]);
+        }
+        
     }
 
     public function login() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["login"])) {
-            $username = trim($_POST["username"]);
-            $password = trim($_POST["password"]);
-            
-            if (empty($username) || empty($password)) {
-                header("Location: /home/login");
-                exit();
-            } 
-        
-            $message = $this->authModel->login($username, $password);
+        header("Content-Type: application/json");
 
-            if ($message === "Login successfully!") {
-                unset($_SESSION["entered_username"]);
-                unset($_SESSION["message"]);
-                header("Location: /home/booking-requests");
-                exit();
-            } else {
-                $_SESSION["entered_username"] = $username;
-                $_SESSION["message"] = $message;
-                header("Location: /home/login");
-                exit();
-            }
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        $email = trim($data["email"]);
+        $password = trim($data["password"]);
+
+        if (empty($email) || empty($password)) {
+            echo json_encode(["success" => false, "message" => "Please fill out required fields."]);
+            return;
+        } 
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {   
+           echo json_encode(["success" => false, "message" => "Invalid email address."]);
+           return;
+        }
+    
+        $result = $this->authModel->login($email, $password);
+
+        if ($result === "success") {
+            echo json_encode(["success" => true, "redirect" => "/home/booking-requests"]);
+        } else {
+            echo json_encode(["success" => false, "message" => $result]);
         }
     }
 
     public function getClientInformation() {
-        $info = $this->authModel->getClientInformation();
+        $client = $this->authModel->getClientInformation();
 
         header("Content-Type: application/json");
 
-        if (is_array($info)) {
-            echo json_encode(['success' => true, 'info' => $info]);
+        if (is_array($client)) {
+            echo json_encode(['success' => true, 'client' => $client]);
         } else {
-            echo json_encode(['success' => false, 'message' => $info]);
+            echo json_encode(['success' => false, 'message' => $client]);
         }
     }
 
@@ -101,12 +106,9 @@ class ClientAuthController {
             $first_name = $data["firstName"];
             $last_name = $data["lastName"];
             $contact_number = $data["contactNumber"];
-            $company_name = $data["companyName"];
-            $address = $data["address"];
             $email_address = $data["email"];
-            $username = $data["username"];
 
-            $result = $this->authModel->updateClientInformation($first_name, $last_name, $address, $contact_number, $company_name, $email_address, $username);
+            $result = $this->authModel->updateClientInformation($first_name, $last_name, $contact_number, $email_address);
 
             header("Content-Type: application/json");
 
@@ -121,7 +123,8 @@ class ClientAuthController {
     public function logout() {
         session_start();
         unset($_SESSION["user_id"]);
-        unset($_SESSION["username"]);
+        unset($_SESSION["email"]);
+        unset($_SESSION["client_name"]);
         header("Location: /home");
         exit();
     }

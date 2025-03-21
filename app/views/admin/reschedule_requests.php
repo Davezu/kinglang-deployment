@@ -16,7 +16,7 @@
             </div>
             <?php include_once __DIR__ . "/../assets/admin_navtab.php"; ?>
             <div class="input-group w-25 w-md-50 my-3">
-                <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Status</span>
+                <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Remarks</span>
                 <select name="status" id="statusSelect" class="form-select">
                     <option value="all">All</option>
                     <option value="pending">Pending</option>

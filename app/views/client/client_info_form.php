@@ -43,18 +43,14 @@
                                 <input type="text" name="last_name" class="form-control" required>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="new_password" class="form-label">Address</label>
-                            <input type="text" name="address" class="form-control" required>
-                        </div>
                         <div class="row mb-3 g-3">
+                            <div class="col">
+                                <label for="emailAddress" class="form-label">Email Address</label>
+                                <input type="number" name="email_address" class="form-control" required>   
+                            </div>
                             <div class="col">
                                 <label for="confirm_password" class="form-label">Contact Number</label>
                                 <input type="number" name="contact_number" class="form-control" required>   
-                            </div>
-                            <div class="col">
-                                <label for="confirm_password" class="form-label">Company Name</label>
-                                <input type="text" name="company_name" class="form-control">  
                             </div>
                         </div>
 

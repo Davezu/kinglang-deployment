@@ -1,9 +1,7 @@
 <?php
 require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php";
 
-// session_start();
-
-if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super admin") {
+if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
     header("Location: /admin/login");
     exit(); 
 }
@@ -74,14 +72,14 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "super admin") {
             </div>
             <?php include_once __DIR__ . "/../assets/admin_navtab.php"; ?>
             <div class="input-group w-25 w-md-50 my-3">
-                <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Status</span>
+                <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Remarks</span>
                 <select name="status" id="statusSelect" class="form-select">
-                    <option value="all">All</option>
-                    <option value="pending">Pending</option>
-                    <option value="confirmed">Confirmed</option>
-                    <option value="canceled">Canceled</option>
-                    <option value="rejected">Rejected</option>
-                    <option value="completed">Completed</option>
+                    <option value="All">All</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Canceled">Canceled</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Completed">Completed</option>
                 </select>
             </div>
             <div class="table-responsive-xl" >

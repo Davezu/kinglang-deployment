@@ -11,9 +11,9 @@ class BookingManagementModel {
 
     public function getAllBookings($status, $column, $order) {
 
-        $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "all"];
+        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
         $status = in_array($status, $allowed_status) ? $status : "";
-        $status == "all" ? $status = "" : $status = " WHERE b.status = '$status'";
+        $status == "All" ? $status = "" : $status = " WHERE b.status = '$status'";
 
         $allowed_columns = ["booking_id", "client_name", "contact_number", "destination", "pickup_point", "date_of_tour", "end_of_tour", "number_of_days", "number_of_buses", "status", "payment_status", "total_cost"];
         $column = in_array($column, $allowed_columns) ? $column : "client_name";
@@ -21,15 +21,15 @@ class BookingManagementModel {
 
         try {   
             $stmt = $this->conn->prepare("
-                SELECT b.booking_id, CONCAT(c.first_name, ' ', c.last_name) AS client_name, c.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, b.number_of_days, b.number_of_buses, b.status, b.total_cost, b.payment_status
+                SELECT b.booking_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, b.number_of_days, b.number_of_buses, b.status, b.total_cost, b.payment_status
                 FROM bookings b
-                JOIN clients c ON b.client_id = c.client_id
+                JOIN users u ON b.user_id = u.user_id
                 $status
                 ORDER BY $column $order 
             ");
             $stmt->execute();
             
-            return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }  catch (PDOException $e) {
             return "Database error: $e";
         }
@@ -59,9 +59,9 @@ class BookingManagementModel {
 
         try {
             $stmt = $this->conn->prepare("
-                SELECT r.request_id, r.booking_id, CONCAT(c.first_name, ' ', c.last_name) AS client_name, c.contact_number, r.new_date_of_tour, r.new_end_of_tour, r.status
+                SELECT r.request_id, r.booking_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, r.new_date_of_tour, r.new_end_of_tour, r.status
                 FROM reschedule_requests r
-                JOIN clients c ON r.client_id = c.client_id
+                JOIN users u ON r.user_id = u.user_id
                 $status
                 ORDER BY $column $order
             ");
