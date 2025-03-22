@@ -58,7 +58,7 @@ if (isset($_SESSION["user_id"])) {
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../../../public/js/jquery/jquery-3.6.4.min.js"></script>
     <script src="../../../public/js/client/login.js"></script>
 </body>
 </html>

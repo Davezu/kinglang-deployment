@@ -22,7 +22,7 @@
             <a href="/home" class="text-dark">Home</a>
             <a href="#" class="text-dark">About</a>
         </div>
-        <div class="buttons">
+        <div class="">
             <a href="/admin/login" class="btn btn-success btn-sm">Log In</a>
         </div>
     </div>
@@ -55,7 +55,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../../../public/js/jquery/jquery-3.6.4.min.js"></script>
     <script src="../../../public/js/admin/login.js"></script>
 </body>
 </html>
