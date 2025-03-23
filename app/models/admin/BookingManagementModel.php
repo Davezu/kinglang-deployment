@@ -90,5 +90,59 @@ class BookingManagementModel {
             return "Database error: $e";
         }
     }
+
+
+
+
+
+    public function summaryMetrics() {
+        try {
+            $stmt = $this->conn->prepare("SELECT COUNT(*) total_bookings FROM bookings");
+            $stmt->execute();
+            $total_bookings = $stmt->fetchColumn();
+
+            $stmt = $this->conn->prepare("SELECT SUM(amount) as total_revenue FROM payments");
+            $stmt->execute();
+            $total_revenue = $stmt->fetchColumn();
+
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as upcoming_trips FROM bookings WHERE status = 'Confirmed' AND date_of_tour > CURDATE()");
+            $stmt->execute();
+            $upcoming_trips = $stmt->fetchColumn();
+
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as pending_bookings FROM bookings WHERE status = 'Pending'");
+            $stmt->execute();
+            $pending_bookings = $stmt->fetchColumn();
+
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as flagged_bookings FROM bookings WHERE status = 'Confirmed' AND payment_status IN ('Unpaid', 'Partially Paid')");
+            $stmt->execute();
+            $flagged_bookings = $stmt->fetchColumn();
+
+            return ["total_bookings" => $total_bookings, "total_revenue" => $total_revenue, "upcoming_trips" => $upcoming_trips, "pending_bookings" => $pending_bookings, "flagged_bookings" => $flagged_bookings];
+
+        } catch(PDOException $e) {
+            return "Database error. $e";
+        }
+    }
+
+    function paymentMethodChart() {
+        try {
+            $stmt = $this->conn->prepare("SELECT COUNT(*) AS cash FROM payments WHERE payment_method = 'Cash'");
+            $stmt->execute();
+            $cash = $stmt->fetchColumn();
+            
+            $stmt = $this->conn->prepare("SELECT COUNT(*) AS bank_transfer FROM payments WHERE payment_method = 'Bank Transfer'");
+            $stmt->execute();
+            $bank_transfer = $stmt->fetchColumn();
+            
+            $stmt = $this->conn->prepare("SELECT COUNT(*) AS online FROM payments WHERE payment_method = 'Online'");
+            $stmt->execute();
+            $online = $stmt->fetchColumn();
+
+            return ["Cash" => $cash, "Bank" => $bank_transfer, "Online" => $online];
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
+    
 }
 ?>

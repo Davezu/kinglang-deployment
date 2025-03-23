@@ -13,7 +13,7 @@ class AuthController {
     }
 
     public function adminDashBoard() {
-        require_once __DIR__ . "/../../views/admin/booking_management.php"; // dashboard dapat to
+        require_once __DIR__ . "/../../views/admin/dashboard.php";
     }
 
     public function login() {
@@ -40,7 +40,7 @@ class AuthController {
         $message = $this->authModel->login($email, $password);
 
         if ($message === "success") {
-            echo json_encode(["success" => true, "redirect" => "/admin/booking-requests"]);
+            echo json_encode(["success" => true, "redirect" => "/admin/dashboard"]);
         } else {
             echo json_encode(["success" => false, "message" => $message]);
         }      

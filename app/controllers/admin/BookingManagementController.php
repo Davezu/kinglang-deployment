@@ -86,5 +86,22 @@ class BookingManagementController {
             }
         }   
     }
+
+
+    public function summaryMetrics() {
+        header("Content-Type: application/json");
+
+        $summary_metrics = $this->bookingModel->summaryMetrics();
+
+        echo json_encode($summary_metrics);
+    }
+
+    public function paymentMethodChart() {
+        header("Content-Type: application/json");
+
+        $payment_methods = $this->bookingModel->paymentMethodChart();
+
+        echo json_encode($payment_methods);
+    }
 }
 ?>

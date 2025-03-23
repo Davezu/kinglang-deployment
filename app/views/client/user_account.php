@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">
-    <title>Document</title>
+    <title>My Account</title>
 </head>
 <body>
     <?php include_once __DIR__ . "/../assets/sidebar.php"; ?>
 
     <div class="content collapsed" id="content">
 
-        <div class="container-fluid p-4">
+        <div class="container-fluid py-4 px-4 px-xl-5">
             <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
                 <div class="p-0">
                     <h3>Welcome, <span class="text-capitalize text-success"><?= $_SESSION["client_name"]; ?></span></h3>

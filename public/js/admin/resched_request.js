@@ -115,7 +115,7 @@ function actionButtons(request) {
     rejectButton.textContent = 'Reject';
 
 
-    if (request.status === 'confirmed') {   
+    if (request.status === 'Confirmed') {   
         buttonGroup.textContent = 'No action needed';
     } else {
         buttonGroup.append(confirmButton, rejectButton);

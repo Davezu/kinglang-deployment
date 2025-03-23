@@ -52,7 +52,7 @@ if (isset($_SESSION["user_id"])) {
                 </div>
                 <div class="login-button mb-3 d-flex gap-3 flex-column">
                     <button type="submit" name="login" class="btn btn-success w-100 text-white fw-bold rounded-pill p-2">Log In</button>
-                    <p>Need an account? <a href="signup.php" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Create one</a></p>
+                    <p>Need an account? <a href="/home/signup" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Create one</a></p>
                 </div>
             </form>
         </div>

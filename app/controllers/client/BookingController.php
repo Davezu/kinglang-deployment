@@ -157,7 +157,7 @@ class BookingController {
     public function addPayment() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $booking_id = $_POST["booking_id"];
-            $client_id = $_POST["client_id"];
+            $client_id = $_POST["user_id"];
             $amount = $_POST["amount"];
             $payment_method = $_POST["payment_method"];
         

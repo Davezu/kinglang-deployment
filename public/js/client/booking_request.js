@@ -48,7 +48,7 @@ const fullAmount = document.getElementById("fullAmount");
 const partialAmount = document.getElementById("partialAmount");
 
 const bookingIDinput = document.getElementById("bookingID");
-const clientIDinput = document.getElementById("clientID");
+const userIDinput = document.getElementById("userID");
 const amountInput = document.getElementById("amountInput");
 
 // getting the actual value of the selected formatted currency and place it in the hidden input to insert in database
@@ -208,7 +208,7 @@ function actionCell(booking) {
         }
         partialAmount.textContent = formatNumber(totalCost / 2);
         bookingIDinput.value = bookingID;
-        clientIDinput.value = clientID;
+        userIDinput.value = booking.user_id;
     });
 
     reschedButton.addEventListener("click", function () {

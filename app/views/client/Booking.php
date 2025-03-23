@@ -22,7 +22,7 @@ if (!isset($_SESSION["user_id"])) {
     <?php include_once __DIR__ . "/../assets/sidebar.php"; ?>
     
     <div class="content collapsed" id="content">
-        <div class="container-fluid p-4">
+        <div class="container-fluid py-4 px-4 px-xl-5">
             <div class="container-fluid d-flex justify-content-between align-items-center p-0 m-0">
                 <div class="p-0">
                     <h3>Book a Trip</h3>

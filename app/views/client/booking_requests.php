@@ -22,7 +22,7 @@ if (!isset($_SESSION["user_id"])) {
     <?php include_once __DIR__ . "/../assets/sidebar.php"; ?> 
     
     <div class="content collapsed" id="content">
-        <div class="container-fluid p-4">
+        <div class="container-fluid py-4 px-4 px-xl-5">
             <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
                 <div class="p-0">
                     <h3>My Bookings</h3>
@@ -88,7 +88,7 @@ if (!isset($_SESSION["user_id"])) {
                     </div>
 
                     <input type="hidden" name="booking_id" id="bookingID">
-                    <input type="hidden" name="client_id" id="clientID">
+                    <input type="hidden" name="user_id" id="userID">
                     <input type="hidden" name="amount" id="amountInput">
 
                     <div class="mt-3 total-amount">Amount: <span id="amount" class="text-success"></span></div>
@@ -98,7 +98,7 @@ if (!isset($_SESSION["user_id"])) {
                         <select name="payment_method" id="" class="form-select mt-2" aria-label="small select example">
                             <option value="Cash">Cash</option>
                             <option value="Bank Transfer">Bank Transfer</option>
-                            <option value="Online Payment">Online Payment</option>
+                            <option value="Online">Online Payment</option>
                         </select>
                     </div>
                 </div>

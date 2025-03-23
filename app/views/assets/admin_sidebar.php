@@ -6,7 +6,6 @@
     <title>Bootstrap Sidebar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../../public/icons/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/066bf74adc.js" crossorigin="anonymous"></script>
     <style>
         .sidebar {
@@ -172,13 +171,13 @@
                     <i class="bi bi-grid"></i>
                     <span class="menu-text">Dashboard</span>
                 </a>   
-                <a href="#" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'admin/clients' ? 'active' : ''; ?>">
-                    <i class="bi bi-people"></i>
-                    <span class="menu-text">Clients</span>
-                </a>
                 <a href="/admin/booking-requests" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'booking-requests' || basename($_SERVER["PHP_SELF"]) == 'resched-requests' ? 'active' : ''; ?>">
                     <i class="bi bi-journals fs-5"></i>
                     <span class="menu-text">Bookings</span>
+                </a>
+                <a href="#" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'admin/clients' ? 'active' : ''; ?>">
+                    <i class="bi bi-people"></i>
+                    <span class="menu-text">Clients</span>
                 </a>
                 <a href="#" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'booking' ? 'active' : ''; ?>">
                     <i class="bi bi-wallet2"></i>

@@ -16,7 +16,7 @@ class ClientAuthModel {
         return $stmt->fetch() ? true : false;
     }
 
-    public function usernameExist($contact_number) {
+    public function cnotactNumber($contact_number) {
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE contact_number = :contact_number");
         $stmt->execute([":contact_number" => $contact_number]);
         return $stmt->fetch() ? true : false;
@@ -33,7 +33,7 @@ class ClientAuthModel {
             return "Email already exists.";
         }
 
-        if ($this->usernameExist($contact_number)) {
+        if ($this->cnotactNumber($contact_number)) {
             return "Contact number already exsits.";
         }
 
@@ -59,7 +59,7 @@ class ClientAuthModel {
 
     public function login($email, $password) {
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email AND role = 'client'");
             $stmt->execute([":email" => $email]);
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);

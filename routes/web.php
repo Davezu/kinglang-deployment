@@ -98,9 +98,16 @@ switch ($request) {
         $adminAuthController->logout();
         break;
     case "/admin/dashboard":
-        // $adminAuthController->adminDashBoard(); 
-        $adminBookingController->showBookingTable(); // ito muna
+        $adminAuthController->adminDashBoard();
         break;
+    case "/admin/summary-metrics":
+        $adminBookingController->summaryMetrics();
+        break;
+    case "/admin/payment-method-data":
+        $adminBookingController->paymentMethodChart();
+        break;
+
+
     case "/admin/booking-requests":
         $adminBookingController->showBookingTable();
         break;

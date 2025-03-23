@@ -43,7 +43,7 @@ require_once __DIR__ . '/../../controllers/client/AuthController.php';
             <form action="" method="" id="signupForm" class="d-flex flex-column px-xl-5 mx-xl-5 px-md-3 mx-md-3 px-sm-1 mx-sm-1">
                 <div class="mb-3">
                     <p class="welcome h3 text-success">Create an account</p>
-                    <p class="sub-message text-warning">Already have an account? <a href="login.php" class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Log In</a></p>
+                    <p class="sub-message text-warning">Already have an account? <a href="/home/login" class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Log In</a></p>
                     <p class="sub-message message-text"></p>
                 </div>
                 <div class="row mb-3 g-3">
@@ -77,7 +77,7 @@ require_once __DIR__ . '/../../controllers/client/AuthController.php';
                     <p class="sub-message">By creating an account, you agree to our <a href="#" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Terms of Use</a> and <a href="#" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Privacy Policy</a></p>
                 </div>
                 <div class="button-message">
-                    <button type="submit" name="signup" class="btn btn-successs text-white w-100 rounded-pill">Create an account</button> 
+                    <button type="submit" name="signup" class="btn btn-success text-white w-100 rounded-pill">Create an account</button> 
                 </div>
             </form>  
         </div>
