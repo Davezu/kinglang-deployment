@@ -179,9 +179,12 @@ function actionCell(booking) {
 
     if (booking.status === "Pending" && parseFloat(booking.total_cost) === 0) {
         btnGroup.append(reschedButton, cancelButton);
-    } else if (booking.totalCost !== null && booking.payment_status !== "Paid" && booking.status !== "Completed") {
+    } else if (parseFloat(booking.totalCost) !== 0 && booking.payment_status !== "Paid" && booking.status !== "Completed") {
         btnGroup.append(payButton, reschedButton, cancelButton);
-    } else {
+    } else if (booking.payment_status === "Paid" && booking.status === "Confirmed") {
+        btnGroup.append(reschedButton, cancelButton);
+    }
+    else {
         btnGroup.textContent = "No action needed";
     }
 

@@ -15,6 +15,7 @@ if (!isset($_SESSION["user_id"])) {
     <link rel="stylesheet" href="../../../public/css/home.css">
     <link rel="stylesheet" href="../../../public/css/booking.css"> -->
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
+    <link rel="stylesheet" href="/../../../public/css/client/booking.css">  
     <title>Book a Trip</title>
 </head>
 <body>
@@ -33,17 +34,22 @@ if (!isset($_SESSION["user_id"])) {
                 <div class="col-md-6 col-lg-4 border rounded p-3">
                     <form action="" id="bookingForm" class="mt-4">
                         <input type="hidden" name="id" value="1">
+                        <div class="mb-3 position-relative">
+                            <label for="pickup_point" class="form-label">Pick-up point</label>
+                            <input type="text" name="pickup_point" id="pickup_point" class="form-control address" required>
+                            <ul id="pickupPointSuggestions" class="suggestions"></ul>
+                        </div>
+                        <div class="mb-3 position-relative">
+                            <div class="d-flex justify-content-between">
+                                <label for="destination" class="form-label">Destination</label>
+                                <p id="addStop" class="m-0">Add Stop</p>
+                            </div>
+                            <input type="text" name="destination" id="destination" class="form-control address" required>
+                            <ul id="destinationSuggestions" class="suggestions"></ul>
+                        </div>
                         <div class="mb-3">  
                             <label for="date_of_tour" class="form-label">Date of Tour</label>
                             <input type="date" name="date_of_tour" id="date_of_tour" class="form-control" palceholder="Date of Tour" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="destination" class="form-label">Destination</label>
-                            <input type="text" name="destination" id="destination" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="pickup_point" class="form-label">Pick-up point</label>
-                            <input type="text" name="pickup_point" id="pickup_point" class="form-control" required>
                         </div>
                         <div class="row mb-3 g-3">
                             <div class="col">
@@ -70,6 +76,7 @@ if (!isset($_SESSION["user_id"])) {
         </div>
     </div>
 
+    <script src="../../../public/js/jquery/jquery-3.6.4.min.js"></script>
     <script src="../../../public/js/client/booking.js"></script>
     <script src="../../../public/js/assets/sidebar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

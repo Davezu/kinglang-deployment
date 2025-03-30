@@ -19,10 +19,12 @@ $("#signupForm").submit(function (e) {
         data: JSON.stringify(formData),
         success: function (response) {
             if (response.success) {
-                $(".message-text").text(response.message);
+                $(".signup-text").text(response.message);
+                $(".signup-error-text").text("");
                 $("#signupForm")[0].reset();
             } else {
-                $(".message-text").text(response.message);
+                $(".signup-text").text("");
+                $(".signup-error-text").text(response.message);
             }
         },
         error: function (xhr, status, error) {

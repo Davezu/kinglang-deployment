@@ -44,7 +44,8 @@ require_once __DIR__ . '/../../controllers/client/AuthController.php';
                 <div class="mb-3">
                     <p class="welcome h3 text-success">Create an account</p>
                     <p class="sub-message text-warning">Already have an account? <a href="/home/login" class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Log In</a></p>
-                    <p class="sub-message message-text"></p>
+                    <p class="signup-text text-success"></p>
+                    <p class="signup-error-text text-danger"></p>
                 </div>
                 <div class="row mb-3 g-3">
                     <div class="col">

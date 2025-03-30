@@ -11,11 +11,11 @@ $('#loginForm').submit(function (e) {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(formData),
-        success: function (response) {  
+        success: function (response) {
             if (response.success) {
                 window.location.href = response.redirect;
             } else {
-                $(".sub-message").text(response.message);
+                $(".login-message").text(response.message);
             }
         },
         error: function (xhr, status, error) {

@@ -103,7 +103,7 @@ class BookingManagementModel {
 
             $stmt = $this->conn->prepare("SELECT SUM(amount) as total_revenue FROM payments");
             $stmt->execute();
-            $total_revenue = $stmt->fetchColumn();
+            $total_revenue = $stmt->fetchColumn() ?? 0;
 
             $stmt = $this->conn->prepare("SELECT COUNT(*) as upcoming_trips FROM bookings WHERE status = 'Confirmed' AND date_of_tour > CURDATE()");
             $stmt->execute();
@@ -140,7 +140,7 @@ class BookingManagementModel {
 
             return ["Cash" => $cash, "Bank" => $bank_transfer, "Online" => $online];
         } catch (PDOException $e) {
-            return "Database error: $e";
+            return "Database error: $e";    
         }
     }
     

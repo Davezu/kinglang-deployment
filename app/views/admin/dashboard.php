@@ -67,12 +67,12 @@
                 </div>  
             </div>
 
-            <div class="d-flex flex-column gap-2 mt-3">
+            <!-- <div class="d-flex flex-column gap-2 mt-3">
                 <div class="charts flex-grow-2 w-25 rounded p-4">
                     <h4 class="d-inline">Payment Methods</h4>
                     <canvas id="paymentMethodChart"></canvas>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     

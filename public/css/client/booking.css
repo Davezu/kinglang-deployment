@@ -1,0 +1,54 @@
+/* Styling the container */
+/* .autocomplete-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Styling the input field
+#autocomplete {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    outline: none;
+}  */
+
+/* Styling the dropdown list */
+.suggestions {
+    position: absolute;
+    width: 100%;
+    list-style: none;
+    background: white;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 5px;
+    padding: 0;
+    z-index: 999;
+}
+
+.suggestions::-webkit-scrollbar {
+    width: 8px;
+}
+
+.suggestions::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+}
+
+.suggestions li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestions li:hover {
+    background: #007bff;
+    color: white;
+}

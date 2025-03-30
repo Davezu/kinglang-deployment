@@ -22,11 +22,11 @@ class ClientAuthModel {
         return $stmt->fetch() ? true : false;
     }
 
-    // function isValidPassword($password) {
-    //     $pattern = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
+    function isValidPassword($password) {
+        $pattern = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
     
-    //     return preg_match($pattern, $password);
-    // }
+        return preg_match($pattern, $password);
+    }
 
     public function signup($first_name, $last_name, $email, $contact_number, $password) {
         if ($this->emailExist($email)) {
@@ -37,9 +37,9 @@ class ClientAuthModel {
             return "Contact number already exsits.";
         }
 
-        // if (!$this->isValidPassword($password)) {
-        //     return "Invalid password.";
-        // }   
+        if (!$this->isValidPassword($password)) {
+            return "Invalid password.";
+        }   
 
         try {
             $stmt = $this->conn->prepare("INSERT INTO users (first_name, last_name, email, contact_number, password) VALUES (:first_name, :last_name, :email, :contact_number, :password)");

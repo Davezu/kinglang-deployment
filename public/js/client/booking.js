@@ -45,7 +45,7 @@ document.getElementById("date_of_tour").min = minDate;
 
 // submit booking 
 document.getElementById("bookingForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
+    e.preventDefault(); 
 
     console.log("test");
 
@@ -55,7 +55,7 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     // console.log("selected buses: ", selectedBuses.length);
     // console.log("number of buses: ", numberOfBuses);
 
-    // if (parseInt(numberOfBuses) !== selectedBuses.length) return;i
+    // if (parseInt(numberOfBuses) !== selectedBuses.length) return;
     
     const formData = {
         dateOfTour: document.getElementById("date_of_tour")?.value,
@@ -85,4 +85,77 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     } catch (error) {
         console.error("Error fetching data: ", error.message);
     }
+});
+
+document.querySelectorAll(".address").forEach(input => {
+    input.addEventListener("input", function (e) {
+        const suggestionList = e.target.nextElementSibling;
+        const input = this.value;
+        const inputElement = this;
+    
+        getAddress(input, suggestionList, inputElement);
+    });     
+});
+
+async function getAddress(input, suggestionList, inputElement) {
+
+    if (input.length < 3) {
+        return;
+    }
+
+    try {
+        const response = await fetch("/get-address", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ address: input })
+        });
+
+        const data = await response.json();
+
+        if (!data.predictions) {
+            console.log(data);
+            return;
+        }
+
+        suggestionList.innerHTML = "";
+        data.predictions.forEach(place => {
+            const list = document.createElement("li");
+            list.textContent = place.description;
+
+            list.addEventListener("click", function () {
+                inputElement.value = place.description;
+                suggestionList.innerHTML = "";
+                suggestionList.style.border = "none";
+            });
+
+            document.addEventListener("click", function (e) {
+                if (e.target !== list) {
+                    suggestionList.innerHTML = "";
+                    suggestionList.style.border = "none";
+                }
+            });
+
+            suggestionList.style.border = "1px solid #ccc"; 
+            suggestionList.appendChild(list);
+        })
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+document.getElementById("addStop").addEventListener("click", () => {
+    const form = document.getElementById("bookingForm");
+    const div = document.createElement("div");
+    const input = document.createElement("input");
+    const ul = document.createElement("ul");
+
+    div.classList.add("mb-3", "position-relative");
+    input.id = "destination";
+    input.classList.add("form-control", "address");
+    ul.classList.add("suggesstions");
+
+    const referenceElement = form.children[3];
+
+    div.append(input, ul);
+    form.insertBefore(div, referenceElement);
 });

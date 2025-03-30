@@ -9,6 +9,15 @@ class Booking {
         $this->conn = $pdo;
     }
 
+    public function getTotalCost($destination, $pickup_point, $number_of_buses, $number_of_days) {
+        
+    }
+
+    public function getDistance($destination, $pickup_point) {
+        
+    }
+
+
     public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id) {
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
 

@@ -40,6 +40,7 @@ if (isset($_SESSION["user_id"])) {
                 <div class="mb-3">
                     <p class="welcome h3 text-success">Welcome Back!</p>
                     <p class="sub-message text-warning">Please login to continue to your account.</p>
+                    <p class="login-message text-danger"></p>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label text-secondary">Email</label>

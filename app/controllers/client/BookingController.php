@@ -12,6 +12,35 @@ class BookingController {
         require_once __DIR__ . "/../../views/client/booking.php";
     }
 
+    public function getAddress() {
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json");
+
+        $apiKey = "AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs";
+
+        $input = json_decode(file_get_contents("php://input"), true);
+
+        if (empty($input["address"])) {
+            echo json_encode(["error" => "Input is required"]);
+            return;
+        }
+
+        $address = $input["address"];
+        $country = "PH"; // Philippines
+
+        // Define a bounding box that covers Luzon (Southwest to Northeast)
+        $sw_lat = "12.0";  // Southwest latitude (near Mindoro)
+        $sw_lng = "119.0"; // Southwest longitude
+        $ne_lat = "19.0";  // Northeast latitude (near Batanes)
+        $ne_lng = "123.0"; // Northeast longitude (Cagayan Valley)
+
+        $url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$address&key=$apiKey&types=address&components=country:$country&locationbias=rectangle:$sw_lat,$sw_lng|$ne_lat,$ne_lng";
+
+        // Fetch data from Google API
+        $response = file_get_contents($url);
+        echo $response;
+    }
+
     public function requestBooking() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = json_decode(file_get_contents("php://input"), true);

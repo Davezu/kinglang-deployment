@@ -49,12 +49,12 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
                     <input type="hidden" name="total_cost" id="totalCost">
                     <input type="hidden" name="booking_id" id="bookingID">
 
-                    <p class="form-text">Total Cost: <span id="totalCostDisplay" class="text-success"></span></p>
+                    <p class="form-text fs-5">Total Cost: <span id="totalCostDisplay" class="text-success"></span></p>
                 </div>
 
                 <div class="modal-footer">
                     <div class="container-fluid d-flex justify-content-between">
-                        <button type="submit" id="confirm" class="btn btn-outline-success btn-sm">Send Quote</button>
+                        <button type="submit" id="confirm" class="btn btn-outline-success btn-sm w-50">Send Quote</button>
                         <p id="messageElement"></p>
                     </div>
                 </div>

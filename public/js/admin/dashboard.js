@@ -53,7 +53,7 @@ async function renderPaymentMethodChart() {
     const ctx = $("#paymentMethodChart")[0].getContext("2d");
 
     const paymentMethodChart = new Chart(ctx, {
-        type: "doughnut",
+        type: "line",
         data: {
             labels: paymentMethod,
             datasets: [{
