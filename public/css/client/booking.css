@@ -52,3 +52,21 @@
     background: #007bff;
     color: white;
 }
+
+.remove-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999;
+    font-size: 18px;
+    visibility: hidden;
+}
+
+.position-relative:hover .remove-button {
+    visibility: visible;
+}
+
+#addStop, .remove-button {
+    cursor: pointer;
+}

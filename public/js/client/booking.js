@@ -99,9 +99,6 @@ document.querySelectorAll(".address").forEach(input => {
 
 async function getAddress(input, suggestionList, inputElement) {
 
-    if (input.length < 3) {
-        return;
-    }
 
     try {
         const response = await fetch("/get-address", {
@@ -112,12 +109,17 @@ async function getAddress(input, suggestionList, inputElement) {
 
         const data = await response.json();
 
-        if (!data.predictions) {
+        console.log(data);
+
+        suggestionList.innerHTML = "";
+        if (data.predictions.length === 0) {
             console.log(data);
+            const list = document.createElement("li");
+            list.textContent = "No places found.";
+            suggestionList.appendChild(list);
             return;
         }
 
-        suggestionList.innerHTML = "";
         data.predictions.forEach(place => {
             const list = document.createElement("li");
             list.textContent = place.description;
@@ -143,6 +145,8 @@ async function getAddress(input, suggestionList, inputElement) {
     }
 };
 
+
+let position = 3;
 document.getElementById("addStop").addEventListener("click", () => {
     const form = document.getElementById("bookingForm");
     const div = document.createElement("div");
@@ -151,11 +155,35 @@ document.getElementById("addStop").addEventListener("click", () => {
 
     div.classList.add("mb-3", "position-relative");
     input.id = "destination";
-    input.classList.add("form-control", "address");
-    ul.classList.add("suggesstions");
+    input.classList.add("form-control", "address", "added-stop", "position-relative");
+    ul.classList.add("suggestions");
 
-    const referenceElement = form.children[3];
+    input.addEventListener("input", function (e) {
+        const suggestionList = e.target.nextElementSibling;
+        const input = this.value;
+        const inputElement = this;
+    
+        getAddress(input, suggestionList, inputElement);    
+    });
+
+    const removeButton = document.createElement("span");
+    removeButton.classList.add("remove-button");
+    removeButton.textContent = "\u00d7";
+
+    removeButton.addEventListener("click", function () {
+        div.remove();
+        position--;
+    });
+    
+    div.appendChild(removeButton);
+
+    const referenceElement = form.children[position];
+    position++;
 
     div.append(input, ul);
     form.insertBefore(div, referenceElement);
 });
+
+function removeInput(divElement) {
+    divElement.remove();
+}
