@@ -16,6 +16,16 @@
 }  */
 
 /* Styling the dropdown list */
+input {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#map {
+    height: 50vh;
+}
+
 .suggestions {
     position: absolute;
     width: 100%;

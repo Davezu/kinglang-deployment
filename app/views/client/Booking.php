@@ -30,47 +30,48 @@ if (!isset($_SESSION["user_id"])) {
                 </div>
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
-            <div class="container-fluid d-flex justify-content-center align-items-center mt-4">
-                <div class="col-md-6 col-lg-4 border rounded p-3">
-                    <form action="" id="bookingForm" class="mt-4">
-                        <input type="hidden" name="id" value="1">
-                        <div class="mb-3 position-relative">
-                            <label for="pickup_point" class="form-label">Pick-up point</label>
-                            <input type="text" name="pickup_point" id="pickup_point" class="form-control address" required>
-                            <ul id="pickupPointSuggestions" class="suggestions"></ul>
+            <div class="container-fluid d-flex justify-content-center align-items-center mt-4 gap-5">
+                <form action="" id="bookingForm" class="mt-4 border rounded p-3">
+                    <input type="hidden" name="id" value="1">
+                    <div class="mb-3 position-relative">
+                        <label for="pickup_point" class="form-label">Pick-up point</label>
+                        <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address" >
+                        <ul id="pickupPointSuggestions" class="suggestions"></ul>
+                    </div>
+                    <div class="mb-3 position-relative">
+                        <div class="d-flex justify-content-between">
+                            <label for="destination" class="form-label">Destination</label>
+                            <p id="addStop" class="m-0">Add Stop</p>
                         </div>
-                        <div class="mb-3 position-relative">
-                            <div class="d-flex justify-content-between">
-                                <label for="destination" class="form-label">Destination</label>
-                                <p id="addStop" class="m-0">Add Stop</p>
-                            </div>
-                            <input type="text" name="destination" id="destination" class="form-control address" required>
-                            <ul id="destinationSuggestions" class="suggestions"></ul>
+                        <input type="text" name="destination" id="destination" class="form-control text-truncate address destination" >
+                        <ul id="destinationSuggestions" class="suggestions"></ul>
+                    </div>
+                    <div class="mb-3">  
+                        <label for="date_of_tour" class="form-label">Date of Tour</label>
+                        <input type="date" name="date_of_tour" id="date_of_tour" class="form-control" palceholder="Date of Tour" >
+                    </div>
+                    <div class="row mb-3 g-3">
+                        <div class="col">
+                            <label for="number_of_days" class="form-label">Number of days</label>
+                            <input type="number" name="number_of_days" id="number_of_days" class="form-control" >
                         </div>
-                        <div class="mb-3">  
-                            <label for="date_of_tour" class="form-label">Date of Tour</label>
-                            <input type="date" name="date_of_tour" id="date_of_tour" class="form-control" palceholder="Date of Tour" required>
+                        <div class="col">
+                            <label for="number_of_buses" class="form-label">Number of buses</label>
+                            <input type="number" name="number_of_buses" id="number_of_buses" class="form-control" >
                         </div>
-                        <div class="row mb-3 g-3">
-                            <div class="col">
-                                <label for="number_of_days" class="form-label">Number of days</label>
-                                <input type="number" name="number_of_days" id="number_of_days" class="form-control" required>
-                            </div>
-                            <div class="col">
-                                <label for="number_of_buses" class="form-label">Number of buses</label>
-                                <input type="number" name="number_of_buses" id="number_of_buses" class="form-control" required>
-                            </div>
-                        </div>
+                    </div>
 
-                        <div class="mb-4">
-                            <div id="busSelection"></div>
-                        </div>
+                    <div class="mb-4">
+                        <div id="busSelection"></div>
+                    </div>
 
-                        <div class="container-fluid d-flex justify-content-between align-items-center mb-4 gap">
-                            <button type="submit" name="submit_booking" class="btn btn-primary">Book Now</button>
-                            <p class="booking-message" style="color: green"></p>
-                        </div>
-                    </form>
+                    <div class="container-fluid d-flex justify-content-between align-items-center mb-4 gap">
+                        <button type="submit" name="submit_booking" class="btn btn-primary">Book Now</button>
+                        <p class="booking-message" style="color: green"></p>
+                    </div>
+                </form>
+                <div class="border rounded w-50" id="map">
+                    I'm the map
                 </div>
             </div>
         </div>

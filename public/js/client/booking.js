@@ -57,34 +57,53 @@ document.getElementById("bookingForm").addEventListener("submit", async function
 
     // if (parseInt(numberOfBuses) !== selectedBuses.length) return;
     
-    const formData = {
-        dateOfTour: document.getElementById("date_of_tour")?.value,
-        destination: document.getElementById("destination")?.value,
-        pickupPoint: document.getElementById("pickup_point")?.value,
-        numberOfBuses: document.getElementById("number_of_buses")?.value,
-        numberOfDays: document.getElementById("number_of_days")?.value
-        // busIds: selectedBuses
-    }
+    // const formData = {
+    //     dateOfTour: document.getElementById("date_of_tour")?.value,
+    //     destination: document.getElementById("destination")?.value,
+    //     pickupPoint: document.getElementById("pickup_point")?.value,
+    //     numberOfBuses: document.getElementById("number_of_buses")?.value,
+    //     numberOfDays: document.getElementById("number_of_days")?.value
+    //     // busIds: selectedBuses
+    // }
 
-    try {
-        const response = await fetch("/request-booking", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
-        });
+    // try {
+    //     const response = await fetch("/request-booking", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify(formData)
+    //     });
 
-        const data = await response.json();
+    //     const data = await response.json();
 
-        if (data.success) {
-            document.querySelector(".booking-message").textContent = data.message;
-            this.reset();
-            document.getElementById("busSelection").innerHTML = "";
-        } else {
-            document.querySelector(".booking-message").textContent = data.message;
+    //     if (data.success) {
+    //         document.querySelector(".booking-message").textContent = data.message;
+    //         this.reset();
+    //         document.getElementById("busSelection").innerHTML = "";
+    //     } else {
+    //         document.querySelector(".booking-message").textContent = data.message;
+    //     }
+    // } catch (error) {
+    //     console.error("Error fetching data: ", error.message);
+    // }
+
+    let origin;
+    let distance = [];
+
+    const processDistance = async () => {
+        const inputs = document.querySelectorAll(".address");
+        
+        for (let i = 0; i < inputs.length; i++) {
+            if (i > 0) {
+                let dist = await getDistance(origin, inputs[i].value);
+                distance.push(parseFloat(dist));
+            }   
+            origin = inputs[i].value;
         }
-    } catch (error) {
-        console.error("Error fetching data: ", error.message);
-    }
+
+    };
+    processDistance();
+    
+    console.log(distance);
 });
 
 document.querySelectorAll(".address").forEach(input => {
@@ -98,8 +117,6 @@ document.querySelectorAll(".address").forEach(input => {
 });
 
 async function getAddress(input, suggestionList, inputElement) {
-
-
     try {
         const response = await fetch("/get-address", {
             method: "POST",
@@ -108,8 +125,6 @@ async function getAddress(input, suggestionList, inputElement) {
         });
 
         const data = await response.json();
-
-        console.log(data);
 
         suggestionList.innerHTML = "";
         if (data.predictions.length === 0) {
@@ -145,7 +160,90 @@ async function getAddress(input, suggestionList, inputElement) {
     }
 };
 
+async function getDistance(origin, destination) {
+    try {
+        const response = await fetch("/get-distance", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ origin, destination })
+        });
 
+        const data = await response.json();
+        console.log(data);
+
+        if (data.status === "OK") {
+            const distance = data.rows[0].elements[0].distance.value;
+            const duration = data.rows[0].elements[0].duration.text;
+            console.log(`Distance: ${distance}, Duration: ${duration}`);
+            return parseFloat(distance);
+        } else {
+            console.log(data);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function getTotalCost() {
+
+}
+
+function plotRoute() {
+    const pickup = document.getElementById("pickup_point").value;
+    const destination = document.getElementById("destination").value;
+    const stopInputs = document.querySelectorAll(".added-stop");
+
+    if (!pickup || !destination) {
+        alert("Please enter pickup and destination.");
+        return;
+    }
+
+    let waypoints = [];
+    stopInputs.forEach(input => {
+        if (input.value.trim() !== "") {
+            waypoints.push(input.value.trim());
+        }
+    });
+
+    const requestData = {
+        pickup: pickup,
+        waypoints: waypoints,
+        destination: destination
+    };
+
+    fetch("backend.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "OK") {
+            alert(`Total Distance: ${data.total_distance}\nTotal Duration: ${data.total_duration}`);
+            drawRoute(data.polyline);
+        } else {
+            alert("Error: " + data.message);
+        }
+    })
+    .catch(error => console.error("Error:", error));
+}
+
+function drawRoute(encodedPolyline) {
+    const decodedPath = google.maps.geometry.encoding.decodePath(encodedPolyline);
+    const routeLine = new google.maps.Polyline({
+        path: decodedPath,
+        geodesic: true,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1.0,
+        strokeWeight: 4
+    });
+
+    routeLine.setMap(map);
+}
+
+
+
+// add stop
 let position = 3;
 document.getElementById("addStop").addEventListener("click", () => {
     const form = document.getElementById("bookingForm");
@@ -155,7 +253,7 @@ document.getElementById("addStop").addEventListener("click", () => {
 
     div.classList.add("mb-3", "position-relative");
     input.id = "destination";
-    input.classList.add("form-control", "address", "added-stop", "position-relative");
+    input.classList.add("form-control", "address", "added-stop", "position-relative", "pe-4", "destination");
     ul.classList.add("suggestions");
 
     input.addEventListener("input", function (e) {

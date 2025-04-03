@@ -25,7 +25,7 @@ class BookingController {
             return;
         }
 
-        $address = $input["address"];
+        $address = urlencode($input["address"]);
         $country = "PH"; // Philippines
 
         // Define a bounding box that covers Luzon (Southwest to Northeast)
@@ -34,9 +34,31 @@ class BookingController {
         $ne_lat = "19.0";  // Northeast latitude (near Batanes)
         $ne_lng = "123.0"; // Northeast longitude (Cagayan Valley)
 
-        $url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$address&key=$apiKey&types=address&components=country:$country&locationbias=rectangle:$sw_lat,$sw_lng|$ne_lat,$ne_lng";
+        $url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$address&key=$apiKey&types=address&components=country:$country";
 
         // Fetch data from Google API
+        $response = file_get_contents($url);
+        echo $response;
+    }
+
+    public function getDistance() {
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json");
+
+        $apiKey = "AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs";
+
+        $input = json_decode(file_get_contents("php://input"), true);
+
+        if (empty($input["origin"] || empty($input["destination"]))) {
+            echo json_encode(["error" => "Input is required"]);
+            return;
+        }
+
+        $origin = urlencode($input["origin"]);
+        $destination = urlencode($input["destination"]);
+
+        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=$origin&destinations=$destination&key=$apiKey";
+
         $response = file_get_contents($url);
         echo $response;
     }

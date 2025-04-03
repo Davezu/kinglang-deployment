@@ -69,7 +69,11 @@ switch ($request) {
 
     case "/get-address":
         $bookingController->getAddress();
-        break;    
+        break;   
+    case "/get-distance":
+        $bookingController->getDistance();
+        break;
+        
     case "/request-booking":
         $bookingController->requestBooking();
         break;
