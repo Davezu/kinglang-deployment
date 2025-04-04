@@ -2,7 +2,8 @@ const today = new Date();
 
 today.setDate(today.getDate() + 3);
 const minDate = today.toISOString().split("T")[0];
-document.getElementById("date_of_tour").min = minDate;      
+document.getElementById("date_of_tour").min = minDate;    
+document.addEventListener("DOMContentLoaded", initMap);
 
 
 // find available buses
@@ -102,6 +103,7 @@ document.getElementById("bookingForm").addEventListener("submit", async function
 
     };
     processDistance();
+    calculateRoute();
     
     console.log(distance);
 });
@@ -188,57 +190,68 @@ async function getTotalCost() {
 
 }
 
-function plotRoute() {
-    const pickup = document.getElementById("pickup_point").value;
-    const destination = document.getElementById("destination").value;
-    const stopInputs = document.querySelectorAll(".added-stop");
+let map, directionsService, directionsRenderer;
+let stops = [];
 
-    if (!pickup || !destination) {
-        alert("Please enter pickup and destination.");
+function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 14.5995, lng: 120.9842 },
+        zoom: 10,
+    });
+    
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+}
+
+async function calculateRoute() {
+    pickupPoint = document.getElementById("pickup_point").value;
+    destination = document.getElementById("destination").value;
+    stops = Array.from(document.querySelectorAll(".added-stop")).map(stop => stop.value).filter(stop => stop.trim() !== "");
+
+    if (!pickupPoint || !destination) {
+        alert("Please enter both pickup point and destination.");
         return;
     }
 
-    let waypoints = [];
-    stopInputs.forEach(input => {
-        if (input.value.trim() !== "") {
-            waypoints.push(input.value.trim());
+    console.log("stops: ", stops);
+
+    try {
+        const response = await fetch("/get-route", {
+            method: "POST", 
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ pickupPoint, destination, stops })
+        });
+    
+        const data = await response.json();
+        if (data.error) {
+            console.error(data.error);
+            return;
         }
-    });
 
-    const requestData = {
-        pickup: pickup,
-        waypoints: waypoints,
-        destination: destination
-    };
+        const waypoints = data.stops.map(stop => ({ location: stop, stopover: true }));
+        const request = {
+            origin: pickupPoint,
+            destination: destination,
+            waypoints: waypoints,
+            travelMode: google.maps.TravelMode.DRIVING,
+        };
+    
+        directionsService.route(request, (result, status) => {
+            if (status === google.maps.DirectionsStatus.OK) {
+                directionsRenderer.setDirections(result);
+            }
+            else {
+                console.error("Directions request failed due to " + status);
+            }
+        });
+    } catch (error) {
+        console.error("Error fetching route: ", error.message);
+        return;
+    }   
 
-    fetch("backend.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === "OK") {
-            alert(`Total Distance: ${data.total_distance}\nTotal Duration: ${data.total_duration}`);
-            drawRoute(data.polyline);
-        } else {
-            alert("Error: " + data.message);
-        }
-    })
-    .catch(error => console.error("Error:", error));
-}
+   
 
-function drawRoute(encodedPolyline) {
-    const decodedPath = google.maps.geometry.encoding.decodePath(encodedPolyline);
-    const routeLine = new google.maps.Polyline({
-        path: decodedPath,
-        geodesic: true,
-        strokeColor: "#FF0000",
-        strokeOpacity: 1.0,
-        strokeWeight: 4
-    });
-
-    routeLine.setMap(map);
 }
 
 

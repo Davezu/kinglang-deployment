@@ -28,12 +28,6 @@ class BookingController {
         $address = urlencode($input["address"]);
         $country = "PH"; // Philippines
 
-        // Define a bounding box that covers Luzon (Southwest to Northeast)
-        $sw_lat = "12.0";  // Southwest latitude (near Mindoro)
-        $sw_lng = "119.0"; // Southwest longitude
-        $ne_lat = "19.0";  // Northeast latitude (near Batanes)
-        $ne_lng = "123.0"; // Northeast longitude (Cagayan Valley)
-
         $url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$address&key=$apiKey&types=address&components=country:$country";
 
         // Fetch data from Google API
@@ -63,6 +57,58 @@ class BookingController {
         echo $response;
     }
 
+    public function getCoordinates($address, $apiKey) {
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json");
+
+        $address = urlencode($address);
+        $geoUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=$address&key=$apiKey";
+
+        $geoResponse = file_get_contents($geoUrl);
+        $geoData = json_decode($geoResponse, true);
+
+        if ($geoData["status"] === "OK") {
+            $latitude = $geoData["results"][0]["geometry"]["location"]["lat"];
+            $longitude = $geoData["results"][0]["geometry"]["location"]["lng"];
+            return ["lat" => $latitude, "lng" => $longitude];
+        } 
+        return null;
+    }
+
+    public function processCoordinates() {
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json");
+
+        $apiKey = "AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs";
+
+        $input = json_decode(file_get_contents("php://input"), true);
+
+        if (empty($input["pickupPoint"]) || empty($input["destination"])) {
+            echo json_encode(["error" => "Input is required"]);
+            return;
+        }
+
+        $pickup_point = $this->getCoordinates($input["pickupPoint"], $apiKey);
+        $destination = $this->getCoordinates($input["destination"], $apiKey);
+
+        $stops = [];
+
+        if (!empty($input["stops"])) {
+            foreach ($input["stops"] as $stop) {
+                $coordinates = $this->getCoordinates($stop, $apiKey);
+                if ($coordinates) {
+                    $stops[] = $coordinates;
+                }
+            }
+        }
+
+        if ($pickup_point && $destination) {
+            echo json_encode(["pickup_point" => $pickup_point, "destination" => $destination, "stops" => $stops]);
+        } else {
+            echo json_encode(["error" => "Unable to get coordinates"]);
+        }
+    }
+
     public function requestBooking() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = json_decode(file_get_contents("php://input"), true);
@@ -83,6 +129,10 @@ class BookingController {
                 echo json_encode(["success" => false, "message" => $result]);
             }
         }
+    }
+
+    public function getTotalCost($distance, $diesel_price) {
+
     }
 
     public function requestReschedBooking() {

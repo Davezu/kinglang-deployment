@@ -73,6 +73,9 @@ switch ($request) {
     case "/get-distance":
         $bookingController->getDistance();
         break;
+    case "/get-route":
+        $bookingController->processCoordinates();
+        break;
         
     case "/request-booking":
         $bookingController->requestBooking();
