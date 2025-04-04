@@ -41,7 +41,7 @@ if (!isset($_SESSION["user_id"])) {
                             <label for="destination" class="form-label">Destination</label>
                             <p id="addStop" class="m-0">Add Stop</p>
                         </div>
-                        <input type="text" name="destination" id="destination" class="form-control text-truncate address destination" >
+                        <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop" >
                         <ul id="destinationSuggestions" class="suggestions"></ul>
                     </div>
                     <div class="mb-3">  

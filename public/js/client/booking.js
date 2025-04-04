@@ -108,13 +108,23 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     console.log(distance);
 });
 
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+const debouncedGetAddress = debounce(getAddress, 500);
+
 document.querySelectorAll(".address").forEach(input => {
     input.addEventListener("input", function (e) {
         const suggestionList = e.target.nextElementSibling;
         const input = this.value;
         const inputElement = this;
     
-        getAddress(input, suggestionList, inputElement);
+        debouncedGetAddress(input, suggestionList, inputElement);
     });     
 });
 
@@ -143,6 +153,7 @@ async function getAddress(input, suggestionList, inputElement) {
 
             list.addEventListener("click", function () {
                 inputElement.value = place.description;
+                calculateRoute();
                 suggestionList.innerHTML = "";
                 suggestionList.style.border = "none";
             });
@@ -205,14 +216,13 @@ function initMap() {
 }
 
 async function calculateRoute() {
-    pickupPoint = document.getElementById("pickup_point").value;
-    destination = document.getElementById("destination").value;
-    stops = Array.from(document.querySelectorAll(".added-stop")).map(stop => stop.value).filter(stop => stop.trim() !== "");
+    const pickupPoint = document.getElementById("pickup_point").value;
+    const destinationInputs = document.querySelectorAll(".address");
+    const destination = destinationInputs[destinationInputs.length - 1].value;
+    const stops = Array.from(document.querySelectorAll(".added-stop")).map((stop, i) => stop.value ).filter(stop => stop.trim() !== "");
+    stops.pop();
 
-    if (!pickupPoint || !destination) {
-        alert("Please enter both pickup point and destination.");
-        return;
-    }
+    if (!pickupPoint || !destination) return;
 
     console.log("stops: ", stops);
 
@@ -249,9 +259,6 @@ async function calculateRoute() {
         console.error("Error fetching route: ", error.message);
         return;
     }   
-
-   
-
 }
 
 
@@ -274,7 +281,7 @@ document.getElementById("addStop").addEventListener("click", () => {
         const input = this.value;
         const inputElement = this;
     
-        getAddress(input, suggestionList, inputElement);    
+        debouncedGetAddress(input, suggestionList, inputElement);    
     });
 
     const removeButton = document.createElement("span");
@@ -283,6 +290,7 @@ document.getElementById("addStop").addEventListener("click", () => {
 
     removeButton.addEventListener("click", function () {
         div.remove();
+        calculateRoute();
         position--;
     });
     

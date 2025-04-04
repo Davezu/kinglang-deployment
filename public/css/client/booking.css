@@ -40,7 +40,7 @@ input {
 }
 
 .suggestions::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
 }
 
 .suggestions::-webkit-scrollbar-track {
