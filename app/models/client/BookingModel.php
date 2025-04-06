@@ -9,16 +9,28 @@ class Booking {
         $this->conn = $pdo;
     }
 
-    public function getTotalCost($destination, $pickup_point, $number_of_buses, $number_of_days) {
-        
+    public function getDieselPrice() {
+        try {
+            $stmt = $this->conn->prepare("SELECT price FROM diesel_per_liter ORDER BY date DESC LIMIT 1");
+            $stmt->execute();
+            $diesel_price = $stmt->fetchColumn() ?? 0;
+            return $diesel_price;
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
     }
 
-    public function getDistance($destination, $pickup_point) {
-        
+    public function addBookingStops($stops, $booking_id) {
+        if (empty($stops)) return false;
+        try {
+            
+            return true;
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
     }
 
-
-    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id) {
+    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance) {
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
 
         try {
@@ -28,7 +40,7 @@ class Booking {
                 return "Not enough buses available.";
             }
 
-            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, user_id) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :user_id)");
+            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, user_id, total_cost, balance) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :user_id, :total_cost, :balance)");
             $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
                 ":end_of_tour" => $end_of_tour,
@@ -36,7 +48,9 @@ class Booking {
                 ":pickup_point" => $pickup_point,
                 ":number_of_days" => $number_of_days,       
                 ":number_of_buses" => $number_of_buses,
-                ":user_id" => $user_id
+                ":user_id" => $user_id,
+                ":total_cost" => $total_cost,
+                ":balance" => $balance
             ]);
 
             $booking_id = $this->conn->lastInsertID(); // get the added booking id to insert it in booking buses table
@@ -44,6 +58,15 @@ class Booking {
             foreach ($available_buses as $bus_id) {
                 $stmt = $this->conn->prepare("INSERT INTO booking_buses (booking_id, bus_id) VALUES (:booking_id, :bus_id)");
                 $stmt->execute([":booking_id" => $booking_id, ":bus_id" => $bus_id]);
+            }
+
+            foreach ($stops as $index => $stop) {            
+                $stmt = $this->conn->prepare("INSERT INTO booking_stops (booking_id, location, stop_order) VALUES (:booking_id, :location, :stop_order)");
+                $stmt->execute([
+                    ":booking_id" => $booking_id,
+                    ":location" => $stop,
+                    ":stop_order" => $index + 1
+                ]);
             }
 
             return "success";
@@ -139,7 +162,7 @@ class Booking {
                     AND (
                         (bo.date_of_tour <= :date_of_tour AND bo.end_of_tour >= :date_of_tour)
                         OR
-                        (bo.date_of_tour <= :end_of_tour AND bo.end_of_tour >= :end_of_tour)
+                        (bo.date_of_tour <= :end_of_tour    AND bo.end_of_tour >= :end_of_tour)
                         OR
                         (bo.date_of_tour >= :date_of_tour AND bo.end_of_tour <= :end_of_tour)
                     )

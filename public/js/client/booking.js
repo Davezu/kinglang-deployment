@@ -48,64 +48,63 @@ document.addEventListener("DOMContentLoaded", initMap);
 document.getElementById("bookingForm").addEventListener("submit", async function (e) {
     e.preventDefault(); 
 
-    console.log("test");
-
     // const numberOfBuses = document.getElementById("number_of_buses").value;
     // const selectedBuses = Array.from(document.querySelectorAll("input[name='bus_ids[]']:checked")).map(bus => bus.value);
 
-    // console.log("selected buses: ", selectedBuses.length);
-    // console.log("number of buses: ", numberOfBuses);
-
     // if (parseInt(numberOfBuses) !== selectedBuses.length) return;
     
-    // const formData = {
-    //     dateOfTour: document.getElementById("date_of_tour")?.value,
-    //     destination: document.getElementById("destination")?.value,
-    //     pickupPoint: document.getElementById("pickup_point")?.value,
-    //     numberOfBuses: document.getElementById("number_of_buses")?.value,
-    //     numberOfDays: document.getElementById("number_of_days")?.value
-    //     // busIds: selectedBuses
-    // }
+    const stops = Array.from(document.querySelectorAll(".added-stop")).map((stop, i) => stop.value).filter(stop => stop.trim() !== "");
+    const destination = stops[stops.length - 1];
+    stops.pop();
 
-    // try {
-    //     const response = await fetch("/request-booking", {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify(formData)
-    //     });
-
-    //     const data = await response.json();
-
-    //     if (data.success) {
-    //         document.querySelector(".booking-message").textContent = data.message;
-    //         this.reset();
-    //         document.getElementById("busSelection").innerHTML = "";
-    //     } else {
-    //         document.querySelector(".booking-message").textContent = data.message;
-    //     }
-    // } catch (error) {
-    //     console.error("Error fetching data: ", error.message);
-    // }
-
-    let origin;
-    let distance = [];
-
-    const processDistance = async () => {
-        const inputs = document.querySelectorAll(".address");
-        
-        for (let i = 0; i < inputs.length; i++) {
-            if (i > 0) {
-                let dist = await getDistance(origin, inputs[i].value);
-                distance.push(parseFloat(dist));
-            }   
-            origin = inputs[i].value;
-        }
-
-    };
-    processDistance();
-    calculateRoute();
+    const totalCost = await getTotalCost();
+    console.log(totalCost);
+    if (!totalCost || totalCost === 0) return;
     
-    console.log(distance);
+    const formData = {
+        dateOfTour: document.getElementById("date_of_tour")?.value,
+        destination: destination,
+        pickupPoint: document.getElementById("pickup_point")?.value,
+        stops: stops,
+        numberOfBuses: document.getElementById("number_of_buses")?.value,
+        numberOfDays: document.getElementById("number_of_days")?.value,
+        totalCost: totalCost,
+        balance: totalCost
+        // busIds: selectedBuses
+    }
+
+    try {
+        const response = await fetch("/request-booking", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            document.querySelector(".booking-message").textContent = data.message;
+            this.reset();
+            document.getElementById("busSelection").innerHTML = "";
+        } else {
+            document.querySelector(".booking-message").textContent = data.message;
+        }
+    } catch (error) {
+        console.error("Error fetching data: ", error.message);
+    }
+
+    initMap();
+});
+
+Array.from(document.getElementsByTagName("input")).forEach(input => {
+    input.addEventListener("focus", async function () {
+        if (!allInputsFilled()) return;
+
+        const totalCost = await getTotalCost();
+        if (!totalCost) return;
+        const costElement = document.getElementById("totalCost");
+        costElement.textContent = "Estimated total cost: " + totalCost.toLocaleString("en-US", { style: "currency", currency: "PHP" });
+    });
 });
 
 function debounce(func, delay) {
@@ -128,6 +127,17 @@ document.querySelectorAll(".address").forEach(input => {
     });     
 });
 
+function allInputsFilled() {
+    const inputs = document.getElementsByTagName("input");
+    const allInputsFilled = Array.from(inputs).every(input => {
+        if (input.type === "text" || input.type === "number") {
+            return input.value.trim() !== ""; // Check if the input is not empty
+        }
+        return true; // Ignore other types of inputs
+    });
+    return allInputsFilled;
+}
+
 async function getAddress(input, suggestionList, inputElement) {
     try {
         const response = await fetch("/get-address", {
@@ -137,11 +147,14 @@ async function getAddress(input, suggestionList, inputElement) {
         });
 
         const data = await response.json();
+        console.log(data);
 
         suggestionList.innerHTML = "";
-        if (data.predictions.length === 0) {
-            console.log(data);
+        suggestionList.style.border = "1px solid #ccc"; 
+
+        if (data.status !== "OK") {
             const list = document.createElement("li");
+            console.log(data);
             list.textContent = "No places found.";
             suggestionList.appendChild(list);
             return;
@@ -152,7 +165,7 @@ async function getAddress(input, suggestionList, inputElement) {
             list.textContent = place.description;
 
             list.addEventListener("click", function () {
-                inputElement.value = place.description;
+                inputElement.value = place.description; 
                 calculateRoute();
                 suggestionList.innerHTML = "";
                 suggestionList.style.border = "none";
@@ -165,7 +178,6 @@ async function getAddress(input, suggestionList, inputElement) {
                 }
             });
 
-            suggestionList.style.border = "1px solid #ccc"; 
             suggestionList.appendChild(list);
         })
     } catch (error) {
@@ -182,12 +194,10 @@ async function getDistance(origin, destination) {
         });
 
         const data = await response.json();
-        console.log(data);
+        console.log("distance: ", data)
 
         if (data.status === "OK") {
             const distance = data.rows[0].elements[0].distance.value;
-            const duration = data.rows[0].elements[0].duration.text;
-            console.log(`Distance: ${distance}, Duration: ${duration}`);
             return parseFloat(distance);
         } else {
             console.log(data);
@@ -197,34 +207,86 @@ async function getDistance(origin, destination) {
     }
 }
 
-async function getTotalCost() {
 
+async function processDistance() {
+    let origin;
+    let distance = [];
+    const inputs = document.querySelectorAll(".address");
+    
+    for (let i = 0; i < inputs.length; i++) {
+        if (i > 0) {
+            let dist = await getDistance(origin, inputs[i].value);
+            distance.push(dist);
+        }   
+        if (i === inputs.length - 1) {
+            let dist = await getDistance(inputs[i].value, inputs[0].value);
+            distance.push(dist);
+        }
+        origin = inputs[i].value; 
+    }
+    return distance;
 }
 
-let map, directionsService, directionsRenderer;
-let stops = [];
+async function getTotalCost() {  
+    const distance = await processDistance();
+    const totalDistance = distance.reduce((acc, curr) => acc + curr, 0);
+   
+    const distanceInKm = totalDistance / 1000;
+    const numberOfDays = document.getElementById("number_of_days").value;
+    const numberOfBuses = document.getElementById("number_of_buses").value;
+
+    console.log("Distance: ", distanceInKm);
+
+    if (!distanceInKm || !numberOfDays || !numberOfBuses) return;
+
+    try {
+        const response = await fetch("/get-total-cost", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ distance: distanceInKm, numberOfBuses, numberOfDays })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            return data.total_cost;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 14.5995, lng: 120.9842 },
+    let map;
+    const mapOptions = {
+        center: { lat: 14.5995, lng: 120.9842 }, // Default center (e.g., Manila)
         zoom: 10,
-    });
+        disableDefaultUI: true, // disable all controls
+        zoomControl: true,
+        fullscreenControl: false,
+        streetViewControl: false,
+        mapTypeControl: false,
+        rotateControl: false
+      };
+
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
     
     directionsService = new google.maps.DirectionsService();
-    directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
+    directionsRenderer = new google.maps.DirectionsRenderer({ map: map});
 }
 
+
+let directionsService, directionsRenderer;
+
 async function calculateRoute() {
+
     const pickupPoint = document.getElementById("pickup_point").value;
     const destinationInputs = document.querySelectorAll(".address");
     const destination = destinationInputs[destinationInputs.length - 1].value;
     const stops = Array.from(document.querySelectorAll(".added-stop")).map((stop, i) => stop.value ).filter(stop => stop.trim() !== "");
     stops.pop();
 
-    if (!pickupPoint || !destination) return;
-
-    console.log("stops: ", stops);
+    if (!pickupPoint || !destination) return;   
 
     try {
         const response = await fetch("/get-route", {
@@ -273,6 +335,7 @@ document.getElementById("addStop").addEventListener("click", () => {
 
     div.classList.add("mb-3", "position-relative");
     input.id = "destination";
+    input.autocomplete = "off";
     input.classList.add("form-control", "address", "added-stop", "position-relative", "pe-4", "destination");
     ul.classList.add("suggestions");
 

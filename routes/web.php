@@ -76,6 +76,9 @@ switch ($request) {
     case "/get-route":
         $bookingController->processCoordinates();
         break;
+    case "/get-total-cost":
+        $bookingController->getTotalCost();
+        break;
         
     case "/request-booking":
         $bookingController->requestBooking();

@@ -11,7 +11,6 @@ if (!isset($_SESSION["user_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs&callback=initMap" async defer></script>
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
     <link rel="stylesheet" href="/../../../public/css/client/booking.css">  
     <title>Book a Trip</title>
@@ -33,7 +32,7 @@ if (!isset($_SESSION["user_id"])) {
                     <input type="hidden" name="id" value="1">
                     <div class="mb-3 position-relative">
                         <label for="pickup_point" class="form-label">Pick-up point</label>
-                        <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address" >
+                        <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address" autocomplete="off" >
                         <ul id="pickupPointSuggestions" class="suggestions"></ul>
                     </div>
                     <div class="mb-3 position-relative">
@@ -41,7 +40,7 @@ if (!isset($_SESSION["user_id"])) {
                             <label for="destination" class="form-label">Destination</label>
                             <p id="addStop" class="m-0">Add Stop</p>
                         </div>
-                        <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop" >
+                        <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop" autocomplete="off" >
                         <ul id="destinationSuggestions" class="suggestions"></ul>
                     </div>
                     <div class="mb-3">  
@@ -66,6 +65,7 @@ if (!isset($_SESSION["user_id"])) {
                     <div class="container-fluid d-flex justify-content-between align-items-center mb-4 gap">
                         <button type="submit" name="submit_booking" class="btn btn-primary">Book Now</button>
                         <p class="booking-message" style="color: green"></p>
+                        <p id="totalCost"></p>
                     </div>
                 </form>
                 <div class="border rounded w-50" id="map">
@@ -78,6 +78,8 @@ if (!isset($_SESSION["user_id"])) {
     <script src="../../../public/js/jquery/jquery-3.6.4.min.js"></script>
     <script src="../../../public/js/client/booking.js"></script>
     <script src="../../../public/js/assets/sidebar.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs&callback=initMap" async defer></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>

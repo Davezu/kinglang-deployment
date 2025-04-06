@@ -114,12 +114,15 @@ class BookingController {
             $data = json_decode(file_get_contents("php://input"), true);
             $date_of_tour = $data["dateOfTour"];
             $destination = $data["destination"];
+            $stops = $data["stops"] ?? [];
             $pickup_point = $data["pickupPoint"];
             $number_of_buses = (int) $data["numberOfBuses"];
             $number_of_days = (int) $data["numberOfDays"];
             $user_id = $_SESSION["user_id"];
+            $total_cost = (float) $data["totalCost"];
+            $balance = (float) $data["balance"];
 
-            $result = $this->bookingModel->requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id);
+            $result = $this->bookingModel->requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance);
             
             header("Content-Type: application/json");
 
@@ -131,8 +134,26 @@ class BookingController {
         }
     }
 
-    public function getTotalCost($distance, $diesel_price) {
+    public function getDieselPrice() {
+        return $this->bookingModel->getDieselPrice();
+    }
 
+    public function getTotalCost() {
+        header("Content-Type: application/json");
+
+        $input = json_decode(file_get_contents("php://input"), true);
+        $number_of_buses = (int) $input["numberOfBuses"] ?? 0;
+        $number_of_days = (int) $input["numberOfDays"] ?? 0;
+        $distance = (float) $input["distance"] ?? 0;
+        $diesel_price = (float) $this->getDieselPrice() ?? 0;
+
+        if ($number_of_buses <= 0 || $number_of_days <= 0 || $distance <= 0 || $diesel_price <= 0) {
+            echo json_encode(["success" => false, "message" => "Invalid input values."]);
+            return;
+        }
+
+        $total_cost = $number_of_buses * $number_of_days * $distance * $diesel_price;
+        echo json_encode(["success" => true, "total_cost" => $total_cost]);
     }
 
     public function requestReschedBooking() {
@@ -167,7 +188,7 @@ class BookingController {
         }
     }
 
-    // public function findAvailableBuses() { if the system will let the client select their prefered bus
+    // public function findAvailableBuses() { // if the system will let the client select their prefered bus
     //     if ($_SERVER["REQUEST_METHOD"] === "POST") {
     //         $data = json_decode(file_get_contents("php://input"), true);
     //         $date_of_tour = $data["date_of_tour"];
@@ -183,22 +204,6 @@ class BookingController {
     //             echo json_encode(['success' => false]);
     //         }
     //     }
-    // }
-
-    // public function isClientInfoExists($user_id) {
-    //     $result = $this->bookingModel->checkClientInfo($user_id);
-    
-    //     if ($result) {
-    //         header("Location: /home/book");
-    //         exit();
-    //     } else {
-    //         header("Location: /home/contact");
-    //         exit();
-    //     }   
-    // }
-
-    // public function getClientID($user_id) {
-    //     return $this->bookingModel->getClientID($user_id);
     // }
 
     public function getAllBookings() {
@@ -226,34 +231,6 @@ class BookingController {
     public function updatePastBookings() {
         return $this->bookingModel->updatePastBookings();
     }
-
-    // public function clientInfoForm() {
-    //     require_once __DIR__ . "/../../views/client/client_info_form.php";
-    // }
-
-    // public function addClient() {
-    //     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["client_info"])) {
-    //         $first_name = trim($_POST["first_name"]);
-    //         $last_name = trim($_POST["last_name"]);
-    //         $address = trim($_POST["address"]);
-    //         $contact_number = trim($_POST["contact_number"]);
-    //         $company_name = trim($_POST["company_name"]) ? trim($_POST["company_name"]) : "none";
-        
-    //         if (empty($first_name) || empty($last_name) || empty($address) || empty($contact_number)) {
-    //             echo "Incomplete information";
-    //             exit();
-    //         }
-        
-    //         $message = $this->bookingModel->addClient($first_name, $last_name, $address, $contact_number, $company_name);
-        
-    //         if ($message === "Client info added successfully!") {
-    //             header("Location: /home/book");
-    //             exit();
-    //         } else {
-    //             echo "<script>alert('$message')</script>";
-    //         }
-    //     }
-    // }
 
     public function addPayment() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
