@@ -10,15 +10,31 @@ class ClientAuthModel {
         $this->conn = $pdo;
     }
 
+    public function findByEmail($email) {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch();
+    }
+
+    public function saveResetToken($email, $token, $expiry) {
+        $stmt = $this->conn->prepare("UPDATE users SET reset_token = ?, reset_expiry = ? WHERE email = ?");
+        return $stmt->execute([$token, $expiry, $email]);
+    }
+
+    public function findByToken($token) {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE reset_token = ? AND reset_expiry > NOW()");
+        $stmt->execute([$token]);
+        return $stmt->fetch();
+    }
+
+    public function updatePassword($token, $passwordHash) {
+        $stmt = $this->conn->prepare("UPDATE users SET password = ?, reset_token = NULL, reset_expiry = NULL WHERE reset_token = ?");
+        return $stmt->execute([$passwordHash, $token]);
+    }
+
     public function emailExist($email) {
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->execute([":email" => $email]);
-        return $stmt->fetch() ? true : false;
-    }
-
-    public function cnotactNumber($contact_number) {
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE contact_number = :contact_number");
-        $stmt->execute([":contact_number" => $contact_number]);
         return $stmt->fetch() ? true : false;
     }
 

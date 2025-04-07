@@ -73,39 +73,47 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         // busIds: selectedBuses
     }
 
-    try {
-        const response = await fetch("/request-booking", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
-        });
+    // try {
+    //     const response = await fetch("/request-booking", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify(formData)
+    //     });
 
-        const data = await response.json();
+    //     const data = await response.json();
 
-        if (data.success) {
-            document.querySelector(".booking-message").textContent = data.message;
-            this.reset();
-            document.getElementById("busSelection").innerHTML = "";
-        } else {
-            document.querySelector(".booking-message").textContent = data.message;
-        }
-    } catch (error) {
-        console.error("Error fetching data: ", error.message);
-    }
+    //     if (data.success) {
+    //         document.querySelector(".booking-message").textContent = data.message;
+    //         this.reset();
+    //         document.getElementById("busSelection").innerHTML = "";
+    //     } else {
+    //         document.querySelector(".booking-message").textContent = data.message;
+    //     }
+    // } catch (error) {
+    //     console.error("Error fetching data: ", error.message);
+    // }
 
-    initMap();
+    initMap();  
+
+    const costElement = document.getElementById("totalCost");
+    costElement.textContent = "Estimated total cost: " + totalCost.toLocaleString("en-US", { style: "currency", currency: "PHP" });
 });
 
 Array.from(document.getElementsByTagName("input")).forEach(input => {
-    input.addEventListener("focus", async function () {
-        if (!allInputsFilled()) return;
-
-        const totalCost = await getTotalCost();
-        if (!totalCost) return;
-        const costElement = document.getElementById("totalCost");
-        costElement.textContent = "Estimated total cost: " + totalCost.toLocaleString("en-US", { style: "currency", currency: "PHP" });
-    });
+    input.addEventListener("change", renderTotalCost);
 });
+
+async function renderTotalCost() {
+    if (!allInputsFilled()) return;
+
+    const totalCost = await getTotalCost();
+    if (!totalCost) return;
+
+    const costElement = document.getElementById("totalCost");
+    costElement.textContent = "Estimated total cost: " + totalCost.toLocaleString("en-US", { style: "currency", currency: "PHP" });
+}
+
+
 
 function debounce(func, delay) {
     let timeout;
@@ -128,6 +136,7 @@ document.querySelectorAll(".address").forEach(input => {
 });
 
 function allInputsFilled() {
+    console.log("Checking if all inputs are filled...");
     const inputs = document.getElementsByTagName("input");
     const allInputsFilled = Array.from(inputs).every(input => {
         if (input.type === "text" || input.type === "number") {
@@ -185,57 +194,87 @@ async function getAddress(input, suggestionList, inputElement) {
     }
 };
 
-async function getDistance(origin, destination) {
+// async function getDistance(origin, destination) {
+//     try {
+//         const response = await fetch("/get-distance", {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify({ origin, destination })
+//         });
+
+//         const data = await response.json();
+//         console.log("distance: ", data)
+
+//         if (data.status === "OK") {
+//             const distance = data.rows[0].elements[0].distance.value;
+//             return parseFloat(distance);
+//         } else {
+//             console.log(data);
+//         }
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
+// async function processDistance() {
+//     let origin;
+//     let distance = [];
+//     const inputs = document.querySelectorAll(".address");
+    
+//     for (let i = 0; i < inputs.length; i++) {
+//         if (i > 0) {
+//             let dist = await getDistance(origin, inputs[i].value);
+//             distance.push(dist);
+//         }   
+//         if (i === inputs.length - 1) {
+//             let dist = await getDistance(inputs[i].value, inputs[0].value);
+//             distance.push(dist);
+//         }
+//         origin = inputs[i].value; 
+//     }
+//     return distance;
+// }
+
+async function getDistanceMatrix(stops) {
     try {
         const response = await fetch("/get-distance", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ origin, destination })
+            body: JSON.stringify({ stops })
         });
 
         const data = await response.json();
-        console.log("distance: ", data)
 
         if (data.status === "OK") {
-            const distance = data.rows[0].elements[0].distance.value;
-            return parseFloat(distance);
+            let total = 0;
+            for (let i = 0; i < data.rows.length; i++) {
+                const element = data.rows[i].elements[i]; // diagonal contains the desired distances
+                if (element.status === "OK") {
+                    total += element.distance.value;
+                }
+            }
+            return total; // in meters
         } else {
-            console.log(data);
+            console.error("Distance API error:", data.status);
         }
     } catch (error) {
-        console.error(error);
+        console.error("Fetch error:", error);
     }
+    return 0;
 }
 
+async function getTotalCost() {
+    const addressInputs = document.querySelectorAll(".address");
+    const stops = Array.from(addressInputs).map(input => input.value.trim()).filter(Boolean);
 
-async function processDistance() {
-    let origin;
-    let distance = [];
-    const inputs = document.querySelectorAll(".address");
-    
-    for (let i = 0; i < inputs.length; i++) {
-        if (i > 0) {
-            let dist = await getDistance(origin, inputs[i].value);
-            distance.push(dist);
-        }   
-        if (i === inputs.length - 1) {
-            let dist = await getDistance(inputs[i].value, inputs[0].value);
-            distance.push(dist);
-        }
-        origin = inputs[i].value; 
-    }
-    return distance;
-}
+    if (stops.length < 2) return;
 
-async function getTotalCost() {  
-    const distance = await processDistance();
-    const totalDistance = distance.reduce((acc, curr) => acc + curr, 0);
-   
-    const distanceInKm = totalDistance / 1000;
+    const totalDistanceInMeters = await getDistanceMatrix(stops);
+    const distanceInKm = totalDistanceInMeters / 1000;
+
+    console.log("Total distance in km: ", distanceInKm);
+
     const numberOfDays = document.getElementById("number_of_days").value;
     const numberOfBuses = document.getElementById("number_of_buses").value;
-
-    console.log("Distance: ", distanceInKm);
 
     if (!distanceInKm || !numberOfDays || !numberOfBuses) return;
 
@@ -247,7 +286,6 @@ async function getTotalCost() {
         });
 
         const data = await response.json();
-
         if (data.success) {
             return data.total_cost;
         }
@@ -255,6 +293,35 @@ async function getTotalCost() {
         console.error(error);
     }
 }
+
+// async function getTotalCost() {  
+//     const distance = await processDistance();
+//     const totalDistance = distance.reduce((acc, curr) => acc + curr, 0);
+   
+//     const distanceInKm = totalDistance / 1000;
+//     const numberOfDays = document.getElementById("number_of_days").value;
+//     const numberOfBuses = document.getElementById("number_of_buses").value;
+
+//     console.log("Distance: ", distanceInKm);
+
+//     if (!distanceInKm || !numberOfDays || !numberOfBuses) return;
+
+//     try {
+//         const response = await fetch("/get-total-cost", {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify({ distance: distanceInKm, numberOfBuses, numberOfDays })
+//         });
+
+//         const data = await response.json();
+
+//         if (data.success) {
+//             return data.total_cost;
+//         }
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
 
 function initMap() {
     let map;
@@ -347,6 +414,17 @@ document.getElementById("addStop").addEventListener("click", () => {
         debouncedGetAddress(input, suggestionList, inputElement);    
     });
 
+    input.addEventListener("change", async function () {
+        console.log("Input changed?: ", this.value);
+        if (!allInputsFilled()) return;
+
+        const totalCost = await getTotalCost();
+        console.log("Total cost: ", totalCost);
+        if (!totalCost) return;
+        const costElement = document.getElementById("totalCost");
+        costElement.textContent = "Estimated total cost: " + totalCost.toLocaleString("en-US", { style: "currency", currency: "PHP" });
+    });
+
     const removeButton = document.createElement("span");
     removeButton.classList.add("remove-button");
     removeButton.textContent = "\u00d7";
@@ -354,7 +432,8 @@ document.getElementById("addStop").addEventListener("click", () => {
     removeButton.addEventListener("click", function () {
         div.remove();
         calculateRoute();
-        position--;
+        renderTotalCost();
+        position--;``
     });
     
     div.appendChild(removeButton);

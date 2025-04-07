@@ -35,24 +35,51 @@ class BookingController {
         echo $response;
     }
 
+    // public function getDistance() {
+    //     header("Access-Control-Allow-Origin: *");
+    //     header("Content-Type: application/json");
+
+    //     $apiKey = "AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs";
+
+    //     $input = json_decode(file_get_contents("php://input"), true);
+
+    //     if (empty($input["origin"] || empty($input["destination"]))) {
+    //         echo json_encode(["error" => "Input is required"]);
+    //         return;
+    //     }
+
+    //     $origin = urlencode($input["origin"]);
+    //     $destination = urlencode($input["destination"]);
+
+    //     $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=$origin&destinations=$destination&key=$apiKey";
+
+    //     $response = file_get_contents($url);
+    //     echo $response;
+    // }
+
     public function getDistance() {
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json");
-
+    
         $apiKey = "AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs";
-
+    
         $input = json_decode(file_get_contents("php://input"), true);
-
-        if (empty($input["origin"] || empty($input["destination"]))) {
-            echo json_encode(["error" => "Input is required"]);
+        $stops = $input["stops"] ?? [];
+    
+        if (count($stops) < 2) {
+            echo json_encode(["error" => "At least two stops are required"]);
             return;
         }
-
-        $origin = urlencode($input["origin"]);
-        $destination = urlencode($input["destination"]);
-
-        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=$origin&destinations=$destination&key=$apiKey";
-
+    
+        // Prepare origin and destination pairs
+        $origins = array_slice($stops, 0, -1);
+        $destinations = array_slice($stops, 1);
+    
+        $originStr = implode("|", array_map("urlencode", $origins));
+        $destinationStr = implode("|", array_map("urlencode", $destinations));
+    
+        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=$originStr&destinations=$destinationStr&key=$apiKey";
+    
         $response = file_get_contents($url);
         echo $response;
     }
