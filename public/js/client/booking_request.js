@@ -146,12 +146,12 @@ function actionCell(booking) {
     const td = document.createElement("td");
     const btnGroup = document.createElement("div");
     const payButton = document.createElement("button");
-    const reschedButton = document.createElement("button");
+    const editButton = document.createElement("button");
     const cancelButton = document.createElement("button");
 
     btnGroup.classList.add("container", "btn-container", "d-flex", "gap-2");
     payButton.classList.add("open-payment-modal", "btn", "bg-success-subtle", "text-success", "fw-bold", "w-100");
-    reschedButton.classList.add("btn", "bg-primary-subtle", "w-100", "fw-bold", "text-primary");
+    editButton.classList.add("btn", "bg-primary-subtle", "w-100", "fw-bold", "text-primary");
     cancelButton.classList.add("btn", "bg-danger-subtle", "w-100", "fw-bold", "text-danger");
 
     
@@ -162,30 +162,29 @@ function actionCell(booking) {
     payButton.setAttribute("data-bs-toggle", "modal");
     payButton.setAttribute("data-bs-target", "#paymentModal");
 
-    reschedButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
-    reschedButton.setAttribute("data-booking-id", booking.booking_id);
-    reschedButton.setAttribute("data-client-id", booking.client_id);
-    reschedButton.setAttribute("data-days", booking.number_of_days);
-    reschedButton.setAttribute("data-buses", booking.number_of_buses);
+    editButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
+    editButton.setAttribute("data-booking-id", booking.booking_id);
+    editButton.setAttribute("data-client-id", booking.client_id);
+    editButton.setAttribute("data-days", booking.number_of_days);
+    editButton.setAttribute("data-buses", booking.number_of_buses);
 
-    reschedButton.setAttribute("data-bs-toggle", "modal");
-    reschedButton.setAttribute("data-bs-target", "#reschedModal");
+    editButton.setAttribute("data-bs-toggle", "modal");
+    editButton.setAttribute("data-bs-target", "#reschedModal");
 
     cancelButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
     payButton.textContent = "Pay";
-    reschedButton.textContent = "Resched";
+    editButton.textContent = "Edit";
     cancelButton.textContent = "Cancel";
 
-    if (booking.status === "Pending" && parseFloat(booking.total_cost) === 0) {
-        btnGroup.append(reschedButton, cancelButton);
-    } else if (parseFloat(booking.totalCost) !== 0 && booking.payment_status !== "Paid" && booking.status !== "Completed") {
-        btnGroup.append(payButton, reschedButton, cancelButton);
-    } else if (booking.payment_status === "Paid" && booking.status === "Confirmed") {
-        btnGroup.append(reschedButton, cancelButton);
-    }
-    else {
-        btnGroup.textContent = "No action needed";
+    if (booking.status === "Confirmed" && parseFloat(booking.balance) > 0.0) {
+        btnGroup.append(payButton, editButton, cancelButton);
+    } else if (booking.status === "Confirmed" && parseFloat(booking.balance) === 0) {
+        btnGroup.append(editButton, cancelButton); 
+    } else if (booking.status === "Pending") {
+        btnGroup.append(editButton, cancelButton);  
+    } else {
+        btnGroup.textContent = "No Action Available";
     }
 
     td.appendChild(btnGroup);
@@ -214,7 +213,7 @@ function actionCell(booking) {
         userIDinput.value = booking.user_id;
     });
 
-    reschedButton.addEventListener("click", function () {
+    editButton.addEventListener("click", function () {
         document.getElementById("messageElement").textContent = "";
         document.getElementById("date_of_tour").value = ""; 
 

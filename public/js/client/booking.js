@@ -1,3 +1,8 @@
+const messageModal = new bootstrap.Modal(document.getElementById("messageModal"));
+
+const messageTitle = document.getElementById("messageTitle");
+const messageBody = document.getElementById("messageBody");
+
 const today = new Date();
 
 today.setDate(today.getDate() + 3);
@@ -58,7 +63,7 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     stops.pop();
 
     const totalCost = await getTotalCost();
-    console.log(totalCost);
+    console.log("Total Cost: ", totalCost);
     if (!totalCost || totalCost === 0) return;
     
     const formData = {
@@ -73,30 +78,31 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         // busIds: selectedBuses
     }
 
-    // try {
-    //     const response = await fetch("/request-booking", {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify(formData)
-    //     });
+    try {
+        const response = await fetch("/request-booking", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
 
-    //     const data = await response.json();
+        const data = await response.json();
 
-    //     if (data.success) {
-    //         document.querySelector(".booking-message").textContent = data.message;
-    //         this.reset();
-    //         document.getElementById("busSelection").innerHTML = "";
-    //     } else {
-    //         document.querySelector(".booking-message").textContent = data.message;
-    //     }
-    // } catch (error) {
-    //     console.error("Error fetching data: ", error.message);
-    // }
+        if (data.success) {
+            messageTitle.textContent = "Success";
+            messageBody.textContent = data.message;
+            messageModal.show();
+            this.reset(); 
+            document.getElementById("totalCost").textContent = "";
+        } else {
+            messageTitle.textContent = "Error";
+            messageBody.textContent = data.message;
+            messageModal.show();
+        }
+    } catch (error) {
+        console.error("Error fetching data: ", error.message);
+    }
 
-    initMap();  
-
-    const costElement = document.getElementById("totalCost");
-    costElement.textContent = "Estimated total cost: " + totalCost.toLocaleString("en-US", { style: "currency", currency: "PHP" });
+    initMap(); 
 });
 
 Array.from(document.getElementsByTagName("input")).forEach(input => {
@@ -194,46 +200,6 @@ async function getAddress(input, suggestionList, inputElement) {
     }
 };
 
-// async function getDistance(origin, destination) {
-//     try {
-//         const response = await fetch("/get-distance", {
-//             method: "POST",
-//             headers: { "Content-Type": "application/json" },
-//             body: JSON.stringify({ origin, destination })
-//         });
-
-//         const data = await response.json();
-//         console.log("distance: ", data)
-
-//         if (data.status === "OK") {
-//             const distance = data.rows[0].elements[0].distance.value;
-//             return parseFloat(distance);
-//         } else {
-//             console.log(data);
-//         }
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
-// async function processDistance() {
-//     let origin;
-//     let distance = [];
-//     const inputs = document.querySelectorAll(".address");
-    
-//     for (let i = 0; i < inputs.length; i++) {
-//         if (i > 0) {
-//             let dist = await getDistance(origin, inputs[i].value);
-//             distance.push(dist);
-//         }   
-//         if (i === inputs.length - 1) {
-//             let dist = await getDistance(inputs[i].value, inputs[0].value);
-//             distance.push(dist);
-//         }
-//         origin = inputs[i].value; 
-//     }
-//     return distance;
-// }
-
 async function getDistanceMatrix(stops) {
     try {
         const response = await fetch("/get-distance", {
@@ -250,7 +216,7 @@ async function getDistanceMatrix(stops) {
                 const element = data.rows[i].elements[i]; // diagonal contains the desired distances
                 if (element.status === "OK") {
                     total += element.distance.value;
-                }
+                }   
             }
             return total; // in meters
         } else {
@@ -346,7 +312,6 @@ function initMap() {
 let directionsService, directionsRenderer;
 
 async function calculateRoute() {
-
     const pickupPoint = document.getElementById("pickup_point").value;
     const destinationInputs = document.querySelectorAll(".address");
     const destination = destinationInputs[destinationInputs.length - 1].value;
@@ -392,7 +357,61 @@ async function calculateRoute() {
 
 
 
+// async function calculateRoute() {
+//     const pickupPoint = document.getElementById("pickup_point").value.trim();
+//     const destinationInputs = document.querySelectorAll(".address");
+//     const destination = destinationInputs[destinationInputs.length - 1].value.trim();
+
+//     const stops = Array.from(document.querySelectorAll(".added-stop"))
+//         .map(stop => stop.value.trim())
+//         .filter(stop => stop && stop !== destination);  // avoid repeating destination
+
+//     if (!pickupPoint || !destination) return;
+
+//     try {
+//         const response = await fetch("/get-route", {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify({ pickupPoint, destination, stops })
+//         });
+
+//         const data = await response.json();
+//         if (data.error) {
+//             console.error(data.error);
+//             return;
+//         }
+
+//         const waypoints = data.stops.map(stop => ({
+//             location: new google.maps.LatLng(stop.lat, stop.lng),
+//             stopover: true
+//         }));
+
+//         const request = {
+//             origin: new google.maps.LatLng(data.pickup_point.lat, data.pickup_point.lng),
+//             destination: new google.maps.LatLng(data.destination.lat, data.destination.lng),
+//             waypoints: waypoints,
+//             travelMode: google.maps.TravelMode.DRIVING
+//         };
+
+//         directionsService.route(request, (result, status) => {
+//             if (status === google.maps.DirectionsStatus.OK) {
+//                 directionsRenderer.setDirections(result);
+//             } else {
+//                 console.error("Directions request failed due to " + status);
+//             }
+//         });
+//     } catch (error) {
+//         console.error("Error fetching route: ", error.message);
+//     }
+// }
+
+
+
+
 // add stop
+
+
+
 let position = 3;
 document.getElementById("addStop").addEventListener("click", () => {
     const form = document.getElementById("bookingForm");
@@ -417,12 +436,9 @@ document.getElementById("addStop").addEventListener("click", () => {
     input.addEventListener("change", async function () {
         console.log("Input changed?: ", this.value);
         if (!allInputsFilled()) return;
-
-        const totalCost = await getTotalCost();
-        console.log("Total cost: ", totalCost);
-        if (!totalCost) return;
-        const costElement = document.getElementById("totalCost");
-        costElement.textContent = "Estimated total cost: " + totalCost.toLocaleString("en-US", { style: "currency", currency: "PHP" });
+        
+        const debouncedRenderTotalCost = debounce(renderTotalCost, 500);
+        debouncedRenderTotalCost();
     });
 
     const removeButton = document.createElement("span");
@@ -432,7 +448,6 @@ document.getElementById("addStop").addEventListener("click", () => {
     removeButton.addEventListener("click", function () {
         div.remove();
         calculateRoute();
-        renderTotalCost();
         position--;``
     });
     

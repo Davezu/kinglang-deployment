@@ -18,6 +18,12 @@ $adminAuthController = new AuthController();
 $request = $_SERVER["REQUEST_URI"];
 $segments = explode("/", trim($request, "/"));
 
+if (preg_match("/reset-password\/([a-zA-Z0-9]+)/", $request, $matches)) {
+    $token = $matches[1];
+    $clientAuthController->showResetForm($token);
+    exit();
+}
+
 switch ($request) {
     // user
     case "/":
@@ -50,6 +56,17 @@ switch ($request) {
         break;
     case "/logout":
         $clientAuthController->logout();
+        break;
+
+    // forgot password
+    case "/fogot-password":
+        $clientAuthController->showForgotForm();
+        break;  
+    case "/send-reset-link":
+        $clientAuthController->sendResetLink();
+        break;
+    case "/update-password":
+        $clientAuthController->resetPassword();
         break;
 
     // bookings
@@ -125,8 +142,8 @@ switch ($request) {
     case "/admin/booking-requests":
         $adminBookingController->showBookingTable();
         break;
-    case "/admin/send-quote":
-        $adminBookingController->sendQuote();
+    case "/admin/confirm-booking":
+        $adminBookingController->confirmBooking();
         break;
     case "/admin/resched-requests":
         $adminBookingController->showReschedRequestTable();

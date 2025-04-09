@@ -48,9 +48,7 @@ class ClientAuthController {
             return;
         }
         
-        $hashed_password = password_hash($confirm_password, PASSWORD_BCRYPT);
-
-        $message = $this->authModel->signup($first_name, $last_name, $email, $contact_number, $hashed_password);
+        $message = $this->authModel->signup($first_name, $last_name, $email, $contact_number, $password);
     
         if ($message === "success") {
             echo json_encode(["success" => true, "message" => "Sign up successfully."]);
@@ -127,6 +125,76 @@ class ClientAuthController {
         unset($_SESSION["client_name"]);
         header("Location: /home");
         exit();
+    }
+
+    public function showForgotForm() {
+        include __DIR__ . '/../../views/client/forgot_password.php';
+    }
+
+    public function showResetForm($token) {
+        $user = $this->authModel->findByToken($token);
+        if ($user) {
+            include __DIR__ . '/../../views/client/reset_password.php';
+        } else {
+            echo "Invalid or expired token.";
+        }
+    }
+
+    public function sendResetLink() {
+        header("Content-Type: application/json");
+        $data = json_decode(file_get_contents("php://input"), true);
+        $email = trim($data["email"]);  
+
+        $user = $this->authModel->findByEmail($email);
+        if ($user) {
+            $token = bin2hex(random_bytes(16));
+            $expiry = date('Y-m-d H:i:s', strtotime('+1 hour'));
+            $this->authModel->saveResetToken($email, $token, $expiry);
+
+            // PHPMailer setup
+            require_once __DIR__ . '/../../../vendor/autoload.php';
+            $mail = new PHPMailer\PHPMailer\PHPMailer();
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'vjericken@gmail.com';
+            $mail->Password = 'bhlo vzae uepw ypxl';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+
+            // configure mail (host, SMTP, etc.)
+            $mail->setFrom('vjericken@gmail.com', 'Booking System');
+            $mail->addAddress($email);
+            $mail->isHTML(true);
+            $mail->Subject = "Reset Password";
+            $mail->Body = "Click here to reset your password: 
+                <a href='http://localhost:9999/reset-password/$token'>Reset Password</a>";
+            $mail->send();
+            echo json_encode(["success" => true, "message" => "Reset link sent to your email."]);
+        } else {
+            echo json_encode(["success" => false, "message" => "Email not found."]);
+        }
+    }
+
+    public function resetPassword() {
+        header("Content-Type: application/json");
+        $data = json_decode(file_get_contents("php://input"), true);
+        $token = trim($data["token"]);
+        $newPassword = trim($data["newPassword"]);
+
+        $validPassword = $this->authModel->isValidPassword($newPassword);
+        if (!$validPassword) {
+            echo json_encode(["success" => false, "message" => "Invalid password."]);
+            return;
+        }
+
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        $result = $this->authModel->updatePassword($token, $hashedPassword);
+        if ($result) {
+            echo json_encode(["success" => true, "message" => "Password reset successfully."]);
+        } else {
+            echo json_encode(["success" => false, "message" => "Failed to reset password."]);
+        }
     }
 }
 ?>

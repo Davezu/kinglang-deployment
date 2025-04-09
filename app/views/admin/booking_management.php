@@ -18,47 +18,48 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
     
 </head>
 <body> 
-    <div class="modal fade payment-calculator" aria-labelledby="calcualtorModal" tabindex="-1" id="calculatorModal" aria-hidden="true">
+    <div class="modal fade payment-calculator" aria-labelledby="confirmBookingModal" tabindex="-1" id="confirmBookingModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <form action="/send-quote" method="post" class="modal-content" id="calculatorForm">
+            <form action="" method="post" class="modal-content" id="confirmBookingForm">
                 <div class="modal-header">
-                    <h3 class="modal-title">Total Cost Calculator</h3>
+                    <h4 class="modal-title">Confirm Booking?</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="distance" class="form-label">Distance (KM)</label>    
-                        <input type="number" step="0.01" name="distance" id="distance" class="form-control" required>
-                    </div>  
-                    <div class="mb-3">
-                        <label for="diesel" class="form-label">Diesel Price Per Liter</label>
-                        <input type="number" min="0"  step="0.01" name="diesel" id="diesel" class="form-control" required>       
-                    </div>
-                    <div class="row g-3 mb-3">
-                        <div class="col">
-                            <label for="numberOfDays" class="form-label">Number of Days</label>
-                            <input type="number" min="0" name="number_of_days" id="numberOfDays" class="form-control" disabled>
-                        </div>
-                        <div class="col">
-                            <label for="numberOfBuses" class="form-label">Number of Buses</label>
-                            <input type="number" name="number_of_buses" id="numberOfBuses" class="form-control" disabled> 
-                        </div>
-                    </div>
-
-                    <input type="hidden" name="total_cost" id="totalCost">
-                    <input type="hidden" name="booking_id" id="bookingID">
-
-                    <p class="form-text fs-5">Total Cost: <span id="totalCostDisplay" class="text-success"></span></p>
+                    <p>Are you sure you want to confirm this booking request?</p>
+                    <p class="text-secondary">Note: This action cannot be undone.</p>
                 </div>
 
                 <div class="modal-footer">
-                    <div class="container-fluid d-flex justify-content-between">
-                        <button type="submit" id="confirm" class="btn btn-outline-success btn-sm w-50">Send Quote</button>
-                        <p id="messageElement"></p>
+                    <div class="d-flex gap-3 w-50">
+                        <input type="hidden" name="booking_id" id="bookingId" value="">
+                        <button type="button" class="btn btn-outline-secondary btn-sm w-50" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" id="confirm" class="btn btn-success btn-sm w-50">Confirm</button>
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div class="modal fade message-modal" aria-labelledby="messageModal" tabindex="-1" id="messageModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="messageTitle"></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p id="messageBody"></p>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="d-flex gap-3 w-25">
+                        <button type="button" class="btn btn-outline-success btn-sm w-100" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     

@@ -50,6 +50,7 @@ if (isset($_SESSION["user_id"])) {
                     <label for="password" class="form-label text-secondary">Password</label>
                     <input type="password" name="password" id="password" class="form-control" requred>
                     <!-- <p class="sub-message">Use 8 or more characters with a mix of letters, numbers, & symbols</p> -->
+                     <a href="/fogot-password" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Forgot password?</a>
                 </div>
                 <div class="login-button mb-3 d-flex gap-3 flex-column">
                     <button type="submit" name="login" class="btn btn-success w-100 text-white fw-bold rounded-pill p-2">Log In</button>

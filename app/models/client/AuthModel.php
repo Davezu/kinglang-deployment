@@ -11,25 +11,41 @@ class ClientAuthModel {
     }
 
     public function findByEmail($email) {
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->execute([$email]);
-        return $stmt->fetch();
+        try {
+            $stmt = $this->conn->prepare("SELECT email FROM users WHERE email = ?");
+            $stmt->execute([$email]);
+            return $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     public function saveResetToken($email, $token, $expiry) {
-        $stmt = $this->conn->prepare("UPDATE users SET reset_token = ?, reset_expiry = ? WHERE email = ?");
-        return $stmt->execute([$token, $expiry, $email]);
+        try {
+            $stmt = $this->conn->prepare("UPDATE users SET reset_token = ?, reset_expiry = ? WHERE email = ?");
+            return $stmt->execute([$token, $expiry, $email]);
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     public function findByToken($token) {
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE reset_token = ? AND reset_expiry > NOW()");
-        $stmt->execute([$token]);
-        return $stmt->fetch();
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE reset_token = ? AND reset_expiry > NOW()");
+            $stmt->execute([$token]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     public function updatePassword($token, $passwordHash) {
-        $stmt = $this->conn->prepare("UPDATE users SET password = ?, reset_token = NULL, reset_expiry = NULL WHERE reset_token = ?");
-        return $stmt->execute([$passwordHash, $token]);
+        try {
+            $stmt = $this->conn->prepare("UPDATE users SET password = ?, reset_token = NULL, reset_expiry = NULL WHERE reset_token = ?");
+            return $stmt->execute([$passwordHash, $token]);
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     public function emailExist($email) {
@@ -49,13 +65,11 @@ class ClientAuthModel {
             return "Email already exists.";
         }
 
-        if ($this->cnotactNumber($contact_number)) {
-            return "Contact number already exsits.";
-        }
-
         if (!$this->isValidPassword($password)) {
             return "Invalid password.";
         }   
+
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
         try {
             $stmt = $this->conn->prepare("INSERT INTO users (first_name, last_name, email, contact_number, password) VALUES (:first_name, :last_name, :email, :contact_number, :password)");
@@ -64,7 +78,7 @@ class ClientAuthModel {
                 ":last_name" => $last_name,
                 ":email" => $email,
                 ":contact_number" => $contact_number,
-                ":password" => $password
+                ":password" => $hashed_password
             ]);
             
             return "success";

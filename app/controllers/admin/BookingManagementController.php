@@ -29,18 +29,17 @@ class BookingManagementController {
         require_once __DIR__ . "/../../views/admin/booking_management.php";
     }
 
-    public function sendQuote() {
+    public function confirmBooking() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = json_decode(file_get_contents("php://input"), true);
-            $total_cost = $data["totalCost"];
             $booking_id = $data["bookingId"];
         
-            $result = $this->bookingModel->sendQuote($booking_id, $total_cost);
+            $result = $this->bookingModel->confirmBooking($booking_id);
         
             header("Content-Type: application/json");
             
             if ($result === "success") {
-                echo json_encode(["success" => true, "message" => "Quote sent successfully!"]);
+                echo json_encode(["success" => true, "message" => "Booking request confirmed successfully!"]);
             } else {
                 echo json_encode(["success" => false, "message" => $result]);
             }

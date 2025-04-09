@@ -35,16 +35,13 @@ class BookingManagementModel {
         }
     }
 
-    public function sendQuote($booking_id, $total_cost) {
+    public function confirmBooking($booking_id) {
         try {
-            $stmt = $this->conn->prepare("UPDATE bookings SET total_cost = :total_cost, balance = :total_cost WHERE booking_id = :booking_id");
-            $stmt->execute([
-                ":total_cost" => $total_cost,
-                ":booking_id" => $booking_id
-            ]);
+            $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Confirmed' WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
             return "success";
         } catch (PDOException $e) {
-            return "Database error: $e";
+            return "Database error.";
         }
     }
 
