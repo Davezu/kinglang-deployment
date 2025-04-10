@@ -49,10 +49,15 @@ class BookingController {
             return;
         }
     
-        // Prepare origin and destination pairs
+        // Prepare all legs of the trip
         $origins = array_slice($stops, 0, -1);
         $destinations = array_slice($stops, 1);
-    
+
+        // Add the final leg to return to origin (round trip)
+        $origins[] = end($stops);   // last stop
+        $destinations[] = $stops[0]; // back to origin
+
+        // Create URL-safe strings
         $originStr = implode("|", array_map("urlencode", $origins));
         $destinationStr = implode("|", array_map("urlencode", $destinations));
     
@@ -111,69 +116,6 @@ class BookingController {
         }
     }
 
-    // private $geocodeCache = [];
-
-    // public function getCoordinates($address, $apiKey) {
-    //     $address = trim($address);
-
-    //     // Return from cache if available
-    //     if (isset($this->geocodeCache[$address])) {
-    //         return $this->geocodeCache[$address];
-    //     }
-
-    //     $addressEncoded = urlencode($address);
-    //     $geoUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=$addressEncoded&key=$apiKey";
-    //     $geoResponse = file_get_contents($geoUrl);
-
-    //     if (!$geoResponse) return null;
-
-    //     $geoData = json_decode($geoResponse, true);
-    //     if ($geoData["status"] === "OK") {
-    //         $coords = $geoData["results"][0]["geometry"]["location"];
-    //         $this->geocodeCache[$address] = ["lat" => $coords["lat"], "lng" => $coords["lng"]];
-    //         return $this->geocodeCacheNigga[$address];
-    //     }   
-
-    //     return null;
-    // }
-
-    // public function processCoordinates() {
-    //     header("Access-Control-Allow-Origin: *");
-    //     header("Content-Type: application/json");
-
-    //     $apiKey = "AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs";
-    //     $input = json_decode(file_get_contents("php://input"), true);
-
-    //     if (empty($input["pickupPoint"]) || empty($input["destination"])) {
-    //         echo json_encode(["error" => "Input is required"]);
-    //         return;
-    //     }
-
-    //     $pickup_point = $this->getCoordinates($input["pickupPoint"], $apiKey);
-    //     $destination = $this->getCoordinates($input["destination"], $apiKey);
-
-    //     $stops = [];
-    //     if (!empty($input["stops"]) && is_array($input["stops"])) {
-    //         foreach ($input["stops"] as $stop) {
-    //             $coordinates = $this->getCoordinates($stop, $apiKey);
-    //             if ($coordinates) {
-    //                 $stops[] = $coordinates;
-    //             }
-    //         }
-    //     }
-
-    //     if ($pickup_point && $destination) {
-    //         echo json_encode([
-    //             "pickup_point" => $pickup_point,
-    //             "destination" => $destination,
-    //             "stops" => $stops
-    //         ]);
-    //     } else {
-    //         echo json_encode(["error" => "Unable to get coordinates"]);
-    //     }
-    // }
-
-
     public function requestBooking() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = json_decode(file_get_contents("php://input"), true);
@@ -186,8 +128,10 @@ class BookingController {
             $user_id = $_SESSION["user_id"];
             $total_cost = (float) $data["totalCost"];
             $balance = (float) $data["balance"];
+            $trip_distances = $data["tripDistances"];
+            $addresses = $data["addresses"];
 
-            $result = $this->bookingModel->requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance);
+            $result = $this->bookingModel->requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses);
             
             header("Content-Type: application/json");
 
@@ -289,8 +233,30 @@ class BookingController {
         }
     }
 
+    public function getBooking() {
+        header("Content-Type: application/json");
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        $booking_id = $data["bookingId"];
+        $user_id = $_SESSION["user_id"];
+
+        $booking = $this->bookingModel->getBooking($booking_id, $user_id);
+        $stops = $this->bookingModel->getBookingStops($booking_id);
+
+        if ($booking) {
+            echo json_encode(["success" => true, "booking" => $booking, "stops" => $stops]);
+        } else {
+            echo json_encode(["success" => false, "message" => $booking]);
+        }
+    }
+
     public function showBookingRequestTable() {
         require_once __DIR__ . "/../../views/client/booking_requests.php";
+    }
+    
+    public function showBookingDetail() {
+        require_once __DIR__ . "/../../views/client/booking_request.php";
     }
 
     public function updatePastBookings() {

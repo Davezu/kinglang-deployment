@@ -20,17 +20,7 @@ class Booking {
         }
     }
 
-    public function addBookingStops($stops, $booking_id) {
-        if (empty($stops)) return false;
-        try {
-            
-            return true;
-        } catch (PDOException $e) {
-            return "Database error: $e";
-        }
-    }
-
-    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance) {
+    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses) {
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
 
         try {
@@ -60,6 +50,7 @@ class Booking {
                 $stmt->execute([":booking_id" => $booking_id, ":bus_id" => $bus_id]);
             }
 
+            // insert stops into booking_stops
             foreach ($stops as $index => $stop) {            
                 $stmt = $this->conn->prepare("INSERT INTO booking_stops (booking_id, location, stop_order) VALUES (:booking_id, :location, :stop_order)");
                 $stmt->execute([
@@ -69,9 +60,46 @@ class Booking {
                 ]);
             }
 
+            foreach ($trip_distances["rows"] as $i => $row) {
+                $distance_value = $row["elements"][$i]["distance"]["value"] ?? 0; // in km
+                $origin = $addresses[$i];
+                $destination = $addresses[$i + 1] ?? $addresses[0]; // round trip fallback
+
+                $stmt = $this->conn->prepare("INSERT INTO trip_distances (origin, destination, distance, booking_id) VALUES (:origin, :destination, :distance, :booking_id)");
+                $stmt->execute([
+                    ":origin" => $origin, 
+                    ":destination" => $destination, 
+                    ":distance" => $distance_value,     
+                    ":booking_id" => $booking_id
+                ]);
+            }
+
             return "success";
         } catch (PDOException $e) {
             return "Database error: $e";
+        }
+    }
+
+    public function getBooking($booking_id, $user_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM bookings WHERE booking_id = :booking_id AND user_id = :user_id");
+            $stmt->execute([
+                ":booking_id" => $booking_id,
+                ":user_id" => $user_id
+            ]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return "Database error";
+        }
+    }
+
+    public function getBookingStops($booking_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM booking_stops WHERE booking_id = :booking_id ORDER BY stop_order");
+            $stmt->execute([":booking_id" => $booking_id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC) ?? [];
+        } catch (PDOException $e) {
+            return "Database error.";
         }
     }
 

@@ -62,6 +62,12 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     const destination = stops[stops.length - 1];
     stops.pop();
 
+    const tripDistances = await getTripDistances();
+    console.log("Trip Distances: ", tripDistances);
+
+    const addressInputs = document.querySelectorAll(".address");
+    const addresses = Array.from(addressInputs).map(input => input.value.trim()).filter(Boolean);
+
     const totalCost = await getTotalCost();
     console.log("Total Cost: ", totalCost);
     if (!totalCost || totalCost === 0) return;
@@ -74,7 +80,9 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         numberOfBuses: document.getElementById("number_of_buses")?.value,
         numberOfDays: document.getElementById("number_of_days")?.value,
         totalCost: totalCost,
-        balance: totalCost
+        balance: totalCost,
+        tripDistances: tripDistances,
+        addresses: addresses
         // busIds: selectedBuses
     }
 
@@ -109,6 +117,27 @@ Array.from(document.getElementsByTagName("input")).forEach(input => {
     input.addEventListener("change", renderTotalCost);
 });
 
+async function getTripDistances() {
+    const addressInputs = document.querySelectorAll(".address");
+    const stops = Array.from(addressInputs).map(input => input.value.trim()).filter(Boolean);
+
+    try {
+        const response = await fetch("/get-distance", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ stops })
+        });
+
+        const data = await response.json();
+
+        if (data.status === "OK") {
+            return data;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 async function renderTotalCost() {
     if (!allInputsFilled()) return;
 
@@ -142,7 +171,6 @@ document.querySelectorAll(".address").forEach(input => {
 });
 
 function allInputsFilled() {
-    console.log("Checking if all inputs are filled...");
     const inputs = document.getElementsByTagName("input");
     const allInputsFilled = Array.from(inputs).every(input => {
         if (input.type === "text" || input.type === "number") {
@@ -162,14 +190,12 @@ async function getAddress(input, suggestionList, inputElement) {
         });
 
         const data = await response.json();
-        console.log(data);
 
         suggestionList.innerHTML = "";
         suggestionList.style.border = "1px solid #ccc"; 
-
+        
         if (data.status !== "OK") {
             const list = document.createElement("li");
-            console.log(data);
             list.textContent = "No places found.";
             suggestionList.appendChild(list);
             return;
@@ -434,7 +460,6 @@ document.getElementById("addStop").addEventListener("click", () => {
     });
 
     input.addEventListener("change", async function () {
-        console.log("Input changed?: ", this.value);
         if (!allInputsFilled()) return;
         
         const debouncedRenderTotalCost = debounce(renderTotalCost, 500);

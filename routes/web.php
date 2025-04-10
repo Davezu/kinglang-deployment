@@ -103,11 +103,18 @@ switch ($request) {
     case "/home/booking-requests":
         $bookingController->showBookingRequestTable();
         break;
+    case "/home/booking-request":
+        $bookingController->showBookingDetail();
+        break;
     case "/home/get-booking-requests":
         $bookingController->getAllBookings();
         break;
     case "/request-resched-booking":
         $bookingController->requestReschedBooking();
+        break;
+
+    case "/get-booking":
+        $bookingController->getBooking();
         break;
 
     case "/payment/process":

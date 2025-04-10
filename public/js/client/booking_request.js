@@ -148,11 +148,13 @@ function actionCell(booking) {
     const payButton = document.createElement("button");
     const editButton = document.createElement("button");
     const cancelButton = document.createElement("button");
+    const viewButton = document.createElement("button");
 
     btnGroup.classList.add("container", "btn-container", "d-flex", "gap-2");
     payButton.classList.add("open-payment-modal", "btn", "bg-success-subtle", "text-success", "fw-bold", "w-100");
     editButton.classList.add("btn", "bg-primary-subtle", "w-100", "fw-bold", "text-primary");
     cancelButton.classList.add("btn", "bg-danger-subtle", "w-100", "fw-bold", "text-danger");
+    viewButton.classList.add("btn", "bg-success-subtle", "w-100", "fw-bold", "text-success");
 
     
     payButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
@@ -172,22 +174,29 @@ function actionCell(booking) {
     editButton.setAttribute("data-bs-target", "#reschedModal");
 
     cancelButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
+    viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
     payButton.textContent = "Pay";
     editButton.textContent = "Edit";
     cancelButton.textContent = "Cancel";
+    viewButton.textContent = "View";
 
     if (booking.status === "Confirmed" && parseFloat(booking.balance) > 0.0) {
-        btnGroup.append(payButton, editButton, cancelButton);
+        btnGroup.append(payButton, editButton, cancelButton, viewButton);
     } else if (booking.status === "Confirmed" && parseFloat(booking.balance) === 0) {
-        btnGroup.append(editButton, cancelButton); 
+        btnGroup.append(editButton, cancelButton, viewButton); 
     } else if (booking.status === "Pending") {
-        btnGroup.append(editButton, cancelButton);  
+        btnGroup.append(editButton, cancelButton, viewButton);  
     } else {
         btnGroup.textContent = "No Action Available";
     }
 
     td.appendChild(btnGroup);
+
+    viewButton.addEventListener("click", function () {
+        localStorage.setItem("bookingId", booking.booking_id);
+        window.location.href = "/home/booking-request";
+    })
 
     payButton.addEventListener("click", function () {
         document.getElementById("amount").textContent = "";
@@ -267,3 +276,5 @@ document.getElementById("reschedForm").addEventListener("submit", async (e) => {
     }
 
 });
+
+
