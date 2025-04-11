@@ -20,7 +20,7 @@ class Booking {
         }
     }
 
-    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses) {
+    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $is_rebooking, $rebooking_id) {
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
 
         try {
@@ -30,7 +30,7 @@ class Booking {
                 return "Not enough buses available.";
             }
 
-            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, user_id, total_cost, balance) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :user_id, :total_cost, :balance)");
+            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, user_id, total_cost, balance, is_rebooking) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :user_id, :total_cost, :balance, :is_rebooking  )");
             $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
                 ":end_of_tour" => $end_of_tour,
@@ -40,10 +40,15 @@ class Booking {
                 ":number_of_buses" => $number_of_buses,
                 ":user_id" => $user_id,
                 ":total_cost" => $total_cost,
-                ":balance" => $balance
+                ":balance" => $balance,
+                ":is_rebooking" => $is_rebooking
             ]);
 
             $booking_id = $this->conn->lastInsertID(); // get the added booking id to insert it in booking buses table
+
+            if ($is_rebooking) {
+                $this->requestRebooking($rebooking_id, $booking_id);
+            }
             
             foreach ($available_buses as $bus_id) {
                 $stmt = $this->conn->prepare("INSERT INTO booking_buses (booking_id, bus_id) VALUES (:booking_id, :bus_id)");
@@ -103,47 +108,67 @@ class Booking {
         }
     }
 
-    public function requestReschedBooking($number_of_days, $number_of_buses, $date_of_tour, $booking_id, $user_id) {
-        // update booking   
-        $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
-
-        try {  
-            $available_buses = $this->findAvailableBuses($date_of_tour, $end_of_tour, $number_of_buses);
-
-            if (count($available_buses) < $number_of_buses) return "Not enough available buses.";
-
-            if ($this->bookingIsNotConfirmed($booking_id)) {
-                $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, end_of_tour = :end_of_tour WHERE booking_id = :booking_id");
-                $stmt->execute([
-                    ":date_of_tour" => $date_of_tour,
-                    ":end_of_tour" => $end_of_tour,
-                    ":booking_id" => $booking_id
-                ]);
-                return "rescheduled";
-            } 
-
-            if ($this->bookingExistsInReschedRequests($booking_id)) {
-                $stmt = $this->conn->prepare("UPDATE reschedule_requests SET new_date_of_tour = :new_date_of_tour, new_end_of_tour = :new_end_of_tour WHERE booking_id = :booking_id");
-                $stmt->execute([
-                    ":new_date_of_tour" => $date_of_tour,
-                    ":new_end_of_tour" => $end_of_tour,
-                    ":booking_id" => $booking_id
-                ]);
-                return "success";
-            }
-
-            $stmt = $this->conn->prepare("INSERT INTO reschedule_requests (new_date_of_tour, new_end_of_tour, booking_id, user_id) VALUES (:new_date_of_tour, :new_end_of_tour, :booking_id, :user_id)");
-            $stmt->execute([
-                ":new_date_of_tour" => $date_of_tour,
-                ":new_end_of_tour" => $end_of_tour,
-                ":booking_id" => $booking_id,
-                ":user_id" => $user_id
-            ]);
-
-            return "success";
+    public function getTripDistances($booking_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM trip_distances WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            return "Database error: $e";
+            return "Database error";
         }
+    }
+
+    // public function requestReschedBooking($number_of_days, $number_of_buses, $date_of_tour, $booking_id, $user_id) {
+    //     // update booking   
+    //     $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
+
+    //     try {  
+    //         $available_buses = $this->findAvailableBuses($date_of_tour, $end_of_tour, $number_of_buses);
+
+    //         if (count($available_buses) < $number_of_buses) return "Not enough available buses.";
+
+    //         if ($this->bookingIsNotConfirmed($booking_id)) {
+    //             $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, end_of_tour = :end_of_tour WHERE booking_id = :booking_id");
+    //             $stmt->execute([
+    //                 ":date_of_tour" => $date_of_tour,
+    //                 ":end_of_tour" => $end_of_tour,
+    //                 ":booking_id" => $booking_id
+    //             ]);
+    //             return "rescheduled";
+    //         } 
+
+    //         if ($this->bookingExistsInReschedRequests($booking_id)) {
+    //             $stmt = $this->conn->prepare("UPDATE reschedule_requests SET new_date_of_tour = :new_date_of_tour, new_end_of_tour = :new_end_of_tour WHERE booking_id = :booking_id");
+    //             $stmt->execute([
+    //                 ":new_date_of_tour" => $date_of_tour,
+    //                 ":new_end_of_tour" => $end_of_tour,
+    //                 ":booking_id" => $booking_id
+    //             ]);
+    //             return "success";
+    //         }
+
+    //         $stmt = $this->conn->prepare("INSERT INTO reschedule_requests (new_date_of_tour, new_end_of_tour, booking_id, user_id) VALUES (:new_date_of_tour, :new_end_of_tour, :booking_id, :user_id)");
+    //         $stmt->execute([
+    //             ":new_date_of_tour" => $date_of_tour,
+    //             ":new_end_of_tour" => $end_of_tour,
+    //             ":booking_id" => $booking_id,
+    //             ":user_id" => $user_id
+    //         ]);
+
+    //         return "success";
+    //     } catch (PDOException $e) {
+    //         return "Database error: $e";
+    //     }
+    // }
+
+    public function requestRebooking($booking_id, $rebooking_id) {
+        try {
+            $stmt = $this->conn->prepare("INSERT INTO rebooking_request (booking_id, rebooking_id) VALUES (:booking_id, :rebooking_id)");
+            $stmt->execute([":booking_id" => $booking_id, ":rebooking_id" => $rebooking_id]);
+            return true;
+        } catch (PDOException $e) {
+            return "Databse error";
+        }   
     }
 
     public function bookingExistsInReschedRequests($booking_id) {
@@ -219,7 +244,7 @@ class Booking {
         try {
             $stmt = $this->conn->prepare("
                 SELECT * FROM bookings 
-                WHERE user_id = :user_id
+                WHERE user_id = :user_id AND is_rebooking != 1 AND is_rebooked != 1
                 $status
                 ORDER BY $column $order
             ");

@@ -5,8 +5,30 @@ input {
     overflow: hidden;
 }
 
+.location-icon, .calendar-icon {
+    position: absolute;
+    top: 50%;
+    left: 6px;
+    transform: translateY(-50%);
+    z-index: 9999;
+}
+
+.add-icon, .remove-icon {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.remove-icon {
+    visibility: hidden;
+    z-index: 9999;
+    transition: all 0.3s ease-in-out;
+}
+
 #map {
-    height: 60vh;
+    height: 70vh;
 }
 
 .suggestions {
@@ -19,7 +41,7 @@ input {
     overflow-y: auto;
     margin-top: 5px;
     padding: 0;
-    z-index: 999;
+    z-index: 99999;
 }
 
 .suggestions::-webkit-scrollbar {
@@ -56,10 +78,10 @@ input {
     visibility: hidden;
 }
 
-.position-relative:hover .remove-button {
+.position-relative:hover .remove-icon {
     visibility: visible;
 }
 
-#addStop, .remove-button {
+#addStop, .remove-icon {
     cursor: pointer;
 }

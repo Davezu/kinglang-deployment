@@ -8,12 +8,28 @@
 <body>
     <p id="pickupPoint"></p>
     <p id="destination"></p>
+    <p>Stops:</p>
+    <div id="stops"></div>
 
+    <table>
+        <thead>
+            <th>From</th>
+            <th>To</th>
+            <th>Distance</th>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+    <p id="numberOfBuses"></p>
+    <p id="numberOfDays"></p>
+    <p id="dieselPrice"></p>
+    <p id="totalDistance"></p>
+    <p id="totalCost"></p>
 
     <script>
 
         document.addEventListener("DOMContentLoaded", async function () {
             const bookingId = localStorage.getItem("bookingId");
+            localStorage.removeItem("bookingId");
             try {
                 const response = await fetch("/get-booking", {
                     method: "POST",
@@ -24,11 +40,61 @@
                 const data = await response.json();
 
                 const booking = data.booking;
+                const stops = data.stops;
+                const distances = data.distances;
+
+                const totalDistanceInKm = (data.distances.map(distance => parseFloat(distance.distance)).reduce((acc, curr) => acc + curr, 0) / 1000).toFixed(2);
+                const dieselPrice = parseFloat(data.diesel);
+                const numberOfDays = parseInt(booking.number_of_days);
+                const numberOfBuses = parseInt(booking.number_of_buses);
+
+                const totalCost = new Intl.NumberFormat().format(totalDistanceInKm * dieselPrice * numberOfDays * numberOfBuses);
+
                 console.log("Booking info: ", data);
 
-                document.getElementById("pickupPoint").textContent = booking.pickup_point;
-                document.getElementById("destination").textContent = booking.destination;
-            } catch (error) {
+                document.getElementById("pickupPoint").textContent = "Pickup Point: " + booking.pickup_point;
+                document.getElementById("destination").textContent = "Destination: " + booking.destination;
+                document.getElementById("numberOfBuses").textContent = "Number of buses: " + numberOfBuses;
+                document.getElementById("numberOfDays").textContent = "Number of days: " + numberOfDays;
+                document.getElementById("dieselPrice").textContent = "Diesel price per liter: " + dieselPrice;
+                document.getElementById("totalDistance").textContent = "Total Distance: " + totalDistanceInKm + " km";
+                document.getElementById("totalCost").textContent = "Total Cost: (No. of days x No. of buses x Diesel price per liter x Distance in KM) = " + totalCost + " Petot";
+
+                const tbody = document.getElementById("tbody");
+
+                tbody.innerHTML = "";
+                distances.forEach(distance => {
+                    const distanceInKm = (distance.distance / 1000).toFixed(2);
+                    
+                    const tr = document.createElement("tr");
+
+                    const originCell = document.createElement("td");
+                    const destinationCell = document.createElement("td");
+                    const distanceCell = document.createElement("td");
+
+                    originCell.textContent = distance.origin;
+                    destinationCell.textContent = distance.destination;
+                    distanceCell.textContent = distanceInKm + " km";
+
+                    tr.append(originCell, destinationCell, distanceCell);
+                    tbody.appendChild(tr);
+                });
+
+                if (stops.length === 0) {
+                    const p = document.createElement("p");
+                    p.textContent = "None";
+                    document.getElementById("stops").appendChild(p);
+                    return;
+                }
+                
+                const ul = document.createElement("ul");
+                stops.forEach(stop => {
+                    const li = document.createElement("li");
+                    li.textContent = stop.location;
+                    ul.appendChild(li);
+                });
+                document.getElementById("stops").appendChild(ul);
+
             } catch (error) {
                 console.error(error);
             }

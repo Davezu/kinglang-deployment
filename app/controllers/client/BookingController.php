@@ -116,32 +116,7 @@ class BookingController {
         }
     }
 
-    public function requestBooking() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $data = json_decode(file_get_contents("php://input"), true);
-            $date_of_tour = $data["dateOfTour"];
-            $destination = $data["destination"];
-            $stops = $data["stops"] ?? [];
-            $pickup_point = $data["pickupPoint"];
-            $number_of_buses = (int) $data["numberOfBuses"];
-            $number_of_days = (int) $data["numberOfDays"];
-            $user_id = $_SESSION["user_id"];
-            $total_cost = (float) $data["totalCost"];
-            $balance = (float) $data["balance"];
-            $trip_distances = $data["tripDistances"];
-            $addresses = $data["addresses"];
-
-            $result = $this->bookingModel->requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses);
-            
-            header("Content-Type: application/json");
-
-            if ($result === "success") {
-                echo json_encode(["success" => true, "message" => "Booking request sent successfully!"]);
-            } else {
-                echo json_encode(["success" => false, "message" => $result]);
-            }
-        }
-    }
+    
 
     public function getDieselPrice() {
         return $this->bookingModel->getDieselPrice();
@@ -165,25 +140,37 @@ class BookingController {
         echo json_encode(["success" => true, "total_cost" => $total_cost]);
     }
 
-    public function requestReschedBooking() {
-        $data = json_decode(file_get_contents("php://input"), true);
-        $number_of_days = (int) $data["numberOfDays"];
-        $number_of_buses = (int) $data["numberOfBuses"];
-        $date_of_tour = $data["dateOfTour"];
-        $booking_id = (int) $data["bookingId"];
-        $user_id = (int) $_SESSION["user_id"];
+    public function requestBooking() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $data = json_decode(file_get_contents("php://input"), true);
+            $date_of_tour = $data["dateOfTour"];
+            $destination = $data["destination"];
+            $stops = $data["stops"] ?? [];
+            $pickup_point = $data["pickupPoint"];
+            $number_of_buses = (int) $data["numberOfBuses"];
+            $number_of_days = (int) $data["numberOfDays"];
+            $user_id = $_SESSION["user_id"];
+            $total_cost = (float) $data["totalCost"];
+            $balance = (float) $data["balance"];
+            $trip_distances = $data["tripDistances"];
+            $addresses = $data["addresses"];
+            $is_rebooking = $data["isRebooking"];
+            $rebooking_id = $data["rebookingId"]; 
 
-        $result = $this->bookingModel->requestReschedBooking($number_of_days, $number_of_buses, $date_of_tour, $booking_id, $user_id);
+            $result = $this->bookingModel->requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $is_rebooking, $rebooking_id);
+            
+            header("Content-Type: application/json");
 
-        header("Content-Type: application/json");
-
-        if ($result === "success") {
-            echo json_encode(["success" => true, "message" => "Booking reschedule request sent successfully."]);
-        } elseif ($result === "rescheduled") {
-            echo json_encode(["success" => true, "message" => "Booking rescheduled successfully!"]);
-        } else {
-            echo json_encode(["success" => false, "message" => $result]);
+            if ($result === "success") {
+                echo json_encode(["success" => true, "message" => "Booking request sent successfully!"]);
+            } else {
+                echo json_encode(["success" => false, "message" => $result]);
+            }
         }
+    }
+
+    public function requestRebooking() {
+       
     }
 
     public function reschedBooking() {
@@ -243,9 +230,11 @@ class BookingController {
 
         $booking = $this->bookingModel->getBooking($booking_id, $user_id);
         $stops = $this->bookingModel->getBookingStops($booking_id);
+        $distances = $this->bookingModel->getTripDistances($booking_id);
+        $diesel = $this->bookingModel->getDieselPrice();
 
         if ($booking) {
-            echo json_encode(["success" => true, "booking" => $booking, "stops" => $stops]);
+            echo json_encode(["success" => true, "booking" => $booking, "stops" => $stops, "distances" =>  $distances, "diesel" => $diesel]);
         } else {
             echo json_encode(["success" => false, "message" => $booking]);
         }

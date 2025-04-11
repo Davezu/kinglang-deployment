@@ -13,6 +13,10 @@ if (!isset($_SESSION["user_id"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
     <link rel="stylesheet" href="/../../../public/css/client/booking.css">  
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <title>Book a Trip</title>
 </head>
 <body>
@@ -48,25 +52,26 @@ if (!isset($_SESSION["user_id"])) {
                 </div>
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
-            <div class="container-fluid d-flex justify-content-center align-items-center mt-4 gap-5">
-                <form action="" id="bookingForm" class="mt-4 border rounded p-3">
+            <div class="container-fluid d-flex justify-content-center mt-4 gap-5">
+                <form action="" id="bookingForm" class="border rounded p-3 height-auto align-self-start">
                     <input type="hidden" name="id" value="1">
                     <div class="mb-3 position-relative">
-                        <label for="pickup_point" class="form-label">Pick-up point</label>
-                        <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address" autocomplete="off" >
+                        <i class="bi bi-geo-alt-fill location-icon"></i>
+                        <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address py-2 px-4" autocomplete="off" placeholder="Pickup Location" required>
                         <ul id="pickupPointSuggestions" class="suggestions"></ul>
-                    </div>
+                    </div> 
                     <div class="mb-3 position-relative">
-                        <div class="d-flex justify-content-between">
-                            <label for="destination" class="form-label">Destination</label>
+                        <!-- <div class="d-flex justify-content-between">
                             <p id="addStop" class="m-0">Add Stop</p>
-                        </div>
-                        <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop" autocomplete="off" >
+                        </div> -->
+                        <i class="bi bi-geo-alt-fill location-icon"></i>
+                        <i class="bi bi-plus-circle-fill add-icon" id="addStop"></i>
+                        <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop py-2 px-4" autocomplete="off" placeholder="Dropoff Location" required>
                         <ul id="destinationSuggestions" class="suggestions"></ul>
                     </div>
-                    <div class="mb-3">  
-                        <label for="date_of_tour" class="form-label">Date of Tour</label>
-                        <input type="date" name="date_of_tour" id="date_of_tour" class="form-control" palceholder="Date of Tour" >
+                    <div class="mb-3 position-relative">  
+                        <i class="bi bi-calendar-fill calendar-icon"></i>
+                        <input type="text" name="date_of_tour" id="date_of_tour" class="form-control py-2 px-4" placeholder="Pickup Date" required>
                     </div>
                     <div class="row mb-3 g-3">
                         <div class="col">
@@ -83,14 +88,13 @@ if (!isset($_SESSION["user_id"])) {
                         <div id="busSelection"></div>
                     </div>
 
-                    <div class="container-fluid d-flex justify-content-between align-items-center mb-4 gap">
-                        <button type="submit" name="submit_booking" class="btn btn-primary">Book Now</button>
+                    <div class="container-fluid d-flex justify-content-between align-items-center gap p-0">
+                        <button type="submit" name="submit_booking" class="btn btn-success w-100">Next</button>
                         <p class="booking-message" style="color: green"></p>
                         <p id="totalCost"></p>
                     </div>
                 </form>
                 <div class="border rounded w-50" id="map">
-                    I'm the map
                 </div>
             </div>
         </div>

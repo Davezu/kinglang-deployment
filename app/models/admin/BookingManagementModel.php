@@ -88,6 +88,10 @@ class BookingManagementModel {
         }
     }
 
+    public function confirmRebookingRequest() {
+        
+    }
+
 
 
 

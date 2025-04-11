@@ -3,11 +3,95 @@ const messageModal = new bootstrap.Modal(document.getElementById("messageModal")
 const messageTitle = document.getElementById("messageTitle");
 const messageBody = document.getElementById("messageBody");
 
-const today = new Date();
+const picker = flatpickr("#date_of_tour", {
+    dateFormat: "Y-m-d",
+    altInput: true,
+    altFormat: "D, M j", 
+    minDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+    maxDate: new Date(new Date().setMonth(new Date().getMonth() + 1)),
+  });
 
-today.setDate(today.getDate() + 3);
-const minDate = today.toISOString().split("T")[0];
-document.getElementById("date_of_tour").min = minDate;    
+
+
+let isRebooking = false;
+
+const bookingId = sessionStorage.getItem("bookingId") || 0;
+sessionStorage.removeItem("bookingId");
+
+if (bookingId > 0) isRebooking = !isRebooking;
+
+document.addEventListener("DOMContentLoaded", async function () {
+    if (!isRebooking) return;
+
+    const data = await getBooking(bookingId);
+
+    const booking = data.booking;
+    const stops = data.stops;
+    const locations = data.distances;
+
+    console.log("Booking detail: ", booking);
+    console.log("Stops detail: ", data.distances);
+
+    if (stops.length > 0) {
+        for (let i = 0; i < stops.length; i++) 
+            document.getElementById("addStop").click();
+    }
+
+    const addressInputs = Array.from(document.querySelectorAll(".address"));
+
+    locations.forEach((location, i) => {
+        addressInputs[i].value = location.origin;
+    });
+
+    const date = new Date(booking.date_of_tour);
+
+    const options = { weekday: 'short', month: 'short', day: 'numeric' };
+    const formatted = date.toLocaleDateString('en-US', options);
+
+    console.log(formatted);
+
+    picker.setDate(booking.date_of_tour);
+    document.getElementById("number_of_days").value = booking.number_of_days;
+    document.getElementById("number_of_buses").value = booking.number_of_buses;
+
+    calculateRoute();
+
+});
+
+
+async function getBooking(bookingId) {
+    try {
+        const response = await fetch("/get-booking", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ bookingId })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            return data;
+        } else {
+            return [];
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", initMap);
 
 
@@ -82,7 +166,9 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         totalCost: totalCost,
         balance: totalCost,
         tripDistances: tripDistances,
-        addresses: addresses
+        addresses: addresses,
+        isRebooking: isRebooking,
+        rebookingId: bookingId
         // busIds: selectedBuses
     }
 
@@ -140,11 +226,15 @@ async function getTripDistances() {
 
 async function renderTotalCost() {
     if (!allInputsFilled()) return;
+    
+    const costElement = document.getElementById("totalCost");
 
     const totalCost = await getTotalCost();
-    if (!totalCost) return;
+    if (!totalCost) {
+        costElement.textContent = "Unable to get total cost.";
+        return;
+    };
 
-    const costElement = document.getElementById("totalCost");
     costElement.textContent = "Estimated total cost: " + totalCost.toLocaleString("en-US", { style: "currency", currency: "PHP" });
 }
 
@@ -280,6 +370,8 @@ async function getTotalCost() {
         const data = await response.json();
         if (data.success) {
             return data.total_cost;
+        } else {
+            console.error(data.message);
         }
     } catch (error) {
         console.error(error);
@@ -380,10 +472,6 @@ async function calculateRoute() {
         return;
     }   
 }
-
-
-
-// async function calculateRoute() {
 //     const pickupPoint = document.getElementById("pickup_point").value.trim();
 //     const destinationInputs = document.querySelectorAll(".address");
 //     const destination = destinationInputs[destinationInputs.length - 1].value.trim();
@@ -438,8 +526,11 @@ async function calculateRoute() {
 
 
 
-let position = 3;
+let position = 3, count = 0;
 document.getElementById("addStop").addEventListener("click", () => {
+    count++;
+    document.getElementById("destination").placeholder = "Add a stop";
+
     const form = document.getElementById("bookingForm");
     const div = document.createElement("div");
     const input = document.createElement("input");
@@ -447,8 +538,9 @@ document.getElementById("addStop").addEventListener("click", () => {
 
     div.classList.add("mb-3", "position-relative");
     input.id = "destination";
+    input.placeholder = "Add a stop";
     input.autocomplete = "off";
-    input.classList.add("form-control", "address", "added-stop", "position-relative", "pe-4", "destination");
+    input.classList.add("form-control", "address", "added-stop", "position-relative", "px-4", "py-2", "destination");
     ul.classList.add("suggestions");
 
     input.addEventListener("input", function (e) {
@@ -466,17 +558,21 @@ document.getElementById("addStop").addEventListener("click", () => {
         debouncedRenderTotalCost();
     });
 
-    const removeButton = document.createElement("span");
-    removeButton.classList.add("remove-button");
-    removeButton.textContent = "\u00d7";
+    const locationIcon = document.createElement("i");
+    locationIcon.classList.add("bi", "bi-geo-alt-fill", "location-icon")
+
+    const removeButton = document.createElement("i");
+    removeButton.classList.add("bi", "bi-x-circle-fill", "remove-icon");
 
     removeButton.addEventListener("click", function () {
         div.remove();
         calculateRoute();
-        position--;``
+        position--;
+        count--;
+        if (count === 0) document.getElementById("destination").placeholder = "Dropoff Location";
     });
     
-    div.appendChild(removeButton);
+    div.append(locationIcon, removeButton);
 
     const referenceElement = form.children[position];
     position++;

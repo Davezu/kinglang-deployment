@@ -170,9 +170,6 @@ function actionCell(booking) {
     editButton.setAttribute("data-days", booking.number_of_days);
     editButton.setAttribute("data-buses", booking.number_of_buses);
 
-    editButton.setAttribute("data-bs-toggle", "modal");
-    editButton.setAttribute("data-bs-target", "#reschedModal");
-
     cancelButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
@@ -223,18 +220,8 @@ function actionCell(booking) {
     });
 
     editButton.addEventListener("click", function () {
-        document.getElementById("messageElement").textContent = "";
-        document.getElementById("date_of_tour").value = ""; 
-
-        const bookingId = this.getAttribute("data-booking-id");
-        const bookingClientId = this.getAttribute("data-client-id");
-        const days = this.getAttribute("data-days");
-        const buses = this.getAttribute("data-buses");
-
-        document.getElementById("reschedBookingId").value = bookingId;
-        document.getElementById("reschedClientId").value = bookingClientId;
-        document.getElementById("number_of_days").value = days;
-        document.getElementById("numberOfBuses").value = buses;
+        sessionStorage.setItem("bookingId", booking.booking_id);
+        window.location.href = "/home/book";
     });
 
     return td;
