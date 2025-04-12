@@ -47,16 +47,16 @@ class BookingManagementController {
     } 
 
     public function showReschedRequestTable() {
-        require_once __DIR__ . "/../../views/admin/reschedule_requests.php";
+        require_once __DIR__ . "/../../views/admin/rebooking_requests.php";
     }
 
-    public function getReschedRequests() {
+    public function getRebookingRequests() {
         $data = json_decode(file_get_contents("php://input"), true);
         $status = $data["status"];
         $order = $data["order"];
         $column = $data["column"];
 
-        $reschedRequests = $this->bookingModel->getReschedRequests($status, $column, $order);
+        $reschedRequests = $this->bookingModel->getRebookingRequests($status, $column, $order);
 
         header("Content-Type: application/json");
 
@@ -67,15 +67,12 @@ class BookingManagementController {
         }
     }
 
-    public function confirmReschedRequest() {
+    public function confirmRebookingRequest() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = json_decode(file_get_contents("php://input"), true);
-            $request_id = $data["requestId"];
-            $booking_id = $data["bookingId"];
-            $date_of_tour = $data["dateOfTour"];
-            $end_of_tour = $data["endOfTour"];
+            $rebooking_id = $data["bookingId"];
 
-            $result = $this->bookingModel->confirmReschedRequest($request_id, $booking_id, $date_of_tour, $end_of_tour);
+            $result = $this->bookingModel->confirmRebookingRequest($rebooking_id);
             header("Content-Type: application/json");
 
             if ($result === "success") {

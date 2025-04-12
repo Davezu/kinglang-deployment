@@ -13,6 +13,10 @@ input {
     z-index: 9999;
 }
 
+.calendar-icon {
+    font-size: 14px;
+}
+
 .add-icon, .remove-icon {
     position: absolute;
     top: 50%;

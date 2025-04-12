@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', async function () {
-    const requests = await getReschedRequest('all', 'asc', 'booking_id');
-    renderReschedRequest(requests);
+    const requests = await getRebookingRequests('All', 'asc', 'booking_id');
+    renderRebookingRequests(requests);
 }); 
 
 document.getElementById('statusSelect').addEventListener('change', async function () {
     const status = this.value;
     console.log(status);
-    const requests = await getReschedRequest(status, 'asc', 'client_name');
-    renderReschedRequest(requests);
+    const requests = await getRebookingRequests(status, 'asc', 'client_name');
+    renderRebookingRequests(requests);
 });
 
 document.querySelectorAll('.sort').forEach(button => {
@@ -19,8 +19,8 @@ document.querySelectorAll('.sort').forEach(button => {
         const column = this.getAttribute('data-column');
         const order = this.getAttribute('data-order');
 
-        const requests = await getReschedRequest(status, order, column);
-        renderReschedRequest(requests);
+        const requests = await getRebookingRequests(status, order, column);
+        renderRebookingRequests(requests);
 
         this.setAttribute('data-order', order === 'asc' ? 'desc' : 'asc');
     });
@@ -34,16 +34,16 @@ function formatDate(date) {
     });
 }
 
-async function getReschedRequest(status, order, column) {
+async function getRebookingRequests(status, order, column) {
     try {
-        const response = await fetch("/admin/get-resched-requests", {
+        const response = await fetch("/admin/get-rebooking-requests", {
             method: 'POST', 
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ status, order, column })
         });
 
         const data = await response.json();
-        console.log(data.requests);
+        console.log(data);
         if (data.success) {
             return data.requests;
         }
@@ -52,8 +52,8 @@ async function getReschedRequest(status, order, column) {
     }
 }
 
-async function renderReschedRequest(requests) {
-    // const requests = await getReschedRequest();
+async function renderRebookingRequests(requests) {
+    // const requests = await getRebookingRequests();
     console.log(requests);
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = '';
@@ -63,17 +63,17 @@ async function renderReschedRequest(requests) {
         
         const clientNameCell = document.createElement('td');
         const clientContactCell = document.createElement('td');
+        const clientEmailCell = document.createElement("td");
         const dateOfTourCell = document.createElement('td');
-        const endOfTourCell = document.createElement('td');
         const statusCell = document.createElement('td');
 
         clientNameCell.textContent = request.client_name;
         clientContactCell.textContent = request.contact_number;
-        dateOfTourCell.textContent = formatDate(request.new_date_of_tour);
-        endOfTourCell.textContent = formatDate(request.new_end_of_tour);
+        clientEmailCell.textContent = request.email;
+        dateOfTourCell.textContent = formatDate(request.date_of_tour);
         statusCell.textContent = request.status;
 
-        row.append(clientNameCell, clientContactCell, dateOfTourCell, endOfTourCell, statusCell, actionButtons(request));
+        row.append(clientNameCell, clientContactCell, clientEmailCell, dateOfTourCell, statusCell, actionButtons(request));
         tbody.appendChild(row);
     });
 }
@@ -83,6 +83,7 @@ function actionButtons(request) {
     const buttonGroup = document.createElement('div');
     const confirmButton = document.createElement('button');
     const rejectButton = document.createElement('button');
+    const viewButton = document.createElement('button');
 
     buttonGroup.classList.add('d-flex', 'gap-2');   
 
@@ -92,21 +93,16 @@ function actionButtons(request) {
     confirmButton.textContent = 'Confrim';
 
     confirmButton.addEventListener('click', async () => {
-        const response = await fetch('/admin/confirm-resched-request', {
+        const response = await fetch('/admin/confirm-rebooking-request', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                requestId: request.request_id, 
-                bookingId: request.booking_id,
-                dateOfTour: request.new_date_of_tour,
-                endOfTour: request.new_end_of_tour
-            })
+            body: JSON.stringify({ bookingId: request.booking_id })
         });
 
         const data = await response.json();
         if (data.success) {
-            const requests = await getReschedRequest('all', 'asc', 'client_name');
-            renderReschedRequest(requests);
+            const requests = await getRebookingRequests('all', 'asc', 'client_name');
+            renderRebookingRequests(requests);
         }
     });
 
@@ -114,11 +110,17 @@ function actionButtons(request) {
     rejectButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     rejectButton.textContent = 'Reject';
 
+    // reject logic
+
+
+    viewButton.classList.add('btn', 'bg-primary-subtle', 'text-primary', 'w-100', 'fw-bold', 'decline');
+    viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
+    viewButton.textContent = 'View';
 
     if (request.status === 'Confirmed') {   
         buttonGroup.textContent = 'No action needed';
     } else {
-        buttonGroup.append(confirmButton, rejectButton);
+        buttonGroup.append(confirmButton, rejectButton, viewButton);
     }
 
     actionCell.appendChild(buttonGroup);

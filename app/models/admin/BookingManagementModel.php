@@ -13,7 +13,7 @@ class BookingManagementModel {
 
         $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
         $status = in_array($status, $allowed_status) ? $status : "";
-        $status == "All" ? $status = "" : $status = " WHERE b.status = '$status'";
+        $status == "All" ? $status = "" : $status = " AND b.status = '$status'";
 
         $allowed_columns = ["booking_id", "client_name", "contact_number", "destination", "pickup_point", "date_of_tour", "end_of_tour", "number_of_days", "number_of_buses", "status", "payment_status", "total_cost"];
         $column = in_array($column, $allowed_columns) ? $column : "client_name";
@@ -24,6 +24,7 @@ class BookingManagementModel {
                 SELECT b.booking_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, b.number_of_days, b.number_of_buses, b.status, b.total_cost, b.payment_status
                 FROM bookings b
                 JOIN users u ON b.user_id = u.user_id
+                WHERE is_rebooking = 0 AND is_rebooked = 0
                 $status
                 ORDER BY $column $order 
             ");
@@ -45,10 +46,10 @@ class BookingManagementModel {
         }
     }
 
-    public function getReschedRequests($status, $column, $order) {
-        $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "all"];
+    public function getRebookingRequests($status, $column, $order) {
+        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
         $status = in_array($status, $allowed_status) ? $status : "";
-        $status == "all" ? $status = "" : $status = " WHERE r.status = '$status'";
+        $status == "All" ? $status = "" : $status = " WHERE r.status = '$status'";
 
         $allowed_columns = ["booking_id", "client_name", "contact_number", "new_date_of_tour", "new_end_of_tour", "status"];
         $column = in_array($column, $allowed_columns) ? $column : "client_name";
@@ -56,40 +57,52 @@ class BookingManagementModel {
 
         try {
             $stmt = $this->conn->prepare("
-                SELECT r.request_id, r.booking_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, r.new_date_of_tour, r.new_end_of_tour, r.status
-                FROM reschedule_requests r
+                SELECT b.booking_id, r.request_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, u.email, b.destination, b.pickup_point, b.number_of_days, b.number_of_buses, r.status, b.payment_status, b.total_cost, b.balance, b.date_of_tour, b.end_of_tour
+                FROM rebooking_request r
                 JOIN users u ON r.user_id = u.user_id
+                JOIN bookings b ON r.rebooking_id = b.booking_id
                 $status
                 ORDER BY $column $order
             ");
             $stmt->execute();
-            
-            return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
         }  catch (PDOException $e) {
             return "Database error: $e";
         }
     }
 
-    public function confirmReschedRequest($request_id, $booking_id, $new_date_of_tour, $new_end_of_tour) {
+    public function getBookingIdFromRebookingRequest($rebooking_id) {
         try {
-            $stmt = $this->conn->prepare("UPDATE reschedule_requests SET status = 'confirmed' WHERE request_id = :request_id");
-            $result = $stmt->execute([":request_id" => $request_id]);
-
-            $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :new_date_of_tour, end_of_tour = :new_end_of_tour WHERE booking_id = :booking_id");
-            $result = $stmt->execute([
-                ":new_date_of_tour" => $new_date_of_tour,
-                ":new_end_of_tour" => $new_end_of_tour,
-                ":booking_id" => $booking_id
-            ]);
-
-            return "success";
+            $stmt = $this->conn->prepare("SELECT booking_id FROM rebooking_request WHERE rebooking_id = :rebooking_id");
+            $stmt->execute([ ":rebooking_id" => $rebooking_id ]);
+            return $stmt->fetchColumn();
         } catch (PDOException $e) {
-            return "Database error: $e";
+            return "Databse error: $e";
         }
     }
 
-    public function confirmRebookingRequest() {
-        
+    public function confirmRebookingRequest($rebooking_id) {
+        $booking_id = $this->getBookingIdFromRebookingRequest($rebooking_id) ?? 0;
+
+        if ($booking_id === 0) {
+            return "Unable to get booking ID.";
+        }
+
+        try {
+            $stmt = $this->conn->prepare("UPDATE rebooking_request SET status = 'Confirmed' WHERE rebooking_id = :rebooking_id");
+            $stmt->execute([":rebooking_id" => $rebooking_id]);
+
+            $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooked = 1 WHERE booking_id = :booking_id");
+            $stmt->execute([ ":booking_id" => $booking_id ]);
+
+            $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooking = 0 WHERE booking_id = :booking_id");
+            $stmt->execute([ ":booking_id" => $rebooking_id ]);
+
+            return true;
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
     }
 
 

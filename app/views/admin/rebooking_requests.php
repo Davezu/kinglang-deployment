@@ -18,10 +18,10 @@
             <div class="input-group w-25 w-md-50 my-3">
                 <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Remarks</span>
                 <select name="status" id="statusSelect" class="form-select">
-                    <option value="all">All</option>
-                    <option value="pending">Pending</option>
-                    <option value="confirmed">Confirmed</option>
-                    <option value="rejected">Rejected</option>
+                    <option value="All">All</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Rejected">Rejected</option>
                 </select>
             </div>
             <div class="table-responsive-xl ">
@@ -30,8 +30,8 @@
                         <tr>
                             <th class="sort" data-order="asc" data-column="client_name">Client Name</th>
                             <th class="sort" data-order="asc" data-column="contact_number">Contact Number</th>
-                            <th class="sort" data-order="asc" data-column="new_date_of_tour">New Date of Tour</th>
-                            <th class="sort" data-order="asc" data-column="new_end_of_tour">New End of Tour</th>
+                            <th class="sort" data-order="asc" data-column="email">Email Address</th>
+                            <th class="sort" data-order="asc" data-column="date_of_tour">Date of Tour</th>
                             <th class="sort" data-order="asc" data-column="status">Remarks</th>
                             <th class="sort" data-order="asc" style="text-align: center; width: 15%;">Action</th>
                         </tr> 
@@ -45,7 +45,7 @@
     </div>
 
     <script src="../../../public/js/assets/sidebar.js"></script>
-    <script src="../../../public/js/admin/resched_request.js"></script>
+    <script src="../../../public/js/admin/rebooking_requests.js"></script>
     <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

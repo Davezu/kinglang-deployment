@@ -109,8 +109,8 @@ switch ($request) {
     case "/home/get-booking-requests":
         $bookingController->getAllBookings();
         break;
-    case "/request-resched-booking":
-        $bookingController->requestReschedBooking();
+    case "/request-rebooking":
+        $bookingController->requestRebooking();
         break;
 
     case "/get-booking":
@@ -152,14 +152,14 @@ switch ($request) {
     case "/admin/confirm-booking":
         $adminBookingController->confirmBooking();
         break;
-    case "/admin/resched-requests":
+    case "/admin/rebooking-requests":
         $adminBookingController->showReschedRequestTable();
         break;
-    case "/admin/get-resched-requests":
-        $adminBookingController->getReschedRequests();
+    case "/admin/get-rebooking-requests":
+        $adminBookingController->getRebookingRequests();
         break;
-    case "/admin/confirm-resched-request":
-        $adminBookingController->confirmReschedRequest();
+    case "/admin/confirm-rebooking-request":
+        $adminBookingController->confirmRebookingRequest();
         break;
 
 

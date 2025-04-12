@@ -47,7 +47,7 @@ class Booking {
             $booking_id = $this->conn->lastInsertID(); // get the added booking id to insert it in booking buses table
 
             if ($is_rebooking) {
-                $this->requestRebooking($rebooking_id, $booking_id);
+                $this->requestRebooking($rebooking_id, $booking_id, $_SESSION["user_id"]);
             }
             
             foreach ($available_buses as $bus_id) {
@@ -161,10 +161,10 @@ class Booking {
     //     }
     // }
 
-    public function requestRebooking($booking_id, $rebooking_id) {
+    public function requestRebooking($booking_id, $rebooking_id, $user_id) {
         try {
-            $stmt = $this->conn->prepare("INSERT INTO rebooking_request (booking_id, rebooking_id) VALUES (:booking_id, :rebooking_id)");
-            $stmt->execute([":booking_id" => $booking_id, ":rebooking_id" => $rebooking_id]);
+            $stmt = $this->conn->prepare("INSERT INTO rebooking_request (booking_id, rebooking_id, user_id) VALUES (:booking_id, :rebooking_id, :user_id)");
+            $stmt->execute([":booking_id" => $booking_id, ":rebooking_id" => $rebooking_id, ":user_id" => $user_id]);
             return true;
         } catch (PDOException $e) {
             return "Databse error";
@@ -244,7 +244,7 @@ class Booking {
         try {
             $stmt = $this->conn->prepare("
                 SELECT * FROM bookings 
-                WHERE user_id = :user_id AND is_rebooking != 1 AND is_rebooked != 1
+                WHERE user_id = :user_id AND is_rebooking = 0 AND is_rebooked = 0
                 $status
                 ORDER BY $column $order
             ");
