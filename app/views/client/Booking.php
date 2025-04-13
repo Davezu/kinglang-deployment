@@ -46,52 +46,65 @@ if (!isset($_SESSION["user_id"])) {
     
     <div class="content collapsed" id="content">
         <div class="container-fluid py-4 px-4 px-xl-5">
-            <div class="container-fluid d-flex justify-content-between align-items-center p-0 m-0">
-                <div class="p-0">
-                    <h3>Book a Trip</h3>
-                </div>
+            <div class="container-fluid d-flex justify-content-end align-items-center p-0 m-0">
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
             <div class="container-fluid d-flex justify-content-center mt-4 gap-5">
                 <form action="" id="bookingForm" class="border rounded p-3 height-auto align-self-start">
                     <input type="hidden" name="id" value="1">
-                    <div class="mb-3 position-relative">
-                        <i class="bi bi-geo-alt-fill location-icon"></i>
-                        <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address py-2 px-4" autocomplete="off" placeholder="Pickup Location" required>
-                        <ul id="pickupPointSuggestions" class="suggestions"></ul>
-                    </div> 
-                    <div class="mb-3 position-relative">
-                        <!-- <div class="d-flex justify-content-between">
-                            <p id="addStop" class="m-0">Add Stop</p>
-                        </div> -->
-                        <i class="bi bi-geo-alt-fill location-icon"></i>
-                        <i class="bi bi-plus-circle-fill add-icon" id="addStop"></i>
-                        <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop py-2 px-4" autocomplete="off" placeholder="Dropoff Location" required>
-                        <ul id="destinationSuggestions" class="suggestions"></ul>
-                    </div>
-                    <div class="mb-3 position-relative">  
-                        <i class="bi bi-calendar-fill calendar-icon"></i>
-                        <input type="text" name="date_of_tour" id="date_of_tour" class="form-control py-2 px-4" placeholder="Pickup Date" required>
-                    </div>
-                    <div class="row mb-3 g-3">
-                        <div class="col">
-                            <label for="number_of_days" class="form-label">Number of days</label>
-                            <input type="number" name="number_of_days" id="number_of_days" class="form-control" >
+                    <div id="firstInfo">
+                        <h3 class="mb-3">Book a Trip</h3>
+                        <div class="mb-3 position-relative">
+                            <i class="bi bi-geo-alt-fill location-icon"></i>
+                            <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address py-2 px-4" autocomplete="off" placeholder="Pickup Location" required>
+                            <ul id="pickupPointSuggestions" class="suggestions"></ul>
+                        </div> 
+                        <div class="mb-3 position-relative">
+                            <i class="bi bi-geo-alt-fill location-icon"></i>
+                            <i class="bi bi-plus-circle-fill add-icon" id="addStop"></i>
+                            <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop py-2 px-4" autocomplete="off" placeholder="Dropoff Location" required>
+                            <ul id="destinationSuggestions" class="suggestions"></ul>
                         </div>
-                        <div class="col">
-                            <label for="number_of_buses" class="form-label">Number of buses</label>
-                            <input type="number" name="number_of_buses" id="number_of_buses" class="form-control" >
+
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-success w-100" id="nextButton">Next</button>
                         </div>
                     </div>
+                    
+                    <div class="d-none" id="nextInfo">
+                        <div class="mb-3 position-relative">  
+                            <i class="bi bi-calendar-fill calendar-icon"></i>
+                            <input type="text" name="date_of_tour" id="date_of_tour" class="form-control py-2 px-4" placeholder="Pickup Date" required>
+                        </div>   
+                        <div class="mb-3 position-relative">
+                            <select name="" id="" class="form-select">
+                                <option value="">Pickup Time</option>
+                            </select>
+                        </div>      
+                        <div class="mb-3 d-flex gap-3">
+                            <div class="d-flex flex-column">
+                                <p>Number of Days</p>
+                                <p>Number of Buses</p>
+                            </div>
+                            
+                            <div class="d-flex flex-column">
+                                <div class="d-flex gap-3">
+                                    <i class="bi bi-dash-square" id="decreaseDays"></i>
+                                    <p id="number_of_days">0</p>
+                                    <i class="bi bi-plus-square" id="increaseDays"></i>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <i class="bi bi-dash-square" id="decreaseBuses"></i>
+                                    <p id="number_of_buses">0</p>
+                                    <i class="bi bi-plus-square" id="increaseBuses"></i>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="mb-4">
-                        <div id="busSelection"></div>
-                    </div>
-
-                    <div class="container-fluid d-flex justify-content-between align-items-center gap p-0">
-                        <button type="submit" name="submit_booking" class="btn btn-success w-100">Next</button>
-                        <p class="booking-message" style="color: green"></p>
-                        <p id="totalCost"></p>
+                        <div class="container-fluid d-flex justify-content-between align-items-center gap p-0">
+                            <button type="submit" class="btn btn-success w-100" id="submitBooking">Request Booking</button>
+                            <p id="totalCost"></p>
+                        </div>
                     </div>
                 </form>
                 <div class="border rounded w-50" id="map">

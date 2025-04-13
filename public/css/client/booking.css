@@ -1,4 +1,12 @@
 /* Styling the dropdown list */
+i {
+    cursor: pointer;
+}
+
+form {
+    width: 400px;
+}
+
 input {
     text-overflow: ellipsis;
     white-space: nowrap;

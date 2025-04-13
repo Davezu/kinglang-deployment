@@ -94,6 +94,45 @@ async function getBooking(bookingId) {
 
 document.addEventListener("DOMContentLoaded", initMap);
 
+const decBusesButton = document.getElementById("decreaseBuses");
+const incBusesButton = document.getElementById("increaseBuses");
+const incDaysButton = document.getElementById("increaseDays");
+const decDaysButton = document.getElementById("decreaseDays");
+
+const days = document.getElementById("number_of_days");
+const buses = document.getElementById("number_of_buses");
+
+let bus = 0, day = 0;
+
+decBusesButton.addEventListener("click", () => {
+    if (bus === 0) return;
+    bus--;
+    buses.textContent = bus;
+});
+incBusesButton.addEventListener("click", () => {
+    if (bus === 13) return;
+    bus++;
+    buses.textContent = bus;
+});
+decDaysButton.addEventListener("click", () => {
+    if (day === 0) return;
+    day--;
+    days.textContent = day;
+});
+incDaysButton.addEventListener("click", () => {
+    day++;
+    days.textContent = day;
+});
+
+document.getElementById("nextButton").addEventListener("click", function () {
+    this.style.display = "none";
+    document.getElementById("firstInfo").style.display = "none";
+    document.getElementById("nextInfo").classList.remove("d-none");
+    document.getElementById("submitBooking").classList.remove("d-none");
+})
+
+
+
 
 // find available buses
 // document.getElementById("date_of_tour").addEventListener("input", findAvailableBuses);
@@ -531,7 +570,7 @@ document.getElementById("addStop").addEventListener("click", () => {
     count++;
     document.getElementById("destination").placeholder = "Add a stop";
 
-    const form = document.getElementById("bookingForm");
+    const form = document.getElementById("firstInfo");
     const div = document.createElement("div");
     const input = document.createElement("input");
     const ul = document.createElement("ul");
