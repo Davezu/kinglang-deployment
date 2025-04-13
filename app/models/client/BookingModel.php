@@ -118,49 +118,6 @@ class Booking {
         }
     }
 
-    // public function requestReschedBooking($number_of_days, $number_of_buses, $date_of_tour, $booking_id, $user_id) {
-    //     // update booking   
-    //     $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
-
-    //     try {  
-    //         $available_buses = $this->findAvailableBuses($date_of_tour, $end_of_tour, $number_of_buses);
-
-    //         if (count($available_buses) < $number_of_buses) return "Not enough available buses.";
-
-    //         if ($this->bookingIsNotConfirmed($booking_id)) {
-    //             $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, end_of_tour = :end_of_tour WHERE booking_id = :booking_id");
-    //             $stmt->execute([
-    //                 ":date_of_tour" => $date_of_tour,
-    //                 ":end_of_tour" => $end_of_tour,
-    //                 ":booking_id" => $booking_id
-    //             ]);
-    //             return "rescheduled";
-    //         } 
-
-    //         if ($this->bookingExistsInReschedRequests($booking_id)) {
-    //             $stmt = $this->conn->prepare("UPDATE reschedule_requests SET new_date_of_tour = :new_date_of_tour, new_end_of_tour = :new_end_of_tour WHERE booking_id = :booking_id");
-    //             $stmt->execute([
-    //                 ":new_date_of_tour" => $date_of_tour,
-    //                 ":new_end_of_tour" => $end_of_tour,
-    //                 ":booking_id" => $booking_id
-    //             ]);
-    //             return "success";
-    //         }
-
-    //         $stmt = $this->conn->prepare("INSERT INTO reschedule_requests (new_date_of_tour, new_end_of_tour, booking_id, user_id) VALUES (:new_date_of_tour, :new_end_of_tour, :booking_id, :user_id)");
-    //         $stmt->execute([
-    //             ":new_date_of_tour" => $date_of_tour,
-    //             ":new_end_of_tour" => $end_of_tour,
-    //             ":booking_id" => $booking_id,
-    //             ":user_id" => $user_id
-    //         ]);
-
-    //         return "success";
-    //     } catch (PDOException $e) {
-    //         return "Database error: $e";
-    //     }
-    // }
-
     public function requestRebooking($booking_id, $rebooking_id, $user_id) {
         try {
             $stmt = $this->conn->prepare("INSERT INTO rebooking_request (booking_id, rebooking_id, user_id) VALUES (:booking_id, :rebooking_id, :user_id)");

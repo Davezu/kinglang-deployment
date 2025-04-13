@@ -90,12 +90,10 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
                             <th class="sort" data-order="asc" data-column="client_name">Client Name</th>
                             <th class="sort" data-order="asc" data-column="contact_number">Contact Number</th>
                             <th class="sort" data-order="asc" data-column="destination">Destination</th>
-                            <th class="sort" data-order="asc" data-column="pickup_point">Pick-up Point</th>
+                            <th class="sort" data-order="asc" data-column="pickup_point">Total Cost</th>
                             <th class="sort" data-order="asc" data-column="date_of_tour">Date of Tour</th>
-                            <th class="sort" data-order="asc" data-column="end_of_tour">End of Tour</th>
                             <th class="sort" data-order="asc" data-column="number_of_days">Days</th>
                             <th class="sort" data-order="asc" data-column="number_of_buses">Buses</th>
-                            <th class="sort" data-order="asc" data-column="status">Remarks</th>
                             <th class="sort" data-order="asc" data-column="payment_status">Payment Status</th>
                             <th class="sort" style="text-align: center; width: 15%;">Action</th></tr>
                     </thead>

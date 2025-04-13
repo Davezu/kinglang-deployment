@@ -117,10 +117,15 @@ function actionButtons(request) {
     viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     viewButton.textContent = 'View';
 
-    if (request.status === 'Confirmed') {   
-        buttonGroup.textContent = 'No action needed';
-    } else {
+    viewButton.addEventListener("click", () => {
+        localStorage.setItem("bookingId", request.booking_id);
+        window.location.href = "/admin/rebooking-request";
+    })
+
+    if (request.status === 'Pending') {   
         buttonGroup.append(confirmButton, rejectButton, viewButton);
+    } else {
+        buttonGroup.append(viewButton);
     }
 
     actionCell.appendChild(buttonGroup);

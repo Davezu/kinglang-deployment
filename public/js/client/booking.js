@@ -51,8 +51,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.log(formatted);
 
     picker.setDate(booking.date_of_tour);
-    document.getElementById("number_of_days").value = booking.number_of_days;
-    document.getElementById("number_of_buses").value = booking.number_of_buses;
+    document.getElementById("number_of_days").textContent = booking.number_of_days;
+    document.getElementById("number_of_buses").textContent = booking.number_of_buses;
 
     calculateRoute();
 
@@ -102,7 +102,7 @@ const decDaysButton = document.getElementById("decreaseDays");
 const days = document.getElementById("number_of_days");
 const buses = document.getElementById("number_of_buses");
 
-let bus = 0, day = 0;
+let bus = parseFloat(document.getElementById("number_of_buses").textContent), day = parseInt(document.getElementById("number_of_days").textContent);
 
 decBusesButton.addEventListener("click", () => {
     if (bus === 0) return;
@@ -125,11 +125,14 @@ incDaysButton.addEventListener("click", () => {
 });
 
 document.getElementById("nextButton").addEventListener("click", function () {
-    this.style.display = "none";
-    document.getElementById("firstInfo").style.display = "none";
+    document.getElementById("firstInfo").classList.add("d-none");
     document.getElementById("nextInfo").classList.remove("d-none");
-    document.getElementById("submitBooking").classList.remove("d-none");
-})
+});
+
+document.getElementById("back").addEventListener("click", function () {
+    document.getElementById("firstInfo").classList.remove("d-none");
+    document.getElementById("nextInfo").classList.add("d-none");
+});
 
 
 
@@ -200,8 +203,8 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         destination: destination,
         pickupPoint: document.getElementById("pickup_point")?.value,
         stops: stops,
-        numberOfBuses: document.getElementById("number_of_buses")?.value,
-        numberOfDays: document.getElementById("number_of_days")?.value,
+        numberOfBuses: document.getElementById("number_of_buses")?.textContent,
+        numberOfDays: document.getElementById("number_of_days")?.textContent,
         totalCost: totalCost,
         balance: totalCost,
         tripDistances: tripDistances,
@@ -226,6 +229,8 @@ document.getElementById("bookingForm").addEventListener("submit", async function
             messageModal.show();
             this.reset(); 
             document.getElementById("totalCost").textContent = "";
+            document.getElementById("number_of_buses").textContent = "0";
+            document.getElementById("number_of_days").textContent = "0";
         } else {
             messageTitle.textContent = "Error";
             messageBody.textContent = data.message;
@@ -238,9 +243,9 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     initMap(); 
 });
 
-Array.from(document.getElementsByTagName("input")).forEach(input => {
-    input.addEventListener("change", renderTotalCost);
-});
+// Array.from(document.getElementsByTagName("input")).forEach(input => {
+//     input.addEventListener("change", renderTotalCost);
+// });
 
 async function getTripDistances() {
     const addressInputs = document.querySelectorAll(".address");
@@ -394,8 +399,8 @@ async function getTotalCost() {
 
     console.log("Total distance in km: ", distanceInKm);
 
-    const numberOfDays = document.getElementById("number_of_days").value;
-    const numberOfBuses = document.getElementById("number_of_buses").value;
+    const numberOfDays = document.getElementById("number_of_days").textContent;
+    const numberOfBuses = document.getElementById("number_of_buses").textContent;
 
     if (!distanceInKm || !numberOfDays || !numberOfBuses) return;
 
@@ -416,35 +421,6 @@ async function getTotalCost() {
         console.error(error);
     }
 }
-
-// async function getTotalCost() {  
-//     const distance = await processDistance();
-//     const totalDistance = distance.reduce((acc, curr) => acc + curr, 0);
-   
-//     const distanceInKm = totalDistance / 1000;
-//     const numberOfDays = document.getElementById("number_of_days").value;
-//     const numberOfBuses = document.getElementById("number_of_buses").value;
-
-//     console.log("Distance: ", distanceInKm);
-
-//     if (!distanceInKm || !numberOfDays || !numberOfBuses) return;
-
-//     try {
-//         const response = await fetch("/get-total-cost", {
-//             method: "POST",
-//             headers: { "Content-Type": "application/json" },
-//             body: JSON.stringify({ distance: distanceInKm, numberOfBuses, numberOfDays })
-//         });
-
-//         const data = await response.json();
-
-//         if (data.success) {
-//             return data.total_cost;
-//         }
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
 
 function initMap() {
     let map;
@@ -503,7 +479,7 @@ async function calculateRoute() {
                 directionsRenderer.setDirections(result);
             }
             else {
-                console.error("Directions request failed due to " + status);
+                console.error("Directions request failed due to " + status);    
             }
         });
     } catch (error) {
@@ -511,60 +487,11 @@ async function calculateRoute() {
         return;
     }   
 }
-//     const pickupPoint = document.getElementById("pickup_point").value.trim();
-//     const destinationInputs = document.querySelectorAll(".address");
-//     const destination = destinationInputs[destinationInputs.length - 1].value.trim();
-
-//     const stops = Array.from(document.querySelectorAll(".added-stop"))
-//         .map(stop => stop.value.trim())
-//         .filter(stop => stop && stop !== destination);  // avoid repeating destination
-
-//     if (!pickupPoint || !destination) return;
-
-//     try {
-//         const response = await fetch("/get-route", {
-//             method: "POST",
-//             headers: { "Content-Type": "application/json" },
-//             body: JSON.stringify({ pickupPoint, destination, stops })
-//         });
-
-//         const data = await response.json();
-//         if (data.error) {
-//             console.error(data.error);
-//             return;
-//         }
-
-//         const waypoints = data.stops.map(stop => ({
-//             location: new google.maps.LatLng(stop.lat, stop.lng),
-//             stopover: true
-//         }));
-
-//         const request = {
-//             origin: new google.maps.LatLng(data.pickup_point.lat, data.pickup_point.lng),
-//             destination: new google.maps.LatLng(data.destination.lat, data.destination.lng),
-//             waypoints: waypoints,
-//             travelMode: google.maps.TravelMode.DRIVING
-//         };
-
-//         directionsService.route(request, (result, status) => {
-//             if (status === google.maps.DirectionsStatus.OK) {
-//                 directionsRenderer.setDirections(result);
-//             } else {
-//                 console.error("Directions request failed due to " + status);
-//             }
-//         });
-//     } catch (error) {
-//         console.error("Error fetching route: ", error.message);
-//     }
-// }
 
 
 
 
 // add stop
-
-
-
 let position = 3, count = 0;
 document.getElementById("addStop").addEventListener("click", () => {
     count++;

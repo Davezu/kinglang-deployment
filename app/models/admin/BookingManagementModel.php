@@ -105,6 +105,52 @@ class BookingManagementModel {
         }
     }
 
+    public function getBooking($booking_id) {
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT b.booking_id, u.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.email, u.contact_number, b.pickup_point, b.destination, b.number_of_days, b.number_of_buses, b.date_of_tour, b.end_of_tour, b.status, b.payment_status, b.payment_status, b.total_cost, b.balance
+                FROM bookings b
+                JOIN users u ON b.user_id = u.user_id
+                WHERE booking_id = :booking_id
+            ");
+            $stmt->execute([":booking_id" => $booking_id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return "Database error";
+        }
+    }
+
+    public function getBookingStops($booking_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM booking_stops WHERE booking_id = :booking_id ORDER BY stop_order");
+            $stmt->execute([":booking_id" => $booking_id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC) ?? [];
+        } catch (PDOException $e) {
+            return "Database error.";
+        }
+    }
+
+    public function getTripDistances($booking_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM trip_distances WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return "Database error";
+        }
+    }
+
+    public function getDieselPrice() {
+        try {
+            $stmt = $this->conn->prepare("SELECT price FROM diesel_per_liter ORDER BY date DESC LIMIT 1");
+            $stmt->execute();
+            $diesel_price = $stmt->fetchColumn() ?? 0;
+            return $diesel_price;
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
+
 
 
 

@@ -124,13 +124,12 @@ async function renderBookings(bookings) {
         destinationCell.textContent = booking.destination;
         pickupPointCell.textContent = booking.total_cost;
         dateOfTourCell.textContent = formatDate(booking.date_of_tour);
-        endOfTourCell.textContent = formatDate(booking.end_of_tour);
         numberOfDaysCell.textContent = booking.number_of_days;
         numberOfBusesCell.textContent = booking.number_of_buses;
         statusCell.textContent = booking.status;
         paymentStatusCell.textContent = booking.payment_status;
 
-        row.append(clientNameCell, contactNumberCell, destinationCell, pickupPointCell, dateOfTourCell, endOfTourCell, numberOfDaysCell, numberOfBusesCell, statusCell, paymentStatusCell, actionButton(booking));
+        row.append(clientNameCell, contactNumberCell, destinationCell, pickupPointCell, dateOfTourCell, numberOfDaysCell, numberOfBusesCell, paymentStatusCell, actionButton(booking));
         tbody.appendChild(row);
     });
 }
@@ -150,10 +149,10 @@ function actionButton(booking) {
     rejectButton.classList.add("btn", "bg-danger-subtle", "text-danger", "btn-sm", "fw-bold", "w-100");
     rejectButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
-    cancelButton.classList.add("btn", "bg-primary-subtle", "text-primary", "btn-sm", "fw-bold", "w-100");
+    cancelButton.classList.add("btn", "bg-danger-subtle", "text-danger", "btn-sm", "fw-bold", "w-100");
     cancelButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
-    viewButton.classList.add("btn", "bg-warning-subtle", "text-warning", "btn-sm", "fw-bold", "w-100");
+    viewButton.classList.add("btn", "bg-primary-subtle", "text-primary", "btn-sm", "fw-bold", "w-100");
     viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
     confirmButton.textContent = "Confirm";
@@ -170,6 +169,11 @@ function actionButton(booking) {
     confirmButton.addEventListener("click", function () {
         document.getElementById("bookingId").value = this.getAttribute("data-booking-id");
     });
+
+    viewButton.addEventListener("click", function () {
+        localStorage.setItem("bookingId", booking.booking_id);
+        window.location.href = "/admin/booking-request";
+    })
 
     if (booking.status === "Pending") {
         buttonGroup.append(confirmButton, rejectButton, viewButton);

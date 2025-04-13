@@ -72,6 +72,9 @@ if (!isset($_SESSION["user_id"])) {
                     </div>
                     
                     <div class="d-none" id="nextInfo">
+                        <div class="mb-3">
+                            <i class="bi bi-chevron-left fs-4" id="back"></i>
+                        </div>
                         <div class="mb-3 position-relative">  
                             <i class="bi bi-calendar-fill calendar-icon"></i>
                             <input type="text" name="date_of_tour" id="date_of_tour" class="form-control py-2 px-4" placeholder="Pickup Date" required>

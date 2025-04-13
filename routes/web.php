@@ -161,6 +161,13 @@ switch ($request) {
     case "/admin/confirm-rebooking-request":
         $adminBookingController->confirmRebookingRequest();
         break;
+    case "/admin/booking-request":
+    case "/admin/rebooking-request":
+        $adminBookingController->showBookingDetail();
+        break;
+    case "/admin/get-booking":
+        $adminBookingController->getBooking();
+        break;
 
 
     case "/favicon.ico":

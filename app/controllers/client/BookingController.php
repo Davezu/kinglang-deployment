@@ -169,21 +169,6 @@ class BookingController {
         }
     }
 
-    public function requestRebooking() {
-       
-    }
-
-    public function reschedBooking() {
-
-        $result = $this->authModel->reschedBooking($number_of_days, $date_of_tour);
-
-        if ($result === "success") {
-            echo json_encode(["success" => true, "message" => "Booking reschedule request sent successfully."]);
-        } else {
-            echo json_encode(["success" => false, "message" => $result]);
-        }
-    }
-
     // public function findAvailableBuses() { // if the system will let the client select their prefered bus
     //     if ($_SERVER["REQUEST_METHOD"] === "POST") {
     //         $data = json_decode(file_get_contents("php://input"), true);

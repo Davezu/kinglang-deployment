@@ -8,6 +8,10 @@ class BookingManagementController {
         $this->bookingModel = new BookingManagementModel();
     }
 
+    public function showBookingDetail() {
+        include_once __DIR__ . "/../../views/admin/booking_request.php";
+    }
+
     public function getAllBookings() {
         $data = json_decode(file_get_contents("php://input"), true);
         $staus = $data["status"];
@@ -81,6 +85,25 @@ class BookingManagementController {
                 echo json_encode(["success" => false, "message" => $result]);
             }
         }   
+    }
+
+    public function getBooking() {
+        header("Content-Type: application/json");
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        $booking_id = $data["bookingId"];
+
+        $booking = $this->bookingModel->getBooking($booking_id);
+        $stops = $this->bookingModel->getBookingStops($booking_id);
+        $distances = $this->bookingModel->getTripDistances($booking_id);
+        $diesel = $this->bookingModel->getDieselPrice();
+
+        if ($booking) {
+            echo json_encode(["success" => true, "booking" => $booking, "stops" => $stops, "distances" =>  $distances, "diesel" => $diesel]);
+        } else {
+            echo json_encode(["success" => false, "message" => $booking]);
+        }
     }
 
 
