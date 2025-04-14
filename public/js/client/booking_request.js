@@ -1,3 +1,9 @@
+const cancelBookingModal = new bootstrap.Modal(document.getElementById("cancelBookingModal"));
+const messageModal = new bootstrap.Modal(document.getElementById("messageModal"));
+
+const messageTitle = document.getElementById("messageTitle");
+const messageBody = document.getElementById("messageBody");
+
 
 // disable past dates in date of tour input
 const today = new Date();
@@ -150,46 +156,43 @@ function actionCell(booking) {
     const cancelButton = document.createElement("button");
     const viewButton = document.createElement("button");
 
+    // style
     btnGroup.classList.add("container", "btn-container", "d-flex", "gap-2");
     payButton.classList.add("open-payment-modal", "btn", "bg-success-subtle", "text-success", "fw-bold", "w-100");
     editButton.classList.add("btn", "bg-primary-subtle", "w-100", "fw-bold", "text-primary");
     cancelButton.classList.add("btn", "bg-danger-subtle", "w-100", "fw-bold", "text-danger");
     viewButton.classList.add("btn", "bg-success-subtle", "w-100", "fw-bold", "text-success");
 
-    
     payButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
-    payButton.setAttribute("data-booking-id", booking.booking_id);
-    payButton.setAttribute("data-total-cost", booking.total_cost);
-    payButton.setAttribute("data-client-id", booking.client_id);
-    payButton.setAttribute("data-bs-toggle", "modal");
-    payButton.setAttribute("data-bs-target", "#paymentModal");
-
     editButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
-    editButton.setAttribute("data-booking-id", booking.booking_id);
-    editButton.setAttribute("data-client-id", booking.client_id);
-    editButton.setAttribute("data-days", booking.number_of_days);
-    editButton.setAttribute("data-buses", booking.number_of_buses);
-
     cancelButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
+    // text
     payButton.textContent = "Pay";
     editButton.textContent = "Edit";
     cancelButton.textContent = "Cancel";
     viewButton.textContent = "View";
 
-    if (booking.status === "Confirmed" && parseFloat(booking.balance) > 0.0) {
-        btnGroup.append(payButton, editButton, cancelButton, viewButton);
-    } else if (booking.status === "Confirmed" && parseFloat(booking.balance) === 0) {
-        btnGroup.append(editButton, cancelButton, viewButton); 
-    } else if (booking.status === "Pending") {
-        btnGroup.append(editButton, cancelButton, viewButton);  
-    } else {
-        btnGroup.textContent = "No Action Available";
-    }
+    // modal
+    payButton.setAttribute("data-bs-toggle", "modal");
+    payButton.setAttribute("data-bs-target", "#paymentModal");
 
-    td.appendChild(btnGroup);
+    cancelButton.setAttribute("data-bs-toggle", "modal");
+    cancelButton.setAttribute("data-bs-target", "#cancelBookingModal");
 
+    // data attributes
+    payButton.setAttribute("data-booking-id", booking.booking_id);
+    payButton.setAttribute("data-total-cost", booking.total_cost);
+    payButton.setAttribute("data-client-id", booking.client_id);
+
+    editButton.setAttribute("data-booking-id", booking.booking_id);
+    editButton.setAttribute("data-days", booking.number_of_days);
+    editButton.setAttribute("data-buses", booking.number_of_buses);
+
+    cancelButton.setAttribute("data-booking-id", booking.booking_id);
+
+    // event listeners
     viewButton.addEventListener("click", function () {
         localStorage.setItem("bookingId", booking.booking_id);
         window.location.href = "/home/booking-request";
@@ -199,11 +202,6 @@ function actionCell(booking) {
         document.getElementById("amount").textContent = "";
         const totalCost = this.getAttribute("data-total-cost");
         const bookingID = this.getAttribute("data-booking-id");
-        const clientID = this.getAttribute("data-client-id");
-
-        console.log("total cost: ", totalCost);
-        console.log("booking id: ", bookingID);
-        console.log("client id: ", clientID);
 
         document.getElementById("fullAmnt").style.display = "block";  
         document.getElementById("downPayment").textContent = "Down Payment";
@@ -224,6 +222,23 @@ function actionCell(booking) {
         window.location.href = "/home/book";
     });
 
+    cancelButton.addEventListener("click", function () {
+        document.getElementById("cancelBookingId").value = this.getAttribute("data-booking-id");
+        document.getElementById("cancelUserId").value = this.getAttribute("data-user-id");
+    });
+
+    if (booking.status === "Confirmed" && parseFloat(booking.balance) > 0.0) {
+        btnGroup.append(payButton, editButton, cancelButton, viewButton);
+    } else if (booking.status === "Confirmed" && parseFloat(booking.balance) === 0) {
+        btnGroup.append(editButton, cancelButton, viewButton); 
+    } else if (booking.status === "Pending") {
+        btnGroup.append(editButton, cancelButton, viewButton);  
+    } else {
+        btnGroup.append(viewButton);
+    }
+
+    td.appendChild(btnGroup);
+
     return td;
 }
 
@@ -234,34 +249,40 @@ function formatNumber(number) {
     }).format(number);
 };
 
-document.getElementById("reschedForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
+document.getElementById("cancelBookingForm").addEventListener("submit", async function (event) {
+    event.preventDefault(); 
 
-    const newDateOfTour = document.getElementById("date_of_tour").value;
-    const numberOfDays = document.getElementById("number_of_days").value;
-    const numberOfBuses = document.getElementById("numberOfBuses").value;
-    const bookingId = document.getElementById("reschedBookingId").value;
-    const clientId = document.getElementById("reschedClientId").value;
+    const formData = new FormData(this);
+    const bookingId = formData.get("booking_id");
+    const reason = formData.get("reason");
 
     try {
-        const response = await fetch("/request-resched-booking", {
+        const response = await fetch("/cancel-booking", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ dateOfTour: newDateOfTour, numberOfDays, numberOfBuses, bookingId, clientId })
+            body: JSON.stringify({ bookingId, reason })
         });
-
+        
+        cancelBookingModal.hide();
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+        document.body.classList.remove('modal-open');
+    
         const data = await response.json();
         
-        document.getElementById("messageElement").style.color = data.success ? "green" : "red";  
-        document.getElementById("messageElement").textContent = data.success ? data.message : data.message;
-
+        if (data.success) {
+            messageTitle.textContent = "Success";
+            messageBody.textContent = data.message;
+            messageModal.show();
+        } else {
+            messageTitle.textContent = "Error";
+            messageBody.textContent = data.message;
+            messageModal.show();
+        }
+        
         const status = document.getElementById("statusSelect").value;
-        const bookings = await getAllBookings(status, "date_of_tour", "asc");   
+        const bookings = await getAllBookings(status, "booking_id", "asc");
         renderBookings(bookings);
     } catch (error) {
-        console.error("Error fetching data: ", error.message);
+        console.error(error);
     }
-
 });
-
-

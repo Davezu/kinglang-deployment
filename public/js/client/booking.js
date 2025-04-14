@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.log("Booking detail: ", booking);
     console.log("Stops detail: ", data.distances);
 
+    document.getElementById("bookingHeader").textContent = "Rebook a Trip";
+    document.getElementById("submitBooking").textContent = "Request Rebooking";
+
     if (stops.length > 0) {
         for (let i = 0; i < stops.length; i++) 
             document.getElementById("addStop").click();
@@ -53,6 +56,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     picker.setDate(booking.date_of_tour);
     document.getElementById("number_of_days").textContent = booking.number_of_days;
     document.getElementById("number_of_buses").textContent = booking.number_of_buses;
+
+    localStorage.setItem("buses", booking.number_of_buses);
+    localStorage.setItem("days", booking.number_of_days);
 
     calculateRoute();
 
@@ -94,35 +100,38 @@ async function getBooking(bookingId) {
 
 document.addEventListener("DOMContentLoaded", initMap);
 
-const decBusesButton = document.getElementById("decreaseBuses");
-const incBusesButton = document.getElementById("increaseBuses");
-const incDaysButton = document.getElementById("increaseDays");
-const decDaysButton = document.getElementById("decreaseDays");
+document.addEventListener("DOMContentLoaded", () => {
+    const decBusesButton = document.getElementById("decreaseBuses");
+    const incBusesButton = document.getElementById("increaseBuses");
+    const incDaysButton = document.getElementById("increaseDays");
+    const decDaysButton = document.getElementById("decreaseDays");
 
-const days = document.getElementById("number_of_days");
-const buses = document.getElementById("number_of_buses");
+    const days = document.getElementById("number_of_days");
+    const buses = document.getElementById("number_of_buses");
 
-let bus = parseFloat(document.getElementById("number_of_buses").textContent), day = parseInt(document.getElementById("number_of_days").textContent);
+    let bus = parseInt(localStorage.getItem("buses")) || 0, day = parseInt(localStorage.getItem("days")) || 0;
+    console.log("bus: ", document.getElementById("number_of_buses").textContent, "days: ", days.textContent);
 
-decBusesButton.addEventListener("click", () => {
-    if (bus === 0) return;
-    bus--;
-    buses.textContent = bus;
-});
-incBusesButton.addEventListener("click", () => {
-    if (bus === 13) return;
-    bus++;
-    buses.textContent = bus;
-});
-decDaysButton.addEventListener("click", () => {
-    if (day === 0) return;
-    day--;
-    days.textContent = day;
-});
-incDaysButton.addEventListener("click", () => {
-    day++;
-    days.textContent = day;
-});
+    decBusesButton.addEventListener("click", () => {
+        if (bus === 0) return;
+        bus--;
+        buses.textContent = bus;
+    });
+    incBusesButton.addEventListener("click", () => {
+        if (bus === 13) return;
+        bus++;
+        buses.textContent = bus;
+    });
+    decDaysButton.addEventListener("click", () => {
+        if (day === 0) return;
+        day--;
+        days.textContent = day;
+    });
+    incDaysButton.addEventListener("click", () => {
+        day++;
+        days.textContent = day;
+    });
+})
 
 document.getElementById("nextButton").addEventListener("click", function () {
     document.getElementById("firstInfo").classList.add("d-none");

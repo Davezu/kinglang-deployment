@@ -112,6 +112,9 @@ switch ($request) {
     case "/request-rebooking":
         $bookingController->requestRebooking();
         break;
+    case "/cancel-booking":
+        $bookingController->cancelBooking();
+        break;
 
     case "/get-booking":
         $bookingController->getBooking();
@@ -157,6 +160,9 @@ switch ($request) {
         break;
     case "/admin/reject-rebooking":
         $adminBookingController->rejectRebooking();
+        break;
+    case "/admin/cancel-booking":
+        $adminBookingController->cancelBooking();
         break;
     case "/admin/rebooking-requests":
         $adminBookingController->showReschedRequestTable();

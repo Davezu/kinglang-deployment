@@ -233,6 +233,34 @@ class BookingController {
         require_once __DIR__ . "/../../views/client/booking_request.php";
     }
 
+    public function cancelBooking() {
+        header("Content-Type: application/json");
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        $booking_id = $data["bookingId"];
+        $user_id = $_SESSION["user_id"];
+        $reason = $data["reason"];
+        $amount_paid = 0;
+
+        if ($this->bookingModel->isClientPaid($booking_id)) {
+            $amount_paid = $this->bookingModel->getAmountPaid($booking_id, $user_id);
+            $this->bookingModel->cancelPayment($booking_id, $user_id);
+        }
+
+        $amount_refunded = $amount_paid * 0.80;
+
+        $result = $this->bookingModel->cancelBooking($reason, $booking_id, $user_id, $amount_refunded);
+
+        echo json_encode([
+            "success" => $result["success"], 
+            "message" => $result["success"] 
+                ? "Booking Canceled Successfully." 
+                : $result["message"]
+        ]);
+
+    }
+
     public function updatePastBookings() {
         return $this->bookingModel->updatePastBookings();
     }

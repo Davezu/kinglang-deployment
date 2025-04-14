@@ -1,5 +1,6 @@
 const confirmBookingModal = new bootstrap.Modal(document.getElementById("confirmBookingModal"));
 const rejectBookingModal = new bootstrap.Modal(document.getElementById("rejectBookingModal"));
+const cancelBookingModal = new bootstrap.Modal(document.getElementById("cancelBookingModal"));
 const messageModal = new bootstrap.Modal(document.getElementById("messageModal"));
 
 const messageTitle = document.getElementById("messageTitle");
@@ -124,10 +125,14 @@ function actionButton(booking) {
     cancelButton.textContent = "Cancel";
     viewButton.textContent = "View";
 
+    // data attributes
     confirmButton.setAttribute("data-booking-id", booking.booking_id);
 
     rejectButton.setAttribute("data-booking-id", booking.booking_id);
     rejectButton.setAttribute("data-user-id", booking.user_id);
+
+    cancelButton.setAttribute("data-booking-id", booking.booking_id);
+    cancelButton.setAttribute("data-user-id", booking.user_id);
 
     // modal
     confirmButton.setAttribute("data-bs-toggle", "modal");
@@ -135,6 +140,9 @@ function actionButton(booking) {
 
     rejectButton.setAttribute("data-bs-toggle", "modal");
     rejectButton.setAttribute("data-bs-target", "#rejectBookingModal");
+
+    cancelButton.setAttribute("data-bs-toggle", "modal");
+    cancelButton.setAttribute("data-bs-target", "#cancelBookingModal");
 
     confirmButton.addEventListener("click", function () {
         document.getElementById("confirmBookingId").value = this.getAttribute("data-booking-id");
@@ -148,6 +156,11 @@ function actionButton(booking) {
     rejectButton.addEventListener("click", function () {
         document.getElementById("rejectBookingId").value = this.getAttribute("data-booking-id");
         document.getElementById("rejectUserId").value = this.getAttribute("data-user-id");
+    });
+
+    cancelButton.addEventListener("click", function () {
+        document.getElementById("cancelBookingId").value = this.getAttribute("data-booking-id");
+        document.getElementById("cancelUserId").value = this.getAttribute("data-user-id");
     });
 
     if (booking.status === "Pending") {
@@ -234,6 +247,46 @@ document.getElementById("rejectBookingForm").addEventListener("submit", async fu
         
         const status = document.getElementById("statusSelect").value;
         const bookings = await getAllBookings(status, "asc", "booking_id");
+        renderBookings(bookings);
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+// cancel booking
+document.getElementById("cancelBookingForm").addEventListener("submit", async function (event) {
+    event.preventDefault(); 
+
+    const formData = new FormData(this);
+    const bookingId = formData.get("booking_id");
+    const userId = formData.get("user_id");
+    const reason = formData.get("reason");
+
+    try {
+        const response = await fetch("/admin/cancel-booking", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ bookingId, userId, reason })
+        });
+        
+        cancelBookingModal.hide();
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+        document.body.classList.remove('modal-open');
+    
+        const data = await response.json();
+        
+        if (data.success) {
+            messageTitle.textContent = "Success";
+            messageBody.textContent = data.message;
+            messageModal.show();
+        } else {
+            messageTitle.textContent = "Error";
+            messageBody.textContent = data.message;
+            messageModal.show();
+        }
+        
+        const status = document.getElementById("statusSelect").value;
+        const bookings = await getAllBookings(status, "booking_id", "asc");
         renderBookings(bookings);
     } catch (error) {
         console.error(error);

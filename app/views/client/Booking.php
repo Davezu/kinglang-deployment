@@ -53,7 +53,7 @@ if (!isset($_SESSION["user_id"])) {
                 <form action="" id="bookingForm" class="border rounded p-3 height-auto align-self-start">
                     <input type="hidden" name="id" value="1">
                     <div id="firstInfo">
-                        <h3 class="mb-3">Book a Trip</h3>
+                        <h3 class="mb-3" id="bookingHeader">Book a Trip</h3>
                         <div class="mb-3 position-relative">
                             <i class="bi bi-geo-alt-fill location-icon"></i>
                             <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address py-2 px-4" autocomplete="off" placeholder="Pickup Location" required>

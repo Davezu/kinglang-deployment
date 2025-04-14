@@ -70,6 +70,34 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
         </div>
     </div>
 
+    <div class="modal fade" aria-labelledby="cancelBookingModal" tabindex="-1" id="cancelBookingModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form action="" method="post" class="modal-content" id="cancelBookingForm">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cancel Booking?</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Are you sure you want to cancel this booking?</p>
+                    
+                    <textarea class="form-control" placeholder="Kindly provide the reason here." name="reason" id="reason" style="height: 100px"></textarea>
+                    
+                    <p class="text-secondary mb-0 mt-4">Note: This action cannot be undone.</p>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="d-flex gap-3 w-50">
+                        <input type="hidden" name="booking_id" id="cancelBookingId" value="">
+                        <input type="hidden" name="user_id" id="cancelUserId" value="">
+                        <button type="button" class="btn btn-outline-secondary btn-sm w-50" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" id="reject" class="btn btn-success btn-sm w-50">Confirm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="modal fade message-modal" aria-labelledby="messageModal" tabindex="-1" id="messageModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">

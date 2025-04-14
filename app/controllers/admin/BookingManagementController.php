@@ -143,6 +143,48 @@ class BookingManagementController {
         }
     }
 
+    public function cancelBooking() {
+        header("Content-Type: application/json");
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        $booking_id = $data["bookingId"];
+        $user_id = $data["userId"];
+        $reason = $data["reason"];
+        $amount_paid = 0;
+
+        if ($this->bookingModel->isClientPaid($booking_id)) {
+            $amount_paid = $this->bookingModel->getAmountPaid($booking_id, $user_id);
+            $this->bookingModel->cancelPayment($booking_id, $user_id);
+        }
+
+        $amount_refunded = $amount_paid * 0.80;
+
+        $result = $this->bookingModel->cancelBooking($reason, $booking_id, $user_id, $amount_refunded);
+
+        echo json_encode([
+            "success" => $result["success"], 
+            "message" => $result["success"] 
+                ? "Booking Canceled Successfully." 
+                : $result["message"]
+        ]);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function summaryMetrics() {
         header("Content-Type: application/json");

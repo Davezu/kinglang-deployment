@@ -143,12 +143,12 @@ class Booking {
         }
     }
 
-    public function bookingIsNotConfirmed($booking_id) {
+    public function bookingIsNotConfirmed($booking_id) { 
         try {
             $stmt = $this->conn->prepare("SELECT * FROM bookings WHERE booking_id = :booking_id");
             $stmt->execute([":booking_id" => $booking_id]);
             $booking = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($booking["status"] === "confirmed" || $booking["total_cost"] !== NULL) {
+            if ($booking["status"] === "Confirmed" || $booking["total_cost"] !== NULL) {
                 return false;
             } else {
                 return true;
@@ -211,6 +211,51 @@ class Booking {
             return $bookings ?: [];
         } catch (PDOException $e) {
             return "Database error: $e";
+        }
+    }
+
+    public function isClientPaid($booking_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT payment_status FROM bookings WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+            $payment_status = $stmt->fetchColumn();
+            return $payment_status === "Partially Paid" || $payment_status === "Paid";
+        } catch (PDOException $e) {
+            return ["success" => false, "message" => "Database error: " . $e->getMessage()];
+        }
+    }
+
+    public function cancelPayment($booking_id, $user_id) {
+        try {
+            $stmt = $this->conn->prepare("UPDATE payments SET is_canceled = 1 WHERE booking_id = :booking_id AND user_id = :user_id");
+            $stmt->execute([":booking_id" => $booking_id, ":user_id" => $user_id]);
+            return ["success" => true];
+        } catch (PDOException $e) {
+            return ["success" => false, "message" => "Database error: " . $e->getMessage()];
+        }
+    }
+
+    public function getAmountPaid($booking_id, $user_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT SUM(amount) AS total_amount FROM payments WHERE booking_id = :booking_id AND user_id = :user_id");
+            $stmt->execute([":booking_id" => $booking_id, ":user_id" => $user_id]);
+            return (float) $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            return ["success" => false, "message" => "Database error: " . $e->getMessage()];
+        }
+    }
+
+    public function cancelBooking($reason, $booking_id, $user_id, $amount_refunded) {
+        try {
+            $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Canceled' WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+
+            $stmt = $this->conn->prepare("INSERT INTO canceled_trips (reason, booking_id, user_id, amount_refunded, canceled_by) VALUES (:reason, :booking_id, :user_id, :amount_refunded, :canceled_by)");
+            $stmt->execute([":reason" => $reason, ":booking_id" => $booking_id, ":user_id" => $user_id, ":amount_refunded" => $amount_refunded, ":canceled_by" => "Client"]);
+
+            return ["success" => true];
+        } catch (PDOException $e) {
+            return ["success" => false, "message" => "Database error: " . $e->getMessage()];
         }
     }
 
