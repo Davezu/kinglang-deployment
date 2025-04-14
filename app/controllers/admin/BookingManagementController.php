@@ -50,6 +50,24 @@ class BookingManagementController {
         }
     } 
 
+    public function rejectBooking() {
+        header("Content-Type: application/json");
+
+        $data = json_decode(file_get_contents("php://input"), true);
+        $reason = $data["reason"];
+        $booking_id = (int) $data["bookingId"];
+        $user_id = (int) $data["userId"];
+
+        $result = $this->bookingModel->rejectBooking($reason, $booking_id, $user_id);
+
+        echo json_encode([
+            "success" => $result["success"],
+            "message" => $result["success"] 
+                ? "Booking rejected successfully." 
+                : $result["message"]
+        ]);
+    }
+
     public function showReschedRequestTable() {
         require_once __DIR__ . "/../../views/admin/rebooking_requests.php";
     }
@@ -79,12 +97,31 @@ class BookingManagementController {
             $result = $this->bookingModel->confirmRebookingRequest($rebooking_id);
             header("Content-Type: application/json");
 
-            if ($result === "success") {
-                echo json_encode(["success" => true, "message" => "Reschedule request confirmed!"]);
-            } else {
-                echo json_encode(["success" => false, "message" => $result]);
-            }
+            echo json_encode([
+                "success" => $result["success"],
+                "message" => $result["success"] 
+                    ? "Booking confirmed successfully." 
+                    : $result["message"]
+            ]);
         }   
+    }
+
+    public function rejectRebooking() {
+        header("Content-Type: application/json");
+
+        $data = json_decode(file_get_contents("php://input"), true);
+        $reason = $data["reason"];
+        $booking_id = (int) $data["bookingId"];
+        $user_id = (int) $data["userId"];
+
+        $result = $this->bookingModel->rejectRebooking($reason, $booking_id, $user_id);
+
+        echo json_encode([
+            "success" => $result["success"],
+            "message" => $result["success"] 
+                ? "Booking rejected successfully." 
+                : $result["message"]
+        ]);
     }
 
     public function getBooking() {

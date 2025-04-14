@@ -1,4 +1,5 @@
 const confirmBookingModal = new bootstrap.Modal(document.getElementById("confirmBookingModal"));
+const rejectBookingModal = new bootstrap.Modal(document.getElementById("rejectBookingModal"));
 const messageModal = new bootstrap.Modal(document.getElementById("messageModal"));
 
 const messageTitle = document.getElementById("messageTitle");
@@ -40,44 +41,6 @@ function formatDate(date) {
         day: 'numeric'
     });
 }
-
-// const calculateTotalCostButton = document.querySelectorAll(".calculateTotalCost");
-// const distance = document.getElementById("distance");
-// const diesel = document.getElementById("diesel");
-// const days = document.getElementById("numberOfDays");
-// const buses = document.getElementById("numberOfBuses");
-// const totalCostDisplay = document.getElementById("totalCostDisplay");
-
-// const bookingID = document.getElementById("bookingID");
-// const totalCost = document.getElementById("totalCost");
-
-// function calculateTotalCost() {
-//     day = parseFloat(days.value) || 0;
-//     bus = parseFloat(buses.value) || 0;
-//     diesl = parseFloat(diesel.value) || 0;
-//     distanc = parseFloat(distance.value) || 0;
-
-//     const product = day * bus * diesl * distanc;
-
-//     const formattedProduct = new Intl.NumberFormat("en-PH", {
-//         style: "currency",
-//         currency: "PHP"
-//     }).format(product)
-
-//     totalCost.value = product;
-//     totalCostDisplay.textContent = formattedProduct;
-// }
-
-// distance.addEventListener("input", calculateTotalCost);
-// diesel.addEventListener("input", calculateTotalCost);
-
-// [distance, diesel].forEach(input => {
-//     input.addEventListener("keydown", (event) => {
-//         if (event.key === "-" || event.key === "e") {
-//             event.preventDefault();
-//         }
-//     });
-// });
 
 async function getAllBookings(status, order, column) {
     try {
@@ -144,7 +107,8 @@ function actionButton(booking) {
 
     buttonGroup.classList.add("d-flex", "gap-2", "align-items-center");
 
-    confirmButton.classList.add("btn", "bg-success-subtle", "text-success", "btn-sm", "fw-bold", "w-100", "calculateTotalCost");
+    confirmButton.classList.add("btn", "bg-success-subtle", "text-success", "btn-sm", "fw-bold", "w-100");
+    confirmButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;"); 
 
     rejectButton.classList.add("btn", "bg-danger-subtle", "text-danger", "btn-sm", "fw-bold", "w-100");
     rejectButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
@@ -161,19 +125,30 @@ function actionButton(booking) {
     viewButton.textContent = "View";
 
     confirmButton.setAttribute("data-booking-id", booking.booking_id);
-    confirmButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
+    rejectButton.setAttribute("data-booking-id", booking.booking_id);
+    rejectButton.setAttribute("data-user-id", booking.user_id);
+
+    // modal
     confirmButton.setAttribute("data-bs-toggle", "modal");
     confirmButton.setAttribute("data-bs-target", "#confirmBookingModal");
 
+    rejectButton.setAttribute("data-bs-toggle", "modal");
+    rejectButton.setAttribute("data-bs-target", "#rejectBookingModal");
+
     confirmButton.addEventListener("click", function () {
-        document.getElementById("bookingId").value = this.getAttribute("data-booking-id");
+        document.getElementById("confirmBookingId").value = this.getAttribute("data-booking-id");
     });
 
     viewButton.addEventListener("click", function () {
         localStorage.setItem("bookingId", booking.booking_id);
         window.location.href = "/admin/booking-request";
-    })
+    });
+
+    rejectButton.addEventListener("click", function () {
+        document.getElementById("rejectBookingId").value = this.getAttribute("data-booking-id");
+        document.getElementById("rejectUserId").value = this.getAttribute("data-user-id");
+    });
 
     if (booking.status === "Pending") {
         buttonGroup.append(confirmButton, rejectButton, viewButton);
@@ -225,4 +200,42 @@ document.getElementById("confirmBookingForm").addEventListener("submit", async f
     }
 });
 
+// reject booking
+document.getElementById("rejectBookingForm").addEventListener("submit", async function (event) {
+    event.preventDefault(); 
 
+    const formData = new FormData(this);
+    const bookingId = formData.get("booking_id");
+    const userId = formData.get("user_id");
+    const reason = formData.get("reason");
+
+    try {
+        const response = await fetch("/admin/reject-booking", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ bookingId, reason, userId })
+        });
+        
+        rejectBookingModal.hide();
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+        document.body.classList.remove('modal-open');
+    
+        const data = await response.json();
+        
+        if (data.success) {
+            messageTitle.textContent = "Success";
+            messageBody.textContent = data.message;
+            messageModal.show();
+        } else {
+            messageTitle.textContent = "Error";
+            messageBody.textContent = data.message;
+            messageModal.show();
+        }
+        
+        const status = document.getElementById("statusSelect").value;
+        const bookings = await getAllBookings(status, "asc", "booking_id");
+        renderBookings(bookings);
+    } catch (error) {
+        console.error(error);
+    }
+});

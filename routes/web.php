@@ -152,6 +152,12 @@ switch ($request) {
     case "/admin/confirm-booking":
         $adminBookingController->confirmBooking();
         break;
+    case "/admin/reject-booking":
+        $adminBookingController->rejectBooking();
+        break;
+    case "/admin/reject-rebooking":
+        $adminBookingController->rejectRebooking();
+        break;
     case "/admin/rebooking-requests":
         $adminBookingController->showReschedRequestTable();
         break;

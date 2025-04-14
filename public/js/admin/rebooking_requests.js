@@ -1,3 +1,11 @@
+const confirmBookingModal = new bootstrap.Modal(document.getElementById("confirmRebookingModal"));
+const rejectBookingModal = new bootstrap.Modal(document.getElementById("rejectRebookingModal"));
+const messageModal = new bootstrap.Modal(document.getElementById("messageModal"));
+
+const messageTitle = document.getElementById("messageTitle");
+const messageBody = document.getElementById("messageBody");
+
+
 document.addEventListener('DOMContentLoaded', async function () {
     const requests = await getRebookingRequests('All', 'asc', 'booking_id');
     renderRebookingRequests(requests);
@@ -85,42 +93,54 @@ function actionButtons(request) {
     const rejectButton = document.createElement('button');
     const viewButton = document.createElement('button');
 
+    // style
     buttonGroup.classList.add('d-flex', 'gap-2');   
 
     confirmButton.classList.add('btn', 'bg-success-subtle', 'text-success', 'btn-sm', 'fw-bold', 'w-100', 'approve');
     confirmButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
-    confirmButton.textContent = 'Confrim';
-
-    confirmButton.addEventListener('click', async () => {
-        const response = await fetch('/admin/confirm-rebooking-request', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ bookingId: request.booking_id })
-        });
-
-        const data = await response.json();
-        if (data.success) {
-            const requests = await getRebookingRequests('all', 'asc', 'client_name');
-            renderRebookingRequests(requests);
-        }
-    });
-
     rejectButton.classList.add('btn', 'bg-danger-subtle', 'text-danger', 'w-100', 'fw-bold', 'decline');
     rejectButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
-    rejectButton.textContent = 'Reject';
-
-    // reject logic
-
 
     viewButton.classList.add('btn', 'bg-primary-subtle', 'text-primary', 'w-100', 'fw-bold', 'decline');
     viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
+
+    // text
+    confirmButton.textContent = 'Confrim';
+    rejectButton.textContent = 'Reject';
     viewButton.textContent = 'View';
+    
+    // modal
+    confirmButton.setAttribute("data-bs-toggle", "modal");
+    confirmButton.setAttribute("data-bs-target", "#confirmRebookingModal");
+
+    rejectButton.setAttribute("data-bs-toggle", "modal");
+    rejectButton.setAttribute("data-bs-target", "#rejectRebookingModal");
+
+    
+    // data attribute
+    confirmButton.setAttribute("data-booking-id", request.booking_id);
+
+    rejectButton.setAttribute("data-booking-id", request.booking_id);
+    rejectButton.setAttribute("data-user-id", request.user_id);
+
+    
+    
+    // logic
+    confirmButton.addEventListener('click', function () {
+        document.getElementById("confirmBookingId").value = this.getAttribute("data-booking-id");
+    });
 
     viewButton.addEventListener("click", () => {
         localStorage.setItem("bookingId", request.booking_id);
         window.location.href = "/admin/rebooking-request";
-    })
+    });
+
+    rejectButton.addEventListener("click", function () {
+        document.getElementById("rejectBookingId").value = this.getAttribute("data-booking-id");
+        document.getElementById("rejectUserId").value = this.getAttribute("data-user-id");
+    });
+
 
     if (request.status === 'Pending') {   
         buttonGroup.append(confirmButton, rejectButton, viewButton);
@@ -134,3 +154,78 @@ function actionButtons(request) {
     return actionCell;
 }
 
+document.getElementById("confirmRebookingForm").addEventListener("submit", async function (event) {
+    event.preventDefault(); 
+
+    const formData = new FormData(this);
+    const bookingId = formData.get("booking_id");
+
+    try {
+        const response = await fetch("/admin/confirm-rebooking-request", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ bookingId })
+        });
+        
+        confirmBookingModal.hide();
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+        document.body.classList.remove('modal-open');
+    
+        const data = await response.json();
+        
+        if (data.success) {
+            messageTitle.textContent = "Success";
+            messageBody.textContent = data.message;
+            messageModal.show();
+        } else {
+            messageTitle.textContent = "Error";
+            messageBody.textContent = data.message;
+            messageModal.show();
+        }
+        
+        const status = document.getElementById("statusSelect").value;
+        const bookings = await getRebookingRequests(status, "asc", "booking_id");
+        renderRebookingRequests(bookings);
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+document.getElementById("rejectBookingForm").addEventListener("submit", async function (event) {
+    event.preventDefault(); 
+
+    const formData = new FormData(this);
+    const bookingId = formData.get("booking_id");
+    const userId = formData.get("user_id");
+    const reason = formData.get("reason");
+
+    try {
+        const response = await fetch("/admin/reject-rebooking", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ bookingId, reason, userId })
+        });
+        
+        rejectBookingModal.hide();
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+        document.body.classList.remove('modal-open');
+    
+        const data = await response.json();
+        
+        if (data.success) {
+            messageTitle.textContent = "Success";
+            messageBody.textContent = data.message;
+            messageModal.show();
+        } else {
+            messageTitle.textContent = "Error";
+            messageBody.textContent = data.message;
+            messageModal.show();
+        }
+        
+        const status = document.getElementById("statusSelect").value;
+        const bookings = await getAllBookings(status, "asc", "booking_id");
+        renderBookings(bookings);
+    } catch (error) {
+        console.error(error);
+    }
+});

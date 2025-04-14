@@ -21,7 +21,7 @@ class BookingManagementModel {
 
         try {   
             $stmt = $this->conn->prepare("
-                SELECT b.booking_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, b.number_of_days, b.number_of_buses, b.status, b.total_cost, b.payment_status
+                SELECT b.booking_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, b.number_of_days, b.number_of_buses, b.status, b.total_cost, b.payment_status
                 FROM bookings b
                 JOIN users u ON b.user_id = u.user_id
                 WHERE is_rebooking = 0 AND is_rebooked = 0
@@ -46,6 +46,28 @@ class BookingManagementModel {
         }
     }
 
+    public function rejectBooking($reason, $booking_id, $user_id) {
+        $type = "Booking";
+
+        try {            
+            $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Rejected' WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+
+            $stmt = $this->conn->prepare("INSERT INTO rejected_trips (reason, type, booking_id, user_id) VALUES (:reason, :type, :booking_id, :user_id)");
+            $stmt->execute([
+                ":reason" => $reason,
+                ":type" => $type,
+                ":booking_id" => $booking_id,
+                ":user_id" => $user_id
+            ]);
+
+
+            return ["success" => true];
+        } catch (PDOException $e) {
+            return ["success" => false, "message" => "Database error: " . $e->getMessage()];
+        }
+    }
+
     public function getRebookingRequests($status, $column, $order) {
         $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
         $status = in_array($status, $allowed_status) ? $status : "";
@@ -57,7 +79,7 @@ class BookingManagementModel {
 
         try {
             $stmt = $this->conn->prepare("
-                SELECT b.booking_id, r.request_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, u.email, b.destination, b.pickup_point, b.number_of_days, b.number_of_buses, r.status, b.payment_status, b.total_cost, b.balance, b.date_of_tour, b.end_of_tour
+                SELECT b.booking_id, r.request_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, u.email, b.destination, b.pickup_point, b.number_of_days, b.number_of_buses, r.status, b.payment_status, b.total_cost, b.balance, b.date_of_tour, b.end_of_tour
                 FROM rebooking_request r
                 JOIN users u ON r.user_id = u.user_id
                 JOIN bookings b ON r.rebooking_id = b.booking_id
@@ -66,7 +88,7 @@ class BookingManagementModel {
             ");
             $stmt->execute();
         
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+            return $stmt->fetchAll(PDO::FETCH_ASSOC); 
         }  catch (PDOException $e) {
             return "Database error: $e";
         }
@@ -86,7 +108,7 @@ class BookingManagementModel {
         $booking_id = $this->getBookingIdFromRebookingRequest($rebooking_id) ?? 0;
 
         if ($booking_id === 0) {
-            return "Unable to get booking ID.";
+            return ["success" => false, "message" => "Unable to get booking ID."];
         }
 
         try {
@@ -94,16 +116,39 @@ class BookingManagementModel {
             $stmt->execute([":rebooking_id" => $rebooking_id]);
 
             $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooked = 1 WHERE booking_id = :booking_id");
-            $stmt->execute([ ":booking_id" => $booking_id ]);
+            $stmt->execute([ ":booking_id" => $booking_id]);
 
             $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooking = 0 WHERE booking_id = :booking_id");
-            $stmt->execute([ ":booking_id" => $rebooking_id ]);
+            $stmt->execute([ ":booking_id" => $rebooking_id]);
 
-            return true;
+            return ["success" => true];
         } catch (PDOException $e) {
-            return "Database error: $e";
+            return ["success" => false, "message" =>  "Database error: " . $e->getMessage()];
         }
     }
+
+    public function rejectRebooking($reason, $booking_id, $user_id) {
+        $type = "Rebooking";
+        
+        try {
+            $stmt = $this->conn->prepare("UPDATE rebooking_request SET status = 'Rejected' WHERE rebooking_id = :rebooking_id");
+            $stmt->execute([":rebooking_id" => $booking_id]);
+
+            $stmt = $this->conn->prepare("INSERT INTO rejected_trips (reason, type, booking_id, user_id) VALUES (:reason, :type, :booking_id, :user_id)");
+            $stmt->execute([
+                ":reason" => $reason,
+                ":type" => $type,
+                ":booking_id" => $booking_id,
+                ":user_id" => $user_id
+            ]);
+
+
+            return ["success" => true];
+        } catch (PDOException $e) {
+            return ["success" => false, "message" => "Database error: " . $e->getMessage()];
+        }
+    }
+
 
     public function getBooking($booking_id) {
         try {
@@ -119,6 +164,11 @@ class BookingManagementModel {
             return "Database error";
         }
     }
+
+
+
+
+
 
     public function getBookingStops($booking_id) {
         try {
