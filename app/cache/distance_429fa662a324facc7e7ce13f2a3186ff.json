@@ -1,0 +1,58 @@
+{
+   "destination_addresses" : 
+   [
+      "Batangas City-San Pascual-Bauan Diversion Rd, San Pascual, Batangas, Philippines",
+      "1006 Anthony Dr Suite B, Champaign, IL 61821, USA"
+   ],
+   "origin_addresses" : 
+   [
+      "1006 Anthony Dr Suite B, Champaign, IL 61821, USA",
+      "Batangas City-San Pascual-Bauan Diversion Rd, San Pascual, Batangas, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "status" : "ZERO_RESULTS"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "status" : "ZERO_RESULTS"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

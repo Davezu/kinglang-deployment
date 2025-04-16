@@ -9,7 +9,7 @@ class BookingManagementModel {
         $this->conn = $pdo;
     }
 
-    public function getAllBookings($status, $column, $order) {
+    public function getAllBookings($status, $column, $order, $page = 1, $limit = 10) {
 
         $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
         $status = in_array($status, $allowed_status) ? $status : "";
@@ -19,6 +19,9 @@ class BookingManagementModel {
         $column = in_array($column, $allowed_columns) ? $column : "client_name";
         $order = $order === "asc" ? "ASC" : "DESC";
 
+        // Calculate offset for pagination
+        $offset = ($page - 1) * $limit;
+
         try {   
             $stmt = $this->conn->prepare("
                 SELECT b.booking_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, b.number_of_days, b.number_of_buses, b.status, b.total_cost, b.payment_status
@@ -27,12 +30,36 @@ class BookingManagementModel {
                 WHERE is_rebooking = 0 AND is_rebooked = 0
                 $status
                 ORDER BY $column $order 
+                LIMIT :limit OFFSET :offset
             ");
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }  catch (PDOException $e) {
             return "Database error: $e";
+        }
+    }
+
+    public function getTotalBookings($status) {
+        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
+        $status = in_array($status, $allowed_status) ? $status : "";
+        $status == "All" ? $status = "" : $status = " AND b.status = '$status'";
+
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT COUNT(*) as total
+                FROM bookings b
+                WHERE is_rebooking = 0 AND is_rebooked = 0
+                $status
+            ");
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['total'];
+        } catch (PDOException $e) {
+            return 0;
         }
     }
 
@@ -61,8 +88,7 @@ class BookingManagementModel {
                 ":user_id" => $user_id
             ]);
 
-
-            return ["success" => true];
+            return ["success" => true, "message" => "Booking rejected successfully."];
         } catch (PDOException $e) {
             return ["success" => false, "message" => "Database error: " . $e->getMessage()];
         }

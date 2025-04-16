@@ -27,24 +27,7 @@ CREATE TABLE `booking_buses` (
   `booking_id` int(11) NOT NULL,
   `bus_id` int(11) NOT NULL,
   PRIMARY KEY (`booking_buses_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `booking_location_distance`
---
-
-DROP TABLE IF EXISTS `booking_location_distance`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `booking_location_distance` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `origin` varchar(255) DEFAULT NULL,
-  `destination` varchar(255) DEFAULT NULL,
-  `distance` decimal(10,2) DEFAULT NULL,
-  `booking_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,7 +43,7 @@ CREATE TABLE `booking_stops` (
   `location` varchar(255) DEFAULT NULL,
   `booking_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`booking_stops_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,8 +68,9 @@ CREATE TABLE `bookings` (
   `user_id` int(11) NOT NULL,
   `is_rebooking` tinyint(1) DEFAULT 0,
   `is_rebooked` tinyint(1) DEFAULT 0,
+  `booked_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`booking_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,6 +87,25 @@ CREATE TABLE `buses` (
   `status` enum('Active','Maintenance') NOT NULL DEFAULT 'Active',
   PRIMARY KEY (`bus_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `canceled_trips`
+--
+
+DROP TABLE IF EXISTS `canceled_trips`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `canceled_trips` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reason` text DEFAULT NULL,
+  `canceled_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `booking_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `amount_refunded` decimal(10,2) DEFAULT 0.00,
+  `canceled_by` enum('Client','Admin','Super Admin') DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,8 +136,11 @@ CREATE TABLE `payments` (
   `payment_method` enum('Cash','Bank Transfer') NOT NULL,
   `booking_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `is_canceled` tinyint(1) DEFAULT 0,
+  `proof_of_payment` varchar(255) DEFAULT NULL,
+  `status` enum('Confirmed','Pending','Rejected') DEFAULT 'Pending',
   PRIMARY KEY (`payment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,25 +157,25 @@ CREATE TABLE `rebooking_request` (
   `status` enum('Pending','Rejected','Confirmed','Canceled') DEFAULT 'Pending',
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`request_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `reschedule_requests`
+-- Table structure for table `rejected_trips`
 --
 
-DROP TABLE IF EXISTS `reschedule_requests`;
+DROP TABLE IF EXISTS `rejected_trips`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `reschedule_requests` (
-  `request_id` int(11) NOT NULL AUTO_INCREMENT,
-  `new_date_of_tour` date NOT NULL,
-  `new_end_of_tour` date NOT NULL,
-  `status` enum('Pending','Confirmed','Rejected') NOT NULL DEFAULT 'Pending',
-  `booking_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`request_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `rejected_trips` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reason` text NOT NULL,
+  `type` enum('Booking','Rebooking') DEFAULT 'Booking',
+  `rejected_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `booking_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,7 +192,7 @@ CREATE TABLE `trip_distances` (
   `distance` decimal(10,2) DEFAULT NULL,
   `booking_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +216,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `contact_number` (`contact_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -222,4 +228,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-13 19:58:08
+-- Dump completed on 2025-04-15 23:58:25

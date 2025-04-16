@@ -1,0 +1,241 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Marinduque, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv132waUYozMReztuW-qz_uk",
+         "reference" : "ChIJv132waUYozMReztuW-qz_uk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marinduque",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 12,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "administrative_area_level_2",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Marinduque, Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
+         "reference" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marinduque",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Las Piñas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 12,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 23,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Marinduque Island, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-84eHxIiozMRp-sYaMJZgz4",
+         "reference" : "ChIJ-84eHxIiozMRp-sYaMJZgz4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marinduque Island",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marinduque Island"
+            },
+            {
+               "offset" : 19,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "natural_feature",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Marinduque Airport, Gasan, Marinduque, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8YlZKkIlozMRxSxM6WoVmHI",
+         "reference" : "ChIJ8YlZKkIlozMRxSxM6WoVmHI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marinduque Airport",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gasan, Marinduque, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marinduque Airport"
+            },
+            {
+               "offset" : 20,
+               "value" : "Gasan"
+            },
+            {
+               "offset" : 27,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "airport",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Marinduque State University, Panfilo M. Manguera, Sr. Road, Boac, Marinduque, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJSxDgQEwmozMRuvYq27a4b_A",
+         "reference" : "ChIJSxDgQEwmozMRuvYq27a4b_A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marinduque State University",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Panfilo M. Manguera, Sr. Road, Boac, Marinduque, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marinduque State University"
+            },
+            {
+               "offset" : 29,
+               "value" : "Panfilo M. Manguera"
+            },
+            {
+               "offset" : 50,
+               "value" : "Sr. Road"
+            },
+            {
+               "offset" : 60,
+               "value" : "Boac"
+            },
+            {
+               "offset" : 66,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

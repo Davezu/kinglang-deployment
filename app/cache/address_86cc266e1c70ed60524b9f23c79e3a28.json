@@ -1,0 +1,252 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeZt7xzXIlzMR-DfSuchHSdw",
+         "reference" : "ChIJeZt7xzXIlzMR-DfSuchHSdw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 13,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Mandaue, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_e4MaImYqTMRcqXd9aER-ak",
+         "reference" : "ChIJ_e4MaImYqTMRcqXd9aER-ak",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaue"
+            },
+            {
+               "offset" : 9,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 15,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Mandaluyong City Hall, Maysilo Circle, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
+         "reference" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maysilo Circle, Mandaluyong, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong City Hall"
+            },
+            {
+               "offset" : 23,
+               "value" : "Maysilo Circle"
+            },
+            {
+               "offset" : 39,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "local_government_office",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Mandaue City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJjyGC0GiYqTMRqZFeD7xcKWo",
+         "reference" : "ChIJjyGC0GiYqTMRqZFeD7xcKWo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaue City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaue City"
+            },
+            {
+               "offset" : 14,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_3",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Mandarin Bay Resort & Spa, Boracay Island Station, Sunset Road, Malay, Aklan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJuT0GlNw9pTMRiENxIumY7oM",
+         "reference" : "ChIJuT0GlNw9pTMRiENxIumY7oM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandarin Bay Resort & Spa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Boracay Island Station, Sunset Road, Malay, Aklan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandarin Bay Resort & Spa"
+            },
+            {
+               "offset" : 27,
+               "value" : "Boracay Island Station"
+            },
+            {
+               "offset" : 51,
+               "value" : "Sunset Road"
+            },
+            {
+               "offset" : 64,
+               "value" : "Malay"
+            },
+            {
+               "offset" : 71,
+               "value" : "Aklan"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

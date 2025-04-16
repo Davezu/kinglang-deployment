@@ -61,7 +61,7 @@ if (!isset($_SESSION["user_id"])) {
                         </div> 
                         <div class="mb-3 position-relative">
                             <i class="bi bi-geo-alt-fill location-icon"></i>
-                            <i class="bi bi-plus-circle-fill add-icon" id="addStop"></i>
+                            <i class="bi bi-plus-circle-fill add-icon" id="addStop" title="Add stop"></i>
                             <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop py-2 px-4" autocomplete="off" placeholder="Dropoff Location" required>
                             <ul id="destinationSuggestions" class="suggestions"></ul>
                         </div>
@@ -92,9 +92,9 @@ if (!isset($_SESSION["user_id"])) {
                             
                             <div class="d-flex flex-column">
                                 <div class="d-flex gap-3">
-                                    <i class="bi bi-dash-square" id="decreaseDays"></i>
+                                    <i class="bi bi-dash-square" id="decreaseDays" title="Decrease days"></i>
                                     <p id="number_of_days">0</p>
-                                    <i class="bi bi-plus-square" id="increaseDays"></i>
+                                    <i class="bi bi-plus-square" id="increaseDays" title="Add days"></i>
                                 </div>
                                 <div class="d-flex gap-3">
                                     <i class="bi bi-dash-square" id="decreaseBuses"></i>
@@ -103,10 +103,13 @@ if (!isset($_SESSION["user_id"])) {
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="mb-3">
+                            <p id="totalCost" class="fw-bold text-success"></p>
+                        </div>
 
                         <div class="container-fluid d-flex justify-content-between align-items-center gap p-0">
                             <button type="submit" class="btn btn-success w-100" id="submitBooking">Request Booking</button>
-                            <p id="totalCost"></p>
                         </div>
                     </div>
                 </form>

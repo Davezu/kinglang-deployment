@@ -28,10 +28,36 @@ class BookingController {
         $address = urlencode($input["address"]);
         $country = "PH"; // Philippines
 
-        $url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$address&key=$apiKey&types=address&components=country:$country";
+        // Check if we have a cached result
+        $cacheFile = __DIR__ . "/../../cache/address_" . md5($address) . ".json";
+        $cacheExpiry = 60 * 60 * 24; // 24 hours in seconds
+        
+        if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheExpiry)) {
+            // Return cached result
+            echo file_get_contents($cacheFile);
+            return;
+        }
 
-        // Fetch data from Google API
-        $response = file_get_contents($url);
+        // Modified URL to include more location types and session token for better results
+        // Removed the types=address restriction to get all possible location types
+        // Added sessiontoken parameter for better results
+        $sessionToken = md5(uniqid(rand(), true));
+        $url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$address&key=$apiKey&components=country:$country&sessiontoken=$sessionToken";
+
+        // Use cURL instead of file_get_contents for better performance
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5); // 5 second timeout
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        // Cache the result
+        if (!is_dir(__DIR__ . "/../../cache")) {
+            mkdir(__DIR__ . "/../../cache", 0755, true);
+        }
+        file_put_contents($cacheFile, $response);
+
         echo $response;
     }
 
@@ -61,23 +87,73 @@ class BookingController {
         $originStr = implode("|", array_map("urlencode", $origins));
         $destinationStr = implode("|", array_map("urlencode", $destinations));
     
+        // Check if we have a cached result
+        $cacheKey = md5($originStr . $destinationStr);
+        $cacheFile = __DIR__ . "/../../cache/distance_" . $cacheKey . ".json";
+        $cacheExpiry = 60 * 60 * 24; // 24 hours in seconds
+        
+        if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheExpiry)) {
+            // Return cached result
+            echo file_get_contents($cacheFile);
+            return;
+        }
+    
         $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=$originStr&destinations=$destinationStr&key=$apiKey";
     
-        $response = file_get_contents($url);
+        // Use cURL instead of file_get_contents for better performance
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5); // 5 second timeout
+        $response = curl_exec($ch);
+        curl_close($ch);
+        
+        // Cache the result
+        if (!is_dir(__DIR__ . "/../../cache")) {
+            mkdir(__DIR__ . "/../../cache", 0755, true);
+        }
+        file_put_contents($cacheFile, $response);
+        
         echo $response;
     }
 
     public function getCoordinates($address, $apiKey) {
+        // Check if we have a cached result
+        $cacheKey = md5($address);
+        $cacheFile = __DIR__ . "/../../cache/coordinates_" . $cacheKey . ".json";
+        $cacheExpiry = 60 * 60 * 24; // 24 hours in seconds
+        
+        if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheExpiry)) {
+            // Return cached result
+            $cachedData = json_decode(file_get_contents($cacheFile), true);
+            return $cachedData;
+        }
+        
         $address = urlencode($address);
         $geoUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=$address&key=$apiKey";
 
-        $geoResponse = file_get_contents($geoUrl);
+        // Use cURL instead of file_get_contents for better performance
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $geoUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5); // 5 second timeout
+        $geoResponse = curl_exec($ch);
+        curl_close($ch);
+        
         $geoData = json_decode($geoResponse, true);
 
         if ($geoData["status"] === "OK") {
             $latitude = $geoData["results"][0]["geometry"]["location"]["lat"];
             $longitude = $geoData["results"][0]["geometry"]["location"]["lng"];
-            return ["lat" => $latitude, "lng" => $longitude];
+            $result = ["lat" => $latitude, "lng" => $longitude];
+            
+            // Cache the result
+            if (!is_dir(__DIR__ . "/../../cache")) {
+                mkdir(__DIR__ . "/../../cache", 0755, true);
+            }
+            file_put_contents($cacheFile, json_encode($result));
+            
+            return $result;
         } 
         return null;
     }
@@ -91,28 +167,69 @@ class BookingController {
         $input = json_decode(file_get_contents("php://input"), true);
 
         if (empty($input["pickupPoint"]) || empty($input["destination"])) {
-            echo json_encode(["error" => "Input is required"]);
+            echo json_encode(["error" => "Both pickup and destination points are required"]);
             return;
         }
 
+        // Check if we have a cached result for the entire route
+        $cacheKey = md5($input["pickupPoint"] . $input["destination"] . json_encode($input["stops"] ?? []));
+        $cacheFile = __DIR__ . "/../../cache/route_" . $cacheKey . ".json";
+        $cacheExpiry = 60 * 60 * 24; // 24 hours in seconds
+        
+        if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheExpiry)) {
+            // Return cached result
+            echo file_get_contents($cacheFile);
+            return;
+        }
+
+        // Get coordinates for pickup point
         $pickup_point = $this->getCoordinates($input["pickupPoint"], $apiKey);
+        if (!$pickup_point) {
+            echo json_encode(["error" => "Could not find coordinates for pickup point: " . $input["pickupPoint"]]);
+            return;
+        }
+
+        // Get coordinates for destination
         $destination = $this->getCoordinates($input["destination"], $apiKey);
+        if (!$destination) {
+            echo json_encode(["error" => "Could not find coordinates for destination: " . $input["destination"]]);
+            return;
+        }
 
         $stops = [];
+        $invalidStops = [];
 
         if (!empty($input["stops"])) {
-            foreach ($input["stops"] as $stop) {
+            foreach ($input["stops"] as $index => $stop) {
                 $coordinates = $this->getCoordinates($stop, $apiKey);
                 if ($coordinates) {
                     $stops[] = $coordinates;
+                } else {
+                    $invalidStops[] = $stop;
                 }
             }
         }
 
+        // If there are any invalid stops, return an error
+        if (!empty($invalidStops)) {
+            echo json_encode([
+                "error" => "Could not find coordinates for the following stops: " . implode(", ", $invalidStops)
+            ]);
+            return;
+        }
+
         if ($pickup_point && $destination) {
-            echo json_encode(["pickup_point" => $pickup_point, "destination" => $destination, "stops" => $stops]);
+            $result = ["pickup_point" => $pickup_point, "destination" => $destination, "stops" => $stops];
+            
+            // Cache the result
+            if (!is_dir(__DIR__ . "/../../cache")) {
+                mkdir(__DIR__ . "/../../cache", 0755, true);
+            }
+            file_put_contents($cacheFile, json_encode($result));
+            
+            echo json_encode($result);
         } else {
-            echo json_encode(["error" => "Unable to get coordinates"]);
+            echo json_encode(["error" => "Unable to get coordinates for the specified locations"]);
         }
     }
 
@@ -161,11 +278,10 @@ class BookingController {
             
             header("Content-Type: application/json");
 
-            if ($result === "success") {
-                echo json_encode(["success" => true, "message" => "Booking request sent successfully!"]);
-            } else {
-                echo json_encode(["success" => false, "message" => $result]);
-            }
+            echo json_encode([
+                "success" => $result["success"], 
+                "message" => $result["message"]
+            ]);
         }
     }
 
@@ -192,16 +308,26 @@ class BookingController {
         $status = $data["status"];
         $column = $data["column"];
         $order = $data["order"];
+        $page = isset($data["page"]) ? (int)$data["page"] : 1;
+        $limit = isset($data["limit"]) ? (int)$data["limit"] : 10;
 
         $user_id = $_SESSION["user_id"];
-        $bookings = $this->bookingModel->getAllBookings($user_id, $status, $column, $order);
+        $result = $this->bookingModel->getAllBookings($user_id, $status, $column, $order, $page, $limit);
 
         header("Content-Type: application/json");
 
-        if (is_array($bookings)) {
-            echo json_encode(["success" => true, "bookings" => $bookings]);
+        if (is_array($result)) {
+            echo json_encode([
+                "success" => true, 
+                "bookings" => $result["bookings"],
+                "pagination" => [
+                    "total_records" => $result["total_records"],
+                    "total_pages" => $result["total_pages"],
+                    "current_page" => $result["current_page"]
+                ]
+            ]);
         } else {
-            echo json_encode(["success" => false, "message" => $bookings]);
+            echo json_encode(["success" => false, "message" => $result]);
         }
     }
 
@@ -271,8 +397,38 @@ class BookingController {
             $client_id = $_POST["user_id"];
             $amount = $_POST["amount"];
             $payment_method = $_POST["payment_method"];
+            
+            // Handle proof of payment upload
+            $proof_of_payment = null;
+            if (isset($_FILES["proof_of_payment"]) && $_FILES["proof_of_payment"]["error"] === UPLOAD_ERR_OK) {
+                $upload_dir = __DIR__ . "/../../uploads/payments/";
+                
+                // Create directory if it doesn't exist
+                if (!file_exists($upload_dir)) {
+                    mkdir($upload_dir, 0777, true);
+                }
+                
+                $file_extension = pathinfo($_FILES["proof_of_payment"]["name"], PATHINFO_EXTENSION);
+                $file_name = "payment_" . $booking_id . "_" . time() . "." . $file_extension;
+                $target_file = $upload_dir . $file_name;
+                
+                // Check file type
+                $allowed_types = ["jpg", "jpeg", "png", "pdf"];
+                if (!in_array(strtolower($file_extension), $allowed_types)) {
+                    echo "Only JPG, PNG, and PDF files are allowed.";
+                    return;
+                }
+                
+                // Move uploaded file
+                if (move_uploaded_file($_FILES["proof_of_payment"]["tmp_name"], $target_file)) {
+                    $proof_of_payment = $file_name;
+                } else {
+                    echo "Failed to upload file.";
+                    return;
+                }
+            }
         
-            $result = $this->bookingModel->addPayment($booking_id, $client_id, $amount, $payment_method);
+            $result = $this->bookingModel->addPayment($booking_id, $client_id, $amount, $payment_method, $proof_of_payment);
         
             if ($result) {
                 header("Location: /home/booking-requests");

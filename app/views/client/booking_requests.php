@@ -77,16 +77,29 @@ if (!isset($_SESSION["user_id"])) {
                 </div>
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
-            <div class="input-group w-25 my-3">
-                <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Remarks</span>
-                <select name="status" id="statusSelect" class="form-select">
-                    <option value="all">All</option>
-                    <option value="pending">Pending</option>
-                    <option value="confirmed">Confirmed</option>
-                    <option value="canceled">Canceled</option>
-                    <option value="rejected">Rejected</option>
-                    <option value="completed">Completed</option>
-                </select>
+            <div class="d-flex gap-3 my-3">
+                <div class="input-group w-25 my-3">
+                    <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Remarks</span>
+                    <select name="status" id="statusSelect" class="form-select">
+                        <option value="all">All</option>
+                        <option value="pending" selected>Pending</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="canceled">Canceled</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                
+                <div class="input-group w-25 my-3 ms-3">
+                    <span class="input-group-text bg-success-subtle" id="basic-addon2">Records per page</span>
+                    <select name="limit" id="limitSelect" class="form-select">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
             </div>
         
             <div class="table-responsive-xl">
@@ -114,7 +127,7 @@ if (!isset($_SESSION["user_id"])) {
 
     <div class="modal fade payment-modal" aria-labelledby="paymentModal" tabindex="-1" id="paymentModal">
         <div class="modal-dialog modal-dialog-centered">
-            <form class="payment-content modal-content" action="/payment/process" method="post">
+            <form class="payment-content modal-content" action="/payment/process" method="post" enctype="multipart/form-data">
 
                 <div class="modal-header">
                     <h3 class="modal-title">Payment</h3>
@@ -143,11 +156,31 @@ if (!isset($_SESSION["user_id"])) {
 
                     <div class="payment-method">
                         <label for="" class="mt-2">Payment method</label>
-                        <select name="payment_method" id="" class="form-select mt-2" aria-label="small select example">
-                            <option value="Cash">Cash</option>
+                        <select name="payment_method" id="paymentMethod" class="form-select mt-2" aria-label="small select example">
+                            <!-- <option value="Cash">Cash</option> -->
                             <option value="Bank Transfer">Bank Transfer</option>
                             <option value="Online">Online Payment</option>
                         </select>
+                    </div>
+
+                    <!-- Account Information Section -->
+                    <div id="accountInfoSection" class="mt-3" style="display: none;">
+                        <div class="alert alert-info">
+                            <h5 class="alert-heading">Account Information</h5>
+                            <p class="mb-0">Please transfer to the following account:</p>
+                            <div class="mt-2">
+                                <p class="mb-1"><strong>Bank:</strong> <span id="bankName">BDO</span></p>
+                                <p class="mb-1"><strong>Account Name:</strong> <span id="accountName">Kinglang Bus Services</span></p>
+                                <p class="mb-1"><strong>Account Number:</strong> <span id="accountNumber">1234567890</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proof of Payment Upload Section -->
+                    <div id="proofUploadSection" class="mt-3" style="display: none;">
+                        <label for="proofOfPayment" class="form-label">Upload Proof of Payment</label>
+                        <input type="file" class="form-control" id="proofOfPayment" name="proof_of_payment" accept="image/*,.pdf">
+                        <small class="text-muted">Upload a screenshot or photo of your payment receipt (JPG, PNG, PDF)</small>
                     </div>
                 </div>
                                         

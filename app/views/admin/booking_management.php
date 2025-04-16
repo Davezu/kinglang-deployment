@@ -128,16 +128,28 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
             <?php include_once __DIR__ . "/../assets/admin_navtab.php"; ?>
-            <div class="input-group w-25 w-md-50 my-3">
-                <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Remarks</span>
-                <select name="status" id="statusSelect" class="form-select">
-                    <option value="All">All</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Confirmed">Confirmed</option>
-                    <option value="Canceled">Canceled</option>
-                    <option value="Rejected">Rejected</option>
-                    <option value="Completed">Completed</option>
-                </select>
+            <div class="d-flex gap-3 my-3">
+                <div class="input-group w-25 w-md-50">
+                    <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Remarks</span>
+                    <select name="status" id="statusSelect" class="form-select">
+                        <option value="All">All</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Confirmed">Confirmed</option>
+                        <option value="Canceled">Canceled</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                <div class="input-group w-25 w-md-50">
+                    <span class="input-group-text bg-success-subtle" id="basic-addon2">Records per page</span>
+                    <select name="limit" id="limitSelect" class="form-select">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
             </div>
             <div class="table-responsive-xl" >
                 <table class="table table-hover text-secondary overflow-hidden border rounded px-4">
@@ -158,6 +170,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
                     </tbody>
                 </table>
             </div>
+            <div id="paginationContainer" class="mt-4"></div>
         </div>
     </div>
     

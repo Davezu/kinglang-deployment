@@ -1,0 +1,232 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Marawi City, Lanao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJD-Ni5HORVTIRc_BZ-U6175s",
+         "reference" : "ChIJD-Ni5HORVTIRc_BZ-U6175s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marawi City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lanao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marawi City"
+            },
+            {
+               "offset" : 13,
+               "value" : "Lanao del Sur"
+            },
+            {
+               "offset" : 28,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Maragondon, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJob3jwNGFvTMR24rbvKOqt7A",
+         "reference" : "ChIJob3jwNGFvTMR24rbvKOqt7A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragondon",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragondon"
+            },
+            {
+               "offset" : 12,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Maramag, Bukidnon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ17tLTnA7_zIRXGqi8aCdEYU",
+         "reference" : "ChIJ17tLTnA7_zIRXGqi8aCdEYU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maramag",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bukidnon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maramag"
+            },
+            {
+               "offset" : 9,
+               "value" : "Bukidnon"
+            },
+            {
+               "offset" : 19,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Maragusan, Davao de Oro, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZxAofDbw-zIRZwgF-iXWRzI",
+         "reference" : "ChIJZxAofDbw-zIRZwgF-iXWRzI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragusan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Davao de Oro, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragusan"
+            },
+            {
+               "offset" : 11,
+               "value" : "Davao de Oro"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Maranding, Lanao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJt1K1PyA1VDIRmieO9qwVL0s",
+         "reference" : "ChIJt1K1PyA1VDIRmieO9qwVL0s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maranding",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lanao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maranding"
+            },
+            {
+               "offset" : 11,
+               "value" : "Lanao del Norte"
+            },
+            {
+               "offset" : 28,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "sublocality",
+            "geocode",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

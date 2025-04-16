@@ -1,0 +1,54 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Malipaka Street, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjdNYWxpcGFrYSBTdHJlZXQsIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJI91QwUGwlzMRZDSATDuWVFkSFAoSCXVz70IJupczEUA9CP7ZMppK",
+         "reference" : "EjdNYWxpcGFrYSBTdHJlZXQsIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJI91QwUGwlzMRZDSATDuWVFkSFAoSCXVz70IJupczEUA9CP7ZMppK",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malipaka Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malipaka Street"
+            },
+            {
+               "offset" : 17,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 30,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

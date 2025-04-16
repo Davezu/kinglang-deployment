@@ -1,0 +1,250 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Dalaguete, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJT9sWASq5qzMRO3tThRMLSx4",
+         "reference" : "ChIJT9sWASq5qzMRO3tThRMLSx4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalaguete",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalaguete"
+            },
+            {
+               "offset" : 11,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Dalandanan, Valenzuela, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-x-Ds42zlzMRkFOftPw6iGw",
+         "reference" : "ChIJ-x-Ds42zlzMRkFOftPw6iGw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalandanan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Valenzuela, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalandanan"
+            },
+            {
+               "offset" : 12,
+               "value" : "Valenzuela"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "sublocality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Dalahican, Lucena, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJ1tWfS9LvTMRSR_m5pQBQQA",
+         "reference" : "ChIJJ1tWfS9LvTMRSR_m5pQBQQA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalahican",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lucena, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalahican"
+            },
+            {
+               "offset" : 11,
+               "value" : "Lucena"
+            },
+            {
+               "offset" : 19,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality_level_2",
+            "sublocality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Dalaroy Beach Resort, Ternate, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJIce__nmIvTMRWQOpqA_kiTA",
+         "reference" : "ChIJIce__nmIvTMRWQOpqA_kiTA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalaroy Beach Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ternate, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalaroy Beach Resort"
+            },
+            {
+               "offset" : 22,
+               "value" : "Ternate"
+            },
+            {
+               "offset" : 31,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Dalig, Antipolo, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJLX36OKPAlzMR6v6ggcK1xeQ",
+         "reference" : "ChIJLX36OKPAlzMR6v6ggcK1xeQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalig",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Antipolo, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalig"
+            },
+            {
+               "offset" : 7,
+               "value" : "Antipolo"
+            },
+            {
+               "offset" : 17,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "political",
+            "geocode",
+            "sublocality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

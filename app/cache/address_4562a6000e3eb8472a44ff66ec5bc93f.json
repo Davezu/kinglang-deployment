@@ -1,0 +1,248 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Bualan, Tubod, Lanao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwX_WWuW2VTIR_6p6TAJgQ_w",
+         "reference" : "ChIJwX_WWuW2VTIR_6p6TAJgQ_w",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bualan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tubod, Lanao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bualan"
+            },
+            {
+               "offset" : 8,
+               "value" : "Tubod"
+            },
+            {
+               "offset" : 15,
+               "value" : "Lanao del Norte"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Bualan, Piagapo, Lanao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPbDZYxqXVTIRBgl3vEiR9lE",
+         "reference" : "ChIJPbDZYxqXVTIRBgl3vEiR9lE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bualan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Piagapo, Lanao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bualan"
+            },
+            {
+               "offset" : 8,
+               "value" : "Piagapo"
+            },
+            {
+               "offset" : 17,
+               "value" : "Lanao del Sur"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "sublocality",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Bualan, Zamboanga del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8bfE4eIBVDIRAilEtqP8F3M",
+         "reference" : "ChIJ8bfE4eIBVDIRAilEtqP8F3M",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bualan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Zamboanga del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bualan"
+            },
+            {
+               "offset" : 8,
+               "value" : "Zamboanga del Sur"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "political",
+            "geocode",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Bualan, Lanao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJxXCz-Pu_VTIRhTV2bqjXT6M",
+         "reference" : "ChIJxXCz-Pu_VTIRhTV2bqjXT6M",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bualan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lanao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bualan"
+            },
+            {
+               "offset" : 8,
+               "value" : "Lanao del Sur"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "geocode",
+            "political",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Bualan, Pikit, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJE2oHugaE-DIRywSRgirt0P4",
+         "reference" : "ChIJE2oHugaE-DIRywSRgirt0P4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bualan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pikit, Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bualan"
+            },
+            {
+               "offset" : 8,
+               "value" : "Pikit"
+            },
+            {
+               "offset" : 15,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "sublocality",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

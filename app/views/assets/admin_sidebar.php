@@ -171,7 +171,7 @@
                     <i class="bi bi-grid"></i>
                     <span class="menu-text">Dashboard</span>
                 </a>   
-                <a href="/admin/booking-requests" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'booking-requests' || basename($_SERVER["PHP_SELF"]) == 'resched-requests' ? 'active' : ''; ?>">
+                <a href="/admin/booking-requests" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'booking-requests' || basename($_SERVER["PHP_SELF"]) == 'rebooking-requests' ? 'active' : ''; ?>">
                     <i class="bi bi-journals fs-5"></i>
                     <span class="menu-text">Bookings</span>
                 </a>
@@ -179,7 +179,7 @@
                     <i class="bi bi-people"></i>
                     <span class="menu-text">Clients</span>
                 </a>
-                <a href="#" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'booking' ? 'active' : ''; ?>">
+                <a href="/admin/payment-management" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'payment-management' ? 'active' : ''; ?>">
                     <i class="bi bi-wallet2"></i>
                     <span class="menu-text">Payments</span>
                 </a>

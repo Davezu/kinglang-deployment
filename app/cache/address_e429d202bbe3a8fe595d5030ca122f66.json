@@ -1,0 +1,253 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Dalaguete, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJT9sWASq5qzMRO3tThRMLSx4",
+         "reference" : "ChIJT9sWASq5qzMRO3tThRMLSx4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalaguete",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalaguete"
+            },
+            {
+               "offset" : 11,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Dalandanan, Valenzuela, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-x-Ds42zlzMRkFOftPw6iGw",
+         "reference" : "ChIJ-x-Ds42zlzMRkFOftPw6iGw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalandanan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Valenzuela, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalandanan"
+            },
+            {
+               "offset" : 12,
+               "value" : "Valenzuela"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Dalahican, Lucena, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJ1tWfS9LvTMRSR_m5pQBQQA",
+         "reference" : "ChIJJ1tWfS9LvTMRSR_m5pQBQQA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalahican",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lucena, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalahican"
+            },
+            {
+               "offset" : 11,
+               "value" : "Lucena"
+            },
+            {
+               "offset" : 19,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "sublocality_level_2",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Dalaroy Beach Resort, Ternate, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJIce__nmIvTMRWQOpqA_kiTA",
+         "reference" : "ChIJIce__nmIvTMRWQOpqA_kiTA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalaroy Beach Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ternate, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalaroy Beach Resort"
+            },
+            {
+               "offset" : 22,
+               "value" : "Ternate"
+            },
+            {
+               "offset" : 31,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Dalampasigan Beach and Pool Resort, Quezon Eco Tourism Road, Sariaya, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ2RZUuD42vTMR4f6H8maYhSI",
+         "reference" : "ChIJ2RZUuD42vTMR4f6H8maYhSI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalampasigan Beach and Pool Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon Eco Tourism Road, Sariaya, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalampasigan Beach and Pool Resort"
+            },
+            {
+               "offset" : 36,
+               "value" : "Quezon Eco Tourism Road"
+            },
+            {
+               "offset" : 61,
+               "value" : "Sariaya"
+            },
+            {
+               "offset" : 70,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "lodging"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

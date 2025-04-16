@@ -19,17 +19,63 @@ function formatDate(date) {
     });
 }
 
+// Add pagination variables
+let currentPage = 1;
+let limit = 10; // Number of records per page
+
+
 // get all of booking record
 document.addEventListener("DOMContentLoaded", async function () {
-    const bookings = await getAllBookings("all", "date_of_tour", "asc");
-    renderBookings(bookings);
+    // Get the initial limit value from the selector
+    limit = parseInt(document.getElementById("limitSelect").value);
+    const status = document.getElementById("statusSelect").value;
+    
+    const result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+    renderBookings(result.bookings);
+    renderPagination(result.pagination);
+
+    // Payment method change handler
+    const paymentMethodSelect = document.getElementById("paymentMethod");
+    const accountInfoSection = document.getElementById("accountInfoSection");
+    const proofUploadSection = document.getElementById("proofUploadSection");
+    
+    if (paymentMethodSelect) {
+        paymentMethodSelect.addEventListener("change", function() {
+            const selectedMethod = this.value;
+            
+            // Show/hide account info for Bank Transfer and Online Payment
+            if (selectedMethod === "Bank Transfer" || selectedMethod === "Online") {
+                accountInfoSection.style.display = "block";
+                proofUploadSection.style.display = "block";
+            } else {
+                accountInfoSection.style.display = "none";
+                proofUploadSection.style.display = "none";
+            }
+        });
+    }
 });
 
 // filter booking record by status
 document.getElementById("statusSelect").addEventListener("change", async function () {
     const status = this.value;
-    const bookings = await getAllBookings(status, "date_of_tour", "asc");
-    renderBookings(bookings);
+    currentPage = 1; // Reset to first page when filter changes
+    const result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+    renderBookings(result.bookings);
+    renderPagination(result.pagination);
+});
+
+// Handle limit selector change
+document.getElementById("limitSelect").addEventListener("change", async function() {
+    limit = parseInt(this.value);
+    currentPage = 1; // Reset to first page when limit changes
+    
+    const status = document.getElementById("statusSelect").value;
+    const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
+    const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
+    
+    const result = await getAllBookings(status, column, order, currentPage, limit);
+    renderBookings(result.bookings);
+    renderPagination(result.pagination);
 });
 
 // sort booking record by column
@@ -41,10 +87,11 @@ document.querySelectorAll(".sort").forEach(button => {
         const status = document.getElementById("statusSelect").value;
         const column = this.getAttribute("data-column");
         const order = this.getAttribute("data-order");
+        currentPage = 1; // Reset to first page when sort changes
 
-        const bookings = await getAllBookings(status, column, order);
-        console.log(bookings);
-        renderBookings(bookings);   
+        const result = await getAllBookings(status, column, order, currentPage, limit);
+        renderBookings(result.bookings);
+        renderPagination(result.pagination);
 
         this.setAttribute("data-order", order === "asc" ? "desc" : "asc");
     });
@@ -95,12 +142,12 @@ document.querySelectorAll(".btn-container").forEach(container => {
     })
 });
 
-async function getAllBookings(status, column, order) {
+async function getAllBookings(status, column, order, page = 1, limit = 10) {
     try {
         const response = await fetch("/home/get-booking-requests", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ status, column, order })
+            body: JSON.stringify({ status, column, order, page, limit })
         });
 
         const data = await response.json();
@@ -109,12 +156,14 @@ async function getAllBookings(status, column, order) {
         tbody.innerHTML = "";   
 
         if (data.success) {
-            return data.bookings;
+            return data;
         } else {
             console.log(data.message);
+            return { bookings: [], pagination: { total_records: 0, total_pages: 0, current_page: 1 } };
         }
     } catch (error) {
         console.error("Error fetching data: ", error.message);
+        return { bookings: [], pagination: { total_records: 0, total_pages: 0, current_page: 1 } };
     }
 }
 
@@ -280,9 +329,228 @@ document.getElementById("cancelBookingForm").addEventListener("submit", async fu
         }
         
         const status = document.getElementById("statusSelect").value;
-        const bookings = await getAllBookings(status, "booking_id", "asc");
-        renderBookings(bookings);
+        const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
+        const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
+        const result = await getAllBookings(status, column, order, currentPage, limit);
+        renderBookings(result.bookings);
+        renderPagination(result.pagination);
     } catch (error) {
         console.error(error);
     }
 });
+
+// Add pagination rendering function
+function renderPagination(pagination) {
+    const paginationContainer = document.getElementById("paginationContainer");
+    if (!paginationContainer) {
+        // Create pagination container if it doesn't exist
+        const container = document.createElement("div");
+        container.id = "paginationContainer";
+        container.className = "d-flex justify-content-center mt-4";
+        document.querySelector(".table-responsive-xl").after(container);
+    }
+    
+    const { total_pages, current_page, total_records } = pagination;
+    
+    // Clear existing pagination
+    document.getElementById("paginationContainer").innerHTML = "";
+    
+    // Add pagination info
+    // const paginationInfo = document.createElement("div");
+    // paginationInfo.className = "text-center mb-2";
+    // paginationInfo.textContent = `Showing ${((current_page - 1) * limit) + 1} to ${Math.min(current_page * limit, total_records)} of ${total_records} records`;
+    // document.getElementById("paginationContainer").appendChild(paginationInfo);
+    
+    // Create pagination controls
+    const paginationNav = document.createElement("nav");
+    paginationNav.setAttribute("aria-label", "Booking pagination");
+    
+    const paginationList = document.createElement("ul");
+    paginationList.className = "pagination";
+    
+    // Previous button
+    const prevLi = document.createElement("li");
+    prevLi.className = `page-item ${current_page === 1 ? 'disabled' : ''}`;
+    const prevLink = document.createElement("a");
+    prevLink.className = "page-link";
+    prevLink.href = "#";
+    prevLink.setAttribute("aria-label", "Previous");
+    prevLink.textContent = "Previous";
+    prevLink.addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (current_page > 1) {
+            currentPage = current_page - 1;
+            const status = document.getElementById("statusSelect").value;
+            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
+            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
+            const result = await getAllBookings(status, column, order, currentPage, limit);
+            renderBookings(result.bookings);
+            renderPagination(result.pagination);
+        }
+    });
+    prevLi.appendChild(prevLink);
+    paginationList.appendChild(prevLi);
+    
+    // Page numbers
+    // Show ellipsis for large page counts
+    const maxVisiblePages = 5;
+    let startPage = Math.max(1, current_page - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(total_pages, startPage + maxVisiblePages - 1);
+    
+    if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+    
+    // First page
+    if (startPage > 1) {
+        const firstLi = document.createElement("li");
+        firstLi.className = "page-item";
+        const firstLink = document.createElement("a");
+        firstLink.className = "page-link";
+        firstLink.href = "#";
+        firstLink.textContent = "1";
+        firstLink.addEventListener("click", async (e) => {
+            e.preventDefault();
+            currentPage = 1;
+            const status = document.getElementById("statusSelect").value;
+            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
+            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
+            const result = await getAllBookings(status, column, order, currentPage, limit);
+            renderBookings(result.bookings);
+            renderPagination(result.pagination);
+        });
+        firstLi.appendChild(firstLink);
+        paginationList.appendChild(firstLi);
+        
+        // Ellipsis
+        if (startPage > 2) {
+            const ellipsisLi = document.createElement("li");
+            ellipsisLi.className = "page-item disabled";
+            const ellipsisSpan = document.createElement("span");
+            ellipsisSpan.className = "page-link";
+            ellipsisSpan.textContent = "...";
+            ellipsisLi.appendChild(ellipsisSpan);
+            paginationList.appendChild(ellipsisLi);
+        }
+    }
+    
+    // Page numbers
+    for (let i = startPage; i <= endPage; i++) {
+        const pageLi = document.createElement("li");
+        pageLi.className = `page-item ${i === current_page ? 'active' : ''}`;
+        const pageLink = document.createElement("a");
+        pageLink.className = "page-link";
+        pageLink.href = "#";
+        pageLink.textContent = i;
+        pageLink.addEventListener("click", async (e) => {
+            e.preventDefault();
+            currentPage = i;
+            const status = document.getElementById("statusSelect").value;
+            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
+            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
+            const result = await getAllBookings(status, column, order, currentPage, limit);
+            renderBookings(result.bookings);
+            renderPagination(result.pagination);
+        });
+        pageLi.appendChild(pageLink);
+        paginationList.appendChild(pageLi);
+    }
+    
+    // Last page
+    if (endPage < total_pages) {
+        // Ellipsis
+        if (endPage < total_pages - 1) {
+            const ellipsisLi = document.createElement("li");
+            ellipsisLi.className = "page-item disabled";
+            const ellipsisSpan = document.createElement("span");
+            ellipsisSpan.className = "page-link";
+            ellipsisSpan.textContent = "...";
+            ellipsisLi.appendChild(ellipsisSpan);
+            paginationList.appendChild(ellipsisLi);
+        }
+        
+        const lastLi = document.createElement("li");
+        lastLi.className = "page-item";
+        const lastLink = document.createElement("a");
+        lastLink.className = "page-link";
+        lastLink.href = "#";
+        lastLink.textContent = total_pages;
+        lastLink.addEventListener("click", async (e) => {
+            e.preventDefault();
+            currentPage = total_pages;
+            const status = document.getElementById("statusSelect").value;
+            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
+            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
+            const result = await getAllBookings(status, column, order, currentPage, limit);
+            renderBookings(result.bookings);
+            renderPagination(result.pagination);
+        });
+        lastLi.appendChild(lastLink);
+        paginationList.appendChild(lastLi);
+    }
+    
+    // Next button
+    const nextLi = document.createElement("li");
+    nextLi.className = `page-item ${current_page === total_pages ? 'disabled' : ''}`;
+    const nextLink = document.createElement("a");
+    nextLink.className = "page-link";
+    nextLink.href = "#";
+    nextLink.setAttribute("aria-label", "Next");
+    nextLink.innerHTML = "Next";
+    nextLink.addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (current_page < total_pages) {
+            currentPage = current_page + 1;
+            const status = document.getElementById("statusSelect").value;
+            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
+            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
+            const result = await getAllBookings(status, column, order, currentPage, limit);
+            renderBookings(result.bookings);
+            renderPagination(result.pagination);
+        }
+    });
+    nextLi.appendChild(nextLink);
+    paginationList.appendChild(nextLi);
+    
+    paginationNav.appendChild(paginationList);
+    document.getElementById("paginationContainer").appendChild(paginationNav);
+    
+    // Add "Go to page" input
+    // if (total_pages > 1) {
+    //     const goToPageContainer = document.createElement("div");
+    //     goToPageContainer.className = "d-flex justify-content-center align-items-center mt-2";
+        
+    //     const goToPageLabel = document.createElement("label");
+    //     goToPageLabel.className = "me-2";
+    //     goToPageLabel.textContent = "Go to page:";
+        
+    //     const goToPageInput = document.createElement("input");
+    //     goToPageInput.type = "number";
+    //     goToPageInput.className = "form-control form-control-sm";
+    //     goToPageInput.style.width = "60px";
+    //     goToPageInput.min = 1;
+    //     goToPageInput.max = total_pages;
+    //     goToPageInput.value = current_page;
+        
+    //     goToPageInput.addEventListener("change", async function() {
+    //         let pageNum = parseInt(this.value);
+    //         if (isNaN(pageNum) || pageNum < 1) {
+    //             pageNum = 1;
+    //         } else if (pageNum > total_pages) {
+    //             pageNum = total_pages;
+    //         }
+            
+    //         currentPage = pageNum;
+    //         const status = document.getElementById("statusSelect").value;
+    //         const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
+    //         const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
+    //         const result = await getAllBookings(status, column, order, currentPage, limit);
+    //         renderBookings(result.bookings);
+    //         renderPagination(result.pagination);
+    //     });
+        
+    //     goToPageContainer.appendChild(goToPageLabel);
+    //     goToPageContainer.appendChild(goToPageInput);
+    //     document.getElementById("paginationContainer").appendChild(goToPageContainer);
+    // }
+}

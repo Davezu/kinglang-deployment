@@ -1,0 +1,257 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJATD-VErPlzMRrdKYqfB6ri8",
+         "reference" : "ChIJATD-VErPlzMRrdKYqfB6ri8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Taguig",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 8,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Taguig City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJDwf43VLPlzMRhxgMVTLYTgM",
+         "reference" : "ChIJDwf43VLPlzMRhxgMVTLYTgM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Taguig City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Taguig City"
+            },
+            {
+               "offset" : 13,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_3",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Taguig City Hall, Gen. Luna Street, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJN-W97aTIlzMRIVzpIHRLwnQ",
+         "reference" : "ChIJN-W97aTIlzMRIVzpIHRLwnQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Taguig City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gen. Luna Street, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Taguig City Hall"
+            },
+            {
+               "offset" : 18,
+               "value" : "Gen. Luna Street"
+            },
+            {
+               "offset" : 36,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 44,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "city_hall",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Taguig-Pateros District Hospital, East Service Road, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ3XszHyjPlzMRe8RHnIVFE5Q",
+         "reference" : "ChIJ3XszHyjPlzMRe8RHnIVFE5Q",
+         "structured_formatting" : 
+         {
+            "main_text" : "Taguig-Pateros District Hospital",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "East Service Road, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Taguig-Pateros District Hospital"
+            },
+            {
+               "offset" : 34,
+               "value" : "East Service Road"
+            },
+            {
+               "offset" : 53,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 61,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "hospital",
+            "health",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Taguig City Hall of Justice, General Santos Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ3dkCERPPlzMR48sMzkGZvRE",
+         "reference" : "ChIJ3dkCERPPlzMR48sMzkGZvRE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Taguig City Hall of Justice",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Santos Avenue, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Taguig City Hall of Justice"
+            },
+            {
+               "offset" : 29,
+               "value" : "General Santos Avenue"
+            },
+            {
+               "offset" : 52,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 60,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "courthouse",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

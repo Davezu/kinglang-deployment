@@ -1,4 +1,7 @@
-const messageModal = new bootstrap.Modal(document.getElementById("messageModal"));
+const messageModal = new bootstrap.Modal(document.getElementById("messageModal"), {
+    backdrop: false,
+    keyboard: true
+});
 
 const messageTitle = document.getElementById("messageTitle");
 const messageBody = document.getElementById("messageBody");
@@ -54,14 +57,23 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.log(formatted);
 
     picker.setDate(booking.date_of_tour);
-    document.getElementById("number_of_days").textContent = booking.number_of_days;
-    document.getElementById("number_of_buses").textContent = booking.number_of_buses;
-
+    
+    // Set the number of days and buses
+    const daysElement = document.getElementById("number_of_days");
+    const busesElement = document.getElementById("number_of_buses");
+    
+    daysElement.textContent = booking.number_of_days;
+    busesElement.textContent = booking.number_of_buses;
+    
+    // Update localStorage with the booking values
     localStorage.setItem("buses", booking.number_of_buses);
     localStorage.setItem("days", booking.number_of_days);
-
+    
+    // Calculate route and total cost
     calculateRoute();
-
+    if (allInputsFilled()) {
+        renderTotalCost();
+    }
 });
 
 
@@ -109,29 +121,75 @@ document.addEventListener("DOMContentLoaded", () => {
     const days = document.getElementById("number_of_days");
     const buses = document.getElementById("number_of_buses");
 
-    let bus = parseInt(localStorage.getItem("buses")) || 0, day = parseInt(localStorage.getItem("days")) || 0;
-    console.log("bus: ", document.getElementById("number_of_buses").textContent, "days: ", days.textContent);
+    // Initialize with values from localStorage or default to 0
+    let bus = parseInt(localStorage.getItem("buses")) || 0;
+    let day = parseInt(localStorage.getItem("days")) || 0;
+    
+    // Set initial display values
+    days.textContent = day;
+    buses.textContent = bus;
+    
+    // If we're rebooking, get the values from the booking data
+    if (isRebooking) {
+        const bookingDays = parseInt(document.getElementById("number_of_days").textContent);
+        const bookingBuses = parseInt(document.getElementById("number_of_buses").textContent);
+        
+        if (!isNaN(bookingDays) && bookingDays > 0) {
+            day = bookingDays;
+            days.textContent = day;
+            localStorage.setItem("days", day);
+        }
+        
+        if (!isNaN(bookingBuses) && bookingBuses > 0) {
+            bus = bookingBuses;
+            buses.textContent = bus;
+            localStorage.setItem("buses", bus);
+        }
+    }
 
+    // Decrease buses button
     decBusesButton.addEventListener("click", () => {
-        if (bus === 0) return;
+        if (bus <= 0) return;
         bus--;
         buses.textContent = bus;
+        localStorage.setItem("buses", bus);
+        if (allInputsFilled()) {
+            renderTotalCost();
+        }
     });
+    
+    // Increase buses button
     incBusesButton.addEventListener("click", () => {
-        if (bus === 13) return;
+        if (bus >= 13) return;
         bus++;
         buses.textContent = bus;
+        localStorage.setItem("buses", bus);
+        if (allInputsFilled()) {
+            renderTotalCost();
+        }
     });
+    
+    // Decrease days button
     decDaysButton.addEventListener("click", () => {
-        if (day === 0) return;
+        if (day <= 0) return;
         day--;
         days.textContent = day;
+        localStorage.setItem("days", day);
+        if (allInputsFilled()) {
+            renderTotalCost();
+        }
     });
+    
+    // Increase days button
     incDaysButton.addEventListener("click", () => {
         day++;
         days.textContent = day;
+        localStorage.setItem("days", day);
+        if (allInputsFilled()) {
+            renderTotalCost();
+        }
     });
-})
+});
 
 document.getElementById("nextButton").addEventListener("click", function () {
     document.getElementById("firstInfo").classList.add("d-none");
@@ -236,10 +294,21 @@ document.getElementById("bookingForm").addEventListener("submit", async function
             messageTitle.textContent = "Success";
             messageBody.textContent = data.message;
             messageModal.show();
+            
+            // Clear form data
             this.reset(); 
             document.getElementById("totalCost").textContent = "";
             document.getElementById("number_of_buses").textContent = "0";
             document.getElementById("number_of_days").textContent = "0";
+            
+            // Clear localStorage
+            localStorage.removeItem("buses");
+            localStorage.removeItem("days");
+            
+            // Redirect to My Bookings page after a short delay
+            setTimeout(() => {
+                window.location.href = "/home/booking-requests";
+            }, 2000); // 2 second delay to allow the user to see the success message
         } else {
             messageTitle.textContent = "Error";
             messageBody.textContent = data.message;
@@ -247,6 +316,9 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         }
     } catch (error) {
         console.error("Error fetching data: ", error.message);
+        messageTitle.textContent = "Error";
+        messageBody.textContent = "An error occurred while processing your request. Please try again.";
+        messageModal.show();
     }
 
     initMap(); 
@@ -281,6 +353,7 @@ async function renderTotalCost() {
     if (!allInputsFilled()) return;
     
     const costElement = document.getElementById("totalCost");
+    costElement.textContent = "Calculating...";
 
     const totalCost = await getTotalCost();
     if (!totalCost) {
@@ -301,7 +374,11 @@ function debounce(func, delay) {
     };
 }
 
-const debouncedGetAddress = debounce(getAddress, 500);
+// Increase debounce delay for better performance
+const debouncedGetAddress = debounce(getAddress, 800);
+
+// Create a cache for address suggestions
+const addressCache = new Map();
 
 document.querySelectorAll(".address").forEach(input => {
     input.addEventListener("input", function (e) {
@@ -309,22 +386,39 @@ document.querySelectorAll(".address").forEach(input => {
         const input = this.value;
         const inputElement = this;
     
-        debouncedGetAddress(input, suggestionList, inputElement);
+        // Only search if input is at least 3 characters
+        if (input.length >= 3) {
+            debouncedGetAddress(input, suggestionList, inputElement);
+        } else {
+            suggestionList.innerHTML = "";
+            suggestionList.style.border = "none";
+        }
     });     
 });
 
 function allInputsFilled() {
-    const inputs = document.getElementsByTagName("input");
-    const allInputsFilled = Array.from(inputs).every(input => {
-        if (input.type === "text" || input.type === "number") {
-            return input.value.trim() !== ""; // Check if the input is not empty
-        }
-        return true; // Ignore other types of inputs
-    });
-    return allInputsFilled;
+    const pickupPoint = document.getElementById("pickup_point").value.trim();
+    const destinationInputs = document.querySelectorAll(".address");
+    const destination = destinationInputs[destinationInputs.length - 1].value.trim();
+    const dateOfTour = document.getElementById("date_of_tour").value.trim();
+    const numberOfDays = document.getElementById("number_of_days").textContent;
+    const numberOfBuses = document.getElementById("number_of_buses").textContent;
+    
+    // Check if all required fields are filled
+    return pickupPoint !== "" && 
+           destination !== "" && 
+           dateOfTour !== "" && 
+           parseInt(numberOfDays) > 0 && 
+           parseInt(numberOfBuses) > 0;
 }
 
 async function getAddress(input, suggestionList, inputElement) {
+    // Check if we have cached results for this input
+    if (addressCache.has(input)) {
+        displaySuggestions(addressCache.get(input), suggestionList, inputElement);
+        return;
+    }
+    
     try {
         const response = await fetch("/get-address", {
             method: "POST",
@@ -333,41 +427,108 @@ async function getAddress(input, suggestionList, inputElement) {
         });
 
         const data = await response.json();
-
-        suggestionList.innerHTML = "";
-        suggestionList.style.border = "1px solid #ccc"; 
         
-        if (data.status !== "OK") {
-            const list = document.createElement("li");
-            list.textContent = "No places found.";
-            suggestionList.appendChild(list);
-            return;
-        }
-
-        data.predictions.forEach(place => {
-            const list = document.createElement("li");
-            list.textContent = place.description;
-
-            list.addEventListener("click", function () {
-                inputElement.value = place.description; 
-                calculateRoute();
-                suggestionList.innerHTML = "";
-                suggestionList.style.border = "none";
-            });
-
-            document.addEventListener("click", function (e) {
-                if (e.target !== list) {
-                    suggestionList.innerHTML = "";
-                    suggestionList.style.border = "none";
-                }
-            });
-
-            suggestionList.appendChild(list);
-        })
+        // Cache the results
+        addressCache.set(input, data);
+        
+        displaySuggestions(data, suggestionList, inputElement);
     } catch (error) {
         console.error(error);
     }
-};
+}
+
+function displaySuggestions(data, suggestionList, inputElement) {
+    suggestionList.innerHTML = "";
+    suggestionList.style.border = "1px solid #ccc"; 
+    
+    if (data.status !== "OK") {
+        const list = document.createElement("li");
+        list.textContent = "No places found.";
+        suggestionList.appendChild(list);
+        return;
+    }
+
+    // Limit to top 5 results for better performance
+    const topResults = data.predictions.slice(0, 5);
+    
+    topResults.forEach(place => {
+        const list = document.createElement("li");
+        
+        // Create a container for the suggestion
+        const suggestionContainer = document.createElement("div");
+        suggestionContainer.className = "suggestion-item";
+        
+        // Add an icon based on the place type
+        const icon = document.createElement("i");
+        icon.className = getPlaceTypeIcon(place.types);
+        suggestionContainer.appendChild(icon);
+        
+        // Add the main text
+        const mainText = document.createElement("span");
+        mainText.className = "main-text";
+        mainText.textContent = place.structured_formatting?.main_text || place.description.split(',')[0];
+        suggestionContainer.appendChild(mainText);
+        
+        // Add the secondary text if available
+        if (place.structured_formatting?.secondary_text) {
+            const secondaryText = document.createElement("span");
+            secondaryText.className = "secondary-text";
+            secondaryText.textContent = place.structured_formatting.secondary_text;
+            suggestionContainer.appendChild(secondaryText);
+        } else {
+            // If no structured formatting, use the rest of the description
+            const parts = place.description.split(',');
+            if (parts.length > 1) {
+                const secondaryText = document.createElement("span");
+                secondaryText.className = "secondary-text";
+                secondaryText.textContent = parts.slice(1).join(',').trim();
+                suggestionContainer.appendChild(secondaryText);
+            }
+        }
+        
+        list.appendChild(suggestionContainer);
+
+        list.addEventListener("click", function () {
+            inputElement.value = place.description; 
+            calculateRoute();
+            suggestionList.innerHTML = "";
+            suggestionList.style.border = "none";
+        });
+
+        document.addEventListener("click", function (e) {
+            if (e.target !== list && !list.contains(e.target)) {
+                suggestionList.innerHTML = "";
+                suggestionList.style.border = "none";
+            }
+        });
+
+        suggestionList.appendChild(list);
+    });
+}
+
+// Helper function to determine the appropriate icon based on place type
+function getPlaceTypeIcon(types) {
+    if (!types || types.length === 0) return "bi bi-geo-alt";
+    
+    // Check for specific place types and return appropriate icon
+    if (types.includes("establishment") || types.includes("point_of_interest")) {
+        return "bi bi-building";
+    } else if (types.includes("route") || types.includes("street_address")) {
+        return "bi bi-signpost-split";
+    } else if (types.includes("locality") || types.includes("sublocality")) {
+        return "bi bi-geo";
+    } else if (types.includes("park") || types.includes("natural_feature")) {
+        return "bi bi-tree";
+    } else if (types.includes("transit_station") || types.includes("bus_station")) {
+        return "bi bi-bus-front";
+    } else if (types.includes("restaurant") || types.includes("food")) {
+        return "bi bi-cup-hot";
+    } else if (types.includes("lodging") || types.includes("hotel")) {
+        return "bi bi-house-door";
+    } else {
+        return "bi bi-geo-alt";
+    }
+}
 
 async function getDistanceMatrix(stops) {
     try {
@@ -460,7 +621,18 @@ async function calculateRoute() {
     const stops = Array.from(document.querySelectorAll(".added-stop")).map((stop, i) => stop.value ).filter(stop => stop.trim() !== "");
     stops.pop();
 
-    if (!pickupPoint || !destination) return;   
+    // Check if pickup and destination are filled
+    if (!pickupPoint || !destination) {
+        // Show a notification if either pickup or destination is missing
+        // messageTitle.textContent = "Missing Information";
+        // messageBody.textContent = "Please enter both pickup and destination locations to calculate the route.";
+        // messageModal.show();
+        return;
+    }
+
+    // Show loading indicator
+    const mapElement = document.getElementById("map");
+    mapElement.innerHTML = '<div class="d-flex justify-content-center align-items-center h-100"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
 
     try {
         const response = await fetch("/get-route", {
@@ -470,8 +642,16 @@ async function calculateRoute() {
         });
     
         const data = await response.json();
+        
+        // Reinitialize the map
+        initMap();
+        
         if (data.error) {
             console.error(data.error);
+            // Show error notification
+            messageTitle.textContent = "Route Calculation Error";
+            messageBody.textContent = "Unable to calculate the route. Please check your locations and try again.";
+            messageModal.show();
             return;
         }
 
@@ -486,13 +666,57 @@ async function calculateRoute() {
         directionsService.route(request, (result, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
                 directionsRenderer.setDirections(result);
-            }
-            else {
-                console.error("Directions request failed due to " + status);    
+                
+                // Show success notification with route details
+                const route = result.routes[0];
+                const distance = route.legs.reduce((total, leg) => total + leg.distance.value, 0) / 1000; // in km
+                const duration = route.legs.reduce((total, leg) => total + leg.duration.value, 0) / 60; // in minutes
+                
+                // Only show notification if the route is significantly different from previous calculations
+                if (window.lastCalculatedDistance && Math.abs(window.lastCalculatedDistance - distance) < 1) {
+                    return; // Skip notification if distance is similar to previous calculation
+                }
+                
+                window.lastCalculatedDistance = distance;
+                
+                messageTitle.textContent = "Route Calculated";
+                messageBody.textContent = `Route found! Total distance: ${distance.toFixed(1)} km, estimated time: ${Math.round(duration)} minutes.`;
+                messageModal.show();
+            } else {
+                console.error("Directions request failed due to " + status);
+                
+                // Show specific error message based on status
+                let errorMessage = "Unable to calculate the route. ";
+                
+                switch (status) {
+                    case google.maps.DirectionsStatus.NOT_FOUND:
+                        errorMessage += "One or more locations could not be found.";
+                        break;
+                    case google.maps.DirectionsStatus.ZERO_RESULTS:
+                        errorMessage += "No route could be found between the specified locations.";
+                        break;
+                    case google.maps.DirectionsStatus.MAX_WAYPOINTS_EXCEEDED:
+                        errorMessage += "Too many waypoints. Please reduce the number of stops.";
+                        break;
+                    default:
+                        errorMessage += "Please check your locations and try again.";
+                }
+                
+                messageTitle.textContent = "Route Calculation Failed";
+                messageBody.textContent = errorMessage;
+                messageModal.show();
             }
         });
     } catch (error) {
         console.error("Error fetching route: ", error.message);
+        
+        // Reinitialize the map
+        initMap();
+        
+        // Show error notification
+        messageTitle.textContent = "Connection Error";
+        messageBody.textContent = "Unable to connect to the route service. Please check your internet connection and try again.";
+        messageModal.show();
         return;
     }   
 }
@@ -538,10 +762,13 @@ document.getElementById("addStop").addEventListener("click", () => {
 
     const removeButton = document.createElement("i");
     removeButton.classList.add("bi", "bi-x-circle-fill", "remove-icon");
+    removeButton.title = "Remove stop";
 
     removeButton.addEventListener("click", function () {
         div.remove();
-        calculateRoute();
+        if (input.value.length > 5) {
+            calculateRoute();
+        }
         position--;
         count--;
         if (count === 0) document.getElementById("destination").placeholder = "Dropoff Location";
@@ -556,6 +783,18 @@ document.getElementById("addStop").addEventListener("click", () => {
     form.insertBefore(div, referenceElement);
 });
 
-function removeInput(divElement) {
-    divElement.remove();
-}
+// Add event listeners to all address inputs to check for total cost calculation
+document.querySelectorAll(".address").forEach(input => {
+    input.addEventListener("change", function() {
+        if (allInputsFilled()) {
+            renderTotalCost();
+        }
+    });
+});
+
+// Add event listener to date input
+document.getElementById("date_of_tour").addEventListener("change", function() {
+    if (allInputsFilled()) {
+        renderTotalCost();
+    }
+});

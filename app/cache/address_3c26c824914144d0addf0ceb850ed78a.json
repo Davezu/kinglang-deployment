@@ -1,0 +1,246 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJR4RfLjVlzMRHzJA-Ji2jKs",
+         "reference" : "ChIJJR4RfLjVlzMRHzJA-Ji2jKs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasmariñas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 12,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Dasmarinas City, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJpyP9TMjVlzMRUO5OIKyq5C8",
+         "reference" : "ChIJpyP9TMjVlzMRUO5OIKyq5C8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasmarinas City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasmarinas City"
+            },
+            {
+               "offset" : 17,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_3",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Dasmarinas, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJWTLksSPJlzMRx4S1udsvb0Y",
+         "reference" : "ChIJWTLksSPJlzMRx4S1udsvb0Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasmarinas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasmarinas"
+            },
+            {
+               "offset" : 12,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "geocode",
+            "political",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Dasmarinas Village Entrance Security Building, Antonio S Arnaiz Avenue, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJVfH7WxnJlzMRbCN74UT4TM0",
+         "reference" : "ChIJVfH7WxnJlzMRbCN74UT4TM0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasmarinas Village Entrance Security Building",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Antonio S Arnaiz Avenue, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasmarinas Village Entrance Security Building"
+            },
+            {
+               "offset" : 47,
+               "value" : "Antonio S Arnaiz Avenue"
+            },
+            {
+               "offset" : 72,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 80,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 94,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Dasmariñas City Hall, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHUOmfADVlzMRdzi4SC7Kr5M",
+         "reference" : "ChIJHUOmfADVlzMRdzi4SC7Kr5M",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasmariñas City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasmariñas City Hall"
+            },
+            {
+               "offset" : 22,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 34,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

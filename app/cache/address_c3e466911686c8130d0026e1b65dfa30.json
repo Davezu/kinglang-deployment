@@ -1,0 +1,246 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjZNLiBMLiBRdWV6b24gQXZlbnVlLCBUYWd1aWcsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkXzHmlrciXMxGuL0h5am25kBIUChIJATD-VErPlzMRrdKYqfB6ri8",
+         "reference" : "EjZNLiBMLiBRdWV6b24gQXZlbnVlLCBUYWd1aWcsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkXzHmlrciXMxGuL0h5am25kBIUChIJATD-VErPlzMRrdKYqfB6ri8",
+         "structured_formatting" : 
+         {
+            "main_text" : "M. L. Quezon Avenue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "M. L. Quezon Avenue"
+            },
+            {
+               "offset" : 21,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 29,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 43,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "M.L. Quezon Street, Antipolo, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 18,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjBNLkwuIFF1ZXpvbiBTdHJlZXQsIEFudGlwb2xvLCBSaXphbCwgUGhpbGlwcGluZXMiLiosChQKEgntIMYTUr-XMxGw9qYkTKjp9hIUChIJxRCDjQy_lzMRo4C_f1qO3DQ",
+         "reference" : "EjBNLkwuIFF1ZXpvbiBTdHJlZXQsIEFudGlwb2xvLCBSaXphbCwgUGhpbGlwcGluZXMiLiosChQKEgntIMYTUr-XMxGw9qYkTKjp9hIUChIJxRCDjQy_lzMRo4C_f1qO3DQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "M.L. Quezon Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 18,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Antipolo, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "M.L. Quezon Street"
+            },
+            {
+               "offset" : 20,
+               "value" : "Antipolo"
+            },
+            {
+               "offset" : 30,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "M.L. Quezon National Highway, Lapu-Lapu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 28,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ej9NLkwuIFF1ZXpvbiBOYXRpb25hbCBIaWdod2F5LCBMYXB1LUxhcHUgQ2l0eSwgQ2VidSwgUGhpbGlwcGluZXMiLiosChQKEgknPoYbwZmpMxGDIGd_qrrmPRIUChIJG8Rz2f6ZqTMRLC6gsQOv6Ro",
+         "reference" : "Ej9NLkwuIFF1ZXpvbiBOYXRpb25hbCBIaWdod2F5LCBMYXB1LUxhcHUgQ2l0eSwgQ2VidSwgUGhpbGlwcGluZXMiLiosChQKEgknPoYbwZmpMxGDIGd_qrrmPRIUChIJG8Rz2f6ZqTMRLC6gsQOv6Ro",
+         "structured_formatting" : 
+         {
+            "main_text" : "M.L. Quezon National Highway",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 28,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lapu-Lapu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "M.L. Quezon National Highway"
+            },
+            {
+               "offset" : 30,
+               "value" : "Lapu-Lapu City"
+            },
+            {
+               "offset" : 46,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "M. L. Quezon Avenue, Mandaue City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjRNLiBMLiBRdWV6b24gQXZlbnVlLCBNYW5kYXVlIENpdHksIENlYnUsIFBoaWxpcHBpbmVzIi4qLAoUChIJo4pyWfOYqTMRK8cIhdaLswQSFAoSCf3uDGiJmKkzEXKl3fWhEfmp",
+         "reference" : "EjRNLiBMLiBRdWV6b24gQXZlbnVlLCBNYW5kYXVlIENpdHksIENlYnUsIFBoaWxpcHBpbmVzIi4qLAoUChIJo4pyWfOYqTMRK8cIhdaLswQSFAoSCf3uDGiJmKkzEXKl3fWhEfmp",
+         "structured_formatting" : 
+         {
+            "main_text" : "M. L. Quezon Avenue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mandaue City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "M. L. Quezon Avenue"
+            },
+            {
+               "offset" : 21,
+               "value" : "Mandaue City"
+            },
+            {
+               "offset" : 35,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "M. L. Quezon Street, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjhNLiBMLiBRdWV6b24gU3RyZWV0LCBNYXJpa2luYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCRmpzZ-QuZczESqMkhatWWtREhQKEgn5AHp3ormXMxHGL6Ep9Mg2bQ",
+         "reference" : "EjhNLiBMLiBRdWV6b24gU3RyZWV0LCBNYXJpa2luYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCRmpzZ-QuZczESqMkhatWWtREhQKEgn5AHp3ormXMxHGL6Ep9Mg2bQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "M. L. Quezon Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "M. L. Quezon Street"
+            },
+            {
+               "offset" : 21,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 31,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

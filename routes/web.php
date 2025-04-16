@@ -180,7 +180,28 @@ switch ($request) {
     case "/admin/get-booking":
         $adminBookingController->getBooking();
         break;
-
+        
+    // Payment Management Routes
+    case "/admin/payment-management":
+        require_once __DIR__ . "/../app/controllers/admin/PaymentManagementController.php";
+        $paymentManagementController = new PaymentManagementController();
+        $paymentManagementController->index();
+        break;
+    case "/admin/payments/get":
+        require_once __DIR__ . "/../app/controllers/admin/PaymentManagementController.php";
+        $paymentManagementController = new PaymentManagementController();
+        $paymentManagementController->getPayments();
+        break;
+    case "/admin/payments/confirm":
+        require_once __DIR__ . "/../app/controllers/admin/PaymentManagementController.php";
+        $paymentManagementController = new PaymentManagementController();
+        $paymentManagementController->confirmPayment();
+        break;
+    case "/admin/payments/reject":
+        require_once __DIR__ . "/../app/controllers/admin/PaymentManagementController.php";
+        $paymentManagementController = new PaymentManagementController();
+        $paymentManagementController->rejectPayment();
+        break;
 
     case "/favicon.ico":
         http_response_code(204); // No Content (prevents errors)

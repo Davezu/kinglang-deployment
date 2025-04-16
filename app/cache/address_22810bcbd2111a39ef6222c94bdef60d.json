@@ -1,0 +1,260 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Malaria Road, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjFNYWxhcmlhIFJvYWQsIENhbG9vY2FuLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJszatrPmvlzMRYM3cfbSemQsSFAoSCV8bhBm1sZczERotBCXicOcF",
+         "reference" : "EjFNYWxhcmlhIFJvYWQsIENhbG9vY2FuLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJszatrPmvlzMRYM3cfbSemQsSFAoSCV8bhBm1sZczERotBCXicOcF",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malaria Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malaria Road"
+            },
+            {
+               "offset" : 14,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Malaria Basketball Court, Malaria Road, Northern, Caloocan, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ7b31f_ivlzMRT8iCovTpofE",
+         "reference" : "ChIJ7b31f_ivlzMRT8iCovTpofE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malaria Basketball Court",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malaria Road, Northern, Caloocan, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malaria Basketball Court"
+            },
+            {
+               "offset" : 26,
+               "value" : "Malaria Road"
+            },
+            {
+               "offset" : 40,
+               "value" : "Northern"
+            },
+            {
+               "offset" : 50,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 60,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Malaria, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPbMw5PivlzMRAlqwtWAS9_4",
+         "reference" : "ChIJPbMw5PivlzMRAlqwtWAS9_4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malaria",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malaria"
+            },
+            {
+               "offset" : 9,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "sublocality_level_2",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "MALARIA, Quirino Highway, Novaliches, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJO3IAAQCllzMRh8TS0CFn9lY",
+         "reference" : "ChIJO3IAAQCllzMRh8TS0CFn9lY",
+         "structured_formatting" : 
+         {
+            "main_text" : "MALARIA",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quirino Highway, Novaliches, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MALARIA"
+            },
+            {
+               "offset" : 9,
+               "value" : "Quirino Highway"
+            },
+            {
+               "offset" : 26,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 38,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Malaria 1 Street, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjVNYWxhcmlhIDEgU3RyZWV0LCBDYWxvb2NhbiwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCf_Qj5D4r5czET1t8shNeE5JEhQKEglfG4QZtbGXMxEaLQQl4nDnBQ",
+         "reference" : "EjVNYWxhcmlhIDEgU3RyZWV0LCBDYWxvb2NhbiwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCf_Qj5D4r5czET1t8shNeE5JEhQKEglfG4QZtbGXMxEaLQQl4nDnBQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malaria 1 Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malaria 1 Street"
+            },
+            {
+               "offset" : 18,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 28,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

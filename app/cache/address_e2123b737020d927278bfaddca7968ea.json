@@ -1,0 +1,283 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Colegio de San Juan de Letran Calamba, Bucal Bypass Road, Calamba, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
+         "reference" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio de San Juan de Letran Calamba",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bucal Bypass Road, Calamba, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio de San Juan de Letran Calamba"
+            },
+            {
+               "offset" : 39,
+               "value" : "Bucal Bypass Road"
+            },
+            {
+               "offset" : 58,
+               "value" : "Calamba"
+            },
+            {
+               "offset" : 67,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "university",
+            "establishment",
+            "school"
+         ]
+      },
+      {
+         "description" : "Colegio de San Gabriel Arcangel, Dr. Eduardo V. Roquero Sr. Avenue, San Jose del Monte City, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJyTFOFzOvlzMRJ53rhnwndGI",
+         "reference" : "ChIJyTFOFzOvlzMRJ53rhnwndGI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio de San Gabriel Arcangel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dr. Eduardo V. Roquero Sr. Avenue, San Jose del Monte City, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio de San Gabriel Arcangel"
+            },
+            {
+               "offset" : 33,
+               "value" : "Dr. Eduardo V. Roquero Sr. Avenue"
+            },
+            {
+               "offset" : 68,
+               "value" : "San Jose del Monte City"
+            },
+            {
+               "offset" : 93,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 102,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "university",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Colegio De Sebastian Pampanga Incorporated, MacArthur Highway, San Fernando, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
+         "reference" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio De Sebastian Pampanga Incorporated",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "MacArthur Highway, San Fernando, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio De Sebastian Pampanga Incorporated"
+            },
+            {
+               "offset" : 44,
+               "value" : "MacArthur Highway"
+            },
+            {
+               "offset" : 63,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 77,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 87,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Colegio de San Jose, East Lopez Street, Jaro, Iloilo City, Iloilo, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJx5zxoRjlrjMRVQ4DrLrBLPw",
+         "reference" : "ChIJx5zxoRjlrjMRVQ4DrLrBLPw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio de San Jose",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "East Lopez Street, Jaro, Iloilo City, Iloilo, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio de San Jose"
+            },
+            {
+               "offset" : 21,
+               "value" : "East Lopez Street"
+            },
+            {
+               "offset" : 40,
+               "value" : "Jaro"
+            },
+            {
+               "offset" : 46,
+               "value" : "Iloilo City"
+            },
+            {
+               "offset" : 59,
+               "value" : "Iloilo"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Colegio de San Ignacio, Diversion Road, Buhangin, Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv76ZUfds-TIRdmmzGFti1g8",
+         "reference" : "ChIJv76ZUfds-TIRdmmzGFti1g8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio de San Ignacio",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Diversion Road, Buhangin, Davao City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio de San Ignacio"
+            },
+            {
+               "offset" : 24,
+               "value" : "Diversion Road"
+            },
+            {
+               "offset" : 40,
+               "value" : "Buhangin"
+            },
+            {
+               "offset" : 50,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 62,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 77,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "primary_school",
+            "establishment",
+            "point_of_interest",
+            "secondary_school"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

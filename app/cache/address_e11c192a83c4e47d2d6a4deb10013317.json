@@ -1,0 +1,273 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Colegio San Agustin Makati, Palm Avenue, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5REboBjJlzMRMPNHyz42n4g",
+         "reference" : "ChIJ5REboBjJlzMRMPNHyz42n4g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio San Agustin Makati",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Palm Avenue, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio San Agustin Makati"
+            },
+            {
+               "offset" : 28,
+               "value" : "Palm Avenue"
+            },
+            {
+               "offset" : 41,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 49,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Colegio de San Juan de Letran Calamba, Bucal Bypass Road, Calamba, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
+         "reference" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio de San Juan de Letran Calamba",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bucal Bypass Road, Calamba, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio de San Juan de Letran Calamba"
+            },
+            {
+               "offset" : 39,
+               "value" : "Bucal Bypass Road"
+            },
+            {
+               "offset" : 58,
+               "value" : "Calamba"
+            },
+            {
+               "offset" : 67,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "school",
+            "university",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Colegio de Muntinlupa, Mayor J.Posadas Avenue, Muntinlupa, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBxem0rjPlzMRRCTqypaZ1FU",
+         "reference" : "ChIJBxem0rjPlzMRRCTqypaZ1FU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio de Muntinlupa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mayor J.Posadas Avenue, Muntinlupa, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio de Muntinlupa"
+            },
+            {
+               "offset" : 23,
+               "value" : "Mayor J.Posadas Avenue"
+            },
+            {
+               "offset" : 47,
+               "value" : "Muntinlupa"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Colegio de San Gabriel Arcangel, Dr. Eduardo V. Roquero Sr. Avenue, San Jose del Monte City, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJyTFOFzOvlzMRJ53rhnwndGI",
+         "reference" : "ChIJyTFOFzOvlzMRJ53rhnwndGI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio de San Gabriel Arcangel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dr. Eduardo V. Roquero Sr. Avenue, San Jose del Monte City, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio de San Gabriel Arcangel"
+            },
+            {
+               "offset" : 33,
+               "value" : "Dr. Eduardo V. Roquero Sr. Avenue"
+            },
+            {
+               "offset" : 68,
+               "value" : "San Jose del Monte City"
+            },
+            {
+               "offset" : 93,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 102,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "school",
+            "university"
+         ]
+      },
+      {
+         "description" : "Colegio De Sebastian Pampanga Incorporated, MacArthur Highway, San Fernando, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
+         "reference" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio De Sebastian Pampanga Incorporated",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "MacArthur Highway, San Fernando, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio De Sebastian Pampanga Incorporated"
+            },
+            {
+               "offset" : 44,
+               "value" : "MacArthur Highway"
+            },
+            {
+               "offset" : 63,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 77,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 87,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "university"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

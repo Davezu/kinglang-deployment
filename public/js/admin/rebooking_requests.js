@@ -191,7 +191,7 @@ document.getElementById("confirmRebookingForm").addEventListener("submit", async
     }
 });
 
-document.getElementById("rejectBookingForm").addEventListener("submit", async function (event) {
+document.getElementById("rejectRebookingForm").addEventListener("submit", async function (event) {
     event.preventDefault(); 
 
     const formData = new FormData(this);
@@ -223,8 +223,8 @@ document.getElementById("rejectBookingForm").addEventListener("submit", async fu
         }
         
         const status = document.getElementById("statusSelect").value;
-        const bookings = await getAllBookings(status, "asc", "booking_id");
-        renderBookings(bookings);
+        const bookings = await getRebookingRequests(status, "asc", "booking_id");
+        renderRebookingRequests(bookings);
     } catch (error) {
         console.error(error);
     }

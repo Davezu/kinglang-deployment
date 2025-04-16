@@ -1,0 +1,245 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Marinduque, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv132waUYozMReztuW-qz_uk",
+         "reference" : "ChIJv132waUYozMReztuW-qz_uk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marinduque",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 12,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "administrative_area_level_2",
+            "political"
+         ]
+      },
+      {
+         "description" : "Marine Base Gregorio Lim MD, Ternate, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQQgCdaiJvTMRtXafDpL1S6k",
+         "reference" : "ChIJQQgCdaiJvTMRtXafDpL1S6k",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marine Base Gregorio Lim MD",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ternate, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marine Base Gregorio Lim MD"
+            },
+            {
+               "offset" : 29,
+               "value" : "Ternate"
+            },
+            {
+               "offset" : 38,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Marinig, Cabuyao, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbUhv-L3YlzMRFb6gV00OdMQ",
+         "reference" : "ChIJbUhv-L3YlzMRFb6gV00OdMQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marinig",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cabuyao, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marinig"
+            },
+            {
+               "offset" : 9,
+               "value" : "Cabuyao"
+            },
+            {
+               "offset" : 18,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 26,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "geocode",
+            "political",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Marina Seaview Residences 海景花園, Pacific Avenue, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJo059Hm7NlzMRLq_NLHPzvVA",
+         "reference" : "ChIJo059Hm7NlzMRLq_NLHPzvVA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marina Seaview Residences 海景花園",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pacific Avenue, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marina Seaview Residences 海景花園"
+            },
+            {
+               "offset" : 32,
+               "value" : "Pacific Avenue"
+            },
+            {
+               "offset" : 48,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Marinduque, Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
+         "reference" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marinduque",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Las Piñas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 12,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 23,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

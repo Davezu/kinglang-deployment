@@ -1,0 +1,258 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Nangka, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJW-0krY65lzMRdnLLoJPqGdY",
+         "reference" : "ChIJW-0krY65lzMRdnLLoJPqGdY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nangka",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nangka"
+            },
+            {
+               "offset" : 8,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "political",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Nangka Elementary School, Balubad Street, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwU4sj4m5lzMRqhJ9OucnHw0",
+         "reference" : "ChIJwU4sj4m5lzMRqhJ9OucnHw0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nangka Elementary School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Balubad Street, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nangka Elementary School"
+            },
+            {
+               "offset" : 26,
+               "value" : "Balubad Street"
+            },
+            {
+               "offset" : 42,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "primary_school",
+            "school",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Nangka High School, Kabayani Road, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJb0_mVfO5lzMRhOddNZnohtY",
+         "reference" : "ChIJb0_mVfO5lzMRhOddNZnohtY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nangka High School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Kabayani Road, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nangka High School"
+            },
+            {
+               "offset" : 20,
+               "value" : "Kabayani Road"
+            },
+            {
+               "offset" : 35,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 45,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "school",
+            "establishment",
+            "secondary_school"
+         ]
+      },
+      {
+         "description" : "Nangka, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZRocpKiiqTMRUtuxBDGtH2o",
+         "reference" : "ChIJZRocpKiiqTMRUtuxBDGtH2o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nangka",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nangka"
+            },
+            {
+               "offset" : 8,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 14,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "sublocality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Nangka Marikina City, St Michael, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJg4yRbAC5lzMRTtMGKuWeG9A",
+         "reference" : "ChIJg4yRbAC5lzMRTtMGKuWeG9A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nangka Marikina City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "St Michael, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nangka Marikina City"
+            },
+            {
+               "offset" : 22,
+               "value" : "St Michael"
+            },
+            {
+               "offset" : 34,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 44,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

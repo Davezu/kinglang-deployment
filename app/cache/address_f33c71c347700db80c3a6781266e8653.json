@@ -1,0 +1,249 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Bulacnin, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJD3UUd2psvTMRO_F98QZNC88",
+         "reference" : "ChIJD3UUd2psvTMRO_F98QZNC88",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacnin",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacnin"
+            },
+            {
+               "offset" : 10,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "sublocality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Bulacnin Barangay Hall, Leviste Highway, Lipa, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-cq-fzhsvTMR0Vnq8FXwvOg",
+         "reference" : "ChIJ-cq-fzhsvTMR0Vnq8FXwvOg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacnin Barangay Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Leviste Highway, Lipa, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacnin Barangay Hall"
+            },
+            {
+               "offset" : 24,
+               "value" : "Leviste Highway"
+            },
+            {
+               "offset" : 41,
+               "value" : "Lipa"
+            },
+            {
+               "offset" : 47,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "local_government_office",
+            "city_hall",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-1L98RZNljMRrV6ZM4WXvYY",
+         "reference" : "ChIJ-1L98RZNljMRrV6ZM4WXvYY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 9,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "bulacnin Lipa city, 293Bulacnin, Lipa, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJG0MoIwBtvTMRJb8gihRZg9M",
+         "reference" : "ChIJG0MoIwBtvTMRJb8gihRZg9M",
+         "structured_formatting" : 
+         {
+            "main_text" : "bulacnin Lipa city",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "293Bulacnin, Lipa, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "bulacnin Lipa city"
+            },
+            {
+               "offset" : 20,
+               "value" : "293Bulacnin"
+            },
+            {
+               "offset" : 33,
+               "value" : "Lipa"
+            },
+            {
+               "offset" : 39,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bulacnin Elementary School, Lipa, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJN1JAvahsvTMRieJSpSXQvQc",
+         "reference" : "ChIJN1JAvahsvTMRieJSpSXQvQc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacnin Elementary School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lipa, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacnin Elementary School"
+            },
+            {
+               "offset" : 28,
+               "value" : "Lipa"
+            },
+            {
+               "offset" : 34,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "establishment",
+            "point_of_interest",
+            "primary_school"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

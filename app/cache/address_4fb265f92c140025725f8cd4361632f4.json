@@ -1,0 +1,347 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "SM City Santa Rosa, SM City Santa Rosa, Manila South Road, Santa Rosa, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            },
+            {
+               "length" : 2,
+               "offset" : 20
+            }
+         ],
+         "place_id" : "ChIJxTMpbhjYlzMR0_W0Q1l-FmU",
+         "reference" : "ChIJxTMpbhjYlzMR0_W0Q1l-FmU",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM City Santa Rosa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "SM City Santa Rosa, Manila South Road, Santa Rosa, Laguna, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM City Santa Rosa"
+            },
+            {
+               "offset" : 20,
+               "value" : "SM City Santa Rosa"
+            },
+            {
+               "offset" : 40,
+               "value" : "Manila South Road"
+            },
+            {
+               "offset" : 59,
+               "value" : "Santa Rosa"
+            },
+            {
+               "offset" : 71,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 79,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "shopping_mall",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "SM City Valenzuela, SM Center Valenzuela, MacArthur Highway, Valenzuela, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            },
+            {
+               "length" : 2,
+               "offset" : 20
+            }
+         ],
+         "place_id" : "ChIJe3QNaAW0lzMRKb8qYMoI-38",
+         "reference" : "ChIJe3QNaAW0lzMRKb8qYMoI-38",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM City Valenzuela",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "SM Center Valenzuela, MacArthur Highway, Valenzuela, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM City Valenzuela"
+            },
+            {
+               "offset" : 20,
+               "value" : "SM Center Valenzuela"
+            },
+            {
+               "offset" : 42,
+               "value" : "MacArthur Highway"
+            },
+            {
+               "offset" : 61,
+               "value" : "Valenzuela"
+            },
+            {
+               "offset" : 73,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 87,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "SM City Bacolod, SM City Bacolod - South Wing, Rizal Street, Reclamation Area, Bacolod, Negros Occidental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            },
+            {
+               "length" : 2,
+               "offset" : 17
+            }
+         ],
+         "place_id" : "ChIJkSEm49XRrjMR3XpCr_Z4euI",
+         "reference" : "ChIJkSEm49XRrjMR3XpCr_Z4euI",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM City Bacolod",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "SM City Bacolod - South Wing, Rizal Street, Reclamation Area, Bacolod, Negros Occidental, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM City Bacolod"
+            },
+            {
+               "offset" : 17,
+               "value" : "SM City Bacolod - South Wing"
+            },
+            {
+               "offset" : 47,
+               "value" : "Rizal Street"
+            },
+            {
+               "offset" : 61,
+               "value" : "Reclamation Area"
+            },
+            {
+               "offset" : 79,
+               "value" : "Bacolod"
+            },
+            {
+               "offset" : 88,
+               "value" : "Negros Occidental"
+            },
+            {
+               "offset" : 107,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "health",
+            "shopping_mall",
+            "hair_care"
+         ]
+      },
+      {
+         "description" : "SM City San Mateo, Gen. Luna Avenue, Brgy. Ampid 1, San Mateo, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            },
+            {
+               "length" : 9,
+               "offset" : 52
+            }
+         ],
+         "place_id" : "ChIJ28rDWC-6lzMRra423cgh8OA",
+         "reference" : "ChIJ28rDWC-6lzMRra423cgh8OA",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM City San Mateo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gen. Luna Avenue, Brgy. Ampid 1, San Mateo, Rizal, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 33
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM City San Mateo"
+            },
+            {
+               "offset" : 19,
+               "value" : "Gen. Luna Avenue"
+            },
+            {
+               "offset" : 37,
+               "value" : "Brgy. Ampid 1"
+            },
+            {
+               "offset" : 52,
+               "value" : "San Mateo"
+            },
+            {
+               "offset" : 63,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "shopping_mall",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "SM Calamba Jeep Terminal, SM City Calamba, Calamba, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            },
+            {
+               "length" : 2,
+               "offset" : 26
+            }
+         ],
+         "place_id" : "ChIJe_TkRQBjvTMRbXUCfRClsOo",
+         "reference" : "ChIJe_TkRQBjvTMRbXUCfRClsOo",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM Calamba Jeep Terminal",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "SM City Calamba, Calamba, Laguna, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM Calamba Jeep Terminal"
+            },
+            {
+               "offset" : 26,
+               "value" : "SM City Calamba"
+            },
+            {
+               "offset" : 43,
+               "value" : "Calamba"
+            },
+            {
+               "offset" : 52,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

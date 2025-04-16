@@ -1,0 +1,250 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Swimming Pool, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjJTd2ltbWluZyBQb29sLCBDYWxvb2NhbiwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCRXSrk9rsJczEcJmT5scefE8EhQKEglfG4QZtbGXMxEaLQQl4nDnBQ",
+         "reference" : "EjJTd2ltbWluZyBQb29sLCBDYWxvb2NhbiwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCRXSrk9rsJczEcJmT5scefE8EhQKEglfG4QZtbGXMxEaLQQl4nDnBQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Swimming Pool",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Swimming Pool"
+            },
+            {
+               "offset" : 15,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 25,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Swimming pool, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJY2xXTfvJlzMR1pz_gm6kffE",
+         "reference" : "ChIJY2xXTfvJlzMR1pz_gm6kffE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Swimming pool",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Swimming pool"
+            },
+            {
+               "offset" : 15,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 23,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Swimming Pool, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ55tQfACxlzMR9KB3WdrVay0",
+         "reference" : "ChIJ55tQfACxlzMR9KB3WdrVay0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Swimming Pool",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Swimming Pool"
+            },
+            {
+               "offset" : 15,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 27,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 40,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Swimming Pool, Cainta, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJI-gmNVm4lzMRqWXn_dNxnPA",
+         "reference" : "ChIJI-gmNVm4lzMRqWXn_dNxnPA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Swimming Pool",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cainta, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Swimming Pool"
+            },
+            {
+               "offset" : 15,
+               "value" : "Cainta"
+            },
+            {
+               "offset" : 23,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Swimming pool ni Gabo (2022), Mexico, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJMw54_HHxljMROGYu1D_Tywg",
+         "reference" : "ChIJMw54_HHxljMROGYu1D_Tywg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Swimming pool ni Gabo (2022)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mexico, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Swimming pool ni Gabo (2022)"
+            },
+            {
+               "offset" : 30,
+               "value" : "Mexico"
+            },
+            {
+               "offset" : 38,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

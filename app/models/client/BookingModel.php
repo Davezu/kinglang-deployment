@@ -30,6 +30,11 @@ class Booking {
                 return "Not enough buses available.";
             }
 
+            if ($is_rebooking && $this->bookingIsNotConfirmed($rebooking_id)) {
+                $this->updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses);
+                return ["success" => true, "message" => "Booking updated successfully!"];
+            }
+
             $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, user_id, total_cost, balance, is_rebooking) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :user_id, :total_cost, :balance, :is_rebooking  )");
             $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
@@ -79,9 +84,9 @@ class Booking {
                 ]);
             }
 
-            return "success";
+            return ["success" => true, "message" => "Booking request submitted successfully!"];
         } catch (PDOException $e) {
-            return "Database error: $e";
+            return ["success" => false, "message" => "Database error: " . $e->getMessage()];
         }
     }
 
@@ -148,7 +153,7 @@ class Booking {
             $stmt = $this->conn->prepare("SELECT * FROM bookings WHERE booking_id = :booking_id");
             $stmt->execute([":booking_id" => $booking_id]);
             $booking = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($booking["status"] === "Confirmed" || $booking["total_cost"] !== NULL) {
+            if ($booking["status"] === "Confirmed") {
                 return false;
             } else {
                 return true;
@@ -190,7 +195,7 @@ class Booking {
         }
     }
 
-    public function getAllBookings($user_id, $status, $column, $order) {
+    public function getAllBookings($user_id, $status, $column, $order, $page = 1, $limit = 10) {
         $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "all"];
         $status = in_array($status, $allowed_status) ? $status : "all";
         $status = $status === "all" ? "" : " AND status = '$status'";
@@ -198,17 +203,44 @@ class Booking {
         $allowed_columns = ["destination", "date_of_tour", "end_of_tour", "number_of_days", "number_of_buses", "total_cost", "balance", "status", "payment_status"];
         $column = in_array($column, $allowed_columns) ? $column : "date_of_tour";
         $order = $order === "asc" ? "ASC" : "DESC";
+        
+        // Calculate offset for pagination
+        $offset = ($page - 1) * $limit;
+        
         try {
+            // Get total count for pagination
+            $countStmt = $this->conn->prepare("
+                SELECT COUNT(*) FROM bookings 
+                WHERE user_id = :user_id AND is_rebooking = 0 AND is_rebooked = 0
+                $status
+            ");
+            $countStmt->execute([ ":user_id" => $user_id ]);
+            $total_records = $countStmt->fetchColumn();
+            
+            // Get paginated results
             $stmt = $this->conn->prepare("
                 SELECT * FROM bookings 
                 WHERE user_id = :user_id AND is_rebooking = 0 AND is_rebooked = 0
                 $status
                 ORDER BY $column $order
+                LIMIT :limit OFFSET :offset
             ");
-            $stmt->execute([ ":user_id" => $user_id ]);
+            $stmt->bindParam(":user_id", $user_id);
+            $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+            $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
+            $stmt->execute();
 
             $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $bookings ?: [];
+            
+            // Calculate total pages
+            $total_pages = ceil($total_records / $limit);
+            
+            return [
+                "bookings" => $bookings ?: [],
+                "total_records" => $total_records,
+                "total_pages" => $total_pages,
+                "current_page" => $page
+            ];
         } catch (PDOException $e) {
             return "Database error: $e";
         }
@@ -270,14 +302,15 @@ class Booking {
     }
 
     // payment
-    public function addPayment($booking_id, $user_id, $amount, $payment_method) {
+    public function addPayment($booking_id, $user_id, $amount, $payment_method, $proof_of_payment = null) {
         try {
-            $stmt = $this->conn->prepare("INSERT INTO payments (booking_id, user_id, amount, payment_method) VALUES (:booking_id, :user_id, :amount, :payment_method)");
+            $stmt = $this->conn->prepare("INSERT INTO payments (booking_id, user_id, amount, payment_method, proof_of_payment) VALUES (:booking_id, :user_id, :amount, :payment_method, :proof_of_payment)");
             $stmt->execute([
                 ":booking_id" => $booking_id,
                 ":user_id" => $user_id,
                 ":amount" => $amount,
-                ":payment_method" => $payment_method
+                ":payment_method" => $payment_method,
+                ":proof_of_payment" => $proof_of_payment
             ]);
             $this->updatePaymentStatus($booking_id);
             return true;
@@ -314,6 +347,80 @@ class Booking {
 
         } catch (PDOException $e) {
             return "Database error";
+        }
+    }
+
+    public function updateBooking($booking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses) {
+        $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
+
+        try {
+            $available_buses = $this->findAvailableBuses($date_of_tour, $end_of_tour, $number_of_buses);
+
+            if (!$available_buses) {
+                return "Not enough buses available.";
+            }
+
+            // Update the booking
+            $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, end_of_tour = :end_of_tour, destination = :destination, pickup_point = :pickup_point, number_of_days = :number_of_days, number_of_buses = :number_of_buses, total_cost = :total_cost, balance = :balance WHERE booking_id = :booking_id AND user_id = :user_id");
+            $stmt->execute([
+                ":date_of_tour" => $date_of_tour,
+                ":end_of_tour" => $end_of_tour,
+                ":destination" => $destination,
+                ":pickup_point" => $pickup_point,
+                ":number_of_days" => $number_of_days,       
+                ":number_of_buses" => $number_of_buses,
+                ":total_cost" => $total_cost,
+                ":balance" => $balance,
+                ":booking_id" => $booking_id,
+                ":user_id" => $user_id
+            ]);
+
+            // Delete existing stops
+            $stmt = $this->conn->prepare("DELETE FROM booking_stops WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+
+            // Insert new stops
+            foreach ($stops as $index => $stop) {            
+                $stmt = $this->conn->prepare("INSERT INTO booking_stops (booking_id, location, stop_order) VALUES (:booking_id, :location, :stop_order)");
+                $stmt->execute([
+                    ":booking_id" => $booking_id,
+                    ":location" => $stop,
+                    ":stop_order" => $index + 1
+                ]);
+            }
+
+            // Delete existing trip distances
+            $stmt = $this->conn->prepare("DELETE FROM trip_distances WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+
+            // Insert new trip distances
+            foreach ($trip_distances["rows"] as $i => $row) {
+                $distance_value = $row["elements"][$i]["distance"]["value"] ?? 0; // in km
+                $origin = $addresses[$i];
+                $destination = $addresses[$i + 1] ?? $addresses[0]; // round trip fallback
+
+                $stmt = $this->conn->prepare("INSERT INTO trip_distances (origin, destination, distance, booking_id) VALUES (:origin, :destination, :distance, :booking_id)");
+                $stmt->execute([
+                    ":origin" => $origin, 
+                    ":destination" => $destination, 
+                    ":distance" => $distance_value,     
+                    ":booking_id" => $booking_id
+                ]);
+            }
+
+            // Delete existing booking buses
+            $stmt = $this->conn->prepare("DELETE FROM booking_buses WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+
+            // Insert new booking buses
+            foreach ($available_buses as $bus_id) {
+                $stmt = $this->conn->prepare("INSERT INTO booking_buses (booking_id, bus_id) VALUES (:booking_id, :bus_id)");
+                $stmt->execute([":booking_id" => $booking_id, ":bus_id" => $bus_id]);
+            }
+
+            return "success";
+        } catch (PDOException $e) {
+            return "Database error: $e";
         }
     }
 

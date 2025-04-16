@@ -1,0 +1,270 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Yalong Terminal, Parkland Street, Novaliches, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ75oxYRaxlzMR2NHeXf0lUFA",
+         "reference" : "ChIJ75oxYRaxlzMR2NHeXf0lUFA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Yalong Terminal",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Parkland Street, Novaliches, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Yalong Terminal"
+            },
+            {
+               "offset" : 17,
+               "value" : "Parkland Street"
+            },
+            {
+               "offset" : 34,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 46,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 56,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "YALONG TOWER (GARAHE), Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJtYJ0egCxlzMR0ig3k8Nuhq8",
+         "reference" : "ChIJtYJ0egCxlzMR0ig3k8Nuhq8",
+         "structured_formatting" : 
+         {
+            "main_text" : "YALONG TOWER (GARAHE)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "YALONG TOWER (GARAHE)"
+            },
+            {
+               "offset" : 23,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 33,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Yalong, yalong, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJH16JPwCxlzMRwTLwlepTO6U",
+         "reference" : "ChIJH16JPwCxlzMRwTLwlepTO6U",
+         "structured_formatting" : 
+         {
+            "main_text" : "Yalong",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "yalong, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Yalong"
+            },
+            {
+               "offset" : 8,
+               "value" : "yalong"
+            },
+            {
+               "offset" : 16,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 26,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "store",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Yalong street rent house, Barangay 178, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPZzncACxlzMR9oI2Nz49o10",
+         "reference" : "ChIJPZzncACxlzMR9oI2Nz49o10",
+         "structured_formatting" : 
+         {
+            "main_text" : "Yalong street rent house",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Barangay 178, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Yalong street rent house"
+            },
+            {
+               "offset" : 26,
+               "value" : "Barangay 178"
+            },
+            {
+               "offset" : 40,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 50,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 64,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Yalong Barbershop, GSIS Road, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_Z-zD93HlzMReqeQSCnC89s",
+         "reference" : "ChIJ_Z-zD93HlzMReqeQSCnC89s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Yalong Barbershop",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "GSIS Road, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Yalong Barbershop"
+            },
+            {
+               "offset" : 19,
+               "value" : "GSIS Road"
+            },
+            {
+               "offset" : 30,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 37,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "health",
+            "point_of_interest",
+            "hair_care",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,245 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeZt7xzXIlzMR-DfSuchHSdw",
+         "reference" : "ChIJeZt7xzXIlzMR-DfSuchHSdw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 13,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Mandaue, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_e4MaImYqTMRcqXd9aER-ak",
+         "reference" : "ChIJ_e4MaImYqTMRcqXd9aER-ak",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaue"
+            },
+            {
+               "offset" : 9,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 15,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Mandaluyong City Hall, Maysilo Circle, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
+         "reference" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maysilo Circle, Mandaluyong, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong City Hall"
+            },
+            {
+               "offset" : 23,
+               "value" : "Maysilo Circle"
+            },
+            {
+               "offset" : 39,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "city_hall",
+            "establishment",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Mandaue City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJjyGC0GiYqTMRqZFeD7xcKWo",
+         "reference" : "ChIJjyGC0GiYqTMRqZFeD7xcKWo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaue City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaue City"
+            },
+            {
+               "offset" : 14,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_3",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Mandurriao, Iloilo City, Iloilo, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJrTV37Mz6rjMR77QwTcIC5aE",
+         "reference" : "ChIJrTV37Mz6rjMR77QwTcIC5aE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandurriao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Iloilo City, Iloilo, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandurriao"
+            },
+            {
+               "offset" : 12,
+               "value" : "Iloilo City"
+            },
+            {
+               "offset" : 25,
+               "value" : "Iloilo"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_1",
+            "political",
+            "geocode",
+            "sublocality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

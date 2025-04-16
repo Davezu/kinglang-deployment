@@ -7,15 +7,32 @@ const messageTitle = document.getElementById("messageTitle");
 const messageBody = document.getElementById("messageBody");
 
 document.addEventListener("DOMContentLoaded", async function () {
-    const bookings = await getAllBookings("All", "asc", "booking_id");    
+    const limit = document.getElementById("limitSelect").value;
+    const bookings = await getAllBookings("All", "asc", "booking_id", 1, limit);    
     renderBookings(bookings);
+    renderPagination(bookings.pagination);
 });
 
 document.getElementById("statusSelect").addEventListener("change", async function () {
     const status = this.value;  
+    const limit = document.getElementById("limitSelect").value;
     console.log(status);    
-    const bookings = await getAllBookings(status, "asc", "client_name");
+    const bookings = await getAllBookings(status, "asc", "client_name", 1, limit);
     renderBookings(bookings);
+    renderPagination(bookings.pagination);
+});
+
+document.getElementById("limitSelect").addEventListener("change", async function () {
+    const status = document.getElementById("statusSelect").value;
+    const limit = this.value;
+    const column = document.querySelector(".sort.active") ? 
+        document.querySelector(".sort.active").getAttribute("data-column") : "client_name";
+    const order = document.querySelector(".sort.active") ? 
+        document.querySelector(".sort.active").getAttribute("data-order") : "asc";
+    
+    const bookings = await getAllBookings(status, order, column, 1, limit);
+    renderBookings(bookings);
+    renderPagination(bookings.pagination);
 });
 
 document.querySelectorAll(".sort").forEach(button => {
@@ -26,10 +43,14 @@ document.querySelectorAll(".sort").forEach(button => {
         const status = document.getElementById("statusSelect").value;
         const column = this.getAttribute("data-column");
         const order = this.getAttribute("data-order");
+        const limit = document.getElementById("limitSelect").value;
+        const currentPage = document.querySelector(".pagination .active") ? 
+            parseInt(document.querySelector(".pagination .active").textContent) : 1;
 
-        const bookings = await getAllBookings(status, order, column);
+        const bookings = await getAllBookings(status, order, column, currentPage, limit);
         console.log(bookings);
         renderBookings(bookings);
+        renderPagination(bookings.pagination);
         
         this.setAttribute("data-order", order === "asc" ? "desc" : "asc");
     });
@@ -43,28 +64,27 @@ function formatDate(date) {
     });
 }
 
-async function getAllBookings(status, order, column) {
+async function getAllBookings(status, order, column, page = 1, limit = 10) {
     try {
         const response = await fetch("/admin/bookings", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ status, order, column })
+            body: JSON.stringify({ status, order, column, page, limit })
         });
 
         const data = await response.json();
         console.log(data);
 
         if (data.success) {
-            return data.bookings;
+            return data;
         }
     } catch (error) {
         console.error(error);
     }
 }
 
-async function renderBookings(bookings) {
-    // const bookings = await getAllBookings();
-
+async function renderBookings(data) {
+    const bookings = data.bookings;
     const tbody = document.getElementById("tableBody");
     tbody.innerHTML = "";
 
@@ -173,7 +193,111 @@ function actionButton(booking) {
     actionCell.appendChild(buttonGroup);
 
     return actionCell;
-} 
+}
+
+function renderPagination(pagination) {
+    const paginationContainer = document.getElementById("paginationContainer");
+    paginationContainer.innerHTML = "";
+    
+    if (pagination.totalPages <= 1) {
+        return;
+    }
+    
+    const ul = document.createElement("ul");
+    ul.classList.add("pagination", "justify-content-center", "mt-4");
+    
+    // Previous button
+    const prevLi = document.createElement("li");
+    prevLi.classList.add("page-item");
+    if (pagination.currentPage === 1) {
+        prevLi.classList.add("disabled");
+    }
+    
+    const prevLink = document.createElement("a");
+    prevLink.classList.add("page-link");
+    prevLink.href = "#";
+    prevLink.textContent = "Previous";
+    prevLink.addEventListener("click", async function(e) {
+        e.preventDefault();
+        if (pagination.currentPage > 1) {
+            const status = document.getElementById("statusSelect").value;
+            const column = document.querySelector(".sort.active") ? 
+                document.querySelector(".sort.active").getAttribute("data-column") : "client_name";
+            const order = document.querySelector(".sort.active") ? 
+                document.querySelector(".sort.active").getAttribute("data-order") : "asc";
+            const limit = document.getElementById("limitSelect").value;
+            
+            const bookings = await getAllBookings(status, order, column, pagination.currentPage - 1, limit);
+            renderBookings(bookings);
+            renderPagination(bookings.pagination);
+        }
+    });
+    
+    prevLi.appendChild(prevLink);
+    ul.appendChild(prevLi);
+    
+    // Page numbers
+    for (let i = 1; i <= pagination.totalPages; i++) {
+        const li = document.createElement("li");
+        li.classList.add("page-item");
+        if (i === pagination.currentPage) {
+            li.classList.add("active");
+        }
+        
+        const link = document.createElement("a");
+        link.classList.add("page-link");
+        link.href = "#";
+        link.textContent = i;
+        link.addEventListener("click", async function(e) {
+            e.preventDefault();
+            const status = document.getElementById("statusSelect").value;
+            const column = document.querySelector(".sort.active") ? 
+                document.querySelector(".sort.active").getAttribute("data-column") : "client_name";
+            const order = document.querySelector(".sort.active") ? 
+                document.querySelector(".sort.active").getAttribute("data-order") : "asc";
+            const limit = document.getElementById("limitSelect").value;
+            
+            const bookings = await getAllBookings(status, order, column, i, limit);
+            renderBookings(bookings);
+            renderPagination(bookings.pagination);
+        });
+        
+        li.appendChild(link);
+        ul.appendChild(li);
+    }
+    
+    // Next button
+    const nextLi = document.createElement("li");
+    nextLi.classList.add("page-item");
+    if (pagination.currentPage === pagination.totalPages) {
+        nextLi.classList.add("disabled");
+    }
+    
+    const nextLink = document.createElement("a");
+    nextLink.classList.add("page-link");
+    nextLink.href = "#";
+    nextLink.textContent = "Next";
+    nextLink.addEventListener("click", async function(e) {
+        e.preventDefault();
+        if (pagination.currentPage < pagination.totalPages) {
+            const status = document.getElementById("statusSelect").value;
+            const column = document.querySelector(".sort.active") ? 
+                document.querySelector(".sort.active").getAttribute("data-column") : "client_name";
+            const order = document.querySelector(".sort.active") ? 
+                document.querySelector(".sort.active").getAttribute("data-order") : "asc";
+            const limit = document.getElementById("limitSelect").value;
+            
+            const bookings = await getAllBookings(status, order, column, pagination.currentPage + 1, limit);
+            renderBookings(bookings);
+            renderPagination(bookings.pagination);
+        }
+    });
+    
+    nextLi.appendChild(nextLink);
+    ul.appendChild(nextLi);
+    
+    paginationContainer.appendChild(ul);
+}
 
 // confirming booking
 document.getElementById("confirmBookingForm").addEventListener("submit", async function (event) {
@@ -206,8 +330,10 @@ document.getElementById("confirmBookingForm").addEventListener("submit", async f
         }
         
         const status = document.getElementById("statusSelect").value;
-        const bookings = await getAllBookings(status, "asc", "booking_id");
+        const limit = document.getElementById("limitSelect").value;
+        const bookings = await getAllBookings(status, "asc", "booking_id", 1, limit);
         renderBookings(bookings);
+        renderPagination(bookings.pagination);
     } catch (error) {
         console.error(error);
     }
@@ -246,8 +372,10 @@ document.getElementById("rejectBookingForm").addEventListener("submit", async fu
         }
         
         const status = document.getElementById("statusSelect").value;
-        const bookings = await getAllBookings(status, "asc", "booking_id");
+        const limit = document.getElementById("limitSelect").value;
+        const bookings = await getAllBookings(status, "asc", "booking_id", 1, limit);
         renderBookings(bookings);
+        renderPagination(bookings.pagination);
     } catch (error) {
         console.error(error);
     }
@@ -286,8 +414,10 @@ document.getElementById("cancelBookingForm").addEventListener("submit", async fu
         }
         
         const status = document.getElementById("statusSelect").value;
-        const bookings = await getAllBookings(status, "booking_id", "asc");
+        const limit = document.getElementById("limitSelect").value;
+        const bookings = await getAllBookings(status, "booking_id", "asc", 1, limit);
         renderBookings(bookings);
+        renderPagination(bookings.pagination);
     } catch (error) {
         console.error(error);
     }

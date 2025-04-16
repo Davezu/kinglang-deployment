@@ -1,0 +1,266 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_S3NjSWZqTMRBzXT2wwDNEw",
+         "reference" : "ChIJ_S3NjSWZqTMRBzXT2wwDNEw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cebu",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 6,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Century City Mall, Kalayaan Avenue, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJFcxQNwfJlzMRwGyuoos8pcM",
+         "reference" : "ChIJFcxQNwfJlzMRwGyuoos8pcM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Century City Mall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Kalayaan Avenue, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Century City Mall"
+            },
+            {
+               "offset" : 19,
+               "value" : "Kalayaan Avenue"
+            },
+            {
+               "offset" : 36,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 44,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "shopping_mall"
+         ]
+      },
+      {
+         "description" : "Central Bicutan, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-ytGvRPPlzMRMFeIMG9Ijjk",
+         "reference" : "ChIJ-ytGvRPPlzMRMFeIMG9Ijjk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Central Bicutan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Central Bicutan"
+            },
+            {
+               "offset" : 17,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 25,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "sublocality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Centro Escolar University, Mendiola Street, San Miguel, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQbK8Y_fJlzMRdL11DPTixbQ",
+         "reference" : "ChIJQbK8Y_fJlzMRdL11DPTixbQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Centro Escolar University",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mendiola Street, San Miguel, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Centro Escolar University"
+            },
+            {
+               "offset" : 27,
+               "value" : "Mendiola Street"
+            },
+            {
+               "offset" : 44,
+               "value" : "San Miguel"
+            },
+            {
+               "offset" : 56,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 64,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "health",
+            "point_of_interest",
+            "establishment",
+            "university",
+            "dentist"
+         ]
+      },
+      {
+         "description" : "Century Park Hotel, Pablo Ocampo Street, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJhT7OSXzJlzMRhkwilxAPc9c",
+         "reference" : "ChIJhT7OSXzJlzMRhkwilxAPc9c",
+         "structured_formatting" : 
+         {
+            "main_text" : "Century Park Hotel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pablo Ocampo Street, Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Century Park Hotel"
+            },
+            {
+               "offset" : 20,
+               "value" : "Pablo Ocampo Street"
+            },
+            {
+               "offset" : 41,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 49,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

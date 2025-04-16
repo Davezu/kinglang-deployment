@@ -1,0 +1,277 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Cubao, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ36Fj3eq3lzMRLMMPSCyg9qY",
+         "reference" : "ChIJ36Fj3eq3lzMRLMMPSCyg9qY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cubao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cubao"
+            },
+            {
+               "offset" : 7,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality_level_1",
+            "geocode",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Cubao Bus Terminal, New York Avenue, Cubao, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJfRFi8oy3lzMRpcLlHA20J6s",
+         "reference" : "ChIJfRFi8oy3lzMRpcLlHA20J6s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cubao Bus Terminal",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "New York Avenue, Cubao, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cubao Bus Terminal"
+            },
+            {
+               "offset" : 20,
+               "value" : "New York Avenue"
+            },
+            {
+               "offset" : 37,
+               "value" : "Cubao"
+            },
+            {
+               "offset" : 44,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "parking"
+         ]
+      },
+      {
+         "description" : "Cubao Expo, General Romulo Avenue, Cubao, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ7TL-17-3lzMRxP6C7aZp64A",
+         "reference" : "ChIJ7TL-17-3lzMRxP6C7aZp64A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cubao Expo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Romulo Avenue, Cubao, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cubao Expo"
+            },
+            {
+               "offset" : 12,
+               "value" : "General Romulo Avenue"
+            },
+            {
+               "offset" : 35,
+               "value" : "Cubao"
+            },
+            {
+               "offset" : 42,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Cubao LRT-2 Station, Aurora Boulevard, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJB8roEL-3lzMRZbX34r2dHWU",
+         "reference" : "ChIJB8roEL-3lzMRZbX34r2dHWU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cubao LRT-2 Station",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Aurora Boulevard, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cubao LRT-2 Station"
+            },
+            {
+               "offset" : 21,
+               "value" : "Aurora Boulevard"
+            },
+            {
+               "offset" : 39,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Cubao Terminal Complex, Times Square Avenue, Cubao, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_Wm9sMG3lzMRIgEtyY7dJ9E",
+         "reference" : "ChIJ_Wm9sMG3lzMRIgEtyY7dJ9E",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cubao Terminal Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Times Square Avenue, Cubao, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cubao Terminal Complex"
+            },
+            {
+               "offset" : 24,
+               "value" : "Times Square Avenue"
+            },
+            {
+               "offset" : 45,
+               "value" : "Cubao"
+            },
+            {
+               "offset" : 52,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 65,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 79,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

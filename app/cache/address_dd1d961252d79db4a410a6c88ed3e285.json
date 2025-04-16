@@ -1,0 +1,317 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Venice Grand Canal Mall, McKinley Hill Drive, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 46
+            }
+         ],
+         "place_id" : "ChIJs9NFUcHIlzMRNebIBfvwCI4",
+         "reference" : "ChIJs9NFUcHIlzMRNebIBfvwCI4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Venice Grand Canal Mall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "McKinley Hill Drive, Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 21
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Venice Grand Canal Mall"
+            },
+            {
+               "offset" : 25,
+               "value" : "McKinley Hill Drive"
+            },
+            {
+               "offset" : 46,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 54,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Venice Grand Canal Mall Basement Parking, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 42
+            }
+         ],
+         "place_id" : "ChIJt5C-ZQDJlzMRPNf7E6glPKU",
+         "reference" : "ChIJt5C-ZQDJlzMRPNf7E6glPKU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Venice Grand Canal Mall Basement Parking",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Venice Grand Canal Mall Basement Parking"
+            },
+            {
+               "offset" : 42,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 50,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 64,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Venice Luxury Residences - Alessandro Tower A, Florence Way, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 61
+            }
+         ],
+         "place_id" : "ChIJy6v3LKbJlzMRfNt6FY9MXvs",
+         "reference" : "ChIJy6v3LKbJlzMRfNt6FY9MXvs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Venice Luxury Residences - Alessandro Tower A",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Florence Way, Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 14
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Venice Luxury Residences - Alessandro Tower A"
+            },
+            {
+               "offset" : 47,
+               "value" : "Florence Way"
+            },
+            {
+               "offset" : 61,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 69,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 83,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Venice Grand Canal Mall Parking, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 33
+            }
+         ],
+         "place_id" : "ChIJMUQHUADJlzMRmkUJEdfmCjY",
+         "reference" : "ChIJMUQHUADJlzMRmkUJEdfmCjY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Venice Grand Canal Mall Parking",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Venice Grand Canal Mall Parking"
+            },
+            {
+               "offset" : 33,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 41,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "parking",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Venice Grand Canal Hotels, Venezia Drive, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 42
+            }
+         ],
+         "place_id" : "ChIJY17I_sPIlzMRcF2QaYpy4NY",
+         "reference" : "ChIJY17I_sPIlzMRcF2QaYpy4NY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Venice Grand Canal Hotels",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Venezia Drive, Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 15
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Venice Grand Canal Hotels"
+            },
+            {
+               "offset" : 27,
+               "value" : "Venezia Drive"
+            },
+            {
+               "offset" : 42,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 50,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 64,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

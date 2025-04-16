@@ -1,0 +1,256 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Torrijos, Marinduque, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJUxyphx4aozMRhoXIXZCOrRM",
+         "reference" : "ChIJUxyphx4aozMRhoXIXZCOrRM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Torrijos",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marinduque, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Torrijos"
+            },
+            {
+               "offset" : 10,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Torrijos Municipal Hall, Torrijos, Marinduque, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJdZ2MXB4aozMR-UE8qu3w9xQ",
+         "reference" : "ChIJdZ2MXB4aozMR-UE8qu3w9xQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Torrijos Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Torrijos, Marinduque, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Torrijos Municipal Hall"
+            },
+            {
+               "offset" : 25,
+               "value" : "Torrijos"
+            },
+            {
+               "offset" : 35,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "point_of_interest",
+            "local_government_office",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Torrijos Street, Bangued, Abra, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EitUb3JyaWpvcyBTdHJlZXQsIEJhbmd1ZWQsIEFicmEsIFBoaWxpcHBpbmVzIi4qLAoUChIJ7x7TrvhbjjMRIjTjlvdev_wSFAoSCV_S27bxW44zEaWgti2nuvZZ",
+         "reference" : "EitUb3JyaWpvcyBTdHJlZXQsIEJhbmd1ZWQsIEFicmEsIFBoaWxpcHBpbmVzIi4qLAoUChIJ7x7TrvhbjjMRIjTjlvdev_wSFAoSCV_S27bxW44zEaWgti2nuvZZ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Torrijos Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bangued, Abra, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Torrijos Street"
+            },
+            {
+               "offset" : 17,
+               "value" : "Bangued"
+            },
+            {
+               "offset" : 26,
+               "value" : "Abra"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Torrijos Municipal Hospital, Rizal Street, Torrijos, Poblacion, Marinduque, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHW840_cZozMRxltFMa7a-iU",
+         "reference" : "ChIJHW840_cZozMRxltFMa7a-iU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Torrijos Municipal Hospital",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Rizal Street, Torrijos, Poblacion, Marinduque, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Torrijos Municipal Hospital"
+            },
+            {
+               "offset" : 29,
+               "value" : "Rizal Street"
+            },
+            {
+               "offset" : 43,
+               "value" : "Torrijos"
+            },
+            {
+               "offset" : 53,
+               "value" : "Poblacion"
+            },
+            {
+               "offset" : 64,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 76,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "health",
+            "point_of_interest",
+            "hospital",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Torrijos Central School, Torrijos, Marinduque, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJa1PHLBkaozMRaODk4HaR-1M",
+         "reference" : "ChIJa1PHLBkaozMRaODk4HaR-1M",
+         "structured_formatting" : 
+         {
+            "main_text" : "Torrijos Central School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Torrijos, Marinduque, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Torrijos Central School"
+            },
+            {
+               "offset" : 25,
+               "value" : "Torrijos"
+            },
+            {
+               "offset" : 35,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

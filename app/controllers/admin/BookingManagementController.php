@@ -14,16 +14,29 @@ class BookingManagementController {
 
     public function getAllBookings() {
         $data = json_decode(file_get_contents("php://input"), true);
-        $staus = $data["status"];
+        $status = $data["status"];
         $column = $data["column"];
         $order = $data["order"];
+        $page = isset($data["page"]) ? (int)$data["page"] : 1;
+        $limit = isset($data["limit"]) ? (int)$data["limit"] : 10;
 
-        $bookings = $this->bookingModel->getAllBookings($staus, $column, $order);
+        $bookings = $this->bookingModel->getAllBookings($status, $column, $order, $page, $limit);
+        $total = $this->bookingModel->getTotalBookings($status);
+        $totalPages = ceil($total / $limit);
 
         header("Content-Type: application/json");
 
         if (is_array($bookings)) {
-            echo json_encode(["success" => true, "bookings" => $bookings]);
+            echo json_encode([
+                "success" => true, 
+                "bookings" => $bookings,
+                "pagination" => [
+                    "total" => $total,
+                    "totalPages" => $totalPages,
+                    "currentPage" => $page,
+                    "limit" => $limit
+                ]
+            ]);
         } else {
             echo json_encode(["success" => false, "message" => $bookings]);
         }
@@ -60,12 +73,7 @@ class BookingManagementController {
 
         $result = $this->bookingModel->rejectBooking($reason, $booking_id, $user_id);
 
-        echo json_encode([
-            "success" => $result["success"],
-            "message" => $result["success"] 
-                ? "Booking rejected successfully." 
-                : $result["message"]
-        ]);
+        echo json_encode(["success" => $result["success"], "message" => $result["message"]]);
     }
 
     public function showReschedRequestTable() {

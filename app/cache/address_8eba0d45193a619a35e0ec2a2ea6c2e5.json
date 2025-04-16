@@ -1,0 +1,250 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-1L98RZNljMRrV6ZM4WXvYY",
+         "reference" : "ChIJ-1L98RZNljMRrV6ZM4WXvYY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 9,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Bulacan State University, Malolos, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJV_jwJHOvlzMRzm4lW-05H8I",
+         "reference" : "ChIJV_jwJHOvlzMRzm4lW-05H8I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan State University",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malolos, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan State University"
+            },
+            {
+               "offset" : 26,
+               "value" : "Malolos"
+            },
+            {
+               "offset" : 35,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "point_of_interest",
+            "university",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Bulacan International Airport, Bulakan, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJgd1zrBlNljMRsVDshAlHJT0",
+         "reference" : "ChIJgd1zrBlNljMRsVDshAlHJT0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan International Airport",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulakan, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan International Airport"
+            },
+            {
+               "offset" : 31,
+               "value" : "Bulakan"
+            },
+            {
+               "offset" : 40,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "airport",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Bulacan, Santa Ana, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjVCdWxhY2FuLCBTYW50YSBBbmEsIE1hbmlsYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCQvAdAu9yZczESCmOfdpwTo0EhQKEgn5R8L2vsmXMxHTOxfvQ2LN6g",
+         "reference" : "EjVCdWxhY2FuLCBTYW50YSBBbmEsIE1hbmlsYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCQvAdAu9yZczESCmOfdpwTo0EhQKEgn5R8L2vsmXMxHTOxfvQ2LN6g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Ana, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 9,
+               "value" : "Santa Ana"
+            },
+            {
+               "offset" : 20,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 28,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Bulacan Sports Complex, MacArthur Highway, Malolos, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJCSjQDbJTljMR0OczpV4yTc8",
+         "reference" : "ChIJCSjQDbJTljMR0OczpV4yTc8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan Sports Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "MacArthur Highway, Malolos, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan Sports Complex"
+            },
+            {
+               "offset" : 24,
+               "value" : "MacArthur Highway"
+            },
+            {
+               "offset" : 43,
+               "value" : "Malolos"
+            },
+            {
+               "offset" : 52,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      }
+   ],
+   "status" : "OK"
+}
