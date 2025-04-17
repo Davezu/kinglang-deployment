@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
-            "political",
+            "locality",
             "geocode",
-            "locality"
+            "political"
          ]
       },
       {
@@ -94,8 +94,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -142,9 +142,9 @@
          ],
          "types" : 
          [
-            "school",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "school"
          ]
       },
       {
@@ -239,10 +239,10 @@
          ],
          "types" : 
          [
-            "pet_store",
-            "store",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "pet_store",
+            "store"
          ]
       }
    ],

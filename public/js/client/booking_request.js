@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const selectedMethod = this.value;
             
             // Show/hide account info for Bank Transfer and Online Payment
-            if (selectedMethod === "Bank Transfer" || selectedMethod === "Online") {
+            if (selectedMethod === "Bank Transfer" || selectedMethod === "Online Payment") {
                 accountInfoSection.style.display = "block";
                 proofUploadSection.style.display = "block";
             } else {
@@ -184,17 +184,48 @@ function renderBookings(bookings) {
         const remarksCell = document.createElement("td");
 
         destinationCell.textContent = booking.destination;
+        destinationCell.style.maxWidth = "150px";
+        destinationCell.style.overflow = "hidden";
+        destinationCell.style.textOverflow = "ellipsis";
+        destinationCell.style.whiteSpace = "nowrap";
+        destinationCell.title = booking.destination; // Add full text as tooltip
+        
         dateOfTourCell.textContent = formatDate(booking.date_of_tour);
         endOfTourCell.textContent = formatDate(booking.end_of_tour);
         daysCell.textContent = booking.number_of_days;
         busesCell.textContent = booking.number_of_buses;
         totalCostCell.textContent = formatNumber(booking.total_cost);
         balanceCell.textContent = formatNumber(booking.balance);
+        
+        // Apply color styling directly to the cell
         remarksCell.textContent = booking.status;
+        remarksCell.className = `text-${getStatusTextClass(booking.status)}`;
+        remarksCell.style.width = "85px";
+        remarksCell.style.textAlign = "center";
+        remarksCell.style.fontWeight = "bold";
 
         tr.append(destinationCell, dateOfTourCell, endOfTourCell, daysCell, busesCell, totalCostCell, balanceCell, remarksCell, actionCell(booking));
         tbody.appendChild(tr);
     });
+}
+
+// Update function to return just the text color class
+function getStatusTextClass(status) {
+    switch (status.toLowerCase()) {
+        case 'pending':
+            return 'warning';
+        case 'confirmed':
+            return 'success';
+        case 'processing':
+            return 'info';
+        case 'canceled':
+        case 'rejected':
+            return 'danger';
+        case 'completed':
+            return 'primary';
+        default:
+            return 'secondary';
+    }
 }
 
 function actionCell(booking) {
@@ -207,10 +238,10 @@ function actionCell(booking) {
 
     // style
     btnGroup.classList.add("container", "btn-container", "d-flex", "gap-2");
-    payButton.classList.add("open-payment-modal", "btn", "bg-success-subtle", "text-success", "fw-bold", "w-100");
-    editButton.classList.add("btn", "bg-primary-subtle", "w-100", "fw-bold", "text-primary");
-    cancelButton.classList.add("btn", "bg-danger-subtle", "w-100", "fw-bold", "text-danger");
-    viewButton.classList.add("btn", "bg-success-subtle", "w-100", "fw-bold", "text-success");
+    payButton.classList.add("open-payment-modal", "btn", "bg-success-subtle", "text-success", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
+    editButton.classList.add("btn", "bg-primary-subtle", "text-primary", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
+    cancelButton.classList.add("btn", "bg-danger-subtle", "text-danger", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
+    viewButton.classList.add("btn", "bg-success-subtle", "text-success", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
 
     payButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     editButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
@@ -218,10 +249,33 @@ function actionCell(booking) {
     viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
     // text
-    payButton.textContent = "Pay";
-    editButton.textContent = "Edit";
-    cancelButton.textContent = "Cancel";
-    viewButton.textContent = "View";
+    const payIcon = document.createElement("i");
+    payIcon.classList.add("bi", "bi-credit-card");
+    const payText = document.createElement("span");
+    payText.textContent = "Pay";
+    payButton.appendChild(payIcon);
+    payButton.appendChild(payText);
+
+    const editIcon = document.createElement("i");
+    editIcon.classList.add("bi", "bi-pencil");
+    const editText = document.createElement("span");
+    editText.textContent = "Edit";
+    editButton.appendChild(editIcon);
+    editButton.appendChild(editText);
+
+    const cancelIcon = document.createElement("i");
+    cancelIcon.classList.add("bi", "bi-x-circle");
+    const cancelText = document.createElement("span");
+    cancelText.textContent = "Cancel";
+    cancelButton.appendChild(cancelIcon);
+    cancelButton.appendChild(cancelText);
+
+    const viewIcon = document.createElement("i");
+    viewIcon.classList.add("bi", "bi-eye");
+    const viewText = document.createElement("span");
+    viewText.textContent = "View";
+    viewButton.appendChild(viewIcon);
+    viewButton.appendChild(viewText);
 
     // modal
     payButton.setAttribute("data-bs-toggle", "modal");
@@ -276,7 +330,7 @@ function actionCell(booking) {
         document.getElementById("cancelUserId").value = this.getAttribute("data-user-id");
     });
 
-    if (booking.status === "Confirmed" && parseFloat(booking.balance) > 0.0) {
+    if ((booking.status === "Confirmed" || booking.status == "Processing") && parseFloat(booking.balance) > 0.0) {
         btnGroup.append(payButton, editButton, cancelButton, viewButton);
     } else if (booking.status === "Confirmed" && parseFloat(booking.balance) === 0) {
         btnGroup.append(editButton, cancelButton, viewButton); 
@@ -337,6 +391,71 @@ document.getElementById("cancelBookingForm").addEventListener("submit", async fu
     } catch (error) {
         console.error(error);
     }
+});
+
+document.getElementById("paymentForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    const bookingId = formData.get("booking_id");
+    const userId = formData.get("user_id");
+    const amount = formData.get("amount");
+    const paymentMethod = formData.get("payment_method");
+    
+    // Check if we have a file
+    const proofFile = document.getElementById("proofOfPayment").files[0];
+    if (proofFile) {
+        formData.append("proof_of_payment", proofFile);
+    }
+    
+    try {
+        const response = await fetch("/payment/process", {
+            method: "POST",
+            body: formData
+        });
+        
+        // Hide the payment modal
+        const paymentModal = bootstrap.Modal.getInstance(document.getElementById("paymentModal"));
+        paymentModal.hide();
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+        document.body.classList.remove('modal-open');
+        
+        if (response.ok) {
+            let data;
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+                data = await response.json();
+            } else {
+                data = { success: response.ok, message: "Payment submitted successfully!" };
+            }
+            
+            // Show success message
+            messageTitle.textContent = "Success";
+            messageBody.textContent = "Payment submitted successfully!";
+            messageModal.show();
+            
+            // Refresh the bookings table
+            const status = document.getElementById("statusSelect").value;
+            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
+            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
+            const result = await getAllBookings(status, column, order, currentPage, limit);
+            renderBookings(result.bookings);
+            renderPagination(result.pagination);
+        } else {
+            // Show error message
+            messageTitle.textContent = "Error";
+            messageBody.textContent = "There was an error submitting your payment.";
+            messageModal.show();
+        }
+    } catch (error) {
+        console.error("Error submitting payment:", error);
+        messageTitle.textContent = "Error";
+        messageBody.textContent = "There was an error processing your payment. Please try again.";
+        messageModal.show();
+    }
+    
+    // Reset the form
+    this.reset();
 });
 
 // Add pagination rendering function

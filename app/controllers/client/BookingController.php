@@ -392,50 +392,80 @@ class BookingController {
     }
 
     public function addPayment() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        header("Content-Type: application/json");
+        
+        // Check if it's a regular form submission or JSON
+        if (!empty($_POST)) {
             $booking_id = $_POST["booking_id"];
             $client_id = $_POST["user_id"];
             $amount = $_POST["amount"];
             $payment_method = $_POST["payment_method"];
+        } else {
+            // Fallback to JSON input if no POST data
+            $data = json_decode(file_get_contents("php://input"), true);
+            $booking_id = $data["bookingId"] ?? null;
+            $client_id = $data["userId"] ?? null;
+            $amount = $data["amount"] ?? null;
+            $payment_method = $data["paymentMethod"] ?? null;
+        }
+        
+        // Validate required data
+        if (!$booking_id || !$client_id || !$amount || !$payment_method) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Missing required payment information"
+            ]);
+            return;
+        }
+        
+        // Handle proof of payment upload
+        $proof_of_payment = null;
+        if (isset($_FILES["proof_of_payment"]) && $_FILES["proof_of_payment"]["error"] === UPLOAD_ERR_OK) {
+            $upload_dir = __DIR__ . "/../../uploads/payments/";
             
-            // Handle proof of payment upload
-            $proof_of_payment = null;
-            if (isset($_FILES["proof_of_payment"]) && $_FILES["proof_of_payment"]["error"] === UPLOAD_ERR_OK) {
-                $upload_dir = __DIR__ . "/../../uploads/payments/";
-                
-                // Create directory if it doesn't exist
-                if (!file_exists($upload_dir)) {
-                    mkdir($upload_dir, 0777, true);
-                }
-                
-                $file_extension = pathinfo($_FILES["proof_of_payment"]["name"], PATHINFO_EXTENSION);
-                $file_name = "payment_" . $booking_id . "_" . time() . "." . $file_extension;
-                $target_file = $upload_dir . $file_name;
-                
-                // Check file type
-                $allowed_types = ["jpg", "jpeg", "png", "pdf"];
-                if (!in_array(strtolower($file_extension), $allowed_types)) {
-                    echo "Only JPG, PNG, and PDF files are allowed.";
-                    return;
-                }
-                
-                // Move uploaded file
-                if (move_uploaded_file($_FILES["proof_of_payment"]["tmp_name"], $target_file)) {
-                    $proof_of_payment = $file_name;
-                } else {
-                    echo "Failed to upload file.";
-                    return;
-                }
+            // Create directory if it doesn't exist
+            if (!file_exists($upload_dir)) {
+                mkdir($upload_dir, 0777, true);
             }
-        
-            $result = $this->bookingModel->addPayment($booking_id, $client_id, $amount, $payment_method, $proof_of_payment);
-        
-            if ($result) {
-                header("Location: /home/booking-requests");
-                exit();
+            
+            $file_extension = pathinfo($_FILES["proof_of_payment"]["name"], PATHINFO_EXTENSION);
+            $file_name = "payment_" . $booking_id . "_" . time() . "." . $file_extension;
+            $target_file = $upload_dir . $file_name;
+            
+            // Check file type
+            $allowed_types = ["jpg", "jpeg", "png", "pdf"];
+            if (!in_array(strtolower($file_extension), $allowed_types)) {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "Only JPG, PNG, and PDF files are allowed."
+                ]);
+                return;
+            }
+            
+            // Move uploaded file
+            if (move_uploaded_file($_FILES["proof_of_payment"]["tmp_name"], $target_file)) {
+                $proof_of_payment = $file_name;
             } else {
-                echo "Adding payment failed";
+                echo json_encode([
+                    "success" => false,
+                    "message" => "Failed to upload payment proof."
+                ]);
+                return;
             }
+        }
+    
+        $result = $this->bookingModel->addPayment($booking_id, $client_id, $amount, $payment_method, $proof_of_payment);
+    
+        if ($result === true) {
+            echo json_encode([
+                "success" => true,
+                "message" => "Payment submitted successfully!"
+            ]);
+        } else {
+            echo json_encode([
+                "success" => false,
+                "message" => is_string($result) ? $result : "Payment submission failed. Please try again."
+            ]);
         }
     }
         

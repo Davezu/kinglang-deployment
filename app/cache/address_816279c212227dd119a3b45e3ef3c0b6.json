@@ -1,0 +1,63 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Swiss-Belhotel Blulane, Tomas Mapua Street, Santa Cruz, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 22,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5QqY3ATKlzMR7Mtn3WoxCjo",
+         "reference" : "ChIJ5QqY3ATKlzMR7Mtn3WoxCjo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Swiss-Belhotel Blulane",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 22,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tomas Mapua Street, Santa Cruz, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Swiss-Belhotel Blulane"
+            },
+            {
+               "offset" : 24,
+               "value" : "Tomas Mapua Street"
+            },
+            {
+               "offset" : 44,
+               "value" : "Santa Cruz"
+            },
+            {
+               "offset" : 56,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 64,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,265 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Paradise Garden Resort Hotel & Convention Center Boracay, Boracay Island Malay, Aklan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJVfSTyiA8pTMRc3KiIIH_k7E",
+         "reference" : "ChIJVfSTyiA8pTMRc3KiIIH_k7E",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paradise Garden Resort Hotel & Convention Center Boracay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Boracay Island Malay, Aklan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paradise Garden Resort Hotel & Convention Center Boracay"
+            },
+            {
+               "offset" : 58,
+               "value" : "Boracay Island"
+            },
+            {
+               "offset" : 73,
+               "value" : "Malay"
+            },
+            {
+               "offset" : 80,
+               "value" : "Aklan"
+            },
+            {
+               "offset" : 87,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "food",
+            "restaurant",
+            "point_of_interest",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Paradise Beach, Santa Fe, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZ5ct-hWIqDMReEqlObtgsvQ",
+         "reference" : "ChIJZ5ct-hWIqDMReEqlObtgsvQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paradise Beach",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Fe, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paradise Beach"
+            },
+            {
+               "offset" : 16,
+               "value" : "Santa Fe"
+            },
+            {
+               "offset" : 26,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "natural_feature",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Paradise Island Park and Beach Resort, Babak, Island Garden City of Samal, Davao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJuxkfeLpv-TIRLMU0jYkd9zM",
+         "reference" : "ChIJuxkfeLpv-TIRLMU0jYkd9zM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paradise Island Park and Beach Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Babak, Island Garden City of Samal, Davao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paradise Island Park and Beach Resort"
+            },
+            {
+               "offset" : 39,
+               "value" : "Babak"
+            },
+            {
+               "offset" : 46,
+               "value" : "Island Garden City of Samal"
+            },
+            {
+               "offset" : 75,
+               "value" : "Davao del Norte"
+            },
+            {
+               "offset" : 92,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "lodging",
+            "food",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Paradiso de Casiguran, Casiguran, Aurora, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJh2xcZvL1mjMRmarGyOy5qUY",
+         "reference" : "ChIJh2xcZvL1mjMRmarGyOy5qUY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paradiso de Casiguran",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Casiguran, Aurora, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paradiso de Casiguran"
+            },
+            {
+               "offset" : 23,
+               "value" : "Casiguran"
+            },
+            {
+               "offset" : 34,
+               "value" : "Aurora"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Paradizzo Beach Resort, Road, Medellin, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwYA-Ehp7qDMR2LwjwGHn-6E",
+         "reference" : "ChIJwYA-Ehp7qDMR2LwjwGHn-6E",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paradizzo Beach Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Road, Medellin, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paradizzo Beach Resort"
+            },
+            {
+               "offset" : 24,
+               "value" : "Road"
+            },
+            {
+               "offset" : 30,
+               "value" : "Medellin"
+            },
+            {
+               "offset" : 40,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

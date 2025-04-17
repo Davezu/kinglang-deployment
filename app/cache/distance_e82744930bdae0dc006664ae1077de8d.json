@@ -1,0 +1,58 @@
+{
+   "destination_addresses" : 
+   [
+      "DAR Building, Elliptical Road, Diliman, Quezon City, Metro Manila, M332+W2G, Diliman, Quezon City, Metro Manila, Philippines",
+      "San Gabriel, CA, USA"
+   ],
+   "origin_addresses" : 
+   [
+      "San Gabriel, CA, USA",
+      "DAR Building, Elliptical Road, Diliman, Quezon City, Metro Manila, M332+W2G, Diliman, Quezon City, Metro Manila, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "status" : "ZERO_RESULTS"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "status" : "ZERO_RESULTS"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

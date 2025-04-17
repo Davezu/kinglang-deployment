@@ -14,6 +14,7 @@ if (!isset($_SESSION["user_id"])) {
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>Bookings</title>
 </head>
@@ -87,6 +88,7 @@ if (!isset($_SESSION["user_id"])) {
                         <option value="canceled">Canceled</option>
                         <option value="rejected">Rejected</option>
                         <option value="completed">Completed</option>
+                        <option value="processing">Processing</option>
                     </select>
                 </div>
                 
@@ -106,15 +108,15 @@ if (!isset($_SESSION["user_id"])) {
                 <table class="table table-hover overflow-hidden rounded">
                     <thead>
                         <tr>
-                            <th class="sort" data-order="asc" data-column="destination">Destination</th>
-                            <th class="sort" data-order="asc" data-column="date_of_tour">Date of Tour</th>
-                            <th class="sort" data-order="asc" data-column="end_of_tour">End of Tour</th>
-                            <th class="sort" data-order="asc" data-column="number_of_days">Days</th>
-                            <th class="sort" data-order="asc" data-column="number_of_buses">Buses</th>
-                            <th class="sort" data-order="asc" data-column="total_cost">Total Cost</th>
-                            <th class="sort" data-order="asc" data-column="balance">Balance</th>
-                            <th class="sort" data-order="asc" data-column="status">Remarks</th>
-                            <th class="sort" style="text-align: center; width: 20%;">Action</th>
+                            <th class="sort" data-order="asc" data-column="destination" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Destination</th>
+                            <th class="sort" data-order="asc" data-column="date_of_tour" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Date of Tour</th>
+                            <th class="sort" data-order="asc" data-column="end_of_tour" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">End of Tour</th>
+                            <th class="sort" data-order="asc" data-column="number_of_days" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Days</th>
+                            <th class="sort" data-order="asc" data-column="number_of_buses" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Buses</th>
+                            <th class="sort" data-order="asc" data-column="total_cost" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Total Cost</th>
+                            <th class="sort" data-order="asc" data-column="balance" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Balance</th>
+                            <th class="sort" data-order="asc" data-column="status" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Remarks</th>
+                            <th class="sort" style="text-align: center; width: 20%; background-color: #d1f7c4; white-space: nowrap;">Action</th>
                         </tr>
                     </thead>
                     <tbody class="table-group" id="tableBody">
@@ -127,7 +129,7 @@ if (!isset($_SESSION["user_id"])) {
 
     <div class="modal fade payment-modal" aria-labelledby="paymentModal" tabindex="-1" id="paymentModal">
         <div class="modal-dialog modal-dialog-centered">
-            <form class="payment-content modal-content" action="/payment/process" method="post" enctype="multipart/form-data">
+            <form class="payment-content modal-content" action="" id="paymentForm" method="post" enctype="multipart/form-data">
 
                 <div class="modal-header">
                     <h3 class="modal-title">Payment</h3>
@@ -159,7 +161,7 @@ if (!isset($_SESSION["user_id"])) {
                         <select name="payment_method" id="paymentMethod" class="form-select mt-2" aria-label="small select example">
                             <!-- <option value="Cash">Cash</option> -->
                             <option value="Bank Transfer">Bank Transfer</option>
-                            <option value="Online">Online Payment</option>
+                            <option value="Online Payment">Online Payment</option>
                         </select>
                     </div>
 

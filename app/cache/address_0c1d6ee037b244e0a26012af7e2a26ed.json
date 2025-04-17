@@ -1,0 +1,59 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "King Yang Tours and Transport Inc., M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 34,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJRV4cjXrIlzMR85xgsxj7Udw",
+         "reference" : "ChIJRV4cjXrIlzMR85xgsxj7Udw",
+         "structured_formatting" : 
+         {
+            "main_text" : "King Yang Tours and Transport Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 34,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M. L. Quezon Avenue, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "King Yang Tours and Transport Inc."
+            },
+            {
+               "offset" : 36,
+               "value" : "M. L. Quezon Avenue"
+            },
+            {
+               "offset" : 57,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 65,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 79,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

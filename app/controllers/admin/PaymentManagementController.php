@@ -16,13 +16,16 @@ class PaymentManagementController {
     public function getPayments() {
         header('Content-Type: application/json');
 
+        $data = json_decode(file_get_contents('php://input'), true);
+        
+        $status = $data['filter'] ?? 'all';
+        $column = $data['sort'] ?? 'payment_id';
+        $order = $data['order'] ?? 'DESC';
+        $page = (int)($data['page'] ?? 1);
+        $limit = (int)($data['limit'] ?? 10);
+        $search = $data['search'] ?? '';
+
         try {
-            $status = $_GET['filter'] ?? 'all';
-            $column = $_GET['sort'] ?? 'payment_id';
-            $order = $_GET['order'] ?? 'DESC';
-            $page = (int)($_GET['page'] ?? 1);
-            $limit = (int)($_GET['limit'] ?? 10);
-            $search = $_GET['search'] ?? '';
 
             $payments = $this->paymentModel->getPayments($status, $column, $order, $page, $limit, $search);
             $total = $this->paymentModel->getTotalPayments($status, $search);

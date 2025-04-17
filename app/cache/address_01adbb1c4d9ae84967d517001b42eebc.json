@@ -1,0 +1,261 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Kingly Transient Inn and Dormitory, P. Manahan, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJhZB1LGfJlzMR0ks4RbbokNQ",
+         "reference" : "ChIJhZB1LGfJlzMR0ks4RbbokNQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kingly Transient Inn and Dormitory",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "P. Manahan, Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kingly Transient Inn and Dormitory"
+            },
+            {
+               "offset" : 36,
+               "value" : "P. Manahan"
+            },
+            {
+               "offset" : 48,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "KINGLY Transient Inn and Dormitory LEVERIZA Branch, Sen. Gil J. Puyat Avenue, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJXfTCIDHJlzMRPwship75JVY",
+         "reference" : "ChIJXfTCIDHJlzMRPwship75JVY",
+         "structured_formatting" : 
+         {
+            "main_text" : "KINGLY Transient Inn and Dormitory LEVERIZA Branch",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sen. Gil J. Puyat Avenue, Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "KINGLY Transient Inn and Dormitory LEVERIZA Branch"
+            },
+            {
+               "offset" : 52,
+               "value" : "Sen. Gil J. Puyat Avenue"
+            },
+            {
+               "offset" : 78,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 85,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 99,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Kingly Transient Inn Fb. Harrison- EDSA branch, F.B. Harrison Street, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJIb0HUlrJlzMRtbPh2B_vZks",
+         "reference" : "ChIJIb0HUlrJlzMRtbPh2B_vZks",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kingly Transient Inn Fb. Harrison- EDSA branch",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "F.B. Harrison Street, Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kingly Transient Inn Fb. Harrison- EDSA branch"
+            },
+            {
+               "offset" : 48,
+               "value" : "F.B. Harrison Street"
+            },
+            {
+               "offset" : 70,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 77,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 91,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Kinglet St., Antipolo, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EilLaW5nbGV0IFN0LiwgQW50aXBvbG8sIFJpemFsLCBQaGlsaXBwaW5lcyIuKiwKFAoSCcdUcGZOuJczEQLWrRmR-GFZEhQKEgnFEIONDL-XMxGjgL9_Wo7cNA",
+         "reference" : "EilLaW5nbGV0IFN0LiwgQW50aXBvbG8sIFJpemFsLCBQaGlsaXBwaW5lcyIuKiwKFAoSCcdUcGZOuJczEQLWrRmR-GFZEhQKEgnFEIONDL-XMxGjgL9_Wo7cNA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kinglet St.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Antipolo, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kinglet St."
+            },
+            {
+               "offset" : 13,
+               "value" : "Antipolo"
+            },
+            {
+               "offset" : 23,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Kinglet, Angono, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EiNLaW5nbGV0LCBBbmdvbm8sIFJpemFsLCBQaGlsaXBwaW5lcyIuKiwKFAoSCUFe3FzFwJczEXFDPPZg_f8gEhQKEgk_L6BV1MaXMxESTnkxEt2ptA",
+         "reference" : "EiNLaW5nbGV0LCBBbmdvbm8sIFJpemFsLCBQaGlsaXBwaW5lcyIuKiwKFAoSCUFe3FzFwJczEXFDPPZg_f8gEhQKEgk_L6BV1MaXMxESTnkxEt2ptA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kinglet",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Angono, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kinglet"
+            },
+            {
+               "offset" : 9,
+               "value" : "Angono"
+            },
+            {
+               "offset" : 17,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

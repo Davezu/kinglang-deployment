@@ -1,0 +1,277 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Ssmc Health, Airport Road, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv4_MklLJlzMRxED6-Jj8Kzs",
+         "reference" : "ChIJv4_MklLJlzMRxED6-Jj8Kzs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ssmc Health",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Airport Road, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ssmc Health"
+            },
+            {
+               "offset" : 13,
+               "value" : "Airport Road"
+            },
+            {
+               "offset" : 27,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 38,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "hospital",
+            "establishment",
+            "point_of_interest",
+            "health"
+         ]
+      },
+      {
+         "description" : "Ssm Maritime Services, Incorporation, C.Aragon, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJEWxoo3jJlzMRo6jzHGgmoxA",
+         "reference" : "ChIJEWxoo3jJlzMRo6jzHGgmoxA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ssm Maritime Services, Incorporation",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "C.Aragon, Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ssm Maritime Services, Incorporation"
+            },
+            {
+               "offset" : 38,
+               "value" : "C.Aragon"
+            },
+            {
+               "offset" : 48,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 56,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 64,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "SSMC Satelite Clinic - Airport Road, L. Gabriel, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJyTALaVPJlzMRkGSQ8gqZKnA",
+         "reference" : "ChIJyTALaVPJlzMRkGSQ8gqZKnA",
+         "structured_formatting" : 
+         {
+            "main_text" : "SSMC Satelite Clinic - Airport Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "L. Gabriel, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SSMC Satelite Clinic - Airport Road"
+            },
+            {
+               "offset" : 37,
+               "value" : "L. Gabriel"
+            },
+            {
+               "offset" : 49,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 60,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "hospital",
+            "health",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "SSMC, National Hiway, Santa Rosa, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbeDCdEnYlzMRvri2hLOXX1M",
+         "reference" : "ChIJbeDCdEnYlzMRvri2hLOXX1M",
+         "structured_formatting" : 
+         {
+            "main_text" : "SSMC",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "National Hiway, Santa Rosa, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SSMC"
+            },
+            {
+               "offset" : 6,
+               "value" : "National Hiway"
+            },
+            {
+               "offset" : 22,
+               "value" : "Santa Rosa"
+            },
+            {
+               "offset" : 34,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "health",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Ssmc Group Of Hospitals And Clinics, Inc., Alabang–Zapote Road, Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJq6oa8M_RlzMR0I9QldfNo0I",
+         "reference" : "ChIJq6oa8M_RlzMR0I9QldfNo0I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ssmc Group Of Hospitals And Clinics, Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Alabang–Zapote Road, Las Piñas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ssmc Group Of Hospitals And Clinics, Inc."
+            },
+            {
+               "offset" : 43,
+               "value" : "Alabang–Zapote Road"
+            },
+            {
+               "offset" : 64,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 75,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 89,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "hospital",
+            "point_of_interest",
+            "health"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

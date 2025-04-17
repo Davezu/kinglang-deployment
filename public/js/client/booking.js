@@ -679,9 +679,9 @@ async function calculateRoute() {
                 
                 window.lastCalculatedDistance = distance;
                 
-                messageTitle.textContent = "Route Calculated";
-                messageBody.textContent = `Route found! Total distance: ${distance.toFixed(1)} km, estimated time: ${Math.round(duration)} minutes.`;
-                messageModal.show();
+                // messageTitle.textContent = "Route Calculated";
+                // messageBody.textContent = `Route found! Total distance: ${distance.toFixed(1)} km, estimated time: ${Math.round(duration)} minutes.`;
+                // messageModal.show();
             } else {
                 console.error("Directions request failed due to " + status);
                 

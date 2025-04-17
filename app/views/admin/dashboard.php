@@ -67,12 +67,41 @@
                 </div>  
             </div>
 
-            <!-- <div class="d-flex flex-column gap-2 mt-3">
-                <div class="charts flex-grow-2 w-25 rounded p-4">
-                    <h4 class="d-inline">Payment Methods</h4>
-                    <canvas id="paymentMethodChart"></canvas>
+            <div class="row mt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="rounded p-4 summary-metrics-card">
+                        <h4>Monthly Booking Trends</h4>
+                        <canvas id="monthlyTrendsChart" height="300"></canvas>
+                    </div>
                 </div>
-            </div> -->
+                <div class="col-md-6 mb-4">
+                    <div class="rounded p-4 summary-metrics-card">
+                        <h4>Payment Method Distribution</h4>
+                        <canvas id="paymentMethodChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="rounded p-4 summary-metrics-card">
+                        <h4>Top Destinations</h4>
+                        <canvas id="destinationsChart" height="300"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="rounded p-4 summary-metrics-card">
+                        <h4>Booking Status</h4>
+                        <canvas id="bookingStatusChart" height="300"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="rounded p-4 summary-metrics-card">
+                        <h4>Revenue Trends</h4>
+                        <canvas id="revenueTrendsChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     

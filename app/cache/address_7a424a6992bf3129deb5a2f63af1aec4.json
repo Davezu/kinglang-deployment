@@ -1,0 +1,259 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Paradizoo, Maglabe Drive, Mendez, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJIau_haqCvTMRqI8ApMtDwmA",
+         "reference" : "ChIJIau_haqCvTMRqI8ApMtDwmA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paradizoo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maglabe Drive, Mendez, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paradizoo"
+            },
+            {
+               "offset" : 11,
+               "value" : "Maglabe Drive"
+            },
+            {
+               "offset" : 26,
+               "value" : "Mendez"
+            },
+            {
+               "offset" : 34,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Paradizoo Theme Park, Mendez, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJweNZ4AJ4vTMR7QjzmMGveVo",
+         "reference" : "ChIJweNZ4AJ4vTMR7QjzmMGveVo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paradizoo Theme Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mendez, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paradizoo Theme Park"
+            },
+            {
+               "offset" : 22,
+               "value" : "Mendez"
+            },
+            {
+               "offset" : 30,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "park",
+            "tourist_attraction",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Paradizoo Theme Park, Panungyan Road, Mendez, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJj21dcHyDvTMRGMTBd9AjKz8",
+         "reference" : "ChIJj21dcHyDvTMRGMTBd9AjKz8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paradizoo Theme Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Panungyan Road, Mendez, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paradizoo Theme Park"
+            },
+            {
+               "offset" : 22,
+               "value" : "Panungyan Road"
+            },
+            {
+               "offset" : 38,
+               "value" : "Mendez"
+            },
+            {
+               "offset" : 46,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "tourist_attraction",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Paradizoo, Mendez, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJKQXqhKqCvTMRLyECR5BXL38",
+         "reference" : "ChIJKQXqhKqCvTMRLyECR5BXL38",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paradizoo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mendez, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paradizoo"
+            },
+            {
+               "offset" : 11,
+               "value" : "Mendez"
+            },
+            {
+               "offset" : 19,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "museum",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Paradizoo Butterfly and Bee Garden, Mendez, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqXioEgODvTMRpUE7YEURu_o",
+         "reference" : "ChIJqXioEgODvTMRpUE7YEURu_o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paradizoo Butterfly and Bee Garden",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mendez, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paradizoo Butterfly and Bee Garden"
+            },
+            {
+               "offset" : 36,
+               "value" : "Mendez"
+            },
+            {
+               "offset" : 44,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "amusement_park",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

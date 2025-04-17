@@ -1,0 +1,56 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "GBR Museum, General Trias, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJycYgJ75_vTMRL_ZxnlVy2X4",
+         "reference" : "ChIJycYgJ75_vTMRL_ZxnlVy2X4",
+         "structured_formatting" : 
+         {
+            "main_text" : "GBR Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Trias, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GBR Museum"
+            },
+            {
+               "offset" : 12,
+               "value" : "General Trias"
+            },
+            {
+               "offset" : 27,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "museum",
+            "tourist_attraction",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

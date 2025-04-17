@@ -183,7 +183,7 @@
                     <i class="bi bi-wallet2"></i>
                     <span class="menu-text">Payments</span>
                 </a>
-                <a href="#" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'booking' ? 'active' : ''; ?>">
+                <a href="/admin/reports" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'reports' ? 'active' : ''; ?>">
                     <i class="bi bi-clipboard-data"></i>
                     <span class="menu-text">Reports</span>  
                 </a>

@@ -22,21 +22,31 @@ class BookingManagementController {
 
         $bookings = $this->bookingModel->getAllBookings($status, $column, $order, $page, $limit);
         $total = $this->bookingModel->getTotalBookings($status);
-        $totalPages = ceil($total / $limit);
+        
+        // Fix for pagination bug when total == limit
+        // We need to make sure totalPages is at least 1, and correctly calculated
+        $totalPages = max(1, ceil((int)$total / (int)$limit));
+        
+        // Debug info
+        error_log("Debug - Total records: $total, Limit: $limit, Total Pages Calculated: $totalPages");
+        
+        $response = [
+            "success" => true, 
+            "bookings" => $bookings,
+            "pagination" => [
+                "total" => $total,
+                "totalPages" => $totalPages,
+                "currentPage" => $page,
+                "limit" => $limit
+            ]
+        ];
+        
+        error_log("Response: " . json_encode($response));
 
         header("Content-Type: application/json");
 
         if (is_array($bookings)) {
-            echo json_encode([
-                "success" => true, 
-                "bookings" => $bookings,
-                "pagination" => [
-                    "total" => $total,
-                    "totalPages" => $totalPages,
-                    "currentPage" => $page,
-                    "limit" => $limit
-                ]
-            ]);
+            echo json_encode($response);
         } else {
             echo json_encode(["success" => false, "message" => $bookings]);
         }
@@ -179,21 +189,6 @@ class BookingManagementController {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function summaryMetrics() {
         header("Content-Type: application/json");
 
@@ -208,6 +203,38 @@ class BookingManagementController {
         $payment_methods = $this->bookingModel->paymentMethodChart();
 
         echo json_encode($payment_methods);
+    }
+
+    public function monthlyBookingTrends() {
+        header("Content-Type: application/json");
+        
+        $trends = $this->bookingModel->getMonthlyBookingTrends();
+        
+        echo json_encode($trends);
+    }
+    
+    public function topDestinations() {
+        header("Content-Type: application/json");
+        
+        $destinations = $this->bookingModel->getTopDestinations();
+        
+        echo json_encode($destinations);
+    }
+    
+    public function bookingStatusDistribution() {
+        header("Content-Type: application/json");
+        
+        $statuses = $this->bookingModel->getBookingStatusDistribution();
+        
+        echo json_encode($statuses);
+    }
+    
+    public function revenueTrends() {
+        header("Content-Type: application/json");
+        
+        $revenue = $this->bookingModel->getRevenueTrends();
+        
+        echo json_encode($revenue);
     }
 }
 ?>

@@ -13,6 +13,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
     <title>Booking Management</title>
     
@@ -133,7 +134,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
                     <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Remarks</span>
                     <select name="status" id="statusSelect" class="form-select">
                         <option value="All">All</option>
-                        <option value="Pending">Pending</option>
+                        <option value="Pending" selected>Pending</option>
                         <option value="Confirmed">Confirmed</option>
                         <option value="Canceled">Canceled</option>
                         <option value="Rejected">Rejected</option>
@@ -155,15 +156,15 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
                 <table class="table table-hover text-secondary overflow-hidden border rounded px-4">
                     <thead>
                         <tr>
-                            <th class="sort" data-order="asc" data-column="client_name">Client Name</th>
-                            <th class="sort" data-order="asc" data-column="contact_number">Contact Number</th>
-                            <th class="sort" data-order="asc" data-column="destination">Destination</th>
-                            <th class="sort" data-order="asc" data-column="pickup_point">Total Cost</th>
-                            <th class="sort" data-order="asc" data-column="date_of_tour">Date of Tour</th>
-                            <th class="sort" data-order="asc" data-column="number_of_days">Days</th>
-                            <th class="sort" data-order="asc" data-column="number_of_buses">Buses</th>
-                            <th class="sort" data-order="asc" data-column="payment_status">Payment Status</th>
-                            <th class="sort" style="text-align: center; width: 15%;">Action</th></tr>
+                            <th class="sort" data-order="asc" data-column="client_name" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Client Name</th>
+                            <th class="sort" data-order="asc" data-column="contact_number" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Contact Number</th>
+                            <th class="sort" data-order="asc" data-column="destination" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Destination</th>
+                            <th class="sort" data-order="asc" data-column="pickup_point" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Total Cost</th>
+                            <th class="sort" data-order="asc" data-column="date_of_tour" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Date of Tour</th>
+                            <th class="sort" data-order="asc" data-column="number_of_days" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Days</th>
+                            <th class="sort" data-order="asc" data-column="number_of_buses" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Buses</th>
+                            <th class="sort" data-order="asc" data-column="payment_status" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Payment Status</th>
+                            <th class="sort" style="text-align: center; width: 15%; background-color: #d1f7c4; white-space: nowrap;">Action</th></tr>
                     </thead>
                     <tbody id="tableBody"> 
                        

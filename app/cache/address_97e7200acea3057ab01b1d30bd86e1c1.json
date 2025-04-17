@@ -1,0 +1,333 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Department of Agrarian Reform@DAR - CALABARZON, Diliman, QC, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 30
+            },
+            {
+               "length" : 2,
+               "offset" : 57
+            }
+         ],
+         "place_id" : "ChIJKUOWghG3lzMRu529Pu7S1l0",
+         "reference" : "ChIJKUOWghG3lzMRu529Pu7S1l0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Department of Agrarian Reform@DAR - CALABARZON",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 30
+               }
+            ],
+            "secondary_text" : "Diliman, QC, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 9
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Department of Agrarian Reform@DAR - CALABARZON"
+            },
+            {
+               "offset" : 48,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 57,
+               "value" : "QC"
+            },
+            {
+               "offset" : 61,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Department of Agrarian Reform (DAR) MiMaRoPa Region, Quezon Memorial Cir Elliptical Rd Underpass, Diliman, QC, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 31
+            },
+            {
+               "length" : 2,
+               "offset" : 107
+            }
+         ],
+         "place_id" : "ChIJ5da1oWvIlzMRpZwO0MH45VI",
+         "reference" : "ChIJ5da1oWvIlzMRpZwO0MH45VI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Department of Agrarian Reform (DAR) MiMaRoPa Region",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 31
+               }
+            ],
+            "secondary_text" : "Quezon Memorial Cir Elliptical Rd Underpass, Diliman, QC, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 54
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Department of Agrarian Reform (DAR) MiMaRoPa Region"
+            },
+            {
+               "offset" : 53,
+               "value" : "Quezon Memorial Cir Elliptical Rd Underpass"
+            },
+            {
+               "offset" : 98,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 107,
+               "value" : "QC"
+            },
+            {
+               "offset" : 111,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 125,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Department of Agrarian Reform@DAR - Office of the Assistant Secretary - Field Operations Group, Elliptical Road, Diliman, QC, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 30
+            },
+            {
+               "length" : 2,
+               "offset" : 122
+            }
+         ],
+         "place_id" : "ChIJNcCiGhK3lzMRyMNSzeAh_fI",
+         "reference" : "ChIJNcCiGhK3lzMRyMNSzeAh_fI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Department of Agrarian Reform@DAR - Office of the Assistant Secretary - Field Operations Group",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 30
+               }
+            ],
+            "secondary_text" : "Elliptical Road, Diliman, QC, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 26
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Department of Agrarian Reform@DAR - Office of the Assistant Secretary - Field Operations Group"
+            },
+            {
+               "offset" : 96,
+               "value" : "Elliptical Road"
+            },
+            {
+               "offset" : 113,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 122,
+               "value" : "QC"
+            },
+            {
+               "offset" : 126,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 140,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "DAR - Bureaus - Public Affairs Staff, Elliptical Road, Diliman, QC, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            },
+            {
+               "length" : 2,
+               "offset" : 64
+            }
+         ],
+         "place_id" : "ChIJNcCiGhK3lzMRFqhxb7raIkI",
+         "reference" : "ChIJNcCiGhK3lzMRFqhxb7raIkI",
+         "structured_formatting" : 
+         {
+            "main_text" : "DAR - Bureaus - Public Affairs Staff",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Elliptical Road, Diliman, QC, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 26
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "DAR - Bureaus - Public Affairs Staff"
+            },
+            {
+               "offset" : 38,
+               "value" : "Elliptical Road"
+            },
+            {
+               "offset" : 55,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 64,
+               "value" : "QC"
+            },
+            {
+               "offset" : 68,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 82,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Executive Director's Office - DAR, Diliman, QC, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 30
+            },
+            {
+               "length" : 2,
+               "offset" : 44
+            }
+         ],
+         "place_id" : "ChIJPyVVnRG3lzMRduJsU_WHJeU",
+         "reference" : "ChIJPyVVnRG3lzMRduJsU_WHJeU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Executive Director's Office - DAR",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 30
+               }
+            ],
+            "secondary_text" : "Diliman, QC, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 9
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Executive Director's Office - DAR"
+            },
+            {
+               "offset" : 35,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 44,
+               "value" : "QC"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

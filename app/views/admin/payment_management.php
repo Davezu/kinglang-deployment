@@ -14,6 +14,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
     <title>Payment Management</title>
 </head>
@@ -124,13 +125,13 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
                 <table class="table table-hover text-secondary overflow-hidden border rounded px-4">
                     <thead>
                         <tr>
-                            <th class="sort" data-order="asc" data-column="booking_id">Booking ID</th>
-                            <th class="sort" data-order="asc" data-column="client_name">Client Name</th>
-                            <th class="sort" data-order="asc" data-column="amount">Amount</th>
-                            <th class="sort" data-order="asc" data-column="payment_method">Payment Method</th>
-                            <th class="sort" data-order="asc" data-column="payment_date">Payment Date</th>
-                            <th class="sort" data-order="asc" data-column="status">Status</th>
-                            <th style="text-align: center; width: 15%;">Action</th>
+                            <th class="sort" data-order="asc" data-column="booking_id" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Booking ID</th>
+                            <th class="sort" data-order="asc" data-column="client_name" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Client Name</th>
+                            <th class="sort" data-order="asc" data-column="amount" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Amount</th>
+                            <th class="sort" data-order="asc" data-column="payment_method" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Payment Method</th>
+                            <th class="sort" data-order="asc" data-column="payment_date" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Payment Date</th>
+                            <th class="sort" data-order="asc" data-column="status" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Status</th>
+                            <th style="text-align: center; width: 15%; background-color: #d1f7c4; white-space: nowrap;">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">

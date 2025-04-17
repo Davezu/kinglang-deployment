@@ -1,0 +1,269 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJT7L3iNzHlzMRif00SysrWUo",
+         "reference" : "ChIJT7L3iNzHlzMRif00SysrWUo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pasig",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 7,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Pasig River Esplanade, Riverside Drive, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ1abFKYXLlzMRLFUriVPw1cs",
+         "reference" : "ChIJ1abFKYXLlzMRLFUriVPw1cs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pasig River Esplanade",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Riverside Drive, Ermita, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pasig River Esplanade"
+            },
+            {
+               "offset" : 23,
+               "value" : "Riverside Drive"
+            },
+            {
+               "offset" : 40,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 48,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "tourist_attraction",
+            "park"
+         ]
+      },
+      {
+         "description" : "Pasig City Hall, Caruncho Avenue, Barangay San Nicolas, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQbl32dXHlzMRgBKT0bdFSV4",
+         "reference" : "ChIJQbl32dXHlzMRgBKT0bdFSV4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pasig City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caruncho Avenue, Barangay San Nicolas, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pasig City Hall"
+            },
+            {
+               "offset" : 17,
+               "value" : "Caruncho Avenue"
+            },
+            {
+               "offset" : 34,
+               "value" : "Barangay San Nicolas"
+            },
+            {
+               "offset" : 56,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 63,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 77,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "local_government_office",
+            "point_of_interest",
+            "city_hall",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Pasig Palengke, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJm7IexUzHlzMR69x0zlxNdtk",
+         "reference" : "ChIJm7IexUzHlzMR69x0zlxNdtk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pasig Palengke",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pasig Palengke"
+            },
+            {
+               "offset" : 16,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 23,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Pasig Rainforest Park, Francisco Legaspi, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8UHqFOrHlzMRExrjfNiuUVk",
+         "reference" : "ChIJ8UHqFOrHlzMRExrjfNiuUVk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pasig Rainforest Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Francisco Legaspi, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pasig Rainforest Park"
+            },
+            {
+               "offset" : 23,
+               "value" : "Francisco Legaspi"
+            },
+            {
+               "offset" : 42,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 49,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "tourist_attraction",
+            "park"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

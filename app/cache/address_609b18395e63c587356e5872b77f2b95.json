@@ -1,0 +1,174 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "San Gabriel Medical Clinic, Congressional Ave, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            },
+            {
+               "length" : 17,
+               "offset" : 28
+            }
+         ],
+         "place_id" : "ChIJNxuh_E_UlzMRPBMOPE2NjbU",
+         "reference" : "ChIJNxuh_E_UlzMRPBMOPE2NjbU",
+         "structured_formatting" : 
+         {
+            "main_text" : "San Gabriel Medical Clinic",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Congressional Ave, Dasmariñas, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 17,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "San Gabriel Medical Clinic"
+            },
+            {
+               "offset" : 28,
+               "value" : "Congressional Ave"
+            },
+            {
+               "offset" : 47,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 59,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "health",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "324 Filipinas Avenue, Teresa, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 16,
+               "offset" : 4
+            }
+         ],
+         "place_id" : "EjAzMjQgRmlsaXBpbmFzIEF2ZW51ZSwgVGVyZXNhLCBSaXphbCwgUGhpbGlwcGluZXMiLiosChQKEgnn6GEC7sCXMxFc-zUx0bkQgxIUChIJ8_CHgnDAlzMRHayLDGzGdk4",
+         "reference" : "EjAzMjQgRmlsaXBpbmFzIEF2ZW51ZSwgVGVyZXNhLCBSaXphbCwgUGhpbGlwcGluZXMiLiosChQKEgnn6GEC7sCXMxFc-zUx0bkQgxIUChIJ8_CHgnDAlzMRHayLDGzGdk4",
+         "structured_formatting" : 
+         {
+            "main_text" : "324 Filipinas Avenue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 4
+               }
+            ],
+            "secondary_text" : "Teresa, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "324"
+            },
+            {
+               "offset" : 4,
+               "value" : "Filipinas Avenue"
+            },
+            {
+               "offset" : 22,
+               "value" : "Teresa"
+            },
+            {
+               "offset" : 30,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "324 Barangay Road, Bayambang, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 8
+            }
+         ],
+         "place_id" : "EjUzMjQgQmFyYW5nYXkgUm9hZCwgQmF5YW1iYW5nLCBQYW5nYXNpbmFuLCBQaGlsaXBwaW5lcyIuKiwKFAoSCanDNDbnS5EzEV50m0ThV0rhEhQKEglNRg3vSEmRMxH55X1YppGtTw",
+         "reference" : "EjUzMjQgQmFyYW5nYXkgUm9hZCwgQmF5YW1iYW5nLCBQYW5nYXNpbmFuLCBQaGlsaXBwaW5lcyIuKiwKFAoSCanDNDbnS5EzEV50m0ThV0rhEhQKEglNRg3vSEmRMxH55X1YppGtTw",
+         "structured_formatting" : 
+         {
+            "main_text" : "324 Barangay Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 8
+               }
+            ],
+            "secondary_text" : "Bayambang, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "324"
+            },
+            {
+               "offset" : 4,
+               "value" : "Barangay Road"
+            },
+            {
+               "offset" : 19,
+               "value" : "Bayambang"
+            },
+            {
+               "offset" : 30,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

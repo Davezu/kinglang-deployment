@@ -8,7 +8,8 @@ const messageBody = document.getElementById("messageBody");
 
 document.addEventListener("DOMContentLoaded", async function () {
     const limit = document.getElementById("limitSelect").value;
-    const bookings = await getAllBookings("All", "asc", "booking_id", 1, limit);    
+    const status = document.getElementById("statusSelect").value;
+    const bookings = await getAllBookings(status, "asc", "booking_id", 1, limit);    
     renderBookings(bookings);
     renderPagination(bookings.pagination);
 });
@@ -73,7 +74,8 @@ async function getAllBookings(status, order, column, page = 1, limit = 10) {
         });
 
         const data = await response.json();
-        console.log(data);
+        console.log("API Response:", data);
+        console.log("Pagination details - Total:", data.pagination.total, "TotalPages:", data.pagination.totalPages, "Limit:", data.pagination.limit);
 
         if (data.success) {
             return data;
@@ -104,14 +106,51 @@ async function renderBookings(data) {
 
        
         clientNameCell.textContent = booking.client_name;
+        clientNameCell.style.maxWidth = "120px";
+        clientNameCell.style.overflow = "hidden";
+        clientNameCell.style.textOverflow = "ellipsis";
+        clientNameCell.style.whiteSpace = "nowrap";
+        clientNameCell.title = booking.client_name;
+        
+        contactNumberCell.style.maxWidth = "80px";
+        contactNumberCell.style.overflow = "hidden";
+        contactNumberCell.style.textOverflow = "ellipsis";
+        contactNumberCell.style.whiteSpace = "nowrap";
         contactNumberCell.textContent = booking.contact_number;
+        
         destinationCell.textContent = booking.destination;
+        destinationCell.style.maxWidth = "150px";
+        destinationCell.style.overflow = "hidden";
+        destinationCell.style.textOverflow = "ellipsis";
+        destinationCell.style.whiteSpace = "nowrap";
+        destinationCell.title = booking.destination;
+        
         pickupPointCell.textContent = booking.total_cost;
+        
         dateOfTourCell.textContent = formatDate(booking.date_of_tour);
+        dateOfTourCell.style.maxWidth = "120px";
+        dateOfTourCell.style.overflow = "hidden";
+        dateOfTourCell.style.textOverflow = "ellipsis";
+        dateOfTourCell.style.whiteSpace = "nowrap";
+        dateOfTourCell.title = formatDate(booking.date_of_tour);
+        
         numberOfDaysCell.textContent = booking.number_of_days;
         numberOfBusesCell.textContent = booking.number_of_buses;
+        
+        // Apply status styling
         statusCell.textContent = booking.status;
+        statusCell.className = `text-${getStatusTextClass(booking.status)}`;
+        statusCell.style.width = "100px";
+        statusCell.style.fontWeight = "bold";
+        
         paymentStatusCell.textContent = booking.payment_status;
+        paymentStatusCell.className = `text-${getPaymentStatusTextClass(booking.payment_status)}`;
+        paymentStatusCell.style.width = "120px";
+        paymentStatusCell.style.fontWeight = "bold";
+        paymentStatusCell.style.whiteSpace = "nowrap";
+        paymentStatusCell.style.overflow = "hidden";
+        paymentStatusCell.style.textOverflow = "ellipsis";
+        paymentStatusCell.title = booking.payment_status;
 
         row.append(clientNameCell, contactNumberCell, destinationCell, pickupPointCell, dateOfTourCell, numberOfDaysCell, numberOfBusesCell, paymentStatusCell, actionButton(booking));
         tbody.appendChild(row);
@@ -128,22 +167,46 @@ function actionButton(booking) {
 
     buttonGroup.classList.add("d-flex", "gap-2", "align-items-center");
 
-    confirmButton.classList.add("btn", "bg-success-subtle", "text-success", "btn-sm", "fw-bold", "w-100");
+    confirmButton.classList.add("btn", "bg-success-subtle", "text-success", "btn-sm", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
     confirmButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;"); 
 
-    rejectButton.classList.add("btn", "bg-danger-subtle", "text-danger", "btn-sm", "fw-bold", "w-100");
+    rejectButton.classList.add("btn", "bg-danger-subtle", "text-danger", "btn-sm", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
     rejectButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
-    cancelButton.classList.add("btn", "bg-danger-subtle", "text-danger", "btn-sm", "fw-bold", "w-100");
+    cancelButton.classList.add("btn", "bg-danger-subtle", "text-danger", "btn-sm", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
     cancelButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
-    viewButton.classList.add("btn", "bg-primary-subtle", "text-primary", "btn-sm", "fw-bold", "w-100");
+    viewButton.classList.add("btn", "bg-primary-subtle", "text-primary", "btn-sm", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
     viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
-    confirmButton.textContent = "Confirm";
-    rejectButton.textContent = "Reject";
-    cancelButton.textContent = "Cancel";
-    viewButton.textContent = "View";
+    // Add icons and text
+    const confirmIcon = document.createElement("i");
+    confirmIcon.classList.add("bi", "bi-check-circle");
+    const confirmText = document.createElement("span");
+    confirmText.textContent = "Confirm";
+    confirmButton.appendChild(confirmIcon);
+    confirmButton.appendChild(confirmText);
+
+    const rejectIcon = document.createElement("i");
+    rejectIcon.classList.add("bi", "bi-x-circle");
+    const rejectText = document.createElement("span");
+    rejectText.textContent = "Reject";
+    rejectButton.appendChild(rejectIcon);
+    rejectButton.appendChild(rejectText);
+
+    const cancelIcon = document.createElement("i");
+    cancelIcon.classList.add("bi", "bi-x-circle");
+    const cancelText = document.createElement("span");
+    cancelText.textContent = "Cancel";
+    cancelButton.appendChild(cancelIcon);
+    cancelButton.appendChild(cancelText);
+
+    const viewIcon = document.createElement("i");
+    viewIcon.classList.add("bi", "bi-eye");
+    const viewText = document.createElement("span");
+    viewText.textContent = "View";
+    viewButton.appendChild(viewIcon);
+    viewButton.appendChild(viewText);
 
     // data attributes
     confirmButton.setAttribute("data-booking-id", booking.booking_id);
@@ -199,9 +262,19 @@ function renderPagination(pagination) {
     const paginationContainer = document.getElementById("paginationContainer");
     paginationContainer.innerHTML = "";
     
-    if (pagination.totalPages <= 1) {
+    console.log("Rendering pagination with data:", pagination);
+    console.log("Total pages:", pagination.totalPages, "Current page:", pagination.currentPage);
+    
+    // Make sure totalPages is treated as a number, not a string
+    const totalPages = parseInt(pagination.totalPages, 10);
+    console.log("Parsed totalPages:", totalPages, "Type:", typeof totalPages);
+    
+    if (totalPages <= 1) {
+        console.log("Pagination not shown because totalPages <= 1");
         return;
     }
+    
+    console.log("Pagination being rendered because totalPages > 1");
     
     const ul = document.createElement("ul");
     ul.classList.add("pagination", "justify-content-center", "mt-4");
@@ -237,7 +310,7 @@ function renderPagination(pagination) {
     ul.appendChild(prevLi);
     
     // Page numbers
-    for (let i = 1; i <= pagination.totalPages; i++) {
+    for (let i = 1; i <= totalPages; i++) {
         const li = document.createElement("li");
         li.classList.add("page-item");
         if (i === pagination.currentPage) {
@@ -269,7 +342,7 @@ function renderPagination(pagination) {
     // Next button
     const nextLi = document.createElement("li");
     nextLi.classList.add("page-item");
-    if (pagination.currentPage === pagination.totalPages) {
+    if (pagination.currentPage === totalPages) {
         nextLi.classList.add("disabled");
     }
     
@@ -279,7 +352,7 @@ function renderPagination(pagination) {
     nextLink.textContent = "Next";
     nextLink.addEventListener("click", async function(e) {
         e.preventDefault();
-        if (pagination.currentPage < pagination.totalPages) {
+        if (pagination.currentPage < totalPages) {
             const status = document.getElementById("statusSelect").value;
             const column = document.querySelector(".sort.active") ? 
                 document.querySelector(".sort.active").getAttribute("data-column") : "client_name";
@@ -422,3 +495,36 @@ document.getElementById("cancelBookingForm").addEventListener("submit", async fu
         console.error(error);
     }
 });
+
+// Add status text color helper function
+function getStatusTextClass(status) {
+    switch (status) {
+        case 'Pending':
+            return 'warning';
+        case 'Confirmed':
+            return 'success';
+        case 'Processing':
+            return 'info';
+        case 'Canceled':
+        case 'Rejected':
+            return 'danger';
+        case 'Completed':
+            return 'primary';
+        default:
+            return 'secondary';
+    }
+}
+
+// Add payment status text color helper function
+function getPaymentStatusTextClass(status) {
+    switch (status) {
+        case 'Paid':
+            return 'success';
+        case 'Partially Paid':
+            return 'warning';
+        case 'Unpaid':
+            return 'danger';
+        default:
+            return 'secondary';
+    }
+}

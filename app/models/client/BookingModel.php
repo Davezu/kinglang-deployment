@@ -196,7 +196,7 @@ class Booking {
     }
 
     public function getAllBookings($user_id, $status, $column, $order, $page = 1, $limit = 10) {
-        $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "all"];
+        $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "processing", "all"];
         $status = in_array($status, $allowed_status) ? $status : "all";
         $status = $status === "all" ? "" : " AND status = '$status'";
 
@@ -269,7 +269,7 @@ class Booking {
 
     public function getAmountPaid($booking_id, $user_id) {
         try {
-            $stmt = $this->conn->prepare("SELECT SUM(amount) AS total_amount FROM payments WHERE booking_id = :booking_id AND user_id = :user_id");
+            $stmt = $this->conn->prepare("SELECT SUM(amount) AS total_amount FROM payments WHERE status = 'Confirmed' AND booking_id = :booking_id AND user_id = :user_id");
             $stmt->execute([":booking_id" => $booking_id, ":user_id" => $user_id]);
             return (float) $stmt->fetchColumn();
         } catch (PDOException $e) {
@@ -312,7 +312,11 @@ class Booking {
                 ":payment_method" => $payment_method,
                 ":proof_of_payment" => $proof_of_payment
             ]);
-            $this->updatePaymentStatus($booking_id);
+            
+            // Update booking status to Processing without changing payment status or balance
+            $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Processing' WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+            
             return true;
         } catch (PDOException $e) {
             return "Database error";
@@ -321,7 +325,9 @@ class Booking {
 
     public function updatePaymentStatus($booking_id) {
         try {
-            $stmt = $this->conn->prepare("SELECT SUM(amount) AS total_paid FROM payments WHERE booking_id = :booking_id");
+            // This method will now only be called after payment confirmation
+            // by the PaymentManagementModel::confirmPayment method
+            $stmt = $this->conn->prepare("SELECT SUM(amount) AS total_paid FROM payments WHERE booking_id = :booking_id AND status = 'Confirmed'");
             $stmt->execute([":booking_id" => $booking_id]);
             $total_paid = $stmt->fetch(PDO::FETCH_ASSOC)["total_paid"] ?? 0;
 
@@ -329,7 +335,13 @@ class Booking {
             $stmt->execute([":booking_id" => $booking_id]);
             $total_cost = $stmt->fetch(PDO::FETCH_ASSOC)["total_cost"] ?? 0;
 
-            $balance = $total_cost - $total_paid;   
+            // Calculate balance with proper rounding to avoid floating point precision issues
+            $balance = round($total_cost - $total_paid, 2);
+            
+            // Ensure balance is never a tiny negative number due to floating point precision
+            if ($balance > -0.1 && $balance < 0) {
+                $balance = 0;
+            }
 
             $new_status = "Unpaid";
             if ($total_paid > 0 && $total_paid < $total_cost) {

@@ -1,0 +1,303 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "GBR Museum, General Trias, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJycYgJ75_vTMRL_ZxnlVy2X4",
+         "reference" : "ChIJycYgJ75_vTMRL_ZxnlVy2X4",
+         "structured_formatting" : 
+         {
+            "main_text" : "GBR Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Trias, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GBR Museum"
+            },
+            {
+               "offset" : 12,
+               "value" : "General Trias"
+            },
+            {
+               "offset" : 27,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "museum",
+            "point_of_interest",
+            "tourist_attraction",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "GBR Village, Crisanto M. De Los Reyes Avenue, Municipality of General Trias, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            },
+            {
+               "length" : 2,
+               "offset" : 46
+            }
+         ],
+         "place_id" : "ChIJFaDUIb5_vTMRDAK3-6zDkaE",
+         "reference" : "ChIJFaDUIb5_vTMRDAK3-6zDkaE",
+         "structured_formatting" : 
+         {
+            "main_text" : "GBR Village",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Crisanto M. De Los Reyes Avenue, Municipality of General Trias, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 33
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GBR Village"
+            },
+            {
+               "offset" : 13,
+               "value" : "Crisanto M. De Los Reyes Avenue"
+            },
+            {
+               "offset" : 46,
+               "value" : "Municipality of General Trias"
+            },
+            {
+               "offset" : 77,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 85,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "GBR Auto Repair Shop, Iligan City, Lanao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            },
+            {
+               "length" : 11,
+               "offset" : 22
+            }
+         ],
+         "place_id" : "ChIJmRtljFB3VTIRuwORKGmCa58",
+         "reference" : "ChIJmRtljFB3VTIRuwORKGmCa58",
+         "structured_formatting" : 
+         {
+            "main_text" : "GBR Auto Repair Shop",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Iligan City, Lanao del Norte, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GBR Auto Repair Shop"
+            },
+            {
+               "offset" : 22,
+               "value" : "Iligan City"
+            },
+            {
+               "offset" : 35,
+               "value" : "Lanao del Norte"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "car_repair",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "GBR clothing store, Indang, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 20
+            }
+         ],
+         "place_id" : "ChIJkQoN60eDvTMR9e3EcDj94aQ",
+         "reference" : "ChIJkQoN60eDvTMR9e3EcDj94aQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "GBR clothing store",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Indang, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GBR clothing store"
+            },
+            {
+               "offset" : 20,
+               "value" : "Indang"
+            },
+            {
+               "offset" : 28,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "clothing_store",
+            "store",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Gbr Cargo Transport Services, Romero, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            },
+            {
+               "length" : 9,
+               "offset" : 38
+            }
+         ],
+         "place_id" : "ChIJGT13RpzOlzMRZ49TqyZhWps",
+         "reference" : "ChIJGT13RpzOlzMRZ49TqyZhWps",
+         "structured_formatting" : 
+         {
+            "main_text" : "Gbr Cargo Transport Services",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Romero, Parañaque, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 8
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Gbr Cargo Transport Services"
+            },
+            {
+               "offset" : 30,
+               "value" : "Romero"
+            },
+            {
+               "offset" : 38,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 49,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}
