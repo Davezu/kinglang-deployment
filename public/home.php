@@ -1,7 +1,6 @@
 <?php
-// session_start();
-
-if (isset($_SESSION["user_id"])) {
+// Use our common authentication helper function
+if (is_client_authenticated()) {
     header("Location: /home/booking-requests");
     exit();
 }   

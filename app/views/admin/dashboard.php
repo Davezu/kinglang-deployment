@@ -1,3 +1,6 @@
+<?php
+require_admin_auth(); // Use helper function
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

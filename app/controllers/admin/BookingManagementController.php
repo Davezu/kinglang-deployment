@@ -200,9 +200,19 @@ class BookingManagementController {
     public function paymentMethodChart() {
         header("Content-Type: application/json");
 
-        $payment_methods = $this->bookingModel->paymentMethodChart();
-
-        echo json_encode($payment_methods);
+        try {
+            $payment_methods = $this->bookingModel->paymentMethodChart();
+            
+            // Check if we received an error message instead of the expected data
+            if (is_string($payment_methods) && strpos($payment_methods, "Database error") !== false) {
+                echo json_encode(["error" => $payment_methods]);
+                return;
+            }
+            
+            echo json_encode($payment_methods);
+        } catch (Exception $e) {
+            echo json_encode(["error" => "Failed to retrieve payment method data: " . $e->getMessage()]);
+        }
     }
 
     public function monthlyBookingTrends() {

@@ -8,10 +8,10 @@ class ReportController {
         $this->reportModel = new ReportModel();
         
         // Check if the user is logged in and is an admin
-        if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
-            header("Location: /admin/login");
-            exit();
-        }
+        // if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
+        //     header("Location: /admin/login");
+        //     exit();
+        // }
     }
     
     /**

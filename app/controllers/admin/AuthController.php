@@ -24,9 +24,6 @@ class AuthController {
         $email = trim($data["email"]);
         $password = trim($data["password"]);
 
-        $_SESSION["email"] = $email;
-        $_SESSION["password"] = $password;
-
         if (empty($email) || empty($password)) {
             echo json_encode(["success" => false, "message" => "Please fill out all fields"]);
             return;
@@ -47,9 +44,12 @@ class AuthController {
     }
 
     public function logout() {
-        session_start();
+        // Only unset admin-specific session variables
         unset($_SESSION["role"]);
         unset($_SESSION["admin_name"]);
+        // Don't destroy the entire session as it affects client login
+        // $_SESSION = array();
+        // session_destroy();
         header("Location: /admin/login");
         exit();
     }

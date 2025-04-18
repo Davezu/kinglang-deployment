@@ -1,10 +1,5 @@
 <?php 
-
-if (!isset($_SESSION["user_id"])) {    
-    header("Location: /home");
-    exit();
-}
-
+require_client_auth(); // Use helper function
 ?>
 <!DOCTYPE html>
 <html lang="en">

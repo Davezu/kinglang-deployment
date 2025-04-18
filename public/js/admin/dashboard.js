@@ -82,49 +82,80 @@ async function getPaymentMethodData() {
         });
 
         console.log("Payment Method Data:", response);
+        
+        // Check if the response contains an error message
+        if (response && response.error) {
+            console.error("Error from server:", response.error);
+            return null;
+        }
+        
         return response;
     } catch (error) {
         console.error("Error fetching data: ", error);
+        return null;
     }
 }
 
 async function renderPaymentMethodChart() {
-    const paymentMethodData = await getPaymentMethodData();
-    
-    if (!paymentMethodData) {
-        console.error("Invalid payment method data received:", paymentMethodData);
-        return;
-    }
+    try {
+        const paymentMethodData = await getPaymentMethodData();
+        
+        console.log("Original Payment Method Data:", paymentMethodData);
+        
+        if (!paymentMethodData || !paymentMethodData.labels || !paymentMethodData.counts) {
+            console.error("Invalid payment method data received:", paymentMethodData);
+            displayChartError("paymentMethodChart", "Unable to load payment method data. Please try again later.");
+            return;
+        }
+        
+        // If there's no data, show a message
+        if (paymentMethodData.labels.length === 0 || paymentMethodData.counts.every(count => count === 0)) {
+            displayChartError("paymentMethodChart", "No payment data available yet.");
+            return;
+        }
 
-    const paymentMethod = Object.keys(paymentMethodData);
-    const numberOfUse = Object.values(paymentMethodData);
+        const ctx = $("#paymentMethodChart")[0].getContext("2d");
 
-    const ctx = $("#paymentMethodChart")[0].getContext("2d");
-
-    new Chart(ctx, {
-        type: "doughnut",
-        data: {
-            labels: paymentMethod,
-            datasets: [{
-                label: "Payment Methods",
-                data: numberOfUse,
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
-                ],
-                hoverOffset: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
+        new Chart(ctx, {
+            type: "doughnut",
+            data: {
+                labels: paymentMethodData.labels,
+                datasets: [{
+                    label: "Payment Methods",
+                    data: paymentMethodData.counts,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.raw;
+                                const total = context.dataset.data.reduce((acc, val) => acc + val, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                const amount = paymentMethodData.amounts[context.dataIndex];
+                                return `${context.label}: ${value} (${percentage}%) - ₱${amount.toLocaleString()}`;
+                            }
+                        }
+                    }
                 }
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error("Error rendering payment method chart:", error);
+        displayChartError("paymentMethodChart", "Error rendering chart. Please try again.");
+    }
 }
 
 // Monthly Booking Trends Chart
@@ -144,44 +175,112 @@ async function getMonthlyTrendsData() {
 }
 
 async function renderMonthlyTrendsChart() {
-    const trendsData = await getMonthlyTrendsData();
-    
-    if (!trendsData || !trendsData.labels || !trendsData.data) {
-        console.error("Invalid monthly trends data received:", trendsData);
-        return;
-    }
-    
-    const ctx = $("#monthlyTrendsChart")[0].getContext("2d");
-    
-    new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: trendsData.labels,
-            datasets: [{
-                label: "Monthly Bookings",
-                data: trendsData.data,
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                }
+    try {
+        const trendsData = await getMonthlyTrendsData();
+        
+        console.log("Monthly Trends Data:", trendsData);
+        
+        if (!trendsData || !trendsData.labels || !trendsData.counts) {
+            console.error("Invalid monthly trends data received:", trendsData);
+            displayChartError("monthlyTrendsChart", "Unable to load monthly trend data. Please try again later.");
+            return;
+        }
+        
+        const ctx = $("#monthlyTrendsChart")[0].getContext("2d");
+        
+        new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: trendsData.labels,
+                datasets: [
+                    {
+                        label: "Bookings",
+                        data: trendsData.counts,
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: "Revenue",
+                        data: trendsData.revenues,
+                        fill: false,
+                        borderColor: 'rgb(255, 99, 132)',
+                        tension: 0.1,
+                        yAxisID: 'y1'
+                    }
+                ]
             },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        precision: 0
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: `Monthly Bookings (${trendsData.year})`,
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.dataset.label;
+                                const value = context.raw;
+                                if (label === "Revenue") {
+                                    return `${label}: ₱${value.toLocaleString()}`;
+                                }
+                                return `${label}: ${value}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Number of Bookings'
+                        },
+                        ticks: {
+                            precision: 0
+                        }
+                    },
+                    y1: {
+                        beginAtZero: true,
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Revenue (₱)'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '₱' + value.toLocaleString();
+                            }
+                        }
                     }
                 }
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error("Error rendering monthly trends chart:", error);
+        displayChartError("monthlyTrendsChart", "Error rendering chart. Please try again.");
+    }
 }
 
 // Top Destinations Chart
@@ -204,9 +303,17 @@ async function renderTopDestinationsChart() {
     try {
         const destinationsData = await getTopDestinationsData();
         
-        if (!destinationsData || !destinationsData.labels || !destinationsData.data) {
+        console.log("Top Destinations Data:", destinationsData);
+        
+        if (!destinationsData || !destinationsData.labels || !destinationsData.counts) {
             console.error("Invalid destination data received:", destinationsData);
             displayChartError("destinationsChart", "Unable to load destination data. Please try again later.");
+            return;
+        }
+        
+        // Check if there's real data
+        if (destinationsData.labels.length === 0 || destinationsData.labels[0] === 'No Data Available') {
+            displayChartError("destinationsChart", "No destination data available yet.");
             return;
         }
         
@@ -217,7 +324,7 @@ async function renderTopDestinationsChart() {
             data: {
                 labels: destinationsData.labels,
                 datasets: [{
-                    data: destinationsData.data,
+                    data: destinationsData.counts,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.7)',
                         'rgba(54, 162, 235, 0.7)',
@@ -268,7 +375,16 @@ async function renderTopDestinationsChart() {
                     tooltip: {
                         callbacks: {
                             label: function(context) {
-                                return `${context.parsed.r} bookings (${Math.round(context.parsed.r / context.dataset.data.reduce((a, b) => a + b, 0) * 100)}%)`;
+                                const index = context.dataIndex;
+                                const count = destinationsData.counts[index];
+                                const revenue = destinationsData.revenues[index];
+                                const totalBookings = destinationsData.counts.reduce((a, b) => a + b, 0);
+                                const percentage = Math.round((count / totalBookings) * 100);
+                                
+                                return [
+                                    `Bookings: ${count} (${percentage}%)`,
+                                    `Revenue: ₱${revenue.toLocaleString()}`
+                                ];
                             }
                         }
                     },
@@ -310,50 +426,84 @@ async function getBookingStatusData() {
 }
 
 async function renderBookingStatusChart() {
-    const statusData = await getBookingStatusData();
-    
-    if (!statusData) {
-        console.error("Invalid booking status data received:", statusData);
-        return;
-    }
-    
-    const statuses = Object.keys(statusData);
-    const counts = Object.values(statusData);
-    
-    const ctx = $("#bookingStatusChart")[0].getContext("2d");
-    
-    new Chart(ctx, {
-        type: "pie",
-        data: {
-            labels: statuses,
-            datasets: [{
-                data: counts,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(255, 206, 86, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(153, 102, 255, 0.7)'
-                ],
-                borderColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 206, 86)',
-                    'rgb(75, 192, 192)',
-                    'rgb(153, 102, 255)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom'
+    try {
+        const statusData = await getBookingStatusData();
+        
+        console.log("Booking Status Data:", statusData);
+        
+        if (!statusData || !statusData.labels || !statusData.counts) {
+            console.error("Invalid booking status data received:", statusData);
+            displayChartError("bookingStatusChart", "Unable to load booking status data. Please try again later.");
+            return;
+        }
+        
+        if (statusData.labels.length === 0) {
+            displayChartError("bookingStatusChart", "No booking status data available yet.");
+            return;
+        }
+        
+        const ctx = $("#bookingStatusChart")[0].getContext("2d");
+        
+        new Chart(ctx, {
+            type: "pie",
+            data: {
+                labels: statusData.labels,
+                datasets: [{
+                    data: statusData.counts,
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.7)', // Confirmed
+                        'rgba(255, 206, 86, 0.7)', // Pending
+                        'rgba(75, 192, 192, 0.7)', // Completed
+                        'rgba(255, 99, 132, 0.7)', // Canceled
+                        'rgba(153, 102, 255, 0.7)' // Rejected
+                    ],
+                    borderColor: [
+                        'rgb(54, 162, 235)', // Confirmed
+                        'rgb(255, 206, 86)', // Pending
+                        'rgb(75, 192, 192)', // Completed
+                        'rgb(255, 99, 132)', // Canceled
+                        'rgb(153, 102, 255)' // Rejected
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label;
+                                const value = context.raw;
+                                const totalBookings = statusData.counts.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / totalBookings) * 100).toFixed(1);
+                                const totalValue = statusData.values[context.dataIndex];
+                                
+                                return [
+                                    `${label}: ${value} (${percentage}%)`,
+                                    `Total Value: ₱${totalValue.toLocaleString()}`
+                                ];
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Booking Status Distribution',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    }
                 }
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error("Error rendering booking status chart:", error);
+        displayChartError("bookingStatusChart", "Error rendering chart. Please try again.");
+    }
 }
 
 // Revenue Trends Chart
@@ -373,51 +523,121 @@ async function getRevenueTrendsData() {
 }
 
 async function renderRevenueTrendsChart() {
-    const revenueData = await getRevenueTrendsData();
-    
-    if (!revenueData || !revenueData.labels || !revenueData.data) {
-        console.error("Invalid revenue trends data received:", revenueData);
-        return;
-    }
-    
-    const ctx = $("#revenueTrendsChart")[0].getContext("2d");
-    
-    new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: revenueData.labels,
-            datasets: [{
-                label: "Revenue",
-                data: revenueData.data,
-                backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                borderColor: 'rgb(75, 192, 192)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
-                }
+    try {
+        const revenueData = await getRevenueTrendsData();
+        
+        console.log("Revenue Trends Data:", revenueData);
+        
+        if (!revenueData || !revenueData.labels || !revenueData.revenues) {
+            console.error("Invalid revenue trends data received:", revenueData);
+            displayChartError("revenueTrendsChart", "Unable to load revenue trend data. Please try again later.");
+            return;
+        }
+        
+        if (revenueData.labels.length === 0) {
+            displayChartError("revenueTrendsChart", "No revenue data available yet.");
+            return;
+        }
+        
+        const ctx = $("#revenueTrendsChart")[0].getContext("2d");
+        
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: revenueData.labels,
+                datasets: [
+                    {
+                        type: 'bar',
+                        label: "Revenue",
+                        data: revenueData.revenues,
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgb(75, 192, 192)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    },
+                    {
+                        type: 'line',
+                        label: "Bookings",
+                        data: revenueData.counts,
+                        fill: false,
+                        borderColor: 'rgb(255, 99, 132)',
+                        tension: 0.1,
+                        borderWidth: 2,
+                        pointStyle: 'circle',
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                        yAxisID: 'y1'
+                    }
+                ]
             },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function(value) {
-                            return '₱' + value.toLocaleString();
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Revenue & Booking Trends',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.dataset.label;
+                                const value = context.raw;
+                                if (label === "Revenue") {
+                                    return `${label}: ₱${value.toLocaleString()}`;
+                                }
+                                return `${label}: ${value}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Revenue (₱)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '₱' + value.toLocaleString();
+                            }
+                        }
+                    },
+                    y1: {
+                        beginAtZero: true,
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Number of Bookings'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        ticks: {
+                            precision: 0
                         }
                     }
                 }
-            },
-            tooltips: {
-                callbacks: {
-                    label: function(tooltipItem) {
-                        return '₱' + tooltipItem.raw.toLocaleString();
-                    }
-                }
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error("Error rendering revenue trends chart:", error);
+        displayChartError("revenueTrendsChart", "Error rendering chart. Please try again.");
+    }
 }

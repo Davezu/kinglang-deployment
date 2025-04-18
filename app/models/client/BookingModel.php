@@ -335,7 +335,7 @@ class Booking {
             $stmt->execute([":booking_id" => $booking_id]);
             $total_cost = $stmt->fetch(PDO::FETCH_ASSOC)["total_cost"] ?? 0;
 
-            // Calculate balance with proper rounding to avoid floating point precision issues
+            // Calculate balance with proper rounding to avoid floating point precision is  sues
             $balance = round($total_cost - $total_paid, 2);
             
             // Ensure balance is never a tiny negative number due to floating point precision

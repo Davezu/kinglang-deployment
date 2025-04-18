@@ -1,5 +1,6 @@
 <?php
-if (isset($_SESSION["user_id"])) {
+// Redirect if already logged in
+if (is_client_authenticated()) {
     header("Location: /home/booking-requests");
     exit();
 }

@@ -1,4 +1,9 @@
 <?php
+// Redirect if already logged in
+if (is_admin_authenticated()) {
+    header("Location: /admin/dashboard");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

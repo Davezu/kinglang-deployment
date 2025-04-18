@@ -119,10 +119,13 @@ class ClientAuthController {
     }
 
     public function logout() {
-        session_start();
+        // Only unset client-specific session variables
         unset($_SESSION["user_id"]);
         unset($_SESSION["email"]);
         unset($_SESSION["client_name"]);
+        // Don't destroy the entire session as it affects admin login
+        // $_SESSION = array();
+        // session_destroy();
         header("Location: /home");
         exit();
     }
