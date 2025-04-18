@@ -198,7 +198,7 @@ async function renderMonthlyTrendsChart() {
                         data: trendsData.counts,
                         fill: false,
                         borderColor: 'rgb(75, 192, 192)',
-                        tension: 0.1,
+                        tension: 0.4,
                         yAxisID: 'y'
                     },
                     {
@@ -206,7 +206,7 @@ async function renderMonthlyTrendsChart() {
                         data: trendsData.revenues,
                         fill: false,
                         borderColor: 'rgb(255, 99, 132)',
-                        tension: 0.1,
+                        tension: 0.4,
                         yAxisID: 'y1'
                     }
                 ]
@@ -561,7 +561,7 @@ async function renderRevenueTrendsChart() {
                         data: revenueData.counts,
                         fill: false,
                         borderColor: 'rgb(255, 99, 132)',
-                        tension: 0.1,
+                        tension: 0.4,
                         borderWidth: 2,
                         pointStyle: 'circle',
                         pointRadius: 5,

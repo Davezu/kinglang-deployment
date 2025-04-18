@@ -1,0 +1,264 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "GBR Museum, General Trias, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJycYgJ75_vTMRL_ZxnlVy2X4",
+         "reference" : "ChIJycYgJ75_vTMRL_ZxnlVy2X4",
+         "structured_formatting" : 
+         {
+            "main_text" : "GBR Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Trias, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GBR Museum"
+            },
+            {
+               "offset" : 12,
+               "value" : "General Trias"
+            },
+            {
+               "offset" : 27,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "tourist_attraction",
+            "museum",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "GBR BUSINESS CENTER, Dolores Intersection, San Fernando, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJrVjz2zL3ljMR5Y2XrwNOnL8",
+         "reference" : "ChIJrVjz2zL3ljMR5Y2XrwNOnL8",
+         "structured_formatting" : 
+         {
+            "main_text" : "GBR BUSINESS CENTER",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dolores Intersection, San Fernando, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GBR BUSINESS CENTER"
+            },
+            {
+               "offset" : 21,
+               "value" : "Dolores Intersection"
+            },
+            {
+               "offset" : 43,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 57,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "GBrews Cafe', Saint Peter, Meycauayan, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ43koGvazlzMROsj2p9vbygQ",
+         "reference" : "ChIJ43koGvazlzMROsj2p9vbygQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "GBrews Cafe'",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Saint Peter, Meycauayan, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GBrews Cafe'"
+            },
+            {
+               "offset" : 14,
+               "value" : "Saint Peter"
+            },
+            {
+               "offset" : 27,
+               "value" : "Meycauayan"
+            },
+            {
+               "offset" : 39,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "food",
+            "store",
+            "point_of_interest",
+            "cafe"
+         ]
+      },
+      {
+         "description" : "GBrands Moto Gears- by Gufi Group, Santo Tomas, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJt2kCfCpnvTMRr04-dhWfgsw",
+         "reference" : "ChIJt2kCfCpnvTMRr04-dhWfgsw",
+         "structured_formatting" : 
+         {
+            "main_text" : "GBrands Moto Gears- by Gufi Group",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santo Tomas, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GBrands Moto Gears- by Gufi Group"
+            },
+            {
+               "offset" : 35,
+               "value" : "Santo Tomas"
+            },
+            {
+               "offset" : 48,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "store",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "GBR Village, Crisanto M. De Los Reyes Avenue, General Trias, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJFaDUIb5_vTMRDAK3-6zDkaE",
+         "reference" : "ChIJFaDUIb5_vTMRDAK3-6zDkaE",
+         "structured_formatting" : 
+         {
+            "main_text" : "GBR Village",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Crisanto M. De Los Reyes Avenue, General Trias, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GBR Village"
+            },
+            {
+               "offset" : 13,
+               "value" : "Crisanto M. De Los Reyes Avenue"
+            },
+            {
+               "offset" : 46,
+               "value" : "General Trias"
+            },
+            {
+               "offset" : 61,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -14,5 +14,11 @@ session_start();
 // Optional: Regenerate session ID on each request to prevent session fixation
 // session_regenerate_id();
 
+// Include database configuration
+require_once __DIR__ . "/config/database.php";
+
+// Include settings helper
+require_once __DIR__ . "/config/settings.php";
+
 require_once __DIR__ . "/routes/web.php";   
 ?>

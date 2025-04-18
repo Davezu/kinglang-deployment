@@ -28,9 +28,26 @@ let limit = 10; // Number of records per page
 document.addEventListener("DOMContentLoaded", async function () {
     // Get the initial limit value from the selector
     limit = parseInt(document.getElementById("limitSelect").value);
-    const status = document.getElementById("statusSelect").value;
+    const statusSelect = document.getElementById("statusSelect");
+    let status = statusSelect.value;
     
-    const result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+    // Get initial data with pending status
+    let result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+    
+    // If no pending bookings, try confirmed bookings
+    if (result.bookings.length === 0 && status === "pending") {
+        status = "confirmed";
+        statusSelect.value = status;
+        result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+        
+        // If no confirmed bookings either, use "all"
+        if (result.bookings.length === 0) {
+            status = "all";
+            statusSelect.value = status;
+            result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+        }
+    }
+    
     renderBookings(result.bookings);
     renderPagination(result.pagination);
 

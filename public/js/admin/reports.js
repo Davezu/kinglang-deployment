@@ -226,6 +226,7 @@ function renderMonthlyTrendsChart(data) {
                     borderColor: 'rgba(0, 123, 255, 1)',
                     borderWidth: 2,
                     fill: true,
+                    tension: 0.4,
                     yAxisID: 'y1'
                 }
             ]

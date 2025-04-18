@@ -175,7 +175,7 @@
                     <i class="bi bi-journals fs-5"></i>
                     <span class="menu-text">Bookings</span>
                 </a>
-                <a href="#" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'admin/clients' ? 'active' : ''; ?>">
+                <a href="/admin/users" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'users' ? 'active' : ''; ?>">
                     <i class="bi bi-people"></i>
                     <span class="menu-text">Clients</span>
                 </a>
@@ -187,7 +187,7 @@
                     <i class="bi bi-clipboard-data"></i>
                     <span class="menu-text">Reports</span>  
                 </a>
-                <a href="#" class="sidebar-link">
+                <a href="/admin/settings" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'settings' ? 'active' : ''; ?>">
                     <i class="bi bi-gear"></i>
                     <span class="menu-text">Settings</span>
                 </a>

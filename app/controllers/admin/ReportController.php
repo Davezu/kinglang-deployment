@@ -26,8 +26,12 @@ class ReportController {
      */
     public function getBookingSummary() {
         try {
-            $startDate = isset($_GET['start_date']) ? $_GET['start_date'] : null;
-            $endDate = isset($_GET['end_date']) ? $_GET['end_date'] : null;
+            // Read JSON input from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
             
             $result = $this->reportModel->getBookingSummary($startDate, $endDate);
             
@@ -45,7 +49,11 @@ class ReportController {
      */
     public function getMonthlyBookingTrend() {
         try {
-            $year = isset($_GET['year']) ? intval($_GET['year']) : null;
+            // Read JSON input from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $year = isset($data['year']) ? intval($data['year']) : null;
             
             $result = $this->reportModel->getMonthlyBookingTrend($year);
             
@@ -63,9 +71,13 @@ class ReportController {
      */
     public function getTopDestinations() {
         try {
-            $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 10;
-            $startDate = isset($_GET['start_date']) ? $_GET['start_date'] : null;
-            $endDate = isset($_GET['end_date']) ? $_GET['end_date'] : null;
+            // Read JSON input from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $limit = isset($data['limit']) ? intval($data['limit']) : 10;
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
             
             $result = $this->reportModel->getTopDestinations($limit, $startDate, $endDate);
             
@@ -83,8 +95,12 @@ class ReportController {
      */
     public function getPaymentMethodDistribution() {
         try {
-            $startDate = isset($_GET['start_date']) ? $_GET['start_date'] : null;
-            $endDate = isset($_GET['end_date']) ? $_GET['end_date'] : null;
+            // Read JSON input from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
             
             $result = $this->reportModel->getPaymentMethodDistribution($startDate, $endDate);
             
@@ -102,8 +118,12 @@ class ReportController {
      */
     public function getCancellationReport() {
         try {
-            $startDate = isset($_GET['start_date']) ? $_GET['start_date'] : null;
-            $endDate = isset($_GET['end_date']) ? $_GET['end_date'] : null;
+            // Read JSON input from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
             
             $result = $this->reportModel->getCancellationReport($startDate, $endDate);
             
@@ -121,16 +141,20 @@ class ReportController {
      */
     public function getDetailedBookingList() {
         try {
+            // Read JSON input from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
             $filters = [
-                'start_date' => isset($_GET['start_date']) ? $_GET['start_date'] : null,
-                'end_date' => isset($_GET['end_date']) ? $_GET['end_date'] : null,
-                'status' => isset($_GET['status']) ? $_GET['status'] : null,
-                'payment_status' => isset($_GET['payment_status']) ? $_GET['payment_status'] : null,
-                'search' => isset($_GET['search']) ? $_GET['search'] : null
+                'start_date' => isset($data['start_date']) ? $data['start_date'] : null,
+                'end_date' => isset($data['end_date']) ? $data['end_date'] : null,
+                'status' => isset($data['status']) ? $data['status'] : null,
+                'payment_status' => isset($data['payment_status']) ? $data['payment_status'] : null,
+                'search' => isset($data['search']) ? $data['search'] : null
             ];
             
-            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-            $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;
+            $page = isset($data['page']) ? intval($data['page']) : 1;
+            $limit = isset($data['limit']) ? intval($data['limit']) : 20;
             
             $result = $this->reportModel->getDetailedBookingList($filters, $page, $limit);
             
@@ -148,8 +172,12 @@ class ReportController {
      */
     public function getFinancialSummary() {
         try {
-            $year = isset($_GET['year']) ? intval($_GET['year']) : null;
-            $month = isset($_GET['month']) ? intval($_GET['month']) : null;
+            // Read JSON input from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $year = isset($data['year']) ? intval($data['year']) : null;
+            $month = isset($data['month']) ? intval($data['month']) : null;
             
             $result = $this->reportModel->getFinancialSummary($year, $month);
             

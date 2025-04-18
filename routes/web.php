@@ -22,6 +22,14 @@ $paymentManagementController = new PaymentManagementController();
 require_once __DIR__ . "/../app/controllers/admin/ReportController.php";
 $reportController = new ReportController();
 
+// amdin user management
+require_once __DIR__ . "/../app/controllers/admin/UserManagementController.php";
+$userManagementController = new UserManagementController();
+
+// admin settings
+require_once __DIR__ . "/../app/controllers/admin/SettingsController.php";
+$settingsController = new SettingsController();
+
 
 $request = $_SERVER["REQUEST_URI"];
 $segments = explode("/", trim($request, "/"));
@@ -203,7 +211,31 @@ switch ($request) {
     case "/admin/get-booking":
         $adminBookingController->getBooking();
         break;
+
+    case "/admin/get-users":
+        $userManagementController->getUserListing();
+        break;
         
+    case "/admin/users":
+        $userManagementController->showUserManagement();
+        break;
+        
+    case "/admin/add-user":
+        $userManagementController->addUser();
+        break;
+        
+    case "/admin/update-user":
+        $userManagementController->updateUser();
+        break;
+        
+    case "/admin/delete-user":
+        $userManagementController->deleteUser();
+        break;
+
+    case "/admin/get-user-details":
+        $userManagementController->getUserDetails();
+        break;
+
     // Payment Management Routes
     case "/admin/payment-management":
         $paymentManagementController->index();
@@ -245,6 +277,26 @@ switch ($request) {
         break;
     case "/admin/reports/export-bookings":
         $reportController->getDetailedBookingList(); // Reuse the same endpoint for CSV export
+        break;
+
+    // Settings Module Routes
+    case "/admin/settings":
+        $settingsController->index();
+        break;
+    case "/admin/get-all-settings":
+        $settingsController->getAllSettings();
+        break;
+    case "/admin/get-settings-by-group":
+        $settingsController->getSettingsByGroup();
+        break;
+    case "/admin/update-settings":
+        $settingsController->updateSettings();
+        break;
+    case "/admin/add-setting":
+        $settingsController->addSetting();
+        break;
+    case "/admin/delete-setting":
+        $settingsController->deleteSetting();
         break;
 
     case "/favicon.ico":

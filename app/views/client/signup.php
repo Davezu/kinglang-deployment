@@ -16,6 +16,7 @@ require_once __DIR__ . '/../../controllers/client/AuthController.php';
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="../../../public/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../../public/css/login-signup.css">
+    <link rel="stylesheet" href="../../../public/css/slideshow.css">
     <title>Sign Up</title>
 </head>
 <body>
@@ -35,10 +36,6 @@ require_once __DIR__ . '/../../controllers/client/AuthController.php';
     </div>
 
     <div class="content container-fluid d-flex p-0 m-0">
-        <div class="image-container">   
-            <img src="../../../public/images/bus3.jpg" alt="" class="image">
-            <div class="overlay"><p class="overlay-text lh-sm fw-bolder">YOUR ON-THE-GO TOURIST BUS RENTAL!</p></div>
-        </div>
         <div class="form-container d-flex flex-column justify-content-center px-xl-4">
             <form action="" method="" id="signupForm" class="d-flex flex-column px-xl-5 mx-xl-5 px-md-3 mx-md-3 px-sm-1 mx-sm-1">
                 <div class="mb-3">
@@ -82,9 +79,27 @@ require_once __DIR__ . '/../../controllers/client/AuthController.php';
                 </div>
             </form>  
         </div>
+        <div class="image-container">   
+            <div class="slideshow-container">
+                <div class="slideshow-slide">
+                    <img src="../../../public/images/bus3.jpg" alt="Bus Image 1">
+                    <div class="slideshow-text">YOUR ON-THE-GO TOURIST BUS RENTAL!</div>
+                </div>
+                <div class="slideshow-slide">
+                    <img src="../../../public/images/slideshow/slide2.jpg" alt="Bus Image 2">
+                    <div class="slideshow-text">EXPERIENCE COMFORT AND LUXURY</div>
+                </div>
+                <div class="slideshow-slide">
+                    <img src="../../../public/images/slideshow/slide3.jpg" alt="Bus Image 3">
+                    <div class="slideshow-text">TRAVEL WITH STYLE AND SAFETY</div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../../../public/js/slideshow.js"></script>
+    <script src="../../../public/js/page-transition.js"></script>
     <script src="../../../public/js/client/signup.js"></script>
 </body>
 </html>

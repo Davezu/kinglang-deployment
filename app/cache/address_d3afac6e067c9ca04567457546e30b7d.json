@@ -1,0 +1,245 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJCV0X-V3OlzMR5UIoC7sbBC0",
+         "reference" : "ChIJCV0X-V3OlzMR5UIoC7sbBC0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Parañaque",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 11,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Paranaque City Hall, San Antonio Avenue, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-xr5BlDOlzMRJXgY-2mOcH4",
+         "reference" : "ChIJ-xr5BlDOlzMRJXgY-2mOcH4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paranaque City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Antonio Avenue, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paranaque City Hall"
+            },
+            {
+               "offset" : 21,
+               "value" : "San Antonio Avenue"
+            },
+            {
+               "offset" : 41,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "establishment",
+            "point_of_interest",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Parang, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJE_YQj5C5lzMR-eoEwW6SxlE",
+         "reference" : "ChIJE_YQj5C5lzMR-eoEwW6SxlE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Parang",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Parang"
+            },
+            {
+               "offset" : 8,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 18,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "geocode",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Paracale, Camarines Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv018RSO_mDMRBCVznsKCs8g",
+         "reference" : "ChIJv018RSO_mDMRBCVznsKCs8g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paracale",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Camarines Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paracale"
+            },
+            {
+               "offset" : 10,
+               "value" : "Camarines Norte"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Parang, Maguindanao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJOwr55OwXVjIRxpWwKWgieFg",
+         "reference" : "ChIJOwr55OwXVjIRxpWwKWgieFg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Parang",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maguindanao, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Parang"
+            },
+            {
+               "offset" : 8,
+               "value" : "Maguindanao"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -30,12 +30,16 @@
 /* content */
 .content {
     height: 93vh;
+    overflow: hidden; /* Prevent scrollbars during animation */
+    position: relative;
 }
 
 .content .image-container {
     width: 60%;
     height: 100%;     
-    position: relative;  
+    position: relative;
+    transition: transform 0.8s ease-in-out;
+    z-index: 10; /* Higher z-index to stay on top during animations */
 }
 
 .image {
@@ -47,6 +51,64 @@
 .form-container {
     width: 40%;
     height: 100%;
+    transition: transform 0.8s ease-in-out;
+    z-index: 5; /* Lower z-index to stay behind during animations */
+}
+
+/* Initial positions for page load animations */
+.content.animate-in .form-container {
+    transform: translateX(-100%);
+    animation: slideInRight 0.8s forwards;
+}
+
+.content.animate-in .image-container {
+    transform: translateX(100%);
+    animation: slideInLeft 0.8s forwards;
+}
+
+/* Animation for Login to Signup transition */
+.login-to-signup .form-container {
+    animation: swapToRight 0.8s forwards;
+}
+
+.login-to-signup .image-container {
+    animation: swapToLeft 0.8s forwards;
+}
+
+/* Animation for Signup to Login transition */
+.signup-to-login .form-container {
+    animation: swapToLeft 0.8s forwards;
+}
+
+.signup-to-login .image-container {
+    animation: swapToRight 0.8s forwards;
+}
+
+/* Animation keyframes */
+@keyframes slideInRight {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes swapToRight {
+    0% { transform: translateX(0); z-index: 5; }
+    25% { z-index: 5; }
+    50% { transform: translateX(-100%); z-index: 5; }
+    51% { transform: translateX(100%); z-index: 5; }
+    100% { transform: translateX(0); z-index: 5; }
+}
+
+@keyframes swapToLeft {
+    0% { transform: translateX(0); z-index: 10; }
+    25% { z-index: 10; }
+    50% { transform: translateX(100%); z-index: 10; }
+    51% { transform: translateX(-100%); z-index: 10; }
+    100% { transform: translateX(0); z-index: 10; }
 }
 
 .form-container button {
@@ -69,4 +131,56 @@
     width: 90%;
     bottom: 5%;
     left: 5%;
+}
+
+/* Media queries */
+@media (max-width: 992px) {
+    .content {
+        flex-wrap: wrap;
+    }
+
+    .content .image-container,
+    .form-container {
+        width: 100%;
+    }
+
+    .content .image-container {
+        height: 40%;
+    }
+
+    .overlay .overlay-text {
+        font-size: 2.5rem;
+    }
+
+    .form-container {
+        height: 60%;
+        overflow-y: auto;
+    }
+    
+    /* Adjust animations for mobile */
+    @keyframes slideInRight {
+        from { transform: translateY(-100%); }
+        to { transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+    }
+    
+    @keyframes swapToRight {
+        0% { transform: translateY(0); z-index: 5; }
+        25% { z-index: 5; }
+        50% { transform: translateY(-100%); z-index: 5; }
+        51% { transform: translateY(100%); z-index: 5; }
+        100% { transform: translateY(0); z-index: 5; }
+    }
+
+    @keyframes swapToLeft {
+        0% { transform: translateY(0); z-index: 10; }
+        25% { z-index: 10; }
+        50% { transform: translateY(100%); z-index: 10; }
+        51% { transform: translateY(-100%); z-index: 10; }
+        100% { transform: translateY(0); z-index: 10; }
+    }
 }
