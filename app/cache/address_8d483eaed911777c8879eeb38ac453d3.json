@@ -1,0 +1,252 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Sto. Niño, Cebu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJjwOws-ObqTMRH8_TNEmZhDg",
+         "reference" : "ChIJjwOws-ObqTMRH8_TNEmZhDg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sto. Niño",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cebu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sto. Niño"
+            },
+            {
+               "offset" : 11,
+               "value" : "Cebu City"
+            },
+            {
+               "offset" : 22,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 28,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "geocode",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Sto. Domingo, Quezon Avenue, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZyfdAEC2lzMRjdk72SmJsyw",
+         "reference" : "ChIJZyfdAEC2lzMRjdk72SmJsyw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sto. Domingo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon Avenue, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sto. Domingo"
+            },
+            {
+               "offset" : 14,
+               "value" : "Quezon Avenue"
+            },
+            {
+               "offset" : 29,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "place_of_worship",
+            "church",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Santo Tomas, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJXFRfrJovTMRjGJ0cjtbPb8",
+         "reference" : "ChIJJXFRfrJovTMRjGJ0cjtbPb8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Santo Tomas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Santo Tomas"
+            },
+            {
+               "offset" : 13,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Sto. Tomas Public Market, Asian Highway 26, Santo Tomas, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJyQMB7ZRlvTMR3YZEh-93eNw",
+         "reference" : "ChIJyQMB7ZRlvTMR3YZEh-93eNw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sto. Tomas Public Market",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Asian Highway 26, Santo Tomas, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sto. Tomas Public Market"
+            },
+            {
+               "offset" : 26,
+               "value" : "Asian Highway 26"
+            },
+            {
+               "offset" : 44,
+               "value" : "Santo Tomas"
+            },
+            {
+               "offset" : 57,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Sto. Tomas, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJCyF6TKw5kTMR_HS0U4tlRnM",
+         "reference" : "ChIJCyF6TKw5kTMR_HS0U4tlRnM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sto. Tomas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sto. Tomas"
+            },
+            {
+               "offset" : 12,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

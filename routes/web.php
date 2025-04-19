@@ -30,6 +30,10 @@ $userManagementController = new UserManagementController();
 require_once __DIR__ . "/../app/controllers/admin/SettingsController.php";
 $settingsController = new SettingsController();
 
+// admin notifications
+require_once __DIR__ . "/../app/controllers/admin/NotificationsController.php";
+$notificationController = new NotificationsController();
+
 
 $request = $_SERVER["REQUEST_URI"];
 $segments = explode("/", trim($request, "/"));
@@ -297,6 +301,17 @@ switch ($request) {
         break;
     case "/admin/delete-setting":
         $settingsController->deleteSetting();
+        break;
+
+    // Notification Module Routes
+    case "/admin/notifications":
+        $notificationController->index();
+        break;
+    case "/admin/notifications/mark-read":
+        $notificationController->markAsRead();
+        break;
+    case "/admin/notifications/mark-all-read":
+        $notificationController->markAllAsRead();
         break;
 
     case "/favicon.ico":

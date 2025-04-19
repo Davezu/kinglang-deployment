@@ -1,0 +1,251 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "SM Fairview, Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJTY26M12wlzMRD_9-SbLU2eU",
+         "reference" : "ChIJTY26M12wlzMRD_9-SbLU2eU",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM Fairview",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM Fairview"
+            },
+            {
+               "offset" : 13,
+               "value" : "Quirino Highway"
+            },
+            {
+               "offset" : 30,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 42,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "shopping_mall",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "SM Fairview Cyberzone, Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ1Q6x2mewlzMRqe7N1uFYvvo",
+         "reference" : "ChIJ1Q6x2mewlzMRqe7N1uFYvvo",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM Fairview Cyberzone",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM Fairview Cyberzone"
+            },
+            {
+               "offset" : 23,
+               "value" : "Quirino Highway"
+            },
+            {
+               "offset" : 40,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 52,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 65,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 79,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment",
+            "electronics_store",
+            "store"
+         ]
+      },
+      {
+         "description" : "Fair N Square Emporium Inc, Santa Mesa, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            },
+            {
+               "length" : 10,
+               "offset" : 28
+            }
+         ],
+         "place_id" : "ChIJlZME7tvJlzMRJ8h4Ej3KTgk",
+         "reference" : "ChIJlZME7tvJlzMRJ8h4Ej3KTgk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Fair N Square Emporium Inc",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Mesa, Manila, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Fair N Square Emporium Inc"
+            },
+            {
+               "offset" : 28,
+               "value" : "Santa Mesa"
+            },
+            {
+               "offset" : 40,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bakers' Fair - Caypombo, Caypombo National Road, Santa Maria, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 8
+            },
+            {
+               "length" : 11,
+               "offset" : 49
+            }
+         ],
+         "place_id" : "ChIJz13fJwCtlzMRkJ4_fRqSvOY",
+         "reference" : "ChIJz13fJwCtlzMRkJ4_fRqSvOY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bakers' Fair - Caypombo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 8
+               }
+            ],
+            "secondary_text" : "Caypombo National Road, Santa Maria, Bulacan, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 24
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bakers' Fair - Caypombo"
+            },
+            {
+               "offset" : 25,
+               "value" : "Caypombo National Road"
+            },
+            {
+               "offset" : 49,
+               "value" : "Santa Maria"
+            },
+            {
+               "offset" : 62,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "establishment",
+            "store",
+            "bakery",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

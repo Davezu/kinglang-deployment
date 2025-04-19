@@ -22,6 +22,16 @@ function is_admin_authenticated() {
 }
 
 function require_client_auth() {
+    $requestUri = $_SERVER['REQUEST_URI'];
+    
+    // Skip auth check for login-related routes to avoid redirect loops
+    if (strpos($requestUri, '/home/login') !== false || 
+        strpos($requestUri, '/client/login') !== false ||
+        strpos($requestUri, '/home/signup') !== false ||
+        strpos($requestUri, '/client/signup') !== false) {
+        return;
+    }
+    
     if (!is_client_authenticated()) {
         header("Location: /home/login");
         exit();
@@ -29,6 +39,14 @@ function require_client_auth() {
 }
 
 function require_admin_auth() {
+    $requestUri = $_SERVER['REQUEST_URI'];
+    
+    // Skip auth check for login-related routes to avoid redirect loops
+    if (strpos($requestUri, '/admin/login') !== false || 
+        strpos($requestUri, '/admin/submit-login') !== false) {
+        return;
+    }
+    
     if (!is_admin_authenticated()) {
         header("Location: /admin/login");
         exit();

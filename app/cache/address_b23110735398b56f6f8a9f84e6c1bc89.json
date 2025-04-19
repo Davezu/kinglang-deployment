@@ -1,0 +1,259 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "29th Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ei4yOXRoIEF2ZW51ZSwgVGFndWlnLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJ82QGK4zIlzMRO5QJGbQ1gF8SFAoSCQEw_lRKz5czEa3SmKnweq4v",
+         "reference" : "Ei4yOXRoIEF2ZW51ZSwgVGFndWlnLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJ82QGK4zIlzMRO5QJGbQ1gF8SFAoSCQEw_lRKz5czEa3SmKnweq4v",
+         "structured_formatting" : 
+         {
+            "main_text" : "29th Avenue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "29th Avenue"
+            },
+            {
+               "offset" : 13,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 21,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "29 de Agosto, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjQyOSBkZSBBZ29zdG8sIE1hbmRhbHV5b25nLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJjwF2KM3JlzMRjsit2mC8SooSFAoSCXmbe8c1yJczEfg30rnIR0nc",
+         "reference" : "EjQyOSBkZSBBZ29zdG8sIE1hbmRhbHV5b25nLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJjwF2KM3JlzMRjsit2mC8SooSFAoSCXmbe8c1yJczEfg30rnIR0nc",
+         "structured_formatting" : 
+         {
+            "main_text" : "29 de Agosto",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mandaluyong, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "29 de Agosto"
+            },
+            {
+               "offset" : 14,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 27,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "29 F. Torres Street, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-9-hYNG5lzMRvXdVLG6e9Fo",
+         "reference" : "ChIJ-9-hYNG5lzMRvXdVLG6e9Fo",
+         "structured_formatting" : 
+         {
+            "main_text" : "29 F. Torres Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "29"
+            },
+            {
+               "offset" : 3,
+               "value" : "F. Torres Street"
+            },
+            {
+               "offset" : 21,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 31,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "street_address",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "29 Unang Hakbang, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqYvjzxi2lzMRZFAlbINe1UI",
+         "reference" : "ChIJqYvjzxi2lzMRZFAlbINe1UI",
+         "structured_formatting" : 
+         {
+            "main_text" : "29 Unang Hakbang",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "29"
+            },
+            {
+               "offset" : 3,
+               "value" : "Unang Hakbang"
+            },
+            {
+               "offset" : 18,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 26,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "street_address"
+         ]
+      },
+      {
+         "description" : "29th east rembo, 29th Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBZvyGRvJlzMRgno63-6dmZk",
+         "reference" : "ChIJBZvyGRvJlzMRgno63-6dmZk",
+         "structured_formatting" : 
+         {
+            "main_text" : "29th east rembo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "29th Avenue, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "29th east rembo"
+            },
+            {
+               "offset" : 17,
+               "value" : "29th Avenue"
+            },
+            {
+               "offset" : 30,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 38,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

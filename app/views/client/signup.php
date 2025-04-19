@@ -17,6 +17,7 @@ require_once __DIR__ . '/../../controllers/client/AuthController.php';
     <link rel="stylesheet" href="../../../public/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../../public/css/login-signup.css">
     <link rel="stylesheet" href="../../../public/css/slideshow.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Sign Up</title>
 </head>
 <body>

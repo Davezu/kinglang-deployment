@@ -1,0 +1,264 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Navotas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJL7wYP7C1lzMRE5I5ETs70mU",
+         "reference" : "ChIJL7wYP7C1lzMRE5I5ETs70mU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Navotas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Navotas"
+            },
+            {
+               "offset" : 9,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Navotas City Hall, M. Naval Street, Navotas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJD8AmXFO0lzMRRdwBD1bj158",
+         "reference" : "ChIJD8AmXFO0lzMRRdwBD1bj158",
+         "structured_formatting" : 
+         {
+            "main_text" : "Navotas City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M. Naval Street, Navotas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Navotas City Hall"
+            },
+            {
+               "offset" : 19,
+               "value" : "M. Naval Street"
+            },
+            {
+               "offset" : 36,
+               "value" : "Navotas"
+            },
+            {
+               "offset" : 45,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "local_government_office",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Navotas Fisheries Port Complex, North Bay Boulevard, Navotas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_VcC6KS1lzMRvoYbWWwLJrI",
+         "reference" : "ChIJ_VcC6KS1lzMRvoYbWWwLJrI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Navotas Fisheries Port Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "North Bay Boulevard, Navotas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Navotas Fisheries Port Complex"
+            },
+            {
+               "offset" : 32,
+               "value" : "North Bay Boulevard"
+            },
+            {
+               "offset" : 53,
+               "value" : "Navotas"
+            },
+            {
+               "offset" : 62,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 76,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Navotas Fish Port Complex, North Bay Boulevard, Navotas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJj-5vjKS1lzMRkygACVG6yTc",
+         "reference" : "ChIJj-5vjKS1lzMRkygACVG6yTc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Navotas Fish Port Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "North Bay Boulevard, Navotas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Navotas Fish Port Complex"
+            },
+            {
+               "offset" : 27,
+               "value" : "North Bay Boulevard"
+            },
+            {
+               "offset" : 48,
+               "value" : "Navotas"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Navotas Centennial Park, C-4, Navotas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJD-QxS6m1lzMRKXf7r80wfDU",
+         "reference" : "ChIJD-QxS6m1lzMRKXf7r80wfDU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Navotas Centennial Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "C-4, Navotas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Navotas Centennial Park"
+            },
+            {
+               "offset" : 25,
+               "value" : "C-4"
+            },
+            {
+               "offset" : 30,
+               "value" : "Navotas"
+            },
+            {
+               "offset" : 39,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "park",
+            "point_of_interest",
+            "tourist_attraction",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

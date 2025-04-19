@@ -16,6 +16,7 @@ if (!isset($_SESSION["user_id"])) {
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <title>Book a Trip</title>
 </head>
@@ -23,27 +24,6 @@ if (!isset($_SESSION["user_id"])) {
 
     <?php include_once __DIR__ . "/../assets/sidebar.php"; ?>
 
-    <div class="modal fade message-modal" aria-labelledby="messageModal" tabindex="-1" id="messageModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="messageTitle"></h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <p id="messageBody"></p>
-                </div>
-
-                <div class="modal-footer">
-                    <div class="d-flex gap-3 w-25">
-                        <button type="button" class="btn btn-outline-success btn-sm w-100" data-bs-dismiss="modal">Close</button>
-                    </div>  
-                </div>
-            </div>
-        </div>
-    </div>
-    
     <div class="content collapsed" id="content">
         <div class="container-fluid py-4 px-4 px-xl-5">
             <div class="container-fluid d-flex justify-content-end align-items-center p-0 m-0">

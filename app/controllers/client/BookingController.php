@@ -1,11 +1,14 @@
 <?php
 require_once __DIR__ . '/../../models/client/BookingModel.php';
+require_once __DIR__ . '/../../models/admin/NotificationModel.php';
 
 class BookingController {
     private $bookingModel;
+    private $notificationModel;
 
     public function __construct() {
         $this->bookingModel = new Booking();
+        $this->notificationModel = new NotificationModel();
     }
 
     public function bookingForm() {
@@ -276,6 +279,15 @@ class BookingController {
 
             $result = $this->bookingModel->requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $is_rebooking, $rebooking_id);
             
+            // Create notification for admin if booking was successful
+            if (isset($result["success"]) && $result["success"]) {
+                // Get the last inserted booking ID
+                $booking_id = $this->bookingModel->conn->lastInsertId();
+                $user_name = $_SESSION["client_name"];
+                $message = "New booking request from {$user_name} to {$destination}";
+                $this->notificationModel->addNotification("booking_request", $message, $booking_id);
+            }
+
             header("Content-Type: application/json");
 
             echo json_encode([

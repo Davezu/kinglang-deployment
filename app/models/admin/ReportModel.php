@@ -25,15 +25,18 @@ class ReportModel {
             if ($endDate) {
                 $whereClause .= " AND date_of_tour <= :end_date";
                 $params[':end_date'] = $endDate;
+
+                $whereClause .= " AND is_rebooked = :is_rebooked";
+                $params[':is_rebooked'] = 0;
             }
             
             $sql = "SELECT 
                 COUNT(*) AS total_bookings,
-                SUM(CASE WHEN status = 'Confirmed' THEN 1 ELSE 0 END) AS confirmed_bookings,
-                SUM(CASE WHEN status = 'Pending' THEN 1 ELSE 0 END) AS pending_bookings,
-                SUM(CASE WHEN status = 'Canceled' THEN 1 ELSE 0 END) AS canceled_bookings,
-                SUM(CASE WHEN status = 'Rejected' THEN 1 ELSE 0 END) AS rejected_bookings,
-                SUM(CASE WHEN status = 'Completed' THEN 1 ELSE 0 END) AS completed_bookings,
+                SUM(CASE WHEN status = 'Confirmed' AND is_rebooked = 0 THEN 1 ELSE 0 END) AS confirmed_bookings,
+                SUM(CASE WHEN status = 'Pending' AND is_rebooked = 0 THEN 1 ELSE 0 END) AS pending_bookings,
+                SUM(CASE WHEN status = 'Canceled' AND is_rebooked = 0 THEN 1 ELSE 0 END) AS canceled_bookings,
+                SUM(CASE WHEN status = 'Rejected' AND is_rebooked = 0 THEN 1 ELSE 0 END) AS rejected_bookings,
+                SUM(CASE WHEN status = 'Completed' AND is_rebooked = 0 THEN 1 ELSE 0 END) AS completed_bookings,
                 SUM(total_cost) AS total_revenue,
                 SUM(CASE WHEN payment_status = 'Paid' THEN total_cost ELSE 0 END) AS collected_revenue,
                 SUM(CASE WHEN payment_status = 'Partially Paid' THEN balance ELSE 0 END) AS outstanding_balance,
@@ -72,6 +75,7 @@ class ReportModel {
                 SUM(total_cost) AS total_revenue
             FROM bookings
             WHERE YEAR(date_of_tour) = :year
+            AND is_rebooked = 0
             GROUP BY MONTH(date_of_tour)
             ORDER BY month";
             
@@ -118,6 +122,9 @@ class ReportModel {
             if ($endDate) {
                 $whereClause .= " AND date_of_tour <= :end_date";
                 $params[':end_date'] = $endDate;
+
+                $whereClause .= " AND is_rebooked = :is_rebooked";
+                $params[':is_rebooked'] = 0;
             }
             
             $sql = "SELECT 
@@ -162,6 +169,9 @@ class ReportModel {
             if ($endDate) {
                 $whereClause .= " AND p.payment_date <= :end_date";
                 $params[':end_date'] = $endDate;
+
+                $whereClause .= " AND p.is_canceled = :is_canceled";
+                $params[':is_canceled'] = 0;
             }
             
             $sql = "SELECT 
@@ -204,6 +214,9 @@ class ReportModel {
             if ($endDate) {
                 $whereClause .= " AND c.created_at <= :end_date";
                 $params[':end_date'] = $endDate;
+
+                $whereClause .= " AND b.is_rebooked = :is_rebooked";
+                $params[':is_rebooked'] = 0;
             }
             
             $sql = "SELECT 
@@ -275,6 +288,9 @@ class ReportModel {
             
             // Apply filters
             if (!empty($filters['start_date'])) {
+                $whereClause .= " AND b.is_rebooked = :is_rebooked";
+                $params[':is_rebooked'] = 0;
+                
                 $whereClause .= " AND b.date_of_tour >= :start_date";
                 $params[':start_date'] = $filters['start_date'];
             }
@@ -373,6 +389,9 @@ class ReportModel {
             if ($month) {
                 $whereClause .= " AND MONTH(date_of_tour) = :month";
                 $params[':month'] = $month;
+
+                $whereClause .= " AND is_rebooked = :is_rebooked";
+                $params[':is_rebooked'] = 0;
             }
             
             $sql = "SELECT 

@@ -1,0 +1,270 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Gar Cafe, Victoria, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJnzRQQABfvTMR1X-rU_iiRPo",
+         "reference" : "ChIJnzRQQABfvTMR1X-rU_iiRPo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Gar Cafe",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Victoria, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Gar Cafe"
+            },
+            {
+               "offset" : 10,
+               "value" : "Victoria"
+            },
+            {
+               "offset" : 20,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 28,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "cafe",
+            "food",
+            "establishment",
+            "point_of_interest",
+            "store"
+         ]
+      },
+      {
+         "description" : "GAR UNDERRATED, Lumbang Street, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ52NxeQCxlzMRMFyq1w3rdwg",
+         "reference" : "ChIJ52NxeQCxlzMRMFyq1w3rdwg",
+         "structured_formatting" : 
+         {
+            "main_text" : "GAR UNDERRATED",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lumbang Street, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GAR UNDERRATED"
+            },
+            {
+               "offset" : 16,
+               "value" : "Lumbang Street"
+            },
+            {
+               "offset" : 32,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "store",
+            "clothing_store",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "GAR Brothers BarberShop, Calle Sexy Street, Daet, Camarines Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJkQ_3bQCvmDMRoLhLMcUL98M",
+         "reference" : "ChIJkQ_3bQCvmDMRoLhLMcUL98M",
+         "structured_formatting" : 
+         {
+            "main_text" : "GAR Brothers BarberShop",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Calle Sexy Street, Daet, Camarines Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GAR Brothers BarberShop"
+            },
+            {
+               "offset" : 25,
+               "value" : "Calle Sexy Street"
+            },
+            {
+               "offset" : 44,
+               "value" : "Daet"
+            },
+            {
+               "offset" : 50,
+               "value" : "Camarines Norte"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "hair_care",
+            "health",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Gar - Del, Malagasang Road, Imus, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJB6LLAd3TlzMRQdCOhRNIGlM",
+         "reference" : "ChIJB6LLAd3TlzMRQdCOhRNIGlM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Gar - Del",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malagasang Road, Imus, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Gar - Del"
+            },
+            {
+               "offset" : 11,
+               "value" : "Malagasang Road"
+            },
+            {
+               "offset" : 28,
+               "value" : "Imus"
+            },
+            {
+               "offset" : 34,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Gar Woodworks, Antero Soriano Highway, Tanza, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJEXfaUQAtljMR60RXbV0BW6s",
+         "reference" : "ChIJEXfaUQAtljMR60RXbV0BW6s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Gar Woodworks",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Antero Soriano Highway, Tanza, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Gar Woodworks"
+            },
+            {
+               "offset" : 15,
+               "value" : "Antero Soriano Highway"
+            },
+            {
+               "offset" : 39,
+               "value" : "Tanza"
+            },
+            {
+               "offset" : 46,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "general_contractor",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

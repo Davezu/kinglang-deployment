@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // First check if we're on client pages, not admin pages
+    const isClientPage = window.location.pathname.includes('/home/');
+    if (!isClientPage) return; // Skip all the animation code if not on client pages
+    
     // Store the current page type (login or signup)
     const currentPage = window.location.pathname.includes('signup') ? 'signup' : 'login';
     const contentDiv = document.querySelector('.content');
@@ -15,9 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 800);
     }
     
-    // Get navigation links
-    const loginLinks = document.querySelectorAll('a[href="/home/login"], a[href*="login"]');
-    const signupLinks = document.querySelectorAll('a[href="/home/signup"], a[href*="signup"]');
+    // Get navigation links - specifically for client pages
+    const loginLinks = document.querySelectorAll('a[href="/home/login"]');
+    const signupLinks = document.querySelectorAll('a[href="/home/signup"]');
     
     // Add event listeners to login links when on signup page
     if (currentPage === 'signup') {

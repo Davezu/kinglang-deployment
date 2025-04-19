@@ -17,11 +17,24 @@ $('#loginForm').submit(function (e) {
                 console.log(response.redirect);
                 window.location.href = response.redirect;
             } else {
-                $(".sub-message").text(response.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: response.message,
+                    timer: 2000,
+                    timerProgressBar: true
+                });
             }
         },
         error: function (xhr, status, error) {
             console.error(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'An unexpected error occurred. Please try again.',
+                timer: 2000,
+                timerProgressBar: true
+            });
         }
     });
 });

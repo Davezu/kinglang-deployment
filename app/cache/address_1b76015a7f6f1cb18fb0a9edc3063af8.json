@@ -1,0 +1,239 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Agno, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJdeWxJIDqkzMRwek1_peOYlk",
+         "reference" : "ChIJdeWxJIDqkzMRwek1_peOYlk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Agno",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Agno"
+            },
+            {
+               "offset" : 6,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Agno Umbrella Rocks, Agno, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ97S-XuO_kzMRv4MLcsdFsg4",
+         "reference" : "ChIJ97S-XuO_kzMRv4MLcsdFsg4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Agno Umbrella Rocks",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Agno, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Agno Umbrella Rocks"
+            },
+            {
+               "offset" : 21,
+               "value" : "Agno"
+            },
+            {
+               "offset" : 27,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Agno River, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJMScsYdRNkTMRxgIMVRAIEcI",
+         "reference" : "ChIJMScsYdRNkTMRxgIMVRAIEcI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Agno River",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Agno River"
+            },
+            {
+               "offset" : 12,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Agno pangasinan, Agno, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHQ5lbwvrkzMR4GQ9sZrPMYo",
+         "reference" : "ChIJHQ5lbwvrkzMR4GQ9sZrPMYo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Agno pangasinan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Agno, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Agno pangasinan"
+            },
+            {
+               "offset" : 17,
+               "value" : "Agno"
+            },
+            {
+               "offset" : 23,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "store",
+            "point_of_interest",
+            "food",
+            "bakery"
+         ]
+      },
+      {
+         "description" : "Agno Extension, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjZBZ25vIEV4dGVuc2lvbiwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgmb_ZGUP7aXMxFAYKe9MuWjhhIUChIJdXPvQgm6lzMRQD0I_tkymko",
+         "reference" : "EjZBZ25vIEV4dGVuc2lvbiwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgmb_ZGUP7aXMxFAYKe9MuWjhhIUChIJdXPvQgm6lzMRQD0I_tkymko",
+         "structured_formatting" : 
+         {
+            "main_text" : "Agno Extension",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Agno Extension"
+            },
+            {
+               "offset" : 16,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 29,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 43,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

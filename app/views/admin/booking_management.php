@@ -152,26 +152,28 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
                     </select>
                 </div>
             </div>
-            <div class="table-responsive-xl" >
-                <table class="table table-hover text-secondary overflow-hidden border rounded px-4">
-                    <thead>
-                        <tr>
-                            <th class="sort" data-order="asc" data-column="client_name" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Client Name</th>
-                            <th class="sort" data-order="asc" data-column="contact_number" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Contact Number</th>
-                            <th class="sort" data-order="asc" data-column="destination" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Destination</th>
-                            <th class="sort" data-order="asc" data-column="pickup_point" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Total Cost</th>
-                            <th class="sort" data-order="asc" data-column="date_of_tour" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Date of Tour</th>
-                            <th class="sort" data-order="asc" data-column="number_of_days" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Days</th>
-                            <th class="sort" data-order="asc" data-column="number_of_buses" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Buses</th>
-                            <th class="sort" data-order="asc" data-column="payment_status" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Payment Status</th>
-                            <th class="sort" style="text-align: center; width: 15%; background-color: #d1f7c4; white-space: nowrap;">Action</th></tr>
-                    </thead>
-                    <tbody id="tableBody"> 
-                       
-                    </tbody>
-                </table>
+            <div class="content-wrapper d-flex flex-column" style="min-height: 70vh;">
+                <div class="table-responsive-xl flex-grow-1">
+                    <table class="table table-hover text-secondary overflow-hidden border rounded px-4">
+                        <thead>
+                            <tr>
+                                <th class="sort" data-order="asc" data-column="client_name" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Client Name</th>
+                                <th class="sort" data-order="asc" data-column="contact_number" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Contact Number</th>
+                                <th class="sort" data-order="asc" data-column="destination" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Destination</th>
+                                <th class="sort" data-order="asc" data-column="pickup_point" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Total Cost</th>
+                                <th class="sort" data-order="asc" data-column="date_of_tour" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Date of Tour</th>
+                                <th class="sort" data-order="asc" data-column="number_of_days" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Days</th>
+                                <th class="sort" data-order="asc" data-column="number_of_buses" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Buses</th>
+                                <th class="sort" data-order="asc" data-column="payment_status" style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Payment Status</th>
+                                <th class="sort" style="text-align: center; width: 15%; background-color: #d1f7c4; white-space: nowrap;">Action</th></tr>
+                        </thead>
+                        <tbody id="tableBody"> 
+                           
+                        </tbody>
+                    </table>
+                </div>
+                <div id="paginationContainer" class="mt-auto pt-4"></div>
             </div>
-            <div id="paginationContainer" class="mt-4"></div>
         </div>
     </div>
     

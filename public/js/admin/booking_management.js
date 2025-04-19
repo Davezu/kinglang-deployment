@@ -90,6 +90,20 @@ async function renderBookings(data) {
     const tbody = document.getElementById("tableBody");
     tbody.innerHTML = "";
 
+    if (!bookings || bookings.length === 0) {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+        cell.colSpan = 9; // Match the number of columns in the table
+        cell.textContent = "No records found";
+        cell.className = "text-center py-4";
+        row.appendChild(cell);
+        tbody.appendChild(row);
+        
+        // Add minimum height to the table body to ensure consistent layout
+        tbody.style.minHeight = "300px";
+        return;
+    }
+
     bookings.forEach(booking => {
         const row = document.createElement("tr");
 
@@ -263,10 +277,18 @@ function renderPagination(pagination) {
     paginationContainer.innerHTML = "";
     
     console.log("Rendering pagination with data:", pagination);
+    
+    // If no pagination data is provided, return early
+    if (!pagination) {
+        console.log("No pagination data provided");
+        return;
+    }
+    
     console.log("Total pages:", pagination.totalPages, "Current page:", pagination.currentPage);
     
     // Make sure totalPages is treated as a number, not a string
     const totalPages = parseInt(pagination.totalPages, 10);
+    const currentPage = parseInt(pagination.currentPage, 10);
     console.log("Parsed totalPages:", totalPages, "Type:", typeof totalPages);
     
     if (totalPages <= 1) {
@@ -277,12 +299,12 @@ function renderPagination(pagination) {
     console.log("Pagination being rendered because totalPages > 1");
     
     const ul = document.createElement("ul");
-    ul.classList.add("pagination", "justify-content-center", "mt-4");
+    ul.classList.add("pagination", "justify-content-center");
     
     // Previous button
     const prevLi = document.createElement("li");
     prevLi.classList.add("page-item");
-    if (pagination.currentPage === 1) {
+    if (currentPage === 1) {
         prevLi.classList.add("disabled");
     }
     
@@ -292,7 +314,7 @@ function renderPagination(pagination) {
     prevLink.textContent = "Previous";
     prevLink.addEventListener("click", async function(e) {
         e.preventDefault();
-        if (pagination.currentPage > 1) {
+        if (currentPage > 1) {
             const status = document.getElementById("statusSelect").value;
             const column = document.querySelector(".sort.active") ? 
                 document.querySelector(".sort.active").getAttribute("data-column") : "client_name";
@@ -300,7 +322,7 @@ function renderPagination(pagination) {
                 document.querySelector(".sort.active").getAttribute("data-order") : "asc";
             const limit = document.getElementById("limitSelect").value;
             
-            const bookings = await getAllBookings(status, order, column, pagination.currentPage - 1, limit);
+            const bookings = await getAllBookings(status, order, column, currentPage - 1, limit);
             renderBookings(bookings);
             renderPagination(bookings.pagination);
         }
@@ -309,18 +331,18 @@ function renderPagination(pagination) {
     prevLi.appendChild(prevLink);
     ul.appendChild(prevLi);
     
-    // Page numbers
-    for (let i = 1; i <= totalPages; i++) {
+    // Page numbers with ellipsis
+    function addPageItem(pageNum) {
         const li = document.createElement("li");
         li.classList.add("page-item");
-        if (i === pagination.currentPage) {
+        if (pageNum === currentPage) {
             li.classList.add("active");
         }
         
         const link = document.createElement("a");
         link.classList.add("page-link");
         link.href = "#";
-        link.textContent = i;
+        link.textContent = pageNum;
         link.addEventListener("click", async function(e) {
             e.preventDefault();
             const status = document.getElementById("statusSelect").value;
@@ -330,7 +352,7 @@ function renderPagination(pagination) {
                 document.querySelector(".sort.active").getAttribute("data-order") : "asc";
             const limit = document.getElementById("limitSelect").value;
             
-            const bookings = await getAllBookings(status, order, column, i, limit);
+            const bookings = await getAllBookings(status, order, column, pageNum, limit);
             renderBookings(bookings);
             renderPagination(bookings.pagination);
         });
@@ -339,10 +361,59 @@ function renderPagination(pagination) {
         ul.appendChild(li);
     }
     
+    function addEllipsis() {
+        const li = document.createElement("li");
+        li.classList.add("page-item", "disabled");
+        const span = document.createElement("a");
+        span.classList.add("page-link");
+        span.textContent = "...";
+        li.appendChild(span);
+        ul.appendChild(li);
+    }
+    
+    // Always show first page
+    if (totalPages <= 10) {
+        // If 10 or fewer pages, show all page numbers
+        for (let i = 1; i <= totalPages; i++) {
+            addPageItem(i);
+        }
+    } else {
+        // For more than 10 pages, show ellipsis
+        addPageItem(1); // Always show first page
+        
+        if (currentPage > 4) {
+            addEllipsis(); // Show ellipsis if current page is far from start
+        }
+        
+        // Determine start and end of the displayed page range
+        let startPage = Math.max(2, currentPage - 2);
+        let endPage = Math.min(totalPages - 1, currentPage + 2);
+        
+        // Adjust to show at least 5 pages in the middle (if possible)
+        if (endPage - startPage < 4) {
+            if (currentPage < totalPages / 2) {
+                endPage = Math.min(totalPages - 1, startPage + 4);
+            } else {
+                startPage = Math.max(2, endPage - 4);
+            }
+        }
+        
+        // Display the range of pages
+        for (let i = startPage; i <= endPage; i++) {
+            addPageItem(i);
+        }
+        
+        if (currentPage < totalPages - 3) {
+            addEllipsis(); // Show ellipsis if current page is far from end
+        }
+        
+        addPageItem(totalPages); // Always show last page
+    }
+    
     // Next button
     const nextLi = document.createElement("li");
     nextLi.classList.add("page-item");
-    if (pagination.currentPage === totalPages) {
+    if (currentPage === totalPages) {
         nextLi.classList.add("disabled");
     }
     
@@ -352,7 +423,7 @@ function renderPagination(pagination) {
     nextLink.textContent = "Next";
     nextLink.addEventListener("click", async function(e) {
         e.preventDefault();
-        if (pagination.currentPage < totalPages) {
+        if (currentPage < totalPages) {
             const status = document.getElementById("statusSelect").value;
             const column = document.querySelector(".sort.active") ? 
                 document.querySelector(".sort.active").getAttribute("data-column") : "client_name";
@@ -360,7 +431,7 @@ function renderPagination(pagination) {
                 document.querySelector(".sort.active").getAttribute("data-order") : "asc";
             const limit = document.getElementById("limitSelect").value;
             
-            const bookings = await getAllBookings(status, order, column, pagination.currentPage + 1, limit);
+            const bookings = await getAllBookings(status, order, column, currentPage + 1, limit);
             renderBookings(bookings);
             renderPagination(bookings.pagination);
         }

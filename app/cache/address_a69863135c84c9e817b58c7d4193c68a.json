@@ -1,0 +1,271 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "GRACIANO LOPEZ JAENA PARK, Jaro, Iloilo City, Iloilo, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJV0itASHlrjMRutUGaL__uwk",
+         "reference" : "ChIJV0itASHlrjMRutUGaL__uwk",
+         "structured_formatting" : 
+         {
+            "main_text" : "GRACIANO LOPEZ JAENA PARK",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Jaro, Iloilo City, Iloilo, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "GRACIANO LOPEZ JAENA PARK"
+            },
+            {
+               "offset" : 27,
+               "value" : "Jaro"
+            },
+            {
+               "offset" : 33,
+               "value" : "Iloilo City"
+            },
+            {
+               "offset" : 46,
+               "value" : "Iloilo"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "tourist_attraction",
+            "establishment",
+            "park",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Graciano Lopez Jaena Elementary School, T. Alfonso, Sampaloc, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJje_X0Ru2lzMRha42_fvnM2c",
+         "reference" : "ChIJje_X0Ru2lzMRha42_fvnM2c",
+         "structured_formatting" : 
+         {
+            "main_text" : "Graciano Lopez Jaena Elementary School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "T. Alfonso, Sampaloc, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Graciano Lopez Jaena Elementary School"
+            },
+            {
+               "offset" : 40,
+               "value" : "T. Alfonso"
+            },
+            {
+               "offset" : 52,
+               "value" : "Sampaloc"
+            },
+            {
+               "offset" : 62,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 70,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 84,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "school",
+            "primary_school"
+         ]
+      },
+      {
+         "description" : "Graciano Lopez Jaena Elementary School, Sta. Ana Street, Bacolod, Negros Occidental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_aHNk7fRrjMRN0Ms-AIbWlI",
+         "reference" : "ChIJ_aHNk7fRrjMRN0Ms-AIbWlI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Graciano Lopez Jaena Elementary School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sta. Ana Street, Bacolod, Negros Occidental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Graciano Lopez Jaena Elementary School"
+            },
+            {
+               "offset" : 40,
+               "value" : "Sta. Ana Street"
+            },
+            {
+               "offset" : 57,
+               "value" : "Bacolod"
+            },
+            {
+               "offset" : 66,
+               "value" : "Negros Occidental"
+            },
+            {
+               "offset" : 85,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "school",
+            "point_of_interest",
+            "primary_school"
+         ]
+      },
+      {
+         "description" : "Graciano Institute Academy, Inc, General Santos City, South Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJE0VdHgCh9zIRYHx1DwluK8g",
+         "reference" : "ChIJE0VdHgCh9zIRYHx1DwluK8g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Graciano Institute Academy, Inc",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Santos City, South Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Graciano Institute Academy, Inc"
+            },
+            {
+               "offset" : 33,
+               "value" : "General Santos City"
+            },
+            {
+               "offset" : 54,
+               "value" : "South Cotabato"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Graciano Paule Elementary School, Lubao, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJq7AKXpleljMRNg5JlPYX0ik",
+         "reference" : "ChIJq7AKXpleljMRNg5JlPYX0ik",
+         "structured_formatting" : 
+         {
+            "main_text" : "Graciano Paule Elementary School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lubao, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Graciano Paule Elementary School"
+            },
+            {
+               "offset" : 34,
+               "value" : "Lubao"
+            },
+            {
+               "offset" : 41,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "school",
+            "point_of_interest",
+            "primary_school"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,293 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "SM Novaliches, Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeYQ35OCwlzMRuhjsqpfEUos",
+         "reference" : "ChIJeYQ35OCwlzMRuhjsqpfEUos",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM Novaliches",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM Novaliches"
+            },
+            {
+               "offset" : 15,
+               "value" : "Quirino Highway"
+            },
+            {
+               "offset" : 32,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 44,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "store",
+            "department_store",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "SM City Novaliches, Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 18,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJ2Si1-CwlzMRns0mpFXV7m0",
+         "reference" : "ChIJJ2Si1-CwlzMRns0mpFXV7m0",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM City Novaliches",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 18,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM City Novaliches"
+            },
+            {
+               "offset" : 20,
+               "value" : "Quirino Highway"
+            },
+            {
+               "offset" : 37,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 49,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 62,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 76,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "SM City Fairview, Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 16,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJTY26M12wlzMRD_9-SbLU2eU",
+         "reference" : "ChIJTY26M12wlzMRD_9-SbLU2eU",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM City Fairview",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM City Fairview"
+            },
+            {
+               "offset" : 18,
+               "value" : "Quirino Highway"
+            },
+            {
+               "offset" : 35,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 47,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 60,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "shopping_mall",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "LTO SM Novaliches, Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 4
+            }
+         ],
+         "place_id" : "ChIJnwBZxW-xlzMRpIAUiLnrGG8",
+         "reference" : "ChIJnwBZxW-xlzMRpIAUiLnrGG8",
+         "structured_formatting" : 
+         {
+            "main_text" : "LTO SM Novaliches",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 4
+               }
+            ],
+            "secondary_text" : "Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "LTO SM Novaliches"
+            },
+            {
+               "offset" : 19,
+               "value" : "Quirino Highway"
+            },
+            {
+               "offset" : 36,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 48,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 61,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Starbucks - SM City Novaliches, Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 30,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJe9ovrI6xlzMR6Fb1ENcNKbk",
+         "reference" : "ChIJe9ovrI6xlzMR6Fb1ENcNKbk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Starbucks - SM City Novaliches",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 30,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Starbucks - SM City Novaliches"
+            },
+            {
+               "offset" : 32,
+               "value" : "Quirino Highway"
+            },
+            {
+               "offset" : 49,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 61,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 74,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 88,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "store",
+            "food",
+            "point_of_interest",
+            "cafe",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

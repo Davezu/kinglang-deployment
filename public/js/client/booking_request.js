@@ -1,9 +1,4 @@
 const cancelBookingModal = new bootstrap.Modal(document.getElementById("cancelBookingModal"));
-const messageModal = new bootstrap.Modal(document.getElementById("messageModal"));
-
-const messageTitle = document.getElementById("messageTitle");
-const messageBody = document.getElementById("messageBody");
-
 
 // disable past dates in date of tour input
 const today = new Date();
@@ -390,13 +385,21 @@ document.getElementById("cancelBookingForm").addEventListener("submit", async fu
         const data = await response.json();
         
         if (data.success) {
-            messageTitle.textContent = "Success";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: data.message,
+                timer: 2000,
+                timerProgressBar: true
+            });
         } else {
-            messageTitle.textContent = "Error";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.message,
+                timer: 2000,
+                timerProgressBar: true
+            });
         }
         
         const status = document.getElementById("statusSelect").value;
@@ -447,9 +450,13 @@ document.getElementById("paymentForm").addEventListener("submit", async function
             }
             
             // Show success message
-            messageTitle.textContent = "Success";
-            messageBody.textContent = "Payment submitted successfully!";
-            messageModal.show();
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Payment submitted successfully!',
+                timer: 2000,
+                timerProgressBar: true
+            });
             
             // Refresh the bookings table
             const status = document.getElementById("statusSelect").value;
@@ -460,15 +467,23 @@ document.getElementById("paymentForm").addEventListener("submit", async function
             renderPagination(result.pagination);
         } else {
             // Show error message
-            messageTitle.textContent = "Error";
-            messageBody.textContent = "There was an error submitting your payment.";
-            messageModal.show();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'There was an error submitting your payment.',
+                timer: 2000,
+                timerProgressBar: true
+            });
         }
     } catch (error) {
         console.error("Error submitting payment:", error);
-        messageTitle.textContent = "Error";
-        messageBody.textContent = "There was an error processing your payment. Please try again.";
-        messageModal.show();
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'There was an error processing your payment. Please try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
     }
     
     // Reset the form

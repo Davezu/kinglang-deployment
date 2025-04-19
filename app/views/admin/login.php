@@ -1,4 +1,7 @@
 <?php
+// Debug session
+error_log("Admin login session data: " . json_encode($_SESSION ?? []));
+
 // Redirect if already logged in
 if (is_admin_authenticated()) {
     header("Location: /admin/dashboard");
@@ -16,6 +19,7 @@ if (is_admin_authenticated()) {
     <link rel="stylesheet" href="../../../public/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../../public/css/login-signup.css">
     <link rel="stylesheet" href="../../../public/css/slideshow.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Log In</title>
 </head>
 <body>

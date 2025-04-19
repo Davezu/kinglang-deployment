@@ -19,16 +19,36 @@ $("#signupForm").submit(function (e) {
         data: JSON.stringify(formData),
         success: function (response) {
             if (response.success) {
-                $(".signup-text").text(response.message);
-                $(".signup-error-text").text("");
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: response.message,
+                    timer: 2000,
+                    timerProgressBar: true
+                }).then(() => {
+                    // Redirect to login page after success message
+                    window.location.href = "/home/login";
+                });
                 $("#signupForm")[0].reset();
             } else {
-                $(".signup-text").text("");
-                $(".signup-error-text").text(response.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Registration Failed',
+                    text: response.message,
+                    timer: 2000,
+                    timerProgressBar: true
+                });
             }
         },
         error: function (xhr, status, error) {
             console.error(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'An unexpected error occurred. Please try again.',
+                timer: 2000,
+                timerProgressBar: true
+            });
         }
     });
 });

@@ -12,6 +12,14 @@ class SettingsController {
     }
 
     private function requireAdminAuth() {
+        $requestUri = $_SERVER['REQUEST_URI'];
+        
+        // Skip auth check for login-related routes to avoid redirect loops
+        if (strpos($requestUri, '/admin/login') !== false || 
+            strpos($requestUri, '/admin/submit-login') !== false) {
+            return;
+        }
+        
         if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
             header("Location: /admin/login");
             exit();

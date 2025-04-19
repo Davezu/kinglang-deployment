@@ -1,0 +1,268 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "S.M. Lazo Medical Clinic, Inc., Taft Avenue, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 30,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJLcVkN4fJlzMRCcigLfuu-ZM",
+         "reference" : "ChIJLcVkN4fJlzMRCcigLfuu-ZM",
+         "structured_formatting" : 
+         {
+            "main_text" : "S.M. Lazo Medical Clinic, Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 30,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taft Avenue, Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "S.M. Lazo Medical Clinic, Inc."
+            },
+            {
+               "offset" : 32,
+               "value" : "Taft Avenue"
+            },
+            {
+               "offset" : 45,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 53,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 61,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "health",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "S Maison Parking, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJC8hyW9PLlzMRS2emH6q2OrE",
+         "reference" : "ChIJC8hyW9PLlzMRS2emH6q2OrE",
+         "structured_formatting" : 
+         {
+            "main_text" : "S Maison Parking",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "S Maison Parking"
+            },
+            {
+               "offset" : 18,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 25,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "parking"
+         ]
+      },
+      {
+         "description" : "South Meridian Homes, Salitran, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 20,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJl1NmDGPUlzMRuE7iH_UFI0Y",
+         "reference" : "ChIJl1NmDGPUlzMRuE7iH_UFI0Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "South Meridian Homes",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 20,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Salitran, Dasmariñas, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "South Meridian Homes"
+            },
+            {
+               "offset" : 22,
+               "value" : "Salitran"
+            },
+            {
+               "offset" : 32,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 44,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "South Manila District Engineering Office-NCR, DPWH, Bonifacio Drive, Port Area, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 50,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJGQWXRTzKlzMRzG5g37i-DFc",
+         "reference" : "ChIJGQWXRTzKlzMRzG5g37i-DFc",
+         "structured_formatting" : 
+         {
+            "main_text" : "South Manila District Engineering Office-NCR, DPWH",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 50,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bonifacio Drive, Port Area, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "South Manila District Engineering Office-NCR, DPWH"
+            },
+            {
+               "offset" : 52,
+               "value" : "Bonifacio Drive"
+            },
+            {
+               "offset" : 69,
+               "value" : "Port Area"
+            },
+            {
+               "offset" : 80,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 88,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 102,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "S.M. San Fernando Gate, San Fernando, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 22,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjtTLk0uIFNhbiBGZXJuYW5kbyBHYXRlLCBTYW4gRmVybmFuZG8sIFBhbXBhbmdhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCdtJhndD95YzEdY6jc14NMDSEhQKEgnbqqhHn_eWMxEqkoHb3eFLLA",
+         "reference" : "EjtTLk0uIFNhbiBGZXJuYW5kbyBHYXRlLCBTYW4gRmVybmFuZG8sIFBhbXBhbmdhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCdtJhndD95YzEdY6jc14NMDSEhQKEgnbqqhHn_eWMxEqkoHb3eFLLA",
+         "structured_formatting" : 
+         {
+            "main_text" : "S.M. San Fernando Gate",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 22,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Fernando, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "S.M. San Fernando Gate"
+            },
+            {
+               "offset" : 24,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 38,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

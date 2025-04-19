@@ -1,10 +1,6 @@
 const addUserModal = new bootstrap.Modal(document.getElementById("addUserModal"));
 const editUserModal = new bootstrap.Modal(document.getElementById("editUserModal"));
 const deleteUserModal = new bootstrap.Modal(document.getElementById("deleteUserModal"));
-const messageModal = new bootstrap.Modal(document.getElementById("messageModal"));
-
-const messageTitle = document.getElementById("messageTitle");
-const messageBody = document.getElementById("messageBody");
 
 document.addEventListener("DOMContentLoaded", async function () {
     const limit = document.getElementById("limitSelect").value;
@@ -56,9 +52,13 @@ async function loadUsers(page, searchTerm = "", limit = 10) {
         }
     } catch (error) {
         console.error("Error fetching users:", error);
-        messageTitle.textContent = "Error";
-        messageBody.textContent = "Failed to load users. Please try again.";
-        messageModal.show();
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to load users. Please try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
     }
 }
 
@@ -259,9 +259,13 @@ async function getUserDetails(userId) {
         const user = await response.json();
         
         if (user.error) {
-            messageTitle.textContent = "Error";
-            messageBody.textContent = user.error;
-            messageModal.show();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: user.error,
+                timer: 2000,
+                timerProgressBar: true
+            });
             return;
         }
         
@@ -276,9 +280,13 @@ async function getUserDetails(userId) {
         editUserModal.show();
     } catch (error) {
         console.error("Error fetching user details:", error);
-        messageTitle.textContent = "Error";
-        messageBody.textContent = "Failed to load user details. Please try again.";
-        messageModal.show();
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to load user details. Please try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
     }
 }
 
@@ -310,28 +318,40 @@ document.getElementById("addUserForm").addEventListener("submit", async function
         const data = await response.json();
         
         if (data.error) {
-            messageTitle.textContent = "Error";
-            messageBody.textContent = data.error;
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.error,
+                timer: 2000,
+                timerProgressBar: true
+            });
         } else {
-            messageTitle.textContent = "Success";
-            messageBody.textContent = "User created successfully";
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'User created successfully',
+                timer: 2000,
+                timerProgressBar: true
+            });
             this.reset();
             
             const searchTerm = document.getElementById("searchUser").value;
             const limit = document.getElementById("limitSelect").value;
             loadUsers(1, searchTerm, limit);
         }
-        
-        messageModal.show();
     } catch (error) {
         console.error("Error adding user:", error);
         addUserModal.hide();
         document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
         document.body.classList.remove('modal-open');
         
-        messageTitle.textContent = "Error";
-        messageBody.textContent = "Failed to add user. Please try again.";
-        messageModal.show();
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to add user. Please try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
     }
 });
 
@@ -363,11 +383,21 @@ document.getElementById("editUserForm").addEventListener("submit", async functio
         const data = await response.json();
         
         if (data.error) {
-            messageTitle.textContent = "Error";
-            messageBody.textContent = data.error;
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.error,
+                timer: 2000,
+                timerProgressBar: true
+            });
         } else {
-            messageTitle.textContent = "Success";
-            messageBody.textContent = "User updated successfully";
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'User updated successfully',
+                timer: 2000,
+                timerProgressBar: true
+            });
             
             const searchTerm = document.getElementById("searchUser").value;
             const limit = document.getElementById("limitSelect").value;
@@ -375,17 +405,19 @@ document.getElementById("editUserForm").addEventListener("submit", async functio
                 parseInt(document.querySelector(".pagination .active").textContent) : 1;
             loadUsers(currentPage, searchTerm, limit);
         }
-        
-        messageModal.show();
     } catch (error) {
         console.error("Error updating user:", error);
         editUserModal.hide();
         document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
         document.body.classList.remove('modal-open');
         
-        messageTitle.textContent = "Error";
-        messageBody.textContent = "Failed to update user. Please try again.";
-        messageModal.show();
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to update user. Please try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
     }
 });
 
@@ -408,11 +440,21 @@ document.getElementById("deleteUserForm").addEventListener("submit", async funct
         const data = await response.json();
         
         if (data.error) {
-            messageTitle.textContent = "Error";
-            messageBody.textContent = data.error;
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.error,
+                timer: 2000,
+                timerProgressBar: true
+            });
         } else {
-            messageTitle.textContent = "Success";
-            messageBody.textContent = "User deleted successfully";
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'User deleted successfully',
+                timer: 2000,
+                timerProgressBar: true
+            });
             
             const searchTerm = document.getElementById("searchUser").value;
             const limit = document.getElementById("limitSelect").value;
@@ -420,16 +462,18 @@ document.getElementById("deleteUserForm").addEventListener("submit", async funct
                 parseInt(document.querySelector(".pagination .active").textContent) : 1;
             loadUsers(currentPage, searchTerm, limit);
         }
-        
-        messageModal.show();
     } catch (error) {
         console.error("Error deleting user:", error);
         deleteUserModal.hide();
         document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
         document.body.classList.remove('modal-open');
         
-        messageTitle.textContent = "Error";
-        messageBody.textContent = "Failed to delete user. Please try again.";
-        messageModal.show();
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to delete user. Please try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
     }
 }); 

@@ -1,11 +1,3 @@
-const messageModal = new bootstrap.Modal(document.getElementById("messageModal"), {
-    backdrop: false,
-    keyboard: true
-});
-
-const messageTitle = document.getElementById("messageTitle");
-const messageBody = document.getElementById("messageBody");
-
 const picker = flatpickr("#date_of_tour", {
     dateFormat: "Y-m-d",
     altInput: true,
@@ -13,8 +5,6 @@ const picker = flatpickr("#date_of_tour", {
     minDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
     maxDate: new Date(new Date().setMonth(new Date().getMonth() + 1)),
   });
-
-
 
 let isRebooking = false;
 
@@ -245,11 +235,6 @@ document.getElementById("back").addEventListener("click", function () {
 // submit booking 
 document.getElementById("bookingForm").addEventListener("submit", async function (e) {
     e.preventDefault(); 
-
-    // const numberOfBuses = document.getElementById("number_of_buses").value;
-    // const selectedBuses = Array.from(document.querySelectorAll("input[name='bus_ids[]']:checked")).map(bus => bus.value);
-
-    // if (parseInt(numberOfBuses) !== selectedBuses.length) return;
     
     const stops = Array.from(document.querySelectorAll(".added-stop")).map((stop, i) => stop.value).filter(stop => stop.trim() !== "");
     const destination = stops[stops.length - 1];
@@ -278,7 +263,6 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         addresses: addresses,
         isRebooking: isRebooking,
         rebookingId: bookingId
-        // busIds: selectedBuses
     }
 
     try {
@@ -291,9 +275,13 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         const data = await response.json();
 
         if (data.success) {
-            messageTitle.textContent = "Success";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: data.message,
+                timer: 2000,
+                timerProgressBar: true
+            });
             
             // Clear form data
             this.reset(); 
@@ -310,15 +298,23 @@ document.getElementById("bookingForm").addEventListener("submit", async function
                 window.location.href = "/home/booking-requests";
             }, 2000); // 2 second delay to allow the user to see the success message
         } else {
-            messageTitle.textContent = "Error";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.message,
+                timer: 2000,
+                timerProgressBar: true
+            });
         }
     } catch (error) {
         console.error("Error fetching data: ", error.message);
-        messageTitle.textContent = "Error";
-        messageBody.textContent = "An error occurred while processing your request. Please try again.";
-        messageModal.show();
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'An error occurred while processing your request. Please try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
     }
 
     initMap(); 
@@ -624,23 +620,20 @@ async function calculateRoute() {
     // Check if pickup and destination are filled
     if (!pickupPoint || !destination) {
         // Show a notification if either pickup or destination is missing
-        // messageTitle.textContent = "Missing Information";
-        // messageBody.textContent = "Please enter both pickup and destination locations to calculate the route.";
-        // messageModal.show();
         return;
     }
 
     // Show loading indicator
     const mapElement = document.getElementById("map");
     mapElement.innerHTML = '<div class="d-flex justify-content-center align-items-center h-100"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
-
+    
     try {
         const response = await fetch("/get-route", {
-            method: "POST", 
+            method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ pickupPoint, destination, stops })
         });
-    
+
         const data = await response.json();
         
         // Reinitialize the map
@@ -649,10 +642,13 @@ async function calculateRoute() {
         if (data.error) {
             console.error(data.error);
             // Show error notification
-            messageTitle.textContent = "Route Calculation Error";
-            messageBody.textContent = "Unable to calculate the route. Please check your locations and try again.";
-            messageModal.show();
-            return;
+            Swal.fire({
+                icon: 'error',
+                title: 'Route Calculation Error',
+                text: 'Unable to calculate the route. Please check your locations and try again.',
+                timer: 2000,
+                timerProgressBar: true
+            });
         }
 
         const waypoints = data.stops.map(stop => ({ location: stop, stopover: true }));
@@ -678,10 +674,6 @@ async function calculateRoute() {
                 }
                 
                 window.lastCalculatedDistance = distance;
-                
-                // messageTitle.textContent = "Route Calculated";
-                // messageBody.textContent = `Route found! Total distance: ${distance.toFixed(1)} km, estimated time: ${Math.round(duration)} minutes.`;
-                // messageModal.show();
             } else {
                 console.error("Directions request failed due to " + status);
                 
@@ -702,9 +694,13 @@ async function calculateRoute() {
                         errorMessage += "Please check your locations and try again.";
                 }
                 
-                messageTitle.textContent = "Route Calculation Failed";
-                messageBody.textContent = errorMessage;
-                messageModal.show();
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Route Calculation Failed',
+                    text: errorMessage,
+                    timer: 2000,
+                    timerProgressBar: true
+                });
             }
         });
     } catch (error) {
@@ -714,9 +710,13 @@ async function calculateRoute() {
         initMap();
         
         // Show error notification
-        messageTitle.textContent = "Connection Error";
-        messageBody.textContent = "Unable to connect to the route service. Please check your internet connection and try again.";
-        messageModal.show();
+        Swal.fire({
+            icon: 'error',
+            title: 'Connection Error',
+            text: 'Unable to connect to the route service. Please check your internet connection and try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
         return;
     }   
 }

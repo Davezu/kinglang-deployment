@@ -2,7 +2,7 @@
 require_once __DIR__ . "/../../../config/database.php";
 
 class Booking {
-    private $conn;
+    public $conn;
     
     public function __construct() {
         global $pdo;
@@ -27,7 +27,7 @@ class Booking {
             $available_buses = $this->findAvailableBuses($date_of_tour, $end_of_tour, $number_of_buses);
 
             if (!$available_buses) {
-                return "Not enough buses available.";
+                return ["success" => false, "message" => "Not enough buses available."];
             }
 
             if ($is_rebooking && $this->bookingIsNotConfirmed($rebooking_id)) {

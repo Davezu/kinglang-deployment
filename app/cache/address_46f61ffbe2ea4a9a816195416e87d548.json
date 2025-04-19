@@ -1,0 +1,257 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Sta. Rosa, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJi8tBd7PZlzMRd_Rf41xGkGE",
+         "reference" : "ChIJi8tBd7PZlzMRd_Rf41xGkGE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sta. Rosa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sta. Rosa"
+            },
+            {
+               "offset" : 11,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 19,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Sta. Cruz, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNbRCggDKlzMRvfjWO4I539A",
+         "reference" : "ChIJNbRCggDKlzMRvfjWO4I539A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sta. Cruz",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sta. Cruz"
+            },
+            {
+               "offset" : 11,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 19,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "geocode",
+            "sublocality_level_1",
+            "political"
+         ]
+      },
+      {
+         "description" : "Sta. Lucia Mall, Marikina-Infanta Highway, Cainta, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAw3k5BC5lzMRoYsk6cjthVs",
+         "reference" : "ChIJAw3k5BC5lzMRoYsk6cjthVs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sta. Lucia Mall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marikina-Infanta Highway, Cainta, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sta. Lucia Mall"
+            },
+            {
+               "offset" : 17,
+               "value" : "Marikina-Infanta Highway"
+            },
+            {
+               "offset" : 43,
+               "value" : "Cainta"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Sta. Mesa, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJr0vlQubJlzMRLGn7SsSEpxc",
+         "reference" : "ChIJr0vlQubJlzMRLGn7SsSEpxc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sta. Mesa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sta. Mesa"
+            },
+            {
+               "offset" : 11,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 19,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality",
+            "political",
+            "sublocality_level_1"
+         ]
+      },
+      {
+         "description" : "Starmall - San Jose del Monte, Quirino Highway, San Jose del Monte City, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ6zHrOHuvlzMRT9DurKVIIM0",
+         "reference" : "ChIJ6zHrOHuvlzMRT9DurKVIIM0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Starmall - San Jose del Monte",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quirino Highway, San Jose del Monte City, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Starmall - San Jose del Monte"
+            },
+            {
+               "offset" : 31,
+               "value" : "Quirino Highway"
+            },
+            {
+               "offset" : 48,
+               "value" : "San Jose del Monte City"
+            },
+            {
+               "offset" : 73,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 82,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}
