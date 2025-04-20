@@ -2,6 +2,113 @@
    "predictions" : 
    [
       {
+         "description" : "Colegio de San Juan de Letran Calamba, Bucal Bypass Road, Calamba, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
+         "reference" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio de San Juan de Letran Calamba",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bucal Bypass Road, Calamba, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio de San Juan de Letran Calamba"
+            },
+            {
+               "offset" : 39,
+               "value" : "Bucal Bypass Road"
+            },
+            {
+               "offset" : 58,
+               "value" : "Calamba"
+            },
+            {
+               "offset" : 67,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "university",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Colegio de Muntinlupa, Mayor J.Posadas Avenue, Muntinlupa, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBxem0rjPlzMRRCTqypaZ1FU",
+         "reference" : "ChIJBxem0rjPlzMRRCTqypaZ1FU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio de Muntinlupa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mayor J.Posadas Avenue, Muntinlupa, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio de Muntinlupa"
+            },
+            {
+               "offset" : 23,
+               "value" : "Mayor J.Posadas Avenue"
+            },
+            {
+               "offset" : 47,
+               "value" : "Muntinlupa"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
          "description" : "Colegio San Agustin Makati, Palm Avenue, Makati, Metro Manila, Philippines",
          "matched_substrings" : 
          [
@@ -55,113 +162,6 @@
          ]
       },
       {
-         "description" : "Colegio de San Juan de Letran Calamba, Bucal Bypass Road, Calamba, Laguna, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 7,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
-         "reference" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
-         "structured_formatting" : 
-         {
-            "main_text" : "Colegio de San Juan de Letran Calamba",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 7,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Bucal Bypass Road, Calamba, Laguna, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Colegio de San Juan de Letran Calamba"
-            },
-            {
-               "offset" : 39,
-               "value" : "Bucal Bypass Road"
-            },
-            {
-               "offset" : 58,
-               "value" : "Calamba"
-            },
-            {
-               "offset" : 67,
-               "value" : "Laguna"
-            },
-            {
-               "offset" : 75,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "point_of_interest",
-            "school",
-            "university",
-            "establishment"
-         ]
-      },
-      {
-         "description" : "Colegio de Muntinlupa, Mayor J.Posadas Avenue, Muntinlupa, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 7,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJBxem0rjPlzMRRCTqypaZ1FU",
-         "reference" : "ChIJBxem0rjPlzMRRCTqypaZ1FU",
-         "structured_formatting" : 
-         {
-            "main_text" : "Colegio de Muntinlupa",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 7,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Mayor J.Posadas Avenue, Muntinlupa, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Colegio de Muntinlupa"
-            },
-            {
-               "offset" : 23,
-               "value" : "Mayor J.Posadas Avenue"
-            },
-            {
-               "offset" : 47,
-               "value" : "Muntinlupa"
-            },
-            {
-               "offset" : 59,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 73,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "university",
-            "point_of_interest",
-            "establishment"
-         ]
-      },
-      {
          "description" : "Colegio de San Gabriel Arcangel, Dr. Eduardo V. Roquero Sr. Avenue, San Jose del Monte City, Bulacan, Philippines",
          "matched_substrings" : 
          [
@@ -210,9 +210,9 @@
          "types" : 
          [
             "point_of_interest",
-            "establishment",
             "school",
-            "university"
+            "university",
+            "establishment"
          ]
       },
       {

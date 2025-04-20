@@ -1,0 +1,240 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Cavite City, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJo8wQgTXNlzMRpBRwdNhL4FY",
+         "reference" : "ChIJo8wQgTXNlzMRpBRwdNhL4FY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavite City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavite City"
+            },
+            {
+               "offset" : 13,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJcTwW6OrUlzMRJ-fdO4TQxPA",
+         "reference" : "ChIJcTwW6OrUlzMRJ-fdO4TQxPA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavite",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 8,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_2",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Cavitex, Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ei5DYXZpdGV4LCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJgcD6x7HNlzMRqtemmG3M37gSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
+         "reference" : "Ei5DYXZpdGV4LCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJgcD6x7HNlzMRqtemmG3M37gSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavitex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Las Piñas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavitex"
+            },
+            {
+               "offset" : 9,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "CAVITEX Kawit Toll Plaza, E3, Kawit, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJlaxbdKDSlzMRYyxUUVSkS6U",
+         "reference" : "ChIJlaxbdKDSlzMRYyxUUVSkS6U",
+         "structured_formatting" : 
+         {
+            "main_text" : "CAVITEX Kawit Toll Plaza",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "E3, Kawit, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "CAVITEX Kawit Toll Plaza"
+            },
+            {
+               "offset" : 26,
+               "value" : "E3"
+            },
+            {
+               "offset" : 30,
+               "value" : "Kawit"
+            },
+            {
+               "offset" : 37,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "CAVITEX Manila-Cavite Expressway (SOUTHBOUND), Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8y9IppbPlzMRJJ0QwqH8_PQ",
+         "reference" : "ChIJ8y9IppbPlzMRJJ0QwqH8_PQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "CAVITEX Manila-Cavite Expressway (SOUTHBOUND)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "CAVITEX Manila-Cavite Expressway (SOUTHBOUND)"
+            },
+            {
+               "offset" : 47,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 58,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 72,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

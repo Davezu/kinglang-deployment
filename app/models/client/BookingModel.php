@@ -302,8 +302,21 @@ class Booking {
     }
 
     // payment
+    public function isPaymentRequested($booking_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM payments WHERE booking_id = :booking_id AND status = 'Pending'");
+            $stmt->execute([":booking_id" => $booking_id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
+
     public function addPayment($booking_id, $user_id, $amount, $payment_method, $proof_of_payment = null) {
         try {
+            if ($this->isPaymentRequested($booking_id)) {
+                return ["success" => false, "message" => "Payment already requested for this booking."];
+            }
             $stmt = $this->conn->prepare("INSERT INTO payments (booking_id, user_id, amount, payment_method, proof_of_payment) VALUES (:booking_id, :user_id, :amount, :payment_method, :proof_of_payment)");
             $stmt->execute([
                 ":booking_id" => $booking_id,
@@ -317,9 +330,9 @@ class Booking {
             $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Processing' WHERE booking_id = :booking_id");
             $stmt->execute([":booking_id" => $booking_id]);
             
-            return true;
+            return ["success" => true, "message" => "Payment request submitted successfully!"];
         } catch (PDOException $e) {
-            return "Database error";
+            return ["success" => false, "message" => "Database error: " . $e->getMessage()];
         }
     }
 

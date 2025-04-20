@@ -1,0 +1,269 @@
+/* Payment Styles */
+.payment-modal .modal-content {
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.payment-modal .modal-dialog {
+    max-width: 600px; /* Wider dialog for two columns */
+}
+
+.payment-modal .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    padding: 1.2rem 1.5rem;
+}
+
+.payment-modal .modal-title {
+    font-weight: 700;
+    color: #198754;
+    animation: titleSlideIn 0.4s ease-out;
+    font-size: 1.4rem;
+}
+
+@keyframes titleSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.payment-modal .modal-body {
+    padding: 1.25rem;
+}
+
+.payment-modal .modal-footer {
+    border-top: 1px solid #e9ecef;
+    padding: 1rem 1.5rem;
+}
+
+/* Payment amount options */
+.amount-payment {
+    transition: all 0.2s ease;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid transparent;
+    animation: fadeIn 0.5s ease-out;
+    margin-bottom: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.amount-payment:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.amount-payment.selected {
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #198754;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(25, 135, 84, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(25, 135, 84, 0);
+    }
+}
+
+.amount-payment h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.amount-payment .amount {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+#fullAmnt {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+/* Total amount display */
+.total-amount {
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    border-left: 4px solid #198754;
+    transition: all 0.3s ease;
+}
+
+.total-amount #amount {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* Payment method styling */
+.payment-method {
+    margin-top: 0.5rem;
+}
+
+.payment-method label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.payment-method select {
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    transition: border-color 0.2s ease;
+}
+
+.payment-method select:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+
+/* Account information section */
+#accountInfoSection .alert {
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    animation: slideDown 0.4s ease-out;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#accountInfoSection .alert-heading {
+    color: #0c5460;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#accountInfoSection .alert p {
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+/* File upload styling */
+#proofUploadSection {
+    margin-top: 0.75rem;
+}
+
+#proofUploadSection .form-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+#proofUploadSection .form-control {
+    padding: 0.6rem;
+    border: 1px dashed #ced4da;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    animation: slideDown 0.5s ease-out;
+}
+
+#proofUploadSection .form-control:hover {
+    border-color: #198754;
+}
+
+#proofUploadSection small {
+    font-size: 0.8rem;
+}
+
+/* Button styling */
+.payment-modal .btn-outline-success {
+    border-width: 2px;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.payment-modal .btn-outline-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(25, 135, 84, 0.2);
+}
+
+/* Hover effect for the payment button in the table */
+.open-payment-modal {
+    transition: all 0.2s ease;
+}
+
+.open-payment-modal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(25, 135, 84, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .payment-modal .modal-dialog {
+        max-width: 95%;
+        margin: 0.75rem auto;
+    }
+    
+    .payment-modal .modal-body {
+        padding: 1rem 0.75rem;
+    }
+    
+    .payment-modal .row > div {
+        margin-bottom: 1rem;
+    }
+    
+    .payment-modal .row > div:last-child {
+        margin-bottom: 0;
+    }
+    
+    .amount-payment .amount {
+        font-size: 1.2rem;
+    }
+    
+    .payment-modal .modal-title {
+        font-size: 1.3rem;
+    }
+    
+    /* Adjust spacing on mobile */
+    .amount-payment {
+        padding: 0.75rem !important;
+    }
+} 

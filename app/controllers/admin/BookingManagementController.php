@@ -6,6 +6,18 @@ class BookingManagementController {
 
     public function __construct() {
         $this->bookingModel = new BookingManagementModel();
+        
+        // Check if the user is logged in and is an admin
+        $requestUri = $_SERVER['REQUEST_URI'];
+        if (strpos($requestUri, '/admin') === 0 && 
+            strpos($requestUri, '/admin/login') === false && 
+            strpos($requestUri, '/admin/submit-login') === false) {
+            
+            if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
+                header("Location: /admin/login");
+                exit();
+            }
+        }
     }
 
     public function showBookingDetail() {

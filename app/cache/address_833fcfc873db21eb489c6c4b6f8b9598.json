@@ -1,0 +1,239 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Plaridel, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJG8fIXImrlzMR-GMbzrDUIcU",
+         "reference" : "ChIJG8fIXImrlzMR-GMbzrDUIcU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Plaridel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Plaridel"
+            },
+            {
+               "offset" : 10,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 19,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Plaridel Bypass Road, Bustos, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjJQbGFyaWRlbCBCeXBhc3MgUm9hZCwgQnVzdG9zLCBCdWxhY2FuLCBQaGlsaXBwaW5lcyIuKiwKFAoSCY2CLdJSq5czEfuz8B_Pya0kEhQKEglx6VIT66qXMxFT3LG---xDOw",
+         "reference" : "EjJQbGFyaWRlbCBCeXBhc3MgUm9hZCwgQnVzdG9zLCBCdWxhY2FuLCBQaGlsaXBwaW5lcyIuKiwKFAoSCY2CLdJSq5czEfuz8B_Pya0kEhQKEglx6VIT66qXMxFT3LG---xDOw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Plaridel Bypass Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bustos, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Plaridel Bypass Road"
+            },
+            {
+               "offset" : 22,
+               "value" : "Bustos"
+            },
+            {
+               "offset" : 30,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Plaridel, Misamis Occidental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ1cCUMibcVDIRBCXfKYt7wAA",
+         "reference" : "ChIJ1cCUMibcVDIRBCXfKYt7wAA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Plaridel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Misamis Occidental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Plaridel"
+            },
+            {
+               "offset" : 10,
+               "value" : "Misamis Occidental"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Plaridel, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJi6R6-L6XojMR7ZqIgsMryTY",
+         "reference" : "ChIJi6R6-L6XojMR7ZqIgsMryTY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Plaridel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Plaridel"
+            },
+            {
+               "offset" : 10,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Plaridel, Santiago, Isabela, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqaANNlIPkDMRYEzKddc1Yls",
+         "reference" : "ChIJqaANNlIPkDMRYEzKddc1Yls",
+         "structured_formatting" : 
+         {
+            "main_text" : "Plaridel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santiago, Isabela, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Plaridel"
+            },
+            {
+               "offset" : 10,
+               "value" : "Santiago"
+            },
+            {
+               "offset" : 20,
+               "value" : "Isabela"
+            },
+            {
+               "offset" : 29,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "sublocality",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -12,13 +12,8 @@ class UserManagementController {
             session_start();
         }
         
-        // Check admin authentication for all methods except login
-        $requestUri = $_SERVER['REQUEST_URI'];
-        
-        // Only apply authentication check if NOT on login page
-        // This check was causing redirect loops - we need to be more specific
-        if (strpos($requestUri, '/admin/login') === false && 
-            strpos($requestUri, '/admin/submit-login') === false) {
+        // Only check authentication if this is an admin route
+        if (!$this->isAdminLoginPage()) {
             // Only redirect if not on login paths
             if (!isset($_SESSION['role'])) {
                 header('Location: /admin/login');
@@ -29,6 +24,15 @@ class UserManagementController {
                 exit();
             }
         }
+    }
+    
+    // Helper method to check if current page is admin login
+    private function isAdminLoginPage() {
+        $requestUri = $_SERVER['REQUEST_URI'];
+        return strpos($requestUri, '/admin/login') !== false || 
+               strpos($requestUri, '/admin/submit-login') !== false ||
+               strpos($requestUri, '/home') === 0 ||
+               $requestUri === '/';
     }
     
     public function showUserManagement() {

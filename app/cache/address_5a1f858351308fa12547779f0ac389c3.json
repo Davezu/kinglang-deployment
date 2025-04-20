@@ -1,0 +1,258 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Phase 2 Pinagsama Village, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJw02cN7bIlzMR83VzzFivSJw",
+         "reference" : "ChIJw02cN7bIlzMR83VzzFivSJw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Phase 2 Pinagsama Village",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Phase 2"
+            },
+            {
+               "offset" : 8,
+               "value" : "Pinagsama Village"
+            },
+            {
+               "offset" : 27,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 35,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      },
+      {
+         "description" : "Phase 9 Bagong Silang, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjpQaGFzZSA5IEJhZ29uZyBTaWxhbmcsIENhbG9vY2FuLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJxxLh78uvlzMRcjYYKoDm4V8SFAoSCV8bhBm1sZczERotBCXicOcF",
+         "reference" : "EjpQaGFzZSA5IEJhZ29uZyBTaWxhbmcsIENhbG9vY2FuLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJxxLh78uvlzMRcjYYKoDm4V8SFAoSCV8bhBm1sZczERotBCXicOcF",
+         "structured_formatting" : 
+         {
+            "main_text" : "Phase 9 Bagong Silang",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Phase 9 Bagong Silang"
+            },
+            {
+               "offset" : 23,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 33,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Phase-5 Langit Road, 176 Bagong Silang, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-xJF49yvlzMRoiZY5HnjrZE",
+         "reference" : "ChIJ-xJF49yvlzMRoiZY5HnjrZE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Phase-5 Langit Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "176 Bagong Silang, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Phase-5"
+            },
+            {
+               "offset" : 8,
+               "value" : "Langit Road"
+            },
+            {
+               "offset" : 21,
+               "value" : "176 Bagong Silang"
+            },
+            {
+               "offset" : 40,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 50,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 64,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "subpremise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Phase 3, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EixQaGFzZSAzLCBDYWxvb2NhbiwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCY1xWNPer5czEac9XelAkzhdEhQKEglfG4QZtbGXMxEaLQQl4nDnBQ",
+         "reference" : "EixQaGFzZSAzLCBDYWxvb2NhbiwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCY1xWNPer5czEac9XelAkzhdEhQKEglfG4QZtbGXMxEaLQQl4nDnBQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Phase 3",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Phase 3"
+            },
+            {
+               "offset" : 9,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 19,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "phase 1 pinagsama, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJgTonNgDJlzMR_wQSW5VeflU",
+         "reference" : "ChIJgTonNgDJlzMR_wQSW5VeflU",
+         "structured_formatting" : 
+         {
+            "main_text" : "phase 1 pinagsama",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "phase 1 pinagsama"
+            },
+            {
+               "offset" : 19,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 27,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

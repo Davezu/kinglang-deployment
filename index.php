@@ -2,6 +2,9 @@
 declare(strict_types=1); 
 date_default_timezone_set('Asia/Manila');
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 // Set stricter cookie parameters
 ini_set('session.use_strict_mode', '1');
 ini_set('session.use_cookies', '1');

@@ -1,5 +1,3 @@
-const cancelBookingModal = new bootstrap.Modal(document.getElementById("cancelBookingModal"));
-
 // disable past dates in date of tour input
 const today = new Date();
 today.setDate(today.getDate() + 3);
@@ -29,17 +27,24 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Get initial data with pending status
     let result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
     
-    // If no pending bookings, try confirmed bookings
+    // If no pending bookings, try processing bookings first
     if (result.bookings.length === 0 && status === "pending") {
-        status = "confirmed";
+        status = "processing";
         statusSelect.value = status;
         result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
         
-        // If no confirmed bookings either, use "all"
+        // If no processing bookings, try confirmed bookings
         if (result.bookings.length === 0) {
-            status = "all";
+            status = "confirmed";
             statusSelect.value = status;
             result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+            
+            // If no confirmed bookings either, use "all"
+            if (result.bookings.length === 0) {
+                status = "all";
+                statusSelect.value = status;
+                result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+            }
         }
     }
     
@@ -119,6 +124,14 @@ const amountInput = document.getElementById("amountInput");
 // getting the actual value of the selected formatted currency and place it in the hidden input to insert in database
 document.querySelectorAll(".amount-payment").forEach(amount => {
     amount.addEventListener("click", (event) => {
+        // Remove selected class from all options
+        document.querySelectorAll(".amount-payment").forEach(el => {
+            el.classList.remove("selected");
+        });
+        
+        // Add selected class to clicked option
+        event.currentTarget.classList.add("selected");
+        
         const amt = event.currentTarget.querySelector(".amount");
         if (amt) {
             document.getElementById("amount").textContent = amt.textContent;
@@ -215,6 +228,12 @@ function renderBookings(bookings) {
         remarksCell.style.width = "85px";
         remarksCell.style.textAlign = "center";
         remarksCell.style.fontWeight = "bold";
+        
+        // Add tooltip for Processing status
+        if (booking.status.toLowerCase() === 'processing') {
+            remarksCell.title = "Your payment proof has been submitted and is awaiting admin verification";
+            remarksCell.style.cursor = "help";
+        }
 
         tr.append(destinationCell, dateOfTourCell, endOfTourCell, daysCell, busesCell, totalCostCell, balanceCell, remarksCell, actionCell(booking));
         tbody.appendChild(tr);
@@ -250,12 +269,18 @@ function actionCell(booking) {
 
     // style
     btnGroup.classList.add("container", "btn-container", "d-flex", "gap-2");
-    payButton.classList.add("open-payment-modal", "btn", "bg-success-subtle", "text-success", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
+    
+    // Payment button - enhanced styling
+    payButton.classList.add("btn", "bg-success-subtle", "text-success", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
+    payButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
+    
+    // Only add open-payment-modal class to the button, not the content
+    payButton.classList.add("open-payment-modal");
+    
     editButton.classList.add("btn", "bg-primary-subtle", "text-primary", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
     cancelButton.classList.add("btn", "bg-danger-subtle", "text-danger", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
     viewButton.classList.add("btn", "bg-success-subtle", "text-success", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
 
-    payButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     editButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     cancelButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
@@ -293,19 +318,23 @@ function actionCell(booking) {
     payButton.setAttribute("data-bs-toggle", "modal");
     payButton.setAttribute("data-bs-target", "#paymentModal");
 
-    cancelButton.setAttribute("data-bs-toggle", "modal");
-    cancelButton.setAttribute("data-bs-target", "#cancelBookingModal");
-
     // data attributes
     payButton.setAttribute("data-booking-id", booking.booking_id);
     payButton.setAttribute("data-total-cost", booking.total_cost);
     payButton.setAttribute("data-client-id", booking.client_id);
+    
+    // Add tooltip to payment button
+    payButton.setAttribute("title", "Make a payment for this booking");
 
     editButton.setAttribute("data-booking-id", booking.booking_id);
     editButton.setAttribute("data-days", booking.number_of_days);
     editButton.setAttribute("data-buses", booking.number_of_buses);
+    editButton.setAttribute("title", "Edit booking details");
 
     cancelButton.setAttribute("data-booking-id", booking.booking_id);
+    cancelButton.setAttribute("title", "Cancel this booking");
+    
+    viewButton.setAttribute("title", "View booking details");
 
     // event listeners
     viewButton.addEventListener("click", function () {
@@ -314,7 +343,20 @@ function actionCell(booking) {
     })
 
     payButton.addEventListener("click", function () {
+        // Reset form state
         document.getElementById("amount").textContent = "";
+        document.querySelectorAll(".amount-payment").forEach(el => {
+            el.classList.remove("selected");
+        });
+        
+        // Reset payment method
+        const paymentMethodSelect = document.getElementById("paymentMethod");
+        if (paymentMethodSelect) {
+            paymentMethodSelect.selectedIndex = 0;
+            const event = new Event('change');
+            paymentMethodSelect.dispatchEvent(event);
+        }
+        
         const totalCost = this.getAttribute("data-total-cost");
         const bookingID = this.getAttribute("data-booking-id");
 
@@ -324,6 +366,10 @@ function actionCell(booking) {
         if (parseFloat(booking.balance) < parseFloat(booking.total_cost)) {
             document.getElementById("fullAmnt").style.display = "none";   
             document.getElementById("downPayment").textContent = "Final Payment";
+            // Auto-select the down payment option when full payment is not available
+            setTimeout(() => {
+                document.querySelectorAll(".amount-payment")[1].click();
+            }, 300);
         } else {
             fullAmount.textContent = formatNumber(totalCost);
         }
@@ -337,14 +383,54 @@ function actionCell(booking) {
         window.location.href = "/home/book";
     });
 
+    // Modified: Using SweetAlert for cancel booking
     cancelButton.addEventListener("click", function () {
-        document.getElementById("cancelBookingId").value = this.getAttribute("data-booking-id");
-        document.getElementById("cancelUserId").value = this.getAttribute("data-user-id");
+        const bookingId = this.getAttribute("data-booking-id");
+        
+        Swal.fire({
+            title: 'Cancel Booking?',
+            html: '<p>Are you sure you want to cancel your booking?</p>',
+            input: 'textarea',
+            inputPlaceholder: 'Kindly provide the reason here.',
+            inputAttributes: {
+                'aria-label': 'Cancellation reason'
+            },
+            footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Confirm',
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#6c757d',
+            showCloseButton: true,
+            focusConfirm: false,
+            allowOutsideClick: false,
+            width: '32em',
+            padding: '1em',
+            customClass: {
+                container: 'swal2-container',
+                popup: 'swal2-popup',
+                header: 'swal2-header',
+                title: 'swal2-title',
+                input: 'form-control'
+            },
+            didOpen: () => {
+                // Fix textarea styling
+                const textarea = Swal.getInput();
+                textarea.style.height = '120px';
+                textarea.style.marginTop = '10px';
+                textarea.style.marginBottom = '10px';
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const reason = result.value;
+                cancelBooking(bookingId, reason);
+            }
+        });
     });
 
-    if ((booking.status === "Confirmed" || booking.status == "Processing") && parseFloat(booking.balance) > 0.0) {
+    if ((booking.status === "Confirmed") && parseFloat(booking.balance) > 0.0) {
         btnGroup.append(payButton, editButton, cancelButton, viewButton);
-    } else if (booking.status === "Confirmed" && parseFloat(booking.balance) === 0) {
+    } else if (booking.status === "Confirmed" && parseFloat(booking.balance) === 0 || booking.status == "Processing") {
         btnGroup.append(editButton, cancelButton, viewButton); 
     } else if (booking.status === "Pending") {
         btnGroup.append(editButton, cancelButton, viewButton);  
@@ -364,23 +450,14 @@ function formatNumber(number) {
     }).format(number);
 };
 
-document.getElementById("cancelBookingForm").addEventListener("submit", async function (event) {
-    event.preventDefault(); 
-
-    const formData = new FormData(this);
-    const bookingId = formData.get("booking_id");
-    const reason = formData.get("reason");
-
+// New function to handle booking cancellation API call
+async function cancelBooking(bookingId, reason) {
     try {
         const response = await fetch("/cancel-booking", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ bookingId, reason })
         });
-        
-        cancelBookingModal.hide();
-        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-        document.body.classList.remove('modal-open');
     
         const data = await response.json();
         
@@ -410,23 +487,58 @@ document.getElementById("cancelBookingForm").addEventListener("submit", async fu
         renderPagination(result.pagination);
     } catch (error) {
         console.error(error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'An unexpected error occurred. Please try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
     }
-});
+}
 
 document.getElementById("paymentForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const formData = new FormData(this);
-    const bookingId = formData.get("booking_id");
-    const userId = formData.get("user_id");
-    const amount = formData.get("amount");
-    const paymentMethod = formData.get("payment_method");
-    
-    // Check if we have a file
-    const proofFile = document.getElementById("proofOfPayment").files[0];
-    if (proofFile) {
-        formData.append("proof_of_payment", proofFile);
+    // Validate that an amount has been selected
+    if (!document.getElementById("amount").textContent) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Please select an amount',
+            text: 'You must select either full payment or down payment to proceed.',
+            timer: 3000,
+            timerProgressBar: true
+        });
+        return;
     }
+    
+    // Validate proof of payment for bank transfer and online payment
+    const paymentMethod = document.getElementById("paymentMethod").value;
+    const proofFile = document.getElementById("proofOfPayment").files[0];
+    
+    if ((paymentMethod === "Bank Transfer" || paymentMethod === "Online Payment") && !proofFile) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Proof of payment required',
+            text: 'Please upload your proof of payment to proceed.',
+            timer: 3000,
+            timerProgressBar: true
+        });
+        return;
+    }
+
+    const formData = new FormData(this);
+    
+    // Show loading state
+    Swal.fire({
+        title: 'Processing Payment',
+        text: 'Please wait while we process your payment...',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+            Swal.showLoading();
+        }
+    });
     
     try {
         const response = await fetch("/payment/process", {
@@ -458,11 +570,14 @@ document.getElementById("paymentForm").addEventListener("submit", async function
                 timerProgressBar: true
             });
             
-            // Refresh the bookings table
-            const status = document.getElementById("statusSelect").value;
+            // Set the status filter to "processing" to show the user their processing booking
+            const statusSelect = document.getElementById("statusSelect");
+            statusSelect.value = "processing";
+            
+            // Refresh the bookings table with processing status
             const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
             const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
-            const result = await getAllBookings(status, column, order, currentPage, limit);
+            const result = await getAllBookings("processing", column, order, currentPage, limit);
             renderBookings(result.bookings);
             renderPagination(result.pagination);
         } else {
@@ -503,205 +618,26 @@ function renderPagination(pagination) {
     
     const { total_pages, current_page, total_records } = pagination;
     
-    // Clear existing pagination
-    document.getElementById("paginationContainer").innerHTML = "";
+    // If no pagination needed, clear container and return
+    if (total_records < 10 || total_pages <= 1) {
+        document.getElementById("paginationContainer").innerHTML = "";
+        return;
+    }
     
-    // Add pagination info
-    // const paginationInfo = document.createElement("div");
-    // paginationInfo.className = "text-center mb-2";
-    // paginationInfo.textContent = `Showing ${((current_page - 1) * limit) + 1} to ${Math.min(current_page * limit, total_records)} of ${total_records} records`;
-    // document.getElementById("paginationContainer").appendChild(paginationInfo);
-    
-    // Create pagination controls
-    const paginationNav = document.createElement("nav");
-    paginationNav.setAttribute("aria-label", "Booking pagination");
-    
-    const paginationList = document.createElement("ul");
-    paginationList.className = "pagination";
-    
-    // Previous button
-    const prevLi = document.createElement("li");
-    prevLi.className = `page-item ${current_page === 1 ? 'disabled' : ''}`;
-    const prevLink = document.createElement("a");
-    prevLink.className = "page-link";
-    prevLink.href = "#";
-    prevLink.setAttribute("aria-label", "Previous");
-    prevLink.textContent = "Previous";
-    prevLink.addEventListener("click", async (e) => {
-        e.preventDefault();
-        if (current_page > 1) {
-            currentPage = current_page - 1;
+    // Use the centralized pagination utility
+    createPagination({
+        containerId: "paginationContainer",
+        totalPages: total_pages,
+        currentPage: current_page,
+        paginationType: 'advanced',
+        onPageChange: async (page) => {
+            currentPage = page;
             const status = document.getElementById("statusSelect").value;
             const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
             const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
-            const result = await getAllBookings(status, column, order, currentPage, limit);
+            const result = await getAllBookings(status, column, order, page, limit);
             renderBookings(result.bookings);
             renderPagination(result.pagination);
         }
     });
-    prevLi.appendChild(prevLink);
-    paginationList.appendChild(prevLi);
-    
-    // Page numbers
-    // Show ellipsis for large page counts
-    const maxVisiblePages = 5;
-    let startPage = Math.max(1, current_page - Math.floor(maxVisiblePages / 2));
-    let endPage = Math.min(total_pages, startPage + maxVisiblePages - 1);
-    
-    if (endPage - startPage + 1 < maxVisiblePages) {
-        startPage = Math.max(1, endPage - maxVisiblePages + 1);
-    }
-    
-    // First page
-    if (startPage > 1) {
-        const firstLi = document.createElement("li");
-        firstLi.className = "page-item";
-        const firstLink = document.createElement("a");
-        firstLink.className = "page-link";
-        firstLink.href = "#";
-        firstLink.textContent = "1";
-        firstLink.addEventListener("click", async (e) => {
-            e.preventDefault();
-            currentPage = 1;
-            const status = document.getElementById("statusSelect").value;
-            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
-            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
-            const result = await getAllBookings(status, column, order, currentPage, limit);
-            renderBookings(result.bookings);
-            renderPagination(result.pagination);
-        });
-        firstLi.appendChild(firstLink);
-        paginationList.appendChild(firstLi);
-        
-        // Ellipsis
-        if (startPage > 2) {
-            const ellipsisLi = document.createElement("li");
-            ellipsisLi.className = "page-item disabled";
-            const ellipsisSpan = document.createElement("span");
-            ellipsisSpan.className = "page-link";
-            ellipsisSpan.textContent = "...";
-            ellipsisLi.appendChild(ellipsisSpan);
-            paginationList.appendChild(ellipsisLi);
-        }
-    }
-    
-    // Page numbers
-    for (let i = startPage; i <= endPage; i++) {
-        const pageLi = document.createElement("li");
-        pageLi.className = `page-item ${i === current_page ? 'active' : ''}`;
-        const pageLink = document.createElement("a");
-        pageLink.className = "page-link";
-        pageLink.href = "#";
-        pageLink.textContent = i;
-        pageLink.addEventListener("click", async (e) => {
-            e.preventDefault();
-            currentPage = i;
-            const status = document.getElementById("statusSelect").value;
-            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
-            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
-            const result = await getAllBookings(status, column, order, currentPage, limit);
-            renderBookings(result.bookings);
-            renderPagination(result.pagination);
-        });
-        pageLi.appendChild(pageLink);
-        paginationList.appendChild(pageLi);
-    }
-    
-    // Last page
-    if (endPage < total_pages) {
-        // Ellipsis
-        if (endPage < total_pages - 1) {
-            const ellipsisLi = document.createElement("li");
-            ellipsisLi.className = "page-item disabled";
-            const ellipsisSpan = document.createElement("span");
-            ellipsisSpan.className = "page-link";
-            ellipsisSpan.textContent = "...";
-            ellipsisLi.appendChild(ellipsisSpan);
-            paginationList.appendChild(ellipsisLi);
-        }
-        
-        const lastLi = document.createElement("li");
-        lastLi.className = "page-item";
-        const lastLink = document.createElement("a");
-        lastLink.className = "page-link";
-        lastLink.href = "#";
-        lastLink.textContent = total_pages;
-        lastLink.addEventListener("click", async (e) => {
-            e.preventDefault();
-            currentPage = total_pages;
-            const status = document.getElementById("statusSelect").value;
-            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
-            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
-            const result = await getAllBookings(status, column, order, currentPage, limit);
-            renderBookings(result.bookings);
-            renderPagination(result.pagination);
-        });
-        lastLi.appendChild(lastLink);
-        paginationList.appendChild(lastLi);
-    }
-    
-    // Next button
-    const nextLi = document.createElement("li");
-    nextLi.className = `page-item ${current_page === total_pages ? 'disabled' : ''}`;
-    const nextLink = document.createElement("a");
-    nextLink.className = "page-link";
-    nextLink.href = "#";
-    nextLink.setAttribute("aria-label", "Next");
-    nextLink.innerHTML = "Next";
-    nextLink.addEventListener("click", async (e) => {
-        e.preventDefault();
-        if (current_page < total_pages) {
-            currentPage = current_page + 1;
-            const status = document.getElementById("statusSelect").value;
-            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
-            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
-            const result = await getAllBookings(status, column, order, currentPage, limit);
-            renderBookings(result.bookings);
-            renderPagination(result.pagination);
-        }
-    });
-    nextLi.appendChild(nextLink);
-    paginationList.appendChild(nextLi);
-    
-    paginationNav.appendChild(paginationList);
-    document.getElementById("paginationContainer").appendChild(paginationNav);
-    
-    // Add "Go to page" input
-    // if (total_pages > 1) {
-    //     const goToPageContainer = document.createElement("div");
-    //     goToPageContainer.className = "d-flex justify-content-center align-items-center mt-2";
-        
-    //     const goToPageLabel = document.createElement("label");
-    //     goToPageLabel.className = "me-2";
-    //     goToPageLabel.textContent = "Go to page:";
-        
-    //     const goToPageInput = document.createElement("input");
-    //     goToPageInput.type = "number";
-    //     goToPageInput.className = "form-control form-control-sm";
-    //     goToPageInput.style.width = "60px";
-    //     goToPageInput.min = 1;
-    //     goToPageInput.max = total_pages;
-    //     goToPageInput.value = current_page;
-        
-    //     goToPageInput.addEventListener("change", async function() {
-    //         let pageNum = parseInt(this.value);
-    //         if (isNaN(pageNum) || pageNum < 1) {
-    //             pageNum = 1;
-    //         } else if (pageNum > total_pages) {
-    //             pageNum = total_pages;
-    //         }
-            
-    //         currentPage = pageNum;
-    //         const status = document.getElementById("statusSelect").value;
-    //         const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
-    //         const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
-    //         const result = await getAllBookings(status, column, order, currentPage, limit);
-    //         renderBookings(result.bookings);
-    //         renderPagination(result.pagination);
-    //     });
-        
-    //     goToPageContainer.appendChild(goToPageLabel);
-    //     goToPageContainer.appendChild(goToPageInput);
-    //     document.getElementById("paginationContainer").appendChild(goToPageContainer);
-    // }
 }

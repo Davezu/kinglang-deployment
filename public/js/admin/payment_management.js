@@ -38,20 +38,114 @@ limitSelect.addEventListener('change', () => {
     loadPayments();
 });
 
-// Initial load
-loadPayments();
-
 // Add cursor style for sort headers
 document.querySelectorAll(".sort").forEach(button => {
     button.style.cursor = "pointer";
     button.style.backgroundColor = "#d1f7c4";
 });
 
+// Initialize the page with the sort indicators and check for available payment records
+document.addEventListener("DOMContentLoaded", async function() {
+    // Add initial sort indicator to the default sorted column
+    const initialSortHeader = document.querySelector(`.sort[data-column="${currentSort.column}"]`);
+    if (initialSortHeader) {
+        initialSortHeader.setAttribute('data-order', currentSort.order);
+        
+        const icon = document.createElement('span');
+        icon.className = 'sort-icon ms-1';
+        icon.innerHTML = currentSort.order === 'asc' ? '&#9650;' : '&#9660;';
+        initialSortHeader.appendChild(icon);
+    }
+    
+    // Check for PENDING payments first
+    try {
+        const pendingResponse = await fetch("/admin/payments/get", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                page: 1,
+                limit: limit,
+                sort: currentSort.column,
+                order: currentSort.order,
+                filter: 'PENDING'
+            })
+        });
+        
+        if (pendingResponse.ok) {
+            const pendingData = await pendingResponse.json();
+            
+            if (pendingData.success && pendingData.total > 0) {
+                // If there are pending payments, keep filter as PENDING
+                currentFilter = 'PENDING';
+                statusSelect.value = 'PENDING';
+                payments = pendingData.payments;
+                renderPayments();
+                renderPagination(pendingData.total);
+                return;
+            }
+            
+            // If no pending payments, check for CONFIRMED payments
+            const confirmedResponse = await fetch("/admin/payments/get", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    page: 1,
+                    limit: limit,
+                    sort: currentSort.column,
+                    order: currentSort.order,
+                    filter: 'CONFIRMED'
+                })
+            });
+            
+            if (confirmedResponse.ok) {
+                const confirmedData = await confirmedResponse.json();
+                
+                if (confirmedData.success && confirmedData.total > 0) {
+                    // If there are confirmed payments, set filter to CONFIRMED
+                    currentFilter = 'CONFIRMED';
+                    statusSelect.value = 'CONFIRMED';
+                    payments = confirmedData.payments;
+                    renderPayments();
+                    renderPagination(confirmedData.total);
+                    return;
+                }
+                
+                // If no pending and no confirmed payments, load all payments
+                currentFilter = 'all';
+                statusSelect.value = 'all';
+                loadPayments();
+            }
+        }
+    } catch (error) {
+        console.error('Error during initial status check:', error);
+        // If any error occurs, fall back to loading all payments
+        loadPayments();
+    }
+});
+
+// Initial load - this will be triggered only if DOMContentLoaded event doesn't handle loading
+// Keep this as a fallback
+setTimeout(() => {
+    if (payments.length === 0) {
+        loadPayments();
+    }
+}, 500);
+
 // Functions
 async function loadPayments() {
     try {
-        // Show loading state
-        tableBody.innerHTML = '<tr><td colspan="7" class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></td></tr>';
+        // Store the current content for fallback if there's an error
+        const currentContent = tableBody.innerHTML;
+        
+        // Don't show loading state when just changing pages or sorting
+        // Only show loading state if the table is empty
+        if (!payments.length) {
+            tableBody.innerHTML = '<tr><td colspan="7" class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></td></tr>';
+        }
 
         const response = await fetch("/admin/payments/get", {
             method: 'POST',
@@ -80,6 +174,10 @@ async function loadPayments() {
             renderPagination(data.total);
         } else {
             showMessage('Error', data.message || 'Failed to load payments');
+            // Restore previous content on failure
+            if (currentContent && currentContent !== '') {
+                tableBody.innerHTML = currentContent;
+            }
         }
     } catch (error) {
         console.error('Error loading payments:', error);
@@ -129,39 +227,23 @@ function renderPayments() {
 
 function renderPagination(total) {
     const totalPages = Math.ceil(total / limit);
-    let paginationHTML = '';
-
-    if (totalPages > 1) {
-        paginationHTML += `
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-                        <a class="page-link" href="#" onclick="changePage(${currentPage - 1})">Previous</a>
-                    </li>
-        `;
-
-        for (let i = 1; i <= totalPages; i++) {
-            if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
-                paginationHTML += `
-                    <li class="page-item ${i === currentPage ? 'active' : ''}">
-                        <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
-                    </li>
-                `;
-            } else if (i === currentPage - 3 || i === currentPage + 3) {
-                paginationHTML += '<li class="page-item disabled"><span class="page-link">...</span></li>';
-            }
-        }
-
-        paginationHTML += `
-                    <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-                        <a class="page-link" href="#" onclick="changePage(${currentPage + 1})">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        `;
+    
+    // Skip rendering if only one page
+    if (totalPages <= 1) {
+        paginationContainer.innerHTML = '';
+        return;
     }
-
-    paginationContainer.innerHTML = paginationHTML;
+    
+    // Use the centralized pagination utility
+    createPagination({
+        containerId: paginationContainer.id,
+        totalPages: totalPages,
+        currentPage: currentPage,
+        paginationType: 'standard',
+        onPageChange: (page) => {
+            changePage(page);
+        }
+    });
 }
 
 function handleSort(header) {
@@ -177,16 +259,27 @@ function handleSort(header) {
     // Update sort indicators
     document.querySelectorAll('.sort').forEach(h => {
         h.removeAttribute('data-order');
-        if (h === header) {
-            h.setAttribute('data-order', currentSort.order);
-        }
     });
-
+    
+    // Add the data-order attribute to the clicked header
+    header.setAttribute('data-order', currentSort.order);
+    
+    // Add visual indicator of sort direction
+    document.querySelectorAll('.sort .sort-icon').forEach(icon => {
+        icon.remove();
+    });
+    
+    const icon = document.createElement('span');
+    icon.className = 'sort-icon ms-1';
+    icon.innerHTML = currentSort.order === 'asc' ? '&#9650;' : '&#9660;';
+    header.appendChild(icon);
+    
+    // Load payments with new sort
     loadPayments();
 }
 
 function changePage(page) {
-    if (page < 1 || page > Math.ceil(payments.length / limit)) return;
+    if (page < 1) return;
     currentPage = page;
     loadPayments();
 }

@@ -1,0 +1,264 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Kingaroo's Seaview Resto Bar, Larena Street, Bacong, Negros Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJz2Iw-fdpqzMR0EeQmgCdr-0",
+         "reference" : "ChIJz2Iw-fdpqzMR0EeQmgCdr-0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kingaroo's Seaview Resto Bar",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Larena Street, Bacong, Negros Oriental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kingaroo's Seaview Resto Bar"
+            },
+            {
+               "offset" : 30,
+               "value" : "Larena Street"
+            },
+            {
+               "offset" : 45,
+               "value" : "Bacong"
+            },
+            {
+               "offset" : 53,
+               "value" : "Negros Oriental"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "establishment",
+            "point_of_interest",
+            "restaurant"
+         ]
+      },
+      {
+         "description" : "Kingan, Lanao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQxVgrlePVTIRXcNc0YaRPZ4",
+         "reference" : "ChIJQxVgrlePVTIRXcNc0YaRPZ4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kingan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lanao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kingan"
+            },
+            {
+               "offset" : 8,
+               "value" : "Lanao del Sur"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "KingAngel Grilled Panga, Lapu-Lapu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJoxTLt8aRqTMRPIKEGVk2Ld0",
+         "reference" : "ChIJoxTLt8aRqTMRPIKEGVk2Ld0",
+         "structured_formatting" : 
+         {
+            "main_text" : "KingAngel Grilled Panga",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lapu-Lapu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "KingAngel Grilled Panga"
+            },
+            {
+               "offset" : 25,
+               "value" : "Lapu-Lapu City"
+            },
+            {
+               "offset" : 41,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "food",
+            "restaurant",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "King-A Panciteria, Santa Ana, Cagayan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 17,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNVtokLhDhjMRKlX9AXzGLiw",
+         "reference" : "ChIJNVtokLhDhjMRKlX9AXzGLiw",
+         "structured_formatting" : 
+         {
+            "main_text" : "King-A Panciteria",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 17,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Ana, Cagayan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "King-A Panciteria"
+            },
+            {
+               "offset" : 19,
+               "value" : "Santa Ana"
+            },
+            {
+               "offset" : 30,
+               "value" : "Cagayan"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "establishment",
+            "restaurant",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Kinga Montes Lechon House, montes letson house, Nueva Street, Surigao City, Surigao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-efCqIU3ATMR4ObvjBkiJiQ",
+         "reference" : "ChIJ-efCqIU3ATMR4ObvjBkiJiQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kinga Montes Lechon House",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "montes letson house, Nueva Street, Surigao City, Surigao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kinga Montes Lechon House"
+            },
+            {
+               "offset" : 27,
+               "value" : "montes letson house"
+            },
+            {
+               "offset" : 48,
+               "value" : "Nueva Street"
+            },
+            {
+               "offset" : 62,
+               "value" : "Surigao City"
+            },
+            {
+               "offset" : 76,
+               "value" : "Surigao del Norte"
+            },
+            {
+               "offset" : 95,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "establishment",
+            "point_of_interest",
+            "restaurant"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

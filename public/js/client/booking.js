@@ -1,11 +1,3 @@
-const picker = flatpickr("#date_of_tour", {
-    dateFormat: "Y-m-d",
-    altInput: true,
-    altFormat: "D, M j", 
-    minDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-    maxDate: new Date(new Date().setMonth(new Date().getMonth() + 1)),
-  });
-
 let isRebooking = false;
 
 const bookingId = sessionStorage.getItem("bookingId") || 0;
@@ -14,6 +6,14 @@ sessionStorage.removeItem("bookingId");
 if (bookingId > 0) isRebooking = !isRebooking;
 
 document.addEventListener("DOMContentLoaded", async function () {
+    const picker = flatpickr("#date_of_tour", {
+        dateFormat: "Y-m-d",
+        altInput: true,
+        altFormat: "D, M j", 
+        minDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+        maxDate: new Date(new Date().setMonth(new Date().getMonth() + 1)),
+    });
+
     if (!isRebooking) return;
 
     const data = await getBooking(bookingId);
@@ -39,15 +39,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         addressInputs[i].value = location.origin;
     });
 
-    const date = new Date(booking.date_of_tour);
+    const date_of_tour = new Date(booking.date_of_tour);
 
-    const options = { weekday: 'short', month: 'short', day: 'numeric' };
-    const formatted = date.toLocaleDateString('en-US', options);
+    picker.setDate(date_of_tour);
 
-    console.log(formatted);
-
-    picker.setDate(booking.date_of_tour);
-    
     // Set the number of days and buses
     const daysElement = document.getElementById("number_of_days");
     const busesElement = document.getElementById("number_of_buses");
@@ -102,81 +97,63 @@ async function getBooking(bookingId) {
 
 document.addEventListener("DOMContentLoaded", initMap);
 
-document.addEventListener("DOMContentLoaded", () => {
-    const decBusesButton = document.getElementById("decreaseBuses");
-    const incBusesButton = document.getElementById("increaseBuses");
-    const incDaysButton = document.getElementById("increaseDays");
-    const decDaysButton = document.getElementById("decreaseDays");
-
-    const days = document.getElementById("number_of_days");
-    const buses = document.getElementById("number_of_buses");
-
-    // Initialize with values from localStorage or default to 0
-    let bus = parseInt(localStorage.getItem("buses")) || 0;
-    let day = parseInt(localStorage.getItem("days")) || 0;
+// Initialize days and buses counters
+document.addEventListener("DOMContentLoaded", function() {
+    const daysElement = document.getElementById("number_of_days");
+    const busesElement = document.getElementById("number_of_buses");
     
-    // Set initial display values
-    days.textContent = day;
-    buses.textContent = bus;
-    
-    // If we're rebooking, get the values from the booking data
-    if (isRebooking) {
-        const bookingDays = parseInt(document.getElementById("number_of_days").textContent);
-        const bookingBuses = parseInt(document.getElementById("number_of_buses").textContent);
+    if (!isRebooking) {
+        // Always set to zero for new bookings
+        daysElement.textContent = "0";
+        busesElement.textContent = "0";
         
-        if (!isNaN(bookingDays) && bookingDays > 0) {
-            day = bookingDays;
-            days.textContent = day;
-            localStorage.setItem("days", day);
-        }
-        
-        if (!isNaN(bookingBuses) && bookingBuses > 0) {
-            bus = bookingBuses;
-            buses.textContent = bus;
-            localStorage.setItem("buses", bus);
-        }
+        // Clear any previous values in localStorage
+        localStorage.removeItem("days");
+        localStorage.removeItem("buses");
     }
-
-    // Decrease buses button
-    decBusesButton.addEventListener("click", () => {
-        if (bus <= 0) return;
-        bus--;
-        buses.textContent = bus;
-        localStorage.setItem("buses", bus);
+    
+    // Add event listeners for days and buses counter buttons
+    document.getElementById("increaseDays").addEventListener("click", function() {
+        const currentDays = parseInt(daysElement.textContent);
+        const newDays = currentDays + 1;
+        daysElement.textContent = newDays;
+        localStorage.setItem("days", newDays);
         if (allInputsFilled()) {
             renderTotalCost();
         }
     });
     
-    // Increase buses button
-    incBusesButton.addEventListener("click", () => {
-        if (bus >= 13) return;
-        bus++;
-        buses.textContent = bus;
-        localStorage.setItem("buses", bus);
+    document.getElementById("decreaseDays").addEventListener("click", function() {
+        const currentDays = parseInt(daysElement.textContent);
+        if (currentDays > 0) {
+            const newDays = currentDays - 1;
+            daysElement.textContent = newDays;
+            localStorage.setItem("days", newDays);
+            if (allInputsFilled()) {
+                renderTotalCost();
+            }
+        }
+    });
+    
+    document.getElementById("increaseBuses").addEventListener("click", function() {
+        const currentBuses = parseInt(busesElement.textContent);
+        const newBuses = currentBuses + 1;
+        busesElement.textContent = newBuses;
+        localStorage.setItem("buses", newBuses);
         if (allInputsFilled()) {
             renderTotalCost();
         }
     });
     
-    // Decrease days button
-    decDaysButton.addEventListener("click", () => {
-        if (day <= 0) return;
-        day--;
-        days.textContent = day;
-        localStorage.setItem("days", day);
-        if (allInputsFilled()) {
-            renderTotalCost();
-        }
-    });
-    
-    // Increase days button
-    incDaysButton.addEventListener("click", () => {
-        day++;
-        days.textContent = day;
-        localStorage.setItem("days", day);
-        if (allInputsFilled()) {
-            renderTotalCost();
+    document.getElementById("decreaseBuses").addEventListener("click", function() {
+        const currentBuses = parseInt(busesElement.textContent);
+        if (currentBuses > 0) {
+            const newBuses = currentBuses - 1;
+            busesElement.textContent = newBuses;
+            localStorage.setItem("buses", newBuses);
+            if (allInputsFilled()) {
+                renderTotalCost();
+            }
         }
     });
 });
@@ -275,6 +252,10 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         const data = await response.json();
 
         if (data.success) {
+            // Always clear localStorage values regardless of booking success
+            localStorage.removeItem("days");
+            localStorage.removeItem("buses");
+            
             Swal.fire({
                 icon: 'success',
                 title: 'Success!',
@@ -286,12 +267,8 @@ document.getElementById("bookingForm").addEventListener("submit", async function
             // Clear form data
             this.reset(); 
             document.getElementById("totalCost").textContent = "";
-            document.getElementById("number_of_buses").textContent = "0";
             document.getElementById("number_of_days").textContent = "0";
-            
-            // Clear localStorage
-            localStorage.removeItem("buses");
-            localStorage.removeItem("days");
+            document.getElementById("number_of_buses").textContent = "0";
             
             // Redirect to My Bookings page after a short delay
             setTimeout(() => {
@@ -396,14 +373,12 @@ function allInputsFilled() {
     const pickupPoint = document.getElementById("pickup_point").value.trim();
     const destinationInputs = document.querySelectorAll(".address");
     const destination = destinationInputs[destinationInputs.length - 1].value.trim();
-    const dateOfTour = document.getElementById("date_of_tour").value.trim();
     const numberOfDays = document.getElementById("number_of_days").textContent;
     const numberOfBuses = document.getElementById("number_of_buses").textContent;
     
     // Check if all required fields are filled
     return pickupPoint !== "" && 
            destination !== "" && 
-           dateOfTour !== "" && 
            parseInt(numberOfDays) > 0 && 
            parseInt(numberOfBuses) > 0;
 }
@@ -790,11 +765,4 @@ document.querySelectorAll(".address").forEach(input => {
             renderTotalCost();
         }
     });
-});
-
-// Add event listener to date input
-document.getElementById("date_of_tour").addEventListener("change", function() {
-    if (allInputsFilled()) {
-        renderTotalCost();
-    }
 });

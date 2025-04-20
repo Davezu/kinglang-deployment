@@ -6,6 +6,9 @@ $clientAuthController = new ClientAuthController();
 require_once __DIR__ . "/../app/controllers/client/BookingController.php";
 $bookingController = new BookingController();
 
+// client notifications
+require_once __DIR__ . "/../app/controllers/client/NotificationsController.php";
+$clientNotificationsController = new ClientNotificationsController();
 
 // admin
 require_once __DIR__ . "/../app/controllers/admin/BookingManagementController.php";
@@ -312,6 +315,23 @@ switch ($request) {
         break;
     case "/admin/notifications/mark-all-read":
         $notificationController->markAllAsRead();
+        break;
+
+    // Client Notifications
+    case "/home/notifications":
+        require_once __DIR__ . "/../app/views/client/notifications.php";
+        break;
+    case "/home/get-notifications":
+        $clientNotificationsController->getNotifications();
+        break;
+    case "/home/get-all-notifications":
+        $clientNotificationsController->getAllNotificationsWithPagination();
+        break;
+    case "/home/mark-notification-read":
+        $clientNotificationsController->markAsRead();
+        break;
+    case "/home/mark-all-notifications-read":
+        $clientNotificationsController->markAllAsRead();
         break;
 
     case "/favicon.ico":

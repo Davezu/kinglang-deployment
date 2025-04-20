@@ -11,7 +11,7 @@ class AuthModel {
 
     public function emailExists($email) {
         try {
-            $stmt = $this->conn->prepare("SELECT email FROM users WHERE email = :email AND role = 'Super Admin'");
+            $stmt = $this->conn->prepare("SELECT email FROM users WHERE email = :email AND (role = 'Super Admin' OR role = 'Admin')");
             $stmt->execute([":email" => $email]);
             return $stmt->fetch() ? true : false;
         } catch (PDOException $e) {
@@ -21,7 +21,7 @@ class AuthModel {
 
     public function login($email, $password) {
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email AND role = 'Super Admin'");
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email AND (role = 'Super Admin' OR role = 'Admin')");
             $stmt->execute([":email" => $email]);
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);

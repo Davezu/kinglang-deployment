@@ -37,8 +37,8 @@
          ],
          "types" : 
          [
-            "geocode",
             "administrative_area_level_2",
+            "geocode",
             "political"
          ]
       },
@@ -134,10 +134,58 @@
          ],
          "types" : 
          [
-            "sublocality_level_2",
             "geocode",
+            "sublocality_level_2",
             "political",
             "sublocality"
+         ]
+      },
+      {
+         "description" : "Marinduque, Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
+         "reference" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marinduque",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Las Piñas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 12,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 23,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
          ]
       },
       {
@@ -190,54 +238,6 @@
          [
             "point_of_interest",
             "establishment"
-         ]
-      },
-      {
-         "description" : "Marinduque, Las Piñas, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 5,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
-         "reference" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
-         "structured_formatting" : 
-         {
-            "main_text" : "Marinduque",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 5,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Las Piñas, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Marinduque"
-            },
-            {
-               "offset" : 12,
-               "value" : "Las Piñas"
-            },
-            {
-               "offset" : 23,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 37,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "geocode",
-            "route"
          ]
       }
    ],

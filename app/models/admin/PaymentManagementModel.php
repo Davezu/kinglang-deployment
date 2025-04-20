@@ -1,19 +1,22 @@
 <?php
 require_once __DIR__ . "/../../../config/database.php";
+require_once __DIR__ . "/../client/NotificationModel.php";
 
 class PaymentManagementModel {
     private $conn;
+    private $clientNotificationModel;
 
     public function __construct() {
         global $pdo;
         $this->conn = $pdo;
+        $this->clientNotificationModel = new ClientNotificationModel();
     }
 
     public function getPayments($status = null, $column = 'payment_id', $order = 'DESC', $page = 1, $limit = 10, $search = '') {
         try {
             $offset = ($page - 1) * $limit;
             $params = [];
-            $whereClause = "WHERE 1=1";
+            $whereClause = "WHERE is_canceled = 0";
 
             if ($status && $status !== 'all') {
                 $whereClause .= " AND p.status = :status";
@@ -102,7 +105,10 @@ class PaymentManagementModel {
             $this->conn->beginTransaction();
 
             // Get booking ID from payment
-            $sql = "SELECT booking_id, user_id FROM payments WHERE payment_id = :id";
+            $sql = "SELECT p.booking_id, p.user_id, p.amount, b.destination 
+                    FROM payments p
+                    JOIN bookings b ON p.booking_id = b.booking_id 
+                    WHERE p.payment_id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([':id' => $paymentId]);
             $paymentData = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -113,6 +119,8 @@ class PaymentManagementModel {
             
             $bookingId = $paymentData['booking_id'];
             $userId = $paymentData['user_id'];
+            $amount = $paymentData['amount'];
+            $destination = $paymentData['destination'];
 
             // Update payment status
             $sql = "UPDATE payments SET status = 'Confirmed', updated_at = NOW() WHERE payment_id = :id";
@@ -123,6 +131,10 @@ class PaymentManagementModel {
             require_once __DIR__ . "/../../models/client/BookingModel.php";
             $bookingModel = new Booking();
             $bookingModel->updatePaymentStatus($bookingId);
+
+            // Add client notification
+            $clientMessage = "Your payment of " . number_format($amount, 2) . " for booking to " . $destination . " has been confirmed.";
+            $this->clientNotificationModel->addNotification($userId, "payment_confirmed", $clientMessage, $bookingId);
 
             $this->conn->commit();
             return true;
@@ -138,7 +150,10 @@ class PaymentManagementModel {
             $this->conn->beginTransaction();
 
             // Get booking ID from payment
-            $sql = "SELECT booking_id, user_id FROM payments WHERE payment_id = :id";
+            $sql = "SELECT p.booking_id, p.user_id, p.amount, b.destination 
+                    FROM payments p
+                    JOIN bookings b ON p.booking_id = b.booking_id 
+                    WHERE p.payment_id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([':id' => $paymentId]);
             $paymentData = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -149,6 +164,8 @@ class PaymentManagementModel {
             
             $bookingId = $paymentData['booking_id'];
             $userId = $paymentData['user_id'];
+            $amount = $paymentData['amount'];
+            $destination = $paymentData['destination'];
 
             // Update payment status
             $sql = "UPDATE payments SET status = 'Rejected', updated_at = NOW() WHERE payment_id = :id";
@@ -166,20 +183,10 @@ class PaymentManagementModel {
 
             // If this was the only pending payment, revert booking to its previous status
             if ($otherPendingPayments == 0) {
-                // Check if the booking has confirmed payments
-                $sql = "SELECT COUNT(*) FROM payments 
-                        WHERE booking_id = :booking_id 
-                        AND status = 'Confirmed'";
-                $stmt = $this->conn->prepare($sql);
-                $stmt->execute([':booking_id' => $bookingId]);
-                $hasConfirmedPayments = $stmt->fetchColumn() > 0;
-                
-                $newStatus = $hasConfirmedPayments ? 'Confirmed' : 'Pending';
-                
-                $sql = "UPDATE bookings SET status = :status 
+                $sql = "UPDATE bookings SET status = 'Confirmed'
                         WHERE booking_id = :booking_id AND status = 'Processing'";
                 $stmt = $this->conn->prepare($sql);
-                $stmt->execute([':booking_id' => $bookingId, ':status' => $newStatus]);
+                $stmt->execute([':booking_id' => $bookingId]);
             }
 
             // Record rejection reason
@@ -191,6 +198,10 @@ class PaymentManagementModel {
                 ':booking_id' => $bookingId, 
                 ':user_id' => $userId
             ]);
+
+            // Add client notification
+            $clientMessage = "Your payment of " . number_format($amount, 2) . " for booking to " . $destination . " has been rejected. Reason: " . $reason;
+            $this->clientNotificationModel->addNotification($userId, "payment_rejected", $clientMessage, $bookingId);
 
             $this->conn->commit();
             return true;

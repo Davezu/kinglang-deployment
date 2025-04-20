@@ -1,0 +1,258 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Pateros, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJB9wnuJrIlzMR0SeifBqaYMw",
+         "reference" : "ChIJB9wnuJrIlzMR0SeifBqaYMw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pateros",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pateros"
+            },
+            {
+               "offset" : 9,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Pateros Municipal Hall, G. de Borja, Pateros, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJLxANL5HIlzMReg35ffjEMZA",
+         "reference" : "ChIJLxANL5HIlzMReg35ffjEMZA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pateros Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "G. de Borja, Pateros, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pateros Municipal Hall"
+            },
+            {
+               "offset" : 24,
+               "value" : "G. de Borja"
+            },
+            {
+               "offset" : 37,
+               "value" : "Pateros"
+            },
+            {
+               "offset" : 46,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Pateros Catholic School, B. Morcilla Street, Pateros, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNcUDA5DIlzMRszkKhUbKxIM",
+         "reference" : "ChIJNcUDA5DIlzMRszkKhUbKxIM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pateros Catholic School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "B. Morcilla Street, Pateros, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pateros Catholic School"
+            },
+            {
+               "offset" : 25,
+               "value" : "B. Morcilla Street"
+            },
+            {
+               "offset" : 45,
+               "value" : "Pateros"
+            },
+            {
+               "offset" : 54,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Pateros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EipQYXRlcm9zLCBNYW5pbGEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgnxp22Rr8mXMxGcjoWqqTd__xIUChIJi8MeVwPKlzMRH8FpEHXV0Wk",
+         "reference" : "EipQYXRlcm9zLCBNYW5pbGEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgnxp22Rr8mXMxGcjoWqqTd__xIUChIJi8MeVwPKlzMRH8FpEHXV0Wk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pateros",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pateros"
+            },
+            {
+               "offset" : 9,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 17,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 31,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Pateros Elementary School (PES), P. Herrera, Pateros, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJc1ifw4_IlzMRoOER1Nmim14",
+         "reference" : "ChIJc1ifw4_IlzMRoOER1Nmim14",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pateros Elementary School (PES)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "P. Herrera, Pateros, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pateros Elementary School (PES)"
+            },
+            {
+               "offset" : 33,
+               "value" : "P. Herrera"
+            },
+            {
+               "offset" : 45,
+               "value" : "Pateros"
+            },
+            {
+               "offset" : 54,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "primary_school",
+            "establishment",
+            "point_of_interest",
+            "school"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

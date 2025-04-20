@@ -1,10 +1,10 @@
 <?php
 require_once __DIR__ . "/../../controllers/admin/PaymentManagementController.php";
 
-if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
-    header("Location: /admin/login");
-    exit(); 
-}
+// if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
+//     header("Location: /admin/login");
+//     exit(); 
+// }
 ?>
 
 <!DOCTYPE html>
@@ -143,6 +143,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../../../public/js/utils/pagination.js"></script>  
     <script src="../../../public/js/admin/payment_management.js"></script>
     <script src="../../../public/js/assets/sidebar.js"></script>
     <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>

@@ -1,15 +1,18 @@
 <?php
 require_once __DIR__ . "/../../../config/database.php";
 require_once __DIR__ . "/NotificationModel.php";
+require_once __DIR__ . "/../client/NotificationModel.php";
 
 class BookingManagementModel {
     public $conn;
     private $notificationModel;
+    private $clientNotificationModel;
 
     public function __construct() {
         global $pdo;
         $this->conn = $pdo;
         $this->notificationModel = new NotificationModel();
+        $this->clientNotificationModel = new ClientNotificationModel();
     }
 
     public function getAllBookings($status, $column, $order, $page = 1, $limit = 10) {
@@ -77,10 +80,16 @@ class BookingManagementModel {
             $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Confirmed' WHERE booking_id = :booking_id");
             $stmt->execute([":booking_id" => $booking_id]);
             
-            // Add notification
+            // Get booking information
             $bookingInfo = $this->getBooking($booking_id);
+            
+            // Add admin notification
             $message = "New booking confirmed for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
             $this->notificationModel->addNotification("booking_confirmed", $message, $booking_id);
+            
+            // Add client notification
+            $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been confirmed.";
+            $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "booking_confirmed", $clientMessage, $booking_id);
             
             return "success";
         } catch (PDOException $e) {
@@ -103,10 +112,16 @@ class BookingManagementModel {
                 ":user_id" => $user_id
             ]);
 
-            // Add notification
+            // Get booking information
             $bookingInfo = $this->getBooking($booking_id);
+            
+            // Add admin notification
             $message = "Booking rejected for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
             $this->notificationModel->addNotification("booking_rejected", $message, $booking_id);
+            
+            // Add client notification
+            $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been rejected. Reason: " . $reason;
+            $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "booking_rejected", $clientMessage, $booking_id);
 
             return ["success" => true, "message" => "Booking rejected successfully."];
         } catch (PDOException $e) {
@@ -167,10 +182,16 @@ class BookingManagementModel {
             $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooking = 0, status = 'Confirmed' WHERE booking_id = :booking_id");
             $stmt->execute([ ":booking_id" => $rebooking_id]);
 
-            // Add notification
+            // Get booking information
             $bookingInfo = $this->getBooking($rebooking_id);
+            
+            // Add admin notification
             $message = "Rebooking confirmed for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
             $this->notificationModel->addNotification("rebooking_confirmed", $message, $rebooking_id);
+            
+            // Add client notification
+            $clientMessage = "Your rebooking request for the trip to " . $bookingInfo['destination'] . " has been confirmed.";
+            $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "rebooking_confirmed", $clientMessage, $rebooking_id);
 
             return ["success" => true];
         } catch (PDOException $e) {
@@ -193,10 +214,16 @@ class BookingManagementModel {
                 ":user_id" => $user_id
             ]);
 
-            // Add notification
+            // Get booking information
             $bookingInfo = $this->getBooking($booking_id);
+            
+            // Add admin notification
             $message = "Rebooking rejected for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
             $this->notificationModel->addNotification("rebooking_rejected", $message, $booking_id);
+            
+            // Add client notification
+            $clientMessage = "Your rebooking request for the trip to " . $bookingInfo['destination'] . " has been rejected. Reason: " . $reason;
+            $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "rebooking_rejected", $clientMessage, $booking_id);
 
             return ["success" => true];
         } catch (PDOException $e) {
@@ -259,10 +286,19 @@ class BookingManagementModel {
             $stmt = $this->conn->prepare("INSERT INTO canceled_trips (reason, booking_id, user_id, amount_refunded, canceled_by) VALUES (:reason, :booking_id, :user_id, :amount_refunded, :canceled_by)");
             $stmt->execute([":reason" => $reason, ":booking_id" => $booking_id, ":user_id" => $user_id, ":amount_refunded" => $amount_refunded, ":canceled_by" => $_SESSION["role"]]);
 
-            // Add notification
+            // Get booking information
             $bookingInfo = $this->getBooking($booking_id);
+            
+            // Add admin notification
             $message = "Booking canceled for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
             $this->notificationModel->addNotification("booking_canceled", $message, $booking_id);
+            
+            // Add client notification
+            $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been canceled. ";
+            if ($amount_refunded > 0) {
+                $clientMessage .= "Refunded amount: " . $amount_refunded;
+            }
+            $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "booking_canceled", $clientMessage, $booking_id);
 
             return ["success" => true];
         } catch (PDOException $e) {
@@ -312,7 +348,7 @@ class BookingManagementModel {
 
     public function summaryMetrics() {
         try {
-            $stmt = $this->conn->prepare("SELECT COUNT(*) total_bookings FROM bookings WHERE is_rebooking = 0 AND is_rebooked = 0 AND status IN ('Pending', 'Confirmed', 'Completed')");
+            $stmt = $this->conn->prepare("SELECT COUNT(*) total_bookings FROM bookings WHERE is_rebooking = 0 AND is_rebooked = 0");
             $stmt->execute();
             $total_bookings = $stmt->fetchColumn();
 
@@ -320,19 +356,19 @@ class BookingManagementModel {
             $stmt->execute();
             $total_revenue = $stmt->fetchColumn() ?? 0;
 
-            $stmt = $this->conn->prepare("SELECT COUNT(*) as upcoming_trips FROM bookings WHERE status = 'Confirmed' AND date_of_tour > CURDATE()");
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as upcoming_trips FROM bookings WHERE status = 'Confirmed' AND date_of_tour > CURDATE() AND is_rebooking = 0 AND is_rebooked = 0 AND payment_status IN ('Paid', 'Partially Paid')");
             $stmt->execute();
             $upcoming_trips = $stmt->fetchColumn();
 
-            $stmt = $this->conn->prepare("SELECT COUNT(*) as pending_bookings FROM bookings WHERE status = 'Pending'");
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as pending_bookings FROM bookings WHERE status = 'Pending' AND is_rebooking = 0 AND is_rebooked = 0");
             $stmt->execute();
             $pending_bookings = $stmt->fetchColumn();
 
-            $stmt = $this->conn->prepare("SELECT COUNT(*) as processing_payments FROM bookings WHERE status = 'Processing'");
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as processing_payments FROM bookings WHERE status = 'Processing' AND payment_status IN ('Unpaid', 'Partially Paid') AND is_rebooking = 0 AND is_rebooked = 0");
             $stmt->execute();
             $processing_payments = $stmt->fetchColumn();
 
-            $stmt = $this->conn->prepare("SELECT COUNT(*) as flagged_bookings FROM bookings WHERE status = 'Confirmed' AND payment_status IN ('Unpaid', 'Partially Paid')");
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as flagged_bookings FROM bookings WHERE status = 'Confirmed' AND payment_status IN ('Unpaid', 'Partially Paid') AND is_rebooking = 0 AND is_rebooked = 0 AND date_of_tour < CURDATE()");
             $stmt->execute();
             $flagged_bookings = $stmt->fetchColumn();
 
@@ -358,11 +394,11 @@ class BookingManagementModel {
             $stmt = $this->conn->prepare("
                 SELECT 
                     MONTH(date_of_tour) as month,
-                    COUNT(*) as booking_count,
-                    SUM(total_cost) as total_revenue
-                FROM bookings
+                    COUNT(booking_id) as booking_count,
+                    SUM(CASE WHEN payment_status IN ('Paid', 'Partially Paid') AND status IN ('Confirmed', 'Completed') THEN total_cost ELSE 0 END) as total_revenue
+                FROM bookings 
                 WHERE YEAR(date_of_tour) = :year
-                AND status IN ('Confirmed', 'Completed')
+                AND is_rebooking = 0
                 AND is_rebooked = 0
                 GROUP BY MONTH(date_of_tour)
                 ORDER BY month
@@ -473,6 +509,7 @@ class BookingManagementModel {
                     SUM(total_cost) as total_value
                 FROM bookings
                 WHERE is_rebooked = 0
+                AND is_rebooking = 0
                 GROUP BY status
                 ORDER BY count DESC
             ");
@@ -547,6 +584,7 @@ class BookingManagementModel {
                 WHERE status IN ('Confirmed', 'Completed')
                 AND payment_status IN ('Paid', 'Partially Paid')
                 AND is_rebooked = 0
+                AND is_rebooking = 0
                 AND date_of_tour >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
                 GROUP BY month_year, YEAR(date_of_tour), MONTH(date_of_tour)
                 ORDER BY year, month

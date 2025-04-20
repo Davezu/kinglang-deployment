@@ -1,6 +1,3 @@
-const confirmBookingModal = new bootstrap.Modal(document.getElementById("confirmBookingModal"));
-const rejectBookingModal = new bootstrap.Modal(document.getElementById("rejectBookingModal"));
-const cancelBookingModal = new bootstrap.Modal(document.getElementById("cancelBookingModal"));
 const messageModal = new bootstrap.Modal(document.getElementById("messageModal"));
 
 const messageTitle = document.getElementById("messageTitle");
@@ -8,10 +5,33 @@ const messageBody = document.getElementById("messageBody");
 
 document.addEventListener("DOMContentLoaded", async function () {
     const limit = document.getElementById("limitSelect").value;
-    const status = document.getElementById("statusSelect").value;
-    const bookings = await getAllBookings(status, "asc", "booking_id", 1, limit);    
-    renderBookings(bookings);
-    renderPagination(bookings.pagination);
+    
+    // Check the counts for Pending status
+    const pendingBookings = await getAllBookings("Pending", "asc", "booking_id", 1, limit);
+    
+    // First check if there are any pending records
+    if (pendingBookings && pendingBookings.pagination && pendingBookings.pagination.total > 0) {
+        // If there are pending records, keep default as Pending
+        document.getElementById("statusSelect").value = "Pending";
+        renderBookings(pendingBookings);
+        renderPagination(pendingBookings.pagination);
+    } else {
+        // If no pending records, check for confirmed records
+        const confirmedBookings = await getAllBookings("Confirmed", "asc", "booking_id", 1, limit);
+        
+        if (confirmedBookings && confirmedBookings.pagination && confirmedBookings.pagination.total > 0) {
+            // If there are confirmed records, set default to Confirmed
+            document.getElementById("statusSelect").value = "Confirmed";
+            renderBookings(confirmedBookings);
+            renderPagination(confirmedBookings.pagination);
+        } else {
+            // If no pending and no confirmed records, set to All
+            document.getElementById("statusSelect").value = "All";
+            const allBookings = await getAllBookings("All", "asc", "booking_id", 1, limit);
+            renderBookings(allBookings);
+            renderPagination(allBookings.pagination);
+        }
+    }
 });
 
 document.getElementById("statusSelect").addEventListener("change", async function () {
@@ -95,12 +115,10 @@ async function renderBookings(data) {
         const cell = document.createElement("td");
         cell.colSpan = 9; // Match the number of columns in the table
         cell.textContent = "No records found";
-        cell.className = "text-center py-4";
+        cell.className = "text-center";
         row.appendChild(cell);
         tbody.appendChild(row);
-        
-        // Add minimum height to the table body to ensure consistent layout
-        tbody.style.minHeight = "300px";
+
         return;
     }
 
@@ -231,18 +249,26 @@ function actionButton(booking) {
     cancelButton.setAttribute("data-booking-id", booking.booking_id);
     cancelButton.setAttribute("data-user-id", booking.user_id);
 
-    // modal
-    confirmButton.setAttribute("data-bs-toggle", "modal");
-    confirmButton.setAttribute("data-bs-target", "#confirmBookingModal");
-
-    rejectButton.setAttribute("data-bs-toggle", "modal");
-    rejectButton.setAttribute("data-bs-target", "#rejectBookingModal");
-
-    cancelButton.setAttribute("data-bs-toggle", "modal");
-    cancelButton.setAttribute("data-bs-target", "#cancelBookingModal");
-
+    // Replace modal with SweetAlert for confirm booking
     confirmButton.addEventListener("click", function () {
-        document.getElementById("confirmBookingId").value = this.getAttribute("data-booking-id");
+        const bookingId = this.getAttribute("data-booking-id");
+        
+        Swal.fire({
+            title: 'Confirm Booking?',
+            html: '<p>Are you sure you want to confirm this booking request?</p>',
+            footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel',
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#6c757d',
+            focusConfirm: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                confirmBooking(bookingId);
+            }
+        });
     });
 
     viewButton.addEventListener("click", function () {
@@ -250,14 +276,82 @@ function actionButton(booking) {
         window.location.href = "/admin/booking-request";
     });
 
+    // Replace modal with SweetAlert for reject booking
     rejectButton.addEventListener("click", function () {
-        document.getElementById("rejectBookingId").value = this.getAttribute("data-booking-id");
-        document.getElementById("rejectUserId").value = this.getAttribute("data-user-id");
+        const bookingId = this.getAttribute("data-booking-id");
+        const userId = this.getAttribute("data-user-id");
+        
+        Swal.fire({
+            title: 'Reject Booking?',
+            html: '<p>Are you sure you want to reject this booking request?</p>',
+            input: 'textarea',
+            inputPlaceholder: 'Kindly provide the reason here.',
+            inputAttributes: {
+                'aria-label': 'Rejection reason'
+            },
+            footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Reject',
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            showCloseButton: true,
+            focusConfirm: false,
+            allowOutsideClick: false,
+            width: '32em',
+            padding: '1em',
+            didOpen: () => {
+                // Fix textarea styling
+                const textarea = Swal.getInput();
+                textarea.style.height = '120px';
+                textarea.style.marginTop = '10px';
+                textarea.style.marginBottom = '10px';
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const reason = result.value;
+                rejectBooking(bookingId, userId, reason);
+            }
+        });
     });
 
+    // Replace modal with SweetAlert for cancel booking
     cancelButton.addEventListener("click", function () {
-        document.getElementById("cancelBookingId").value = this.getAttribute("data-booking-id");
-        document.getElementById("cancelUserId").value = this.getAttribute("data-user-id");
+        const bookingId = this.getAttribute("data-booking-id");
+        const userId = this.getAttribute("data-user-id");
+        
+        Swal.fire({
+            title: 'Cancel Booking?',
+            html: '<p>Are you sure you want to cancel this booking?</p>',
+            input: 'textarea',
+            inputPlaceholder: 'Kindly provide the reason here.',
+            inputAttributes: {
+                'aria-label': 'Cancellation reason'
+            },
+            footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Confirm',
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#6c757d',
+            showCloseButton: true,
+            focusConfirm: false,
+            allowOutsideClick: false,
+            width: '32em',
+            padding: '1em',
+            didOpen: () => {
+                // Fix textarea styling
+                const textarea = Swal.getInput();
+                textarea.style.height = '120px';
+                textarea.style.marginTop = '10px';
+                textarea.style.marginBottom = '10px';
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const reason = result.value;
+                cancelBooking(bookingId, userId, reason);
+            }
+        });
     });
 
     if (booking.status === "Pending") {
@@ -273,48 +367,31 @@ function actionButton(booking) {
 }
 
 function renderPagination(pagination) {
-    const paginationContainer = document.getElementById("paginationContainer");
-    paginationContainer.innerHTML = "";
-    
-    console.log("Rendering pagination with data:", pagination);
-    
-    // If no pagination data is provided, return early
     if (!pagination) {
         console.log("No pagination data provided");
         return;
     }
     
-    console.log("Total pages:", pagination.totalPages, "Current page:", pagination.currentPage);
-    
-    // Make sure totalPages is treated as a number, not a string
+    // Make sure totalPages and currentPage are treated as numbers
     const totalPages = parseInt(pagination.totalPages, 10);
     const currentPage = parseInt(pagination.currentPage, 10);
-    console.log("Parsed totalPages:", totalPages, "Type:", typeof totalPages);
     
     if (totalPages <= 1) {
-        console.log("Pagination not shown because totalPages <= 1");
+        // Clear the pagination container if no pagination is needed
+        const paginationContainer = document.getElementById("paginationContainer");
+        if (paginationContainer) {
+            paginationContainer.innerHTML = "";
+        }
         return;
     }
     
-    console.log("Pagination being rendered because totalPages > 1");
-    
-    const ul = document.createElement("ul");
-    ul.classList.add("pagination", "justify-content-center");
-    
-    // Previous button
-    const prevLi = document.createElement("li");
-    prevLi.classList.add("page-item");
-    if (currentPage === 1) {
-        prevLi.classList.add("disabled");
-    }
-    
-    const prevLink = document.createElement("a");
-    prevLink.classList.add("page-link");
-    prevLink.href = "#";
-    prevLink.textContent = "Previous";
-    prevLink.addEventListener("click", async function(e) {
-        e.preventDefault();
-        if (currentPage > 1) {
+    // Use the centralized pagination utility
+    createPagination({
+        containerId: "paginationContainer",
+        totalPages: totalPages,
+        currentPage: currentPage,
+        paginationType: 'advanced',
+        onPageChange: async (page) => {
             const status = document.getElementById("statusSelect").value;
             const column = document.querySelector(".sort.active") ? 
                 document.querySelector(".sort.active").getAttribute("data-column") : "client_name";
@@ -322,155 +399,40 @@ function renderPagination(pagination) {
                 document.querySelector(".sort.active").getAttribute("data-order") : "asc";
             const limit = document.getElementById("limitSelect").value;
             
-            const bookings = await getAllBookings(status, order, column, currentPage - 1, limit);
+            const bookings = await getAllBookings(status, order, column, page, limit);
             renderBookings(bookings);
             renderPagination(bookings.pagination);
         }
     });
-    
-    prevLi.appendChild(prevLink);
-    ul.appendChild(prevLi);
-    
-    // Page numbers with ellipsis
-    function addPageItem(pageNum) {
-        const li = document.createElement("li");
-        li.classList.add("page-item");
-        if (pageNum === currentPage) {
-            li.classList.add("active");
-        }
-        
-        const link = document.createElement("a");
-        link.classList.add("page-link");
-        link.href = "#";
-        link.textContent = pageNum;
-        link.addEventListener("click", async function(e) {
-            e.preventDefault();
-            const status = document.getElementById("statusSelect").value;
-            const column = document.querySelector(".sort.active") ? 
-                document.querySelector(".sort.active").getAttribute("data-column") : "client_name";
-            const order = document.querySelector(".sort.active") ? 
-                document.querySelector(".sort.active").getAttribute("data-order") : "asc";
-            const limit = document.getElementById("limitSelect").value;
-            
-            const bookings = await getAllBookings(status, order, column, pageNum, limit);
-            renderBookings(bookings);
-            renderPagination(bookings.pagination);
-        });
-        
-        li.appendChild(link);
-        ul.appendChild(li);
-    }
-    
-    function addEllipsis() {
-        const li = document.createElement("li");
-        li.classList.add("page-item", "disabled");
-        const span = document.createElement("a");
-        span.classList.add("page-link");
-        span.textContent = "...";
-        li.appendChild(span);
-        ul.appendChild(li);
-    }
-    
-    // Always show first page
-    if (totalPages <= 10) {
-        // If 10 or fewer pages, show all page numbers
-        for (let i = 1; i <= totalPages; i++) {
-            addPageItem(i);
-        }
-    } else {
-        // For more than 10 pages, show ellipsis
-        addPageItem(1); // Always show first page
-        
-        if (currentPage > 4) {
-            addEllipsis(); // Show ellipsis if current page is far from start
-        }
-        
-        // Determine start and end of the displayed page range
-        let startPage = Math.max(2, currentPage - 2);
-        let endPage = Math.min(totalPages - 1, currentPage + 2);
-        
-        // Adjust to show at least 5 pages in the middle (if possible)
-        if (endPage - startPage < 4) {
-            if (currentPage < totalPages / 2) {
-                endPage = Math.min(totalPages - 1, startPage + 4);
-            } else {
-                startPage = Math.max(2, endPage - 4);
-            }
-        }
-        
-        // Display the range of pages
-        for (let i = startPage; i <= endPage; i++) {
-            addPageItem(i);
-        }
-        
-        if (currentPage < totalPages - 3) {
-            addEllipsis(); // Show ellipsis if current page is far from end
-        }
-        
-        addPageItem(totalPages); // Always show last page
-    }
-    
-    // Next button
-    const nextLi = document.createElement("li");
-    nextLi.classList.add("page-item");
-    if (currentPage === totalPages) {
-        nextLi.classList.add("disabled");
-    }
-    
-    const nextLink = document.createElement("a");
-    nextLink.classList.add("page-link");
-    nextLink.href = "#";
-    nextLink.textContent = "Next";
-    nextLink.addEventListener("click", async function(e) {
-        e.preventDefault();
-        if (currentPage < totalPages) {
-            const status = document.getElementById("statusSelect").value;
-            const column = document.querySelector(".sort.active") ? 
-                document.querySelector(".sort.active").getAttribute("data-column") : "client_name";
-            const order = document.querySelector(".sort.active") ? 
-                document.querySelector(".sort.active").getAttribute("data-order") : "asc";
-            const limit = document.getElementById("limitSelect").value;
-            
-            const bookings = await getAllBookings(status, order, column, currentPage + 1, limit);
-            renderBookings(bookings);
-            renderPagination(bookings.pagination);
-        }
-    });
-    
-    nextLi.appendChild(nextLink);
-    ul.appendChild(nextLi);
-    
-    paginationContainer.appendChild(ul);
 }
 
-// confirming booking
-document.getElementById("confirmBookingForm").addEventListener("submit", async function (event) {
-    event.preventDefault(); 
-
-    const formData = new FormData(this);
-    const bookingId = formData.get("booking_id");
-
+// New function to handle confirm booking API call
+async function confirmBooking(bookingId) {
     try {
         const response = await fetch("/admin/confirm-booking", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ bookingId })
         });
-        
-        confirmBookingModal.hide();
-        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-        document.body.classList.remove('modal-open');
     
         const data = await response.json();
         
         if (data.success) {
-            messageTitle.textContent = "Success";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: data.message || 'Booking confirmed successfully.',
+                timer: 2000,
+                timerProgressBar: true
+            });
         } else {
-            messageTitle.textContent = "Error";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.message || 'Failed to confirm booking.',
+                timer: 2000,
+                timerProgressBar: true
+            });
         }
         
         const status = document.getElementById("statusSelect").value;
@@ -480,39 +442,43 @@ document.getElementById("confirmBookingForm").addEventListener("submit", async f
         renderPagination(bookings.pagination);
     } catch (error) {
         console.error(error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'An unexpected error occurred. Please try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
     }
-});
+}
 
-// reject booking
-document.getElementById("rejectBookingForm").addEventListener("submit", async function (event) {
-    event.preventDefault(); 
-
-    const formData = new FormData(this);
-    const bookingId = formData.get("booking_id");
-    const userId = formData.get("user_id");
-    const reason = formData.get("reason");
-
+// New function to handle reject booking API call
+async function rejectBooking(bookingId, userId, reason) {
     try {
         const response = await fetch("/admin/reject-booking", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ bookingId, reason, userId })
         });
-        
-        rejectBookingModal.hide();
-        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-        document.body.classList.remove('modal-open');
     
         const data = await response.json();
         
         if (data.success) {
-            messageTitle.textContent = "Success";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: data.message || 'Booking rejected successfully.',
+                timer: 2000,
+                timerProgressBar: true
+            });
         } else {
-            messageTitle.textContent = "Error";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.message || 'Failed to reject booking.',
+                timer: 2000,
+                timerProgressBar: true
+            });
         }
         
         const status = document.getElementById("statusSelect").value;
@@ -522,39 +488,43 @@ document.getElementById("rejectBookingForm").addEventListener("submit", async fu
         renderPagination(bookings.pagination);
     } catch (error) {
         console.error(error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'An unexpected error occurred. Please try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
     }
-});
+}
 
-// cancel booking
-document.getElementById("cancelBookingForm").addEventListener("submit", async function (event) {
-    event.preventDefault(); 
-
-    const formData = new FormData(this);
-    const bookingId = formData.get("booking_id");
-    const userId = formData.get("user_id");
-    const reason = formData.get("reason");
-
+// New function to handle cancel booking API call
+async function cancelBooking(bookingId, userId, reason) {
     try {
         const response = await fetch("/admin/cancel-booking", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ bookingId, userId, reason })
         });
-        
-        cancelBookingModal.hide();
-        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-        document.body.classList.remove('modal-open');
     
         const data = await response.json();
         
         if (data.success) {
-            messageTitle.textContent = "Success";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: data.message || 'Booking canceled successfully.',
+                timer: 2000,
+                timerProgressBar: true
+            });
         } else {
-            messageTitle.textContent = "Error";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.message || 'Failed to cancel booking.',
+                timer: 2000,
+                timerProgressBar: true
+            });
         }
         
         const status = document.getElementById("statusSelect").value;
@@ -564,8 +534,15 @@ document.getElementById("cancelBookingForm").addEventListener("submit", async fu
         renderPagination(bookings.pagination);
     } catch (error) {
         console.error(error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'An unexpected error occurred. Please try again.',
+            timer: 2000,
+            timerProgressBar: true
+        });
     }
-});
+}
 
 // Add status text color helper function
 function getStatusTextClass(status) {

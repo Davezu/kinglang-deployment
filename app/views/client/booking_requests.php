@@ -10,39 +10,12 @@ require_client_auth(); // Use helper function
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/../../../public/css/client/payment_styles.css">
+    <link rel="stylesheet" href="/../../../public/css/assets/cancel_modal.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <title>Bookings</title>
 </head>
 <body>
-    <div class="modal fade" aria-labelledby="cancelBookingModal" tabindex="-1" id="cancelBookingModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <form action="" method="post" class="modal-content" id="cancelBookingForm">
-                <div class="modal-header">
-                    <h4 class="modal-title">Cancel Booking?</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <p>Are you sure you want to cancel your booking?</p>
-                    
-                    <textarea class="form-control" placeholder="Kindly provide the reason here." name="reason" id="reason" style="height: 100px"></textarea>
-                    
-                    <p class="text-secondary mb-0 mt-4">Note: This action cannot be undone.</p>
-                </div>
-
-                <div class="modal-footer">
-                    <div class="d-flex gap-3 w-50">
-                        <input type="hidden" name="booking_id" id="cancelBookingId" value="">
-                        <input type="hidden" name="user_id" id="cancelUserId" value="">
-                        <button type="button" class="btn btn-outline-secondary btn-sm w-50" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" id="reject" class="btn btn-success btn-sm w-50">Confirm</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <?php include_once __DIR__ . "/../assets/sidebar.php"; ?> 
     
     <div class="content collapsed" id="content">
@@ -107,62 +80,76 @@ require_client_auth(); // Use helper function
             <form class="payment-content modal-content" action="" id="paymentForm" method="post" enctype="multipart/form-data">
 
                 <div class="modal-header">
-                    <h3 class="modal-title">Payment</h3>
+                    <h3 class="modal-title"><i class="bi bi-credit-card-2-front me-2"></i>Payment Details</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body container">
-                    <p>Please select the amount you want to pay.</p>
-                    <div class="row mx-1" style="cursor: pointer">
-                        <div class="col text-bg-success me-2 p-3 rounded-3 amount-payment" id="fullAmnt">
-                            <h3>Full payment</h3>
-                            <p id="fullAmount" class="amount"></p>  
+                    <div class="row">
+                        <!-- Left Column - Payment Options -->
+                        <div class="col-md-6">
+                            <p class="lead mb-4">Payment Options:</p>
+                            <div class="d-flex flex-column gap-3">
+                                <div class="text-bg-success p-3 rounded-3 amount-payment" id="fullAmnt">
+                                    <h3>Full payment</h3>
+                                    <p id="fullAmount" class="amount"></p>  
+                                </div>
+
+                                <div class="text-bg-danger p-3 rounded-3 amount-payment">
+                                    <h3 id="downPayment">Down payment</h3>
+                                    <p id="partialAmount" class="amount"></p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 total-amount">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>Selected Amount:</span>
+                                    <span id="amount" class="text-success"></span>
+                                </div>
+                            </div>
                         </div>
+                        
+                        <!-- Right Column - Payment Method & Upload -->
+                        <div class="col-md-6">
+                            <div class="payment-method">
+                                <label for="paymentMethod" class="form-label">Payment Method</label>
+                                <select name="payment_method" id="paymentMethod" class="form-select" aria-label="Payment method selection">
+                                    <!-- <option value="Cash">Cash</option> -->
+                                    <option value="Bank Transfer">Bank Transfer</option>
+                                    <option value="Online Payment">Online Payment</option>
+                                </select>
+                            </div>
 
-                        <div class="col text-bg-danger p-3 rounded-3 amount-payment" style="cursor: pointer">
-                            <h3 id="downPayment">Down payment</h3>
-                            <p id="partialAmount" class="amount"></p>
-                        </div>     
-                    </div>
+                            <!-- Account Information Section -->
+                            <div id="accountInfoSection" class="mt-3" style="display: none;">
+                                <div class="alert alert-info">
+                                    <h5 class="alert-heading"><i class="bi bi-info-circle me-2"></i>Account Details</h5>
+                                    <div class="mt-2">
+                                        <p class="mb-1"><strong>Bank:</strong> <span id="bankName">BDO</span></p>
+                                        <p class="mb-1"><strong>Name:</strong> <span id="accountName">Kinglang Bus</span></p>
+                                        <p class="mb-0"><strong>Number:</strong> <span id="accountNumber">1234567890</span></p>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <input type="hidden" name="booking_id" id="bookingID">
-                    <input type="hidden" name="user_id" id="userID">
-                    <input type="hidden" name="amount" id="amountInput">
-
-                    <div class="mt-3 total-amount">Amount: <span id="amount" class="text-success"></span></div>
-
-                    <div class="payment-method">
-                        <label for="" class="mt-2">Payment method</label>
-                        <select name="payment_method" id="paymentMethod" class="form-select mt-2" aria-label="small select example">
-                            <!-- <option value="Cash">Cash</option> -->
-                            <option value="Bank Transfer">Bank Transfer</option>
-                            <option value="Online Payment">Online Payment</option>
-                        </select>
-                    </div>
-
-                    <!-- Account Information Section -->
-                    <div id="accountInfoSection" class="mt-3" style="display: none;">
-                        <div class="alert alert-info">
-                            <h5 class="alert-heading">Account Information</h5>
-                            <p class="mb-0">Please transfer to the following account:</p>
-                            <div class="mt-2">
-                                <p class="mb-1"><strong>Bank:</strong> <span id="bankName">BDO</span></p>
-                                <p class="mb-1"><strong>Account Name:</strong> <span id="accountName">Kinglang Bus Services</span></p>
-                                <p class="mb-1"><strong>Account Number:</strong> <span id="accountNumber">1234567890</span></p>
+                            <!-- Proof of Payment Upload Section -->
+                            <div id="proofUploadSection" class="mt-3" style="display: none;">
+                                <label for="proofOfPayment" class="form-label">Upload Proof</label>
+                                <input type="file" class="form-control" id="proofOfPayment" name="proof_of_payment" accept="image/*,.pdf">
+                                <small class="text-muted">Upload receipt (JPG, PNG, PDF)</small>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Proof of Payment Upload Section -->
-                    <div id="proofUploadSection" class="mt-3" style="display: none;">
-                        <label for="proofOfPayment" class="form-label">Upload Proof of Payment</label>
-                        <input type="file" class="form-control" id="proofOfPayment" name="proof_of_payment" accept="image/*,.pdf">
-                        <small class="text-muted">Upload a screenshot or photo of your payment receipt (JPG, PNG, PDF)</small>
-                    </div>
+                    <!-- Hidden inputs -->
+                    <input type="hidden" name="booking_id" id="bookingID">
+                    <input type="hidden" name="user_id" id="userID">
+                    <input type="hidden" name="amount" id="amountInput">
                 </div>
                                         
                 <div class="modal-footer">
-                    <button class="btn btn-outline-success pay" type="submit">Pay Now</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-outline-success pay" type="submit"><i class="bi bi-check-circle me-2"></i>Confirm Payment</button>
                 </div>
             </form>
         </div>
@@ -197,240 +184,10 @@ require_client_auth(); // Use helper function
         </div>
     </div>
 
-    <script src="/../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="/../../../public/js/client/booking_request.js"></script>
-    <script src="/../../../public/js/assets/sidebar.js"></script>
-    <script>
-        // Add SweetAlert2 confirmation for the reschedule form
-        document.getElementById('reschedForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const dateInput = document.getElementById('date_of_tour');
-            if (!dateInput.value) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Please select a date for rescheduling',
-                    timer: 2000,
-                    timerProgressBar: true
-                });
-                return;
-            }
-            
-            const bookingId = document.getElementById('reschedBookingId').value;
-            const selectedDate = dateInput.value;
-            
-            Swal.fire({
-                title: 'Confirm Reschedule',
-                text: `Are you sure you want to reschedule this booking to ${new Date(selectedDate).toLocaleDateString()}?`,
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#198754',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, reschedule it!',
-                cancelButtonText: 'Cancel'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Submit the form data via AJAX
-                    const formData = new FormData();
-                    formData.append('bookingId', bookingId);
-                    formData.append('newDate', selectedDate);
-                    
-                    fetch('/reschedule-booking', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success!',
-                                text: data.message || 'Booking rescheduled successfully',
-                                timer: 2000,
-                                timerProgressBar: true
-                            }).then(() => {
-                                // Close the modal and refresh the bookings
-                                const reschedModal = bootstrap.Modal.getInstance(document.getElementById('reschedModal'));
-                                reschedModal.hide();
-                                // Refresh the booking list
-                                window.location.reload();
-                            });
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: data.message || 'Failed to reschedule booking',
-                                timer: 2000,
-                                timerProgressBar: true
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'An unexpected error occurred. Please try again.',
-                            timer: 2000,
-                            timerProgressBar: true
-                        });
-                    });
-                }
-            });
-        });
-
-        // Add SweetAlert2 confirmation for the cancel booking form
-        document.getElementById('cancelBookingForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const reasonInput = document.getElementById('reason');
-            const bookingId = document.getElementById('cancelBookingId').value;
-            const userId = document.getElementById('cancelUserId').value;
-            
-            if (!reasonInput.value.trim()) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Please provide a reason for cancellation',
-                    timer: 2000,
-                    timerProgressBar: true
-                });
-                return;
-            }
-            
-            Swal.fire({
-                title: 'Confirm Cancellation',
-                text: 'Are you sure you want to cancel this booking? This action cannot be undone.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#198754',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, cancel it!',
-                cancelButtonText: 'No, keep it'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Submit the form data via AJAX
-                    const formData = new FormData();
-                    formData.append('booking_id', bookingId);
-                    formData.append('user_id', userId);
-                    formData.append('reason', reasonInput.value);
-                    
-                    fetch('/cancel-booking', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Cancelled!',
-                                text: data.message || 'Booking has been cancelled successfully',
-                                timer: 2000,
-                                timerProgressBar: true
-                            }).then(() => {
-                                // Close the modal and refresh the bookings
-                                const cancelModal = bootstrap.Modal.getInstance(document.getElementById('cancelBookingModal'));
-                                cancelModal.hide();
-                                // Refresh the booking list
-                                window.location.reload();
-                            });
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: data.message || 'Failed to cancel booking',
-                                timer: 2000,
-                                timerProgressBar: true
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'An unexpected error occurred. Please try again.',
-                            timer: 2000,
-                            timerProgressBar: true
-                        });
-                    });
-                }
-            });
-        });
-
-        // Add SweetAlert2 confirmation for the payment form
-        document.getElementById('paymentForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const amountInput = document.getElementById('amountInput').value;
-            const paymentMethod = document.getElementById('paymentMethod').value;
-            
-            // Check if payment method is bank transfer or online payment and requires proof
-            if ((paymentMethod === 'Bank Transfer' || paymentMethod === 'Online Payment') && 
-                document.getElementById('proofOfPayment').files.length === 0) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Please upload proof of payment',
-                    timer: 2000,
-                    timerProgressBar: true
-                });
-                return;
-            }
-            
-            Swal.fire({
-                title: 'Confirm Payment',
-                text: `Are you sure you want to make a payment of ₱${amountInput}?`,
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#198754',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, proceed!',
-                cancelButtonText: 'Cancel'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Submit the form
-                    this.submit();
-                }
-            });
-        });
-
-        // Payment method change event
-        document.getElementById('paymentMethod').addEventListener('change', function() {
-            const selectedMethod = this.value;
-            const accountInfoSection = document.getElementById('accountInfoSection');
-            const proofUploadSection = document.getElementById('proofUploadSection');
-            
-            // Show/hide sections based on payment method
-            if (selectedMethod === 'Bank Transfer' || selectedMethod === 'Online Payment') {
-                accountInfoSection.style.display = 'block';
-                proofUploadSection.style.display = 'block';
-            } else {
-                accountInfoSection.style.display = 'none';
-                proofUploadSection.style.display = 'none';
-            }
-        });
-
-        // Amount selection (full or partial payment)
-        const amountSelectors = document.querySelectorAll('.amount-payment');
-        amountSelectors.forEach(selector => {
-            selector.addEventListener('click', function() {
-                // Remove active class from all selectors
-                amountSelectors.forEach(el => el.classList.remove('active-amount'));
-                
-                // Add active class to clicked selector
-                this.classList.add('active-amount');
-                
-                // Get the amount from the clicked element and update the input
-                const amountText = this.querySelector('.amount').textContent;
-                const amount = amountText.replace(/[^\d.]/g, ''); // Remove all non-numeric characters
-                
-                document.getElementById('amountInput').value = amount;
-                document.getElementById('amount').textContent = `₱${amount}`;
-            });
-        });
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../../../public/js/utils/pagination.js"></script>
+    <script src="../../../public/js/client/booking_request.js"></script>
+    <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../../../public/js/assets/sidebar.js"></script>
 </body>
 </html>

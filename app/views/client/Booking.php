@@ -25,11 +25,11 @@ if (!isset($_SESSION["user_id"])) {
     <?php include_once __DIR__ . "/../assets/sidebar.php"; ?>
 
     <div class="content collapsed" id="content">
-        <div class="container-fluid py-4 px-4 px-xl-5">
-            <div class="container-fluid d-flex justify-content-end align-items-center p-0 m-0">
+        <div class="container-fluid p-0 m-0">
+            <div class="container-fluid d-flex justify-content-end align-items-center py-4 px-4 px-xl-5">
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
-            <div class="container-fluid d-flex justify-content-center mt-4 gap-5">
+            <div class="container-fluid d-flex justify-content-center gap-5 p-0 m-0">
                 <form action="" id="bookingForm" class="border rounded p-3 height-auto align-self-start">
                     <input type="hidden" name="id" value="1">
                     <div id="firstInfo">
@@ -93,7 +93,7 @@ if (!isset($_SESSION["user_id"])) {
                         </div>
                     </div>
                 </form>
-                <div class="border rounded w-50" id="map">
+                <div class="border rounded" id="map">
                 </div>
             </div>
         </div>

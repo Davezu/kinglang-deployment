@@ -1,0 +1,240 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJR4RfLjVlzMRHzJA-Ji2jKs",
+         "reference" : "ChIJJR4RfLjVlzMRHzJA-Ji2jKs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasmariñas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 12,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Dasol, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJE8U4inbukzMRD5auzAIMVMg",
+         "reference" : "ChIJE8U4inbukzMRD5auzAIMVMg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasol",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasol"
+            },
+            {
+               "offset" : 7,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 19,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Dasmarinas City, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJpyP9TMjVlzMRUO5OIKyq5C8",
+         "reference" : "ChIJpyP9TMjVlzMRUO5OIKyq5C8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasmarinas City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasmarinas City"
+            },
+            {
+               "offset" : 17,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_3",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Dasol Beaches, Dasol, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJpzlEeDONkzMRwZHm6FY5BKY",
+         "reference" : "ChIJpzlEeDONkzMRwZHm6FY5BKY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasol Beaches",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasol, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasol Beaches"
+            },
+            {
+               "offset" : 15,
+               "value" : "Dasol"
+            },
+            {
+               "offset" : 22,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Dasmarinas, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJWTLksSPJlzMRx4S1udsvb0Y",
+         "reference" : "ChIJWTLksSPJlzMRx4S1udsvb0Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasmarinas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasmarinas"
+            },
+            {
+               "offset" : 12,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality",
+            "sublocality_level_2",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

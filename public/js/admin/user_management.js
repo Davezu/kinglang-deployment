@@ -1,6 +1,5 @@
 const addUserModal = new bootstrap.Modal(document.getElementById("addUserModal"));
 const editUserModal = new bootstrap.Modal(document.getElementById("editUserModal"));
-const deleteUserModal = new bootstrap.Modal(document.getElementById("deleteUserModal"));
 
 document.addEventListener("DOMContentLoaded", async function () {
     const limit = document.getElementById("limitSelect").value;
@@ -155,8 +154,23 @@ function createActionButtons(user) {
     });
     
     deleteButton.addEventListener("click", function() {
-        document.getElementById("deleteUserId").value = user.user_id;
-        deleteUserModal.show();
+        const userId = user.user_id;
+        
+        Swal.fire({
+            title: 'Delete User?',
+            html: '<p>Are you sure you want to delete this user?</p><p class="text-secondary">Note: Users with existing bookings cannot be deleted.</p>',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel',
+            focusCancel: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteUser(userId);
+            }
+        });
     });
     
     buttonGroup.appendChild(editButton);
@@ -173,79 +187,18 @@ function displayPagination(totalPages, currentPage) {
         return;
     }
     
-    const ul = document.createElement("ul");
-    ul.classList.add("pagination", "justify-content-center", "mt-4");
-    
-    // Previous button
-    const prevLi = document.createElement("li");
-    prevLi.classList.add("page-item");
-    if (currentPage === 1) {
-        prevLi.classList.add("disabled");
-    }
-    
-    const prevLink = document.createElement("a");
-    prevLink.classList.add("page-link");
-    prevLink.href = "#";
-    prevLink.textContent = "Previous";
-    prevLink.addEventListener("click", function(e) {
-        e.preventDefault();
-        if (currentPage > 1) {
+    // Use the centralized pagination utility
+    createPagination({
+        containerId: "paginationContainer",
+        totalPages: totalPages,
+        currentPage: currentPage,
+        paginationType: 'standard',
+        onPageChange: (page) => {
             const searchTerm = document.getElementById("searchUser").value;
             const limit = document.getElementById("limitSelect").value;
-            loadUsers(currentPage - 1, searchTerm, limit);
+            loadUsers(page, searchTerm, limit);
         }
     });
-    
-    prevLi.appendChild(prevLink);
-    ul.appendChild(prevLi);
-    
-    // Page numbers
-    for (let i = 1; i <= totalPages; i++) {
-        const li = document.createElement("li");
-        li.classList.add("page-item");
-        if (i === currentPage) {
-            li.classList.add("active");
-        }
-        
-        const link = document.createElement("a");
-        link.classList.add("page-link");
-        link.href = "#";
-        link.textContent = i;
-        link.addEventListener("click", function(e) {
-            e.preventDefault();
-            const searchTerm = document.getElementById("searchUser").value;
-            const limit = document.getElementById("limitSelect").value;
-            loadUsers(i, searchTerm, limit);
-        });
-        
-        li.appendChild(link);
-        ul.appendChild(li);
-    }
-    
-    // Next button
-    const nextLi = document.createElement("li");
-    nextLi.classList.add("page-item");
-    if (currentPage === totalPages) {
-        nextLi.classList.add("disabled");
-    }
-    
-    const nextLink = document.createElement("a");
-    nextLink.classList.add("page-link");
-    nextLink.href = "#";
-    nextLink.textContent = "Next";
-    nextLink.addEventListener("click", function(e) {
-        e.preventDefault();
-        if (currentPage < totalPages) {
-            const searchTerm = document.getElementById("searchUser").value;
-            const limit = document.getElementById("limitSelect").value;
-            loadUsers(currentPage + 1, searchTerm, limit);
-        }
-    });
-    
-    nextLi.appendChild(nextLink);
-    ul.appendChild(nextLi);
-    
-    paginationContainer.appendChild(ul);
 }
 
 async function getUserDetails(userId) {
@@ -421,21 +374,14 @@ document.getElementById("editUserForm").addEventListener("submit", async functio
     }
 });
 
-document.getElementById("deleteUserForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
-    
-    const userId = document.getElementById("deleteUserId").value;
-    
+// New function to handle user deletion
+async function deleteUser(userId) {
     try {
         const response = await fetch("/admin/delete-user", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userId })
         });
-        
-        deleteUserModal.hide();
-        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-        document.body.classList.remove('modal-open');
         
         const data = await response.json();
         
@@ -464,9 +410,6 @@ document.getElementById("deleteUserForm").addEventListener("submit", async funct
         }
     } catch (error) {
         console.error("Error deleting user:", error);
-        deleteUserModal.hide();
-        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-        document.body.classList.remove('modal-open');
         
         Swal.fire({
             icon: 'error',
@@ -476,4 +419,4 @@ document.getElementById("deleteUserForm").addEventListener("submit", async funct
             timerProgressBar: true
         });
     }
-}); 
+} 

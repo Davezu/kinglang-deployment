@@ -1,0 +1,248 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Cavite City, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJo8wQgTXNlzMRpBRwdNhL4FY",
+         "reference" : "ChIJo8wQgTXNlzMRpBRwdNhL4FY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavite City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavite City"
+            },
+            {
+               "offset" : 13,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJcTwW6OrUlzMRJ-fdO4TQxPA",
+         "reference" : "ChIJcTwW6OrUlzMRJ-fdO4TQxPA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavite",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 8,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "administrative_area_level_2",
+            "political"
+         ]
+      },
+      {
+         "description" : "Cavite State University - Indang Campus, Indang, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJU3b-oOeBvTMRa9FMsqCxXsU",
+         "reference" : "ChIJU3b-oOeBvTMRa9FMsqCxXsU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavite State University - Indang Campus",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Indang, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavite State University - Indang Campus"
+            },
+            {
+               "offset" : 41,
+               "value" : "Indang"
+            },
+            {
+               "offset" : 49,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "point_of_interest",
+            "establishment",
+            "school"
+         ]
+      },
+      {
+         "description" : "Cavite Street, Santa Cruz, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjxDYXZpdGUgU3RyZWV0LCBTYW50YSBDcnV6LCBNYW5pbGEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgldlk5I4rWXMxHt7yNt8ZczihIUChIJNbRCggDKlzMRvfjWO4I539A",
+         "reference" : "EjxDYXZpdGUgU3RyZWV0LCBTYW50YSBDcnV6LCBNYW5pbGEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgldlk5I4rWXMxHt7yNt8ZczihIUChIJNbRCggDKlzMRvfjWO4I539A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavite Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Cruz, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavite Street"
+            },
+            {
+               "offset" : 15,
+               "value" : "Santa Cruz"
+            },
+            {
+               "offset" : 27,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 35,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Cavite City Hall, Judge Ibanez, Cavite City, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJnQsOQjrNlzMR7jdrT1BCZrM",
+         "reference" : "ChIJnQsOQjrNlzMR7jdrT1BCZrM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavite City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Judge Ibanez, Cavite City, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavite City Hall"
+            },
+            {
+               "offset" : 18,
+               "value" : "Judge Ibanez"
+            },
+            {
+               "offset" : 32,
+               "value" : "Cavite City"
+            },
+            {
+               "offset" : 45,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "local_government_office",
+            "city_hall",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

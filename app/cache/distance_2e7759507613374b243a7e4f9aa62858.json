@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "CH7V+2WQ, Harrison Rd, Baguio, Benguet, Philippines",
+      "Cavite State University - Indang Campus, 5VWJ+CC9, Indang, 4122 Cavite, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "Cavite State University - Indang Campus, 5VWJ+CC9, Indang, 4122 Cavite, Philippines",
+      "CH7V+2WQ, Harrison Rd, Baguio, Benguet, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "323 km",
+                  "value" : 322946
+               },
+               "duration" : 
+               {
+                  "text" : "5 hours 11 mins",
+                  "value" : 18657
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "322 km",
+                  "value" : 321546
+               },
+               "duration" : 
+               {
+                  "text" : "5 hours 8 mins",
+                  "value" : 18459
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

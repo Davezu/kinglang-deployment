@@ -49,10 +49,10 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "university",
+            "school",
             "establishment",
-            "school"
+            "point_of_interest",
+            "university"
          ]
       },
       {
@@ -105,8 +105,8 @@
          [
             "school",
             "university",
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -271,11 +271,11 @@
          ],
          "types" : 
          [
+            "secondary_school",
             "school",
-            "primary_school",
             "establishment",
             "point_of_interest",
-            "secondary_school"
+            "primary_school"
          ]
       }
    ],

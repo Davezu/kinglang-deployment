@@ -1,0 +1,246 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Santa Rosa, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJi8tBd7PZlzMRd_Rf41xGkGE",
+         "reference" : "ChIJi8tBd7PZlzMRd_Rf41xGkGE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Santa Rosa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Santa Rosa"
+            },
+            {
+               "offset" : 12,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Santa Rosa, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJb-bSvLMnlzMRMAxjWrqr1V4",
+         "reference" : "ChIJb-bSvLMnlzMRMAxjWrqr1V4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Santa Rosa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Santa Rosa"
+            },
+            {
+               "offset" : 12,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Santa Rosa City Hall, Santa Rosa, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJhbLILKXZlzMRbipgOn3DnJ8",
+         "reference" : "ChIJhbLILKXZlzMRbipgOn3DnJ8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Santa Rosa City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Rosa, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Santa Rosa City Hall"
+            },
+            {
+               "offset" : 22,
+               "value" : "Santa Rosa"
+            },
+            {
+               "offset" : 34,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "local_government_office",
+            "city_hall"
+         ]
+      },
+      {
+         "description" : "Santa Rosa II, Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJg0qt5fOtlzMRNw4fPoSBmwU",
+         "reference" : "ChIJg0qt5fOtlzMRNw4fPoSBmwU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Santa Rosa II",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marilao, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Santa Rosa II"
+            },
+            {
+               "offset" : 15,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 24,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "sublocality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Santa Rosa I, Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5aruFAqylzMRd_VhJdnOOxA",
+         "reference" : "ChIJ5aruFAqylzMRd_VhJdnOOxA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Santa Rosa I",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marilao, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Santa Rosa I"
+            },
+            {
+               "offset" : 14,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 23,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "sublocality_level_2",
+            "political",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

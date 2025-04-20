@@ -5,11 +5,17 @@ $unreadCount = $notificationModel->getNotificationCount();
 $notifications = $notificationModel->getUnreadNotifications();
 ?>
 
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</head>
+
+
 <div class="p-2 d-flex align-items-center gap-2">
     <a href="#" class="text-success"><i class="bi bi-plus-square-fill me-2 fs-5"></i></a>
     
     <div class="dropdown">
-        <a href="#" class="text-success position-relative dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="notificationDropdown">
+        <a href="#" class="text-success position-relative" data-bs-toggle="dropdown" aria-expanded="false" id="notificationDropdown">
             <i class="bi bi-bell-fill me-2 fs-5 text-success"></i>
             <?php if ($unreadCount > 0): ?>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem; margin-left: -8px;">
@@ -17,7 +23,7 @@ $notifications = $notificationModel->getUnreadNotifications();
                 </span>
             <?php endif; ?>
         </a>
-        <div class="dropdown-menu dropdown-menu-end p-0" style="width: 300px; max-height: 400px; overflow-y: auto;" id="notificationDropdownMenu">
+        <div class="dropdown-menu dropdown-menu-end p-0" style="width: 300px; max-height: 400px; overflow-y: auto;">
             <div class="p-2 border-bottom d-flex justify-content-between align-items-center">
                 <h6 class="m-0">Notifications</h6>
                 <?php if ($unreadCount > 0): ?>
@@ -27,7 +33,18 @@ $notifications = $notificationModel->getUnreadNotifications();
             <div class="notification-list">
                 <?php if (count($notifications) > 0): ?>
                     <?php foreach ($notifications as $notification): ?>
-                        <a href="<?= $notification['type'] == 'booking_confirmed' || $notification['type'] == 'booking_rejected' || $notification['type'] == 'booking_canceled' ? '/admin/booking/view/' . $notification['reference_id'] : '#' ?>" class="dropdown-item p-2 border-bottom notification-item" data-id="<?= $notification['notification_id'] ?>">
+                        <a href="<?php 
+                            if (strpos($notification['type'], 'booking_confirmed') !== false || 
+                                strpos($notification['type'], 'booking_rejected') !== false || 
+                                strpos($notification['type'], 'booking_canceled') !== false || 
+                                strpos($notification['type'], 'booking_cancelled_by_client') !== false) {
+                                echo '/admin/booking/view/' . $notification['reference_id'];
+                            } elseif (strpos($notification['type'], 'payment_submitted') !== false) {
+                                echo '/admin/payment-management?booking_id=' . $notification['reference_id'];
+                            } else {
+                                echo '#';
+                            }
+                        ?>" class="dropdown-item p-2 border-bottom notification-item" data-id="<?= $notification['notification_id'] ?>">
                             <div class="d-flex">
                                 <div class="flex-shrink-0">
                                     <?php if (strpos($notification['type'], 'booking_confirmed') !== false): ?>
@@ -36,12 +53,16 @@ $notifications = $notificationModel->getUnreadNotifications();
                                         <i class="bi bi-x-circle-fill text-danger fs-5"></i>
                                     <?php elseif (strpos($notification['type'], 'rebooking') !== false): ?>
                                         <i class="bi bi-arrow-repeat text-warning fs-5"></i>
+                                    <?php elseif (strpos($notification['type'], 'payment_submitted') !== false): ?>
+                                        <i class="bi bi-cash-coin text-primary fs-5"></i>
+                                    <?php elseif (strpos($notification['type'], 'booking_cancelled_by_client') !== false): ?>
+                                        <i class="bi bi-person-x-fill text-danger fs-5"></i>
                                     <?php else: ?>
                                         <i class="bi bi-info-circle-fill text-primary fs-5"></i>
                                     <?php endif; ?>
                                 </div>
-                                <div class="ms-2">
-                                    <p class="mb-0 small"><?= htmlspecialchars($notification['message']) ?></p>
+                                <div class="ms-2" style="width: calc(100% - 30px);">
+                                    <p class="mb-0 small text-wrap" style="overflow-wrap: break-word; word-break: break-word;"><?= htmlspecialchars($notification['message']) ?></p>
                                     <span class="text-muted small"><?= date('M d, H:i', strtotime($notification['created_at'])) ?></span>
                                 </div>
                             </div>
@@ -68,52 +89,8 @@ $notifications = $notificationModel->getUnreadNotifications();
     </div>
 </div>
 
-<!-- Make sure Bootstrap JS is loaded -->
 <script>
-// Add Bootstrap JS if not already loaded
-if (typeof bootstrap === 'undefined') {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
-    script.integrity = 'sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz';
-    script.crossOrigin = 'anonymous';
-    document.head.appendChild(script);
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Manual dropdown toggle functionality
-    const notificationToggle = document.getElementById('notificationDropdown');
-    const notificationMenu = document.getElementById('notificationDropdownMenu');
-    
-    notificationToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Try to use Bootstrap's dropdown if available
-        if (typeof bootstrap !== 'undefined' && bootstrap.Dropdown) {
-            const dropdown = bootstrap.Dropdown.getInstance(notificationToggle) || 
-                             new bootstrap.Dropdown(notificationToggle);
-            dropdown.toggle();
-        } else {
-            // Fallback to manual toggle
-            if (notificationMenu.classList.contains('show')) {
-                notificationMenu.classList.remove('show');
-            } else {
-                notificationMenu.classList.add('show');
-                notificationMenu.style.display = 'block';
-                notificationMenu.style.position = 'absolute';
-                notificationMenu.style.inset = '0px auto auto 0px';
-                notificationMenu.style.margin = '0px';
-                notificationMenu.style.transform = 'translate(-225px, 40px)';
-            }
-        }
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!notificationToggle.contains(e.target) && !notificationMenu.contains(e.target)) {
-            notificationMenu.classList.remove('show');
-        }
-    });
-    
     // Mark notification as read when clicked
     document.querySelectorAll('.notification-item').forEach(item => {
         item.addEventListener('click', function() {

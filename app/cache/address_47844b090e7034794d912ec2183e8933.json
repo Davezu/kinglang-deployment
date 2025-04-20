@@ -1,0 +1,275 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "St. Michael the Archangel Parish, 10th Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 32,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJpaNwx1_IlzMRZWqWokO4icc",
+         "reference" : "ChIJpaNwx1_IlzMRZWqWokO4icc",
+         "structured_formatting" : 
+         {
+            "main_text" : "St. Michael the Archangel Parish",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 32,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "10th Avenue, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "St. Michael the Archangel Parish"
+            },
+            {
+               "offset" : 34,
+               "value" : "10th Avenue"
+            },
+            {
+               "offset" : 47,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "church",
+            "establishment",
+            "place_of_worship"
+         ]
+      },
+      {
+         "description" : "St. Michael Medical Center, Cubao, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 26,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJRd-CNMe3lzMRP88npYTw-J0",
+         "reference" : "ChIJRd-CNMe3lzMRP88npYTw-J0",
+         "structured_formatting" : 
+         {
+            "main_text" : "St. Michael Medical Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 26,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cubao, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "St. Michael Medical Center"
+            },
+            {
+               "offset" : 28,
+               "value" : "Cubao"
+            },
+            {
+               "offset" : 35,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "health",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "St. Michael the Archangel Parish, Gen. Evangelista Street, Poblacion, Bacoor, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 32,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ2-UyRnjNlzMRGJhF7PTsa30",
+         "reference" : "ChIJ2-UyRnjNlzMRGJhF7PTsa30",
+         "structured_formatting" : 
+         {
+            "main_text" : "St. Michael the Archangel Parish",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 32,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gen. Evangelista Street, Poblacion, Bacoor, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "St. Michael the Archangel Parish"
+            },
+            {
+               "offset" : 34,
+               "value" : "Gen. Evangelista Street"
+            },
+            {
+               "offset" : 59,
+               "value" : "Poblacion"
+            },
+            {
+               "offset" : 70,
+               "value" : "Bacoor"
+            },
+            {
+               "offset" : 78,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 86,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "church",
+            "establishment",
+            "point_of_interest",
+            "place_of_worship"
+         ]
+      },
+      {
+         "description" : "St. Michael the Archangel Parish Church - Poblacion, Marilao, Bulacan (Diocese of Malolos), Sandico, Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 90,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwQf4NFyylzMRnontTnY6nsI",
+         "reference" : "ChIJwQf4NFyylzMRnontTnY6nsI",
+         "structured_formatting" : 
+         {
+            "main_text" : "St. Michael the Archangel Parish Church - Poblacion, Marilao, Bulacan (Diocese of Malolos)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 90,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sandico, Marilao, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "St. Michael the Archangel Parish Church - Poblacion, Marilao, Bulacan (Diocese of Malolos)"
+            },
+            {
+               "offset" : 92,
+               "value" : "Sandico"
+            },
+            {
+               "offset" : 101,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 110,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 119,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "church",
+            "point_of_interest",
+            "establishment",
+            "place_of_worship"
+         ]
+      },
+      {
+         "description" : "St. Michael the Archangel Parish Church - First District, Jalajala, Rizal (Diocese of Antipolo), Jala-jala, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 95,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJe7i_LvbmlzMRFABgB-fRNvo",
+         "reference" : "ChIJe7i_LvbmlzMRFABgB-fRNvo",
+         "structured_formatting" : 
+         {
+            "main_text" : "St. Michael the Archangel Parish Church - First District, Jalajala, Rizal (Diocese of Antipolo)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 95,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Jala-jala, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "St. Michael the Archangel Parish Church - First District, Jalajala, Rizal (Diocese of Antipolo)"
+            },
+            {
+               "offset" : 97,
+               "value" : "Jala-jala"
+            },
+            {
+               "offset" : 108,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 115,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "church",
+            "place_of_worship",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

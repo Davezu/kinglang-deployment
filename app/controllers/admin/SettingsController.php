@@ -8,21 +8,17 @@ class SettingsController {
 
     public function __construct() {
         $this->settings = new Settings();
-        $this->requireAdminAuth();
-    }
-
-    private function requireAdminAuth() {
+        
+        // Only perform auth check if this is an admin route
         $requestUri = $_SERVER['REQUEST_URI'];
-        
-        // Skip auth check for login-related routes to avoid redirect loops
-        if (strpos($requestUri, '/admin/login') !== false || 
-            strpos($requestUri, '/admin/submit-login') !== false) {
-            return;
-        }
-        
-        if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
-            header("Location: /admin/login");
-            exit();
+        if (strpos($requestUri, '/admin') === 0 && 
+            strpos($requestUri, '/admin/login') === false && 
+            strpos($requestUri, '/admin/submit-login') === false) {
+            
+            if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
+                header("Location: /admin/login");
+                exit();
+            }
         }
     }
 

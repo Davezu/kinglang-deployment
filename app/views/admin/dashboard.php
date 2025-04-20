@@ -8,6 +8,7 @@ require_admin_auth(); // Use helper function
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../../../public/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../public/icons/bootstrap-icons.css">
     <link rel="stylesheet" href="../../../public/css/admin/dashboard.css">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -22,50 +23,60 @@ require_admin_auth(); // Use helper function
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
 
-            <div class="d-flex gap-4 flex-wrap mt-3">
-                <div class="flex-grow-1 rounded p-4 summary-metrics-card d-flex gap-4 align-items-center">
-                    <div class="icon bg-warning-subtle rounded-circle px-3 py-2px-3 py-2">
-                        <i class="bi bi-calendar-check fs-4 text-success"></i>
-                    </div>
-                    <div>
-                        <h4 id="totalBookings" class="fw-bolder"></h4>
-                        <p class="text-secondary">Total Bookings</p>
-                    </div>
-                </div>
-                <div class="flex-grow-1 rounded p-4 summary-metrics-card d-flex gap-4 align-items-center">
-                    <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
-                        <i class="bi bi-cash-stack fs-4 text-success"></i>
-                    </div>
-                    <div>
-                        <h4 id="totalRevenue" class="fw-bolder"></h4>
-                        <p class="text-secondary">Total Revenue</p>
+            <div class="row mt-3">
+                <div class="col-md-6 col-lg-4 col-xl mb-4">
+                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
+                        <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
+                            <i class="bi bi-calendar-check fs-4 text-success"></i>
+                        </div>
+                        <div>
+                            <h4 id="totalBookings" class="fw-bolder"></h4>
+                            <p class="text-secondary">Total Bookings</p>
+                        </div>
                     </div>
                 </div>
-                <div class="flex-grow-1 rounded p-4 summary-metrics-card d-flex gap-4 align-items-center">
-                    <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
-                        <i class="bi bi-bus-front fs-4 text-success"></i>
-                    </div>
-                    <div>
-                        <h4 id="upcomingTrips" class="fw-bolder"></h4>
-                        <p class="text-secondary">Upcoming Trips</p>
-                    </div>
-                </div>
-                <div class="flex-grow-1 rounded p-4 summary-metrics-card d-flex gap-4 align-items-center">
-                    <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
-                        <i class="bi bi-hourglass-split fs-4 text-success"></i>
-                    </div>
-                    <div>
-                        <h4 id="pendingBookings" class="fw-bolder"></h4>
-                        <p class="text-secondary">Pending Bookings</p>
+                <div class="col-md-6 col-lg-4 col-xl mb-4">
+                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
+                        <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
+                            <i class="bi bi-cash-stack fs-4 text-success"></i>
+                        </div>
+                        <div>
+                            <h4 id="totalRevenue" class="fw-bolder"></h4>
+                            <p class="text-secondary">Total Revenue</p>
+                        </div>
                     </div>
                 </div>
-                <div class="flex-grow-1 rounded p-4 summary-metrics-card d-flex gap-4 align-items-center">
-                    <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
-                        <i class="bi bi-exclamation-triangle fs-4 text-success"></i>
+                <div class="col-md-6 col-lg-4 col-xl mb-4">
+                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
+                        <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
+                            <i class="bi bi-bus-front fs-4 text-success"></i>
+                        </div>
+                        <div>
+                            <h4 id="upcomingTrips" class="fw-bolder"></h4>
+                            <p class="text-secondary">Upcoming Trips</p>
+                        </div>
                     </div>
-                    <div>
-                        <h4 id="flaggedBookings" class="fw-bolder"></h4>
-                        <p class="text-secondary">Flagged Bookings</p>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl mb-4">
+                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
+                        <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
+                            <i class="bi bi-hourglass-split fs-4 text-success"></i>
+                        </div>
+                        <div>
+                            <h4 id="pendingBookings" class="fw-bolder"></h4>
+                            <p class="text-secondary">Pending Bookings</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl mb-4">
+                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
+                        <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
+                            <i class="bi bi-exclamation-triangle fs-4 text-success"></i>
+                        </div>
+                        <div>
+                            <h4 id="flaggedBookings" class="fw-bolder"></h4>
+                            <p class="text-secondary">Flagged Bookings</p>
+                        </div>
                     </div>
                 </div>  
             </div>

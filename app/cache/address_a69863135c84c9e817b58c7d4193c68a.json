@@ -49,10 +49,10 @@
          ],
          "types" : 
          [
-            "tourist_attraction",
-            "establishment",
             "park",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment",
+            "tourist_attraction"
          ]
       },
       {
@@ -107,9 +107,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "establishment",
             "school",
+            "point_of_interest",
             "primary_school"
          ]
       },
@@ -163,8 +163,8 @@
          [
             "establishment",
             "school",
-            "point_of_interest",
-            "primary_school"
+            "primary_school",
+            "point_of_interest"
          ]
       },
       {
@@ -211,9 +211,9 @@
          ],
          "types" : 
          [
-            "university",
             "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "university"
          ]
       },
       {
@@ -260,8 +260,8 @@
          ],
          "types" : 
          [
-            "establishment",
             "school",
+            "establishment",
             "point_of_interest",
             "primary_school"
          ]

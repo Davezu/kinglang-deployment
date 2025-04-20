@@ -25,10 +25,9 @@ function require_client_auth() {
     $requestUri = $_SERVER['REQUEST_URI'];
     
     // Skip auth check for login-related routes to avoid redirect loops
-    if (strpos($requestUri, '/home/login') !== false || 
-        strpos($requestUri, '/client/login') !== false ||
-        strpos($requestUri, '/home/signup') !== false ||
-        strpos($requestUri, '/client/signup') !== false) {
+    if (strpos($requestUri, '/admin/login') !== false || 
+        strpos($requestUri, '/home/login') !== false ||
+        strpos($requestUri, '/home/signup') !== false) {
         return;
     }
     

@@ -388,7 +388,18 @@ class BookingController {
 
         $amount_refunded = $amount_paid * 0.80;
 
+        // Get booking details before cancelling to include in notification
+        $booking = $this->bookingModel->getBooking($booking_id, $user_id);
+        
         $result = $this->bookingModel->cancelBooking($reason, $booking_id, $user_id, $amount_refunded);
+
+        if ($result["success"] && $booking) {
+            // Create notification for admin about booking cancellation
+            $clientName = $_SESSION["user_first_name"] . " " . $_SESSION["user_last_name"];
+            $destination = $booking["destination"] ?? "Unknown destination";
+            $message = "Booking #{$booking_id} to {$destination} cancelled by {$clientName}. Reason: {$reason}";
+            $this->notificationModel->addNotification("booking_cancelled_by_client", $message, $booking_id);
+        }
 
         echo json_encode([
             "success" => $result["success"], 
@@ -396,7 +407,6 @@ class BookingController {
                 ? "Booking Canceled Successfully." 
                 : $result["message"]
         ]);
-
     }
 
     public function updatePastBookings() {
@@ -469,6 +479,16 @@ class BookingController {
         $result = $this->bookingModel->addPayment($booking_id, $client_id, $amount, $payment_method, $proof_of_payment);
     
         if ($result === true) {
+            // Create notification for admin about new payment
+            // Get booking details to include in notification
+            $booking = $this->bookingModel->getBooking($booking_id, $client_id);
+            if ($booking) {
+                $clientName = $_SESSION["user_first_name"] . " " . $_SESSION["user_last_name"];
+                $formattedAmount = number_format($amount, 2);
+                $message = "New payment of PHP {$formattedAmount} submitted by {$clientName} for booking #{$booking_id}";
+                $this->notificationModel->addNotification("payment_submitted", $message, $booking_id);
+            }
+            
             echo json_encode([
                 "success" => true,
                 "message" => "Payment submitted successfully!"

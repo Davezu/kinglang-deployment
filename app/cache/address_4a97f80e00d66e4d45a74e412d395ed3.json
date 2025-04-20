@@ -1,0 +1,55 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Saint Michael Retreat House, Antipolo, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 27,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJTfGRmk6_lzMRWFw-yxfASDY",
+         "reference" : "ChIJTfGRmk6_lzMRWFw-yxfASDY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Saint Michael Retreat House",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 27,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Antipolo, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Saint Michael Retreat House"
+            },
+            {
+               "offset" : 29,
+               "value" : "Antipolo"
+            },
+            {
+               "offset" : 39,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

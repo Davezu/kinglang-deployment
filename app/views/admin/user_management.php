@@ -122,31 +122,6 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
             </form>
         </div>
     </div>
-
-    <!-- Delete User Modal -->
-    <div class="modal fade" aria-labelledby="deleteUserModal" tabindex="-1" id="deleteUserModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <form action="" method="post" class="modal-content" id="deleteUserForm">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete User?</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <p>Are you sure you want to delete this user?</p>
-                    <p class="text-secondary">Note: Users with existing bookings cannot be deleted.</p>
-                </div>
-
-                <div class="modal-footer">
-                    <div class="d-flex gap-3 w-50">
-                        <input type="hidden" name="userId" id="deleteUserId" value="">
-                        <button type="button" class="btn btn-outline-secondary btn-sm w-50" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" id="confirmDeleteBtn" class="btn btn-danger btn-sm w-50">Delete</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
     
     <?php include_once __DIR__ . "/../assets/admin_sidebar.php"; ?>
 
@@ -199,6 +174,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../../../public/js/utils/pagination.js"></script>
     <script src="../../../public/js/admin/user_management.js"></script>
     <script src="../../../public/js/assets/sidebar.js"></script>
     <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>

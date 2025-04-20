@@ -8,10 +8,16 @@ class ReportController {
         $this->reportModel = new ReportModel();
         
         // Check if the user is logged in and is an admin
-        // if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
-        //     header("Location: /admin/login");
-        //     exit();
-        // }
+        $requestUri = $_SERVER['REQUEST_URI'];
+        if (strpos($requestUri, '/admin') === 0 && 
+            strpos($requestUri, '/admin/login') === false && 
+            strpos($requestUri, '/admin/submit-login') === false) {
+            
+            if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
+                header("Location: /admin/login");
+                exit();
+            }
+        }
     }
     
     /**
@@ -53,9 +59,10 @@ class ReportController {
             $jsonData = file_get_contents('php://input');
             $data = json_decode($jsonData, true);
             
-            $year = isset($data['year']) ? intval($data['year']) : null;
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
             
-            $result = $this->reportModel->getMonthlyBookingTrend($year);
+            $result = $this->reportModel->getMonthlyBookingTrend($startDate, $endDate);
             
             header('Content-Type: application/json');
             echo json_encode($result);

@@ -1,0 +1,249 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Abucay, Bataan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqc4wttRBljMRz_k-AJsy2Ok",
+         "reference" : "ChIJqc4wttRBljMRz_k-AJsy2Ok",
+         "structured_formatting" : 
+         {
+            "main_text" : "Abucay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bataan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Abucay"
+            },
+            {
+               "offset" : 8,
+               "value" : "Bataan"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Abucay Plaza, Abucay, Bataan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJVYMNwCBBljMRmkN9rARVBq0",
+         "reference" : "ChIJVYMNwCBBljMRmkN9rARVBq0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Abucay Plaza",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Abucay, Bataan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Abucay Plaza"
+            },
+            {
+               "offset" : 14,
+               "value" : "Abucay"
+            },
+            {
+               "offset" : 22,
+               "value" : "Bataan"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "park",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "ABUCAY TERMINAL PARKING AREA, Tacloban City, Leyte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJX0IR-mN3CDMRBpfL4KAWugY",
+         "reference" : "ChIJX0IR-mN3CDMRBpfL4KAWugY",
+         "structured_formatting" : 
+         {
+            "main_text" : "ABUCAY TERMINAL PARKING AREA",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tacloban City, Leyte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "ABUCAY TERMINAL PARKING AREA"
+            },
+            {
+               "offset" : 30,
+               "value" : "Tacloban City"
+            },
+            {
+               "offset" : 45,
+               "value" : "Leyte"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "parking"
+         ]
+      },
+      {
+         "description" : "Abucay, Pilar, Sorsogon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJ2HWHLMZoTMRvHHFSKXGLfE",
+         "reference" : "ChIJJ2HWHLMZoTMRvHHFSKXGLfE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Abucay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pilar, Sorsogon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Abucay"
+            },
+            {
+               "offset" : 8,
+               "value" : "Pilar"
+            },
+            {
+               "offset" : 15,
+               "value" : "Sorsogon"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "geocode",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Abucay Tacloban Leyte, Tacloban City, Leyte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJnXuzupJ3CDMRCOf_eq6NFZg",
+         "reference" : "ChIJnXuzupJ3CDMRCOf_eq6NFZg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Abucay Tacloban Leyte",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tacloban City, Leyte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Abucay Tacloban Leyte"
+            },
+            {
+               "offset" : 23,
+               "value" : "Tacloban City"
+            },
+            {
+               "offset" : 38,
+               "value" : "Leyte"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "health",
+            "point_of_interest",
+            "hair_care"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

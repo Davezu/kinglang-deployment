@@ -53,9 +53,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "university",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -155,9 +155,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "university",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {

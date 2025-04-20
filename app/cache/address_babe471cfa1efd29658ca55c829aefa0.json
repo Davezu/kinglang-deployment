@@ -1,0 +1,236 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Santa Maria, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJX6UnrCKslzMR0A1cPGQRhko",
+         "reference" : "ChIJX6UnrCKslzMR0A1cPGQRhko",
+         "structured_formatting" : 
+         {
+            "main_text" : "Santa Maria",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Santa Maria"
+            },
+            {
+               "offset" : 13,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Santa Rosa, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJi8tBd7PZlzMRd_Rf41xGkGE",
+         "reference" : "ChIJi8tBd7PZlzMRd_Rf41xGkGE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Santa Rosa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Santa Rosa"
+            },
+            {
+               "offset" : 12,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Santa Cruz, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeU9vsQDjlzMREtx8eY96m1I",
+         "reference" : "ChIJeU9vsQDjlzMREtx8eY96m1I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Santa Cruz",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Santa Cruz"
+            },
+            {
+               "offset" : 12,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Santa Ana, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-UfC9r7JlzMR0zsX70Nizeo",
+         "reference" : "ChIJ-UfC9r7JlzMR0zsX70Nizeo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Santa Ana",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Santa Ana"
+            },
+            {
+               "offset" : 11,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 19,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "sublocality_level_1",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Santa Ana, Cagayan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_5Bgu59dhjMR_UYs9dqHIlg",
+         "reference" : "ChIJ_5Bgu59dhjMR_UYs9dqHIlg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Santa Ana",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cagayan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Santa Ana"
+            },
+            {
+               "offset" : 11,
+               "value" : "Cagayan"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

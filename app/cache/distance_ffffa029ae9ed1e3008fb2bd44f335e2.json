@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "ph.7b pkg.4 blk.16.lot.27, Caloocan, Metro Manila, Philippines",
+      "Phase 9, 176, Caloocan, Metro Manila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "Phase 9, 176, Caloocan, Metro Manila, Philippines",
+      "ph.7b pkg.4 blk.16.lot.27, Caloocan, Metro Manila, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "3.4 km",
+                  "value" : 3436
+               },
+               "duration" : 
+               {
+                  "text" : "14 mins",
+                  "value" : 854
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "3.0 km",
+                  "value" : 3039
+               },
+               "duration" : 
+               {
+                  "text" : "14 mins",
+                  "value" : 849
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -2,7 +2,7 @@
    "predictions" : 
    [
       {
-         "description" : "SM Bacoor Entrance, Bacoor, Cavite, Philippines",
+         "description" : "SM North EDSA, Epifanio de los Santos Avenue, Quezon City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -10,11 +10,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "Ei9TTSBCYWNvb3IgRW50cmFuY2UsIEJhY29vciwgQ2F2aXRlLCBQaGlsaXBwaW5lcyIuKiwKFAoSCVPfuQx50pczEZj0X8wy82koEhQKEgk_QwR7QNKXMxFMLT1rzVSRdw",
-         "reference" : "Ei9TTSBCYWNvb3IgRW50cmFuY2UsIEJhY29vciwgQ2F2aXRlLCBQaGlsaXBwaW5lcyIuKiwKFAoSCVPfuQx50pczEZj0X8wy82koEhQKEgk_QwR7QNKXMxFMLT1rzVSRdw",
+         "place_id" : "ChIJ8cYrcse3lzMRLmWd0Z7Ph9w",
+         "reference" : "ChIJ8cYrcse3lzMRLmWd0Z7Ph9w",
          "structured_formatting" : 
          {
-            "main_text" : "SM Bacoor Entrance",
+            "main_text" : "SM North EDSA",
             "main_text_matched_substrings" : 
             [
                {
@@ -22,35 +22,40 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Bacoor, Cavite, Philippines"
+            "secondary_text" : "Epifanio de los Santos Avenue, Quezon City, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "SM Bacoor Entrance"
+               "value" : "SM North EDSA"
             },
             {
-               "offset" : 20,
-               "value" : "Bacoor"
+               "offset" : 15,
+               "value" : "Epifanio de los Santos Avenue"
             },
             {
-               "offset" : 28,
-               "value" : "Cavite"
+               "offset" : 46,
+               "value" : "Quezon City"
             },
             {
-               "offset" : 36,
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "geocode",
-            "route"
+            "establishment",
+            "shopping_mall",
+            "point_of_interest"
          ]
       },
       {
-         "description" : "SM Marikina, Marikina, Metro Manila, Philippines",
+         "description" : "SM Fairview, Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -58,11 +63,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "EjBTTSBNYXJpa2luYSwgTWFyaWtpbmEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgnZAfwcJriXMxHELXJxzD86xxIUChIJ-QB6d6K5lzMRxi-hKfTINm0",
-         "reference" : "EjBTTSBNYXJpa2luYSwgTWFyaWtpbmEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgnZAfwcJriXMxHELXJxzD86xxIUChIJ-QB6d6K5lzMRxi-hKfTINm0",
+         "place_id" : "ChIJTY26M12wlzMRD_9-SbLU2eU",
+         "reference" : "ChIJTY26M12wlzMRD_9-SbLU2eU",
          "structured_formatting" : 
          {
-            "main_text" : "SM Marikina",
+            "main_text" : "SM Fairview",
             "main_text_matched_substrings" : 
             [
                {
@@ -70,35 +75,44 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Marikina, Metro Manila, Philippines"
+            "secondary_text" : "Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "SM Marikina"
+               "value" : "SM Fairview"
             },
             {
                "offset" : 13,
-               "value" : "Marikina"
+               "value" : "Quirino Highway"
             },
             {
-               "offset" : 23,
+               "offset" : 30,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 42,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 55,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 37,
+               "offset" : 69,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "geocode",
-            "route"
+            "shopping_mall",
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
-         "description" : "SM Valenzuela Footbridge, Valenzuela, Metro Manila, Philippines",
+         "description" : "SM Mall of Asia, Seaside Boulevard, Pasay, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -106,11 +120,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "Ej9TTSBWYWxlbnp1ZWxhIEZvb3RicmlkZ2UsIFZhbGVuenVlbGEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgmV13eHD7SXMxGx49yYBU5C-hIUChIJa2ZSw_KzlzMRWH15-i2Nrwk",
-         "reference" : "Ej9TTSBWYWxlbnp1ZWxhIEZvb3RicmlkZ2UsIFZhbGVuenVlbGEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgmV13eHD7SXMxGx49yYBU5C-hIUChIJa2ZSw_KzlzMRWH15-i2Nrwk",
+         "place_id" : "ChIJ144ohPzLlzMRmx9wLn0FQug",
+         "reference" : "ChIJ144ohPzLlzMRmx9wLn0FQug",
          "structured_formatting" : 
          {
-            "main_text" : "SM Valenzuela Footbridge",
+            "main_text" : "SM Mall of Asia",
             "main_text_matched_substrings" : 
             [
                {
@@ -118,35 +132,40 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Valenzuela, Metro Manila, Philippines"
+            "secondary_text" : "Seaside Boulevard, Pasay, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "SM Valenzuela Footbridge"
+               "value" : "SM Mall of Asia"
             },
             {
-               "offset" : 26,
-               "value" : "Valenzuela"
+               "offset" : 17,
+               "value" : "Seaside Boulevard"
             },
             {
-               "offset" : 38,
+               "offset" : 36,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 43,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 52,
+               "offset" : 57,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "geocode",
-            "route"
+            "establishment",
+            "shopping_mall",
+            "point_of_interest"
          ]
       },
       {
-         "description" : "SM Tarlac Service Road, Tarlac City, Tarlac, Philippines",
+         "description" : "SM Megamall, Doña Julia Vargas Avenue, Ortigas Center, Mandaluyong, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -154,11 +173,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "EjhTTSBUYXJsYWMgU2VydmljZSBSb2FkLCBUYXJsYWMgQ2l0eSwgVGFybGFjLCBQaGlsaXBwaW5lcyIuKiwKFAoSCVs0KlNAxpYzEdzFy4IUlNl6EhQKEgkNjrZKP8aWMxFL_Vt6XUH5Ew",
-         "reference" : "EjhTTSBUYXJsYWMgU2VydmljZSBSb2FkLCBUYXJsYWMgQ2l0eSwgVGFybGFjLCBQaGlsaXBwaW5lcyIuKiwKFAoSCVs0KlNAxpYzEdzFy4IUlNl6EhQKEgkNjrZKP8aWMxFL_Vt6XUH5Ew",
+         "place_id" : "ChIJZ-Br6r3JlzMR_SUY37SQK7c",
+         "reference" : "ChIJZ-Br6r3JlzMR_SUY37SQK7c",
          "structured_formatting" : 
          {
-            "main_text" : "SM Tarlac Service Road",
+            "main_text" : "SM Megamall",
             "main_text_matched_substrings" : 
             [
                {
@@ -166,79 +185,93 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Tarlac City, Tarlac, Philippines"
+            "secondary_text" : "Doña Julia Vargas Avenue, Ortigas Center, Mandaluyong, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "SM Tarlac Service Road"
+               "value" : "SM Megamall"
             },
             {
-               "offset" : 24,
-               "value" : "Tarlac City"
-            },
-            {
-               "offset" : 37,
-               "value" : "Tarlac"
-            },
-            {
-               "offset" : 45,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "geocode",
-            "route"
-         ]
-      },
-      {
-         "description" : "SM Dasma Entrance, Dasmariñas, Cavite, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 2,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "EjNTTSBEYXNtYSBFbnRyYW5jZSwgRGFzbWFyacOxYXMsIENhdml0ZSwgUGhpbGlwcGluZXMiLiosChQKEgm_cq7qltWXMxFXT4dwEun3pxIUChIJJR4RfLjVlzMRHzJA-Ji2jKs",
-         "reference" : "EjNTTSBEYXNtYSBFbnRyYW5jZSwgRGFzbWFyacOxYXMsIENhdml0ZSwgUGhpbGlwcGluZXMiLiosChQKEgm_cq7qltWXMxFXT4dwEun3pxIUChIJJR4RfLjVlzMRHzJA-Ji2jKs",
-         "structured_formatting" : 
-         {
-            "main_text" : "SM Dasma Entrance",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 2,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Dasmariñas, Cavite, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "SM Dasma Entrance"
-            },
-            {
-               "offset" : 19,
-               "value" : "Dasmariñas"
-            },
-            {
-               "offset" : 31,
-               "value" : "Cavite"
+               "offset" : 13,
+               "value" : "Doña Julia Vargas Avenue"
             },
             {
                "offset" : 39,
+               "value" : "Ortigas Center"
+            },
+            {
+               "offset" : 55,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 68,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 82,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "geocode",
-            "route"
+            "establishment",
+            "point_of_interest",
+            "shopping_mall"
+         ]
+      },
+      {
+         "description" : "SM City Bicutan, South Luzon Expressway, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJte9wFAXPlzMRaP6smmOPacU",
+         "reference" : "ChIJte9wFAXPlzMRaP6smmOPacU",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM City Bicutan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "South Luzon Expressway, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM City Bicutan"
+            },
+            {
+               "offset" : 17,
+               "value" : "South Luzon Expressway"
+            },
+            {
+               "offset" : 41,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "shopping_mall",
+            "point_of_interest"
          ]
       }
    ],

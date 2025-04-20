@@ -1,0 +1,296 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Pateros Catholic School, B. Morcilla Street, Pateros, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNcUDA5DIlzMRszkKhUbKxIM",
+         "reference" : "ChIJNcUDA5DIlzMRszkKhUbKxIM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pateros Catholic School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "B. Morcilla Street, Pateros, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pateros Catholic School"
+            },
+            {
+               "offset" : 25,
+               "value" : "B. Morcilla Street"
+            },
+            {
+               "offset" : 45,
+               "value" : "Pateros"
+            },
+            {
+               "offset" : 54,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "school"
+         ]
+      },
+      {
+         "description" : "Pateros Catholic School, Annex Bldg, F. Imson, Pateros, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJzXlwDgDJlzMR4vNInN9OfTY",
+         "reference" : "ChIJzXlwDgDJlzMR4vNInN9OfTY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pateros Catholic School, Annex Bldg",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "F. Imson, Pateros, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pateros Catholic School, Annex Bldg"
+            },
+            {
+               "offset" : 37,
+               "value" : "F. Imson"
+            },
+            {
+               "offset" : 47,
+               "value" : "Pateros"
+            },
+            {
+               "offset" : 56,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "school",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Captain Musni Street, Pateros, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            },
+            {
+               "length" : 7,
+               "offset" : 22
+            }
+         ],
+         "place_id" : "EjhDYXB0YWluIE11c25pIFN0cmVldCwgUGF0ZXJvcywgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCc1P0SODyJczEbmXXv_HpCXFEhQKEgkH3Ce4msiXMxHRJ6J8GppgzA",
+         "reference" : "EjhDYXB0YWluIE11c25pIFN0cmVldCwgUGF0ZXJvcywgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCc1P0SODyJczEbmXXv_HpCXFEhQKEgkH3Ce4msiXMxHRJ6J8GppgzA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Captain Musni Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pateros, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Captain Musni Street"
+            },
+            {
+               "offset" : 22,
+               "value" : "Pateros"
+            },
+            {
+               "offset" : 31,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Captain H. Francisco Elementary School - Annex, Pateros, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            },
+            {
+               "length" : 7,
+               "offset" : 48
+            }
+         ],
+         "place_id" : "ChIJtbpJ3ZrIlzMRo_rz-PrMpfo",
+         "reference" : "ChIJtbpJ3ZrIlzMRo_rz-PrMpfo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Captain H. Francisco Elementary School - Annex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pateros, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Captain H. Francisco Elementary School - Annex"
+            },
+            {
+               "offset" : 48,
+               "value" : "Pateros"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "primary_school",
+            "school",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Castillo's Dental Clinic, M. Almeda Street, Pateros, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            },
+            {
+               "length" : 7,
+               "offset" : 44
+            }
+         ],
+         "place_id" : "ChIJOz1xiJfIlzMRlbMsh0Mb0EQ",
+         "reference" : "ChIJOz1xiJfIlzMRlbMsh0Mb0EQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Castillo's Dental Clinic",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M. Almeda Street, Pateros, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 18
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Castillo's Dental Clinic"
+            },
+            {
+               "offset" : 26,
+               "value" : "M. Almeda Street"
+            },
+            {
+               "offset" : 44,
+               "value" : "Pateros"
+            },
+            {
+               "offset" : 53,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "health",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

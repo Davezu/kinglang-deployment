@@ -53,8 +53,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -105,8 +105,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "establishment",
+            "point_of_interest",
             "food"
          ]
       },
@@ -154,10 +154,10 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "food",
             "establishment",
-            "store"
+            "store",
+            "point_of_interest",
+            "food"
          ]
       },
       {
@@ -208,10 +208,10 @@
          ],
          "types" : 
          [
-            "food",
-            "point_of_interest",
             "restaurant",
-            "establishment"
+            "food",
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -258,8 +258,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       }
    ],

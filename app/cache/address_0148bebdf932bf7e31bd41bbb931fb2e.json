@@ -1,0 +1,254 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Pandi, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-Ug1FZirlzMRXgh19mV3Myg",
+         "reference" : "ChIJ-Ug1FZirlzMRXgh19mV3Myg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pandi",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pandi"
+            },
+            {
+               "offset" : 7,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Pandi Municipal Hall, S Osmena St, Pandi, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJdXFkd4mrlzMRoPkapDI_Aec",
+         "reference" : "ChIJdXFkd4mrlzMRoPkapDI_Aec",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pandi Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "S Osmena St, Pandi, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pandi Municipal Hall"
+            },
+            {
+               "offset" : 22,
+               "value" : "S Osmena St"
+            },
+            {
+               "offset" : 35,
+               "value" : "Pandi"
+            },
+            {
+               "offset" : 42,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "local_government_office",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Pandi Residences 1, A. Pandi Residences Rd, Pandi, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJp4YjTn2rlzMRr1d1UoY9QSc",
+         "reference" : "ChIJp4YjTn2rlzMRr1d1UoY9QSc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pandi Residences 1",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "A. Pandi Residences Rd, Pandi, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pandi Residences 1"
+            },
+            {
+               "offset" : 20,
+               "value" : "A. Pandi Residences Rd"
+            },
+            {
+               "offset" : 44,
+               "value" : "Pandi"
+            },
+            {
+               "offset" : 51,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "local_government_office",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Pandi Residence III, Pandi, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ1Sg6KHKrlzMRgDibCF0AwLw",
+         "reference" : "ChIJ1Sg6KHKrlzMRgDibCF0AwLw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pandi Residence III",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pandi, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pandi Residence III"
+            },
+            {
+               "offset" : 21,
+               "value" : "Pandi"
+            },
+            {
+               "offset" : 28,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Pandi Industrial Park, Pandi, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJVXtmPN6rlzMR7t3eB2abcqM",
+         "reference" : "ChIJVXtmPN6rlzMR7t3eB2abcqM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pandi Industrial Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pandi, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pandi Industrial Park"
+            },
+            {
+               "offset" : 23,
+               "value" : "Pandi"
+            },
+            {
+               "offset" : 30,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "storage"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

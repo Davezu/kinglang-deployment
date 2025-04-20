@@ -1,0 +1,265 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Kingsford Hotel Manila, J.W. Diokno Boulevard, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-_mvpATMlzMRkiErfNMwyys",
+         "reference" : "ChIJ-_mvpATMlzMRkiErfNMwyys",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kingsford Hotel Manila",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "J.W. Diokno Boulevard, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kingsford Hotel Manila"
+            },
+            {
+               "offset" : 24,
+               "value" : "J.W. Diokno Boulevard"
+            },
+            {
+               "offset" : 47,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 58,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 72,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Kingspoint Subdivision, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ej5LaW5nc3BvaW50IFN1YmRpdmlzaW9uLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCXexYSMpsZczEYwoOqn6gekvEhQKEgl1c-9CCbqXMxFAPQj-2TKaSg",
+         "reference" : "Ej5LaW5nc3BvaW50IFN1YmRpdmlzaW9uLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCXexYSMpsZczEYwoOqn6gekvEhQKEgl1c-9CCbqXMxFAPQj-2TKaSg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kingspoint Subdivision",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kingspoint Subdivision"
+            },
+            {
+               "offset" : 24,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 37,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Kinasang-an Pardo, Antuwanga, Cebu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJe-T9_0CcqTMRFoTJsXC02v8",
+         "reference" : "ChIJe-T9_0CcqTMRFoTJsXC02v8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kinasang-an Pardo, Antuwanga",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cebu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kinasang-an Pardo"
+            },
+            {
+               "offset" : 19,
+               "value" : "Antuwanga"
+            },
+            {
+               "offset" : 30,
+               "value" : "Cebu City"
+            },
+            {
+               "offset" : 41,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Kingstown2, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ2Wa1asSxlzMRL1QQFgjeUdg",
+         "reference" : "ChIJ2Wa1asSxlzMRL1QQFgjeUdg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kingstown2",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kingstown2"
+            },
+            {
+               "offset" : 12,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 22,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "King's College of the Philippines (KCP), Pico Road, La Trinidad, Benguet, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJH43wxMCjkTMRNYHZmaMkYPc",
+         "reference" : "ChIJH43wxMCjkTMRNYHZmaMkYPc",
+         "structured_formatting" : 
+         {
+            "main_text" : "King's College of the Philippines (KCP)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pico Road, La Trinidad, Benguet, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "King's College of the Philippines (KCP)"
+            },
+            {
+               "offset" : 41,
+               "value" : "Pico Road"
+            },
+            {
+               "offset" : 52,
+               "value" : "La Trinidad"
+            },
+            {
+               "offset" : 65,
+               "value" : "Benguet"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "university",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

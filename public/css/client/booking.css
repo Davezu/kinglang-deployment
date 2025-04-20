@@ -40,7 +40,8 @@ input {
 }
 
 #map {
-    height: 70vh;
+    height: 80vh;
+    width: 60%;
 }
 
 .suggestions {

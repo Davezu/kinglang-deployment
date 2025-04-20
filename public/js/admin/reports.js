@@ -4,11 +4,14 @@ let paymentMethodChart = null;
 let monthlyTrendsChart = null;
 let topDestinationsChart = null;
 
+// Flatpickr instances
+let startDatePicker = null;
+let endDatePicker = null;
+
 // Current filters state
 const filters = {
     startDate: null,
     endDate: null,
-    year: new Date().getFullYear(),
     page: 1,
     limit: 10
 };
@@ -22,12 +25,44 @@ let paginationData = {
 };
 
 $(document).ready(function() {
-    // Initialize date inputs with default values
+    // Initialize date inputs with Flatpickr
     const today = new Date();
     const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
     
-    $('#startDate').val(formatDate(firstDayOfYear));
-    $('#endDate').val(formatDate(today));
+    // Flatpickr configuration
+    const dateConfig = {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+        allowInput: false,
+        theme: "light"
+    };
+    
+    // Initialize start date picker
+    startDatePicker = flatpickr("#startDate", {
+        ...dateConfig,
+        defaultDate: firstDayOfYear,
+        allowInput: false,
+        maxDate: today,
+        onChange: function(selectedDates, dateStr) {
+            if (selectedDates[0]) {
+                endDatePicker.set("minDate", selectedDates[0]);
+            }
+        }
+    });
+    
+    // Initialize end date picker
+    endDatePicker = flatpickr("#endDate", {
+        ...dateConfig,
+        defaultDate: today,
+        maxDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+        minDate: firstDayOfYear,
+        onChange: function(selectedDates, dateStr) {
+            if (selectedDates[0]) {
+                startDatePicker.set("maxDate", selectedDates[0]);
+            }
+        }
+    });
     
     filters.startDate = formatDate(firstDayOfYear);
     filters.endDate = formatDate(today);
@@ -46,9 +81,8 @@ $(document).ready(function() {
 });
 
 function applyFilters() {
-    filters.startDate = $('#startDate').val();
-    filters.endDate = $('#endDate').val();
-    filters.year = $('#yearSelect').val();
+    filters.startDate = startDatePicker.input.value;
+    filters.endDate = endDatePicker.input.value;
     filters.page = 1;
     
     loadAllReports();
@@ -170,7 +204,8 @@ async function fetchMonthlyBookingTrend() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                year: filters.year
+                start_date: filters.startDate,
+                end_date: filters.endDate
             })
         });
         
@@ -521,48 +556,18 @@ function renderPagination() {
     const container = $('#paginationControls');
     container.empty();
     
-    if (paginationData.totalPages <= 1) {
+    // Don't show pagination if total records less than 10 or only one page
+    if (paginationData.total < 10 || paginationData.totalPages <= 1) {
         return;
     }
     
-    let html = '<nav><ul class="pagination pagination-sm">';
-    
-    // Previous button
-    html += `
-        <li class="page-item ${paginationData.page === 1 ? 'disabled' : ''}">
-            <a class="page-link" href="#" data-page="${paginationData.page - 1}">Previous</a>
-        </li>
-    `;
-    
-    // Page numbers
-    const startPage = Math.max(1, paginationData.page - 2);
-    const endPage = Math.min(paginationData.totalPages, paginationData.page + 2);
-    
-    for (let i = startPage; i <= endPage; i++) {
-        html += `
-            <li class="page-item ${i === paginationData.page ? 'active' : ''}">
-                <a class="page-link" href="#" data-page="${i}">${i}</a>
-            </li>
-        `;
-    }
-    
-    // Next button
-    html += `
-        <li class="page-item ${paginationData.page === paginationData.totalPages ? 'disabled' : ''}">
-            <a class="page-link" href="#" data-page="${paginationData.page + 1}">Next</a>
-        </li>
-    `;
-    
-    html += '</ul></nav>';
-    
-    container.html(html);
-    
-    // Add event listeners to pagination links
-    $('.page-link').on('click', function(e) {
-        e.preventDefault();
-        const page = parseInt($(this).data('page'));
-        
-        if (page > 0 && page <= paginationData.totalPages) {
+    // Use the centralized pagination utility (using jQuery container)
+    createPagination({
+        containerId: "paginationControls",
+        totalPages: paginationData.totalPages,
+        currentPage: paginationData.page,
+        paginationType: 'standard',
+        onPageChange: (page) => {
             filters.page = page;
             fetchDetailedBookingList();
         }
@@ -646,6 +651,11 @@ function generateCsvDownload(bookings) {
 
 // Utility functions
 function formatDate(date) {
+    // Handle already formatted string
+    if (typeof date === 'string' && date.match(/^\d{4}-\d{2}-\d{2}$/)) {
+        return date;
+    }
+    
     const d = new Date(date);
     let month = '' + (d.getMonth() + 1);
     let day = '' + d.getDate();
