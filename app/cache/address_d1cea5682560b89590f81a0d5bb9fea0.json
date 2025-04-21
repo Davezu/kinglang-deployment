@@ -1,0 +1,244 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Norzagaray, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJXf2qJdWglzMRVjFOAdHjgB4",
+         "reference" : "ChIJXf2qJdWglzMRVjFOAdHjgB4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Norzagaray",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Norzagaray"
+            },
+            {
+               "offset" : 12,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Norzagaray River, Norzagaray, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNTgQwTuolzMR-7zUvjj1QCY",
+         "reference" : "ChIJNTgQwTuolzMR-7zUvjj1QCY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Norzagaray River",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Norzagaray, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Norzagaray River"
+            },
+            {
+               "offset" : 18,
+               "value" : "Norzagaray"
+            },
+            {
+               "offset" : 30,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Norzagaray Municipal Hall, Norzagaray, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJGa8AD0-olzMRn_wFhCZzyg8",
+         "reference" : "ChIJGa8AD0-olzMRn_wFhCZzyg8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Norzagaray Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Norzagaray, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Norzagaray Municipal Hall"
+            },
+            {
+               "offset" : 27,
+               "value" : "Norzagaray"
+            },
+            {
+               "offset" : 39,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Norzagaray Bulacan, Norzagaray, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJS3skewCnlzMRfHrp_RcTUIQ",
+         "reference" : "ChIJS3skewCnlzMRfHrp_RcTUIQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Norzagaray Bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Norzagaray, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Norzagaray Bulacan"
+            },
+            {
+               "offset" : 20,
+               "value" : "Norzagaray"
+            },
+            {
+               "offset" : 32,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Norzagaray - Santa Maria Road, Santa Maria, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EkBOb3J6YWdhcmF5IC0gU2FudGEgTWFyaWEgUm9hZCwgU2FudGEgTWFyaWEsIEJ1bGFjYW4sIFBoaWxpcHBpbmVzIi4qLAoUChIJT_HgDGqplzMR-DInc0cKuvYSFAoSCV-lJ6wirJczEdANXDxkEYZK",
+         "reference" : "EkBOb3J6YWdhcmF5IC0gU2FudGEgTWFyaWEgUm9hZCwgU2FudGEgTWFyaWEsIEJ1bGFjYW4sIFBoaWxpcHBpbmVzIi4qLAoUChIJT_HgDGqplzMR-DInc0cKuvYSFAoSCV-lJ6wirJczEdANXDxkEYZK",
+         "structured_formatting" : 
+         {
+            "main_text" : "Norzagaray - Santa Maria Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Maria, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Norzagaray - Santa Maria Road"
+            },
+            {
+               "offset" : 31,
+               "value" : "Santa Maria"
+            },
+            {
+               "offset" : 44,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

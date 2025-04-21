@@ -1,0 +1,242 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Norzagaray, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJXf2qJdWglzMRVjFOAdHjgB4",
+         "reference" : "ChIJXf2qJdWglzMRVjFOAdHjgB4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Norzagaray",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Norzagaray"
+            },
+            {
+               "offset" : 12,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Norzagaray River, Norzagaray, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNTgQwTuolzMR-7zUvjj1QCY",
+         "reference" : "ChIJNTgQwTuolzMR-7zUvjj1QCY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Norzagaray River",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Norzagaray, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Norzagaray River"
+            },
+            {
+               "offset" : 18,
+               "value" : "Norzagaray"
+            },
+            {
+               "offset" : 30,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "natural_feature",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "North Fairview, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ6QUV4o2wlzMR_EuQaN00eSQ",
+         "reference" : "ChIJ6QUV4o2wlzMR_EuQaN00eSQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "North Fairview",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "North Fairview"
+            },
+            {
+               "offset" : 16,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 29,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 43,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "political",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "North Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJEzcr9xjr-DIRX4BHpgoSE8o",
+         "reference" : "ChIJEzcr9xjr-DIRX4BHpgoSE8o",
+         "structured_formatting" : 
+         {
+            "main_text" : "North Cotabato",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "North Cotabato"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "administrative_area_level_2"
+         ]
+      },
+      {
+         "description" : "North Caloocan, Bagumbong Road, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAYOyMQCxlzMREKeDK2EFYxY",
+         "reference" : "ChIJAYOyMQCxlzMREKeDK2EFYxY",
+         "structured_formatting" : 
+         {
+            "main_text" : "North Caloocan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bagumbong Road, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "North Caloocan"
+            },
+            {
+               "offset" : 16,
+               "value" : "Bagumbong Road"
+            },
+            {
+               "offset" : 32,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -20,22 +20,84 @@ class ClientNotificationsController {
         }
     }
     
-    public function getNotifications() {
+    // Add the index method to render the notifications view
+    public function index() {
         if (!isset($_SESSION["user_id"])) {
+            header("Location: /home/login");
+            exit();
+        }
+        
+        require_once __DIR__ . "/../../views/client/notifications.php";
+    }
+    
+    public function getNotifications() {
+        // Debug information
+        // error_log("getNotifications called with method: " . $_SERVER['REQUEST_METHOD']);
+        // error_log("Request URI: " . $_SERVER['REQUEST_URI']);
+        
+        if (!isset($_SESSION["user_id"])) {
+            error_log("User not authenticated - no user_id in session");
             header('Content-Type: application/json');
             echo json_encode(['success' => false, 'message' => 'Not authenticated']);
             exit;
         }
         
         $user_id = $_SESSION["user_id"];
-        $notifications = $this->notificationModel->getAllNotifications($user_id, 10);
+        // error_log("User ID from session: $user_id");
+        $page = 1;
+        $limit = 20;
+        
+        // Check request method
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Check content type for JSON
+            $contentType = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
+            error_log("Content-Type: $contentType");
+            
+            if (strpos($contentType, 'application/json') !== false) {
+                // Handle JSON request
+                $json = file_get_contents('php://input');
+                error_log("Raw input: $json");
+                $data = json_decode($json, true);
+                
+                if (isset($data['page'])) {
+                    $page = (int)$data['page'];
+                }
+                
+                if (isset($data['limit'])) {
+                    $limit = (int)$data['limit'];
+                }
+            }
+        }
+        
+        // Validate page and limit
+        if ($page < 1) $page = 1;
+        if ($limit < 1 || $limit > 100) $limit = 20;
+        
+        // Calculate offset
+        $offset = ($page - 1) * $limit;
+        
+        // Get notifications for this page
+        $notifications = $this->notificationModel->getAllNotificationsWithPagination($user_id, $limit, $offset);
         $unreadCount = $this->notificationModel->getNotificationCount($user_id);
+        $total = $this->notificationModel->getTotalNotificationCount($user_id);
+        $total_pages = ceil($total / $limit);
+        
+        // Debug information
+        // error_log("User ID: $user_id, Total notifications: $total");
+        // error_log("Page: $page, Limit: $limit, Offset: $offset");
+        // error_log("Notifications: " . json_encode($notifications));
         
         header('Content-Type: application/json');
         echo json_encode([
             'success' => true, 
             'notifications' => $notifications,
-            'unreadCount' => $unreadCount
+            'unreadCount' => $unreadCount,
+            'pagination' => [
+                'total_records' => $total,
+                'total_pages' => $total_pages,
+                'current_page' => $page,
+                'limit' => $limit
+            ]
         ]);
     }
     
@@ -47,8 +109,32 @@ class ClientNotificationsController {
         }
         
         $user_id = $_SESSION["user_id"];
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 20;
+        $page = 1;
+        $limit = 20;
+        
+        // Check request method
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Check content type for JSON
+            $contentType = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
+            
+            if (strpos($contentType, 'application/json') !== false) {
+                // Handle JSON request
+                $json = file_get_contents('php://input');
+                $data = json_decode($json, true);
+                
+                if (isset($data['page'])) {
+                    $page = (int)$data['page'];
+                }
+                
+                if (isset($data['limit'])) {
+                    $limit = (int)$data['limit'];
+                }
+            }
+        } else {
+            // Handle GET request
+            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 20;
+        }
         
         // Validate page and limit
         if ($page < 1) $page = 1;
@@ -78,13 +164,32 @@ class ClientNotificationsController {
     }
     
     public function markAsRead() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['notification_id'])) {
-            $notification_id = $_POST['notification_id'];
-            $success = $this->notificationModel->markAsRead($notification_id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Check content type for JSON
+            $contentType = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
             
-            header('Content-Type: application/json');
-            echo json_encode(['success' => $success]);
-            exit;
+            if (strpos($contentType, 'application/json') !== false) {
+                // Handle JSON request
+                $json = file_get_contents('php://input');
+                $data = json_decode($json, true);
+                
+                if (isset($data['notification_id'])) {
+                    $notification_id = $data['notification_id'];
+                    $success = $this->notificationModel->markAsRead($notification_id);
+                    
+                    header('Content-Type: application/json');
+                    echo json_encode(['success' => $success]);
+                    exit;
+                }
+            } else if (isset($_POST['notification_id'])) {
+                // Handle form data request for backward compatibility
+                $notification_id = $_POST['notification_id'];
+                $success = $this->notificationModel->markAsRead($notification_id);
+                
+                header('Content-Type: application/json');
+                echo json_encode(['success' => $success]);
+                exit;
+            }
         }
         
         // Invalid request
@@ -113,5 +218,28 @@ class ClientNotificationsController {
         header('Content-Type: application/json');
         echo json_encode(['success' => false, 'message' => 'Invalid request']);
         exit;
+    }
+    
+    // Method to add a test notification for the current user
+    public function addTestNotification() {
+        if (!isset($_SESSION["user_id"])) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => 'Not authenticated']);
+            exit;
+        }
+        
+        $user_id = $_SESSION["user_id"];
+        $result = $this->notificationModel->addNotification(
+            $user_id,
+            'test_notification',
+            'This is a test notification to verify the notification system is working properly.',
+            null
+        );
+        
+        header('Content-Type: application/json');
+        echo json_encode([
+            'success' => (bool)$result,
+            'message' => (bool)$result ? 'Test notification added successfully' : 'Failed to add test notification'
+        ]);
     }
 } 

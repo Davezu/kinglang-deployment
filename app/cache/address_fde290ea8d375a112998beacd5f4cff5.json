@@ -1,0 +1,284 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Kenny Rogers Roasters Quezon Avenue, Quezon Avenue, Diliman, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJf9bEEdy3lzMRURoYYRuRkk8",
+         "reference" : "ChIJf9bEEdy3lzMRURoYYRuRkk8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kenny Rogers Roasters Quezon Avenue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon Avenue, Diliman, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kenny Rogers Roasters Quezon Avenue"
+            },
+            {
+               "offset" : 37,
+               "value" : "Quezon Avenue"
+            },
+            {
+               "offset" : 52,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 61,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 74,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 88,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "food",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Kenny Rogers Roasters, Shaw Boulevard, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9RFX-nTJlzMRyVa8O9mJGTE",
+         "reference" : "ChIJ9RFX-nTJlzMRyVa8O9mJGTE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kenny Rogers Roasters",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Shaw Boulevard, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kenny Rogers Roasters"
+            },
+            {
+               "offset" : 23,
+               "value" : "Shaw Boulevard"
+            },
+            {
+               "offset" : 39,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 46,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "restaurant",
+            "point_of_interest",
+            "food"
+         ]
+      },
+      {
+         "description" : "Kenny Rogers - EPZA Bacao, Antero Soriano Highway, General Trias, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ7RIQDxEtljMRUD3Kw-QX6LU",
+         "reference" : "ChIJ7RIQDxEtljMRUD3Kw-QX6LU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kenny Rogers - EPZA Bacao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Antero Soriano Highway, General Trias, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kenny Rogers - EPZA Bacao"
+            },
+            {
+               "offset" : 27,
+               "value" : "Antero Soriano Highway"
+            },
+            {
+               "offset" : 51,
+               "value" : "General Trias"
+            },
+            {
+               "offset" : 66,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "restaurant",
+            "food"
+         ]
+      },
+      {
+         "description" : "Kenny Rogers Roasters, Roxas Boulevard, San Rafael, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJC8z4slDJlzMRp2HNOL7StF8",
+         "reference" : "ChIJC8z4slDJlzMRp2HNOL7StF8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kenny Rogers Roasters",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Roxas Boulevard, San Rafael, Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kenny Rogers Roasters"
+            },
+            {
+               "offset" : 23,
+               "value" : "Roxas Boulevard"
+            },
+            {
+               "offset" : 40,
+               "value" : "San Rafael"
+            },
+            {
+               "offset" : 52,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "restaurant",
+            "point_of_interest",
+            "food"
+         ]
+      },
+      {
+         "description" : "Kenny Rogers Roasters - Mercedes, Mercedes Avenue, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJR5UO5tnHlzMRwJvRYDx6xcI",
+         "reference" : "ChIJR5UO5tnHlzMRwJvRYDx6xcI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kenny Rogers Roasters - Mercedes",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mercedes Avenue, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kenny Rogers Roasters - Mercedes"
+            },
+            {
+               "offset" : 34,
+               "value" : "Mercedes Avenue"
+            },
+            {
+               "offset" : 51,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 58,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 72,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "point_of_interest",
+            "establishment",
+            "food"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

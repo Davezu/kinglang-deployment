@@ -1,0 +1,58 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Sagaray Apartments, Lapu-Lapu Extension, Digos City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ89EubwCx-TIR_PAPiCjyi2E",
+         "reference" : "ChIJ89EubwCx-TIR_PAPiCjyi2E",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sagaray Apartments",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lapu-Lapu Extension, Digos City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sagaray Apartments"
+            },
+            {
+               "offset" : 20,
+               "value" : "Lapu-Lapu Extension"
+            },
+            {
+               "offset" : 41,
+               "value" : "Digos City"
+            },
+            {
+               "offset" : 53,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

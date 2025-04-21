@@ -1,0 +1,250 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-1L98RZNljMRrV6ZM4WXvYY",
+         "reference" : "ChIJ-1L98RZNljMRrV6ZM4WXvYY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 9,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Bulacan State University, Malolos, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJV_jwJHOvlzMRzm4lW-05H8I",
+         "reference" : "ChIJV_jwJHOvlzMRzm4lW-05H8I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan State University",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malolos, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan State University"
+            },
+            {
+               "offset" : 26,
+               "value" : "Malolos"
+            },
+            {
+               "offset" : 35,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "establishment",
+            "school",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bulacan, Santa Ana, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjVCdWxhY2FuLCBTYW50YSBBbmEsIE1hbmlsYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCQvAdAu9yZczESCmOfdpwTo0EhQKEgn5R8L2vsmXMxHTOxfvQ2LN6g",
+         "reference" : "EjVCdWxhY2FuLCBTYW50YSBBbmEsIE1hbmlsYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCQvAdAu9yZczESCmOfdpwTo0EhQKEgn5R8L2vsmXMxHTOxfvQ2LN6g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Ana, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 9,
+               "value" : "Santa Ana"
+            },
+            {
+               "offset" : 20,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 28,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Bulacan Sports Complex, MacArthur Highway, Malolos, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJCSjQDbJTljMR0OczpV4yTc8",
+         "reference" : "ChIJCSjQDbJTljMR0OczpV4yTc8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan Sports Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "MacArthur Highway, Malolos, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan Sports Complex"
+            },
+            {
+               "offset" : 24,
+               "value" : "MacArthur Highway"
+            },
+            {
+               "offset" : 43,
+               "value" : "Malolos"
+            },
+            {
+               "offset" : 52,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      },
+      {
+         "description" : "Bulacan State University - Bustos Campus Multi Purpose Hall, Bustos, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJuwNVsAkAlzMRtH8Ha12nB_s",
+         "reference" : "ChIJuwNVsAkAlzMRtH8Ha12nB_s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan State University - Bustos Campus Multi Purpose Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bustos, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan State University - Bustos Campus Multi Purpose Hall"
+            },
+            {
+               "offset" : 61,
+               "value" : "Bustos"
+            },
+            {
+               "offset" : 69,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

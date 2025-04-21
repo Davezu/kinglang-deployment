@@ -1,6 +1,6 @@
 <?php
 // Debug session
-error_log("Admin login session data: " . json_encode($_SESSION ?? []));
+// error_log("Admin login session data: " . json_encode($_SESSION ?? []));
 
 // Redirect if already logged in
 if (is_admin_authenticated()) {

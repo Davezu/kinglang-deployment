@@ -86,58 +86,9 @@
          ],
          "types" : 
          [
+            "point_of_interest",
             "school",
-            "point_of_interest",
             "university",
-            "establishment"
-         ]
-      },
-      {
-         "description" : "Bulacan International Airport, Bulakan, Bulacan, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 7,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJgd1zrBlNljMRsVDshAlHJT0",
-         "reference" : "ChIJgd1zrBlNljMRsVDshAlHJT0",
-         "structured_formatting" : 
-         {
-            "main_text" : "Bulacan International Airport",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 7,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Bulakan, Bulacan, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Bulacan International Airport"
-            },
-            {
-               "offset" : 31,
-               "value" : "Bulakan"
-            },
-            {
-               "offset" : 40,
-               "value" : "Bulacan"
-            },
-            {
-               "offset" : 49,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "airport",
-            "point_of_interest",
             "establishment"
          ]
       },
@@ -189,8 +140,8 @@
          ],
          "types" : 
          [
-            "route",
-            "geocode"
+            "geocode",
+            "route"
          ]
       },
       {
@@ -243,6 +194,55 @@
          [
             "geocode",
             "premise"
+         ]
+      },
+      {
+         "description" : "Bulacan State University - Bustos Campus Multi Purpose Hall, Bustos, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJuwNVsAkAlzMRtH8Ha12nB_s",
+         "reference" : "ChIJuwNVsAkAlzMRtH8Ha12nB_s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan State University - Bustos Campus Multi Purpose Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bustos, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan State University - Bustos Campus Multi Purpose Hall"
+            },
+            {
+               "offset" : 61,
+               "value" : "Bustos"
+            },
+            {
+               "offset" : 69,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "establishment",
+            "point_of_interest"
          ]
       }
    ],

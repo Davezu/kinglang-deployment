@@ -3,10 +3,10 @@ require_once __DIR__ . '/../../../config/database.php';
 require_once __DIR__ . '/../../controllers/client/AuthController.php';
 
 
-// if (isset($_SESSION["user_id"])) {
-//     header("Location: booking.php");
-//     exit();
-// }
+if (is_client_authenticated()) {
+    header("Location: /home/booking-requests");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

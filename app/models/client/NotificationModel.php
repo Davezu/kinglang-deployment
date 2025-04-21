@@ -7,26 +7,6 @@ class ClientNotificationModel {
     public function __construct() {
         global $pdo;
         $this->conn = $pdo;
-        $this->ensureNotificationsTableExists();
-    }
-    
-    private function ensureNotificationsTableExists() {
-        try {
-            $query = "CREATE TABLE IF NOT EXISTS client_notifications (
-                notification_id INT AUTO_INCREMENT PRIMARY KEY,
-                user_id INT NOT NULL,
-                type VARCHAR(50) NOT NULL,
-                message TEXT NOT NULL,
-                reference_id INT,
-                is_read BOOLEAN DEFAULT FALSE,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )";
-            $this->conn->exec($query);
-            return true;
-        } catch (PDOException $e) {
-            error_log("Error creating client notifications table: " . $e->getMessage());
-            return false;
-        }
     }
     
     public function addNotification($user_id, $type, $message, $reference_id = null) {

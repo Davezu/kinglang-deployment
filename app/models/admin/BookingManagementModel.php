@@ -84,12 +84,12 @@ class BookingManagementModel {
             $bookingInfo = $this->getBooking($booking_id);
             
             // Add admin notification
-            $message = "New booking confirmed for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
-            $this->notificationModel->addNotification("booking_confirmed", $message, $booking_id);
+            // $message = "New booking confirmed for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
+            // $this->notificationModel->addNotification("booking_confirmed", $message, $booking_id);
             
-            // Add client notification
-            $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been confirmed.";
-            $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "booking_confirmed", $clientMessage, $booking_id);
+            // // Add client notification
+            // $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been confirmed.";
+            // $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "booking_confirmed", $clientMessage, $booking_id);
             
             return "success";
         } catch (PDOException $e) {
@@ -115,9 +115,9 @@ class BookingManagementModel {
             // Get booking information
             $bookingInfo = $this->getBooking($booking_id);
             
-            // Add admin notification
-            $message = "Booking rejected for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
-            $this->notificationModel->addNotification("booking_rejected", $message, $booking_id);
+            // // Add admin notification
+            // $message = "Booking rejected for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
+            // $this->notificationModel->addNotification("booking_rejected", $message, $booking_id);
             
             // Add client notification
             $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been rejected. Reason: " . $reason;
@@ -290,14 +290,14 @@ class BookingManagementModel {
             $bookingInfo = $this->getBooking($booking_id);
             
             // Add admin notification
-            $message = "Booking canceled for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
-            $this->notificationModel->addNotification("booking_canceled", $message, $booking_id);
+            // $message = "Booking canceled for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
+            // $this->notificationModel->addNotification("booking_canceled", $message, $booking_id);
             
-            // Add client notification
-            $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been canceled. ";
-            if ($amount_refunded > 0) {
-                $clientMessage .= "Refunded amount: " . $amount_refunded;
-            }
+            // // Add client notification
+            // $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been canceled. ";
+            // if ($amount_refunded > 0) {
+            //     $clientMessage .= "Refunded amount: " . $amount_refunded;
+            // }
             $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "booking_canceled", $clientMessage, $booking_id);
 
             return ["success" => true];

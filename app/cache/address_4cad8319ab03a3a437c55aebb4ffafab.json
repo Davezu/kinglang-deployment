@@ -49,8 +49,8 @@
          ],
          "types" : 
          [
-            "premise",
-            "geocode"
+            "geocode",
+            "premise"
          ]
       },
       {
@@ -97,10 +97,10 @@
          ],
          "types" : 
          [
+            "tourist_attraction",
             "park",
             "establishment",
-            "point_of_interest",
-            "tourist_attraction"
+            "point_of_interest"
          ]
       },
       {
@@ -151,9 +151,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "establishment",
             "tourist_attraction",
-            "establishment"
+            "point_of_interest"
          ]
       },
       {
@@ -200,9 +200,9 @@
          ],
          "types" : 
          [
+            "museum",
             "establishment",
-            "point_of_interest",
-            "museum"
+            "point_of_interest"
          ]
       },
       {
@@ -249,9 +249,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "establishment",
             "amusement_park",
-            "establishment"
+            "point_of_interest"
          ]
       }
    ],

@@ -2,7 +2,10 @@
 const today = new Date();
 today.setDate(today.getDate() + 3);
 const minDate = today.toISOString().split("T")[0];
-document.getElementById("date_of_tour").min = minDate; 
+const dateOfTourInput = document.getElementById("date_of_tour");
+if (dateOfTourInput) {
+    dateOfTourInput.min = minDate;
+}
 
 function formatDate(date) {
     return new Date(date).toLocaleDateString("en-US", {
@@ -20,43 +23,47 @@ let limit = 10; // Number of records per page
 // get all of booking record
 document.addEventListener("DOMContentLoaded", async function () {
     // Get the initial limit value from the selector
-    limit = parseInt(document.getElementById("limitSelect").value);
+    const limitSelect = document.getElementById("limitSelect");
     const statusSelect = document.getElementById("statusSelect");
-    let status = statusSelect.value;
     
-    // Get initial data with pending status
-    let result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
-    
-    // If no pending bookings, try processing bookings first
-    if (result.bookings.length === 0 && status === "pending") {
-        status = "processing";
-        statusSelect.value = status;
-        result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+    if (limitSelect && statusSelect) {
+        limit = parseInt(limitSelect.value);
+        let status = statusSelect.value;
         
-        // If no processing bookings, try confirmed bookings
-        if (result.bookings.length === 0) {
-            status = "confirmed";
+        // Get initial data with pending status
+        let result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+        
+        // If no pending bookings, try processing bookings first
+        if (result.bookings.length === 0 && status === "pending") {
+            status = "processing";
             statusSelect.value = status;
             result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
             
-            // If no confirmed bookings either, use "all"
+            // If no processing bookings, try confirmed bookings
             if (result.bookings.length === 0) {
-                status = "all";
+                status = "confirmed";
                 statusSelect.value = status;
                 result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+                
+                // If no confirmed bookings either, use "all"
+                if (result.bookings.length === 0) {
+                    status = "all";
+                    statusSelect.value = status;
+                    result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+                }
             }
         }
+        
+        renderBookings(result.bookings);
+        renderPagination(result.pagination);
     }
-    
-    renderBookings(result.bookings);
-    renderPagination(result.pagination);
 
     // Payment method change handler
     const paymentMethodSelect = document.getElementById("paymentMethod");
     const accountInfoSection = document.getElementById("accountInfoSection");
     const proofUploadSection = document.getElementById("proofUploadSection");
     
-    if (paymentMethodSelect) {
+    if (paymentMethodSelect && accountInfoSection && proofUploadSection) {
         paymentMethodSelect.addEventListener("change", function() {
             const selectedMethod = this.value;
             
@@ -73,46 +80,55 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 // filter booking record by status
-document.getElementById("statusSelect").addEventListener("change", async function () {
-    const status = this.value;
-    currentPage = 1; // Reset to first page when filter changes
-    const result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
-    renderBookings(result.bookings);
-    renderPagination(result.pagination);
-});
+const statusSelectElement = document.getElementById("statusSelect");
+if (statusSelectElement) {
+    statusSelectElement.addEventListener("change", async function () {
+        const status = this.value;
+        currentPage = 1; // Reset to first page when filter changes
+        const result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+        renderBookings(result.bookings);
+        renderPagination(result.pagination);
+    });
+}
 
 // Handle limit selector change
-document.getElementById("limitSelect").addEventListener("change", async function() {
-    limit = parseInt(this.value);
-    currentPage = 1; // Reset to first page when limit changes
-    
-    const status = document.getElementById("statusSelect").value;
-    const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
-    const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
-    
-    const result = await getAllBookings(status, column, order, currentPage, limit);
-    renderBookings(result.bookings);
-    renderPagination(result.pagination);
-});
-
-// sort booking record by column
-document.querySelectorAll(".sort").forEach(button => {
-    button.style.cursor = "pointer";
-    button.style.backgroundColor = "#d1f7c4";
-
-    button.addEventListener("click", async function () {
+const limitSelectElement = document.getElementById("limitSelect");
+if (limitSelectElement) {
+    limitSelectElement.addEventListener("change", async function() {
+        limit = parseInt(this.value);
+        currentPage = 1; // Reset to first page when limit changes
+        
         const status = document.getElementById("statusSelect").value;
-        const column = this.getAttribute("data-column");
-        const order = this.getAttribute("data-order");
-        currentPage = 1; // Reset to first page when sort changes
-
+        const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
+        const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
+        
         const result = await getAllBookings(status, column, order, currentPage, limit);
         renderBookings(result.bookings);
         renderPagination(result.pagination);
-
-        this.setAttribute("data-order", order === "asc" ? "desc" : "asc");
     });
-});
+}
+
+// sort booking record by column
+const sortButtons = document.querySelectorAll(".sort");
+if (sortButtons.length > 0) {
+    sortButtons.forEach(button => {
+        button.style.cursor = "pointer";
+        button.style.backgroundColor = "#d1f7c4";
+
+        button.addEventListener("click", async function () {
+            const status = document.getElementById("statusSelect").value;
+            const column = this.getAttribute("data-column");
+            const order = this.getAttribute("data-order");
+            currentPage = 1; // Reset to first page when sort changes
+
+            const result = await getAllBookings(status, column, order, currentPage, limit);
+            renderBookings(result.bookings);
+            renderPagination(result.pagination);
+
+            this.setAttribute("data-order", order === "asc" ? "desc" : "asc");
+        });
+    });
+}
 
 const fullAmount = document.getElementById("fullAmount");
 const partialAmount = document.getElementById("partialAmount");
@@ -122,50 +138,55 @@ const userIDinput = document.getElementById("userID");
 const amountInput = document.getElementById("amountInput");
 
 // getting the actual value of the selected formatted currency and place it in the hidden input to insert in database
-document.querySelectorAll(".amount-payment").forEach(amount => {
-    amount.addEventListener("click", (event) => {
-        // Remove selected class from all options
-        document.querySelectorAll(".amount-payment").forEach(el => {
-            el.classList.remove("selected");
+const amountPaymentElements = document.querySelectorAll(".amount-payment");
+if (amountPaymentElements.length > 0) {
+    amountPaymentElements.forEach(amount => {
+        amount.addEventListener("click", (event) => {
+            // Remove selected class from all options
+            document.querySelectorAll(".amount-payment").forEach(el => {
+                el.classList.remove("selected");
+            });
+            
+            // Add selected class to clicked option
+            event.currentTarget.classList.add("selected");
+            
+            const amt = event.currentTarget.querySelector(".amount");
+            if (amt) {
+                const amountElement = document.getElementById("amount");
+                if (amountElement) {
+                    amountElement.textContent = amt.textContent;
+                }
+                if (amountInput) {
+                    amountInput.value = parseFloat(amt.textContent.replace(/[^0-9.]/g, ""));
+                }
+            }
         });
-        
-        // Add selected class to clicked option
-        event.currentTarget.classList.add("selected");
-        
-        const amt = event.currentTarget.querySelector(".amount");
-        if (amt) {
-            document.getElementById("amount").textContent = amt.textContent;
-            amountInput.value = parseFloat(amt.textContent.replace(/[^0-9.]/g, ""));
-        }
-    })
-});
+    });
+}
 
 const openPaymentModalButton = document.getElementsByClassName("open-payment-modal");
 const paymentModal = document.querySelector(".payment-modal");
-console.log(openPaymentModalButton);
-
 
 // open the payment modal and get the value associated with row selected
-document.querySelectorAll(".btn-container").forEach(container => {
-    console.log(container)
-    container.addEventListener("click", function (e) {
-        console.log("test");
-        if (e.target.contains('open-payment-modal')) {
-            const totalCost = this.getAttribute("data-total-cost");
-            const bookingID = this.getAttribute("data-booking-id");
-            const clientID = this.getAttribute("data-client-id");
+const btnContainers = document.querySelectorAll(".btn-container");
+if (btnContainers.length > 0) {
+    btnContainers.forEach(container => {
+        container.addEventListener("click", function (e) {
+            if (e.target.contains('open-payment-modal')) {
+                const totalCost = this.getAttribute("data-total-cost");
+                const bookingID = this.getAttribute("data-booking-id");
+                const clientID = this.getAttribute("data-client-id");
 
-            console.log("total cost: ", totalCost);
-            console.log("booking id: ", bookingID);
-            console.log("client id: ", clientID);
-
-            fullAmount.textContent = formatNumber(totalCost);
-            partialAmount.textContent = formatNumber(totalCost / 2);
-            bookingIDinput.value = bookingID;
-            clientIDinput.value = clientID;
-        }
-    })
-});
+                if (fullAmount && partialAmount && bookingIDinput && userIDinput) {
+                    fullAmount.textContent = formatNumber(totalCost);
+                    partialAmount.textContent = formatNumber(totalCost / 2);
+                    bookingIDinput.value = bookingID;
+                    userIDinput.value = clientID;
+                }
+            }
+        });
+    });
+}
 
 async function getAllBookings(status, column, order, page = 1, limit = 10) {
     try {
@@ -194,7 +215,11 @@ async function getAllBookings(status, column, order, page = 1, limit = 10) {
 
 function renderBookings(bookings) {
     const tbody = document.getElementById("tableBody");
+    if (!tbody) return; // If the table body doesn't exist, exit the function
+    
     tbody.innerHTML = "";
+    
+    if (!bookings || bookings.length === 0) return;
 
     bookings.forEach(booking => {
         const tr = document.createElement("tr");
@@ -266,6 +291,7 @@ function actionCell(booking) {
     const editButton = document.createElement("button");
     const cancelButton = document.createElement("button");
     const viewButton = document.createElement("button");
+    const invoiceButton = document.createElement("button");
 
     // style
     btnGroup.classList.add("container", "btn-container", "d-flex", "gap-2");
@@ -280,10 +306,12 @@ function actionCell(booking) {
     editButton.classList.add("btn", "bg-primary-subtle", "text-primary", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
     cancelButton.classList.add("btn", "bg-danger-subtle", "text-danger", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
     viewButton.classList.add("btn", "bg-success-subtle", "text-success", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
+    invoiceButton.classList.add("btn", "bg-info-subtle", "text-info", "fw-bold", "w-100", "d-flex", "align-items-center", "justify-content-center", "gap-1");
 
     editButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     cancelButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
     viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
+    invoiceButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
 
     // text
     const payIcon = document.createElement("i");
@@ -314,6 +342,13 @@ function actionCell(booking) {
     viewButton.appendChild(viewIcon);
     viewButton.appendChild(viewText);
 
+    const invoiceIcon = document.createElement("i");
+    invoiceIcon.classList.add("bi", "bi-file-earmark-text");
+    const invoiceText = document.createElement("span");
+    invoiceText.textContent = "Invoice";
+    invoiceButton.appendChild(invoiceIcon);
+    invoiceButton.appendChild(invoiceText);
+
     // modal
     payButton.setAttribute("data-bs-toggle", "modal");
     payButton.setAttribute("data-bs-target", "#paymentModal");
@@ -335,12 +370,21 @@ function actionCell(booking) {
     cancelButton.setAttribute("title", "Cancel this booking");
     
     viewButton.setAttribute("title", "View booking details");
+    
+    invoiceButton.setAttribute("data-booking-id", booking.booking_id);
+    invoiceButton.setAttribute("title", "View booking invoice");
 
     // event listeners
     viewButton.addEventListener("click", function () {
         localStorage.setItem("bookingId", booking.booking_id);
         window.location.href = "/home/booking-request";
-    })
+    });
+
+    invoiceButton.addEventListener("click", function () {
+        localStorage.setItem("bookingId", booking.booking_id);
+        localStorage.setItem("showInvoice", "true");
+        window.location.href = "/home/booking-request";
+    });
 
     payButton.addEventListener("click", function () {
         // Reset form state
@@ -429,13 +473,13 @@ function actionCell(booking) {
     });
 
     if ((booking.status === "Confirmed") && parseFloat(booking.balance) > 0.0) {
-        btnGroup.append(payButton, editButton, cancelButton, viewButton);
+        btnGroup.append(payButton, editButton, cancelButton, viewButton, invoiceButton);
     } else if (booking.status === "Confirmed" && parseFloat(booking.balance) === 0 || booking.status == "Processing") {
-        btnGroup.append(editButton, cancelButton, viewButton); 
+        btnGroup.append(editButton, cancelButton, viewButton, invoiceButton); 
     } else if (booking.status === "Pending") {
         btnGroup.append(editButton, cancelButton, viewButton);  
     } else {
-        btnGroup.append(viewButton);
+        btnGroup.append(viewButton, invoiceButton);
     }
 
     td.appendChild(btnGroup);
@@ -497,147 +541,169 @@ async function cancelBooking(bookingId, reason) {
     }
 }
 
-document.getElementById("paymentForm").addEventListener("submit", async function (event) {
-    event.preventDefault();
+// Payment form submission
+const paymentForm = document.getElementById("paymentForm");
+if (paymentForm) {
+    paymentForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-    // Validate that an amount has been selected
-    if (!document.getElementById("amount").textContent) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Please select an amount',
-            text: 'You must select either full payment or down payment to proceed.',
-            timer: 3000,
-            timerProgressBar: true
-        });
-        return;
-    }
-    
-    // Validate proof of payment for bank transfer and online payment
-    const paymentMethod = document.getElementById("paymentMethod").value;
-    const proofFile = document.getElementById("proofOfPayment").files[0];
-    
-    if ((paymentMethod === "Bank Transfer" || paymentMethod === "Online Payment") && !proofFile) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Proof of payment required',
-            text: 'Please upload your proof of payment to proceed.',
-            timer: 3000,
-            timerProgressBar: true
-        });
-        return;
-    }
-
-    const formData = new FormData(this);
-    
-    // Show loading state
-    Swal.fire({
-        title: 'Processing Payment',
-        text: 'Please wait while we process your payment...',
-        allowOutsideClick: false,
-        showConfirmButton: false,
-        willOpen: () => {
-            Swal.showLoading();
-        }
-    });
-    
-    try {
-        const response = await fetch("/payment/process", {
-            method: "POST",
-            body: formData
-        });
-        
-        // Hide the payment modal
-        const paymentModal = bootstrap.Modal.getInstance(document.getElementById("paymentModal"));
-        paymentModal.hide();
-        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-        document.body.classList.remove('modal-open');
-        
-        if (response.ok) {
-            let data;
-            const contentType = response.headers.get("content-type");
-            if (contentType && contentType.includes("application/json")) {
-                data = await response.json();
-            } else {
-                data = { success: response.ok, message: "Payment submitted successfully!" };
-            }
-            
-            // Show success message
+        // Validate that an amount has been selected
+        if (!document.getElementById("amount").textContent) {
             Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: 'Payment submitted successfully!',
-                timer: 2000,
+                icon: 'warning',
+                title: 'Please select an amount',
+                text: 'You must select either full payment or down payment to proceed.',
+                timer: 3000,
                 timerProgressBar: true
             });
+            return;
+        }
+        
+        // Validate proof of payment for bank transfer and online payment
+        const paymentMethod = document.getElementById("paymentMethod").value;
+        const proofFile = document.getElementById("proofOfPayment").files[0];
+        
+        if ((paymentMethod === "Bank Transfer" || paymentMethod === "Online Payment") && !proofFile) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Proof of payment required',
+                text: 'Please upload your proof of payment to proceed.',
+                timer: 3000,
+                timerProgressBar: true
+            });
+            return;
+        }
+
+        const formData = new FormData(this);
+        
+        // Show loading state
+        Swal.fire({
+            title: 'Processing Payment',
+            text: 'Please wait while we process your payment...',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            willOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        
+        try {
+            const response = await fetch("/payment/process", {
+                method: "POST",
+                body: formData
+            });
             
-            // Set the status filter to "processing" to show the user their processing booking
-            const statusSelect = document.getElementById("statusSelect");
-            statusSelect.value = "processing";
+            // Hide the payment modal
+            const paymentModal = bootstrap.Modal.getInstance(document.getElementById("paymentModal"));
+            paymentModal.hide();
+            document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+            document.body.classList.remove('modal-open');
             
-            // Refresh the bookings table with processing status
-            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
-            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
-            const result = await getAllBookings("processing", column, order, currentPage, limit);
-            renderBookings(result.bookings);
-            renderPagination(result.pagination);
-        } else {
-            // Show error message
+            if (response.ok) {
+                let data;
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.includes("application/json")) {
+                    data = await response.json();
+                } else {
+                    data = { success: response.ok, message: "Payment submitted successfully!" };
+                }
+                
+                // Show success message
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Payment submitted successfully!',
+                    timer: 2000,
+                    timerProgressBar: true
+                });
+                
+                // Set the status filter to "processing" to show the user their processing booking
+                const statusSelect = document.getElementById("statusSelect");
+                if (statusSelect) {
+                    statusSelect.value = "processing";
+                }
+                
+                // Refresh the bookings table with processing status
+                const column = document.querySelector(".sort[data-order]")?.getAttribute("data-column") || "date_of_tour";
+                const order = document.querySelector(".sort[data-order]")?.getAttribute("data-order") || "asc";
+                const result = await getAllBookings("processing", column, order, currentPage, limit);
+                renderBookings(result.bookings);
+                renderPagination(result.pagination);
+            } else {
+                // Show error message
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'There was an error submitting your payment.',
+                    timer: 2000,
+                    timerProgressBar: true
+                });
+            }
+        } catch (error) {
+            console.error("Error submitting payment:", error);
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'There was an error submitting your payment.',
+                text: 'There was an error processing your payment. Please try again.',
                 timer: 2000,
                 timerProgressBar: true
             });
         }
-    } catch (error) {
-        console.error("Error submitting payment:", error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'There was an error processing your payment. Please try again.',
-            timer: 2000,
-            timerProgressBar: true
-        });
-    }
-    
-    // Reset the form
-    this.reset();
-});
+        
+        // Reset the form
+        this.reset();
+    });
+}
 
 // Add pagination rendering function
 function renderPagination(pagination) {
     const paginationContainer = document.getElementById("paginationContainer");
     if (!paginationContainer) {
+        // If there's no pagination container in the page, return
+        const tableResponsive = document.querySelector(".table-responsive-xl");
+        if (!tableResponsive) {
+            return;
+        }
+        
         // Create pagination container if it doesn't exist
         const container = document.createElement("div");
         container.id = "paginationContainer";
         container.className = "d-flex justify-content-center mt-4";
-        document.querySelector(".table-responsive-xl").after(container);
+        tableResponsive.after(container);
     }
+    
+    // If no pagination data, return
+    if (!pagination) return;
     
     const { total_pages, current_page, total_records } = pagination;
     
     // If no pagination needed, clear container and return
-    if (total_records < 10 || total_pages <= 1) {
-        document.getElementById("paginationContainer").innerHTML = "";
+    if (!total_records || total_records < 10 || total_pages <= 1) {
+        if (paginationContainer) {
+            paginationContainer.innerHTML = "";
+        }
         return;
     }
     
-    // Use the centralized pagination utility
-    createPagination({
-        containerId: "paginationContainer",
-        totalPages: total_pages,
-        currentPage: current_page,
-        paginationType: 'advanced',
-        onPageChange: async (page) => {
-            currentPage = page;
-            const status = document.getElementById("statusSelect").value;
-            const column = document.querySelector(".sort[data-order]").getAttribute("data-column");
-            const order = document.querySelector(".sort[data-order]").getAttribute("data-order");
-            const result = await getAllBookings(status, column, order, page, limit);
-            renderBookings(result.bookings);
-            renderPagination(result.pagination);
-        }
-    });
+    // Use the centralized pagination utility if available
+    if (typeof createPagination === 'function') {
+        createPagination({
+            containerId: "paginationContainer",
+            totalPages: total_pages,
+            currentPage: current_page,
+            paginationType: 'advanced',
+            onPageChange: async (page) => {
+                currentPage = page;
+                const statusSelect = document.getElementById("statusSelect");
+                if (!statusSelect) return;
+                
+                const status = statusSelect.value;
+                const column = document.querySelector(".sort[data-order]")?.getAttribute("data-column") || "date_of_tour";
+                const order = document.querySelector(".sort[data-order]")?.getAttribute("data-order") || "asc";
+                const result = await getAllBookings(status, column, order, page, limit);
+                renderBookings(result.bookings);
+                renderPagination(result.pagination);
+            }
+        });
+    }
 }

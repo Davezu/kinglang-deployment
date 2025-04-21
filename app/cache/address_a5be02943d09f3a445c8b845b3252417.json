@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
+            "locality",
             "political",
-            "geocode",
-            "locality"
+            "geocode"
          ]
       },
       {
@@ -98,10 +98,10 @@
          ],
          "types" : 
          [
-            "establishment",
+            "point_of_interest",
             "hospital",
-            "health",
-            "point_of_interest"
+            "establishment",
+            "health"
          ]
       },
       {
@@ -152,8 +152,8 @@
          ],
          "types" : 
          [
-            "geocode",
-            "route"
+            "route",
+            "geocode"
          ]
       },
       {
@@ -204,10 +204,10 @@
          ],
          "types" : 
          [
-            "local_government_office",
-            "establishment",
             "point_of_interest",
-            "city_hall"
+            "local_government_office",
+            "city_hall",
+            "establishment"
          ]
       },
       {

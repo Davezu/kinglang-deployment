@@ -14,9 +14,6 @@ ini_set('session.cookie_httponly', '1');
 // Start session with proper settings
 session_start();
 
-// Optional: Regenerate session ID on each request to prevent session fixation
-// session_regenerate_id();
-
 // Include database configuration
 require_once __DIR__ . "/config/database.php";
 

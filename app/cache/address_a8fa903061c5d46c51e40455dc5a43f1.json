@@ -1,0 +1,418 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Lower Bicutan, M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            },
+            {
+               "length" : 19,
+               "offset" : 15
+            },
+            {
+               "length" : 6,
+               "offset" : 36
+            },
+            {
+               "length" : 12,
+               "offset" : 44
+            },
+            {
+               "length" : 11,
+               "offset" : 58
+            }
+         ],
+         "place_id" : "ChIJvfyKZwDPlzMRDPsZiNubCLY",
+         "reference" : "ChIJvfyKZwDPlzMRDPsZiNubCLY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Lower Bicutan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 19,
+                  "offset" : 0
+               },
+               {
+                  "length" : 6,
+                  "offset" : 21
+               },
+               {
+                  "length" : 12,
+                  "offset" : 29
+               },
+               {
+                  "length" : 11,
+                  "offset" : 43
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Lower Bicutan"
+            },
+            {
+               "offset" : 15,
+               "value" : "M. L. Quezon Avenue"
+            },
+            {
+               "offset" : 36,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 44,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 19,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 21
+            },
+            {
+               "length" : 12,
+               "offset" : 29
+            },
+            {
+               "length" : 11,
+               "offset" : 43
+            }
+         ],
+         "place_id" : "EjZNLiBMLiBRdWV6b24gQXZlbnVlLCBUYWd1aWcsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEglLmwrHQ8-XMxFesfFFRfIOQRIUChIJATD-VErPlzMRrdKYqfB6ri8",
+         "reference" : "EjZNLiBMLiBRdWV6b24gQXZlbnVlLCBUYWd1aWcsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEglLmwrHQ8-XMxFesfFFRfIOQRIUChIJATD-VErPlzMRrdKYqfB6ri8",
+         "structured_formatting" : 
+         {
+            "main_text" : "M. L. Quezon Avenue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 19,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               },
+               {
+                  "length" : 12,
+                  "offset" : 8
+               },
+               {
+                  "length" : 11,
+                  "offset" : 22
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "M. L. Quezon Avenue"
+            },
+            {
+               "offset" : 21,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 29,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 43,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Taguig City, M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 19,
+               "offset" : 13
+            },
+            {
+               "length" : 12,
+               "offset" : 42
+            },
+            {
+               "length" : 11,
+               "offset" : 56
+            }
+         ],
+         "place_id" : "ChIJ9XTVtk_PlzMRBfZxEXzDgL4",
+         "reference" : "ChIJ9XTVtk_PlzMRBfZxEXzDgL4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Taguig City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 19,
+                  "offset" : 0
+               },
+               {
+                  "length" : 12,
+                  "offset" : 29
+               },
+               {
+                  "length" : 11,
+                  "offset" : 43
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Taguig City"
+            },
+            {
+               "offset" : 13,
+               "value" : "M. L. Quezon Avenue"
+            },
+            {
+               "offset" : 34,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "hardware_store",
+            "point_of_interest",
+            "store",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Lower Bicutan Branch, M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            },
+            {
+               "length" : 19,
+               "offset" : 22
+            },
+            {
+               "length" : 6,
+               "offset" : 43
+            },
+            {
+               "length" : 12,
+               "offset" : 51
+            },
+            {
+               "length" : 11,
+               "offset" : 65
+            }
+         ],
+         "place_id" : "ChIJI-W38GvPlzMRfsSpLwzXrj4",
+         "reference" : "ChIJI-W38GvPlzMRfsSpLwzXrj4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Lower Bicutan Branch",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 19,
+                  "offset" : 0
+               },
+               {
+                  "length" : 6,
+                  "offset" : 21
+               },
+               {
+                  "length" : 12,
+                  "offset" : 29
+               },
+               {
+                  "length" : 11,
+                  "offset" : 43
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Lower Bicutan Branch"
+            },
+            {
+               "offset" : 22,
+               "value" : "M. L. Quezon Avenue"
+            },
+            {
+               "offset" : 43,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "bank",
+            "finance",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "SM Taguig, M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 3
+            },
+            {
+               "length" : 19,
+               "offset" : 11
+            },
+            {
+               "length" : 12,
+               "offset" : 40
+            },
+            {
+               "length" : 11,
+               "offset" : 54
+            }
+         ],
+         "place_id" : "ChIJ-2OTbgDPlzMRbu2Dyon_njk",
+         "reference" : "ChIJ-2OTbgDPlzMRbu2Dyon_njk",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM Taguig",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 3
+               }
+            ],
+            "secondary_text" : "M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 19,
+                  "offset" : 0
+               },
+               {
+                  "length" : 12,
+                  "offset" : 29
+               },
+               {
+                  "length" : 11,
+                  "offset" : 43
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM Taguig"
+            },
+            {
+               "offset" : 11,
+               "value" : "M. L. Quezon Avenue"
+            },
+            {
+               "offset" : 32,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 40,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "shopping_mall",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

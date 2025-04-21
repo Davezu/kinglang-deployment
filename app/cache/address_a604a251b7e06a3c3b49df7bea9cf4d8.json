@@ -1,0 +1,271 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "CMA bldg, Olalia Road, Antipolo, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAQwKWy2_lzMRmxPHM5XVXZo",
+         "reference" : "ChIJAQwKWy2_lzMRmxPHM5XVXZo",
+         "structured_formatting" : 
+         {
+            "main_text" : "CMA bldg",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Olalia Road, Antipolo, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "CMA bldg"
+            },
+            {
+               "offset" : 10,
+               "value" : "Olalia Road"
+            },
+            {
+               "offset" : 23,
+               "value" : "Antipolo"
+            },
+            {
+               "offset" : 33,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      },
+      {
+         "description" : "CMA Ships Philippines, Inc., H.V. Dela Costa, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJtZzOArrJlzMRwWbj0Cqege8",
+         "reference" : "ChIJtZzOArrJlzMRwWbj0Cqege8",
+         "structured_formatting" : 
+         {
+            "main_text" : "CMA Ships Philippines, Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "H.V. Dela Costa, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "CMA Ships Philippines, Inc."
+            },
+            {
+               "offset" : 29,
+               "value" : "H.V. Dela Costa"
+            },
+            {
+               "offset" : 46,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 54,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Cma Commercial Trading Corporation, General Luis, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbaf4ygOxlzMRitYjalAOQmg",
+         "reference" : "ChIJbaf4ygOxlzMRitYjalAOQmg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cma Commercial Trading Corporation",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Luis, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cma Commercial Trading Corporation"
+            },
+            {
+               "offset" : 36,
+               "value" : "General Luis"
+            },
+            {
+               "offset" : 50,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 62,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 75,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 89,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "CMA auto detailing bankers branch, San Mateo, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJvZkqZai7lzMRNTTjMH_x5x0",
+         "reference" : "ChIJvZkqZai7lzMRNTTjMH_x5x0",
+         "structured_formatting" : 
+         {
+            "main_text" : "CMA auto detailing bankers branch",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Mateo, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "CMA auto detailing bankers branch"
+            },
+            {
+               "offset" : 35,
+               "value" : "San Mateo"
+            },
+            {
+               "offset" : 46,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "car_wash",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "CMA CGM Philippines, Inc, North Abueva Street, Aseana City, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJvZk0fePLlzMR8er_r9OjtkA",
+         "reference" : "ChIJvZk0fePLlzMR8er_r9OjtkA",
+         "structured_formatting" : 
+         {
+            "main_text" : "CMA CGM Philippines, Inc",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "North Abueva Street, Aseana City, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "CMA CGM Philippines, Inc"
+            },
+            {
+               "offset" : 26,
+               "value" : "North Abueva Street"
+            },
+            {
+               "offset" : 47,
+               "value" : "Aseana City"
+            },
+            {
+               "offset" : 60,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 71,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 85,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -27,7 +27,7 @@
                 <div class="p-3 text-center text-muted small no-notifications">No notifications</div>
             </div>
             <div class="p-2 border-top text-center">
-                <a href="/home/notifications" class="text-decoration-none small">View all notifications</a>
+                <a href="/client/notifications" class="text-decoration-none small">View all notifications</a>
             </div>
         </div>
     </div>
@@ -51,65 +51,77 @@ document.addEventListener('DOMContentLoaded', function() {
     const markAllReadBtn = document.querySelector('.mark-all-read');
     
     // Function to load notifications
-    function loadNotifications() {
-        fetch('/home/get-notifications')
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    if (data.unreadCount > 0) {
-                        notificationBadge.style.display = 'block';
-                        notificationCount.textContent = data.unreadCount;
-                    } else {
-                        notificationBadge.style.display = 'none';
-                    }
-                    
-                    // Render notifications
-                    if (data.notifications && data.notifications.length > 0) {
-                        noNotifications.style.display = 'none';
-                        notificationList.innerHTML = '';
-                        
-                        data.notifications.forEach(notification => {
-                            const notificationItem = document.createElement('a');
-                            notificationItem.href = getNotificationLink(notification);
-                            notificationItem.className = `dropdown-item p-2 border-bottom notification-item ${!notification.is_read ? 'bg-light' : ''}`;
-                            notificationItem.setAttribute('data-id', notification.notification_id);
-                            
-                            // Icon based on notification type
-                            let iconClass = 'bi-info-circle-fill text-primary';
-                            if (notification.type.includes('confirmed')) {
-                                iconClass = 'bi-check-circle-fill text-success';
-                            } else if (notification.type.includes('rejected') || notification.type.includes('canceled')) {
-                                iconClass = 'bi-x-circle-fill text-danger';
-                            } else if (notification.type.includes('payment')) {
-                                iconClass = 'bi-credit-card-fill text-info';
-                            }
-                            
-                            const date = new Date(notification.created_at);
-                            const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                            
-                            notificationItem.innerHTML = `
-                                <div class="d-flex align-items-start">
-                                    <div class="me-2">
-                                        <i class="bi ${iconClass} fs-5"></i>
-                                    </div>
-                                    <div class="flex-grow-1" style="min-width: 0; word-wrap: break-word; overflow-wrap: break-word;">
-                                        <div class="small fw-semibold">${notification.message}</div>
-                                        <div class="text-muted small">${formattedDate}</div>
-                                    </div>
-                                    ${!notification.is_read ? '<span class="badge bg-primary rounded-pill">New</span>' : ''}
-                                </div>
-                            `;
-                            
-                            notificationList.appendChild(notificationItem);
-                        });
-                    } else {
-                        noNotifications.style.display = 'block';
-                        notificationList.innerHTML = '';
-                        notificationList.appendChild(noNotifications);
-                    }
+    async function loadNotifications() {
+        try {
+            const response = await fetch('/client/notifications/get', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
                 }
-            })
-            .catch(error => console.error('Error loading notifications:', error));
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                if (data.unreadCount > 0) {
+                    notificationBadge.style.display = 'block';
+                    notificationCount.textContent = data.unreadCount;
+                } else {
+                    notificationBadge.style.display = 'none';
+                }
+                
+                // Render notifications
+                if (data.notifications && data.notifications.length > 0) {
+                    noNotifications.style.display = 'none';
+                    notificationList.innerHTML = '';
+                    
+                    data.notifications.forEach(notification => {
+                        const notificationItem = document.createElement('a');
+                        notificationItem.href = getNotificationLink(notification);
+                        notificationItem.className = `dropdown-item p-2 border-bottom notification-item ${!notification.is_read ? 'bg-light' : ''}`;
+                        notificationItem.setAttribute('data-id', notification.notification_id);
+                        
+                        // Icon based on notification type
+                        let iconClass = 'bi-info-circle-fill text-primary';
+                        if (notification.type.includes('confirmed')) {
+                            iconClass = 'bi-check-circle-fill text-success';
+                        } else if (notification.type.includes('rejected') || notification.type.includes('canceled')) {
+                            iconClass = 'bi-x-circle-fill text-danger';
+                        } else if (notification.type.includes('payment')) {
+                            iconClass = 'bi-credit-card-fill text-info';
+                        }
+                        
+                        const date = new Date(notification.created_at);
+                        const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                        
+                        notificationItem.innerHTML = `
+                            <div class="d-flex align-items-start">
+                                <div class="me-2">
+                                    <i class="bi ${iconClass} fs-5"></i>
+                                </div>
+                                <div class="flex-grow-1" style="min-width: 0;">
+                                    <div class="small fw-semibold">${notification.message}</div>
+                                    <div class="text-muted small">${formattedDate}</div>
+                                </div>
+                                ${!notification.is_read ? '<span class="badge bg-primary rounded-pill">New</span>' : ''}
+                            </div>
+                        `;
+                        
+                        notificationList.appendChild(notificationItem);
+                    });
+                } else {
+                    noNotifications.style.display = 'block';
+                    notificationList.innerHTML = '';
+                    notificationList.appendChild(noNotifications);
+                }
+            }
+        } catch (error) {
+            console.error('Error loading notifications:', error);
+        }
     }
     
     // Function to get notification link based on type
@@ -133,20 +145,27 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(loadNotifications, 30000);
     
     // Mark notification as read when clicked
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', async function(e) {
         const notificationItem = e.target.closest('.notification-item');
         if (notificationItem) {
             const notificationId = notificationItem.getAttribute('data-id');
             
-            fetch('/home/mark-notification-read', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'notification_id=' + notificationId
-            })
-            .then(response => response.json())
-            .then(data => {
+            try {
+                const response = await fetch('/client/notifications/mark-read', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ notification_id: notificationId })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
                 if (data.success) {
                     // Update UI
                     notificationItem.classList.remove('bg-light');
@@ -156,27 +175,39 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Reload notification count
                     loadNotifications();
                 }
-            });
+            } catch (error) {
+                console.error('Error marking notification as read:', error);
+            }
         }
     });
     
     // Mark all as read
     if (markAllReadBtn) {
-        markAllReadBtn.addEventListener('click', function(e) {
+        markAllReadBtn.addEventListener('click', async function(e) {
             e.preventDefault();
             
-            fetch('/home/mark-all-notifications-read', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+            try {
+                const response = await fetch('/client/notifications/mark-all-read', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({})
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-            })
-            .then(response => response.json())
-            .then(data => {
+                
+                const data = await response.json();
+                
                 if (data.success) {
                     loadNotifications();
                 }
-            });
+            } catch (error) {
+                console.error('Error marking all notifications as read:', error);
+            }
         });
     }
 });

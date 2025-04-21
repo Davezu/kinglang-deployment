@@ -1,0 +1,257 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Baguio, Benguet, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJP_HeeWihkTMRwHU6vjT13o4",
+         "reference" : "ChIJP_HeeWihkTMRwHU6vjT13o4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baguio",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Benguet, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baguio"
+            },
+            {
+               "offset" : 8,
+               "value" : "Benguet"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Baguio City, Benguet, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv2aDyROhkTMRZPHV1IrSrcE",
+         "reference" : "ChIJv2aDyROhkTMRZPHV1IrSrcE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baguio City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Benguet, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baguio City"
+            },
+            {
+               "offset" : 13,
+               "value" : "Benguet"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "administrative_area_level_3",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Baguio Night Market, Harrison Road, Baguio, Benguet, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJvbe53mehkTMR8T_ioyknfYk",
+         "reference" : "ChIJvbe53mehkTMR8T_ioyknfYk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baguio Night Market",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Harrison Road, Baguio, Benguet, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baguio Night Market"
+            },
+            {
+               "offset" : 21,
+               "value" : "Harrison Road"
+            },
+            {
+               "offset" : 36,
+               "value" : "Baguio"
+            },
+            {
+               "offset" : 44,
+               "value" : "Benguet"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Baguio Cathedral, Steps To Our Lady Of Atonement Cathedral, Baguio, Benguet, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwblPOF2hkTMROOQiH9qxCwg",
+         "reference" : "ChIJwblPOF2hkTMROOQiH9qxCwg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baguio Cathedral",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Steps To Our Lady Of Atonement Cathedral, Baguio, Benguet, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baguio Cathedral"
+            },
+            {
+               "offset" : 18,
+               "value" : "Steps To Our Lady Of Atonement Cathedral"
+            },
+            {
+               "offset" : 60,
+               "value" : "Baguio"
+            },
+            {
+               "offset" : 68,
+               "value" : "Benguet"
+            },
+            {
+               "offset" : 77,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "place_of_worship",
+            "establishment",
+            "church",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Baguio Country Club, Country Club Road, Baguio, Benguet, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJz8rv_lKhkTMR1k0hotLtSCI",
+         "reference" : "ChIJz8rv_lKhkTMR1k0hotLtSCI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baguio Country Club",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Country Club Road, Baguio, Benguet, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baguio Country Club"
+            },
+            {
+               "offset" : 21,
+               "value" : "Country Club Road"
+            },
+            {
+               "offset" : 40,
+               "value" : "Baguio"
+            },
+            {
+               "offset" : 48,
+               "value" : "Benguet"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,231 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "San Fernando, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ26qoR5_3ljMRKpKB293hSyw",
+         "reference" : "ChIJ26qoR5_3ljMRKpKB293hSyw",
+         "structured_formatting" : 
+         {
+            "main_text" : "San Fernando",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 14,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "San Pablo City, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJS4kKhpZcvTMRykpPAAUPnvo",
+         "reference" : "ChIJS4kKhpZcvTMRykpPAAUPnvo",
+         "structured_formatting" : 
+         {
+            "main_text" : "San Pablo City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "San Pablo City"
+            },
+            {
+               "offset" : 16,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "San Pedro, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJxSY1xtbQlzMRHoVOmImu6dY",
+         "reference" : "ChIJxSY1xtbQlzMRHoVOmImu6dY",
+         "structured_formatting" : 
+         {
+            "main_text" : "San Pedro",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "San Pedro"
+            },
+            {
+               "offset" : 11,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 19,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "San Jose del Monte City, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJgTVpIqSvlzMRXZeDQ0MBEZg",
+         "reference" : "ChIJgTVpIqSvlzMRXZeDQ0MBEZg",
+         "structured_formatting" : 
+         {
+            "main_text" : "San Jose del Monte City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "San Jose del Monte City"
+            },
+            {
+               "offset" : 25,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "San Juan, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJp1auUQ87vTMR7nT-Ko_5AzU",
+         "reference" : "ChIJp1auUQ87vTMR7nT-Ko_5AzU",
+         "structured_formatting" : 
+         {
+            "main_text" : "San Juan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 10,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

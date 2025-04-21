@@ -1,0 +1,132 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : [],
+         "place_id" : "EjZNLiBMLiBRdWV6b24gQXZlbnVlLCBUYWd1aWcsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkXzHmlrciXMxGuL0h5am25kBIUChIJATD-VErPlzMRrdKYqfB6ri8",
+         "reference" : "EjZNLiBMLiBRdWV6b24gQXZlbnVlLCBUYWd1aWcsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkXzHmlrciXMxGuL0h5am25kBIUChIJATD-VErPlzMRrdKYqfB6ri8",
+         "structured_formatting" : 
+         {
+            "main_text" : "M. L. Quezon Avenue",
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "M. L. Quezon Avenue"
+            },
+            {
+               "offset" : 21,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 29,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 43,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "KingLang Tours and Transport Services Inc., M. L. Quezon Avenue, Lower Bicutan, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 41,
+               "offset" : 0
+            },
+            {
+               "length" : 19,
+               "offset" : 44
+            },
+            {
+               "length" : 6,
+               "offset" : 80
+            },
+            {
+               "length" : 12,
+               "offset" : 88
+            },
+            {
+               "length" : 11,
+               "offset" : 102
+            }
+         ],
+         "place_id" : "ChIJb6l52BbPlzMRcLRMZWqJQMU",
+         "reference" : "ChIJb6l52BbPlzMRcLRMZWqJQMU",
+         "structured_formatting" : 
+         {
+            "main_text" : "KingLang Tours and Transport Services Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 41,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M. L. Quezon Avenue, Lower Bicutan, Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 19,
+                  "offset" : 0
+               },
+               {
+                  "length" : 6,
+                  "offset" : 36
+               },
+               {
+                  "length" : 12,
+                  "offset" : 44
+               },
+               {
+                  "length" : 11,
+                  "offset" : 58
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "KingLang Tours and Transport Services Inc."
+            },
+            {
+               "offset" : 44,
+               "value" : "M. L. Quezon Avenue"
+            },
+            {
+               "offset" : 65,
+               "value" : "Lower Bicutan"
+            },
+            {
+               "offset" : 80,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 88,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 102,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

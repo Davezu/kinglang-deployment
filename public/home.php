@@ -1,10 +1,8 @@
 <?php
-// Use our common authentication helper function
 if (is_client_authenticated()) {
     header("Location: /home/booking-requests");
     exit();
-}   
-
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">

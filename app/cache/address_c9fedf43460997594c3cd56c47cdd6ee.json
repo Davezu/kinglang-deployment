@@ -1,0 +1,275 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Berjaya Makati Hotel - Philippines, Makati Avenue, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJ_-QParJlzMRDWT4IT0xJCM",
+         "reference" : "ChIJJ_-QParJlzMRDWT4IT0xJCM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Berjaya Makati Hotel - Philippines",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Makati Avenue, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Berjaya Makati Hotel - Philippines"
+            },
+            {
+               "offset" : 36,
+               "value" : "Makati Avenue"
+            },
+            {
+               "offset" : 51,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bernardino General Hospital, Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJi46VudiwlzMRoXGymPT-Keg",
+         "reference" : "ChIJi46VudiwlzMRoXGymPT-Keg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bernardino General Hospital",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quirino Highway, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bernardino General Hospital"
+            },
+            {
+               "offset" : 29,
+               "value" : "Quirino Highway"
+            },
+            {
+               "offset" : 46,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 58,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 71,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 85,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "hospital",
+            "point_of_interest",
+            "health"
+         ]
+      },
+      {
+         "description" : "Bermuda Hotel and Restaurant, Sultan, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5RFnOj_IlzMRgtDcp13sv1g",
+         "reference" : "ChIJ5RFnOj_IlzMRgtDcp13sv1g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bermuda Hotel and Restaurant",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sultan, Mandaluyong, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bermuda Hotel and Restaurant"
+            },
+            {
+               "offset" : 30,
+               "value" : "Sultan"
+            },
+            {
+               "offset" : 38,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bernabeach Resort, Apacible Boulevard, Nasugbu, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJS156oKaWvTMRHf31fGQMzqo",
+         "reference" : "ChIJS156oKaWvTMRHf31fGQMzqo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bernabeach Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Apacible Boulevard, Nasugbu, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bernabeach Resort"
+            },
+            {
+               "offset" : 19,
+               "value" : "Apacible Boulevard"
+            },
+            {
+               "offset" : 39,
+               "value" : "Nasugbu"
+            },
+            {
+               "offset" : 48,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Berkeley Residences, Escaler, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJOVITDHy3lzMRAxBfWzhfNuM",
+         "reference" : "ChIJOVITDHy3lzMRAxBfWzhfNuM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Berkeley Residences",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Escaler, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Berkeley Residences"
+            },
+            {
+               "offset" : 21,
+               "value" : "Escaler"
+            },
+            {
+               "offset" : 30,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 43,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

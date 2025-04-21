@@ -1,0 +1,262 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJXxuEGbWxlzMRGi0EJeJw5wU",
+         "reference" : "ChIJXxuEGbWxlzMRGi0EJeJw5wU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caloocan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 10,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Caloocan City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJl-gHlh6xlzMRavoq7zbxfRc",
+         "reference" : "ChIJl-gHlh6xlzMRavoq7zbxfRc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caloocan City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caloocan City"
+            },
+            {
+               "offset" : 15,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 29,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_3",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Caloocan City Hall, 8th Avenue, Grace Park East, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ3-OkzH-2lzMRqKGM2T4G47Y",
+         "reference" : "ChIJ3-OkzH-2lzMRqKGM2T4G47Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caloocan City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "8th Avenue, Grace Park East, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caloocan City Hall"
+            },
+            {
+               "offset" : 20,
+               "value" : "8th Avenue"
+            },
+            {
+               "offset" : 32,
+               "value" : "Grace Park East"
+            },
+            {
+               "offset" : 49,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "city_hall",
+            "point_of_interest",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Caloocan Sports Complex, Bagumbong Road, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJF7KB7cexlzMRYmC41ZYsGvA",
+         "reference" : "ChIJF7KB7cexlzMRYmC41ZYsGvA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caloocan Sports Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bagumbong Road, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caloocan Sports Complex"
+            },
+            {
+               "offset" : 25,
+               "value" : "Bagumbong Road"
+            },
+            {
+               "offset" : 41,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Caloocan City Hall North, Zapote Road, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_Rxk0j2wlzMR3VveIjxYjEM",
+         "reference" : "ChIJ_Rxk0j2wlzMR3VveIjxYjEM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caloocan City Hall North",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Zapote Road, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caloocan City Hall North"
+            },
+            {
+               "offset" : 26,
+               "value" : "Zapote Road"
+            },
+            {
+               "offset" : 39,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 49,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "finance",
+            "establishment",
+            "local_government_office",
+            "city_hall",
+            "point_of_interest",
+            "post_office"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

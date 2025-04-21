@@ -20,7 +20,7 @@ class Booking {
         }
     }
 
-    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $is_rebooking, $rebooking_id) {
+    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $is_rebooking, $rebooking_id, $region = null, $base_cost = null, $fuel_cost = null) {
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
 
         try {
@@ -31,11 +31,11 @@ class Booking {
             }
 
             if ($is_rebooking && $this->bookingIsNotConfirmed($rebooking_id)) {
-                $this->updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses);
+                $this->updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $region, $base_cost, $fuel_cost);
                 return ["success" => true, "message" => "Booking updated successfully!"];
             }
 
-            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, user_id, total_cost, balance, is_rebooking) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :user_id, :total_cost, :balance, :is_rebooking  )");
+            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, user_id, total_cost, balance, is_rebooking, region, base_cost, fuel_cost) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :user_id, :total_cost, :balance, :is_rebooking, :region, :base_cost, :fuel_cost)");
             $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
                 ":end_of_tour" => $end_of_tour,
@@ -46,7 +46,10 @@ class Booking {
                 ":user_id" => $user_id,
                 ":total_cost" => $total_cost,
                 ":balance" => $balance,
-                ":is_rebooking" => $is_rebooking
+                ":is_rebooking" => $is_rebooking,
+                ":region" => $region,
+                ":base_cost" => $base_cost,
+                ":fuel_cost" => $fuel_cost
             ]);
 
             $booking_id = $this->conn->lastInsertID(); // get the added booking id to insert it in booking buses table
@@ -92,7 +95,12 @@ class Booking {
 
     public function getBooking($booking_id, $user_id) {
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM bookings WHERE booking_id = :booking_id AND user_id = :user_id");
+            $stmt = $this->conn->prepare("
+                SELECT b.*, u.first_name, u.last_name, u.contact_number, u.email 
+                FROM bookings b
+                JOIN users u ON b.user_id = u.user_id
+                WHERE b.booking_id = :booking_id AND b.user_id = :user_id
+            ");
             $stmt->execute([
                 ":booking_id" => $booking_id,
                 ":user_id" => $user_id
@@ -375,7 +383,7 @@ class Booking {
         }
     }
 
-    public function updateBooking($booking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses) {
+    public function updateBooking($booking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $region = null, $base_cost = null, $fuel_cost = null) {
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
 
         try {
@@ -386,7 +394,7 @@ class Booking {
             }
 
             // Update the booking
-            $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, end_of_tour = :end_of_tour, destination = :destination, pickup_point = :pickup_point, number_of_days = :number_of_days, number_of_buses = :number_of_buses, total_cost = :total_cost, balance = :balance WHERE booking_id = :booking_id AND user_id = :user_id");
+            $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, end_of_tour = :end_of_tour, destination = :destination, pickup_point = :pickup_point, number_of_days = :number_of_days, number_of_buses = :number_of_buses, total_cost = :total_cost, balance = :balance, region = :region, base_cost = :base_cost, fuel_cost = :fuel_cost WHERE booking_id = :booking_id AND user_id = :user_id");
             $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
                 ":end_of_tour" => $end_of_tour,
@@ -396,6 +404,9 @@ class Booking {
                 ":number_of_buses" => $number_of_buses,
                 ":total_cost" => $total_cost,
                 ":balance" => $balance,
+                ":region" => $region,
+                ":base_cost" => $base_cost,
+                ":fuel_cost" => $fuel_cost,
                 ":booking_id" => $booking_id,
                 ":user_id" => $user_id
             ]);

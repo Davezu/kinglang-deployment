@@ -43,54 +43,6 @@
          ]
       },
       {
-         "description" : "Marinduque, Las Piñas, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 10,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
-         "reference" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
-         "structured_formatting" : 
-         {
-            "main_text" : "Marinduque",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 10,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Las Piñas, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Marinduque"
-            },
-            {
-               "offset" : 12,
-               "value" : "Las Piñas"
-            },
-            {
-               "offset" : 23,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 37,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "route",
-            "geocode"
-         ]
-      },
-      {
          "description" : "Marinduque Island, Philippines",
          "matched_substrings" : 
          [
@@ -174,9 +126,57 @@
          ],
          "types" : 
          [
-            "airport",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "airport"
+         ]
+      },
+      {
+         "description" : "Marinduque, Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
+         "reference" : "EjFNYXJpbmR1cXVlLCBMYXMgUGnDsWFzLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJO3juyfjNlzMRov-hdUOcWtgSFAoSCW8rlzUIzpczEUt3gdKVMvMP",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marinduque",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Las Piñas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marinduque"
+            },
+            {
+               "offset" : 12,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 23,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
          ]
       },
       {
@@ -231,9 +231,9 @@
          ],
          "types" : 
          [
-            "university",
+            "point_of_interest",
             "establishment",
-            "point_of_interest"
+            "university"
          ]
       }
    ],

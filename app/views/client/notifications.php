@@ -29,7 +29,10 @@ require_client_auth(); // Use helper function
             <div class="card mt-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title">All Notifications</h5>
-                    <button id="markAllReadBtn" class="btn btn-sm btn-outline-success">Mark All as Read</button>
+                    <div>
+                        <button id="addTestNotificationBtn" class="btn btn-sm btn-outline-primary me-2">Add Test Notification</button>
+                        <button id="markAllReadBtn" class="btn btn-sm btn-outline-success">Mark All as Read</button>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="list-group notification-list">
@@ -37,6 +40,19 @@ require_client_auth(); // Use helper function
                         <div class="p-4 text-center text-muted no-notifications">
                             <i class="bi bi-bell-slash fs-1 mb-3 d-block"></i>
                             <p>No notifications found</p>
+                            <p class="small">If you're expecting notifications, try adding a test notification or check back later.</p>
+                            <div class="mt-3">
+                                <p class="small text-muted">Troubleshooting options:</p>
+                                <button class="btn btn-sm btn-outline-secondary me-2 mb-2" onclick="testFetch('./notifications/get')">
+                                    Test Relative Path
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary me-2 mb-2" onclick="testFetch('/client/notifications/get')">
+                                    Test Absolute Path
+                                </button>
+                                <a href="<?= $_SERVER['REQUEST_URI'] ?>/get" target="_blank" class="btn btn-sm btn-outline-secondary mb-2">
+                                    Test Direct Link
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,6 +72,47 @@ require_client_auth(); // Use helper function
     <script src="../../../public/js/assets/sidebar.js"></script>
     
     <script>
+        // Test function for diagnosing URL issues
+        async function testFetch(url) {
+            try {
+                console.log(`Testing fetch to: ${url}`);
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                console.log(`Response status: ${response.status}`);
+                const data = await response.json();
+                console.log('Response data:', data);
+                
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Test Result',
+                    html: `
+                        <p>URL: ${url}</p>
+                        <p>Status: ${response.status}</p>
+                        <p>Check console for complete response</p>
+                    `,
+                    confirmButtonColor: '#28a745'
+                });
+            } catch (error) {
+                console.error(`Error testing ${url}:`, error);
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Test Failed',-
+                    html: `
+                        <p>URL: ${url}</p>
+                        <p>Error: ${error.message}</p>
+                    `,
+                    confirmButtonColor: '#28a745'
+                });
+            }
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
             let currentPage = 1;
             const limit = 20;
@@ -63,7 +120,7 @@ require_client_auth(); // Use helper function
             // Function to load all notifications with pagination
             async function loadNotifications(page = 1) {
                 try {
-                    const response = await fetch(`/home/get-all-notifications`, {
+                    const response = await fetch(`./notifications/get`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -77,6 +134,8 @@ require_client_auth(); // Use helper function
                     }
                     
                     const data = await response.json();
+
+                    console.log('Notifications data:', data);
                     
                     if (data.success) {
                         const notificationList = document.querySelector('.notification-list');
@@ -88,8 +147,9 @@ require_client_auth(); // Use helper function
                             
                             data.notifications.forEach(notification => {
                                 const notificationItem = document.createElement('div');
-                                notificationItem.className = `list-group-item notification-item ${!notification.is_read ? 'bg-light' : ''}`;
+                                notificationItem.className = `list-group-item notification-item`;
                                 notificationItem.setAttribute('data-id', notification.notification_id);
+                                notificationItem.setAttribute('data-read', notification.is_read ? 'true' : 'false');
                                 
                                 // Icon based on notification type
                                 let iconClass = 'bi-info-circle-fill text-primary';
@@ -118,10 +178,10 @@ require_client_auth(); // Use helper function
                                             <div style="min-width: 0; word-wrap: break-word; overflow-wrap: break-word;">
                                                 <p class="mb-1">${notification.message}</p>
                                                 <small class="text-muted">${formattedDate}</small>
+                                                <small class="text-muted ms-2">${notification.is_read ? '(Read)' : '(Unread)'}</small>
                                             </div>
                                         </div>
                                         <div class="ms-2 flex-shrink-0">
-                                            ${!notification.is_read ? '<span class="badge bg-primary rounded-pill">New</span>' : ''}
                                             ${notification.reference_id ? `<a href="${link}" class="btn btn-sm btn-outline-primary ms-2">View Details</a>` : ''}
                                         </div>
                                     </div>
@@ -148,6 +208,46 @@ require_client_auth(); // Use helper function
                     }
                 } catch (error) {
                     console.error('Error loading notifications:', error);
+                    
+                    // Display error message in the notification list
+                    const notificationList = document.querySelector('.notification-list');
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'p-4 text-center text-danger';
+                    
+                    // Determine if it's a network issue
+                    const isNetworkError = error.message.includes('Failed to fetch') || 
+                                          error.message.includes('NetworkError') ||
+                                          error.message.includes('Network request failed');
+                    
+                    if (isNetworkError) {
+                        errorDiv.innerHTML = `
+                            <i class="bi bi-wifi-off fs-1 mb-3 d-block"></i>
+                            <p>Network connection error</p>
+                            <p class="small">Please check your internet connection and try again.</p>
+                            <button class="btn btn-outline-primary btn-sm mt-2 retry-btn">Retry</button>
+                        `;
+                    } else {
+                        errorDiv.innerHTML = `
+                            <i class="bi bi-exclamation-triangle fs-1 mb-3 d-block"></i>
+                            <p>Error loading notifications</p>
+                            <p class="small">${error.message}</p>
+                            <button class="btn btn-outline-primary btn-sm mt-2 retry-btn">Retry</button>
+                        `;
+                    }
+                    
+                    notificationList.innerHTML = '';
+                    notificationList.appendChild(errorDiv);
+                    document.getElementById('notificationPagination').innerHTML = '';
+                    
+                    // Add event listener to retry button
+                    const retryBtn = errorDiv.querySelector('.retry-btn');
+                    if (retryBtn) {
+                        retryBtn.addEventListener('click', () => {
+                            loadNotifications(currentPage);
+                        });
+                    }
+                    
+                    // In case of a serious error, display a more detailed error message
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
@@ -200,7 +300,7 @@ require_client_auth(); // Use helper function
             // Function to mark notification as read
             async function markAsRead(notificationId, element) {
                 try {
-                    const response = await fetch('/home/mark-notification-read', {
+                    const response = await fetch('./notifications/mark-read', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -216,9 +316,11 @@ require_client_auth(); // Use helper function
                     const data = await response.json();
                     
                     if (data.success) {
-                        element.classList.remove('bg-light');
-                        const badge = element.querySelector('.badge');
-                        if (badge) badge.remove();
+                        element.setAttribute('data-read', 'true');
+                        const statusText = element.querySelector('small.text-muted + small.text-muted');
+                        if (statusText) {
+                            statusText.textContent = '(Read)';
+                        }
                     }
                 } catch (error) {
                     console.error('Error marking notification as read:', error);
@@ -228,7 +330,7 @@ require_client_auth(); // Use helper function
             // Mark all notifications as read
             document.getElementById('markAllReadBtn').addEventListener('click', async function() {
                 try {
-                    const response = await fetch('/home/mark-all-notifications-read', {
+                    const response = await fetch('./notifications/mark-all-read', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -244,7 +346,9 @@ require_client_auth(); // Use helper function
                     const data = await response.json();
                     
                     if (data.success) {
+                        // Refresh the notification list
                         await loadNotifications(currentPage);
+                        
                         Swal.fire({
                             icon: 'success',
                             title: 'Success',
@@ -259,6 +363,48 @@ require_client_auth(); // Use helper function
                         icon: 'error',
                         title: 'Error',
                         text: 'Failed to mark notifications as read',
+                        confirmButtonColor: '#28a745'
+                    });
+                }
+            });
+            
+            // Add test notification
+            document.getElementById('addTestNotificationBtn').addEventListener('click', async function() {
+                try {
+                    const response = await fetch('./notifications/add-test', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Refresh the notification list
+                        await loadNotifications(currentPage);
+                        
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Test notification added successfully',
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+                    } else {
+                        throw new Error(data.message || 'Failed to add test notification');
+                    }
+                } catch (error) {
+                    console.error('Error adding test notification:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: error.message || 'Failed to add test notification',
                         confirmButtonColor: '#28a745'
                     });
                 }

@@ -1,52 +1,49 @@
 <?php
-// client
-require_once __DIR__ . "/../app/controllers/client/AuthController.php";
-$clientAuthController = new ClientAuthController();
+// Define controller classes
+$controllerClasses = [
+    'client' => [
+        'AuthController' => __DIR__ . "/../app/controllers/client/AuthController.php",
+        'BookingController' => __DIR__ . "/../app/controllers/client/BookingController.php",
+        'NotificationsController' => __DIR__ . "/../app/controllers/client/NotificationsController.php",
+    ],
+    'admin' => [
+        'BookingManagementController' => __DIR__ . "/../app/controllers/admin/BookingManagementController.php",
+        'AuthController' => __DIR__ . "/../app/controllers/admin/AuthController.php",   
+        'PaymentManagementController' => __DIR__ . "/../app/controllers/admin/PaymentManagementController.php",
+        'ReportController' => __DIR__ . "/../app/controllers/admin/ReportController.php",
+        'UserManagementController' => __DIR__ . "/../app/controllers/admin/UserManagementController.php",
+        'SettingsController' => __DIR__ . "/../app/controllers/admin/SettingsController.php",
+        'NotificationsController' => __DIR__ . "/../app/controllers/admin/NotificationsController.php",
+    ]
+];
 
-require_once __DIR__ . "/../app/controllers/client/BookingController.php";
-$bookingController = new BookingController();
+// Create lazy loading controllers
+$controllers = [];
 
-// client notifications
-require_once __DIR__ . "/../app/controllers/client/NotificationsController.php";
-$clientNotificationsController = new ClientNotificationsController();
-
-// admin
-require_once __DIR__ . "/../app/controllers/admin/BookingManagementController.php";
-$adminBookingController = new BookingManagementController();
-
-require_once __DIR__ . "/../app/controllers/admin/AuthController.php";
-$adminAuthController = new AuthController();
-
-// admin payment management
-require_once __DIR__ . "/../app/controllers/admin/PaymentManagementController.php";
-$paymentManagementController = new PaymentManagementController();
-
-// admin reports
-require_once __DIR__ . "/../app/controllers/admin/ReportController.php";
-$reportController = new ReportController();
-
-// amdin user management
-require_once __DIR__ . "/../app/controllers/admin/UserManagementController.php";
-$userManagementController = new UserManagementController();
-
-// admin settings
-require_once __DIR__ . "/../app/controllers/admin/SettingsController.php";
-$settingsController = new SettingsController();
-
-// admin notifications
-require_once __DIR__ . "/../app/controllers/admin/NotificationsController.php";
-$notificationController = new NotificationsController();
-
-
+// Get current request
 $request = $_SERVER["REQUEST_URI"];
 $segments = explode("/", trim($request, "/"));
 
+// Special case for reset password
 if (preg_match("/reset-password\/([a-zA-Z0-9]+)/", $request, $matches)) {
     $token = $matches[1];
+    require_once $controllerClasses['client']['AuthController'];
+    $clientAuthController = new ClientAuthController();
     $clientAuthController->showResetForm($token);
     exit();
 }
 
+// Determine which controller we need for this request
+$controllerType = null;
+$controllerName = null;
+
+if (strpos($request, '/admin') === 0) {
+    $controllerType = 'admin';
+} else {
+    $controllerType = 'client';
+}
+
+// Now handle the route
 switch ($request) {
     // user
     case "/":
@@ -54,294 +51,454 @@ switch ($request) {
         require_once __DIR__ . "/../public/home.php";
         break;
     case "/home/login":
-        $clientAuthController->loginForm();
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->loginForm();
         break;
     case "/home/signup":
-        $clientAuthController->signupForm();
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->signupForm();
         break;
     case "/client/login":
-        $clientAuthController->login();
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->login();
         break;
     case "/client/signup":
-        $clientAuthController->signup();
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->signup();
         break;
     case "/client/home":
         require_once __DIR__ . "/../app/views/client/home.php";
         break;
     case "/my-account":
-        $clientAuthController->manageAccountForm();
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->manageAccountForm();
         break;
     case "/get-client-information":
-        $clientAuthController->getClientInformation();
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->getClientInformation();
         break;
     case "/update-client-information":
-        $clientAuthController->updateClientInformation();
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->updateClientInformation();
         break;
     case "/logout":
-        $clientAuthController->logout();
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->logout();
         break;
 
     // forgot password
     case "/fogot-password":
-        $clientAuthController->showForgotForm();
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->showForgotForm();
         break;  
     case "/send-reset-link":
-        $clientAuthController->sendResetLink();
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->sendResetLink();
         break;
     case "/update-password":
-        $clientAuthController->resetPassword();
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->resetPassword();
         break;
 
     // bookings
     case "/home/contact":
-        $bookingController->clientInfoForm();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->clientInfoForm();
         break;
     case "/contact/submit":
-        $bookingController->addClient();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->addClient();
         break;
     case "/get-available-buses":
-        $bookingController->findAvailableBuses();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->findAvailableBuses();
         break;
     case "/home/book":
-        $bookingController->bookingForm();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->bookingForm();
         break;
-
 
     case "/get-address":
-        $bookingController->getAddress();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getAddress();
         break;   
     case "/get-distance":
-        $bookingController->getDistance();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getDistance();
         break;
     case "/get-route":
-        $bookingController->processCoordinates();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->processCoordinates();
         break;
     case "/get-total-cost":
-        $bookingController->getTotalCost();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getTotalCost();
         break;
         
     case "/request-booking":
-        $bookingController->requestBooking();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->requestBooking();
         break;
     case "/home/booking-requests":
-        $bookingController->showBookingRequestTable();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->showBookingRequestTable();
         break;
     case "/home/booking-request":
-        $bookingController->showBookingDetail();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->showBookingDetail();
         break;
     case "/home/get-booking-requests":
-        $bookingController->getAllBookings();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getAllBookings();
         break;
     case "/request-rebooking":
-        $bookingController->requestRebooking();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->requestRebooking();
         break;
     case "/cancel-booking":
-        $bookingController->cancelBooking();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->cancelBooking();
         break;
 
     case "/get-booking":
-        $bookingController->getBooking();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getBooking();
         break;
 
     case "/payment/process":
-        $bookingController->addPayment();
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->addPayment();
         break;
 
-    // admin
+    // admin routes
     case "/admin/bookings":
-        $adminBookingController->getAllBookings();
-        $bookingController->updatePastBookings();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $adminController = new BookingManagementController();
+        $adminController->getAllBookings();
+        
+        require_once $controllerClasses['client']['BookingController'];
+        $clientController = new BookingController();
+        $clientController->updatePastBookings();
         break;
     case "/admin/login":
-        $adminAuthController->loginForm();
+        require_once $controllerClasses['admin']['AuthController'];
+        $controller = new AuthController();
+        $controller->loginForm();
         break;
     case "/admin/submit-login":
-        $adminAuthController->login();
+        require_once $controllerClasses['admin']['AuthController'];
+        $controller = new AuthController();
+        $controller->login();
         break;
     case "/admin/logout":
-        $adminAuthController->logout();
+        require_once $controllerClasses['admin']['AuthController'];
+        $controller = new AuthController();
+        $controller->logout();
         break;
     case "/admin/dashboard":
-        $adminAuthController->adminDashBoard();
+        require_once $controllerClasses['admin']['AuthController'];
+        $controller = new AuthController();
+        $controller->adminDashBoard();
         break;
     case "/admin/summary-metrics":
-        $adminBookingController->summaryMetrics();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->summaryMetrics();
         break;
     case "/admin/payment-method-data":
-        $adminBookingController->paymentMethodChart();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->paymentMethodChart();
         break;
 
     case "/admin/monthly-booking-trends":
-        $adminBookingController->monthlyBookingTrends();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->monthlyBookingTrends();
         break;
         
     case "/admin/top-destinations":
-        $adminBookingController->topDestinations();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->topDestinations();
         break;
         
     case "/admin/booking-status-distribution":
-        $adminBookingController->bookingStatusDistribution();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->bookingStatusDistribution();
         break;
         
     case "/admin/revenue-trends":
-        $adminBookingController->revenueTrends();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->revenueTrends();
         break;
 
     case "/admin/booking-requests":
-        $adminBookingController->showBookingTable();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->showBookingTable();
         break;
     case "/admin/confirm-booking":
-        $adminBookingController->confirmBooking();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->confirmBooking();
         break;
     case "/admin/reject-booking":
-        $adminBookingController->rejectBooking();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->rejectBooking();
         break;
     case "/admin/reject-rebooking":
-        $adminBookingController->rejectRebooking();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->rejectRebooking();
         break;
     case "/admin/cancel-booking":
-        $adminBookingController->cancelBooking();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->cancelBooking();
         break;
     case "/admin/rebooking-requests":
-        $adminBookingController->showReschedRequestTable();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->showReschedRequestTable();
         break;
     case "/admin/get-rebooking-requests":
-        $adminBookingController->getRebookingRequests();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getRebookingRequests();
         break;
     case "/admin/confirm-rebooking-request":
-        $adminBookingController->confirmRebookingRequest();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->confirmRebookingRequest();
         break;
     case "/admin/booking-request":
     case "/admin/rebooking-request":
-        $adminBookingController->showBookingDetail();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->showBookingDetail();
         break;
     case "/admin/get-booking":
-        $adminBookingController->getBooking();
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getBooking();
         break;
 
     case "/admin/get-users":
-        $userManagementController->getUserListing();
+        require_once $controllerClasses['admin']['UserManagementController'];
+        $controller = new UserManagementController();
+        $controller->getUserListing();
         break;
         
     case "/admin/users":
-        $userManagementController->showUserManagement();
+        require_once $controllerClasses['admin']['UserManagementController'];
+        $controller = new UserManagementController();
+        $controller->showUserManagement();
         break;
         
     case "/admin/add-user":
-        $userManagementController->addUser();
+        require_once $controllerClasses['admin']['UserManagementController'];
+        $controller = new UserManagementController();
+        $controller->addUser();
         break;
         
     case "/admin/update-user":
-        $userManagementController->updateUser();
+        require_once $controllerClasses['admin']['UserManagementController'];
+        $controller = new UserManagementController();
+        $controller->updateUser();
         break;
         
     case "/admin/delete-user":
-        $userManagementController->deleteUser();
+        require_once $controllerClasses['admin']['UserManagementController'];
+        $controller = new UserManagementController();
+        $controller->deleteUser();
         break;
 
     case "/admin/get-user-details":
-        $userManagementController->getUserDetails();
+        require_once $controllerClasses['admin']['UserManagementController'];
+        $controller = new UserManagementController();
+        $controller->getUserDetails();
         break;
 
     // Payment Management Routes
     case "/admin/payment-management":
-        $paymentManagementController->index();
+        require_once $controllerClasses['admin']['PaymentManagementController'];
+        $controller = new PaymentManagementController();
+        $controller->index();
         break;
     case "/admin/payments/get":
-        $paymentManagementController->getPayments();
+        require_once $controllerClasses['admin']['PaymentManagementController'];
+        $controller = new PaymentManagementController();
+        $controller->getPayments();
         break;
     case "/admin/payments/confirm":
-        $paymentManagementController->confirmPayment();
+        require_once $controllerClasses['admin']['PaymentManagementController'];
+        $controller = new PaymentManagementController();
+        $controller->confirmPayment();
         break;
     case "/admin/payments/reject":
-        $paymentManagementController->rejectPayment();
+        require_once $controllerClasses['admin']['PaymentManagementController'];
+        $controller = new PaymentManagementController();
+        $controller->rejectPayment();
         break;
 
     // Reports Module Routes
     case "/admin/reports":
-        $reportController->index();
+        require_once $controllerClasses['admin']['ReportController'];
+        $controller = new ReportController();
+        $controller->index();
         break;
     case "/admin/reports/booking-summary":
-        $reportController->getBookingSummary();
+        require_once $controllerClasses['admin']['ReportController'];
+        $controller = new ReportController();
+        $controller->getBookingSummary();
         break;
     case "/admin/reports/monthly-trend":
-        $reportController->getMonthlyBookingTrend();
+        require_once $controllerClasses['admin']['ReportController'];
+        $controller = new ReportController();
+        $controller->getMonthlyBookingTrend();
         break;
     case "/admin/reports/top-destinations":
-        $reportController->getTopDestinations();
+        require_once $controllerClasses['admin']['ReportController'];
+        $controller = new ReportController();
+        $controller->getTopDestinations();
         break;
     case "/admin/reports/payment-methods":
-        $reportController->getPaymentMethodDistribution();
+        require_once $controllerClasses['admin']['ReportController'];
+        $controller = new ReportController();
+        $controller->getPaymentMethodDistribution();
         break;
     case "/admin/reports/cancellations":
-        $reportController->getCancellationReport();
+        require_once $controllerClasses['admin']['ReportController'];
+        $controller = new ReportController();
+        $controller->getCancellationReport();
         break;
     case "/admin/reports/detailed-bookings":
-        $reportController->getDetailedBookingList();
+        require_once $controllerClasses['admin']['ReportController'];
+        $controller = new ReportController();
+        $controller->getDetailedBookingList();
         break;
     case "/admin/reports/financial-summary":
-        $reportController->getFinancialSummary();
+        require_once $controllerClasses['admin']['ReportController'];
+        $controller = new ReportController();
+        $controller->getFinancialSummary();
         break;
     case "/admin/reports/export-bookings":
-        $reportController->getDetailedBookingList(); // Reuse the same endpoint for CSV export
+        require_once $controllerClasses['admin']['ReportController'];
+        $controller = new ReportController();
+        $controller->getDetailedBookingList(); // Reuse the same endpoint for CSV export
         break;
 
     // Settings Module Routes
     case "/admin/settings":
-        $settingsController->index();
+        require_once $controllerClasses['admin']['SettingsController'];
+        $controller = new SettingsController();
+        $controller->index();
         break;
     case "/admin/get-all-settings":
-        $settingsController->getAllSettings();
+        require_once $controllerClasses['admin']['SettingsController'];
+        $controller = new SettingsController();
+        $controller->getAllSettings();
         break;
     case "/admin/get-settings-by-group":
-        $settingsController->getSettingsByGroup();
+        require_once $controllerClasses['admin']['SettingsController'];
+        $controller = new SettingsController();
+        $controller->getSettingsByGroup();
         break;
     case "/admin/update-settings":
-        $settingsController->updateSettings();
+        require_once $controllerClasses['admin']['SettingsController'];
+        $controller = new SettingsController();
+        $controller->updateSettings();
         break;
     case "/admin/add-setting":
-        $settingsController->addSetting();
+        require_once $controllerClasses['admin']['SettingsController'];
+        $controller = new SettingsController();
+        $controller->addSetting();
         break;
     case "/admin/delete-setting":
-        $settingsController->deleteSetting();
+        require_once $controllerClasses['admin']['SettingsController'];
+        $controller = new SettingsController();
+        $controller->deleteSetting();
         break;
-
-    // Notification Module Routes
+        
+    // Notifications
     case "/admin/notifications":
-        $notificationController->index();
+        require_once $controllerClasses['admin']['NotificationsController'];
+        $controller = new NotificationsController();
+        $controller->index();
         break;
     case "/admin/notifications/mark-read":
-        $notificationController->markAsRead();
+        require_once $controllerClasses['admin']['NotificationsController'];
+        $controller = new NotificationsController();
+        $controller->markAsRead();
         break;
     case "/admin/notifications/mark-all-read":
-        $notificationController->markAllAsRead();
+        require_once $controllerClasses['admin']['NotificationsController'];
+        $controller = new NotificationsController();
+        $controller->markAllAsRead();
         break;
-
-    // Client Notifications
-    case "/home/notifications":
-        require_once __DIR__ . "/../app/views/client/notifications.php";
+        
+    // Client notifications
+    case "/client/notifications":
+        require_once $controllerClasses['client']['NotificationsController'];
+        $controller = new ClientNotificationsController();
+        $controller->index();
         break;
-    case "/home/get-notifications":
-        $clientNotificationsController->getNotifications();
+    case "/client/notifications/get":
+        require_once $controllerClasses['client']['NotificationsController'];
+        $controller = new ClientNotificationsController();
+        $controller->getNotifications();
         break;
-    case "/home/get-all-notifications":
-        $clientNotificationsController->getAllNotificationsWithPagination();
+    case "/client/notifications/mark-read":
+        require_once $controllerClasses['client']['NotificationsController'];
+        $controller = new ClientNotificationsController();
+        $controller->markAsRead();
         break;
-    case "/home/mark-notification-read":
-        $clientNotificationsController->markAsRead();
+    case "/client/notifications/mark-all-read":
+        require_once $controllerClasses['client']['NotificationsController'];
+        $controller = new ClientNotificationsController();
+        $controller->markAllAsRead();
         break;
-    case "/home/mark-all-notifications-read":
-        $clientNotificationsController->markAllAsRead();
+    case "/client/notifications/add-test":
+        require_once $controllerClasses['client']['NotificationsController'];
+        $controller = new ClientNotificationsController();
+        $controller->addTestNotification();
         break;
-
-    case "/favicon.ico":
-        http_response_code(204); // No Content (prevents errors)
-        exit();
-        break;
-
+        
     default:
+        // 404 Not Found
+        header("HTTP/1.0 404 Not Found");
         require_once __DIR__ . "/../404.php";
         break;
 }
-
 ?>

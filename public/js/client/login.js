@@ -6,6 +6,8 @@ $('#loginForm').submit(function (e) {
         password: $("#password").val()
     }
 
+    console.log($("#password").val());
+
     $.ajax({
         url: "/client/login",
         type: "POST",

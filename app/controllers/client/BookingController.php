@@ -250,14 +250,189 @@ class BookingController {
         $number_of_days = (int) $input["numberOfDays"] ?? 0;
         $distance = (float) $input["distance"] ?? 0;
         $diesel_price = (float) $this->getDieselPrice() ?? 0;
+        $locations = $input["locations"] ?? [];
+        $destination = $input["destination"] ?? "";
+        $pickupPoint = $input["pickupPoint"] ?? "";
 
         if ($number_of_buses <= 0 || $number_of_days <= 0 || $distance <= 0 || $diesel_price <= 0) {
             echo json_encode(["success" => false, "message" => "Invalid input values."]);
             return;
         }
 
-        $total_cost = $number_of_buses * $number_of_days * $distance * $diesel_price;
-        echo json_encode(["success" => true, "total_cost" => $total_cost]);
+        // Define rates per region
+        $regional_rates = [
+            'NCR' => 19560, // Metro Manila
+            'CAR' => 117539, // Cordillera Administrative Region
+            'Region 2' => 71040, // Cagayan Valley
+            'Region 3' => 45020, // Central Luzon
+            'Region 4A' => 20772, // Calabarzon
+        ];
+
+        // Get distances between locations
+        $all_locations = [];
+        if (!empty($pickupPoint)) $all_locations[] = $pickupPoint;
+        if (!empty($locations)) $all_locations = array_merge($all_locations, $locations);
+        
+        // Determine region for each location
+        $location_regions = [];
+        $farthest_region = null;
+        $farthest_distance = 0;
+        $highest_rate = 0;
+        
+        // First, identify the region of each location
+        foreach ($all_locations as $location) {
+            $region = $this->determineRegionFromLocations([$location]);
+            $location_regions[$location] = [
+                'region' => $region,
+                'rate' => $regional_rates[$region] ?? $regional_rates['Region 4A']
+            ];
+        }
+        
+        // Find the region with the highest rate
+        foreach ($location_regions as $location => $info) {
+            if ($info['rate'] > $highest_rate) {
+                $highest_rate = $info['rate'];
+                $farthest_region = $info['region'];
+            }
+        }
+        
+        if (!$farthest_region) {
+            $farthest_region = 'Region 4A'; // Default to CALABARZON if no region found
+        }
+
+        $base_rate = $regional_rates[$farthest_region] ?? $regional_rates['Region 4A'];
+
+        // Calculate base cost using regional rate
+        $base_cost = $base_rate * $number_of_buses * $number_of_days;
+        
+        // Calculate fuel cost based on distance and diesel price
+        $fuel_cost = $distance * $diesel_price;
+        
+        // Total cost is base cost plus fuel cost
+        $total_cost = $base_cost + $fuel_cost;
+
+        echo json_encode([
+            "success" => true, 
+            "total_cost" => $total_cost,
+            "base_rate" => $base_rate,
+            "base_cost" => $base_cost,
+            "fuel_cost" => $fuel_cost,
+            "region" => $farthest_region,
+            "rate" => $base_rate,
+            "location_regions" => $location_regions // Include this for debugging
+        ]);
+    }
+
+    /**
+     * Determine which region a set of locations belongs to
+     * 
+     * @param array $locations Array of location strings
+     * @return string The determined region code
+     */
+    private function determineRegionFromLocations($locations) {
+        if (empty($locations)) {
+            return 'Region 4A'; // Default to CALABARZON if no locations
+        }
+
+        // Keywords for each region with more comprehensive listings
+        $region_keywords = [
+            'NCR' => [
+                'metro manila', 'ncr', 'manila', 'quezon city', 'makati', 'pasig', 'taguig', 'mandaluyong',
+                'pasay', 'parañaque', 'caloocan', 'marikina', 'muntinlupa', 'las piñas', 'malabon',
+                'valenzuela', 'navotas', 'san juan', 'pateros', 'maynila', 'intramuros', 'malate', 'ermita',
+                'binondo', 'quiapo', 'santa cruz', 'sampaloc', 'tondo', 'port area', 'paco', 'pandacan',
+                'sta. mesa', 'sta. ana', 'san andres', 'san nicolas', 'commonwealth', 'fairview', 'novaliches',
+                'cubao', 'ortigas', 'greenhills', 'eastwood', 'bgc', 'bonifacio global city', 'mckinley hill',
+                'rockwell', 'poblacion', 'magallanes', 'moa', 'mall of asia', 'alabang'
+            ],
+            'CAR' => [
+                'cordillera', 'car', 'baguio', 'benguet', 'mountain province', 'mt. province', 'ifugao', 'abra',
+                'kalinga', 'apayao', 'banaue', 'sagada', 'la trinidad', 'itogon', 'kibungan', 'bakun', 'kabayan',
+                'atok', 'tuba', 'tublay', 'bokod', 'buguias', 'mankayan', 'kapangan', 'sablan', 'bontoc',
+                'barlig', 'bauko', 'besao', 'natonin', 'paracelis', 'sadanga', 'sagada', 'tadian', 'banaue',
+                'aguinaldo', 'asipulo', 'hingyon', 'hungduan', 'kiangan', 'lagawe', 'lamut', 'mayoyao', 'tinoc'
+            ],
+            'Region 2' => [
+                'cagayan valley', 'region 2', 'cagayan', 'isabela', 'nueva vizcaya', 'quirino', 'batanes',
+                'tuguegarao', 'ilagan', 'cauayan', 'santiago', 'alaminos', 'alicia', 'angadanan', 'aurora',
+                'bambang', 'bayombong', 'cabagan', 'cabarroguis', 'calayan', 'camalaniugan', 'cauayan', 'cordon',
+                'diffun', 'dinapigue', 'divilacan', 'dumaran', 'echague', 'enrile', 'gamu', 'gattaran', 'ilagan',
+                'jones', 'lal-lo', 'laoag', 'maconacon', 'maddela', 'mallig', 'nagtipunan', 'naguilian',
+                'palanan', 'peñablanca', 'quezon', 'quirino', 'ramon', 'reina mercedes', 'roxas', 'san isidro',
+                'santiago', 'santo tomas', 'solano', 'tuguegarao', 'tumauini', 'basco', 'ivana', 'mahatao', 'sabtang'
+            ],
+            'Region 3' => [
+                'central luzon', 'region 3', 'bulacan', 'pampanga', 'tarlac', 'zambales', 'nueva ecija',
+                'bataan', 'aurora', 'angeles', 'san fernando', 'malolos', 'cabanatuan', 'tarlac city', 'baler',
+                'iba', 'balanga', 'olongapo', 'subic', 'clark', 'bacolor', 'guagua', 'lubao', 'san jose del monte',
+                'meycauayan', 'bustos', 'baliwag', 'plaridel', 'pulilan', 'calumpit', 'hagonoy', 'obando',
+                'san ildefonso', 'san miguel', 'san rafael', 'bocaue', 'marilao', 'sta. maria', 'guiguinto',
+                'angat', 'norzagaray', 'dona remedios trinidad', 'candaba', 'arayat', 'mabalacat',
+                'concepcion', 'gerona', 'paniqui', 'camiling', 'capas', 'bamban', 'cabanatuan', 'gapan',
+                'palayan', 'san jose', 'munoz', 'talavera'
+            ],
+            'Region 4A' => [
+                'calabarzon', 'region 4a', 'cavite', 'laguna', 'batangas', 'rizal', 'quezon', 'lucena',
+                'tagaytay', 'calamba', 'santa rosa', 'lipa', 'batangas city', 'antipolo', 'taytay', 'cainta',
+                'biñan', 'san pedro', 'cabuyao', 'tanauan', 'bacoor', 'dasmariñas', 'imus', 'general trias',
+                'trece martires', 'kawit', 'alfonso', 'amadeo', 'carmona', 'cavite city', 'general mariano alvarez',
+                'indang', 'magallanes', 'maragondon', 'mendez', 'naic', 'noveleta', 'rosario', 'silang', 'tanza',
+                'ternate', 'alaminos', 'bay', 'cabuyao', 'calauan', 'famy', 'kalayaan', 'liliw', 'los baños',
+                'luisiana', 'lumban', 'mabitac', 'magdalena', 'majayjay', 'nagcarlan', 'paete', 'pagsanjan',
+                'pakil', 'pangil', 'pila', 'rizal', 'san pablo', 'santa cruz', 'santa maria', 'siniloan',
+                'victoria', 'agoncillo', 'alitagtag', 'balete', 'balayan', 'bauan', 'calaca', 'calatagan', 'cuenca',
+                'ibaan', 'laurel', 'lemery', 'lian', 'lobo', 'mabini', 'malvar', 'mataas na kahoy', 'nasugbu',
+                'padre garcia', 'rosario', 'san jose', 'san juan', 'san luis', 'san nicolas', 'san pascual',
+                'santa teresita', 'santo tomas', 'taal', 'talisay', 'taysan', 'tingloy', 'angono', 'baras',
+                'binangonan', 'cardona', 'jala-jala', 'morong', 'pililla', 'rodriguez', 'san mateo', 'tanay', 'teresa',
+                'agdangan', 'alabat', 'atimonan', 'buenavista', 'burdeos', 'calauag', 'candelaria', 'catanauan',
+                'dolores', 'general luna', 'general nakar', 'guinayangan', 'gumaca', 'infanta', 'jomalig', 'lopez',
+                'lucban', 'macalelon', 'mauban', 'mulanay', 'padre burgos', 'pagbilao', 'panukulan', 'patnanungan',
+                'perez', 'pitogo', 'plaridel', 'polillo', 'quezon', 'real', 'sampaloc', 'san andres', 'san antonio',
+                'san francisco', 'san narciso', 'sariaya', 'tagkawayan', 'tiaong', 'unisan'
+            ]
+        ];
+
+        // Count matches for each region
+        $region_matches = [
+            'NCR' => 0,
+            'CAR' => 0,
+            'Region 2' => 0,
+            'Region 3' => 0,
+            'Region 4A' => 0
+        ];
+
+        // Look for region keywords in each location
+        foreach ($locations as $location) {
+            $location = strtolower($location);
+            foreach ($region_keywords as $region => $keywords) {
+                foreach ($keywords as $keyword) {
+                    if (strpos($location, $keyword) !== false) {
+                        $region_matches[$region]++;
+                        break; // Found a match for this region in this location
+                    }
+                }
+            }
+        }
+
+        // Find the region with the most matches
+        $max_matches = 0;
+        $matched_region = 'Region 4A'; // Default
+        
+        foreach ($region_matches as $region => $matches) {
+            if ($matches > $max_matches) {
+                $max_matches = $matches;
+                $matched_region = $region;
+            }
+        }
+
+        // If no matches were found, try to determine region using more advanced geolocation methods
+        if ($max_matches === 0 && !empty($locations[0])) {
+            // Log the unmatched location for future improvements
+            error_log("Could not determine region for location: " . $locations[0]);
+        }
+
+        return $matched_region;
     }
 
     public function requestBooking() {
@@ -275,9 +450,66 @@ class BookingController {
             $trip_distances = $data["tripDistances"];
             $addresses = $data["addresses"];
             $is_rebooking = $data["isRebooking"];
-            $rebooking_id = $data["rebookingId"]; 
+            $rebooking_id = $data["rebookingId"];
+            
+            // Optional new fields for cost breakdown
+            $region = $data["region"] ?? null;
+            $base_cost = $data["baseCost"] ?? null;
+            $fuel_cost = $data["fuelCost"] ?? null;
 
-            $result = $this->bookingModel->requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $is_rebooking, $rebooking_id);
+            // If we received region info but didn't calculate it properly, recalculate
+            if (!$region) {
+                // Get all locations
+                $all_locations = [$pickup_point];
+                if (!empty($stops)) {
+                    $all_locations = array_merge($all_locations, $stops);
+                }
+                $all_locations[] = $destination;
+                
+                // Define rates per region
+                $regional_rates = [
+                    'NCR' => 19560, // Metro Manila
+                    'CAR' => 117539, // Cordillera Administrative Region
+                    'Region 2' => 71040, // Cagayan Valley
+                    'Region 3' => 45020, // Central Luzon
+                    'Region 4A' => 20772, // Calabarzon
+                ];
+                
+                // Determine region for each location
+                $highest_rate = 0;
+                $farthest_region = 'Region 4A'; // Default
+                
+                foreach ($all_locations as $location) {
+                    $location_region = $this->determineRegionFromLocations([$location]);
+                    $location_rate = $regional_rates[$location_region] ?? $regional_rates['Region 4A'];
+                    
+                    if ($location_rate > $highest_rate) {
+                        $highest_rate = $location_rate;
+                        $farthest_region = $location_region;
+                    }
+                }
+                
+                $region = $farthest_region;
+            }
+
+            $result = $this->bookingModel->requestBooking(
+                $date_of_tour, 
+                $destination, 
+                $pickup_point, 
+                $number_of_days, 
+                $number_of_buses, 
+                $user_id, 
+                $stops, 
+                $total_cost, 
+                $balance, 
+                $trip_distances, 
+                $addresses, 
+                $is_rebooking, 
+                $rebooking_id,
+                $region, 
+                $base_cost, 
+                $fuel_cost
+            );
             
             // Create notification for admin if booking was successful
             if (isset($result["success"]) && $result["success"]) {
@@ -395,7 +627,7 @@ class BookingController {
 
         if ($result["success"] && $booking) {
             // Create notification for admin about booking cancellation
-            $clientName = $_SESSION["user_first_name"] . " " . $_SESSION["user_last_name"];
+            $clientName = $_SESSION["client_name"];
             $destination = $booking["destination"] ?? "Unknown destination";
             $message = "Booking #{$booking_id} to {$destination} cancelled by {$clientName}. Reason: {$reason}";
             $this->notificationModel->addNotification("booking_cancelled_by_client", $message, $booking_id);
