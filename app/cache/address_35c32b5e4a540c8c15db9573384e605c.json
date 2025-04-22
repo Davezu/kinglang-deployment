@@ -1,0 +1,242 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Apayao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqx459ao3jzMRYCudRYnrruM",
+         "reference" : "ChIJqx459ao3jzMRYCudRYnrruM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apayao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apayao"
+            },
+            {
+               "offset" : 8,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "administrative_area_level_2",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Apayao, Piat, Cagayan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJKQfcuBNnjzMROKVrZVnEVUs",
+         "reference" : "ChIJKQfcuBNnjzMROKVrZVnEVUs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apayao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Piat, Cagayan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apayao"
+            },
+            {
+               "offset" : 8,
+               "value" : "Piat"
+            },
+            {
+               "offset" : 14,
+               "value" : "Cagayan"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Apayao Provincial Capitol, Luna, Apayao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJEWaFO0GxiDMRdEYJmeodYVQ",
+         "reference" : "ChIJEWaFO0GxiDMRdEYJmeodYVQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apayao Provincial Capitol",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Luna, Apayao, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apayao Provincial Capitol"
+            },
+            {
+               "offset" : 27,
+               "value" : "Luna"
+            },
+            {
+               "offset" : 33,
+               "value" : "Apayao"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Apayao - Ilocos Norte Road, San Nicolas, Ilocos Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EkJBcGF5YW8gLSBJbG9jb3MgTm9ydGUgUm9hZCwgU2FuIE5pY29sYXMsIElsb2NvcyBOb3J0ZSwgUGhpbGlwcGluZXMiLiosChQKEgl7ExefQcaOMxEySyRTO1MUvhIUChIJQ5Y1psHGjjMRkOsxLM9_-60",
+         "reference" : "EkJBcGF5YW8gLSBJbG9jb3MgTm9ydGUgUm9hZCwgU2FuIE5pY29sYXMsIElsb2NvcyBOb3J0ZSwgUGhpbGlwcGluZXMiLiosChQKEgl7ExefQcaOMxEySyRTO1MUvhIUChIJQ5Y1psHGjjMRkOsxLM9_-60",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apayao - Ilocos Norte Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Nicolas, Ilocos Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apayao - Ilocos Norte Road"
+            },
+            {
+               "offset" : 28,
+               "value" : "San Nicolas"
+            },
+            {
+               "offset" : 41,
+               "value" : "Ilocos Norte"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Apayao, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EilBcGF5YW8sIE1hbmlsYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCVkwmqPPyJczEe8NW3blLM3xEhQKEgmLwx5XA8qXMxEfwWkQddXRaQ",
+         "reference" : "EilBcGF5YW8sIE1hbmlsYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCVkwmqPPyJczEe8NW3blLM3xEhQKEgmLwx5XA8qXMxEfwWkQddXRaQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apayao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apayao"
+            },
+            {
+               "offset" : 8,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 16,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

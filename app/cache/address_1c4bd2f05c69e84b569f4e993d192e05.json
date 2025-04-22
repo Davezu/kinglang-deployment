@@ -41,8 +41,8 @@
          ],
          "types" : 
          [
-            "locality",
             "geocode",
+            "locality",
             "political"
          ]
       },
@@ -86,8 +86,8 @@
          ],
          "types" : 
          [
-            "political",
             "administrative_area_level_3",
+            "political",
             "geocode"
          ]
       },
@@ -139,8 +139,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "tourist_attraction",
+            "point_of_interest",
             "establishment"
          ]
       },
@@ -192,11 +192,11 @@
          ],
          "types" : 
          [
-            "church",
-            "establishment",
-            "point_of_interest",
             "tourist_attraction",
-            "place_of_worship"
+            "point_of_interest",
+            "establishment",
+            "place_of_worship",
+            "church"
          ]
       },
       {
@@ -247,9 +247,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "establishment",
-            "lodging"
+            "lodging",
+            "point_of_interest"
          ]
       }
    ],

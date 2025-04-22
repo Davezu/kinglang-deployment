@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", async () => {
     const firstName = document.getElementById("firstName");
     const lastName = document.getElementById("lastName");
@@ -30,7 +29,7 @@ document.getElementById("userForm").addEventListener("submit", async (e) => {
     const formData = {
         firstName: document.getElementById("firstName")?.value,
         lastName: document.getElementById("lastName")?.value,
-        contactNumber: document.getElementById("contactNumber")?.value,
+        contactNumber: formatPhoneNumberForDB(document.getElementById("contactNumber")?.value),
         email: document.getElementById("email")?.value
     }    
 
@@ -53,3 +52,19 @@ document.getElementById("userForm").addEventListener("submit", async (e) => {
         console.error("Error fetching data: ", error);
     }
 })
+
+// Helper function to format phone number for database storage
+function formatPhoneNumberForDB(value) {
+    if (!value || value.trim() === '') return '';
+    
+    // Remove all non-digits from the value
+    const digits = value.replace(/\D/g, '');
+    
+    // If it doesn't have 11 digits or doesn't start with 09, return as is
+    if (digits.length !== 11 || digits.substring(0, 2) !== '09') {
+        return digits;
+    }
+    
+    // Format as 09XX-XXX-XXXX
+    return `${digits.substring(0, 4)}-${digits.substring(4, 7)}-${digits.substring(7, 11)}`;
+}

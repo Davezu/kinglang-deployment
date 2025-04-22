@@ -148,16 +148,16 @@ class UserManagementController {
         }
         
         // Validate contact number (if provided)
-        if (!empty($contactNumber) && !preg_match('/^[0-9]{11}$/', $contactNumber)) {
+        if (!empty($contactNumber) && !preg_match('/^[0-9]{4}-[0-9]{3}-[0-9]{4}$/', $contactNumber) && !preg_match('/^[0-9]{11}$/', $contactNumber)) {
             header('Content-Type: application/json');
-            echo json_encode(['error' => 'Contact number must be 11 digits']);
+            echo json_encode(['error' => 'Contact number must be in format 09XX-XXX-XXXX or 11 digits']);
             return;
         }
         
         // Validate password (minimum 6 characters)
-        if (strlen($password) < 6) {
+        if (strlen($password) < 8) {
             header('Content-Type: application/json');
-            echo json_encode(['error' => 'Password must be at least 6 characters']);
+            echo json_encode(['error' => 'Password must be at least 8 characters']);
             return;
         }
         
@@ -223,16 +223,16 @@ class UserManagementController {
         }
         
         // Validate contact number (if provided)
-        if (!empty($contactNumber) && !preg_match('/^[0-9]{11}$/', $contactNumber)) {
+        if (!empty($contactNumber) && !preg_match('/^[0-9]{4}-[0-9]{3}-[0-9]{4}$/', $contactNumber) && !preg_match('/^[0-9]{11}$/', $contactNumber)) {
             header('Content-Type: application/json');
-            echo json_encode(['error' => 'Contact number must be 11 digits']);
+            echo json_encode(['error' => 'Contact number must be in format 09XX-XXX-XXXX or 11 digits']);
             return;
         }
         
         // Validate password (if provided)
-        if ($password !== null && strlen($password) < 6) {
+        if ($password !== null && strlen($password) < 8) {
             header('Content-Type: application/json');
-            echo json_encode(['error' => 'Password must be at least 6 characters']);
+            echo json_encode(['error' => 'Password must be at least 8 characters']);
             return;
         }
         

@@ -18,7 +18,7 @@ function is_client_authenticated() {
 }
 
 function is_admin_authenticated() {
-    return isset($_SESSION["role"]) && $_SESSION["role"] === "Super Admin";
+    return isset($_SESSION["role"]) && ($_SESSION["role"] === "Super Admin" || $_SESSION["role"] === "Admin");
 }
 
 function require_client_auth() {

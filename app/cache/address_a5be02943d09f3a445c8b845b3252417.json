@@ -41,67 +41,9 @@
          ],
          "types" : 
          [
-            "locality",
             "political",
+            "locality",
             "geocode"
-         ]
-      },
-      {
-         "description" : "Makati Medical Center, Amorsolo Street, Legazpi Village, Makati, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 4,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJ0wmu7AvJlzMRA-6w4Np_FSs",
-         "reference" : "ChIJ0wmu7AvJlzMRA-6w4Np_FSs",
-         "structured_formatting" : 
-         {
-            "main_text" : "Makati Medical Center",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 4,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Amorsolo Street, Legazpi Village, Makati, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Makati Medical Center"
-            },
-            {
-               "offset" : 23,
-               "value" : "Amorsolo Street"
-            },
-            {
-               "offset" : 40,
-               "value" : "Legazpi Village"
-            },
-            {
-               "offset" : 57,
-               "value" : "Makati"
-            },
-            {
-               "offset" : 65,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 79,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "point_of_interest",
-            "hospital",
-            "establishment",
-            "health"
          ]
       },
       {
@@ -204,10 +146,68 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "establishment",
             "local_government_office",
-            "city_hall",
-            "establishment"
+            "point_of_interest",
+            "city_hall"
+         ]
+      },
+      {
+         "description" : "Makati Medical Center, Amorsolo Street, Legazpi Village, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ0wmu7AvJlzMRA-6w4Np_FSs",
+         "reference" : "ChIJ0wmu7AvJlzMRA-6w4Np_FSs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makati Medical Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Amorsolo Street, Legazpi Village, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makati Medical Center"
+            },
+            {
+               "offset" : 23,
+               "value" : "Amorsolo Street"
+            },
+            {
+               "offset" : 40,
+               "value" : "Legazpi Village"
+            },
+            {
+               "offset" : 57,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 65,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 79,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "health",
+            "establishment",
+            "hospital",
+            "point_of_interest"
          ]
       },
       {
@@ -254,8 +254,8 @@
          ],
          "types" : 
          [
-            "geocode",
-            "route"
+            "route",
+            "geocode"
          ]
       }
    ],

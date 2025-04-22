@@ -45,9 +45,9 @@
          ],
          "types" : 
          [
-            "political",
             "sublocality_level_1",
             "geocode",
+            "political",
             "sublocality"
          ]
       },
@@ -268,8 +268,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       }
    ],

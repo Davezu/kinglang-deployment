@@ -1,10 +1,5 @@
 <?php
 require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php";
-
-// if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
-//     header("Location: /admin/login");
-//     exit(); 
-// }
 ?>
 
 <!DOCTYPE html>

@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "Taguig, Metro Manila, Philippines",
+      "Makati, Metro Manila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "Makati, Metro Manila, Philippines",
+      "Taguig, Metro Manila, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "8.6 km",
+                  "value" : 8585
+               },
+               "duration" : 
+               {
+                  "text" : "19 mins",
+                  "value" : 1162
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "8.4 km",
+                  "value" : 8416
+               },
+               "duration" : 
+               {
+                  "text" : "16 mins",
+                  "value" : 936
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

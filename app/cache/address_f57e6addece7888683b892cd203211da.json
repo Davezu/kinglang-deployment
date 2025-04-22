@@ -1,0 +1,275 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Maligaya Park, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqadJ8XixlzMRx007ulxb-vE",
+         "reference" : "ChIJqadJ8XixlzMRx007ulxb-vE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya Park"
+            },
+            {
+               "offset" : 15,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 27,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 40,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "university"
+         ]
+      },
+      {
+         "description" : "Maligaya Park Subdivision, E Berong St, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJnwn7NxWxlzMReTkjcMzj7Uo",
+         "reference" : "ChIJnwn7NxWxlzMReTkjcMzj7Uo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya Park Subdivision",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "E Berong St, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya Park Subdivision"
+            },
+            {
+               "offset" : 27,
+               "value" : "E Berong St"
+            },
+            {
+               "offset" : 40,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 50,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 64,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      },
+      {
+         "description" : "Rojas residence 50 sampaguita st.novaliches, Bautista, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 43,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJb5yKTwCxlzMRoiXj7sRNFPo",
+         "reference" : "ChIJb5yKTwCxlzMRoiXj7sRNFPo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Rojas residence 50 sampaguita st.novaliches",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 43,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bautista, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Rojas residence 50 sampaguita st.novaliches"
+            },
+            {
+               "offset" : 45,
+               "value" : "Bautista"
+            },
+            {
+               "offset" : 55,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 67,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 80,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 94,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Maligaya park, b berong st, Maligaya park camarin, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJzUPjhixlzMRyjzjKDHFVMI",
+         "reference" : "ChIJJzUPjhixlzMRyjzjKDHFVMI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "b berong st, Maligaya park camarin, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya park"
+            },
+            {
+               "offset" : 15,
+               "value" : "b berong st"
+            },
+            {
+               "offset" : 28,
+               "value" : "Maligaya park camarin"
+            },
+            {
+               "offset" : 51,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 61,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "maligaya park subd, Navarro Street, Surigao City, Surigao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJCSbQjL82ATMRxXJaqf9IWJM",
+         "reference" : "ChIJCSbQjL82ATMRxXJaqf9IWJM",
+         "structured_formatting" : 
+         {
+            "main_text" : "maligaya park subd",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Navarro Street, Surigao City, Surigao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "maligaya park subd"
+            },
+            {
+               "offset" : 20,
+               "value" : "Navarro Street"
+            },
+            {
+               "offset" : 36,
+               "value" : "Surigao City"
+            },
+            {
+               "offset" : 50,
+               "value" : "Surigao del Norte"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

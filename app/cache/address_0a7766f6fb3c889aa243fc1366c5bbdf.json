@@ -45,9 +45,9 @@
          ],
          "types" : 
          [
-            "sublocality",
             "geocode",
             "political",
+            "sublocality",
             "sublocality_level_2"
          ]
       },
@@ -95,10 +95,10 @@
          ],
          "types" : 
          [
-            "sublocality",
             "sublocality_level_1",
-            "political",
-            "geocode"
+            "geocode",
+            "sublocality",
+            "political"
          ]
       },
       {
@@ -149,8 +149,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -197,8 +197,8 @@
          ],
          "types" : 
          [
-            "route",
-            "geocode"
+            "geocode",
+            "route"
          ]
       },
       {
@@ -245,10 +245,10 @@
          ],
          "types" : 
          [
-            "establishment",
             "school",
-            "primary_school",
-            "point_of_interest"
+            "establishment",
+            "point_of_interest",
+            "primary_school"
          ]
       }
    ],

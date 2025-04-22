@@ -1,0 +1,307 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Makati Sports Club - Tennis Court, L.P. Leviste Street, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJMVevnwjJlzMROnd_IVSDIWs",
+         "reference" : "ChIJMVevnwjJlzMROnd_IVSDIWs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makati Sports Club - Tennis Court",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "L.P. Leviste Street, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makati Sports Club - Tennis Court"
+            },
+            {
+               "offset" : 35,
+               "value" : "L.P. Leviste Street"
+            },
+            {
+               "offset" : 56,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 64,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "premise"
+         ]
+      },
+      {
+         "description" : "Sports Complex, Makati City, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 29
+            }
+         ],
+         "place_id" : "ChIJVVUV8VfIlzMRacnQMXxb2k0",
+         "reference" : "ChIJVVUV8VfIlzMRacnQMXxb2k0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sports Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Makati City, Makati, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 13
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sports Complex"
+            },
+            {
+               "offset" : 16,
+               "value" : "Makati City"
+            },
+            {
+               "offset" : 29,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 37,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Makati Sports Club, Gallardo Streets, L.P. Leviste Street, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJF1jGkAjJlzMRBEd2dhmLI5I",
+         "reference" : "ChIJF1jGkAjJlzMRBEd2dhmLI5I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makati Sports Club",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gallardo Streets, L.P. Leviste Street, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makati Sports Club"
+            },
+            {
+               "offset" : 20,
+               "value" : "Gallardo Streets"
+            },
+            {
+               "offset" : 38,
+               "value" : "L.P. Leviste Street"
+            },
+            {
+               "offset" : 59,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 67,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 81,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "PSI Sports Inc., Davila, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 4
+            },
+            {
+               "length" : 6,
+               "offset" : 25
+            }
+         ],
+         "place_id" : "ChIJ7f6HDj_JlzMRsGbsPvyKWns",
+         "reference" : "ChIJ7f6HDj_JlzMRsGbsPvyKWns",
+         "structured_formatting" : 
+         {
+            "main_text" : "PSI Sports Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 4
+               }
+            ],
+            "secondary_text" : "Davila, Makati, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 8
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "PSI Sports Inc."
+            },
+            {
+               "offset" : 17,
+               "value" : "Davila"
+            },
+            {
+               "offset" : 25,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 33,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "home_goods_store",
+            "establishment",
+            "store",
+            "furniture_store",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Sports Complex, Washington, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 28
+            }
+         ],
+         "place_id" : "ChIJVVWVWQ3JlzMRkoDVNeVHzXg",
+         "reference" : "ChIJVVWVWQ3JlzMRkoDVNeVHzXg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sports Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Washington, Makati, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 12
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sports Complex"
+            },
+            {
+               "offset" : 16,
+               "value" : "Washington"
+            },
+            {
+               "offset" : 28,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 36,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 50,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

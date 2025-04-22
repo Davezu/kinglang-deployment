@@ -5,7 +5,7 @@ $("#signupForm").submit(function (e) {
         firstName: $("#firstName").val(),
         lastName: $("#lastName").val(),
         email: $("#email").val(),
-        contactNumber: $("#contactNumber").val(),
+        contactNumber: formatPhoneNumberForDB($("#contactNumber").val()),
         password: $("#password").val(),
         confirmPassword: $("#confirmPassword").val()
     }
@@ -52,3 +52,19 @@ $("#signupForm").submit(function (e) {
         }
     });
 });
+
+// Helper function to format phone number for database storage
+function formatPhoneNumberForDB(value) {
+    if (!value || value.trim() === '') return '';
+    
+    // Remove all non-digits from the value
+    const digits = value.replace(/\D/g, '');
+    
+    // If it doesn't have 11 digits or doesn't start with 09, return as is
+    if (digits.length !== 11 || digits.substring(0, 2) !== '09') {
+        return digits;
+    }
+    
+    // Format as 09XX-XXX-XXXX
+    return `${digits.substring(0, 4)}-${digits.substring(4, 7)}-${digits.substring(7, 11)}`;
+}

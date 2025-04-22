@@ -10,86 +10,268 @@
     <link rel="stylesheet" href="/../../../public/css/assets/cancel_modal.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Booking Request Details</title>
+    <style>
+        body, html {
+            overflow-x: hidden;
+        }
+        .content {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .booking-header {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .detail-card {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+            height: 100%;
+            margin-bottom: 0;
+        }
+        /* .detail-card:hover {
+            transform: translateY(-3px);
+        } */
+        .card-header {
+            padding: 8px 15px;
+        }
+        .card-body {
+            padding: 10px 15px;
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+        }
+        .cost-card {
+            border-radius: 8px;
+            background: linear-gradient(135deg, #198754 0%, #0f5132 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
+            padding: 10px !important;
+        }
+        /* .cost-card:hover {
+            transform: scale(1.02);
+        } */
+        .input-group {
+            margin-bottom: 8px !important;
+        }
+        .input-group-text {
+            min-width: 120px;
+            padding: 5px 10px;
+            font-size: 0.85rem;
+        }
+        .form-control {
+            padding: 5px 10px;
+            font-size: 0.85rem;
+            height: auto;
+        }
+        .route-table {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 0;
+        }
+        .route-table thead {
+            background-color: #f0f9f4;
+        }
+        .table>:not(caption)>*>* {
+            padding: 6px 10px;
+        }
+        .stops-list .list-group-item {
+            border-left: 3px solid #198754;
+            margin-bottom: 3px;
+            border-radius: 0 5px 5px 0;
+            padding: 5px 10px;
+            font-size: 0.85rem;
+        }
+        .action-btn {
+            border-radius: 50px;
+            padding: 5px 15px;
+            font-weight: 500;
+        }
+        .compact-table td, .compact-table th {
+            font-size: 0.85rem;
+            padding: 5px 10px !important;
+        }
+        .badge {
+            font-size: 0.7rem;
+        }
+        h3 {
+            font-size: 1.4rem;
+        }
+        h5 {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        .fs-1 {
+            font-size: 1.8rem !important;
+        }
+        p.text-muted {
+            font-size: 0.8rem;
+            margin-bottom: 0;
+        }
+        .row.g-2 {
+            --bs-gutter-y: 0.5rem;
+            --bs-gutter-x: 0.5rem;
+        }
+        .container-fluid {
+            padding: 10px 15px;
+        }
+    </style>
 </head>
 <body>
     <?php include_once __DIR__ . "/../assets/sidebar.php"; ?>
     
     <div class="content collapsed" id="content">
-        <div class="container-fluid py-4 px-4 px-xl-5">
-            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
-                <div class="p-0">
-                    <h3>Booking Request Details</h3>
+        <div class="container-fluid py-2 px-3">
+            <div class="booking-header d-flex justify-content-between align-items-center flex-wrap">
+                <div>
+                    <h3 class="mb-0"><i class="bi bi-clipboard-check me-2"></i>Booking Request Details</h3>
+                    <p class="text-muted mb-0">View and manage your booking information</p>
                 </div>
-                <div class="d-flex align-items-center gap-3">
-                    <button id="viewInvoiceBtn" class="btn btn-primary">
-                        <i class="bi bi-file-earmark-text me-2"></i>View Invoice
+                <div class="d-flex align-items-center gap-2 mt-0">
+                    <button id="viewInvoiceBtn" class="btn btn-primary btn-sm action-btn">
+                        <i class="bi bi-file-earmark-text me-1"></i>View Invoice
                     </button>
                     <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
                 </div>
             </div>
 
-            <div class="card shadow-sm mt-4">
-                <div class="card-body">
-                    <div class="row mb-4">
-                        <div class="col-md-6">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text bg-success-subtle">Pickup Point</span>
-                                <input type="text" class="form-control" id="pickupPoint" readonly>
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text bg-success-subtle">Destination</span>
-                                <input type="text" class="form-control" id="destination" readonly>
-                            </div>
+            <div class="row g-2">
+                <!-- Trip Information -->
+                <div class="col-12">
+                    <div class="detail-card card">
+                        <div class="card-header bg-white py-2">
+                            <h5 class="mb-0"><i class="bi bi-geo-alt me-1"></i>Trip Information</h5>
                         </div>
-                        <div class="col-md-6">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text bg-success-subtle">Number of Buses</span>
-                                <input type="text" class="form-control" id="numberOfBuses" readonly>
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text bg-success-subtle">Number of Days</span>
-                                <input type="text" class="form-control" id="numberOfDays" readonly>
+                        <div class="card-body py-2">
+                            <div class="row g-2">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-success-subtle text-success pe-0">
+                                            <i class="bi bi-cursor-fill me-1"></i>Pickup
+                                        </span>
+                                        <input type="text" class="form-control" id="pickupPoint" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-success-subtle text-success">
+                                            <i class="bi bi-geo-fill me-1"></i>Destination
+                                        </span>
+                                        <input type="text" class="form-control" id="destination" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-success-subtle text-success">
+                                            <i class="bi bi-bus-front me-1"></i>Buses
+                                        </span>
+                                        <input type="text" class="form-control" id="numberOfBuses" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-success-subtle text-success">
+                                            <i class="bi bi-calendar3 me-1"></i>Days
+                                        </span>
+                                        <input type="text" class="form-control" id="numberOfDays" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-success-subtle text-success">
+                                            <i class="bi bi-clock-fill me-1"></i>Pickup Time
+                                        </span>
+                                        <input type="text" class="form-control" id="pickupTime" readonly>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="mb-4">
-                        <h5 class="mb-3">Stops</h5>
-                        <div id="stops" class="list-group"></div>
-                    </div>
-
-                    <div class="mb-4">
-                        <h5 class="mb-3">Route Details</h5>
-                        <div class="table-responsive">
-                            <table class="table table-hover overflow-hidden rounded">
-                                <thead>
-                                    <tr>
-                                        <th>From</th>
-                                        <th>To</th>
-                                        <th>Distance</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody"></tbody>
-                            </table>
+                </div>
+                
+                <div class="col-md-8">
+                    <!-- Route Details -->
+                    <div class="detail-card card">
+                        <div class="card-header bg-white py-2">
+                            <h5 class="mb-0"><i class="bi bi-map me-1"></i>Route Details</h5>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text bg-success-subtle">Diesel Price</span>
-                                <input type="text" class="form-control" id="dieselPrice" readonly>
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text bg-success-subtle">Total Distance</span>
-                                <input type="text" class="form-control" id="totalDistance" readonly>
+                        <div class="card-body py-2">
+                            <div class="table-responsive">
+                                <table class="table table-hover route-table compact-table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th><i class="bi bi-arrow-up-right-circle me-1"></i>From</th>
+                                            <th><i class="bi bi-arrow-down-right-circle me-1"></i>To</th>
+                                            <th><i class="bi bi-rulers me-1"></i>Distance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody"></tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card bg-success text-white">
-                                <div class="card-body">
-                                    <h5 class="card-title">Total Cost</h5>
-                                    <p class="card-text h4" id="totalCost"></p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="row g-2">
+                        <!-- Cost Details -->
+                        <div class="col-12">
+                            <div class="detail-card card">
+                                <div class="card-header bg-white py-2">
+                                    <h5 class="mb-0"><i class="bi bi-cash-coin me-1"></i>Cost Information</h5>
+                                </div>
+                                <div class="card-body py-2">
+                                    <div class="row g-2">
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-success-subtle text-success">
+                                                    <i class="bi bi-fuel-pump me-1"></i>Diesel
+                                                </span>
+                                                <input type="text" class="form-control" id="dieselPrice" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-success-subtle text-success">
+                                                    <i class="bi bi-signpost-split me-1"></i>Distance
+                                                </span>
+                                                <input type="text" class="form-control" id="totalDistance" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-1">
+                                            <div class="cost-card card text-white">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <h6 class="mb-0 text-white-50" style="font-size: 0.8rem;">Total Trip Cost</h6>
+                                                        <h3 class="mb-0" id="totalCost" style="font-size: 1.2rem;"></h3>
+                                                    </div>
+                                                    <i class="bi bi-cash-stack text-white-50" style="font-size: 1.5rem;"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stops -->
+                        <div class="col-12">
+                            <div class="detail-card card">
+                                <div class="card-header bg-white py-2">
+                                    <h5 class="mb-0"><i class="bi bi-pin-map me-1"></i>Planned Stops</h5>
+                                </div>
+                                <div class="card-body py-2">
+                                    <div id="stops" class="list-group stops-list" style="max-height: 120px; overflow-y: auto;"></div>
                                 </div>
                             </div>
                         </div>
@@ -149,7 +331,7 @@
                                                 <p class="mb-1"><strong>Number of Days:</strong> <span id="invoiceNumberOfDays"></span></p>
                                                 <p class="mb-1"><strong>Number of Buses:</strong> <span id="invoiceNumberOfBuses"></span></p>
                                                 <p class="mb-1"><strong>Total Distance:</strong> <span id="invoiceTotalDistance"></span></p>
-                                                <p class="mb-1"><strong>Rate Per Bus:</strong> <span id="invoiceBaseRatePerBus"></span></p>
+                                                <p class="mb-1"><strong>Base Rental Rate Per Bus:</strong> <span id="invoiceBaseRatePerBus"></span></p>
                                             </div>
                                         </div>
                                     </div>
@@ -233,7 +415,7 @@
                 const distances = data.distances;
 
                 const totalDistanceInKm = (data.distances.map(distance => parseFloat(distance.distance)).reduce((acc, curr) => acc + curr, 0) / 1000).toFixed(2);
-                const dieselPrice = parseFloat(data.diesel);
+                const dieselPrice = parseFloat(booking.diesel_price);
                 const numberOfDays = parseInt(booking.number_of_days);
                 const numberOfBuses = parseInt(booking.number_of_buses);
 
@@ -242,10 +424,11 @@
                 console.log("Booking info: ", data);
 
                 document.getElementById("pickupPoint").value = booking.pickup_point;
+                document.getElementById("pickupTime").value = booking.pickup_time;
                 document.getElementById("destination").value = booking.destination;
                 document.getElementById("numberOfBuses").value = numberOfBuses;
                 document.getElementById("numberOfDays").value = numberOfDays;
-                document.getElementById("dieselPrice").value = dieselPrice + " Pesos per liter";
+                document.getElementById("dieselPrice").value = dieselPrice + " PHP";
                 document.getElementById("totalDistance").value = totalDistanceInKm + " km";
                 document.getElementById("totalCost").textContent = booking.total_cost + " Pesos";
 
@@ -265,12 +448,15 @@
 
                 const stopsContainer = document.getElementById("stops");
                 if (stops.length === 0) {
-                    stopsContainer.innerHTML = '<div class="list-group-item">No stops</div>';
+                    stopsContainer.innerHTML = '<div class="list-group-item">No stops planned for this trip</div>';
                 } else {
-                    stops.forEach(stop => {
+                    stops.forEach((stop, index) => {
                         const stopElement = document.createElement("div");
-                        stopElement.className = "list-group-item";
-                        stopElement.textContent = stop.location;
+                        stopElement.className = "list-group-item d-flex align-items-center";
+                        stopElement.innerHTML = `
+                            <span class="badge bg-success rounded-pill me-2">${index + 1}</span>
+                            <span>${stop.location}</span>
+                        `;
                         stopsContainer.appendChild(stopElement);
                     });
                 }
@@ -311,16 +497,22 @@
             
             // Update status badge color based on payment status
             const invoiceStatus = document.getElementById("invoiceStatus");
-            if (booking.payment_status === "paid") {
+            if (booking.payment_status === "Paid") {
                 invoiceStatus.textContent = "Paid";
                 invoiceStatus.className = "badge bg-success";
-            } else if (booking.payment_status === "partially paid") {
+            } else if (booking.payment_status === "Partially Paid") {
                 invoiceStatus.textContent = "Partially Paid";
                 invoiceStatus.className = "badge bg-warning text-dark";
             } else {
                 invoiceStatus.textContent = "Unpaid";
                 invoiceStatus.className = "badge bg-danger";
             }
+
+            // Format numbers using currency formatter
+            const formatter = new Intl.NumberFormat('en-PH', {
+                style: 'currency',
+                currency: 'PHP'
+            });
             
             // Set trip details
             document.getElementById("invoicePickupPoint").textContent = booking.pickup_point;
@@ -330,56 +522,47 @@
             document.getElementById("invoiceNumberOfDays").textContent = numberOfDays;
             document.getElementById("invoiceNumberOfBuses").textContent = numberOfBuses;
             document.getElementById("invoiceTotalDistance").textContent = totalDistanceInKm + " km";
-            document.getElementById("invoiceBaseRatePerBus").textContent = booking.base_cost + " Pesos per bus";
+            document.getElementById("invoiceBaseRatePerBus").textContent = formatter.format(parseFloat(booking.base_rate));
             
             // Calculate costs and populate the invoice items
             const baseRatePerBus = booking.base_cost;
             const baseRatePerKm = dieselPrice;
-            const distanceCost = totalDistanceInKm * baseRatePerKm;
             const daysMultiplier = numberOfDays;
             const busesMultiplier = numberOfBuses;
-            
-            // Format numbers using currency formatter
-            const formatter = new Intl.NumberFormat('en-PH', {
-                style: 'currency',
-                currency: 'PHP'
-            });
             
             // Populate invoice items table
             const invoiceItems = document.getElementById("invoiceItems");
             invoiceItems.innerHTML = "";
+
+            // Add diesel price item
+            const dieselPriceRow = document.createElement("tr");
+            dieselPriceRow.innerHTML = `
+                <td>Current diesel price</td>
+                <td class="text-end">${formatter.format(booking.diesel_price)}</td>
+            `;
             
             // Add base rate item
             const baseRateRow = document.createElement("tr");
             baseRateRow.innerHTML = `
-                <td>Base rate per kilometer</td>
-                <td class="text-end">${formatter.format(baseRatePerKm)} per km</td>
+                <td>Base rental rate per bus</td>
+                <td class="text-end">${formatter.format(booking.base_rate)}</td>
             `;
-            invoiceItems.appendChild(baseRateRow);
+
+            // Add base cost item
+            const baseCostRow = document.createElement("tr");
+            baseCostRow.innerHTML = `
+                <td>Base cost (${booking.number_of_days} days × ${booking.number_of_buses} buses × ${formatter.format(booking.base_rate)} base rate)</td>
+                <td class="text-end">${formatter.format(booking.base_cost)}</td>
+            `;
             
             // Add distance cost
-            const distanceCostRow = document.createElement("tr");
-            distanceCostRow.innerHTML = `
-                <td>Distance cost (${totalDistanceInKm} km × ${formatter.format(baseRatePerKm)})</td>
-                <td class="text-end">${formatter.format(distanceCost)}</td>
+            const dieselCostRow = document.createElement("tr");
+            dieselCostRow.innerHTML = `
+                <td>Diesel cost (${totalDistanceInKm} km × ${formatter.format(booking.diesel_price)} per liter)</td>
+                <td class="text-end">${formatter.format(booking.diesel_cost)}</td>
             `;
-            invoiceItems.appendChild(distanceCostRow);
-            
-            // Add days multiplier
-            const daysRow = document.createElement("tr");
-            daysRow.innerHTML = `
-                <td>Number of days × ${daysMultiplier}</td>
-                <td class="text-end">${formatter.format(distanceCost * daysMultiplier)}</td>
-            `;
-            invoiceItems.appendChild(daysRow);
-            
-            // Add buses multiplier
-            const busesRow = document.createElement("tr");
-            busesRow.innerHTML = `
-                <td>Number of buses × ${busesMultiplier}</td>
-                <td class="text-end">${formatter.format(booking.total_cost)}</td>
-            `;
-            invoiceItems.appendChild(busesRow);
+
+            invoiceItems.append(dieselPriceRow, baseRateRow, baseCostRow, dieselCostRow);   
             
             // Set the totals
             document.getElementById("invoiceTotalCost").textContent = formatter.format(booking.total_cost);
@@ -402,7 +585,23 @@
             printWindow.document.write('<head>');
             printWindow.document.write('<title>Invoice - Kinglang Bus Booking</title>');
             printWindow.document.write('<link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">');
-            printWindow.document.write('<style>body { padding: 20px; } @media print { body { padding: 0; } }</style>');
+            printWindow.document.write('<style>');
+            printWindow.document.write('body { padding: 10px; }');
+            printWindow.document.write('@media print {');
+            printWindow.document.write('  body { padding: 0; }');
+            printWindow.document.write('  .container-fluid { max-width: 100%; }');
+            printWindow.document.write('  .table { font-size: 12px; }');
+            printWindow.document.write('  .mb-4 { margin-bottom: 0.5rem !important; }');
+            printWindow.document.write('  .card { margin-bottom: 0.5rem !important; }');
+            printWindow.document.write('  p { margin-bottom: 0.2rem !important; }');
+            printWindow.document.write('  h3 { font-size: 18px; }');
+            printWindow.document.write('  h6 { font-size: 14px; }');
+            printWindow.document.write('  .card-body { padding: 0.5rem !important; }');
+            printWindow.document.write('  .alert { padding: 0.5rem !important; margin-bottom: 0 !important; }');
+            printWindow.document.write('  .table td, .table th { padding: 0.3rem !important; }');
+            printWindow.document.write('  @page { size: auto; margin: 5mm; }');
+            printWindow.document.write('}');
+            printWindow.document.write('</style>');
             printWindow.document.write('</head>');
             printWindow.document.write('<body>');
             printWindow.document.write(invoiceContent);

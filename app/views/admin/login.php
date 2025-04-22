@@ -19,8 +19,36 @@ if (is_admin_authenticated()) {
     <link rel="stylesheet" href="../../../public/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../../public/css/login-signup.css">
     <link rel="stylesheet" href="../../../public/css/slideshow.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Log In</title>
+    <style>
+        /* More compact form styling */
+        .form-container .form-label {
+            margin-bottom: 0.25rem;
+        }
+        .form-container .mb-3 {
+            margin-bottom: 0.75rem !important;
+        }
+        .welcome {
+            margin-bottom: 0.25rem;
+        }
+        .sub-message {
+            margin-bottom: 0.5rem;
+        }
+        /* Password field styling */
+        .password-container {
+            position: relative;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 10;
+        }
+    </style>
 </head>
 <body>
 
@@ -43,19 +71,63 @@ if (is_admin_authenticated()) {
                 <div class="slideshow-slide">
                     <img src="../../../public/images/bus3.jpg" alt="Bus Image 1">
                     <div class="slideshow-text">YOUR ON-THE-GO TOURIST BUS RENTAL!</div>
+                    <div class="slideshow-contact-info">
+                        <div class="slideshow-contact-details">
+                            <a href="tel:0917-8822727" class="contact-item">
+                                <span>📞 0917 882 2727 | 0933 862 4323</span>
+                            </a>
+                            <a href="mailto:bsmillamina@yahoo.com" class="contact-item">
+                                <span>✉️ bsmillamina@yahoo.com</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="slideshow-slide">
                     <img src="../../../public/images/slideshow/slide2.jpg" alt="Bus Image 2">
                     <div class="slideshow-text">EXPERIENCE COMFORT AND LUXURY</div>
+                    <div class="slideshow-contact-info">
+                        <div class="slideshow-contact-details">
+                            <a href="tel:0917-8822727" class="contact-item">
+                                <span>📞 0917 882 2727 | 0933 862 4323</span>
+                            </a>
+                            <a href="mailto:bsmillamina@yahoo.com" class="contact-item">
+                                <span>✉️ bsmillamina@yahoo.com</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="slideshow-slide">
                     <img src="../../../public/images/slideshow/slide3.jpg" alt="Bus Image 3">
                     <div class="slideshow-text">TRAVEL WITH STYLE AND SAFETY</div>
+                    <div class="slideshow-contact-info">
+                        <div class="slideshow-contact-details">
+                            <a href="tel:0917-8822727" class="contact-item">
+                                <span>📞 0917 8822 727 | 0933 862 4323</span>
+                            </a>
+                            <a href="mailto:bsmillamina@yahoo.com" class="contact-item">
+                                <span>✉️ bsmillamina@yahoo.com</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slideshow-slide">
+                    <img src="../../../public/images/slideshow/slide4.jpg" alt="Bus Image 4">
+                    <div class="slideshow-text">TRAVEL WITH STYLE AND SAFETY</div>
+                    <div class="slideshow-contact-info">
+                        <div class="slideshow-contact-details">
+                            <a href="tel:0917-8822727" class="contact-item">
+                                <span>📞 0917 8822 727 | 0933 862 4323</span>
+                            </a>
+                            <a href="mailto:bsmillamina@yahoo.com" class="contact-item">
+                                <span>✉️ bsmillamina@yahoo.com</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="form-container d-flex flex-column justify-content-center">
-            <form action="" method="" id="loginForm" class="d-flex flex-column p-lg-5 m-lg-5">
+            <form action="" method="" id="loginForm" class="d-flex flex-column p-lg-4 m-lg-4">
                 <div class="mb-3">
                     <p class="welcome h3 text-success">Welcome back Admin!</p>
                     <p class="sub-message text-warning">Please login to continue to your account.</p>
@@ -66,8 +138,12 @@ if (is_admin_authenticated()) {
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label text-secondary">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" requred>
-                    <!-- <p class="sub-message">Use 8 or more characters with a mix of letters, numbers, & symbols</p> -->
+                    <div class="password-container">
+                        <input type="password" name="password" id="password" class="form-control" required>
+                        <span class="password-toggle" onclick="togglePasswordVisibility()">
+                            <i class="bi bi-eye" id="togglePassword"></i>
+                        </span>
+                    </div>
                 </div>
 
                 <button type="submit" name="login" class="btn btn-success w-100 text-white fw-bold rounded-pill p-2">Log In</button>    
@@ -80,5 +156,21 @@ if (is_admin_authenticated()) {
     <script src="../../../public/js/jquery/jquery-3.6.4.min.js"></script>
     <script src="../../../public/js/slideshow.js"></script>
     <script src="../../../public/js/admin/login.js"></script>
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('togglePassword');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('bi-eye');
+                toggleIcon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('bi-eye-slash');
+                toggleIcon.classList.add('bi-eye');
+            }
+        }
+    </script>
 </body>
 </html>

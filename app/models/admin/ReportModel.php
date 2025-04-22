@@ -32,18 +32,19 @@ class ReportModel {
             
             $sql = "SELECT 
                 COUNT(*) AS total_bookings,
-                SUM(CASE WHEN status = 'Confirmed' THEN 1 ELSE 0 END) AS confirmed_bookings,
-                SUM(CASE WHEN status = 'Pending' THEN 1 ELSE 0 END) AS pending_bookings,
-                SUM(CASE WHEN status = 'Canceled' THEN 1 ELSE 0 END) AS canceled_bookings,
-                SUM(CASE WHEN status = 'Rejected' THEN 1 ELSE 0 END) AS rejected_bookings,
-                SUM(CASE WHEN status = 'Completed' THEN 1 ELSE 0 END) AS completed_bookings,
-                SUM(CASE WHEN status IN ('Confirmed', 'Completed') THEN total_cost ELSE 0 END) AS total_revenue,
-                SUM(CASE WHEN payment_status = 'Paid' THEN total_cost ELSE 0 END) AS collected_revenue,
-                SUM(CASE WHEN payment_status = 'Partially Paid' THEN balance ELSE 0 END) AS outstanding_balance,
-                AVG(total_cost) AS average_booking_value,
-                SUM(number_of_buses) AS total_buses_booked,
-                SUM(number_of_days) AS total_days_booked
-            FROM bookings 
+                SUM(CASE WHEN b.status = 'Confirmed' THEN 1 ELSE 0 END) AS confirmed_bookings,
+                SUM(CASE WHEN b.status = 'Pending' THEN 1 ELSE 0 END) AS pending_bookings,
+                SUM(CASE WHEN b.status = 'Canceled' THEN 1 ELSE 0 END) AS canceled_bookings,
+                SUM(CASE WHEN b.status = 'Rejected' THEN 1 ELSE 0 END) AS rejected_bookings,
+                SUM(CASE WHEN b.status = 'Completed' THEN 1 ELSE 0 END) AS completed_bookings,
+                SUM(CASE WHEN b.status IN ('Confirmed', 'Completed') THEN c.total_cost ELSE 0 END) AS total_revenue,
+                SUM(CASE WHEN b.payment_status = 'Paid' THEN c.total_cost ELSE 0 END) AS collected_revenue,
+                SUM(CASE WHEN b.payment_status = 'Partially Paid' THEN balance ELSE 0 END) AS outstanding_balance,
+                AVG(c.total_cost) AS average_booking_value,
+                SUM(b.number_of_buses) AS total_buses_booked,
+                SUM(b.number_of_days) AS total_days_booked
+            FROM bookings b
+            JOIN booking_costs c ON b.booking_id = c.booking_id
             $whereClause";
             
             $stmt = $this->conn->prepare($sql);
@@ -83,12 +84,13 @@ class ReportModel {
             }
             
             $sql = "SELECT 
-                MONTH(date_of_tour) AS month,
-                COUNT(*) AS total_bookings,
-                SUM(total_cost) AS total_revenue
-            FROM bookings
+                MONTH(b.date_of_tour) AS month,
+                COUNT(b.booking_id) AS total_bookings,
+                SUM(c.total_cost) AS total_revenue
+            FROM bookings b
+            JOIN booking_costs c ON b.booking_id = c.booking_id
             $whereClause
-            GROUP BY MONTH(date_of_tour)
+            GROUP BY MONTH(b.date_of_tour)
             ORDER BY month";
             
             $stmt = $this->conn->prepare($sql);
@@ -141,12 +143,13 @@ class ReportModel {
             }
             
             $sql = "SELECT 
-                destination,
-                COUNT(*) as booking_count,
-                SUM(total_cost) as total_revenue
-            FROM bookings
+                b.destination,
+                COUNT(b.booking_id) as booking_count,
+                SUM(c.total_cost) as total_revenue
+            FROM bookings b
+            JOIN booking_costs c ON b.booking_id = c.booking_id
             $whereClause
-            GROUP BY destination
+            GROUP BY b.destination
             ORDER BY booking_count DESC
             LIMIT :limit";
             
@@ -233,10 +236,11 @@ class ReportModel {
                 c.reason,
                 c.canceled_by,
                 COUNT(*) as cancellation_count,
-                SUM(b.total_cost) as total_value,
+                SUM(bc.total_cost) as total_value,
                 SUM(c.amount_refunded) as total_refunded
             FROM canceled_trips c
             JOIN bookings b ON c.booking_id = b.booking_id
+            JOIN booking_costs bc ON c.booking_id = bc.booking_id
             $whereClause
             GROUP BY c.reason, c.canceled_by
             ORDER BY cancellation_count DESC";
@@ -269,11 +273,12 @@ class ReportModel {
                 b.end_of_tour,
                 b.number_of_buses,
                 b.number_of_days,
-                b.total_cost,
+                c.total_cost,
                 b.status,
                 b.payment_status,
                 b.balance
             FROM bookings b
+            JOIN booking_costs c ON b.booking_id = c.booking_id
             WHERE b.user_id = :user_id
             ORDER BY b.date_of_tour DESC";
             
@@ -341,11 +346,12 @@ class ReportModel {
                 b.number_of_days, 
                 b.number_of_buses, 
                 b.status, 
-                b.total_cost, 
+                c.total_cost, 
                 b.payment_status,
                 b.balance
             FROM bookings b
             JOIN users u ON b.user_id = u.user_id
+            JOIN booking_costs c ON b.booking_id = c.booking_id
             $whereClause
             ORDER BY b.date_of_tour DESC
             LIMIT :limit OFFSET :offset";
@@ -405,12 +411,13 @@ class ReportModel {
             }
             
             $sql = "SELECT 
-                SUM(total_cost) AS total_revenue,
-                SUM(CASE WHEN payment_status = 'Paid' THEN total_cost ELSE 0 END) AS collected_revenue,
-                SUM(CASE WHEN payment_status IN ('Partially Paid', 'Unpaid') THEN balance ELSE 0 END) AS outstanding_balance,
+                SUM(c.total_cost) AS total_revenue,
+                SUM(CASE WHEN b.payment_status = 'Paid' THEN c.total_cost ELSE 0 END) AS collected_revenue,
+                SUM(CASE WHEN b.payment_status IN ('Partially Paid', 'Unpaid') THEN b.balance ELSE 0 END) AS outstanding_balance,
                 COUNT(DISTINCT user_id) AS unique_clients,
-                AVG(total_cost) AS average_booking_value
-            FROM bookings
+                AVG(c.total_cost) AS average_booking_value
+            FROM bookings b
+            JOIN booking_costs c ON b.booking_id = c.booking_id
             $whereClause";
             
             $stmt = $this->conn->prepare($sql);

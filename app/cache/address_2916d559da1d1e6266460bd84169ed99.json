@@ -1,0 +1,255 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Phase 9 Bagong Silang, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjpQaGFzZSA5IEJhZ29uZyBTaWxhbmcsIENhbG9vY2FuLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJxxLh78uvlzMRcjYYKoDm4V8SFAoSCV8bhBm1sZczERotBCXicOcF",
+         "reference" : "EjpQaGFzZSA5IEJhZ29uZyBTaWxhbmcsIENhbG9vY2FuLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJxxLh78uvlzMRcjYYKoDm4V8SFAoSCV8bhBm1sZczERotBCXicOcF",
+         "structured_formatting" : 
+         {
+            "main_text" : "Phase 9 Bagong Silang",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Phase 9 Bagong Silang"
+            },
+            {
+               "offset" : 23,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 33,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Phase 9 Package 6 Covered Court, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJk3RjZSSvlzMRCeWv1Hr6NTg",
+         "reference" : "ChIJk3RjZSSvlzMRCeWv1Hr6NTg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Phase 9 Package 6 Covered Court",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Phase 9 Package 6 Covered Court"
+            },
+            {
+               "offset" : 33,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 43,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Phase 9 Covered court, Barietto, Imus, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJk82LfcLTlzMRqdiNz0jhxBo",
+         "reference" : "ChIJk82LfcLTlzMRqdiNz0jhxBo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Phase 9 Covered court",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Barietto, Imus, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Phase 9 Covered court"
+            },
+            {
+               "offset" : 23,
+               "value" : "Barietto"
+            },
+            {
+               "offset" : 33,
+               "value" : "Imus"
+            },
+            {
+               "offset" : 39,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Phase 9 Damayan Basketball Court, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZe-rIVCvlzMRsWWf90iZXv0",
+         "reference" : "ChIJZe-rIVCvlzMRsWWf90iZXv0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Phase 9 Damayan Basketball Court",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Phase 9 Damayan Basketball Court"
+            },
+            {
+               "offset" : 34,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 44,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Phase 9 Bagong Silang Barangay Outpost, Langit Road, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJE3FnSsyvlzMRUvCWpinZDAo",
+         "reference" : "ChIJE3FnSsyvlzMRUvCWpinZDAo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Phase 9 Bagong Silang Barangay Outpost",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Langit Road, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Phase 9 Bagong Silang Barangay Outpost"
+            },
+            {
+               "offset" : 40,
+               "value" : "Langit Road"
+            },
+            {
+               "offset" : 53,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 63,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 77,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "local_government_office",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -30,9 +30,10 @@ class BookingManagementModel {
 
         try {   
             $stmt = $this->conn->prepare("
-                SELECT b.booking_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, b.number_of_days, b.number_of_buses, b.status, b.total_cost, b.payment_status
+                SELECT b.booking_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, b.number_of_days, b.number_of_buses, b.status, b.payment_status, c.total_cost, b.balance
                 FROM bookings b
                 JOIN users u ON b.user_id = u.user_id
+                JOIN booking_costs c ON b.booking_id = c.booking_id
                 WHERE is_rebooking = 0 AND is_rebooked = 0
                 $status
                 ORDER BY $column $order 
@@ -140,10 +141,11 @@ class BookingManagementModel {
 
         try {
             $stmt = $this->conn->prepare("
-                SELECT b.booking_id, r.request_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, u.email, b.destination, b.pickup_point, b.number_of_days, b.number_of_buses, r.status, b.payment_status, b.total_cost, b.balance, b.date_of_tour, b.end_of_tour
+                SELECT b.booking_id, r.request_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, u.email, b.destination, b.pickup_point, b.number_of_days, b.number_of_buses, r.status, b.payment_status, c.total_cost, b.balance, b.date_of_tour, b.end_of_tour
                 FROM rebooking_request r
                 JOIN users u ON r.user_id = u.user_id
                 JOIN bookings b ON r.rebooking_id = b.booking_id
+                JOIN booking_costs c ON r.booking_id = c.booking_id
                 $status
                 ORDER BY $column $order
             ");
@@ -290,14 +292,14 @@ class BookingManagementModel {
             $bookingInfo = $this->getBooking($booking_id);
             
             // Add admin notification
-            // $message = "Booking canceled for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
-            // $this->notificationModel->addNotification("booking_canceled", $message, $booking_id);
+            $message = "Booking canceled for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
+            $this->notificationModel->addNotification("booking_canceled", $message, $booking_id);
             
-            // // Add client notification
-            // $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been canceled. ";
-            // if ($amount_refunded > 0) {
-            //     $clientMessage .= "Refunded amount: " . $amount_refunded;
-            // }
+            // Add client notification
+            $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been canceled. ";
+            if ($amount_refunded > 0) {
+                $clientMessage .= "Refunded amount: " . $amount_refunded;
+            }
             $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "booking_canceled", $clientMessage, $booking_id);
 
             return ["success" => true];
@@ -393,14 +395,15 @@ class BookingManagementModel {
             
             $stmt = $this->conn->prepare("
                 SELECT 
-                    MONTH(date_of_tour) as month,
-                    COUNT(booking_id) as booking_count,
-                    SUM(CASE WHEN payment_status IN ('Paid', 'Partially Paid') AND status IN ('Confirmed', 'Completed') THEN total_cost ELSE 0 END) as total_revenue
-                FROM bookings 
-                WHERE YEAR(date_of_tour) = :year
-                AND is_rebooking = 0
-                AND is_rebooked = 0
-                GROUP BY MONTH(date_of_tour)
+                    MONTH(b.date_of_tour) as month,
+                    COUNT(b.booking_id) as booking_count,
+                    SUM(CASE WHEN p.status = 'Confirmed' AND is_canceled = 0 THEN p.amount ELSE 0 END) as total_revenue
+                FROM bookings b
+                JOIN payments p ON b.booking_id = p.booking_id
+                WHERE YEAR(b.date_of_tour) = :year
+                AND b.is_rebooking = 0
+                AND b.is_rebooked = 0
+                GROUP BY MONTH(b.date_of_tour)
                 ORDER BY month
             ");
             $stmt->bindValue(':year', $year);
@@ -453,13 +456,14 @@ class BookingManagementModel {
         try {
             $stmt = $this->conn->prepare("
                 SELECT 
-                    destination,
-                    COUNT(*) as trip_count,
-                    SUM(total_cost) as total_revenue
-                FROM bookings
-                WHERE status IN ('Confirmed', 'Completed')
-                AND is_rebooked = 0
-                GROUP BY destination
+                    b.destination,
+                    COUNT(b.booking_id) as trip_count,
+                    SUM(CASE WHEN b.payment_status IN ('Paid', 'Partially Paid') AND b.status IN ('Confirmed', 'Completed') THEN c.total_cost ELSE 0 END) as total_revenue
+                FROM bookings b
+                JOIN booking_costs c ON b.booking_id = c.booking_id
+                WHERE b.status IN ('Confirmed', 'Completed')
+                AND b.is_rebooked = 0
+                GROUP BY b.destination
                 ORDER BY trip_count DESC
                 LIMIT 5
             ");
@@ -504,13 +508,14 @@ class BookingManagementModel {
         try {
             $stmt = $this->conn->prepare("
                 SELECT 
-                    status,
-                    COUNT(*) as count,
-                    SUM(total_cost) as total_value
-                FROM bookings
-                WHERE is_rebooked = 0
-                AND is_rebooking = 0
-                GROUP BY status
+                    b.status,
+                    COUNT(b.booking_id) as count,
+                    SUM(c.total_cost) as total_value
+                FROM bookings b
+                JOIN booking_costs c ON b.booking_id = c.booking_id
+                WHERE b.is_rebooked = 0
+                AND b.is_rebooking = 0
+                GROUP BY b.status
                 ORDER BY count DESC
             ");
             $stmt->execute();
@@ -575,18 +580,19 @@ class BookingManagementModel {
             // Get data for last 6 months
             $stmt = $this->conn->prepare("
                 SELECT 
-                    DATE_FORMAT(date_of_tour, '%Y-%m') as month_year,
-                    MONTH(date_of_tour) as month,
-                    YEAR(date_of_tour) as year,
-                    COUNT(*) as booking_count,
-                    SUM(total_cost) as total_revenue
-                FROM bookings
-                WHERE status IN ('Confirmed', 'Completed')
-                AND payment_status IN ('Paid', 'Partially Paid')
-                AND is_rebooked = 0
-                AND is_rebooking = 0
-                AND date_of_tour >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
-                GROUP BY month_year, YEAR(date_of_tour), MONTH(date_of_tour)
+                    DATE_FORMAT(b.date_of_tour, '%Y-%m') as month_year,
+                    MONTH(b.date_of_tour) as month,
+                    YEAR(b.date_of_tour) as year,
+                    COUNT(b.booking_id) as booking_count,
+                    SUM(c.total_cost) as total_revenue
+                FROM bookings b
+                JOIN booking_costs c ON b.booking_id = c.booking_id
+                WHERE b.status IN ('Confirmed', 'Completed')
+                AND b.payment_status IN ('Paid', 'Partially Paid')
+                AND b.is_rebooked = 0
+                AND b.is_rebooking = 0
+                AND b.date_of_tour >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
+                GROUP BY month_year, YEAR(b.date_of_tour), MONTH(b.date_of_tour)
                 ORDER BY year, month
             ");
             $stmt->execute();

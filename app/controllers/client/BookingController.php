@@ -303,22 +303,22 @@ class BookingController {
         $base_rate = $regional_rates[$farthest_region] ?? $regional_rates['Region 4A'];
 
         // Calculate base cost using regional rate
-        $base_cost = $base_rate * $number_of_buses * $number_of_days;
+        $base_cost = round($base_rate * $number_of_buses * $number_of_days, 2);
         
         // Calculate fuel cost based on distance and diesel price
-        $fuel_cost = $distance * $diesel_price;
+        $diesel_cost = round($distance * $diesel_price, 2);
         
         // Total cost is base cost plus fuel cost
-        $total_cost = $base_cost + $fuel_cost;
+        $total_cost = round($base_cost + $diesel_cost, 2);
 
         echo json_encode([
             "success" => true, 
             "total_cost" => $total_cost,
             "base_rate" => $base_rate,
             "base_cost" => $base_cost,
-            "fuel_cost" => $fuel_cost,
+            "diesel_price" => $diesel_price,
+            "diesel_cost" => $diesel_cost,
             "region" => $farthest_region,
-            "rate" => $base_rate,
             "location_regions" => $location_regions // Include this for debugging
         ]);
     }
@@ -442,6 +442,7 @@ class BookingController {
             $destination = $data["destination"];
             $stops = $data["stops"] ?? [];
             $pickup_point = $data["pickupPoint"];
+            $pickup_time = $data["pickupTime"] ?? null;
             $number_of_buses = (int) $data["numberOfBuses"];
             $number_of_days = (int) $data["numberOfDays"];
             $user_id = $_SESSION["user_id"];
@@ -454,8 +455,12 @@ class BookingController {
             
             // Optional new fields for cost breakdown
             $region = $data["region"] ?? null;
+
             $base_cost = $data["baseCost"] ?? null;
-            $fuel_cost = $data["fuelCost"] ?? null;
+            $diesel_cost = $data["dieselCost"] ?? null;
+            $base_rate = $data["baseRate"] ?? null;
+            $diesel_price = $data["dieselPrice"] ?? null;
+            $total_distance = $data["totalDistance"] ?? null;
 
             // If we received region info but didn't calculate it properly, recalculate
             if (!$region) {
@@ -506,9 +511,13 @@ class BookingController {
                 $addresses, 
                 $is_rebooking, 
                 $rebooking_id,
-                $region, 
+                
                 $base_cost, 
-                $fuel_cost
+                $diesel_cost,
+                $base_rate,
+                $diesel_price,
+                $total_distance,
+                $pickup_time
             );
             
             // Create notification for admin if booking was successful
@@ -586,10 +595,9 @@ class BookingController {
         $booking = $this->bookingModel->getBooking($booking_id, $user_id);
         $stops = $this->bookingModel->getBookingStops($booking_id);
         $distances = $this->bookingModel->getTripDistances($booking_id);
-        $diesel = $this->bookingModel->getDieselPrice();
 
         if ($booking) {
-            echo json_encode(["success" => true, "booking" => $booking, "stops" => $stops, "distances" =>  $distances, "diesel" => $diesel]);
+            echo json_encode(["success" => true, "booking" => $booking, "stops" => $stops, "distances" =>  $distances]);
         } else {
             echo json_encode(["success" => false, "message" => $booking]);
         }

@@ -153,8 +153,8 @@
          ],
          "types" : 
          [
-            "subpremise",
-            "geocode"
+            "geocode",
+            "subpremise"
          ]
       },
       {

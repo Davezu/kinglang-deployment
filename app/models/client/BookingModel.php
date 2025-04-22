@@ -20,7 +20,7 @@ class Booking {
         }
     }
 
-    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $is_rebooking, $rebooking_id, $region = null, $base_cost = null, $fuel_cost = null) {
+    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $is_rebooking, $rebooking_id, $base_cost = null, $diesel_cost = null, $base_rate = null, $diesel_price = null, $total_distance = null, $pickup_time = null) {
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
 
         try {
@@ -31,25 +31,22 @@ class Booking {
             }
 
             if ($is_rebooking && $this->bookingIsNotConfirmed($rebooking_id)) {
-                $this->updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $region, $base_cost, $fuel_cost);
+                $this->updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $base_cost, $diesel_cost, $base_rate, $diesel_price, $total_distance, $pickup_time);
                 return ["success" => true, "message" => "Booking updated successfully!"];
             }
 
-            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, number_of_days, number_of_buses, user_id, total_cost, balance, is_rebooking, region, base_cost, fuel_cost) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :number_of_days, :number_of_buses, :user_id, :total_cost, :balance, :is_rebooking, :region, :base_cost, :fuel_cost)");
+            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, pickup_time, number_of_days, number_of_buses, user_id, balance, is_rebooking) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :pickup_time, :number_of_days, :number_of_buses, :user_id, :balance, :is_rebooking)");
             $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
                 ":end_of_tour" => $end_of_tour,
                 ":destination" => $destination,
                 ":pickup_point" => $pickup_point,
+                ":pickup_time" => $pickup_time,
                 ":number_of_days" => $number_of_days,       
                 ":number_of_buses" => $number_of_buses,
                 ":user_id" => $user_id,
-                ":total_cost" => $total_cost,
                 ":balance" => $balance,
                 ":is_rebooking" => $is_rebooking,
-                ":region" => $region,
-                ":base_cost" => $base_cost,
-                ":fuel_cost" => $fuel_cost
             ]);
 
             $booking_id = $this->conn->lastInsertID(); // get the added booking id to insert it in booking buses table
@@ -57,6 +54,17 @@ class Booking {
             if ($is_rebooking) {
                 $this->requestRebooking($rebooking_id, $booking_id, $_SESSION["user_id"]);
             }
+
+            $stmt = $this->conn->prepare("INSERT INTO booking_costs (booking_id, base_rate, base_cost, diesel_price, diesel_cost, total_cost, total_distance) VALUES (:booking_id, :base_rate, :base_cost, :diesel_price, :diesel_cost, :total_cost, :total_distance)");
+            $stmt->execute([
+                ":booking_id" => $booking_id,
+                ":base_rate" => $base_rate,
+                ":base_cost" => $base_cost,
+                ":diesel_price" => $diesel_price,
+                ":diesel_cost" => $diesel_cost,
+                ":total_cost" => $total_cost,
+                ":total_distance" => $total_distance,
+            ]);
             
             foreach ($available_buses as $bus_id) {
                 $stmt = $this->conn->prepare("INSERT INTO booking_buses (booking_id, bus_id) VALUES (:booking_id, :bus_id)");
@@ -96,9 +104,10 @@ class Booking {
     public function getBooking($booking_id, $user_id) {
         try {
             $stmt = $this->conn->prepare("
-                SELECT b.*, u.first_name, u.last_name, u.contact_number, u.email 
+                SELECT b.*, u.first_name, u.last_name, u.contact_number, u.email, c.base_cost, c.diesel_cost, c.total_cost, c.base_rate, c.diesel_price
                 FROM bookings b
                 JOIN users u ON b.user_id = u.user_id
+                JOIN booking_costs c ON b.booking_id = c.booking_id
                 WHERE b.booking_id = :booking_id AND b.user_id = :user_id
             ");
             $stmt->execute([
@@ -143,7 +152,7 @@ class Booking {
 
     public function bookingExistsInReschedRequests($booking_id) {
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM reschedule_requests WHERE booking_id = :booking_id AND status != 'Confirmed'");
+            $stmt = $this->conn->prepare("SELECT * FROM reschedule_requests WHERE booking_id = :booking_id AND status != 'Confirmed' ORDER BY booking_id DESC");
             $stmt->execute([":booking_id" => $booking_id]);
             $resched_request = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($resched_request) {
@@ -227,8 +236,10 @@ class Booking {
             
             // Get paginated results
             $stmt = $this->conn->prepare("
-                SELECT * FROM bookings 
-                WHERE user_id = :user_id AND is_rebooking = 0 AND is_rebooked = 0
+                SELECT b.booking_id, b.date_of_tour, b.end_of_tour, b.destination, b.pickup_point, b.number_of_days, b.number_of_buses, b.user_id, b.balance, b.status, b.payment_status, b.is_rebooking, b.is_rebooked, c.base_cost, c.diesel_cost, c.total_cost, c.base_rate, c.diesel_price
+                FROM bookings b
+                LEFT JOIN booking_costs c ON b.booking_id = c.booking_id
+                WHERE b.user_id = :user_id AND b.is_rebooking = 0 AND b.is_rebooked = 0
                 $status
                 ORDER BY $column $order
                 LIMIT :limit OFFSET :offset
@@ -325,6 +336,7 @@ class Booking {
             if ($this->isPaymentRequested($booking_id)) {
                 return ["success" => false, "message" => "Payment already requested for this booking."];
             }
+            
             $stmt = $this->conn->prepare("INSERT INTO payments (booking_id, user_id, amount, payment_method, proof_of_payment) VALUES (:booking_id, :user_id, :amount, :payment_method, :proof_of_payment)");
             $stmt->execute([
                 ":booking_id" => $booking_id,
@@ -344,46 +356,7 @@ class Booking {
         }
     }
 
-    public function updatePaymentStatus($booking_id) {
-        try {
-            // This method will now only be called after payment confirmation
-            // by the PaymentManagementModel::confirmPayment method
-            $stmt = $this->conn->prepare("SELECT SUM(amount) AS total_paid FROM payments WHERE booking_id = :booking_id AND status = 'Confirmed'");
-            $stmt->execute([":booking_id" => $booking_id]);
-            $total_paid = $stmt->fetch(PDO::FETCH_ASSOC)["total_paid"] ?? 0;
-
-            $stmt = $this->conn->prepare("SELECT total_cost, balance FROM bookings WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $booking_id]);
-            $total_cost = $stmt->fetch(PDO::FETCH_ASSOC)["total_cost"] ?? 0;
-
-            // Calculate balance with proper rounding to avoid floating point precision is  sues
-            $balance = round($total_cost - $total_paid, 2);
-            
-            // Ensure balance is never a tiny negative number due to floating point precision
-            if ($balance > -0.1 && $balance < 0) {
-                $balance = 0;
-            }
-
-            $new_status = "Unpaid";
-            if ($total_paid > 0 && $total_paid < $total_cost) {
-                $new_status = "partially paid";
-            } elseif ($total_paid >= $total_cost) {
-                $new_status = "paid";
-            }
-
-            $stmt = $this->conn->prepare("UPDATE bookings SET payment_status = :payment_status, status = 'Confirmed', balance = :balance WHERE booking_id = :booking_id");
-            $stmt->execute([
-                ":payment_status" => $new_status,
-                ":booking_id" => $booking_id,
-                ":balance" => $balance
-            ]);
-
-        } catch (PDOException $e) {
-            return "Database error";
-        }
-    }
-
-    public function updateBooking($booking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $region = null, $base_cost = null, $fuel_cost = null) {
+    public function updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $base_cost = null, $diesel_cost = null, $base_rate = null, $diesel_price = null, $total_distance = null, $pickup_time = null) {
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
 
         try {
@@ -394,32 +367,41 @@ class Booking {
             }
 
             // Update the booking
-            $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, end_of_tour = :end_of_tour, destination = :destination, pickup_point = :pickup_point, number_of_days = :number_of_days, number_of_buses = :number_of_buses, total_cost = :total_cost, balance = :balance, region = :region, base_cost = :base_cost, fuel_cost = :fuel_cost WHERE booking_id = :booking_id AND user_id = :user_id");
+            $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, end_of_tour = :end_of_tour, destination = :destination, pickup_point = :pickup_point, pickup_time = :pickup_time, number_of_days = :number_of_days, number_of_buses = :number_of_buses, balance = :balance WHERE booking_id = :booking_id AND user_id = :user_id");
             $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
                 ":end_of_tour" => $end_of_tour,
                 ":destination" => $destination,
                 ":pickup_point" => $pickup_point,
+                ":pickup_time" => $pickup_time,
                 ":number_of_days" => $number_of_days,       
                 ":number_of_buses" => $number_of_buses,
-                ":total_cost" => $total_cost,
                 ":balance" => $balance,
-                ":region" => $region,
-                ":base_cost" => $base_cost,
-                ":fuel_cost" => $fuel_cost,
-                ":booking_id" => $booking_id,
+                ":booking_id" => $rebooking_id,
                 ":user_id" => $user_id
+            ]);
+
+            // Update the booking costs
+            $stmt = $this->conn->prepare("UPDATE booking_costs SET base_rate = :base_rate, base_cost = :base_cost, diesel_price = :diesel_price, diesel_cost = :diesel_cost, total_cost = :total_cost, total_distance = :total_distance WHERE booking_id = :booking_id");
+            $stmt->execute([
+                ":base_rate" => $base_rate,
+                ":base_cost" => $base_cost,
+                ":diesel_price" => $diesel_price,
+                ":diesel_cost" => $diesel_cost,
+                ":total_cost" => $total_cost,
+                ":total_distance" => $total_distance,
+                ":booking_id" => $rebooking_id
             ]);
 
             // Delete existing stops
             $stmt = $this->conn->prepare("DELETE FROM booking_stops WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $booking_id]);
+            $stmt->execute([":booking_id" => $rebooking_id]);
 
             // Insert new stops
             foreach ($stops as $index => $stop) {            
                 $stmt = $this->conn->prepare("INSERT INTO booking_stops (booking_id, location, stop_order) VALUES (:booking_id, :location, :stop_order)");
                 $stmt->execute([
-                    ":booking_id" => $booking_id,
+                    ":booking_id" => $rebooking_id,
                     ":location" => $stop,
                     ":stop_order" => $index + 1
                 ]);
@@ -427,7 +409,7 @@ class Booking {
 
             // Delete existing trip distances
             $stmt = $this->conn->prepare("DELETE FROM trip_distances WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $booking_id]);
+            $stmt->execute([":booking_id" => $rebooking_id]);
 
             // Insert new trip distances
             foreach ($trip_distances["rows"] as $i => $row) {
@@ -440,18 +422,18 @@ class Booking {
                     ":origin" => $origin, 
                     ":destination" => $destination, 
                     ":distance" => $distance_value,     
-                    ":booking_id" => $booking_id
+                    ":booking_id" => $rebooking_id
                 ]);
             }
 
             // Delete existing booking buses
             $stmt = $this->conn->prepare("DELETE FROM booking_buses WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $booking_id]);
+            $stmt->execute([":booking_id" => $rebooking_id]);
 
             // Insert new booking buses
             foreach ($available_buses as $bus_id) {
                 $stmt = $this->conn->prepare("INSERT INTO booking_buses (booking_id, bus_id) VALUES (:booking_id, :bus_id)");
-                $stmt->execute([":booking_id" => $booking_id, ":bus_id" => $bus_id]);
+                $stmt->execute([":booking_id" => $rebooking_id, ":bus_id" => $bus_id]);
             }
 
             return "success";

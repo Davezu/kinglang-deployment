@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "89JC+FWH, Luna, Apayao, Philippines",
+      "L.P. Leviste Street, Makati, Metro Manila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "L.P. Leviste Street, Makati, Metro Manila, Philippines",
+      "89JC+FWH, Luna, Apayao, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "619 km",
+                  "value" : 619113
+               },
+               "duration" : 
+               {
+                  "text" : "12 hours 23 mins",
+                  "value" : 44590
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "618 km",
+                  "value" : 617655
+               },
+               "duration" : 
+               {
+                  "text" : "12 hours 15 mins",
+                  "value" : 44086
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

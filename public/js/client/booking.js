@@ -210,6 +210,7 @@ document.getElementById("back").addEventListener("click", function () {
 // }
 
 // submit booking 
+
 document.getElementById("bookingForm").addEventListener("submit", async function (e) {
     e.preventDefault(); 
     
@@ -234,6 +235,7 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         dateOfTour: document.getElementById("date_of_tour")?.value,
         destination: destination,
         pickupPoint: document.getElementById("pickup_point")?.value,
+        pickupTime: document.getElementById("pickup_time")?.value,
         stops: stops,
         numberOfBuses: document.getElementById("number_of_buses")?.textContent,
         numberOfDays: document.getElementById("number_of_days")?.textContent,
@@ -243,10 +245,15 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         addresses: addresses,
         isRebooking: isRebooking,
         rebookingId: bookingId,
-        region: costBreakdown.region || null,
+
         baseCost: costBreakdown.baseCost || null,
-        fuelCost: costBreakdown.fuelCost || null
+        dieselCost: costBreakdown.dieselCost || null,
+        baseRate: costBreakdown.baseRate || null,
+        dieselPrice: costBreakdown.dieselPrice || null,
+        totalDistance: costBreakdown.totalDistance || null
     }
+
+    console.log("Total distance: ", costBreakdown.totalDistance);
 
     try {
         const response = await fetch("/request-booking", {
@@ -342,6 +349,7 @@ async function renderTotalCost() {
 
     // Get the cost breakdown details
     const costBreakdown = window.costBreakdown || {};
+    console.log("Cost breakdown: ", costBreakdown);
     
     // Format the total cost
     const formattedTotal = totalCost.toLocaleString("en-US", { style: "currency", currency: "PHP" });
@@ -355,7 +363,7 @@ async function renderTotalCost() {
             <div>Rate region: ${costBreakdown.region} (highest rate used)</div>
             <div>Base rate: ${costBreakdown.baseRate?.toLocaleString("en-US", { style: "currency", currency: "PHP" })} per bus</div>
             <div>Base cost: ${costBreakdown.baseCost?.toLocaleString("en-US", { style: "currency", currency: "PHP" })}</div>
-            <div>Fuel cost: ${costBreakdown.fuelCost?.toLocaleString("en-US", { style: "currency", currency: "PHP" })}</div>
+            <div>Diesel cost: ${costBreakdown.dieselCost?.toLocaleString("en-US", { style: "currency", currency: "PHP" })}</div>
         </div>`;
     }
     
@@ -567,8 +575,6 @@ async function getTotalCost() {
     const totalDistanceInMeters = await getDistanceMatrix(stops);
     const distanceInKm = totalDistanceInMeters / 1000;
 
-    console.log("Total distance in km: ", distanceInKm);
-
     const numberOfDays = document.getElementById("number_of_days").textContent;
     const numberOfBuses = document.getElementById("number_of_buses").textContent;
 
@@ -589,18 +595,21 @@ async function getTotalCost() {
         });
 
         const data = await response.json();
+        
         if (data.success) {
             // Store cost breakdown for display
             window.costBreakdown = {
                 region: data.region,
-                baseRate: data.rate,
+                baseRate: data.base_rate,
                 baseCost: data.base_cost,
-                fuelCost: data.fuel_cost,
-                locationRegions: data.location_regions
+                dieselPrice: data.diesel_price,
+                dieselCost: data.diesel_cost,
+                locationRegions: data.location_regions,
+                totalDistance: distanceInKm
             };
             
             // Log additional details for debugging
-            console.log("Cost breakdown:", window.costBreakdown);
+            // console.log("Cost breakdown:", window.costBreakdown);
             
             return data.total_cost;
         } else {

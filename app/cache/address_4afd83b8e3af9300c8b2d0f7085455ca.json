@@ -1,0 +1,303 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "SM Taguig, M. L. Quezon Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-2OTbgDPlzMRbu2Dyon_njk",
+         "reference" : "ChIJ-2OTbgDPlzMRbu2Dyon_njk",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM Taguig",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M. L. Quezon Avenue, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM Taguig"
+            },
+            {
+               "offset" : 11,
+               "value" : "M. L. Quezon Avenue"
+            },
+            {
+               "offset" : 32,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 40,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "shopping_mall"
+         ]
+      },
+      {
+         "description" : "SM Aura Premier, McKinley Parkway, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 35
+            }
+         ],
+         "place_id" : "ChIJn6cNE-3IlzMRvC1IcZwUwJQ",
+         "reference" : "ChIJn6cNE-3IlzMRvC1IcZwUwJQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM Aura Premier",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "McKinley Parkway, Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 18
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM Aura Premier"
+            },
+            {
+               "offset" : 17,
+               "value" : "McKinley Parkway"
+            },
+            {
+               "offset" : 35,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 43,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "SM, General Santos Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 27
+            }
+         ],
+         "place_id" : "ChIJ6ftBYwDPlzMRyt9545IxKJk",
+         "reference" : "ChIJ6ftBYwDPlzMRyt9545IxKJk",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Santos Avenue, Taguig, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 23
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM"
+            },
+            {
+               "offset" : 4,
+               "value" : "General Santos Avenue"
+            },
+            {
+               "offset" : 27,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 35,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "home_goods_store",
+            "store",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "SM Hypermarket FTI Taguig, DBP Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 25,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJK0JjuBzPlzMRjr6K13u6M_I",
+         "reference" : "ChIJK0JjuBzPlzMRjr6K13u6M_I",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM Hypermarket FTI Taguig",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 25,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "DBP Avenue, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM Hypermarket FTI Taguig"
+            },
+            {
+               "offset" : 27,
+               "value" : "DBP Avenue"
+            },
+            {
+               "offset" : 39,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 47,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "pharmacy",
+            "establishment",
+            "supermarket",
+            "store",
+            "food",
+            "point_of_interest",
+            "health",
+            "grocery_or_supermarket"
+         ]
+      },
+      {
+         "description" : "SM Cinema Aura, McKinley Parkway, The Fort, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJjzrzBe3IlzMR858tAzuq_MQ",
+         "reference" : "ChIJjzrzBe3IlzMR858tAzuq_MQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM Cinema Aura",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "McKinley Parkway, The Fort, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM Cinema Aura"
+            },
+            {
+               "offset" : 16,
+               "value" : "McKinley Parkway"
+            },
+            {
+               "offset" : 34,
+               "value" : "The Fort"
+            },
+            {
+               "offset" : 44,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "movie_theater",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

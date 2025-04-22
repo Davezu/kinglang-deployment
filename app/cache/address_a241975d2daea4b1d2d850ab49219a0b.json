@@ -1,0 +1,247 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJj0y1Gnt3vTMR6CvOUURRzG4",
+         "reference" : "ChIJj0y1Gnt3vTMR6CvOUURRzG4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagaytay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 10,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Tagaytay Picnic Grove, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJt2CcbBp6vTMRVLWvxFJ5-vY",
+         "reference" : "ChIJt2CcbBp6vTMRVLWvxFJ5-vY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagaytay Picnic Grove",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagaytay, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagaytay Picnic Grove"
+            },
+            {
+               "offset" : 23,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 33,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "tourist_attraction",
+            "landmark",
+            "establishment",
+            "park"
+         ]
+      },
+      {
+         "description" : "Tagaytay City, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJxbk3yuF5vTMRwALFqsRwUd0",
+         "reference" : "ChIJxbk3yuF5vTMRwALFqsRwUd0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagaytay City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagaytay City"
+            },
+            {
+               "offset" : 15,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "administrative_area_level_3"
+         ]
+      },
+      {
+         "description" : "Tagaytay Rotonda, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ei9UYWdheXRheSBSb3RvbmRhLCBUYWdheXRheSwgQ2F2aXRlLCBQaGlsaXBwaW5lcyIuKiwKFAoSCSM0aVNgd70zERbKBvVG5UAWEhQKEgmPTLUae3e9MxHoK85RRFHMbg",
+         "reference" : "Ei9UYWdheXRheSBSb3RvbmRhLCBUYWdheXRheSwgQ2F2aXRlLCBQaGlsaXBwaW5lcyIuKiwKFAoSCSM0aVNgd70zERbKBvVG5UAWEhQKEgmPTLUae3e9MxHoK85RRFHMbg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagaytay Rotonda",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagaytay, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagaytay Rotonda"
+            },
+            {
+               "offset" : 18,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 28,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Tagaytay City Market, Tagaytay - Sta. Rosa Rd, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJtdvFGPF5vTMRLgsHI6Y5cgw",
+         "reference" : "ChIJtdvFGPF5vTMRLgsHI6Y5cgw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagaytay City Market",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagaytay - Sta. Rosa Rd, Tagaytay, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagaytay City Market"
+            },
+            {
+               "offset" : 22,
+               "value" : "Tagaytay - Sta. Rosa Rd"
+            },
+            {
+               "offset" : 47,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 57,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

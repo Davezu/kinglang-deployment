@@ -86,8 +86,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -130,9 +130,9 @@
          ],
          "types" : 
          [
+            "lodging",
             "establishment",
-            "point_of_interest",
-            "lodging"
+            "point_of_interest"
          ]
       },
       {
@@ -179,8 +179,8 @@
          ],
          "types" : 
          [
-            "geocode",
-            "route"
+            "route",
+            "geocode"
          ]
       },
       {
@@ -231,9 +231,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "establishment",
             "university",
-            "establishment"
+            "point_of_interest"
          ]
       }
    ],

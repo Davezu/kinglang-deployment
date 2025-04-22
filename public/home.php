@@ -34,8 +34,8 @@ if (is_client_authenticated()) {
                     </ul>
                 </nav>
                 <div class="user-actions">
-                    <a href="/home/login" class="btn btn-secondary">Log in</a>
-                    <a href="/home/signup" class="btn btn-primary">Sign up</a>
+                    <a href="/home/login" class="btn btn-secondary">Log In</a>
+                    <a href="/home/signup" class="btn btn-primary">Sign Up</a>
                 </div>
             </div>
         </div>

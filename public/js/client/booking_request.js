@@ -31,25 +31,25 @@ document.addEventListener("DOMContentLoaded", async function () {
         let status = statusSelect.value;
         
         // Get initial data with pending status
-        let result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+        let result = await getAllBookings(status, "booking_id", "desc", currentPage, limit);
         
         // If no pending bookings, try processing bookings first
         if (result.bookings.length === 0 && status === "pending") {
             status = "processing";
             statusSelect.value = status;
-            result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+            result = await getAllBookings(status, "booking_id", "desc", currentPage, limit);
             
             // If no processing bookings, try confirmed bookings
             if (result.bookings.length === 0) {
                 status = "confirmed";
                 statusSelect.value = status;
-                result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+                result = await getAllBookings(status, "booking_id", "desc", currentPage, limit);
                 
                 // If no confirmed bookings either, use "all"
                 if (result.bookings.length === 0) {
                     status = "all";
                     statusSelect.value = status;
-                    result = await getAllBookings(status, "date_of_tour", "asc", currentPage, limit);
+                    result = await getAllBookings(status, "booking_id", "desc", currentPage, limit);
                 }
             }
         }
@@ -342,13 +342,6 @@ function actionCell(booking) {
     viewButton.appendChild(viewIcon);
     viewButton.appendChild(viewText);
 
-    const invoiceIcon = document.createElement("i");
-    invoiceIcon.classList.add("bi", "bi-file-earmark-text");
-    const invoiceText = document.createElement("span");
-    invoiceText.textContent = "Invoice";
-    invoiceButton.appendChild(invoiceIcon);
-    invoiceButton.appendChild(invoiceText);
-
     // modal
     payButton.setAttribute("data-bs-toggle", "modal");
     payButton.setAttribute("data-bs-target", "#paymentModal");
@@ -377,12 +370,6 @@ function actionCell(booking) {
     // event listeners
     viewButton.addEventListener("click", function () {
         localStorage.setItem("bookingId", booking.booking_id);
-        window.location.href = "/home/booking-request";
-    });
-
-    invoiceButton.addEventListener("click", function () {
-        localStorage.setItem("bookingId", booking.booking_id);
-        localStorage.setItem("showInvoice", "true");
         window.location.href = "/home/booking-request";
     });
 
@@ -473,13 +460,13 @@ function actionCell(booking) {
     });
 
     if ((booking.status === "Confirmed") && parseFloat(booking.balance) > 0.0) {
-        btnGroup.append(payButton, editButton, cancelButton, viewButton, invoiceButton);
+        btnGroup.append(payButton, editButton, cancelButton, viewButton);
     } else if (booking.status === "Confirmed" && parseFloat(booking.balance) === 0 || booking.status == "Processing") {
-        btnGroup.append(editButton, cancelButton, viewButton, invoiceButton); 
+        btnGroup.append(editButton, cancelButton, viewButton); 
     } else if (booking.status === "Pending") {
         btnGroup.append(editButton, cancelButton, viewButton);  
     } else {
-        btnGroup.append(viewButton, invoiceButton);
+        btnGroup.append(viewButton);
     }
 
     td.appendChild(btnGroup);

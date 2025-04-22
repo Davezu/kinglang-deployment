@@ -4,7 +4,261 @@ const editUserModal = new bootstrap.Modal(document.getElementById("editUserModal
 document.addEventListener("DOMContentLoaded", async function () {
     const limit = document.getElementById("limitSelect").value;
     loadUsers(1, "", limit);
+    
+    // Initialize phone number formatting and validation
+    setupPhoneNumberValidation("contactNumber");
+    setupPhoneNumberValidation("editContactNumber");
+    
+    // Initialize password validation
+    setupPasswordValidation("password");
+    setupPasswordValidation("editPassword", true); // optional for edit form
 });
+
+// Function to format phone numbers consistently
+function formatPhoneNumber(value) {
+    // Remove all non-digits from the value
+    const digits = value.replace(/\D/g, '');
+    
+    // Format based on number of digits
+    if (digits.length <= 4) {
+        return digits;
+    } else if (digits.length <= 7) {
+        return `${digits.substring(0, 4)}-${digits.substring(4)}`;
+    } else {
+        return `${digits.substring(0, 4)}-${digits.substring(4, 7)}-${digits.substring(7, 11)}`;
+    }
+}
+
+// Function to setup phone number validation and formatting
+function setupPhoneNumberValidation(inputId) {
+    const inputElement = document.getElementById(inputId);
+    if (!inputElement) return;
+    
+    // Get the validation message element
+    const validationMsg = inputElement.nextElementSibling;
+    
+    // Prevent non-numeric input
+    inputElement.addEventListener('keypress', function(e) {
+        // Allow only digits (0-9) and control keys
+        if (!/^\d$/.test(e.key) && !isControlKey(e)) {
+            e.preventDefault();
+        }
+    });
+    
+    // Clear validation message when starting to type
+    inputElement.addEventListener('focus', function() {
+        if (this.value === '') {
+            validationMsg.textContent = '';
+            validationMsg.className = 'form-text phone-validation';
+        }
+    });
+    
+    // Format input as user types
+    inputElement.addEventListener('input', function() {
+        // Store cursor position
+        const cursorPos = this.selectionStart;
+        const previousLength = this.value.length;
+        
+        // Format the value
+        const formattedValue = formatPhoneNumber(this.value);
+        this.value = formattedValue;
+        
+        // Restore cursor position accounting for formatting
+        if (document.activeElement === this) {
+            const newCursorPos = cursorPos + (this.value.length - previousLength);
+            this.setSelectionRange(newCursorPos, newCursorPos);
+        }
+    });
+    
+    // Validate on blur
+    inputElement.addEventListener('blur', function() {
+        validatePhoneNumber(this);
+    });
+}
+
+// Function to validate phone number format
+function validatePhoneNumber(inputElement) {
+    // Get the raw value and digits only version
+    const rawValue = inputElement.value;
+    const digitsOnly = rawValue.replace(/\D/g, '');
+    
+    // Get the validation message element (sibling with class phone-validation)
+    const validationMsg = inputElement.nextElementSibling;
+    
+    // Debug logging for troubleshooting
+    console.log('Phone validation details:', {
+        inputId: inputElement.id,
+        rawValue: rawValue,
+        digitsOnly: digitsOnly,
+        length: digitsOnly.length,
+        startsWith09: digitsOnly.substring(0, 2) === '09',
+        validationMsgFound: !!validationMsg,
+    });
+    
+    // If empty, consider valid (since phone can be optional)
+    if (digitsOnly.length === 0) {
+        if (validationMsg) {
+            validationMsg.textContent = '';
+            validationMsg.className = 'form-text phone-validation';
+        }
+        return true;
+    }
+    
+    // Check the format - SIMPLIFIED VERSION
+    let isValid = true;
+    let errorMessage = '';
+    
+    // Check if it starts with 09
+    if (digitsOnly.substring(0, 2) !== '09') {
+        isValid = false;
+        errorMessage = 'Phone number must start with 09';
+    }
+    // Check if it has 11 digits
+    else if (digitsOnly.length !== 11) {
+        isValid = false;
+        errorMessage = `Phone number must be 11 digits (currently: ${digitsOnly.length})`;
+    }
+    
+    // Update the validation message
+    if (validationMsg) {
+        if (isValid) {
+            validationMsg.textContent = 'Valid phone number';
+            validationMsg.className = 'form-text phone-validation text-success';
+        } else {
+            validationMsg.textContent = errorMessage;
+            validationMsg.className = 'form-text phone-validation text-danger';
+        }
+    }
+    
+    console.log('Final validation result:', isValid);
+    return isValid;
+}
+
+// Helper function to check if a key is a control key
+function isControlKey(e) {
+    const controlKeys = [
+        'Backspace', 'Tab', 'Enter', 'Shift', 'Control', 'Alt', 
+        'Escape', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+        'Delete', 'Home', 'End'
+    ];
+    return controlKeys.includes(e.key);
+}
+
+// Function to setup password validation
+function setupPasswordValidation(inputId, isOptional = false) {
+    const passwordInput = document.getElementById(inputId);
+    if (!passwordInput) return;
+    
+    // Get existing requirements container
+    const requirementsContainer = document.getElementById(`${inputId}Requirements`);
+    if (!requirementsContainer) return;
+    
+    // Create requirements elements
+    const requirements = [
+        { id: `${inputId}-length`, text: '8+ chars', regex: /.{8,}/ },
+        { id: `${inputId}-uppercase`, text: '1 uppercase', regex: /[A-Z]/ },
+        { id: `${inputId}-lowercase`, text: '1 lowercase', regex: /[a-z]/ },
+        { id: `${inputId}-number`, text: '1 number', regex: /[0-9]/ },
+        { id: `${inputId}-special`, text: '1 special', regex: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/ }
+    ];
+    
+    // Clear any existing requirements
+    requirementsContainer.innerHTML = '';
+    
+    requirements.forEach(req => {
+        const reqElement = document.createElement('small');
+        reqElement.id = req.id;
+        reqElement.className = 'requirement d-inline-flex align-items-center me-2';
+        reqElement.innerHTML = `<i class="bi bi-x-circle text-danger"></i> ${req.text}`;
+        reqElement.dataset.regex = req.regex.toString().slice(1, -1);
+        requirementsContainer.appendChild(reqElement);
+    });
+    
+    // Show the requirements container for new users
+    // For edit form, only show when user starts typing a new password
+    requirementsContainer.style.display = (isOptional && !passwordInput.value) ? 'none' : 'flex';
+    
+    // Initial validation if there's a value (like for prefilled fields)
+    if (passwordInput.value) {
+        validatePassword(passwordInput, requirementsContainer, isOptional);
+    }
+    
+    passwordInput.addEventListener('input', function() {
+        // For optional fields, only show requirements if there's input
+        if (isOptional) {
+            requirementsContainer.style.display = this.value ? 'flex' : 'none';
+            if (!this.value) return; // Don't validate empty optional passwords
+        }
+        
+        validatePassword(this, requirementsContainer, isOptional);
+    });
+}
+
+// Separate function to validate password against requirements
+function validatePassword(passwordInput, requirementsContainer, isOptional) {
+    const value = passwordInput.value;
+    
+    // Validate against each requirement
+    const requirements = requirementsContainer.querySelectorAll('.requirement');
+    let allValid = true;
+    
+    requirements.forEach(req => {
+        const regex = new RegExp(req.dataset.regex);
+        const isValid = regex.test(value);
+        
+        const icon = req.querySelector('i');
+        if (isValid) {
+            icon.classList.remove('bi-x-circle', 'text-danger');
+            icon.classList.add('bi-check-circle', 'text-success');
+        } else {
+            icon.classList.remove('bi-check-circle', 'text-success');
+            icon.classList.add('bi-x-circle', 'text-danger');
+            allValid = false;
+        }
+    });
+    
+    // Update the existing small help text if available
+    const helpText = passwordInput.closest('.mb-3').querySelector('.form-text:not(.requirement)');
+    if (helpText && !isOptional) {
+        if (allValid) {
+            helpText.textContent = 'Password meets all requirements';
+            helpText.className = 'form-text text-success';
+        } else {
+            helpText.textContent = 'Password must meet all requirements';
+            helpText.className = 'form-text text-danger';
+        }
+    }
+    
+    // Return validity status
+    return allValid;
+}
+
+// Validate form before submission
+function validateForm(formElement) {
+    let isValid = true;
+    
+    // Validate phone number
+    const phoneInput = formElement.querySelector('input[name="contactNumber"]');
+    if (phoneInput && phoneInput.value.trim() !== '') {
+        if (!validatePhoneNumber(phoneInput)) {
+            isValid = false;
+        }
+    }
+    
+    // Validate password
+    const passwordInput = formElement.querySelector('input[name="password"]');
+    if (passwordInput && passwordInput.value.trim() !== '') {
+        const requirementsContainer = document.getElementById(
+            passwordInput.id === 'password' ? 'passwordRequirements' : 'editPasswordRequirements'
+        );
+        
+        if (requirementsContainer && !validatePassword(passwordInput, requirementsContainer, passwordInput.id === 'editPassword')) {
+            isValid = false;
+        }
+    }
+    
+    return isValid;
+}
 
 document.getElementById("limitSelect").addEventListener("change", function() {
     const limit = this.value;
@@ -246,13 +500,62 @@ async function getUserDetails(userId) {
 // Form submissions
 document.getElementById("addUserForm").addEventListener("submit", async function(event) {
     event.preventDefault();
+    console.log('Form submit triggered');
     
+    // Direct validation of the phone number - no complex logic
+    const phoneInput = this.querySelector('input[name="contactNumber"]');
+    let phoneValid = true;
+    
+    if (phoneInput && phoneInput.value.trim() !== '') {
+        // Extract digits only
+        const digitsOnly = phoneInput.value.replace(/\D/g, '');
+        console.log('Phone submit check:', {
+            value: phoneInput.value,
+            digitsOnly: digitsOnly,
+            length: digitsOnly.length,
+            startsWith09: digitsOnly.substring(0, 2) === '09'
+        });
+        
+        // Simple validation - must be 11 digits starting with 09
+        if (digitsOnly.length !== 11 || digitsOnly.substring(0, 2) !== '09') {
+            phoneValid = false;
+            console.log('Phone validation failed');
+            
+            // Update validation message
+            const validationMsg = phoneInput.nextElementSibling;
+            if (validationMsg) {
+                if (digitsOnly.substring(0, 2) !== '09') {
+                    validationMsg.textContent = 'Phone number must start with 09';
+                } else {
+                    validationMsg.textContent = `Phone number must be 11 digits (currently: ${digitsOnly.length})`;
+                }
+                validationMsg.className = 'form-text phone-validation text-danger';
+            }
+        }
+    }
+    
+    // Password validation is handled separately
+    
+    // Stop if validation failed
+    if (!phoneValid) {
+        console.log('Form validation failed - phone');
+        Swal.fire({
+            icon: 'error',
+            title: 'Phone Number Error',
+            text: 'Please enter a valid phone number in the format 09XX XXX XXXX.',
+        });
+        return;
+    }
+    
+    // Continue with form submission if validation passes
     const formData = new FormData(this);
+    
+    // Create object with form data, cleaning up the phone number
     const formDataObject = {
         firstName: formData.get("firstName"),
         lastName: formData.get("lastName"),
         email: formData.get("email"),
-        contactNumber: formData.get("contactNumber"),
+        contactNumber: formatPhoneNumberForDB(formData.get("contactNumber")),
         password: formData.get("password"),
         role: formData.get("role")
     };
@@ -310,14 +613,63 @@ document.getElementById("addUserForm").addEventListener("submit", async function
 
 document.getElementById("editUserForm").addEventListener("submit", async function(event) {
     event.preventDefault();
+    console.log('Edit form submit triggered');
     
+    // Direct validation of the phone number - no complex logic
+    const phoneInput = this.querySelector('input[name="contactNumber"]');
+    let phoneValid = true;
+    
+    if (phoneInput && phoneInput.value.trim() !== '') {
+        // Extract digits only
+        const digitsOnly = phoneInput.value.replace(/\D/g, '');
+        console.log('Edit phone submit check:', {
+            value: phoneInput.value,
+            digitsOnly: digitsOnly,
+            length: digitsOnly.length,
+            startsWith09: digitsOnly.substring(0, 2) === '09'
+        });
+        
+        // Simple validation - must be 11 digits starting with 09
+        if (digitsOnly.length !== 11 || digitsOnly.substring(0, 2) !== '09') {
+            phoneValid = false;
+            console.log('Edit phone validation failed');
+            
+            // Update validation message
+            const validationMsg = phoneInput.nextElementSibling;
+            if (validationMsg) {
+                if (digitsOnly.substring(0, 2) !== '09') {
+                    validationMsg.textContent = 'Phone number must start with 09';
+                } else {
+                    validationMsg.textContent = `Phone number must be 11 digits (currently: ${digitsOnly.length})`;
+                }
+                validationMsg.className = 'form-text phone-validation text-danger';
+            }
+        }
+    }
+    
+    // Password validation is handled separately
+    
+    // Stop if validation failed
+    if (!phoneValid) {
+        console.log('Edit form validation failed - phone');
+        Swal.fire({
+            icon: 'error',
+            title: 'Phone Number Error',
+            text: 'Please enter a valid phone number in the format 09XX XXX XXXX.',
+        });
+        return;
+    }
+    
+    // Continue with form submission if validation passes
     const formData = new FormData(this);
+    
+    // Create object with form data, cleaning up the phone number
     const formDataObject = {
         userId: formData.get("userId"),
         firstName: formData.get("firstName"),
         lastName: formData.get("lastName"),
         email: formData.get("email"),
-        contactNumber: formData.get("contactNumber"),
+        contactNumber: formatPhoneNumberForDB(formData.get("contactNumber")),
         password: formData.get("password"),
         role: formData.get("role")
     };
@@ -419,4 +771,20 @@ async function deleteUser(userId) {
             timerProgressBar: true
         });
     }
+}
+
+// Helper function to format phone number for database storage
+function formatPhoneNumberForDB(value) {
+    if (!value || value.trim() === '') return '';
+    
+    // Remove all non-digits from the value
+    const digits = value.replace(/\D/g, '');
+    
+    // If it doesn't have 11 digits or doesn't start with 09, return as is
+    if (digits.length !== 11 || digits.substring(0, 2) !== '09') {
+        return digits;
+    }
+    
+    // Format as 09XX-XXX-XXXX
+    return `${digits.substring(0, 4)}-${digits.substring(4, 7)}-${digits.substring(7, 11)}`;
 } 

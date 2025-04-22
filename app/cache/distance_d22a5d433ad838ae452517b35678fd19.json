@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "Batangas, Philippines",
+      "Baguio, Benguet, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "Baguio, Benguet, Philippines",
+      "Batangas, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "352 km",
+                  "value" : 352435
+               },
+               "duration" : 
+               {
+                  "text" : "5 hours 25 mins",
+                  "value" : 19502
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "354 km",
+                  "value" : 354010
+               },
+               "duration" : 
+               {
+                  "text" : "5 hours 24 mins",
+                  "value" : 19446
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

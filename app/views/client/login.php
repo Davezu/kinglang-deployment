@@ -17,8 +17,36 @@ if (is_client_authenticated()) {
     <link rel="stylesheet" href="../../../public/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../../public/css/login-signup.css">
     <link rel="stylesheet" href="../../../public/css/slideshow.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Log In</title>
+    <style>
+        /* More compact form styling */
+        .form-container .form-label {
+            margin-bottom: 0.25rem;
+        }
+        .form-container .mb-3 {
+            margin-bottom: 0.75rem !important;
+        }
+        .welcome {
+            margin-bottom: 0.25rem;
+        }
+        .sub-message {
+            margin-bottom: 0.5rem;
+        }
+        /* Password field styling */
+        .password-container {
+            position: relative;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 10;
+        }
+    </style>
 </head>
 <body>
    
@@ -26,9 +54,9 @@ if (is_client_authenticated()) {
         <div class="logo">
             <img src="../../../public/images/logo.png" alt="">
         </div>
-        <div class="d-flex gap-4">
-            <a href="/home" class="text-dark">Home</a>
-            <a href="#" class="text-dark">About</a>
+        <div class="d-flex gap-4 user-actions">
+            <a href="/home">Home</a>
+            <a href="#">About</a>
         </div>
         <div class="d-flex gap-2">
             <a href="/home/login" class="btn btn-success btn-sm">Log In</a>
@@ -42,19 +70,49 @@ if (is_client_authenticated()) {
                 <div class="slideshow-slide">
                     <img src="../../../public/images/bus3.jpg" alt="Bus Image 1">
                     <div class="slideshow-text">YOUR ON-THE-GO TOURIST BUS RENTAL!</div>
+                    <div class="slideshow-contact-info">
+                        <div class="slideshow-contact-details">
+                            <a href="tel:0917-8822727" class="contact-item">
+                                <span>📞 0917 882 2727 | 0933 862 4323</span>
+                            </a>
+                            <a href="mailto:bsmillamina@yahoo.com" class="contact-item">
+                                <span>✉️ bsmillamina@yahoo.com</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="slideshow-slide">
                     <img src="../../../public/images/slideshow/slide2.jpg" alt="Bus Image 2">
                     <div class="slideshow-text">EXPERIENCE COMFORT AND LUXURY</div>
+                    <div class="slideshow-contact-info">
+                        <div class="slideshow-contact-details">
+                            <a href="tel:0917-8822727" class="contact-item">
+                                <span>📞 0917 882 2727 | 0933 862 4323</span>
+                            </a>
+                            <a href="mailto:bsmillamina@yahoo.com" class="contact-item">
+                                <span>✉️ bsmillamina@yahoo.com</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="slideshow-slide">
                     <img src="../../../public/images/slideshow/slide3.jpg" alt="Bus Image 3">
                     <div class="slideshow-text">TRAVEL WITH STYLE AND SAFETY</div>
+                    <div class="slideshow-contact-info">
+                        <div class="slideshow-contact-details">
+                            <a href="tel:0917-8822727" class="contact-item">
+                                <span>📞 0917 882 2727 | 0933 862 4323</span>
+                            </a>
+                            <a href="mailto:bsmillamina@yahoo.com" class="contact-item">
+                                <span>✉️ bsmillamina@yahoo.com</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="form-container d-flex flex-column justify-content-center">
-            <form action="" method="" id="loginForm" class="d-flex flex-column p-lg-5 m-lg-5">
+            <form action="" method="" id="loginForm" class="d-flex flex-column p-lg-4 m-lg-4">
                 <div class="mb-3">
                     <p class="welcome h3 text-success">Welcome Back!</p>
                     <p class="sub-message text-warning">Please login to continue to your account.</p>
@@ -66,13 +124,17 @@ if (is_client_authenticated()) {
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label text-secondary">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" requred>
-                    <!-- <p class="sub-message">Use 8 or more characters with a mix of letters, numbers, & symbols</p> -->
-                     <a href="/fogot-password" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Forgot password?</a>
+                    <div class="password-container">
+                        <input type="password" name="password" id="password" class="form-control" required>
+                        <span class="password-toggle" onclick="togglePasswordVisibility()">
+                            <i class="bi bi-eye" id="togglePassword"></i>
+                        </span>
+                    </div>
+                    <a href="/fogot-password" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover small">Forgot password?</a>
                 </div>
-                <div class="login-button mb-3 d-flex gap-3 flex-column">
+                <div class="login-button mb-3 d-flex gap-2 flex-column">
                     <button type="submit" name="login" class="btn btn-success w-100 text-white fw-bold rounded-pill p-2">Log In</button>
-                    <p>Need an account? <a href="/home/signup" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Create one</a></p>
+                    <p class="small mb-0">Need an account? <a href="/home/signup" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Create one</a></p>
                 </div>
             </form>
         </div>
@@ -82,5 +144,21 @@ if (is_client_authenticated()) {
     <script src="../../../public/js/slideshow.js"></script>
     <script src="../../../public/js/page-transition.js"></script>
     <script src="../../../public/js/client/login.js"></script>
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('togglePassword');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('bi-eye');
+                toggleIcon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('bi-eye-slash');
+                toggleIcon.classList.add('bi-eye');
+            }
+        }
+    </script>
 </body>
 </html>

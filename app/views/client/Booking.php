@@ -18,6 +18,75 @@ if (!isset($_SESSION["user_id"])) {
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <style>
+        /* Custom scrollbar styling */
+        select.custom-select {
+            scrollbar-width: thin;
+            scrollbar-color: #198754 #f0f0f0;
+        }
+        
+        select.custom-select::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        select.custom-select::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+        
+        select.custom-select::-webkit-scrollbar-thumb {
+            background-color: #198754;
+            border-radius: 10px;
+            border: 2px solid #f0f0f0;
+        }
+        
+        select.custom-select::-webkit-scrollbar-thumb:hover {
+            background-color: #0f5132;
+        }
+        
+        /* Custom dropdown styling */
+        select.custom-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23198754' class='bi bi-caret-down-fill' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+            height: 38px;
+        }
+
+        /* Make options compact */
+        select.custom-select option {
+            padding: 2px 8px !important;
+            font-size: 0.875rem;
+            line-height: 1.2;
+        }
+        
+        /* Target the dropdown list visual height in Chrome, Safari, Edge */
+        select.custom-select option:checked,
+        select.custom-select option:hover {
+            background-color: #e8f5e9;
+            color: #198754;
+        }
+        
+        /* Adjust dropdown presentation */
+        @supports (-moz-appearance:none) {
+            /* Firefox-specific styles */
+            select.custom-select {
+                height: 38px;
+                -moz-padding-start: 8px;
+            }
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            /* Chrome/Safari specific styles */
+            select.custom-select {
+                height: 38px;
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+            }
+        }
+    </style>
+
     <title>Book a Trip</title>
 </head>
 <body>
@@ -60,8 +129,26 @@ if (!isset($_SESSION["user_id"])) {
                             <input type="text" name="date_of_tour" id="date_of_tour" class="form-control py-2 px-4" placeholder="Pickup Date" required>
                         </div>   
                         <div class="mb-3 position-relative">
-                            <select name="" id="" class="form-select">
-                                <option value="">Pickup Time</option>
+                            <i class="bi bi-clock-fill calendar-icon"></i>
+                            <select name="pickup_time" id="pickup_time" class="form-select py-2 px-4 custom-select" required>
+                                <option value="" disabled selected hidden>Select Pickup Time</option>
+                                <option value="04:00:00">4:00 AM</option>
+                                <option value="04:30:00">4:30 AM</option>
+                                <option value="05:00:00">5:00 AM</option>
+                                <option value="05:30:00">5:30 AM</option>
+                                <option value="06:00:00">6:00 AM</option>
+                                <option value="06:30:00">6:30 AM</option>
+                                <option value="07:00:00">7:00 AM</option>
+                                <option value="07:30:00">7:30 AM</option>
+                                <option value="08:00:00">8:00 AM</option>
+                                <option value="08:30:00">8:30 AM</option>
+                                <option value="09:00:00">9:00 AM</option>
+                                <option value="09:30:00">9:30 AM</option>
+                                <option value="10:00:00">10:00 AM</option>
+                                <option value="10:30:00">10:30 AM</option>
+                                <option value="11:00:00">11:00 AM</option>
+                                <option value="11:30:00">11:30 AM</option>
+                                <option value="12:00:00">12:00 PM</option>
                             </select>
                         </div>      
                         <div class="mb-3 d-flex gap-3">

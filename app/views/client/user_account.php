@@ -40,7 +40,8 @@
                             </div> 
                             <div class="col">
                                 <label for="" class="form-label">Phone Number</label>
-                                <input type="text" name="" id="contactNumber" class="form-control" required>
+                                <input type="text" name="" id="contactNumber" class="form-control" placeholder="0939-494-4394" maxlength="13" required>
+                                <small id="phoneHelp" class="form-text text-muted">Format: 09XX-XXX-XXXX</small>
                             </div>
                         </div>
 
@@ -65,5 +66,32 @@
     <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="../../../public/js/client/user_account.js"></script>
     <script src="../../../public/js/assets/sidebar.js"></script>
+    <script>
+        // Format phone number as user types
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactNumberInput = document.getElementById('contactNumber');
+            
+            contactNumberInput.addEventListener('input', function(e) {
+                // Remove all non-digit characters
+                let value = this.value.replace(/\D/g, '');
+                
+                // Format the number as it's being typed
+                if (value.length > 0) {
+                    // Add the first part (09XX)
+                    if (value.length <= 4) {
+                        this.value = value;
+                    } 
+                    // Add hyphen after 4 digits (09XX-XXX)
+                    else if (value.length <= 7) {
+                        this.value = value.substring(0, 4) + '-' + value.substring(4);
+                    } 
+                    // Add hyphen after 7 digits (09XX-XXX-XXXX)
+                    else {
+                        this.value = value.substring(0, 4) + '-' + value.substring(4, 7) + '-' + value.substring(7, 11);
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

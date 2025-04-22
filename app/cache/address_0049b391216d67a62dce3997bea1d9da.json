@@ -1,0 +1,255 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Agoncillo, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJjb6IQj51vTMRhBnW9WnM-bI",
+         "reference" : "ChIJjb6IQj51vTMRhBnW9WnM-bI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Agoncillo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Agoncillo"
+            },
+            {
+               "offset" : 11,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Agoncillo Street, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjtBZ29uY2lsbG8gU3RyZWV0LCBFcm1pdGEsIE1hbmlsYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCTUfnK6HyZczEbxTJbE_hKQKEhQKEgnHb5Vrh8mXMxFSyqshsCY3ew",
+         "reference" : "EjtBZ29uY2lsbG8gU3RyZWV0LCBFcm1pdGEsIE1hbmlsYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCTUfnK6HyZczEbxTJbE_hKQKEhQKEgnHb5Vrh8mXMxFSyqshsCY3ew",
+         "structured_formatting" : 
+         {
+            "main_text" : "Agoncillo Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ermita, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Agoncillo Street"
+            },
+            {
+               "offset" : 18,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 26,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "agoncillo batangas-, Agoncillo, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPZ5vtDALvTMRDk4Gy-V-9uk",
+         "reference" : "ChIJPZ5vtDALvTMRDk4Gy-V-9uk",
+         "structured_formatting" : 
+         {
+            "main_text" : "agoncillo batangas-",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Agoncillo, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "agoncillo batangas-"
+            },
+            {
+               "offset" : 21,
+               "value" : "Agoncillo"
+            },
+            {
+               "offset" : 32,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "park"
+         ]
+      },
+      {
+         "description" : "AGONCILLO baywalk BATANGAS CITY, Agoncillo-Laurel Rd., Agoncillo, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJW46l4dt1vTMRKII-5VxHV1w",
+         "reference" : "ChIJW46l4dt1vTMRKII-5VxHV1w",
+         "structured_formatting" : 
+         {
+            "main_text" : "AGONCILLO baywalk BATANGAS CITY",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Agoncillo-Laurel Rd., Agoncillo, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "AGONCILLO baywalk BATANGAS CITY"
+            },
+            {
+               "offset" : 33,
+               "value" : "Agoncillo-Laurel Rd."
+            },
+            {
+               "offset" : 55,
+               "value" : "Agoncillo"
+            },
+            {
+               "offset" : 66,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 76,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Agoncillo Municipal Hall, Agoncillo, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJg8r0W-gKvTMRpO_Aa7dJu2s",
+         "reference" : "ChIJg8r0W-gKvTMRpO_Aa7dJu2s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Agoncillo Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Agoncillo, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Agoncillo Municipal Hall"
+            },
+            {
+               "offset" : 26,
+               "value" : "Agoncillo"
+            },
+            {
+               "offset" : 37,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "city_hall",
+            "point_of_interest",
+            "local_government_office"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

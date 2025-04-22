@@ -139,10 +139,10 @@
          ],
          "types" : 
          [
+            "local_government_office",
             "point_of_interest",
-            "establishment",
             "city_hall",
-            "local_government_office"
+            "establishment"
          ]
       },
       {
@@ -193,10 +193,10 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "hospital",
-            "health",
-            "establishment"
+            "establishment",
+            "point_of_interest",
+            "health"
          ]
       },
       {

@@ -41,7 +41,15 @@ class ClientAuthController {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo json_encode(["success" => false, "message" => "Invalid email address."]);
             return;
-         }
+        }
+        
+        // Validate phone number (11 digits starting with 09)
+        // Check both formats: with hyphens (09XX-XXX-XXXX) or without (09XXXXXXXX)
+        $phone_digits = str_replace('-', '', $contact_number);
+        if (strlen($phone_digits) !== 11 || substr($phone_digits, 0, 2) !== '09') {
+            echo json_encode(["success" => false, "message" => "Contact number must be 11 digits and start with 09."]);
+            return;
+        }
     
         if ($password !== $confirm_password) {
             echo json_encode(["success" => false, "message" => "Password did not match."]);
@@ -105,6 +113,17 @@ class ClientAuthController {
             $last_name = $data["lastName"];
             $contact_number = $data["contactNumber"];
             $email_address = $data["email"];
+            
+            // Validate phone number (11 digits starting with 09)
+            // Check both formats: with hyphens (09XX-XXX-XXXX) or without (09XXXXXXXX)
+            if (!empty($contact_number)) {
+                $phone_digits = str_replace('-', '', $contact_number);
+                if (strlen($phone_digits) !== 11 || substr($phone_digits, 0, 2) !== '09') {
+                    header("Content-Type: application/json");
+                    echo json_encode(["success" => false, "message" => "Contact number must be 11 digits and start with 09."]);
+                    return;
+                }
+            }
 
             $result = $this->authModel->updateClientInformation($first_name, $last_name, $contact_number, $email_address);
 

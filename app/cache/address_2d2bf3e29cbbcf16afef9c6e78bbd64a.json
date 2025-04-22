@@ -41,9 +41,63 @@
          ],
          "types" : 
          [
-            "geocode",
             "political",
-            "locality"
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Makati City Hall, Angono, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8XIoia7JlzMRbpMXuVFmt88",
+         "reference" : "ChIJ8XIoia7JlzMRbpMXuVFmt88",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makati City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Angono, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makati City Hall"
+            },
+            {
+               "offset" : 18,
+               "value" : "Angono"
+            },
+            {
+               "offset" : 26,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 34,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "city_hall",
+            "local_government_office"
          ]
       },
       {
@@ -98,64 +152,10 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "hospital",
+            "health",
             "establishment",
-            "health"
-         ]
-      },
-      {
-         "description" : "Makati City Hall, Angono, Makati, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 6,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJ8XIoia7JlzMRbpMXuVFmt88",
-         "reference" : "ChIJ8XIoia7JlzMRbpMXuVFmt88",
-         "structured_formatting" : 
-         {
-            "main_text" : "Makati City Hall",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 6,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Angono, Makati, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Makati City Hall"
-            },
-            {
-               "offset" : 18,
-               "value" : "Angono"
-            },
-            {
-               "offset" : 26,
-               "value" : "Makati"
-            },
-            {
-               "offset" : 34,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 48,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "point_of_interest",
-            "local_government_office",
-            "city_hall",
-            "establishment"
+            "hospital",
+            "point_of_interest"
          ]
       },
       {
@@ -202,8 +202,8 @@
          ],
          "types" : 
          [
-            "geocode",
-            "route"
+            "route",
+            "geocode"
          ]
       },
       {
@@ -258,8 +258,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "establishment",
+            "point_of_interest",
             "lodging"
          ]
       }

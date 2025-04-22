@@ -45,9 +45,9 @@
          ],
          "types" : 
          [
-            "establishment",
+            "point_of_interest",
             "shopping_mall",
-            "point_of_interest"
+            "establishment"
          ]
       },
       {
@@ -94,111 +94,10 @@
          ],
          "types" : 
          [
-            "sublocality",
             "political",
-            "sublocality_level_2",
-            "geocode"
-         ]
-      },
-      {
-         "description" : "BGC, Manila, Bonifacio, Taguig, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 3,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJD_eoDgDJlzMRUE53J31Q6uI",
-         "reference" : "ChIJD_eoDgDJlzMRUE53J31Q6uI",
-         "structured_formatting" : 
-         {
-            "main_text" : "BGC, Manila",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 3,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Bonifacio, Taguig, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "BGC, Manila"
-            },
-            {
-               "offset" : 13,
-               "value" : "Bonifacio"
-            },
-            {
-               "offset" : 24,
-               "value" : "Taguig"
-            },
-            {
-               "offset" : 32,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 46,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "establishment",
-            "park",
-            "point_of_interest"
-         ]
-      },
-      {
-         "description" : "BGC 3D LED SCREEN, Taguig, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 3,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJ-2f36CnJlzMRlDM94yNEask",
-         "reference" : "ChIJ-2f36CnJlzMRlDM94yNEask",
-         "structured_formatting" : 
-         {
-            "main_text" : "BGC 3D LED SCREEN",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 3,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Taguig, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "BGC 3D LED SCREEN"
-            },
-            {
-               "offset" : 19,
-               "value" : "Taguig"
-            },
-            {
-               "offset" : 27,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 41,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "establishment",
-            "point_of_interest"
+            "geocode",
+            "sublocality",
+            "sublocality_level_2"
          ]
       },
       {
@@ -251,6 +150,106 @@
          [
             "geocode",
             "premise"
+         ]
+      },
+      {
+         "description" : "BGC 3D LED SCREEN, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-2f36CnJlzMRlDM94yNEask",
+         "reference" : "ChIJ-2f36CnJlzMRlDM94yNEask",
+         "structured_formatting" : 
+         {
+            "main_text" : "BGC 3D LED SCREEN",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "BGC 3D LED SCREEN"
+            },
+            {
+               "offset" : 19,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 27,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "BGC Arts Center, 26th Street, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQzwwEO7IlzMRAYej2V9498M",
+         "reference" : "ChIJQzwwEO7IlzMRAYej2V9498M",
+         "structured_formatting" : 
+         {
+            "main_text" : "BGC Arts Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "26th Street, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "BGC Arts Center"
+            },
+            {
+               "offset" : 17,
+               "value" : "26th Street"
+            },
+            {
+               "offset" : 30,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 38,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
          ]
       }
    ],
