@@ -4,60 +4,270 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/../../../public/css/client/user_account.css">
     <title>My Account</title>
 </head>
 <body>
     <?php include_once __DIR__ . "/../assets/sidebar.php"; ?>
 
     <div class="content collapsed" id="content">
-
         <div class="container-fluid py-4 px-4 px-xl-5">
             <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
                 <div class="p-0">
-                    <h3>Welcome, <span class="text-capitalize text-success"><?= $_SESSION["client_name"]; ?></span></h3>
+                    <h3>My Account</h3>
+                    <p class="text-muted">Manage your profile and account settings</p>
                 </div>
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
-            <div class="container-fluid border rounded hv-100 my-3">
-                <div class="container w-50">
-                    <form action="" id="userForm" class="mt-4">
-                        <input type="hidden" name="id" value="1">
-                        
-                        <div class="row mb-3 g-3">
-                            <div class="col">
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" name="" id="firstName" class="form-control" value="" required>
-                            </div>
-                            <div class="col">
-                                <label for="" class="form-label">Last Name</label>
-                                <input type="text" name="" id="lastName" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="row mb-3 g-3">
-                            <div class="col">
-                                <label for="number_of_days" class="form-label">Email Address</label>
-                                <input type="text" name="number_of_days" id="email" class="form-control" required>
-                            </div> 
-                            <div class="col">
-                                <label for="" class="form-label">Phone Number</label>
-                                <input type="text" name="" id="contactNumber" class="form-control" placeholder="0939-494-4394" maxlength="13" required>
-                                <small id="phoneHelp" class="form-text text-muted">Format: 09XX-XXX-XXXX</small>
-                            </div>
-                        </div>
 
-                        <div class="mb-4">
-                            <div id="busSelection"></div>
-                        </div>
-
-                        <div class="row mb-4">  
-                            <div class="col">           
-                                <button type="submit" name="submit_booking" class="btn btn-success">Edit</button>
+            <div class="container-fluid my-4">
+                <div class="row">
+                    <div class="col-lg-3 mb-4">
+                        <!-- Profile Summary Card -->
+                        <div class="user-account-container">
+                            <div class="profile-header">
+                                <div class="profile-avatar" id="profileAvatarContainer">
+                                    <div id="avatarInitials"></div>
+                                    <img id="profileAvatar" src="" alt="" style="display: none;">
+                                    <div class="upload-overlay" id="uploadOverlay">
+                                        <i class="bi bi-camera"></i> Change
+                                    </div>
+                                    <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                                </div>
+                                <div class="profile-info">
+                                    <h5 class="mb-1 text-capitalize" id="profileName"><?= $_SESSION["client_name"]; ?></h5>
+                                    <p class="mb-0 text-muted" id="profileEmail"><?= $_SESSION["email"]; ?></p>
+                                </div>
                             </div>
-                            <div class="col">
-                                <p id="userMessage" style="color: green"></p>
+                            
+                            <!-- Profile Completion -->
+                            <div class="completion-meter">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <small>Profile Completion</small>
+                                    <small id="completionPercentage">70%</small>
+                                </div>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted" id="completionMessage">Complete your profile to improve your experience</small>
+                            </div>
+                            
+                            <!-- Navigation Pills -->
+                            <div class="nav flex-column nav-pills mt-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <button class="nav-link active mb-2" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true">
+                                    <i class="bi bi-person me-2"></i> Profile Information
+                                </button>
+                                <button class="nav-link mb-2" id="v-pills-security-tab" data-bs-toggle="pill" data-bs-target="#v-pills-security" type="button" role="tab" aria-controls="v-pills-security" aria-selected="false">
+                                    <i class="bi bi-shield-lock me-2"></i> Security
+                                </button>
+                                <button class="nav-link mb-2" id="v-pills-bookings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-bookings" type="button" role="tab" aria-controls="v-pills-bookings" aria-selected="false">
+                                    <i class="bi bi-journal-check me-2"></i> Booking History
+                                </button>
+                                <button class="nav-link" id="v-pills-preferences-tab" data-bs-toggle="pill" data-bs-target="#v-pills-preferences" type="button" role="tab" aria-controls="v-pills-preferences" aria-selected="false">
+                                    <i class="bi bi-gear me-2"></i> Preferences
+                                </button>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    
+                    <div class="col-lg-9">
+                        <!-- Content Area -->
+                        <div class="user-account-container">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <!-- Profile Information Tab -->
+                                <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                    <h4 class="section-title">Profile Information</h4>
+                                    <form id="userForm">
+                                        <div class="row mb-3">
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <label for="firstName" class="form-label">First Name</label>
+                                                <input type="text" id="firstName" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="lastName" class="form-label">Last Name</label>
+                                                <input type="text" id="lastName" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <label for="email" class="form-label">Email Address</label>
+                                                <input type="email" id="email" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="contactNumber" class="form-label">Phone Number</label>
+                                                <input type="text" id="contactNumber" class="form-control" placeholder="09XX-XXX-XXXX" maxlength="13" required>
+                                                <small class="form-text text-muted">Format: 09XX-XXX-XXXX</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <label for="address" class="form-label">Home Address</label>
+                                                <textarea id="address" class="form-control" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-success saveBtn">
+                                            <span id="saveText">Save Changes</span>
+                                            <span id="saveSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+                                        </button>
+                                        <div id="userMessage" class="mt-3"></div>
+                                    </form>
+                                </div>
+                                
+                                <!-- Security Tab -->
+                                <div class="tab-pane fade" id="v-pills-security" role="tabpanel" aria-labelledby="v-pills-security-tab">
+                                    <h4 class="section-title">Security Settings</h4>
+                                    <form id="passwordForm">
+                                        <div class="mb-3">
+                                            <label for="currentPassword" class="form-label">Current Password</label>
+                                            <input type="password" id="currentPassword" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="newPassword" class="form-label">New Password</label>
+                                            <div class="input-group">
+                                                <input type="password" id="newPassword" class="form-control" required>
+                                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                            <input type="password" id="confirmPassword" class="form-control" required>
+                                        </div>
+                                        
+                                        <ul class="password-requirements list-unstyled">
+                                            <li id="length" class="invalid"><i class="bi bi-x-circle me-2"></i>At least 8 characters</li>
+                                            <li id="uppercase" class="invalid"><i class="bi bi-x-circle me-2"></i>At least one uppercase letter</li>
+                                            <li id="lowercase" class="invalid"><i class="bi bi-x-circle me-2"></i>At least one lowercase letter</li>
+                                            <li id="number" class="invalid"><i class="bi bi-x-circle me-2"></i>At least one number</li>
+                                            <li id="match" class="invalid"><i class="bi bi-x-circle me-2"></i>Passwords match</li>
+                                        </ul>
+                                        
+                                        <button type="submit" class="btn btn-success mt-3">Update Password</button>
+                                        <div id="passwordMessage" class="mt-3"></div>
+                                    </form>
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <h5 class="mb-3">Login Sessions</h5>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div>
+                                                    <h6 class="mb-1">Current Session</h6>
+                                                    <small class="text-muted">
+                                                        <i class="bi bi-laptop me-1"></i> 
+                                                        <span id="deviceInfo">Windows • Chrome</span> • 
+                                                        <span id="ipAddress">127.0.0.1</span>
+                                                    </small>
+                                                </div>
+                                                <span class="badge bg-success p-2">Active Now</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Booking History Tab -->
+                                <div class="tab-pane fade" id="v-pills-bookings" role="tabpanel" aria-labelledby="v-pills-bookings-tab">
+                                    <h4 class="section-title">Booking History</h4>
+                                    
+                                    <div class="row mb-4">
+                                        <div class="col-md-4">
+                                            <div class="card-stats text-center">
+                                                <div class="icon"><i class="bi bi-calendar-check"></i></div>
+                                                <div class="number" id="totalBookings">0</div>
+                                                <div class="label">Total Bookings</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card-stats text-center">
+                                                <div class="icon"><i class="bi bi-hourglass-split"></i></div>
+                                                <div class="number" id="pendingBookings">0</div>
+                                                <div class="label">Pending</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card-stats text-center">
+                                                <div class="icon"><i class="bi bi-check2-circle"></i></div>
+                                                <div class="number" id="completedBookings">0</div>
+                                                <div class="label">Completed</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="booking-filter mb-4">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search bookings..." id="searchBookings">
+                                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Filter By</button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#" data-filter="all">All Bookings</a></li>
+                                                <li><a class="dropdown-item" href="#" data-filter="pending">Pending</a></li>
+                                                <li><a class="dropdown-item" href="#" data-filter="confirmed">Confirmed</a></li>
+                                                <li><a class="dropdown-item" href="#" data-filter="cancelled">Cancelled</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="bookingsList" class="booking-history-list">
+                                        <!-- Booking items will be loaded here -->
+                                        <div class="text-center text-muted py-5" id="noBookingsMessage">
+                                            <i class="bi bi-calendar-x fs-1"></i>
+                                            <p class="mt-3">No bookings found</p>
+                                            <a href="/home/book" class="btn btn-outline-success btn-sm">Make Your First Booking</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Preferences Tab -->
+                                <div class="tab-pane fade" id="v-pills-preferences" role="tabpanel" aria-labelledby="v-pills-preferences-tab">
+                                    <h4 class="section-title">Preferences</h4>
+                                    
+                                    <form id="preferencesForm">
+                                        <h5 class="mb-3">Notifications</h5>
+                                        <div class="mb-3 form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                            <label class="form-check-label" for="emailNotifications">Email Notifications</label>
+                                            <div class="form-text">Receive booking updates and important announcements via email</div>
+                                        </div>
+                                        
+                                        <div class="mb-3 form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="smsNotifications">
+                                            <label class="form-check-label" for="smsNotifications">SMS Notifications</label>
+                                            <div class="form-text">Receive booking reminders and updates via SMS</div>
+                                        </div>
+                                        
+                                        <hr class="my-4">
+                                        
+                                        <h5 class="mb-3">Display & Appearance</h5>
+                                        <div class="mb-3">
+                                            <label class="form-label">Theme Preference</label>
+                                            <div class="d-flex gap-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="themePreference" id="themeLight" value="light" checked>
+                                                    <label class="form-check-label" for="themeLight">Light</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="themePreference" id="themeDark" value="dark">
+                                                    <label class="form-check-label" for="themeDark">Dark</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="themePreference" id="themeSystem" value="system">
+                                                    <label class="form-check-label" for="themeSystem">System Default</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-success mt-3">Save Preferences</button>
+                                        <div id="preferencesMessage" class="mt-3"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

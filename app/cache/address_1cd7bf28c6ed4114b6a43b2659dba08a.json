@@ -1,0 +1,316 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Elijah Hotel and Residences, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            },
+            {
+               "length" : 5,
+               "offset" : 29
+            }
+         ],
+         "place_id" : "ChIJMQZAKIHVlzMRVBZODBkp62E",
+         "reference" : "ChIJMQZAKIHVlzMRVBZODBkp62E",
+         "structured_formatting" : 
+         {
+            "main_text" : "Elijah Hotel and Residences",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Elijah Hotel and Residences"
+            },
+            {
+               "offset" : 29,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 41,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Emilio Aguinaldo College, Cavite Campus, Congressional East Ave, Burol Main, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            },
+            {
+               "length" : 5,
+               "offset" : 77
+            }
+         ],
+         "place_id" : "ChIJAz4qS6vVlzMRf8Cv5qICc7k",
+         "reference" : "ChIJAz4qS6vVlzMRf8Cv5qICc7k",
+         "structured_formatting" : 
+         {
+            "main_text" : "Emilio Aguinaldo College, Cavite Campus",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Congressional East Ave, Burol Main, Dasmariñas, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 36
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Emilio Aguinaldo College, Cavite Campus"
+            },
+            {
+               "offset" : 41,
+               "value" : "Congressional East Ave"
+            },
+            {
+               "offset" : 65,
+               "value" : "Burol Main"
+            },
+            {
+               "offset" : 77,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 89,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 97,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "university",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Emmanuel Bergado I, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            },
+            {
+               "length" : 5,
+               "offset" : 20
+            }
+         ],
+         "place_id" : "ChIJadrmwLbVlzMR4_-Z1SrOi0U",
+         "reference" : "ChIJadrmwLbVlzMR4_-Z1SrOi0U",
+         "structured_formatting" : 
+         {
+            "main_text" : "Emmanuel Bergado I",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Emmanuel Bergado I"
+            },
+            {
+               "offset" : 20,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 32,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "sublocality_level_2",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Emmanuel Bergado II, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            },
+            {
+               "length" : 5,
+               "offset" : 21
+            }
+         ],
+         "place_id" : "ChIJJzCJCbTVlzMRlwv9cZiWZD8",
+         "reference" : "ChIJJzCJCbTVlzMRlwv9cZiWZD8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Emmanuel Bergado II",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Emmanuel Bergado II"
+            },
+            {
+               "offset" : 21,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 33,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Emilio Aguinaldo Highway, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            },
+            {
+               "length" : 5,
+               "offset" : 26
+            }
+         ],
+         "place_id" : "EjpFbWlsaW8gQWd1aW5hbGRvIEhpZ2h3YXksIERhc21hcmnDsWFzLCBDYXZpdGUsIFBoaWxpcHBpbmVzIi4qLAoUChIJK5qRDqF5vTMRlCxAt51XcE4SFAoSCSUeEXy41ZczER8yQPiYtoyr",
+         "reference" : "EjpFbWlsaW8gQWd1aW5hbGRvIEhpZ2h3YXksIERhc21hcmnDsWFzLCBDYXZpdGUsIFBoaWxpcHBpbmVzIi4qLAoUChIJK5qRDqF5vTMRlCxAt51XcE4SFAoSCSUeEXy41ZczER8yQPiYtoyr",
+         "structured_formatting" : 
+         {
+            "main_text" : "Emilio Aguinaldo Highway",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Emilio Aguinaldo Highway"
+            },
+            {
+               "offset" : 26,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 38,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

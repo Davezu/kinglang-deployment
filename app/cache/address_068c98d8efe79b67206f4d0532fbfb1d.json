@@ -1,0 +1,250 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Cabuyao, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJN1L8f4TYlzMRZZtXH0X2-u4",
+         "reference" : "ChIJN1L8f4TYlzMRZZtXH0X2-u4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabuyao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabuyao"
+            },
+            {
+               "offset" : 9,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Cabuyao City, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJK6I905divTMRwH5y8KScMBA",
+         "reference" : "ChIJK6I905divTMRwH5y8KScMBA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabuyao City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabuyao City"
+            },
+            {
+               "offset" : 14,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_3",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Cabuyao Exit (Southbound), Cabuyao, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJazxLO5NivTMR5LrmELEpd0Q",
+         "reference" : "ChIJazxLO5NivTMR5LrmELEpd0Q",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabuyao Exit (Southbound)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cabuyao, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabuyao Exit (Southbound)"
+            },
+            {
+               "offset" : 27,
+               "value" : "Cabuyao"
+            },
+            {
+               "offset" : 36,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Cabuyao City Hall, F.B. Bailon Street, Cabuyao, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJS522j2LYlzMR53oSr4YqkRs",
+         "reference" : "ChIJS522j2LYlzMR53oSr4YqkRs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabuyao City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "F.B. Bailon Street, Cabuyao, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabuyao City Hall"
+            },
+            {
+               "offset" : 19,
+               "value" : "F.B. Bailon Street"
+            },
+            {
+               "offset" : 39,
+               "value" : "Cabuyao"
+            },
+            {
+               "offset" : 48,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Cabuyao laguna, Quiapo, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJTSyURgDLlzMRsD34s3nZLv4",
+         "reference" : "ChIJTSyURgDLlzMRsD34s3nZLv4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabuyao laguna",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quiapo, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabuyao laguna"
+            },
+            {
+               "offset" : 16,
+               "value" : "Quiapo"
+            },
+            {
+               "offset" : 24,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 32,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

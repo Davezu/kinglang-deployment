@@ -191,6 +191,37 @@ switch ($request) {
         $controller->getBooking();
         break;
 
+    case "/home/booking-statistics":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getBookingStatistics();
+        break;
+        
+    case "/home/calendar-events":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getCalendarEvents();
+        break;
+        
+    case "/home/get-booking-details":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getBookingDetails();
+        break;
+        
+    case "/home/export-bookings":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->exportBookings();
+        break;
+        
+    case "/home/print-invoice":
+    case preg_match('|^/home/print-invoice/([0-9]+)$|', $request, $matches) ? $request : "":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->printInvoice($matches[1] ?? null);
+        break;
+
     case "/payment/process":
         require_once $controllerClasses['client']['BookingController'];
         $controller = new BookingController();
@@ -312,6 +343,11 @@ switch ($request) {
         require_once $controllerClasses['admin']['BookingManagementController'];
         $controller = new BookingManagementController();
         $controller->getBooking();
+        break;
+    case "/admin/get-booking-details":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getBookingDetails();
         break;
 
     case "/admin/get-users":
@@ -495,6 +531,33 @@ switch ($request) {
         $controller->addTestNotification();
         break;
         
+    // New routes for booking management features
+    case "/admin/booking-stats":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getBookingStats();
+        break;
+    case "/admin/calendar-bookings":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getCalendarBookings();
+        break;
+    case "/admin/search-bookings":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->searchBookings();
+        break;
+    case "/admin/unpaid-bookings":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getUnpaidBookings();
+        break;
+    case "/admin/export-bookings":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->exportBookings();
+        break;
+    
     default:
         // 404 Not Found
         header("HTTP/1.0 404 Not Found");

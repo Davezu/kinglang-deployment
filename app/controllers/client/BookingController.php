@@ -563,9 +563,12 @@ class BookingController {
         $order = $data["order"];
         $page = isset($data["page"]) ? (int)$data["page"] : 1;
         $limit = isset($data["limit"]) ? (int)$data["limit"] : 10;
+        $search = isset($data["search"]) ? $data["search"] : "";
+        $date_filter = isset($data["date_filter"]) ? $data["date_filter"] : null;
+        $balance_filter = isset($data["balance_filter"]) ? $data["balance_filter"] : null;
 
         $user_id = $_SESSION["user_id"];
-        $result = $this->bookingModel->getAllBookings($user_id, $status, $column, $order, $page, $limit);
+        $result = $this->bookingModel->getAllBookings($user_id, $status, $column, $order, $page, $limit, $search, $date_filter, $balance_filter);
 
         header("Content-Type: application/json");
 
@@ -741,5 +744,194 @@ class BookingController {
         }
     }
         
+    public function getBookingStatistics() {
+        header("Content-Type: application/json");
+        
+        $user_id = $_SESSION["user_id"];
+        
+        // Get total bookings count
+        $total = $this->bookingModel->getBookingsCount($user_id, "all");
+        
+        // Get confirmed bookings count
+        $confirmed = $this->bookingModel->getBookingsCount($user_id, "confirmed");
+        
+        // Get pending bookings count
+        $pending = $this->bookingModel->getBookingsCount($user_id, "pending");
+        
+        // Get upcoming tours count (confirmed bookings with future dates)
+        $upcoming = $this->bookingModel->getUpcomingToursCount($user_id);
+        
+        echo json_encode([
+            "success" => true,
+            "statistics" => [
+                "total" => $total,
+                "confirmed" => $confirmed,
+                "pending" => $pending,
+                "upcoming" => $upcoming
+            ]
+        ]);
+    }
+    
+    public function getCalendarEvents() {
+        header("Content-Type: application/json");
+        
+        $data = json_decode(file_get_contents("php://input"), true);
+        $start = isset($data["start"]) ? $data["start"] : null;
+        $end = isset($data["end"]) ? $data["end"] : null;
+        
+        if (!$start || !$end) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Start and end dates are required"
+            ]);
+            return;
+        }
+        
+        $user_id = $_SESSION["user_id"];
+        $events = $this->bookingModel->getBookingsForCalendar($user_id, $start, $end);
+        
+        echo json_encode([
+            "success" => true,
+            "events" => $events
+        ]);
+    }
+    
+    public function getBookingDetails() {
+        header("Content-Type: application/json");
+        
+        $data = json_decode(file_get_contents("php://input"), true);
+        $booking_id = isset($data["bookingId"]) ? $data["bookingId"] : null;
+        
+        if (!$booking_id) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Booking ID is required"
+            ]);
+            return;
+        }
+
+        $user_id = $_SESSION["user_id"];    
+        $payments = $this->bookingModel->getPaymentHistory($booking_id);
+        $booking = $this->bookingModel->getBooking($booking_id, $user_id);
+        
+        if ($booking) {
+            echo json_encode([
+                "success" => true,
+                "booking" => $booking,
+                "payments" => $payments
+            ]);
+        } else {
+            echo json_encode([
+                "success" => false,
+                "message" => "Booking not found or access denied"
+            ]);
+        }
+    }
+    
+    public function exportBookings() {
+        header("Content-Type: application/json");
+        
+        $data = json_decode(file_get_contents("php://input"), true);
+        $format = isset($data["format"]) ? $data["format"] : "pdf";
+        $status = isset($data["status"]) ? $data["status"] : "all";
+        $search = isset($data["search"]) ? $data["search"] : "";
+        $date_filter = isset($data["date_filter"]) ? $data["date_filter"] : null;
+        $balance_filter = isset($data["balance_filter"]) ? $data["balance_filter"] : null;
+        
+        $user_id = $_SESSION["user_id"];
+        
+        // Get bookings data
+        $result = $this->bookingModel->getAllBookings($user_id, $status, "date_of_tour", "asc", 1, 1000, $search, $date_filter, $balance_filter);
+        
+        if (!is_array($result) || empty($result["bookings"])) {
+            echo json_encode([
+                "success" => false,
+                "message" => "No bookings found to export"
+            ]);
+            return;
+        }
+        
+        $bookings = $result["bookings"];
+        
+        // Generate export file based on format
+        if ($format === "pdf") {
+            // Generate PDF file
+            // Implementation will depend on PDF library used in the project
+            echo json_encode([
+                "success" => true,
+                "url" => "/exports/bookings_" . $user_id . "_" . time() . ".pdf"
+            ]);
+        } else if ($format === "csv") {
+            // Generate CSV file
+            $filename = "bookings_" . $user_id . "_" . time() . ".csv";
+            $filepath = __DIR__ . "/../../exports/" . $filename;
+            
+            // Create exports directory if it doesn't exist
+            if (!file_exists(__DIR__ . "/../../exports/")) {
+                mkdir(__DIR__ . "/../../exports/", 0777, true);
+            }
+            
+            // Create CSV file
+            $csv = fopen($filepath, "w");
+            
+            // Add headers
+            fputcsv($csv, ["Booking ID", "Destination", "Date of Tour", "End of Tour", "Days", "Buses", "Total Cost", "Balance", "Status"]);
+            
+            // Add data
+            foreach ($bookings as $booking) {
+                fputcsv($csv, [
+                    $booking["booking_id"],
+                    $booking["destination"],
+                    $booking["date_of_tour"],
+                    $booking["end_of_tour"],
+                    $booking["number_of_days"],
+                    $booking["number_of_buses"],
+                    $booking["total_cost"],
+                    $booking["balance"],
+                    $booking["status"]
+                ]);
+            }
+            
+            fclose($csv);
+            
+            echo json_encode([
+                "success" => true,
+                "url" => "/exports/" . $filename
+            ]);
+        } else {
+            echo json_encode([
+                "success" => false,
+                "message" => "Invalid export format"
+            ]);
+        }
+    }
+
+    public function printInvoice($booking_id = null) {
+        if (!$booking_id) {
+            // Redirect to bookings page if no ID provided
+            header("Location: /home/booking-requests");
+            exit();
+        }
+        
+        $user_id = $_SESSION["user_id"];
+        
+        // Get booking details
+        $booking = $this->bookingModel->getBooking($booking_id, $user_id);
+        
+        if (!$booking) {
+            // Booking not found or doesn't belong to this user
+            header("Location: /home/booking-requests");
+            exit();
+        }
+        
+        // Get booking stops
+        $stops = $this->bookingModel->getBookingStops($booking_id);
+        
+        // Get payment history
+        $payments = $this->bookingModel->getPaymentHistory($booking_id);
+        
+        // Load the invoice template view
+        require_once __DIR__ . "/../../views/client/invoice.php";
+    }
 }
 ?>

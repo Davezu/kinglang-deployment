@@ -1,0 +1,110 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "LCMEGANET ENTERPRISE, Pangustura, Marikina, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJkwB0bzG5lzMRz_-JarRabts",
+         "reference" : "ChIJkwB0bzG5lzMRz_-JarRabts",
+         "structured_formatting" : 
+         {
+            "main_text" : "LCMEGANET ENTERPRISE",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pangustura, Marikina, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "LCMEGANET ENTERPRISE"
+            },
+            {
+               "offset" : 22,
+               "value" : "Pangustura"
+            },
+            {
+               "offset" : 34,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 44,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "LCMedela Pharmaceutical Trading, Venus St, Los Baños, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJgQyfuwFnvTMRBJOYOk02Nyc",
+         "reference" : "ChIJgQyfuwFnvTMRBJOYOk02Nyc",
+         "structured_formatting" : 
+         {
+            "main_text" : "LCMedela Pharmaceutical Trading",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Venus St, Los Baños, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "LCMedela Pharmaceutical Trading"
+            },
+            {
+               "offset" : 33,
+               "value" : "Venus St"
+            },
+            {
+               "offset" : 43,
+               "value" : "Los Baños"
+            },
+            {
+               "offset" : 54,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

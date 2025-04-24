@@ -159,6 +159,23 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.getElementById("nextButton").addEventListener("click", function () {
+    // Get all address inputs
+    const addressInputs = document.querySelectorAll(".address");
+    const allAddressesFilled = Array.from(addressInputs).every(input => input.value.trim() !== "");
+    
+    if (!allAddressesFilled) {
+        // Show error message
+        Swal.fire({
+            icon: 'error',
+            title: 'Validation Error',
+            text: 'Please fill in all location fields before proceeding.',
+            timer: 2000,
+            timerProgressBar: true
+        });
+        return;
+    }
+    
+    // If all addresses are filled, proceed to next step
     document.getElementById("firstInfo").classList.add("d-none");
     document.getElementById("nextInfo").classList.remove("d-none");
 });

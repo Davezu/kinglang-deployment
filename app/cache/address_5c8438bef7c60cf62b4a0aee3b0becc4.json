@@ -1,0 +1,258 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Booking Online Philippines, H.V. Dela Costa, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAWiDZQjJlzMRiRoG2jzClXM",
+         "reference" : "ChIJAWiDZQjJlzMRiRoG2jzClXM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Booking Online Philippines",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "H.V. Dela Costa, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Booking Online Philippines"
+            },
+            {
+               "offset" : 28,
+               "value" : "H.V. Dela Costa"
+            },
+            {
+               "offset" : 45,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 53,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Hotel Bookings, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 6
+            }
+         ],
+         "place_id" : "ChIJxxzEDksPvTMRl86U6DYDJYs",
+         "reference" : "ChIJxxzEDksPvTMRl86U6DYDJYs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Hotel Bookings",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 6
+               }
+            ],
+            "secondary_text" : "Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Hotel Bookings"
+            },
+            {
+               "offset" : 16,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 26,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Booking Me Travel and Tours Company, Bakakeng Norte Road, Baguio, Benguet, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9R_ah5ahkTMRPWFD9AnZ3vo",
+         "reference" : "ChIJ9R_ah5ahkTMRPWFD9AnZ3vo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Booking Me Travel and Tours Company",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bakakeng Norte Road, Baguio, Benguet, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Booking Me Travel and Tours Company"
+            },
+            {
+               "offset" : 37,
+               "value" : "Bakakeng Norte Road"
+            },
+            {
+               "offset" : 58,
+               "value" : "Baguio"
+            },
+            {
+               "offset" : 66,
+               "value" : "Benguet"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "travel_agency"
+         ]
+      },
+      {
+         "description" : "Philippine Airlines Booking Office‎, Rafael Alunan Avenue, Koronadal City, South Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 20
+            }
+         ],
+         "place_id" : "ChIJE6z1rOwY-DIRVNFfGhEXDSs",
+         "reference" : "ChIJE6z1rOwY-DIRVNFfGhEXDSs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Philippine Airlines Booking Office‎",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 20
+               }
+            ],
+            "secondary_text" : "Rafael Alunan Avenue, Koronadal City, South Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Philippine Airlines Booking Office‎"
+            },
+            {
+               "offset" : 37,
+               "value" : "Rafael Alunan Avenue"
+            },
+            {
+               "offset" : 59,
+               "value" : "Koronadal City"
+            },
+            {
+               "offset" : 75,
+               "value" : "South Cotabato"
+            },
+            {
+               "offset" : 91,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Niu by Vikings, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJofuiBu3IlzMRiX67810qV6s",
+         "reference" : "ChIJofuiBu3IlzMRiX67810qV6s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Niu by Vikings",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Niu by Vikings"
+            },
+            {
+               "offset" : 16,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "food",
+            "restaurant"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

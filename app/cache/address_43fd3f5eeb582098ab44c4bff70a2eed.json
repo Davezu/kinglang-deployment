@@ -38,8 +38,8 @@
          "types" : 
          [
             "geocode",
-            "political",
-            "locality"
+            "locality",
+            "political"
          ]
       },
       {
@@ -86,9 +86,9 @@
          ],
          "types" : 
          [
-            "university",
-            "establishment",
             "school",
+            "establishment",
+            "university",
             "point_of_interest"
          ]
       },
@@ -192,8 +192,8 @@
          ],
          "types" : 
          [
-            "geocode",
-            "premise"
+            "premise",
+            "geocode"
          ]
       },
       {
@@ -240,9 +240,9 @@
          ],
          "types" : 
          [
+            "point_of_interest",
             "school",
-            "establishment",
-            "point_of_interest"
+            "establishment"
          ]
       }
    ],

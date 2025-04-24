@@ -1,0 +1,253 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Calabarzon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJfTlj-wQCmDMRzJLM6XtvvTU",
+         "reference" : "ChIJfTlj-wQCmDMRzJLM6XtvvTU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Calabarzon",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Calabarzon"
+            },
+            {
+               "offset" : 12,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_1",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Calabarzon Expressway, Malvar, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjRDYWxhYmFyem9uIEV4cHJlc3N3YXksIE1hbHZhciwgQmF0YW5nYXMsIFBoaWxpcHBpbmVzIi4qLAoUChIJ4eseZ9wPvTMRJgwfifENla4SFAoSCcdErRDabr0zEe5XtouDEqbb",
+         "reference" : "EjRDYWxhYmFyem9uIEV4cHJlc3N3YXksIE1hbHZhciwgQmF0YW5nYXMsIFBoaWxpcHBpbmVzIi4qLAoUChIJ4eseZ9wPvTMRJgwfifENla4SFAoSCcdErRDabr0zEe5XtouDEqbb",
+         "structured_formatting" : 
+         {
+            "main_text" : "Calabarzon Expressway",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malvar, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Calabarzon Expressway"
+            },
+            {
+               "offset" : 23,
+               "value" : "Malvar"
+            },
+            {
+               "offset" : 31,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "CALABARZON, 26th Street Corner C5, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJP-DJuvLIlzMRRFr_qqmNU0I",
+         "reference" : "ChIJP-DJuvLIlzMRRFr_qqmNU0I",
+         "structured_formatting" : 
+         {
+            "main_text" : "CALABARZON",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "26th Street Corner C5, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "CALABARZON"
+            },
+            {
+               "offset" : 12,
+               "value" : "26th Street Corner C5"
+            },
+            {
+               "offset" : 35,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 43,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "CALABARZON Regional Government Center Building 1, Barangay Mapagong, Calamba, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJhcTBdlZivTMR5jqHLGInFts",
+         "reference" : "ChIJhcTBdlZivTMR5jqHLGInFts",
+         "structured_formatting" : 
+         {
+            "main_text" : "CALABARZON Regional Government Center Building 1",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Barangay Mapagong, Calamba, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "CALABARZON Regional Government Center Building 1"
+            },
+            {
+               "offset" : 50,
+               "value" : "Barangay Mapagong"
+            },
+            {
+               "offset" : 69,
+               "value" : "Calamba"
+            },
+            {
+               "offset" : 78,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 86,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Calabarzon Eatery & Sari-Sari Store, Lipa - Alaminos Road, Alaminos, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwU8RubppvTMRo3jS1-dahM8",
+         "reference" : "ChIJwU8RubppvTMRo3jS1-dahM8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Calabarzon Eatery & Sari-Sari Store",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lipa - Alaminos Road, Alaminos, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Calabarzon Eatery & Sari-Sari Store"
+            },
+            {
+               "offset" : 37,
+               "value" : "Lipa - Alaminos Road"
+            },
+            {
+               "offset" : 59,
+               "value" : "Alaminos"
+            },
+            {
+               "offset" : 69,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 77,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "establishment",
+            "point_of_interest",
+            "restaurant"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

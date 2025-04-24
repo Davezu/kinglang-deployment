@@ -1,0 +1,271 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Fairview Terraces, Barangay corner, Maligaya Street, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJFUbI-2iwlzMRkB5yB-PVczs",
+         "reference" : "ChIJFUbI-2iwlzMRkB5yB-PVczs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Fairview Terraces",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Barangay corner, Maligaya Street, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Fairview Terraces"
+            },
+            {
+               "offset" : 19,
+               "value" : "Barangay corner"
+            },
+            {
+               "offset" : 36,
+               "value" : "Maligaya Street"
+            },
+            {
+               "offset" : 53,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 65,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 78,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 92,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "store",
+            "shopping_mall",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Fairview Terraces Sports Center, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJXbsJcSmxlzMReqCrQ1_JiIs",
+         "reference" : "ChIJXbsJcSmxlzMReqCrQ1_JiIs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Fairview Terraces Sports Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Fairview Terraces Sports Center"
+            },
+            {
+               "offset" : 33,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 46,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Fairview Terraces, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJC8qEOACxlzMRs8OdjbOHvXE",
+         "reference" : "ChIJC8qEOACxlzMRs8OdjbOHvXE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Fairview Terraces",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Fairview Terraces"
+            },
+            {
+               "offset" : 19,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 32,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "tourist_attraction",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Fairview Terraces Back Entrance, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ3SN1aQCxlzMRSRLbKU3fMP8",
+         "reference" : "ChIJ3SN1aQCxlzMRSRLbKU3fMP8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Fairview Terraces Back Entrance",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Fairview Terraces Back Entrance"
+            },
+            {
+               "offset" : 33,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 46,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "shopping_mall"
+         ]
+      },
+      {
+         "description" : "Ayala Malls Cinemas Fairview Terraces, Quirino Highway Cor, Maligaya Drive, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 20
+            }
+         ],
+         "place_id" : "ChIJJxXoEWmwlzMRI5Hr7hm99QU",
+         "reference" : "ChIJJxXoEWmwlzMRI5Hr7hm99QU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ayala Malls Cinemas Fairview Terraces",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 20
+               }
+            ],
+            "secondary_text" : "Quirino Highway Cor, Maligaya Drive, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ayala Malls Cinemas Fairview Terraces"
+            },
+            {
+               "offset" : 39,
+               "value" : "Quirino Highway Cor, Maligaya Drive"
+            },
+            {
+               "offset" : 76,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 88,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 101,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 115,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "movie_theater",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -49,6 +49,26 @@ class BookingManagementModel {
         }
     }
 
+    public function getPaymentHistory($booking_id) {
+        try {   
+            $sql = "
+                SELECT p.payment_id, p.booking_id, p.user_id, p.amount, p.payment_method, 
+                       p.proof_of_payment, p.status, p.payment_date, p.updated_at, p.is_canceled
+                FROM payments p
+                WHERE p.booking_id = :booking_id
+                ORDER BY p.payment_date DESC
+            ";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":booking_id", $booking_id);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return [];
+        }
+    }
+
     public function getTotalBookings($status) {
         $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
         $status = in_array($status, $allowed_status) ? $status : "";
@@ -161,28 +181,85 @@ class BookingManagementModel {
         try {
             $stmt = $this->conn->prepare("SELECT booking_id FROM rebooking_request WHERE rebooking_id = :rebooking_id");
             $stmt->execute([ ":rebooking_id" => $rebooking_id ]);
-            return $stmt->fetchColumn();
+            $result = $stmt->fetchColumn();
+            
+            if ($result === false) {
+                return null; // No booking ID found
+            }
+            
+            return $result;
         } catch (PDOException $e) {
-            return "Databse error: $e";
+            return "Database error: " . $e->getMessage();
         }
     }
 
     public function confirmRebookingRequest($rebooking_id) {
-        $booking_id = $this->getBookingIdFromRebookingRequest($rebooking_id) ?? 0;
-
-        if ($booking_id === 0) {
-            return ["success" => false, "message" => "Unable to get booking ID."];
-        }
-
         try {
+            // First, let's verify the rebooking request exists
+            $stmt = $this->conn->prepare("SELECT * FROM rebooking_request WHERE rebooking_id = :rebooking_id");
+            $stmt->execute([":rebooking_id" => $rebooking_id]);
+            $request = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if (!$request) {
+                return ["success" => false, "message" => "Rebooking request not found."];
+            }
+            
+            // Get the original booking ID (we're getting it directly from the query result)
+            $booking_id = $request['booking_id'];
+            
+            if (!$booking_id) {
+                return ["success" => false, "message" => "Original booking ID not found."];
+            }
+            
+            // Update rebooking request status
             $stmt = $this->conn->prepare("UPDATE rebooking_request SET status = 'Confirmed' WHERE rebooking_id = :rebooking_id");
             $stmt->execute([":rebooking_id" => $rebooking_id]);
 
+            // Mark original booking as rebooked
             $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooked = 1 WHERE booking_id = :booking_id");
-            $stmt->execute([ ":booking_id" => $booking_id]);
+            $stmt->execute([":booking_id" => $booking_id]);
 
+            // Update the rebooking record to be a normal booking
             $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooking = 0, status = 'Confirmed' WHERE booking_id = :booking_id");
-            $stmt->execute([ ":booking_id" => $rebooking_id]);
+            $stmt->execute([":booking_id" => $rebooking_id]);
+
+            // Update payments booking_id to the new booking_id based on the rebooking_id
+            $stmt = $this->conn->prepare("UPDATE payments SET booking_id = :rebooking_id WHERE booking_id = :booking_id");
+            $stmt->execute([":rebooking_id" => $rebooking_id, ":booking_id" => $booking_id]);
+
+            // Get total paid amount from payments from the new booking
+            $stmt = $this->conn->prepare("SELECT SUM(amount) AS total_paid FROM payments WHERE booking_id = :booking_id AND status = 'Confirmed'");
+            $stmt->execute([":booking_id" => $rebooking_id]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $total_paid = isset($result["total_paid"]) ? $result["total_paid"] : 0;
+
+            // Get total cost for the new booking
+            $stmt = $this->conn->prepare("SELECT c.total_cost, b.balance FROM bookings b JOIN booking_costs c ON b.booking_id = c.booking_id WHERE b.booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $rebooking_id]); 
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $total_cost = isset($result["total_cost"]) ? $result["total_cost"] : 0;   
+
+            // Calculate balance with proper rounding
+            $balance = round($total_cost - $total_paid, 2);
+            
+            // Handle tiny negative balances
+            if ($balance > -0.1 && $balance < 0) {
+                $balance = 0;
+            }
+
+            $new_status = "Unpaid";
+            if ($total_paid > 0 && $total_paid < $total_cost) {
+                $new_status = "Partially Paid";
+            } elseif ($total_paid >= $total_cost) {
+                $new_status = "Paid";
+            }
+
+            $stmt = $this->conn->prepare("UPDATE bookings SET payment_status = :payment_status, status = 'Confirmed', balance = :balance WHERE booking_id = :booking_id");
+            $stmt->execute([
+                ":payment_status" => $new_status,
+                ":booking_id" => $rebooking_id,
+                ":balance" => $balance
+            ]);
 
             // Get booking information
             $bookingInfo = $this->getBooking($rebooking_id);
@@ -195,7 +272,7 @@ class BookingManagementModel {
             $clientMessage = "Your rebooking request for the trip to " . $bookingInfo['destination'] . " has been confirmed.";
             $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "rebooking_confirmed", $clientMessage, $rebooking_id);
 
-            return ["success" => true];
+            return ["success" => true, "message" => "Rebooking request confirmed successfully."];
         } catch (PDOException $e) {
             return ["success" => false, "message" =>  "Database error: " . $e->getMessage()];
         }
@@ -217,17 +294,20 @@ class BookingManagementModel {
             ]);
 
             // Get booking information
-            $bookingInfo = $this->getBooking($booking_id);
+            $bookingInfo = $this->getBooking($rebooking_id);
             
-            // Add admin notification
-            $message = "Rebooking rejected for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
-            $this->notificationModel->addNotification("rebooking_rejected", $message, $booking_id);
-            
-            // Add client notification
-            $clientMessage = "Your rebooking request for the trip to " . $bookingInfo['destination'] . " has been rejected. Reason: " . $reason;
-            $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "rebooking_rejected", $clientMessage, $booking_id);
+            // Only proceed with notifications if bookingInfo is an array
+            if (is_array($bookingInfo)) {
+                // Add admin notification
+                $message = "Rebooking rejected for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
+                $this->notificationModel->addNotification("rebooking_rejected", $message, $booking_id);
+                
+                // Add client notification
+                $clientMessage = "Your rebooking request for the trip to " . $bookingInfo['destination'] . " has been rejected. Reason: " . $reason;
+                $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "rebooking_rejected", $clientMessage, $booking_id);
+            }
 
-            return ["success" => true];
+            return ["success" => true, "message" => "Rebooking request rejected successfully."];
         } catch (PDOException $e) {
             return ["success" => false, "message" => "Database error: " . $e->getMessage()];
         }
@@ -237,15 +317,23 @@ class BookingManagementModel {
     public function getBooking($booking_id) {
         try {
             $stmt = $this->conn->prepare("
-                SELECT b.booking_id, u.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.email, u.contact_number, b.pickup_point, b.destination, b.number_of_days, b.number_of_buses, b.date_of_tour, b.end_of_tour, b.status, b.payment_status, b.payment_status, b.total_cost, b.balance
+                SELECT b.booking_id, u.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.email, u.contact_number, b.pickup_point, b.destination, b.number_of_days, b.number_of_buses, b.date_of_tour, b.end_of_tour, b.status, b.payment_status, c.total_cost, b.balance, b.booked_at
                 FROM bookings b
                 JOIN users u ON b.user_id = u.user_id
-                WHERE booking_id = :booking_id
+                JOIN booking_costs c ON b.booking_id = c.booking_id
+                WHERE b.booking_id = :booking_id
             ");
             $stmt->execute([":booking_id" => $booking_id]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if (!$result) {
+                return null; // No booking found
+            }
+            
+            return $result;
         } catch (PDOException $e) {
-            return "Database error";
+            error_log("Error in getBooking: " . $e->getMessage());
+            return ["error" => "Database error: " . $e->getMessage()];
         }
     }
 
@@ -397,9 +485,9 @@ class BookingManagementModel {
                 SELECT 
                     MONTH(b.date_of_tour) as month,
                     COUNT(b.booking_id) as booking_count,
-                    SUM(CASE WHEN p.status = 'Confirmed' AND is_canceled = 0 THEN p.amount ELSE 0 END) as total_revenue
+                    SUM(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) as total_revenue
                 FROM bookings b
-                JOIN payments p ON b.booking_id = p.booking_id
+                LEFT JOIN payments p ON b.booking_id = p.booking_id
                 WHERE YEAR(b.date_of_tour) = :year
                 AND b.is_rebooking = 0
                 AND b.is_rebooked = 0
@@ -675,6 +763,249 @@ class BookingManagementModel {
         } catch (PDOException $e) {
             error_log("Error in paymentMethodChart: " . $e->getMessage());
             return "Database error: $e";    
+        }
+    }
+
+    // New method for getting booking stats for the dashboard
+    public function getBookingStats() {
+        try {
+            // Get total bookings
+            $stmt = $this->conn->prepare("
+                SELECT COUNT(*) AS total 
+                FROM bookings 
+                WHERE is_rebooking = 0 AND is_rebooked = 0
+            ");
+            $stmt->execute();
+            $total = $stmt->fetchColumn();
+            
+            // Get confirmed bookings
+            $stmt = $this->conn->prepare("
+                SELECT COUNT(*) AS confirmed 
+                FROM bookings 
+                WHERE status = 'Confirmed' AND is_rebooking = 0 AND is_rebooked = 0
+            ");
+            $stmt->execute();
+            $confirmed = $stmt->fetchColumn();
+            
+            // Get pending bookings
+            $stmt = $this->conn->prepare("
+                SELECT COUNT(*) AS pending 
+                FROM bookings 
+                WHERE status = 'Pending' AND is_rebooking = 0 AND is_rebooked = 0
+            ");
+            $stmt->execute();
+            $pending = $stmt->fetchColumn();
+            
+            // Get upcoming tours (future dates with confirmed status)
+            $stmt = $this->conn->prepare("
+                SELECT COUNT(*) AS upcoming 
+                FROM bookings 
+                WHERE status = 'Confirmed' 
+                AND date_of_tour >= CURDATE() 
+                AND is_rebooking = 0 AND is_rebooked = 0
+            ");
+            $stmt->execute();
+            $upcoming = $stmt->fetchColumn();
+            
+            return [
+                'total' => $total,
+                'confirmed' => $confirmed,
+                'pending' => $pending,
+                'upcoming' => $upcoming
+            ];
+        } catch (PDOException $e) {
+            return "Database error: " . $e->getMessage();
+        }
+    }
+    
+    // New method for getting calendar bookings
+    public function getCalendarBookings($start, $end) {
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT b.booking_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, 
+                u.contact_number, u.email, b.destination, b.pickup_point, 
+                b.date_of_tour, b.end_of_tour, b.number_of_days, b.number_of_buses, 
+                b.status, b.payment_status, c.total_cost, b.balance,
+                b.created_at, b.updated_at
+                FROM bookings b
+                JOIN users u ON b.user_id = u.user_id
+                JOIN booking_costs c ON b.booking_id = c.booking_id
+                WHERE b.is_rebooking = 0 AND b.is_rebooked = 0
+                AND ((b.date_of_tour BETWEEN :start AND :end) 
+                    OR (b.end_of_tour BETWEEN :start AND :end)
+                    OR (b.date_of_tour <= :start AND b.end_of_tour >= :end))
+                ORDER BY b.date_of_tour ASC
+            ");
+            $stmt->bindParam(':start', $start);
+            $stmt->bindParam(':end', $end);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return "Database error: " . $e->getMessage();
+        }
+    }
+    
+    // New method for searching bookings
+    public function searchBookings($searchTerm, $status, $page = 1, $limit = 10) {
+        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
+        $status = in_array($status, $allowed_status) ? $status : "";
+        $status_condition = ($status == "All") ? "" : " AND b.status = :status";
+        
+        // Calculate offset for pagination
+        $offset = ($page - 1) * $limit;
+        
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT b.booking_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, 
+                u.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, 
+                b.number_of_days, b.number_of_buses, b.status, b.payment_status, c.total_cost, b.balance
+                FROM bookings b
+                JOIN users u ON b.user_id = u.user_id
+                JOIN booking_costs c ON b.booking_id = c.booking_id
+                WHERE is_rebooking = 0 AND is_rebooked = 0
+                AND (
+                    CONCAT(u.first_name, ' ', u.last_name) LIKE :search
+                    OR u.contact_number LIKE :search
+                    OR b.destination LIKE :search
+                    OR b.pickup_point LIKE :search
+                )
+                $status_condition
+                ORDER BY b.booking_id DESC
+                LIMIT :limit OFFSET :offset
+            ");
+            
+            $searchParam = "%" . $searchTerm . "%";
+            $stmt->bindParam(':search', $searchParam);
+            
+            if ($status != "All") {
+                $stmt->bindParam(':status', $status);
+            }
+            
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return "Database error: " . $e->getMessage();
+        }
+    }
+    
+    // New method for counting search results
+    public function getTotalSearchResults($searchTerm, $status) {
+        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
+        $status = in_array($status, $allowed_status) ? $status : "";
+        $status_condition = ($status == "All") ? "" : " AND b.status = :status";
+        
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT COUNT(*) as total
+                FROM bookings b
+                JOIN users u ON b.user_id = u.user_id
+                WHERE is_rebooking = 0 AND is_rebooked = 0
+                AND (
+                    CONCAT(u.first_name, ' ', u.last_name) LIKE :search
+                    OR u.contact_number LIKE :search
+                    OR b.destination LIKE :search
+                    OR b.pickup_point LIKE :search
+                )
+                $status_condition
+            ");
+            
+            $searchParam = "%" . $searchTerm . "%";
+            $stmt->bindParam(':search', $searchParam);
+            
+            if ($status != "All") {
+                $stmt->bindParam(':status', $status);
+            }
+            
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['total'];
+        } catch (PDOException $e) {
+            return 0;
+        }
+    }
+    
+    // New method for getting unpaid bookings
+    public function getUnpaidBookings($page = 1, $limit = 10) {
+        // Calculate offset for pagination
+        $offset = ($page - 1) * $limit;
+        
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT b.booking_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, 
+                u.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, 
+                b.number_of_days, b.number_of_buses, b.status, b.payment_status, c.total_cost, b.balance
+                FROM bookings b
+                JOIN users u ON b.user_id = u.user_id
+                JOIN booking_costs c ON b.booking_id = c.booking_id
+                WHERE is_rebooking = 0 AND is_rebooked = 0
+                AND (b.payment_status = 'Unpaid' OR b.payment_status = 'Partially Paid')
+                ORDER BY b.booking_id DESC
+                LIMIT :limit OFFSET :offset
+            ");
+            
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return "Database error: " . $e->getMessage();
+        }
+    }
+    
+    // New method for counting total unpaid bookings
+    public function getTotalUnpaidBookings() {
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT COUNT(*) as total
+                FROM bookings b
+                WHERE is_rebooking = 0 AND is_rebooked = 0
+                AND (b.payment_status = 'Unpaid' OR b.payment_status = 'Partially Paid')
+            ");
+            
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['total'];
+        } catch (PDOException $e) {
+            return 0;
+        }
+    }
+    
+    // New method for getting all bookings for export
+    public function getAllBookingsForExport($status) {
+        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
+        $status = in_array($status, $allowed_status) ? $status : "";
+        $status_condition = ($status == "All") ? "" : " AND b.status = :status";
+        
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT b.booking_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, 
+                u.contact_number, u.email, b.destination, b.pickup_point, 
+                b.date_of_tour, b.end_of_tour, b.number_of_days, b.number_of_buses, 
+                b.status, b.payment_status, c.total_cost, b.balance
+                FROM bookings b
+                JOIN users u ON b.user_id = u.user_id
+                JOIN booking_costs c ON b.booking_id = c.booking_id
+                WHERE b.is_rebooking = 0 AND b.is_rebooked = 0
+                $status_condition
+                ORDER BY b.booking_id DESC
+            ");
+            
+            if ($status != "All") {
+                $stmt->bindParam(':status', $status);
+            }
+            
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return [];
         }
     }
 }

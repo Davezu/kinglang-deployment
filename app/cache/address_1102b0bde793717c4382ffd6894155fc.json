@@ -1,0 +1,251 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbyuXNQjOlzMRS3eB0pUy8w8",
+         "reference" : "ChIJbyuXNQjOlzMRS3eB0pUy8w8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Las Piñas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 11,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Las Cabañas Beach, Taytay - El Nido National Highway, El Nido, Palawan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJld6ZHr5VtjMRxXad8eDfSjE",
+         "reference" : "ChIJld6ZHr5VtjMRxXad8eDfSjE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Las Cabañas Beach",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taytay - El Nido National Highway, El Nido, Palawan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Las Cabañas Beach"
+            },
+            {
+               "offset" : 19,
+               "value" : "Taytay - El Nido National Highway"
+            },
+            {
+               "offset" : 54,
+               "value" : "El Nido"
+            },
+            {
+               "offset" : 63,
+               "value" : "Palawan"
+            },
+            {
+               "offset" : 72,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Las Casas Filipinas De Acuzar, Bagac, Bataan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeSJDtJ0RljMR0g1F0CZqfz8",
+         "reference" : "ChIJeSJDtJ0RljMR0g1F0CZqfz8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Las Casas Filipinas De Acuzar",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bagac, Bataan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Las Casas Filipinas De Acuzar"
+            },
+            {
+               "offset" : 31,
+               "value" : "Bagac"
+            },
+            {
+               "offset" : 38,
+               "value" : "Bataan"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Las Piñas City Hall, Alabang–Zapote Road, Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHXBkr_7NlzMRGiYAxngYYdw",
+         "reference" : "ChIJHXBkr_7NlzMRGiYAxngYYdw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Las Piñas City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Alabang–Zapote Road, Las Piñas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Las Piñas City Hall"
+            },
+            {
+               "offset" : 21,
+               "value" : "Alabang–Zapote Road"
+            },
+            {
+               "offset" : 42,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 53,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "local_government_office",
+            "city_hall"
+         ]
+      },
+      {
+         "description" : "Lasam, Cagayan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqcq3OklXjzMRbvfywkoGcCQ",
+         "reference" : "ChIJqcq3OklXjzMRbvfywkoGcCQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Lasam",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cagayan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Lasam"
+            },
+            {
+               "offset" : 7,
+               "value" : "Cagayan"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

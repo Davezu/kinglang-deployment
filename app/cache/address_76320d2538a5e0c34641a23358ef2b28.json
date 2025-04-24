@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
+            "geocode",
             "political",
-            "locality",
-            "geocode"
+            "locality"
          ]
       },
       {
@@ -90,8 +90,8 @@
          ],
          "types" : 
          [
-            "premise",
-            "geocode"
+            "geocode",
+            "premise"
          ]
       },
       {
@@ -190,8 +190,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {

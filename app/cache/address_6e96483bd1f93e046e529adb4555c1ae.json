@@ -1,0 +1,262 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbyuXNQjOlzMRS3eB0pUy8w8",
+         "reference" : "ChIJbyuXNQjOlzMRS3eB0pUy8w8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Las Piñas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 11,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Las Piñas City Hall, Alabang–Zapote Road, Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHXBkr_7NlzMRGiYAxngYYdw",
+         "reference" : "ChIJHXBkr_7NlzMRGiYAxngYYdw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Las Piñas City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Alabang–Zapote Road, Las Piñas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Las Piñas City Hall"
+            },
+            {
+               "offset" : 21,
+               "value" : "Alabang–Zapote Road"
+            },
+            {
+               "offset" : 42,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 53,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "local_government_office",
+            "establishment",
+            "point_of_interest",
+            "city_hall"
+         ]
+      },
+      {
+         "description" : "Las Pinas City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqbaW6_DRlzMRxqLV5HbJrso",
+         "reference" : "ChIJqbaW6_DRlzMRxqLV5HbJrso",
+         "structured_formatting" : 
+         {
+            "main_text" : "Las Pinas City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Las Pinas City"
+            },
+            {
+               "offset" : 16,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "administrative_area_level_3"
+         ]
+      },
+      {
+         "description" : "Las Piñas Doctors Hospital, CAA Road, Pulanglupa II, Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ48_bLg_OlzMRS7O80eZ8k5w",
+         "reference" : "ChIJ48_bLg_OlzMRS7O80eZ8k5w",
+         "structured_formatting" : 
+         {
+            "main_text" : "Las Piñas Doctors Hospital",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "CAA Road, Pulanglupa II, Las Piñas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Las Piñas Doctors Hospital"
+            },
+            {
+               "offset" : 28,
+               "value" : "CAA Road"
+            },
+            {
+               "offset" : 38,
+               "value" : "Pulanglupa II"
+            },
+            {
+               "offset" : 53,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 64,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "health",
+            "hospital"
+         ]
+      },
+      {
+         "description" : "Las Piñas General Hospital And Satellite Trauma Center, OB Ward – Nurse Station Office, Diego Cera Ave, Bernabe Compound, Pulanglupa I, Las Piñas City Metro, Manila, Las Piñas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJexyhfMPNlzMRdyIOZOtu_Co",
+         "reference" : "ChIJexyhfMPNlzMRdyIOZOtu_Co",
+         "structured_formatting" : 
+         {
+            "main_text" : "Las Piñas General Hospital And Satellite Trauma Center, OB Ward – Nurse Station Office",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Diego Cera Ave, Bernabe Compound, Pulanglupa I, Las Piñas City Metro, Manila, Las Piñas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Las Piñas General Hospital And Satellite Trauma Center, OB Ward – Nurse Station Office"
+            },
+            {
+               "offset" : 88,
+               "value" : "Diego Cera Ave, Bernabe Compound, Pulanglupa I, Las Piñas City Metro, Manila"
+            },
+            {
+               "offset" : 166,
+               "value" : "Las Piñas"
+            },
+            {
+               "offset" : 177,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 191,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "hospital",
+            "health"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -45,10 +45,10 @@
          ],
          "types" : 
          [
-            "sublocality_level_1",
             "geocode",
-            "political",
-            "sublocality"
+            "sublocality_level_1",
+            "sublocality",
+            "political"
          ]
       },
       {
@@ -103,9 +103,9 @@
          ],
          "types" : 
          [
+            "parking",
             "point_of_interest",
-            "establishment",
-            "parking"
+            "establishment"
          ]
       },
       {
@@ -160,8 +160,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -212,8 +212,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -268,8 +268,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       }
    ],

@@ -1,0 +1,241 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Babatngon, Leyte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJK1qgIY1sCDMR7wzU08m9e2A",
+         "reference" : "ChIJK1qgIY1sCDMR7wzU08m9e2A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Babatngon",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Leyte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Babatngon"
+            },
+            {
+               "offset" : 11,
+               "value" : "Leyte"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Babuyan Island, Cagayan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJVHmbK8LeDQRwoNbwS9eYY8",
+         "reference" : "ChIJJVHmbK8LeDQRwoNbwS9eYY8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Babuyan Island",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cagayan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Babuyan Island"
+            },
+            {
+               "offset" : 16,
+               "value" : "Cagayan"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Babag, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAf8qSTqaqTMRF3k0-M42pM8",
+         "reference" : "ChIJAf8qSTqaqTMRF3k0-M42pM8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Babag",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Babag"
+            },
+            {
+               "offset" : 7,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 13,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "sublocality_level_2",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Babo Sacan, Porac, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ1feLLMT0ljMRlXBKDFdmIXw",
+         "reference" : "ChIJ1feLLMT0ljMRlXBKDFdmIXw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Babo Sacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Porac, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Babo Sacan"
+            },
+            {
+               "offset" : 12,
+               "value" : "Porac"
+            },
+            {
+               "offset" : 19,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 29,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "geocode",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Babo Pangulo, Porac, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJj-kEDrT0ljMR_1rjL6vSsXo",
+         "reference" : "ChIJj-kEDrT0ljMR_1rjL6vSsXo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Babo Pangulo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Porac, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Babo Pangulo"
+            },
+            {
+               "offset" : 14,
+               "value" : "Porac"
+            },
+            {
+               "offset" : 21,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 31,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "sublocality",
+            "geocode",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

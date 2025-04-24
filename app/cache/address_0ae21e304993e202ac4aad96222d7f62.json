@@ -1,0 +1,254 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Kentucky, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EitLZW50dWNreSwgVGFndWlnLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJL7siWK_IlzMRFA5y8FnqoqISFAoSCQEw_lRKz5czEa3SmKnweq4v",
+         "reference" : "EitLZW50dWNreSwgVGFndWlnLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJL7siWK_IlzMRFA5y8FnqoqISFAoSCQEw_lRKz5czEa3SmKnweq4v",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kentucky",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kentucky"
+            },
+            {
+               "offset" : 10,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 18,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Kentucky Drive, Muntinlupa, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjVLZW50dWNreSBEcml2ZSwgTXVudGlubHVwYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCQP9RV0p0JczEeoN1JAdYlGkEhQKEglF47HHLNCXMxET8Np85L79UQ",
+         "reference" : "EjVLZW50dWNreSBEcml2ZSwgTXVudGlubHVwYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCQP9RV0p0JczEeoN1JAdYlGkEhQKEglF47HHLNCXMxET8Np85L79UQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kentucky Drive",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Muntinlupa, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kentucky Drive"
+            },
+            {
+               "offset" : 16,
+               "value" : "Muntinlupa"
+            },
+            {
+               "offset" : 28,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Kentucky Lane, Olongapo, Zambales, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ei5LZW50dWNreSBMYW5lLCBPbG9uZ2FwbywgWmFtYmFsZXMsIFBoaWxpcHBpbmVzIi4qLAoUChIJ09wc5-FwljMR16Mncn6SZm4SFAoSCWshMpwbcZYzEadjKW_Tw4Cg",
+         "reference" : "Ei5LZW50dWNreSBMYW5lLCBPbG9uZ2FwbywgWmFtYmFsZXMsIFBoaWxpcHBpbmVzIi4qLAoUChIJ09wc5-FwljMR16Mncn6SZm4SFAoSCWshMpwbcZYzEadjKW_Tw4Cg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kentucky Lane",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Olongapo, Zambales, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kentucky Lane"
+            },
+            {
+               "offset" : 15,
+               "value" : "Olongapo"
+            },
+            {
+               "offset" : 25,
+               "value" : "Zambales"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Kentucky Taguig Metro Manila, Kentucky, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAxtaWK_IlzMRMOX5oHChBHo",
+         "reference" : "ChIJAxtaWK_IlzMRMOX5oHChBHo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kentucky Taguig Metro Manila",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Kentucky, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kentucky Taguig Metro Manila"
+            },
+            {
+               "offset" : 30,
+               "value" : "Kentucky"
+            },
+            {
+               "offset" : 40,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "store",
+            "food",
+            "supermarket",
+            "point_of_interest",
+            "grocery_or_supermarket",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Kentucky Street, San Mateo, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ei5LZW50dWNreSBTdHJlZXQsIFNhbiBNYXRlbywgUml6YWwsIFBoaWxpcHBpbmVzIi4qLAoUChIJX_fPZYG5lzMRvFhehMcZtnISFAoSCfsEJELQu5czERPlixqjzGnz",
+         "reference" : "Ei5LZW50dWNreSBTdHJlZXQsIFNhbiBNYXRlbywgUml6YWwsIFBoaWxpcHBpbmVzIi4qLAoUChIJX_fPZYG5lzMRvFhehMcZtnISFAoSCfsEJELQu5czERPlixqjzGnz",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kentucky Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Mateo, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kentucky Street"
+            },
+            {
+               "offset" : 17,
+               "value" : "San Mateo"
+            },
+            {
+               "offset" : 28,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

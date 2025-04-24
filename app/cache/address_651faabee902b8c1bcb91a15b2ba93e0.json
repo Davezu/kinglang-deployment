@@ -1,0 +1,255 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "J.A. Clarin Street, Tagbilaran City, Bohol, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 18,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjdKLkEuIENsYXJpbiBTdHJlZXQsIFRhZ2JpbGFyYW4gQ2l0eSwgQm9ob2wsIFBoaWxpcHBpbmVzIi4qLAoUChIJAajvZrRNqjMRHAW7KPibsSESFAoSCV2syrC0TaozESEjV3BtOnom",
+         "reference" : "EjdKLkEuIENsYXJpbiBTdHJlZXQsIFRhZ2JpbGFyYW4gQ2l0eSwgQm9ob2wsIFBoaWxpcHBpbmVzIi4qLAoUChIJAajvZrRNqjMRHAW7KPibsSESFAoSCV2syrC0TaozESEjV3BtOnom",
+         "structured_formatting" : 
+         {
+            "main_text" : "J.A. Clarin Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 18,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagbilaran City, Bohol, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "J.A. Clarin Street"
+            },
+            {
+               "offset" : 20,
+               "value" : "Tagbilaran City"
+            },
+            {
+               "offset" : 37,
+               "value" : "Bohol"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "JA Mart, F. Martinez Avenue, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ263x_UrIlzMR3h1aMj1lIkg",
+         "reference" : "ChIJ263x_UrIlzMR3h1aMj1lIkg",
+         "structured_formatting" : 
+         {
+            "main_text" : "JA Mart",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "F. Martinez Avenue, Mandaluyong, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "JA Mart"
+            },
+            {
+               "offset" : 9,
+               "value" : "F. Martinez Avenue"
+            },
+            {
+               "offset" : 29,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "store",
+            "grocery_or_supermarket",
+            "point_of_interest",
+            "food"
+         ]
+      },
+      {
+         "description" : "J.A Maranion Resort & Hotel, Tarlac, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 27,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJDxP3UQ7NljMRXmi9R1ZVWlE",
+         "reference" : "ChIJDxP3UQ7NljMRXmi9R1ZVWlE",
+         "structured_formatting" : 
+         {
+            "main_text" : "J.A Maranion Resort & Hotel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 27,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tarlac, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "J.A Maranion Resort & Hotel"
+            },
+            {
+               "offset" : 29,
+               "value" : "Tarlac"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "JA Gadgets Solution, Marikina-Infanta Highway, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJn1LrBgC5lzMRkBi7ShM-oDA",
+         "reference" : "ChIJn1LrBgC5lzMRkBi7ShM-oDA",
+         "structured_formatting" : 
+         {
+            "main_text" : "JA Gadgets Solution",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marikina-Infanta Highway, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "JA Gadgets Solution"
+            },
+            {
+               "offset" : 21,
+               "value" : "Marikina-Infanta Highway"
+            },
+            {
+               "offset" : 47,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 54,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "J-a transport, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJcZEj1aLPlzMRBTh1hRHA-5M",
+         "reference" : "ChIJcZEj1aLPlzMRBTh1hRHA-5M",
+         "structured_formatting" : 
+         {
+            "main_text" : "J-a transport",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "J-a transport"
+            },
+            {
+               "offset" : 15,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 23,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

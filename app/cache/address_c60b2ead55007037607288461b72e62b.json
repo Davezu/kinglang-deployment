@@ -37,9 +37,9 @@
          ],
          "types" : 
          [
-            "political",
+            "locality",
             "geocode",
-            "locality"
+            "political"
          ]
       },
       {
@@ -86,8 +86,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -130,9 +130,9 @@
          ],
          "types" : 
          [
-            "lodging",
+            "point_of_interest",
             "establishment",
-            "point_of_interest"
+            "lodging"
          ]
       },
       {
@@ -179,8 +179,8 @@
          ],
          "types" : 
          [
-            "route",
-            "geocode"
+            "geocode",
+            "route"
          ]
       },
       {
@@ -231,8 +231,8 @@
          ],
          "types" : 
          [
-            "establishment",
             "university",
+            "establishment",
             "point_of_interest"
          ]
       }

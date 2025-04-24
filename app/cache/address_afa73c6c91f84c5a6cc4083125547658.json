@@ -1,0 +1,253 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Taytay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJEyjIMBvHlzMRgMVlrgIj4PU",
+         "reference" : "ChIJEyjIMBvHlzMRgMVlrgIj4PU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Taytay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Taytay"
+            },
+            {
+               "offset" : 8,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 15,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Taytay Tiangge, Taytay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ1XGW8LnGlzMRHve-tW0pDr0",
+         "reference" : "ChIJ1XGW8LnGlzMRHve-tW0pDr0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Taytay Tiangge",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taytay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Taytay Tiangge"
+            },
+            {
+               "offset" : 16,
+               "value" : "Taytay"
+            },
+            {
+               "offset" : 24,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 31,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "clothing_store",
+            "point_of_interest",
+            "establishment",
+            "store"
+         ]
+      },
+      {
+         "description" : "Taytay Falls / Majayjay Falls, Brgy, Majayjay, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJg69wTV9RvTMRbhwZjACEKqE",
+         "reference" : "ChIJg69wTV9RvTMRbhwZjACEKqE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Taytay Falls / Majayjay Falls",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Brgy, Majayjay, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Taytay Falls / Majayjay Falls"
+            },
+            {
+               "offset" : 31,
+               "value" : "Brgy"
+            },
+            {
+               "offset" : 37,
+               "value" : "Majayjay"
+            },
+            {
+               "offset" : 47,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "park",
+            "amusement_park",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Taytay, Palawan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJk4V4LrCHtjMRnoMvn0fSQkg",
+         "reference" : "ChIJk4V4LrCHtjMRnoMvn0fSQkg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Taytay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Palawan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Taytay"
+            },
+            {
+               "offset" : 8,
+               "value" : "Palawan"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Taytay Sports Complex, Narra, Taytay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJKU5tqNvHlzMRyAi1yKHgZ0c",
+         "reference" : "ChIJKU5tqNvHlzMRyAi1yKHgZ0c",
+         "structured_formatting" : 
+         {
+            "main_text" : "Taytay Sports Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Narra, Taytay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Taytay Sports Complex"
+            },
+            {
+               "offset" : 23,
+               "value" : "Narra"
+            },
+            {
+               "offset" : 30,
+               "value" : "Taytay"
+            },
+            {
+               "offset" : 38,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

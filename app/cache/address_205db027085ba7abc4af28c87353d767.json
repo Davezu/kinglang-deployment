@@ -53,10 +53,10 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "place_of_worship",
             "establishment",
             "church",
+            "place_of_worship",
+            "point_of_interest",
             "tourist_attraction"
          ]
       },
@@ -104,66 +104,10 @@
          ],
          "types" : 
          [
-            "political",
+            "sublocality",
             "geocode",
             "sublocality_level_1",
-            "sublocality"
-         ]
-      },
-      {
-         "description" : "Quiapo Mosque, Globo de Oro Street, Quiapo, Manila, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 6,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJaUcUyh3KlzMRBgT7uxt_BfU",
-         "reference" : "ChIJaUcUyh3KlzMRBgT7uxt_BfU",
-         "structured_formatting" : 
-         {
-            "main_text" : "Quiapo Mosque",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 6,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Globo de Oro Street, Quiapo, Manila, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Quiapo Mosque"
-            },
-            {
-               "offset" : 15,
-               "value" : "Globo de Oro Street"
-            },
-            {
-               "offset" : 36,
-               "value" : "Quiapo"
-            },
-            {
-               "offset" : 44,
-               "value" : "Manila"
-            },
-            {
-               "offset" : 52,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 66,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "premise",
-            "geocode"
+            "political"
          ]
       },
       {
@@ -218,9 +162,65 @@
          ],
          "types" : 
          [
-            "establishment",
             "point_of_interest",
+            "establishment",
             "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Quiapo Mosque, Globo de Oro Street, Quiapo, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJaUcUyh3KlzMRBgT7uxt_BfU",
+         "reference" : "ChIJaUcUyh3KlzMRBgT7uxt_BfU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Quiapo Mosque",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Globo de Oro Street, Quiapo, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Quiapo Mosque"
+            },
+            {
+               "offset" : 15,
+               "value" : "Globo de Oro Street"
+            },
+            {
+               "offset" : 36,
+               "value" : "Quiapo"
+            },
+            {
+               "offset" : 44,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
          ]
       },
       {
@@ -275,9 +275,9 @@
          ],
          "types" : 
          [
-            "place_of_worship",
             "mosque",
             "point_of_interest",
+            "place_of_worship",
             "establishment"
          ]
       }

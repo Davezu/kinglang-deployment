@@ -1,0 +1,244 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Calamba, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ03fgXGVjvTMR7aztxlkf3Tk",
+         "reference" : "ChIJ03fgXGVjvTMR7aztxlkf3Tk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Calamba",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Calamba"
+            },
+            {
+               "offset" : 9,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Calamba City, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8eu_63BjvTMRCqhfNsWtUzI",
+         "reference" : "ChIJ8eu_63BjvTMRCqhfNsWtUzI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Calamba City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Calamba City"
+            },
+            {
+               "offset" : 14,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "administrative_area_level_3",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Calamba, Misamis Occidental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ7V4n2u_mVDIRYhZ5WJnq5H0",
+         "reference" : "ChIJ7V4n2u_mVDIRYhZ5WJnq5H0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Calamba",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Misamis Occidental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Calamba"
+            },
+            {
+               "offset" : 9,
+               "value" : "Misamis Occidental"
+            },
+            {
+               "offset" : 29,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Calamba Farm Sea of Clouds Maragusan, Maragusan, Davao de Oro, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZ49iPhfv-zIRyR5RmQxHHRg",
+         "reference" : "ChIJZ49iPhfv-zIRyR5RmQxHHRg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Calamba Farm Sea of Clouds Maragusan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maragusan, Davao de Oro, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Calamba Farm Sea of Clouds Maragusan"
+            },
+            {
+               "offset" : 38,
+               "value" : "Maragusan"
+            },
+            {
+               "offset" : 49,
+               "value" : "Davao de Oro"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Calamba Doctors Hospital, San Cristobal Bridge, Calamba, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJL2AcnUxivTMRRkmYLCGFYh0",
+         "reference" : "ChIJL2AcnUxivTMRRkmYLCGFYh0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Calamba Doctors Hospital",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Cristobal Bridge, Calamba, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Calamba Doctors Hospital"
+            },
+            {
+               "offset" : 26,
+               "value" : "San Cristobal Bridge"
+            },
+            {
+               "offset" : 48,
+               "value" : "Calamba"
+            },
+            {
+               "offset" : 57,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "health",
+            "point_of_interest",
+            "hospital",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

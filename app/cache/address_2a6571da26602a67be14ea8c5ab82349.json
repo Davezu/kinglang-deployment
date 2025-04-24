@@ -86,9 +86,9 @@
          ],
          "types" : 
          [
-            "locality",
             "geocode",
-            "political"
+            "political",
+            "locality"
          ]
       },
       {
@@ -131,9 +131,9 @@
          ],
          "types" : 
          [
-            "administrative_area_level_3",
             "political",
-            "geocode"
+            "geocode",
+            "administrative_area_level_3"
          ]
       },
       {
@@ -181,8 +181,8 @@
          "types" : 
          [
             "lodging",
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -229,9 +229,9 @@
          ],
          "types" : 
          [
-            "geocode",
-            "sublocality",
             "sublocality_level_2",
+            "sublocality",
+            "geocode",
             "political"
          ]
       }

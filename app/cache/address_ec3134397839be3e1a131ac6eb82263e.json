@@ -1,0 +1,275 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Kentouka 賢桃花, Bonifacio Drive, Lucena, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJA4IllNRLvTMRks1g7YnBpGg",
+         "reference" : "ChIJA4IllNRLvTMRks1g7YnBpGg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kentouka 賢桃花",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bonifacio Drive, Lucena, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kentouka 賢桃花"
+            },
+            {
+               "offset" : 14,
+               "value" : "Bonifacio Drive"
+            },
+            {
+               "offset" : 31,
+               "value" : "Lucena"
+            },
+            {
+               "offset" : 39,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "establishment",
+            "point_of_interest",
+            "restaurant"
+         ]
+      },
+      {
+         "description" : "Kentoy, Lapu-Lapu Street, Tagum, Davao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNU0EGktT-TIRkNp4ArAJBxU",
+         "reference" : "ChIJNU0EGktT-TIRkNp4ArAJBxU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kentoy",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lapu-Lapu Street, Tagum, Davao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kentoy"
+            },
+            {
+               "offset" : 8,
+               "value" : "Lapu-Lapu Street"
+            },
+            {
+               "offset" : 26,
+               "value" : "Tagum"
+            },
+            {
+               "offset" : 33,
+               "value" : "Davao del Norte"
+            },
+            {
+               "offset" : 50,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Kento Ramen, san roque street, Kalayaan, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ0WPje7r7lzMR4hVXL4ulC8Q",
+         "reference" : "ChIJ0WPje7r7lzMR4hVXL4ulC8Q",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kento Ramen",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "san roque street, Kalayaan, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kento Ramen"
+            },
+            {
+               "offset" : 13,
+               "value" : "san roque street"
+            },
+            {
+               "offset" : 31,
+               "value" : "Kalayaan"
+            },
+            {
+               "offset" : 41,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "food",
+            "point_of_interest",
+            "restaurant"
+         ]
+      },
+      {
+         "description" : "Kentoys, Cabuyao, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJcwIHZjDZlzMRJexLsPr3Yp4",
+         "reference" : "ChIJcwIHZjDZlzMRJexLsPr3Yp4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kentoys",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cabuyao, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kentoys"
+            },
+            {
+               "offset" : 9,
+               "value" : "Cabuyao"
+            },
+            {
+               "offset" : 18,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 26,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "car_repair",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "KENTOY'S SNACK HAUS, Virgin delos Remedios, Toril, Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJDb-f2PwN-TIRrDKhcjol3sg",
+         "reference" : "ChIJDb-f2PwN-TIRrDKhcjol3sg",
+         "structured_formatting" : 
+         {
+            "main_text" : "KENTOY'S SNACK HAUS",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Virgin delos Remedios, Toril, Davao City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "KENTOY'S SNACK HAUS"
+            },
+            {
+               "offset" : 21,
+               "value" : "Virgin delos Remedios"
+            },
+            {
+               "offset" : 44,
+               "value" : "Toril"
+            },
+            {
+               "offset" : 51,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 63,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "cafe",
+            "store",
+            "food"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

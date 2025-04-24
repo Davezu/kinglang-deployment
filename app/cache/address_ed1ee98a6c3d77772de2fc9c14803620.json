@@ -1,0 +1,276 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "FGS BACOLOD (Previously FGS T-SHIRT AND PRINT), Tindalo Avenue, Villamonte, Bacolod, Negros Occidental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPbQj7wjRrjMRsrZuxkREby8",
+         "reference" : "ChIJPbQj7wjRrjMRsrZuxkREby8",
+         "structured_formatting" : 
+         {
+            "main_text" : "FGS BACOLOD (Previously FGS T-SHIRT AND PRINT)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tindalo Avenue, Villamonte, Bacolod, Negros Occidental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FGS BACOLOD (Previously FGS T-SHIRT AND PRINT)"
+            },
+            {
+               "offset" : 48,
+               "value" : "Tindalo Avenue"
+            },
+            {
+               "offset" : 64,
+               "value" : "Villamonte"
+            },
+            {
+               "offset" : 76,
+               "value" : "Bacolod"
+            },
+            {
+               "offset" : 85,
+               "value" : "Negros Occidental"
+            },
+            {
+               "offset" : 104,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "clothing_store",
+            "point_of_interest",
+            "food",
+            "health",
+            "store"
+         ]
+      },
+      {
+         "description" : "FGS EAST ASIA TECHNICAL RESOURCE MANAGEMENT INC, Alabang–Zapote Road, Muntinlupa, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJV-pEqcnPlzMRn5TpbLqATqc",
+         "reference" : "ChIJV-pEqcnPlzMRn5TpbLqATqc",
+         "structured_formatting" : 
+         {
+            "main_text" : "FGS EAST ASIA TECHNICAL RESOURCE MANAGEMENT INC",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Alabang–Zapote Road, Muntinlupa, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FGS EAST ASIA TECHNICAL RESOURCE MANAGEMENT INC"
+            },
+            {
+               "offset" : 49,
+               "value" : "Alabang–Zapote Road"
+            },
+            {
+               "offset" : 70,
+               "value" : "Muntinlupa"
+            },
+            {
+               "offset" : 82,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 96,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "FGscootergarage, Gabriel street, General Trias, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5eZ73gPVlzMRsLHp1H5Q4JM",
+         "reference" : "ChIJ5eZ73gPVlzMRsLHp1H5Q4JM",
+         "structured_formatting" : 
+         {
+            "main_text" : "FGscootergarage",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gabriel street, General Trias, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FGscootergarage"
+            },
+            {
+               "offset" : 17,
+               "value" : "Gabriel street"
+            },
+            {
+               "offset" : 33,
+               "value" : "General Trias"
+            },
+            {
+               "offset" : 48,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "FGS MEDICAL EQUIPMENT AND SUPPLIES TRADING, North Bay Boulevard, Navotas, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJybonXh61lzMRa-uQlhN2_mU",
+         "reference" : "ChIJybonXh61lzMRa-uQlhN2_mU",
+         "structured_formatting" : 
+         {
+            "main_text" : "FGS MEDICAL EQUIPMENT AND SUPPLIES TRADING",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "North Bay Boulevard, Navotas, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FGS MEDICAL EQUIPMENT AND SUPPLIES TRADING"
+            },
+            {
+               "offset" : 44,
+               "value" : "North Bay Boulevard"
+            },
+            {
+               "offset" : 65,
+               "value" : "Navotas"
+            },
+            {
+               "offset" : 74,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 88,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "health",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "FGS Carriedo Dental Clinic, Doctor Arcadio Santos Avenue, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAxL-KWjOlzMRdcxqfUsa4ys",
+         "reference" : "ChIJAxL-KWjOlzMRdcxqfUsa4ys",
+         "structured_formatting" : 
+         {
+            "main_text" : "FGS Carriedo Dental Clinic",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Doctor Arcadio Santos Avenue, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FGS Carriedo Dental Clinic"
+            },
+            {
+               "offset" : 28,
+               "value" : "Doctor Arcadio Santos Avenue"
+            },
+            {
+               "offset" : 58,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 69,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 83,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "health"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

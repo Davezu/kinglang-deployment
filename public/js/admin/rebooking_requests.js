@@ -1,9 +1,9 @@
-const confirmBookingModal = new bootstrap.Modal(document.getElementById("confirmRebookingModal"));
-const rejectBookingModal = new bootstrap.Modal(document.getElementById("rejectRebookingModal"));
-const messageModal = new bootstrap.Modal(document.getElementById("messageModal"));
+// const confirmBookingModal = new bootstrap.Modal(document.getElementById("confirmRebookingModal"));
+// const rejectBookingModal = new bootstrap.Modal(document.getElementById("rejectRebookingModal"));
+// const messageModal = new bootstrap.Modal(document.getElementById("messageModal"));
 
-const messageTitle = document.getElementById("messageTitle");
-const messageBody = document.getElementById("messageBody");
+// const messageTitle = document.getElementById("messageTitle");
+// const messageBody = document.getElementById("messageBody");
 
 
 document.addEventListener('DOMContentLoaded', async function () {
@@ -110,25 +110,30 @@ function actionButtons(request) {
     rejectButton.textContent = 'Reject';
     viewButton.textContent = 'View';
     
-    // modal
-    confirmButton.setAttribute("data-bs-toggle", "modal");
-    confirmButton.setAttribute("data-bs-target", "#confirmRebookingModal");
-
-    rejectButton.setAttribute("data-bs-toggle", "modal");
-    rejectButton.setAttribute("data-bs-target", "#rejectRebookingModal");
-
-    
     // data attribute
     confirmButton.setAttribute("data-booking-id", request.booking_id);
 
     rejectButton.setAttribute("data-booking-id", request.booking_id);
     rejectButton.setAttribute("data-user-id", request.user_id);
-
-    
     
     // logic
     confirmButton.addEventListener('click', function () {
-        document.getElementById("confirmBookingId").value = this.getAttribute("data-booking-id");
+        const bookingId = this.getAttribute("data-booking-id");
+        
+        Swal.fire({
+            title: 'Confirm Booking?',
+            text: 'Are you sure you want to confirm this booking request?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                confirmBookingRequest(bookingId);
+            }
+        });
     });
 
     viewButton.addEventListener("click", () => {
@@ -137,10 +142,32 @@ function actionButtons(request) {
     });
 
     rejectButton.addEventListener("click", function () {
-        document.getElementById("rejectBookingId").value = this.getAttribute("data-booking-id");
-        document.getElementById("rejectUserId").value = this.getAttribute("data-user-id");
+        const bookingId = this.getAttribute("data-booking-id");
+        const userId = this.getAttribute("data-user-id");
+        
+        Swal.fire({
+            title: 'Reject Booking?',
+            text: 'Are you sure you want to reject this booking request?',
+            input: 'textarea',
+            inputLabel: 'Reason',
+            inputPlaceholder: 'Kindly provide the reason here.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Reject',
+            cancelButtonText: 'Cancel',
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Please provide a reason for rejection!';
+                }
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                rejectBookingRequest(bookingId, result.value, userId);
+            }
+        });
     });
-
 
     if (request.status === 'Pending') {   
         buttonGroup.append(confirmButton, rejectButton, viewButton);
@@ -149,38 +176,34 @@ function actionButtons(request) {
     }
 
     actionCell.appendChild(buttonGroup);
-
     
     return actionCell;
 }
 
-document.getElementById("confirmRebookingForm").addEventListener("submit", async function (event) {
-    event.preventDefault(); 
-
-    const formData = new FormData(this);
-    const bookingId = formData.get("booking_id");
-
+async function confirmBookingRequest(bookingId) {
     try {
         const response = await fetch("/admin/confirm-rebooking-request", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ bookingId })
         });
-        
-        confirmBookingModal.hide();
-        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-        document.body.classList.remove('modal-open');
     
         const data = await response.json();
         
         if (data.success) {
-            messageTitle.textContent = "Success";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                title: 'Success!',
+                text: data.message,
+                icon: 'success',
+                confirmButtonColor: '#198754'
+            });
         } else {
-            messageTitle.textContent = "Error";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                title: 'Error!',
+                text: data.message,
+                icon: 'error',
+                confirmButtonColor: '#dc3545'
+            });
         }
         
         const status = document.getElementById("statusSelect").value;
@@ -188,38 +211,39 @@ document.getElementById("confirmRebookingForm").addEventListener("submit", async
         renderRebookingRequests(bookings);
     } catch (error) {
         console.error(error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'An unexpected error occurred.',
+            icon: 'error',
+            confirmButtonColor: '#dc3545'
+        });
     }
-});
+}
 
-document.getElementById("rejectRebookingForm").addEventListener("submit", async function (event) {
-    event.preventDefault(); 
-
-    const formData = new FormData(this);
-    const bookingId = formData.get("booking_id");
-    const userId = formData.get("user_id");
-    const reason = formData.get("reason");
-
+async function rejectBookingRequest(bookingId, reason, userId) {
     try {
         const response = await fetch("/admin/reject-rebooking", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ bookingId, reason, userId })
         });
-        
-        rejectBookingModal.hide();
-        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-        document.body.classList.remove('modal-open');
     
         const data = await response.json();
         
         if (data.success) {
-            messageTitle.textContent = "Success";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                title: 'Success!',
+                text: data.message,
+                icon: 'success',
+                confirmButtonColor: '#198754'
+            });
         } else {
-            messageTitle.textContent = "Error";
-            messageBody.textContent = data.message;
-            messageModal.show();
+            Swal.fire({
+                title: 'Error!',
+                text: data.message,
+                icon: 'error',
+                confirmButtonColor: '#dc3545'
+            });
         }
         
         const status = document.getElementById("statusSelect").value;
@@ -227,5 +251,11 @@ document.getElementById("rejectRebookingForm").addEventListener("submit", async 
         renderRebookingRequests(bookings);
     } catch (error) {
         console.error(error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'An unexpected error occurred.',
+            icon: 'error',
+            confirmButtonColor: '#dc3545'
+        });
     }
-});
+}

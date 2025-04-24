@@ -1,0 +1,268 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Lasdan Primary School, Datu Odin Sinsuat, Maguindanao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJY86nbMI5VjIRnarFGQxXKgE",
+         "reference" : "ChIJY86nbMI5VjIRnarFGQxXKgE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Lasdan Primary School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Datu Odin Sinsuat, Maguindanao, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Lasdan Primary School"
+            },
+            {
+               "offset" : 23,
+               "value" : "Datu Odin Sinsuat"
+            },
+            {
+               "offset" : 42,
+               "value" : "Maguindanao"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "primary_school",
+            "school",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Lasdan PS, Datu Odin Sinsuat, Maguindanao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJL-L3KVUyVjIREJ08FYeH-Ko",
+         "reference" : "ChIJL-L3KVUyVjIREJ08FYeH-Ko",
+         "structured_formatting" : 
+         {
+            "main_text" : "Lasdan PS",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Datu Odin Sinsuat, Maguindanao, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Lasdan PS"
+            },
+            {
+               "offset" : 11,
+               "value" : "Datu Odin Sinsuat"
+            },
+            {
+               "offset" : 30,
+               "value" : "Maguindanao"
+            },
+            {
+               "offset" : 43,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "school",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "LASDAK EATERY, Terminal, Tabuelan Road, Tabuelan, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ1fjM8vZXqDMRosnZT4dO0Rw",
+         "reference" : "ChIJ1fjM8vZXqDMRosnZT4dO0Rw",
+         "structured_formatting" : 
+         {
+            "main_text" : "LASDAK EATERY",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Terminal, Tabuelan Road, Tabuelan, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "LASDAK EATERY"
+            },
+            {
+               "offset" : 15,
+               "value" : "Terminal"
+            },
+            {
+               "offset" : 25,
+               "value" : "Tabuelan Road"
+            },
+            {
+               "offset" : 40,
+               "value" : "Tabuelan"
+            },
+            {
+               "offset" : 50,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "establishment",
+            "point_of_interest",
+            "food"
+         ]
+      },
+      {
+         "description" : "Lasdoce Residence, Santa Rosa, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJE2wWBQDZlzMRe-kYw4FPO4I",
+         "reference" : "ChIJE2wWBQDZlzMRe-kYw4FPO4I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Lasdoce Residence",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Rosa, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Lasdoce Residence"
+            },
+            {
+               "offset" : 19,
+               "value" : "Santa Rosa"
+            },
+            {
+               "offset" : 31,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Casa Lasdoce, Guadalajara St, Maypajo, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 5
+            }
+         ],
+         "place_id" : "ChIJn9u7p0W1lzMRRVHTAJXcjkw",
+         "reference" : "ChIJn9u7p0W1lzMRRVHTAJXcjkw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Casa Lasdoce",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 5
+               }
+            ],
+            "secondary_text" : "Guadalajara St, Maypajo, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Casa Lasdoce"
+            },
+            {
+               "offset" : 14,
+               "value" : "Guadalajara St"
+            },
+            {
+               "offset" : 30,
+               "value" : "Maypajo"
+            },
+            {
+               "offset" : 39,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 49,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

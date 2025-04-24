@@ -1,0 +1,249 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Dalitiwan Resort, Majayjay, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJfx3c2iFXvTMR7DAtyxwoZho",
+         "reference" : "ChIJfx3c2iFXvTMR7DAtyxwoZho",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalitiwan Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Majayjay, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalitiwan Resort"
+            },
+            {
+               "offset" : 18,
+               "value" : "Majayjay"
+            },
+            {
+               "offset" : 28,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Dalig, Antipolo, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJLX36OKPAlzMR6v6ggcK1xeQ",
+         "reference" : "ChIJLX36OKPAlzMR6v6ggcK1xeQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalig",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Antipolo, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalig"
+            },
+            {
+               "offset" : 7,
+               "value" : "Antipolo"
+            },
+            {
+               "offset" : 17,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "geocode",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Dalipuga, Lanao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJC0OK8HBxVTIRRfsOdN9KPlw",
+         "reference" : "ChIJC0OK8HBxVTIRRfsOdN9KPlw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalipuga",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lanao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalipuga"
+            },
+            {
+               "offset" : 10,
+               "value" : "Lanao del Norte"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "sublocality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Dali, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EixEYWxpLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCV_TenM7upczEZdG2jTBH0EIEhQKEgl1c-9CCbqXMxFAPQj-2TKaSg",
+         "reference" : "EixEYWxpLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCV_TenM7upczEZdG2jTBH0EIEhQKEgl1c-9CCbqXMxFAPQj-2TKaSg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dali",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dali"
+            },
+            {
+               "offset" : 6,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 19,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Dalican, Datu Odin Sinsuat, Maguindanao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ4bcAp7syVjIRRYJxMMGMhQs",
+         "reference" : "ChIJ4bcAp7syVjIRRYJxMMGMhQs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dalican",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Datu Odin Sinsuat, Maguindanao, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dalican"
+            },
+            {
+               "offset" : 9,
+               "value" : "Datu Odin Sinsuat"
+            },
+            {
+               "offset" : 28,
+               "value" : "Maguindanao"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "sublocality",
+            "geocode",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

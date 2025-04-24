@@ -20,6 +20,158 @@ class BookingManagementController {
         }
     }
 
+    // New method for booking stats dashboard
+    public function getBookingStats() {
+        header("Content-Type: application/json");
+        
+        $stats = $this->bookingModel->getBookingStats();
+        
+        if (is_array($stats)) {
+            echo json_encode(["success" => true, "stats" => $stats]);
+        } else {
+            echo json_encode(["success" => false, "message" => $stats]);
+        }
+    }
+    
+    // New method for calendar bookings
+    public function getCalendarBookings() {
+        $data = json_decode(file_get_contents("php://input"), true);
+        $start = isset($data["start"]) ? $data["start"] : date('Y-m-01'); // First day of current month
+        $end = isset($data["end"]) ? $data["end"] : date('Y-m-t'); // Last day of current month
+        
+        $bookings = $this->bookingModel->getCalendarBookings($start, $end);
+        
+        header("Content-Type: application/json");
+        
+        if (is_array($bookings)) {
+            echo json_encode(["success" => true, "bookings" => $bookings]);
+        } else {
+            echo json_encode(["success" => false, "message" => $bookings]);
+        }
+    }
+    
+    // New method for search bookings
+    public function searchBookings() {
+        $data = json_decode(file_get_contents("php://input"), true);
+        $searchTerm = $data["searchTerm"];
+        $status = $data["status"];
+        $page = isset($data["page"]) ? (int)$data["page"] : 1;
+        $limit = isset($data["limit"]) ? (int)$data["limit"] : 10;
+        
+        $bookings = $this->bookingModel->searchBookings($searchTerm, $status, $page, $limit);
+        $total = $this->bookingModel->getTotalSearchResults($searchTerm, $status);
+        
+        // Fix for pagination bug when total == limit
+        // We need to make sure totalPages is at least 1, and correctly calculated
+        $totalPages = max(1, ceil((int)$total / (int)$limit));
+        
+        $response = [
+            "success" => true, 
+            "bookings" => $bookings,
+            "pagination" => [
+                "total" => $total,
+                "totalPages" => $totalPages,
+                "currentPage" => $page,
+                "limit" => $limit
+            ]
+        ];
+        
+        header("Content-Type: application/json");
+        
+        if (is_array($bookings)) {
+            echo json_encode($response);
+        } else {
+            echo json_encode(["success" => false, "message" => $bookings]);
+        }
+    }
+    
+    // New method for unpaid bookings filter
+    public function getUnpaidBookings() {
+        $data = json_decode(file_get_contents("php://input"), true);
+        $page = isset($data["page"]) ? (int)$data["page"] : 1;
+        $limit = isset($data["limit"]) ? (int)$data["limit"] : 10;
+        
+        $bookings = $this->bookingModel->getUnpaidBookings($page, $limit);
+        $total = $this->bookingModel->getTotalUnpaidBookings();
+        
+        // Fix for pagination bug when total == limit
+        // We need to make sure totalPages is at least 1, and correctly calculated
+        $totalPages = max(1, ceil((int)$total / (int)$limit));
+        
+        $response = [
+            "success" => true, 
+            "bookings" => $bookings,
+            "pagination" => [
+                "total" => $total,
+                "totalPages" => $totalPages,
+                "currentPage" => $page,
+                "limit" => $limit
+            ]
+        ];
+        
+        header("Content-Type: application/json");
+        
+        if (is_array($bookings)) {
+            echo json_encode($response);
+        } else {
+            echo json_encode(["success" => false, "message" => $bookings]);
+        }
+    }
+    
+    // New method for export bookings
+    public function exportBookings() {
+        $format = $_GET["format"] ?? "csv";
+        $status = $_GET["status"] ?? "All";
+        
+        $bookings = $this->bookingModel->getAllBookingsForExport($status);
+        
+        header("Content-Type: application/octet-stream");
+        header("Content-Disposition: attachment; filename=bookings_" . strtolower($status) . "_" . date("Y-m-d") . "." . $format);
+        header("Pragma: no-cache");
+        header("Expires: 0");
+        
+        if ($format === "csv") {
+            $this->exportToCSV($bookings);
+        } else {
+            // For simplicity, we'll just export CSV for now
+            // PDF export would require additional libraries
+            $this->exportToCSV($bookings);
+        }
+        
+        exit;
+    }
+    
+    // Helper method for CSV export
+    private function exportToCSV($bookings) {
+        $output = fopen("php://output", "w");
+        
+        // Write headers
+        fputcsv($output, [
+            "ID", "Client Name", "Contact Number", "Email", "Destination", 
+            "Date of Tour", "Number of Days", "Number of Buses", "Total Cost",
+            "Payment Status", "Status"
+        ]);
+        
+        // Write data
+        foreach ($bookings as $booking) {
+            fputcsv($output, [
+                $booking["booking_id"],
+                $booking["client_name"],
+                $booking["contact_number"],
+                $booking["email"] ?? "N/A",
+                $booking["destination"],
+                $booking["date_of_tour"],
+                $booking["number_of_days"],
+                $booking["number_of_buses"],
+                $booking["total_cost"],
+                $booking["payment_status"],
+                $booking["status"]
+            ]);
+        }
+        
+        fclose($output);
+    }
+
     public function showBookingDetail() {
         include_once __DIR__ . "/../../views/admin/booking_request.php";
     }
@@ -170,6 +322,45 @@ class BookingManagementController {
             echo json_encode(["success" => true, "booking" => $booking, "stops" => $stops, "distances" =>  $distances, "diesel" => $diesel]);
         } else {
             echo json_encode(["success" => false, "message" => $booking]);
+        }
+    }
+
+    // This is the endpoint for the admin booking details modal
+    public function getBookingDetails() {
+        header("Content-Type: application/json");
+        
+        $data = json_decode(file_get_contents("php://input"), true);
+        $booking_id = isset($data["bookingId"]) ? $data["bookingId"] : null;
+        
+        if (!$booking_id) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Booking ID is required"
+            ]);
+            return;
+        }
+        
+        // Get booking details
+        $booking = $this->bookingModel->getBooking($booking_id);
+        
+        // Get stops
+        $stops = $this->bookingModel->getBookingStops($booking_id);
+
+        $payments = $this->bookingModel->getPaymentHistory($booking_id);
+        
+        if ($booking) {
+            // Add stops to booking object
+            $booking['stops'] = $stops;
+            $booking['payments'] = $payments;
+            echo json_encode([
+                "success" => true,
+                "booking" => $booking
+            ]);
+        } else {
+            echo json_encode([
+                "success" => false,
+                "message" => "Booking not found"
+            ]);
         }
     }
 

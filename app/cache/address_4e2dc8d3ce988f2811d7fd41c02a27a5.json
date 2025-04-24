@@ -1,0 +1,247 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJdXPvQgm6lzMRQD0I_tkymko",
+         "reference" : "ChIJdXPvQgm6lzMRQD0I_tkymko",
+         "structured_formatting" : 
+         {
+            "main_text" : "Quezon City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 13,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Quezon Avenue, Diliman, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ej5RdWV6b24gQXZlbnVlLCBEaWxpbWFuLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCb2CALdPtpczETf5-F3VXMAzEhQKEgnVuj9HqLeXMxHmiC3ZQQFmeg",
+         "reference" : "Ej5RdWV6b24gQXZlbnVlLCBEaWxpbWFuLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCb2CALdPtpczETf5-F3VXMAzEhQKEgnVuj9HqLeXMxHmiC3ZQQFmeg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Quezon Avenue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Diliman, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Quezon Avenue"
+            },
+            {
+               "offset" : 15,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 24,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 37,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJFS8nTLeEojMRlrTiMSsrXOI",
+         "reference" : "ChIJFS8nTLeEojMRlrTiMSsrXOI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Quezon",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 8,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Quezon Memorial Circle, Elliptical Road, Diliman, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ6csDPg63lzMR6I3qWXvgpVY",
+         "reference" : "ChIJ6csDPg63lzMR6I3qWXvgpVY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Quezon Memorial Circle",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Elliptical Road, Diliman, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Quezon Memorial Circle"
+            },
+            {
+               "offset" : 24,
+               "value" : "Elliptical Road"
+            },
+            {
+               "offset" : 41,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 50,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 63,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 77,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "tourist_attraction",
+            "park"
+         ]
+      },
+      {
+         "description" : "Quezon, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJB7eETx3UljMRns4VCl1Fffk",
+         "reference" : "ChIJB7eETx3UljMRns4VCl1Fffk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Quezon",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 8,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

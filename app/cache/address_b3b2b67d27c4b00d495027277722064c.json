@@ -1,0 +1,245 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Dasmarinjas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJR4RfLjVlzMRHzJA-Ji2jKs",
+         "reference" : "ChIJJR4RfLjVlzMRHzJA-Ji2jKs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasmarinjas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasmarinjas"
+            },
+            {
+               "offset" : 13,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Dasma Bayan Jeepney Terminal, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJffdpdjfVlzMREcbCRc1zwMk",
+         "reference" : "ChIJffdpdjfVlzMREcbCRc1zwMk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasma Bayan Jeepney Terminal",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasma Bayan Jeepney Terminal"
+            },
+            {
+               "offset" : 30,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 42,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 50,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "home_goods_store",
+            "point_of_interest",
+            "store"
+         ]
+      },
+      {
+         "description" : "Dasma 4 Golden City, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJGQW1sRvUlzMR1f3TXmW-LkM",
+         "reference" : "ChIJGQW1sRvUlzMR1f3TXmW-LkM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasma 4 Golden City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasma 4 Golden City"
+            },
+            {
+               "offset" : 21,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 33,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Dasma 3 Golden City, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJmz5FZhjUlzMRzRMse0wKxWQ",
+         "reference" : "ChIJmz5FZhjUlzMRzRMse0wKxWQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasma 3 Golden City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasma 3 Golden City"
+            },
+            {
+               "offset" : 21,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 33,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Dasma 1 Golden City, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJs1W1GhzUlzMRXFjtrLVoLDQ",
+         "reference" : "ChIJs1W1GhzUlzMRXFjtrLVoLDQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dasma 1 Golden City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dasma 1 Golden City"
+            },
+            {
+               "offset" : 21,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 33,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

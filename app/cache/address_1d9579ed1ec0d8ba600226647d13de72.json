@@ -1,0 +1,265 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "SFG CENTRAL kitchen, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJUSSjJ0TOlzMRt6yPBMkS9wc",
+         "reference" : "ChIJUSSjJ0TOlzMRt6yPBMkS9wc",
+         "structured_formatting" : 
+         {
+            "main_text" : "SFG CENTRAL kitchen",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SFG CENTRAL kitchen"
+            },
+            {
+               "offset" : 21,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 32,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "establishment",
+            "point_of_interest",
+            "food"
+         ]
+      },
+      {
+         "description" : "SFG Grocery Dasmarinas, Sampaloc, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ69z33PTVlzMRK-0FzVSzshI",
+         "reference" : "ChIJ69z33PTVlzMRK-0FzVSzshI",
+         "structured_formatting" : 
+         {
+            "main_text" : "SFG Grocery Dasmarinas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sampaloc, Dasmariñas, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SFG Grocery Dasmarinas"
+            },
+            {
+               "offset" : 24,
+               "value" : "Sampaloc"
+            },
+            {
+               "offset" : 34,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 46,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "store",
+            "grocery_or_supermarket",
+            "point_of_interest",
+            "food"
+         ]
+      },
+      {
+         "description" : "SFGD - Monumento, Monumento Circle, Morning Breeze Subdivision, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv_Lj5rG1lzMRGmohBUX5Q0Y",
+         "reference" : "ChIJv_Lj5rG1lzMRGmohBUX5Q0Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "SFGD - Monumento",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Monumento Circle, Morning Breeze Subdivision, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SFGD - Monumento"
+            },
+            {
+               "offset" : 18,
+               "value" : "Monumento Circle"
+            },
+            {
+               "offset" : 36,
+               "value" : "Morning Breeze Subdivision"
+            },
+            {
+               "offset" : 64,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 74,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 88,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Sfgva Toda, Mabalacat, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJpfUjqfjsljMRcRgDy2aYlWs",
+         "reference" : "ChIJpfUjqfjsljMRcRgDy2aYlWs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sfgva Toda",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mabalacat, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sfgva Toda"
+            },
+            {
+               "offset" : 12,
+               "value" : "Mabalacat"
+            },
+            {
+               "offset" : 23,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Sfg Food Avenue, Pinamalayan, Oriental Mindoro, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJKSXVp7CvvDMR9icDr2LVDYA",
+         "reference" : "ChIJKSXVp7CvvDMR9icDr2LVDYA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sfg Food Avenue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pinamalayan, Oriental Mindoro, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sfg Food Avenue"
+            },
+            {
+               "offset" : 17,
+               "value" : "Pinamalayan"
+            },
+            {
+               "offset" : 30,
+               "value" : "Oriental Mindoro"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "establishment",
+            "point_of_interest",
+            "food"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

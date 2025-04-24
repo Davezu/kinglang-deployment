@@ -21,7 +21,8 @@ class Booking {
     }
 
     public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $is_rebooking, $rebooking_id, $base_cost = null, $diesel_cost = null, $base_rate = null, $diesel_price = null, $total_distance = null, $pickup_time = null) {
-        $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
+        $days = $number_of_days - 1;
+        $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $days days"));
 
         try {
             $available_buses = $this->findAvailableBuses($date_of_tour, $end_of_tour, $number_of_buses);
@@ -104,17 +105,21 @@ class Booking {
     public function getBooking($booking_id, $user_id) {
         try {
             $stmt = $this->conn->prepare("
-                SELECT b.*, u.first_name, u.last_name, u.contact_number, u.email, c.base_cost, c.diesel_cost, c.total_cost, c.base_rate, c.diesel_price
+                SELECT b.*, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, u.email, c.base_cost, c.diesel_cost, c.total_cost, c.base_rate, c.diesel_price, c.total_distance
                 FROM bookings b
                 JOIN users u ON b.user_id = u.user_id
                 JOIN booking_costs c ON b.booking_id = c.booking_id
                 WHERE b.booking_id = :booking_id AND b.user_id = :user_id
             ");
+
             $stmt->execute([
                 ":booking_id" => $booking_id,
                 ":user_id" => $user_id
             ]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            $stops = $this->getBookingStops($booking_id);
+            $booking = $stmt->fetch(PDO::FETCH_ASSOC);
+            $booking["stops"] = $stops;
+            return $booking;
         } catch (PDOException $e) {
             return "Database error";
         }
@@ -212,39 +217,80 @@ class Booking {
         }
     }
 
-    public function getAllBookings($user_id, $status, $column, $order, $page = 1, $limit = 10) {
+    public function getAllBookings($user_id, $status, $column, $order, $page = 1, $limit = 10, $search = "", $date_filter = null, $balance_filter = null) {
         $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "processing", "all"];
         $status = in_array($status, $allowed_status) ? $status : "all";
-        $status = $status === "all" ? "" : " AND status = '$status'";
+        $status_condition = $status === "all" ? "" : " AND b.status = '".ucfirst($status)."'";
 
-        $allowed_columns = ["destination", "date_of_tour", "end_of_tour", "number_of_days", "number_of_buses", "total_cost", "balance", "status", "payment_status"];
+        $allowed_columns = ["destination", "date_of_tour", "end_of_tour", "number_of_days", "number_of_buses", "total_cost", "balance", "status", "payment_status", "booking_id"];
         $column = in_array($column, $allowed_columns) ? $column : "date_of_tour";
         $order = $order === "asc" ? "ASC" : "DESC";
+        
+        // Add search condition if search term provided
+        $search_condition = "";
+        if (!empty($search)) {
+            $search = '%' . $search . '%';
+            $search_condition = " AND (b.destination LIKE :search OR b.pickup_point LIKE :search)";
+        }
+        
+        // Add date filter condition if provided
+        $date_condition = "";
+        if ($date_filter === "upcoming") {
+            $date_condition = " AND b.date_of_tour >= CURDATE()";
+        } else if ($date_filter === "past") {
+            $date_condition = " AND b.end_of_tour < CURDATE()";
+        }
+        
+        // Add balance filter condition if provided
+        $balance_condition = "";
+        if ($balance_filter === "unpaid") {
+            $balance_condition = " AND b.balance > 0";
+        }
         
         // Calculate offset for pagination
         $offset = ($page - 1) * $limit;
         
         try {
             // Get total count for pagination
-            $countStmt = $this->conn->prepare("
-                SELECT COUNT(*) FROM bookings 
-                WHERE user_id = :user_id AND is_rebooking = 0 AND is_rebooked = 0
-                $status
-            ");
-            $countStmt->execute([ ":user_id" => $user_id ]);
+            $countSql = "
+                SELECT COUNT(*) FROM bookings b
+                WHERE b.user_id = :user_id AND b.is_rebooking = 0 AND b.is_rebooked = 0
+                $status_condition $search_condition $date_condition $balance_condition
+            ";
+            
+            $countStmt = $this->conn->prepare($countSql);
+            $countStmt->bindParam(":user_id", $user_id);
+            
+            if (!empty($search)) {
+                $countStmt->bindParam(":search", $search);
+            }
+            
+            $countStmt->execute();
             $total_records = $countStmt->fetchColumn();
             
             // Get paginated results
-            $stmt = $this->conn->prepare("
-                SELECT b.booking_id, b.date_of_tour, b.end_of_tour, b.destination, b.pickup_point, b.number_of_days, b.number_of_buses, b.user_id, b.balance, b.status, b.payment_status, b.is_rebooking, b.is_rebooked, c.base_cost, c.diesel_cost, c.total_cost, c.base_rate, c.diesel_price
+            $sql = "
+                SELECT b.booking_id, b.date_of_tour, b.end_of_tour, b.destination, b.pickup_point, 
+                       b.number_of_days, b.number_of_buses, b.user_id, b.balance, b.status, 
+                       b.payment_status, b.is_rebooking, b.is_rebooked, 
+                       c.base_cost, c.diesel_cost, c.total_cost, c.base_rate, c.diesel_price, c.total_distance, 
+                       u.first_name, u.last_name, u.contact_number
                 FROM bookings b
                 LEFT JOIN booking_costs c ON b.booking_id = c.booking_id
+                LEFT JOIN users u ON b.user_id = u.user_id
                 WHERE b.user_id = :user_id AND b.is_rebooking = 0 AND b.is_rebooked = 0
-                $status
+                $status_condition $search_condition $date_condition $balance_condition
                 ORDER BY $column $order
                 LIMIT :limit OFFSET :offset
-            ");
+            ";
+            
+            $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":user_id", $user_id);
+            
+            if (!empty($search)) {
+                $stmt->bindParam(":search", $search);
+            }
+            
             $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
             $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
             $stmt->execute();
@@ -261,7 +307,99 @@ class Booking {
                 "current_page" => $page
             ];
         } catch (PDOException $e) {
-            return "Database error: $e";
+            return "Database error: " . $e->getMessage();
+        }
+    }
+    
+    public function getBookingsCount($user_id, $status = "all") {
+        $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "processing", "all"];
+        $status = in_array($status, $allowed_status) ? $status : "all";
+        $status_condition = $status === "all" ? "" : " AND status = '".ucfirst($status)."'";
+        
+        try {
+            $sql = "
+                SELECT COUNT(*) 
+                FROM bookings 
+                WHERE user_id = :user_id AND is_rebooking = 0 AND is_rebooked = 0
+                $status_condition
+            ";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":user_id", $user_id);
+            $stmt->execute();
+            
+            return (int) $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            return 0;
+        }
+    }
+    
+    public function getUpcomingToursCount($user_id) {
+        try {
+            $sql = "
+                SELECT COUNT(*) 
+                FROM bookings 
+                WHERE user_id = :user_id 
+                  AND is_rebooking = 0 
+                  AND is_rebooked = 0
+                  AND date_of_tour >= CURDATE()
+                  AND status = 'Confirmed'
+            ";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":user_id", $user_id);
+            $stmt->execute();
+            
+            return (int) $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            return 0;
+        }
+    }
+    
+    public function getBookingsForCalendar($user_id, $start, $end) {
+        try {
+            $sql = "
+                SELECT b.booking_id, b.date_of_tour, b.end_of_tour, b.destination, 
+                       b.status, c.total_cost, b.balance
+                FROM bookings b
+                LEFT JOIN booking_costs c ON b.booking_id = c.booking_id
+                WHERE b.user_id = :user_id 
+                  AND b.is_rebooking = 0 
+                  AND b.is_rebooked = 0
+                  AND ((b.date_of_tour BETWEEN :start_date AND :end_date) 
+                       OR (b.end_of_tour BETWEEN :start_date AND :end_date)
+                       OR (b.date_of_tour <= :start_date AND b.end_of_tour >= :end_date))
+            ";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":user_id", $user_id);
+            $stmt->bindParam(":start_date", $start);
+            $stmt->bindParam(":end_date", $end);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return [];
+        }
+    }
+
+    public function getPaymentHistory($booking_id) {
+        try {   
+            $sql = "
+                SELECT p.payment_id, p.booking_id, p.user_id, p.amount, p.payment_method, 
+                       p.proof_of_payment, p.status, p.payment_date, p.updated_at, p.is_canceled
+                FROM payments p
+                WHERE p.booking_id = :booking_id
+                ORDER BY p.payment_date DESC
+            ";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":booking_id", $booking_id);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return [];
         }
     }
 
@@ -357,7 +495,8 @@ class Booking {
     }
 
     public function updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $base_cost = null, $diesel_cost = null, $base_rate = null, $diesel_price = null, $total_distance = null, $pickup_time = null) {
-        $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $number_of_days days"));
+        $days = $number_of_days - 1;
+        $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $days days"));
 
         try {
             $available_buses = $this->findAvailableBuses($date_of_tour, $end_of_tour, $number_of_buses);

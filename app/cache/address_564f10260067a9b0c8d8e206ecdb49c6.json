@@ -1,0 +1,257 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Kentucky, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EitLZW50dWNreSwgVGFndWlnLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJL7siWK_IlzMRFA5y8FnqoqISFAoSCQEw_lRKz5czEa3SmKnweq4v",
+         "reference" : "EitLZW50dWNreSwgVGFndWlnLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJL7siWK_IlzMRFA5y8FnqoqISFAoSCQEw_lRKz5czEa3SmKnweq4v",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kentucky",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kentucky"
+            },
+            {
+               "offset" : 10,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 18,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Kent’s Place Cafe and Bistro, Santiago, Isabela, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBTZFYQAJkDMRLdAZ_KlR0DU",
+         "reference" : "ChIJBTZFYQAJkDMRLdAZ_KlR0DU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kent’s Place Cafe and Bistro",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santiago, Isabela, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kent’s Place Cafe and Bistro"
+            },
+            {
+               "offset" : 30,
+               "value" : "Santiago"
+            },
+            {
+               "offset" : 40,
+               "value" : "Isabela"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "restaurant",
+            "cafe",
+            "establishment",
+            "point_of_interest",
+            "bar",
+            "store"
+         ]
+      },
+      {
+         "description" : "Kent Uni-sun @, F Bangoy Street, Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJn2Qlhbxt-TIRAcUADHV-xmc",
+         "reference" : "ChIJn2Qlhbxt-TIRAcUADHV-xmc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kent Uni-sun @",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "F Bangoy Street, Davao City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kent Uni-sun @"
+            },
+            {
+               "offset" : 16,
+               "value" : "F Bangoy Street"
+            },
+            {
+               "offset" : 33,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 45,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "car_repair",
+            "point_of_interest",
+            "store"
+         ]
+      },
+      {
+         "description" : "Kent Street, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjNLZW50IFN0cmVldCwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkRROj6d7qXMxEgvSPEqFWXMRIUChIJdXPvQgm6lzMRQD0I_tkymko",
+         "reference" : "EjNLZW50IFN0cmVldCwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkRROj6d7qXMxEgvSPEqFWXMRIUChIJdXPvQgm6lzMRQD0I_tkymko",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kent Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kent Street"
+            },
+            {
+               "offset" : 13,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 26,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Kent Street, Cainta, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EidLZW50IFN0cmVldCwgQ2FpbnRhLCBSaXphbCwgUGhpbGlwcGluZXMiLiosChQKEgnfXTuqYbiXMxGecJ25MMahixIUChIJa90ecH-4lzMRaYiBbUn-weE",
+         "reference" : "EidLZW50IFN0cmVldCwgQ2FpbnRhLCBSaXphbCwgUGhpbGlwcGluZXMiLiosChQKEgnfXTuqYbiXMxGecJ25MMahixIUChIJa90ecH-4lzMRaYiBbUn-weE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kent Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cainta, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kent Street"
+            },
+            {
+               "offset" : 13,
+               "value" : "Cainta"
+            },
+            {
+               "offset" : 21,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 28,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      }
+   ],
+   "status" : "OK"
+}
