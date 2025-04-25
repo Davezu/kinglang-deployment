@@ -1,6 +1,6 @@
 <?php 
 // Require authentication check (included from controller)
-require_once __DIR__ . "/../../../models/admin/Settings.php";
+require_once __DIR__ . "/../../models/admin/Settings.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,13 +36,13 @@ require_once __DIR__ . "/../../../models/admin/Settings.php";
     </style>
 </head>
 <body>
-    <?php include_once __DIR__ . "/../../assets/admin_sidebar.php"; ?>
+    <?php include_once __DIR__ . "/../assets/admin_sidebar.php"; ?>
 
     <div class="content collapsed" id="content">
         <div class="container-fluid mt-4 px-4">
             <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
                 <h2><i class="fas fa-cogs me-2"></i>System Settings</h2>
-                <?php include_once __DIR__ . "/../../assets/admin_profile.php"; ?>
+                <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
             <p class="text-muted">Manage application settings and configurations</p>
             <hr>

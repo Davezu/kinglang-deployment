@@ -96,13 +96,63 @@ class BookingManagementModel {
         }
     }
 
-    public function confirmBooking($booking_id) {
+    public function confirmBooking($booking_id, $discount = 0) {
         try {
-            $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Confirmed' WHERE booking_id = :booking_id");
+            $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Confirmed', confirmed_at = NOW() WHERE booking_id = :booking_id");
             $stmt->execute([":booking_id" => $booking_id]);
             
             // Get booking information
             $bookingInfo = $this->getBooking($booking_id);
+            
+            // Apply discount if provided
+            if ($discount > 0) {
+                // Get current booking cost
+                $stmt = $this->conn->prepare("SELECT total_cost FROM booking_costs WHERE booking_id = :booking_id");
+                $stmt->execute([":booking_id" => $booking_id]);
+                $originalCost = (float)$stmt->fetchColumn();
+                
+                // Calculate new discounted cost
+                $discountMultiplier = (100 - $discount) / 100;
+                $discountedCost = round($originalCost * $discountMultiplier, 2);
+                
+                // Update the booking costs with discount
+                $stmt = $this->conn->prepare("UPDATE booking_costs SET gross_price = :gross_price, total_cost = :total_cost, discount = :discount WHERE booking_id = :booking_id");
+                $stmt->execute([
+                    ":gross_price" => $originalCost,
+                    ":total_cost" => $discountedCost,
+                    ":discount" => $discount,
+                    ":booking_id" => $booking_id
+                ]);
+                
+                // Also update the balance in the bookings table
+                $stmt = $this->conn->prepare("SELECT SUM(amount) AS total_paid FROM payments WHERE booking_id = :booking_id AND status = 'Confirmed'");
+                $stmt->execute([":booking_id" => $booking_id]);
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                $totalPaid = isset($result["total_paid"]) ? $result["total_paid"] : 0;
+                
+                // Calculate balance with proper rounding
+                $balance = round($discountedCost - $totalPaid, 2);
+                
+                // Handle tiny negative balances
+                if ($balance > -0.1 && $balance < 0) {
+                    $balance = 0;
+                }
+                
+                // Update payment status
+                $newStatus = "Unpaid";
+                if ($totalPaid > 0 && $totalPaid < $discountedCost) {
+                    $newStatus = "Partially Paid";
+                } elseif ($totalPaid >= $discountedCost) {
+                    $newStatus = "Paid";
+                }
+                
+                $stmt = $this->conn->prepare("UPDATE bookings SET balance = :balance, payment_status = :payment_status WHERE booking_id = :booking_id");
+                $stmt->execute([
+                    ":balance" => $balance,
+                    ":payment_status" => $newStatus,
+                    ":booking_id" => $booking_id
+                ]);
+            }
             
             // Add admin notification
             // $message = "New booking confirmed for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
@@ -114,7 +164,7 @@ class BookingManagementModel {
             
             return "success";
         } catch (PDOException $e) {
-            return "Database error.";
+            return "Database error: " . $e->getMessage();
         }
     }
 
@@ -193,7 +243,7 @@ class BookingManagementModel {
         }
     }
 
-    public function confirmRebookingRequest($rebooking_id) {
+    public function confirmRebookingRequest($rebooking_id, $discount = 0) {
         try {
             // First, let's verify the rebooking request exists
             $stmt = $this->conn->prepare("SELECT * FROM rebooking_request WHERE rebooking_id = :rebooking_id");
@@ -227,17 +277,40 @@ class BookingManagementModel {
             $stmt = $this->conn->prepare("UPDATE payments SET booking_id = :rebooking_id WHERE booking_id = :booking_id");
             $stmt->execute([":rebooking_id" => $rebooking_id, ":booking_id" => $booking_id]);
 
+            // Apply discount if provided
+            if ($discount > 0) {
+                // Get current booking cost
+                $stmt = $this->conn->prepare("SELECT total_cost FROM booking_costs WHERE booking_id = :booking_id");
+                $stmt->execute([":booking_id" => $rebooking_id]);
+                $originalCost = (float)$stmt->fetchColumn();
+                
+                // Calculate new discounted cost
+                $discountMultiplier = (100 - $discount) / 100;
+                $discountedCost = round($originalCost * $discountMultiplier, 2);
+                
+                // Update the booking costs with discount
+                $stmt = $this->conn->prepare("UPDATE booking_costs SET gross_price = :gross_price, total_cost = :total_cost, discount = :discount WHERE booking_id = :booking_id");
+                $stmt->execute([
+                    ":gross_price" => $originalCost,
+                    ":total_cost" => $discountedCost,
+                    ":discount" => $discount,
+                    ":booking_id" => $rebooking_id
+                ]);
+                
+                // Use discounted cost for further calculations
+                $total_cost = $discountedCost;
+            } else {
+                // Get total cost for the new booking
+                $stmt = $this->conn->prepare("SELECT c.total_cost FROM booking_costs c WHERE c.booking_id = :booking_id");
+                $stmt->execute([":booking_id" => $rebooking_id]); 
+                $total_cost = (float)$stmt->fetchColumn();
+            }
+
             // Get total paid amount from payments from the new booking
             $stmt = $this->conn->prepare("SELECT SUM(amount) AS total_paid FROM payments WHERE booking_id = :booking_id AND status = 'Confirmed'");
             $stmt->execute([":booking_id" => $rebooking_id]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $total_paid = isset($result["total_paid"]) ? $result["total_paid"] : 0;
-
-            // Get total cost for the new booking
-            $stmt = $this->conn->prepare("SELECT c.total_cost, b.balance FROM bookings b JOIN booking_costs c ON b.booking_id = c.booking_id WHERE b.booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $rebooking_id]); 
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $total_cost = isset($result["total_cost"]) ? $result["total_cost"] : 0;   
 
             // Calculate balance with proper rounding
             $balance = round($total_cost - $total_paid, 2);
@@ -254,7 +327,7 @@ class BookingManagementModel {
                 $new_status = "Paid";
             }
 
-            $stmt = $this->conn->prepare("UPDATE bookings SET payment_status = :payment_status, status = 'Confirmed', balance = :balance WHERE booking_id = :booking_id");
+            $stmt = $this->conn->prepare("UPDATE bookings SET payment_status = :payment_status, status = 'Confirmed', balance = :balance, confirmed_at = NOW() WHERE booking_id = :booking_id");
             $stmt->execute([
                 ":payment_status" => $new_status,
                 ":booking_id" => $rebooking_id,
@@ -317,7 +390,7 @@ class BookingManagementModel {
     public function getBooking($booking_id) {
         try {
             $stmt = $this->conn->prepare("
-                SELECT b.booking_id, u.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.email, u.contact_number, b.pickup_point, b.destination, b.number_of_days, b.number_of_buses, b.date_of_tour, b.end_of_tour, b.status, b.payment_status, c.total_cost, b.balance, b.booked_at
+                SELECT b.*, u.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.email, u.contact_number, c.*
                 FROM bookings b
                 JOIN users u ON b.user_id = u.user_id
                 JOIN booking_costs c ON b.booking_id = c.booking_id

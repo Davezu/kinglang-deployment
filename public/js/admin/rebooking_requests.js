@@ -121,17 +121,33 @@ function actionButtons(request) {
         const bookingId = this.getAttribute("data-booking-id");
         
         Swal.fire({
-            title: 'Confirm Booking?',
-            text: 'Are you sure you want to confirm this booking request?',
-            icon: 'question',
+            title: 'Enter Discount Rate',
+            text: 'Enter a discount percentage (0-100)',
+            input: 'number',
+            inputPlaceholder: 'e.g., 15 for 15%',
             showCancelButton: true,
             confirmButtonColor: '#198754',
             cancelButtonColor: '#6c757d',
             confirmButtonText: 'Confirm',
-            cancelButtonText: 'Cancel'
+            cancelButtonText: 'Cancel',
+            inputAttributes: {
+                min: 0,
+                max: 100,
+                step: 0.01
+            },
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Please enter a discount rate';
+                }
+                const numValue = parseFloat(value);
+                if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+                    return 'Discount must be between 0 and 100';
+                }
+            }
         }).then((result) => {
             if (result.isConfirmed) {
-                confirmBookingRequest(bookingId);
+                const discount = parseFloat(result.value || 0);
+                confirmBookingRequest(bookingId, discount);
             }
         });
     });
@@ -180,12 +196,12 @@ function actionButtons(request) {
     return actionCell;
 }
 
-async function confirmBookingRequest(bookingId) {
+async function confirmBookingRequest(bookingId, discount) {
     try {
         const response = await fetch("/admin/confirm-rebooking-request", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ bookingId })
+            body: JSON.stringify({ bookingId, discount })
         });
     
         const data = await response.json();

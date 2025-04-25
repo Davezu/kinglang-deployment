@@ -1,0 +1,232 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-1L98RZNljMRrV6ZM4WXvYY",
+         "reference" : "ChIJ-1L98RZNljMRrV6ZM4WXvYY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 9,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Bulan, Sorsogon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJo7W8pmjRoDMRtuBby5hCySQ",
+         "reference" : "ChIJo7W8pmjRoDMRtuBby5hCySQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sorsogon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulan"
+            },
+            {
+               "offset" : 7,
+               "value" : "Sorsogon"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Bulacan State University, Malolos, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJV_jwJHOvlzMRzm4lW-05H8I",
+         "reference" : "ChIJV_jwJHOvlzMRzm4lW-05H8I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulacan State University",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malolos, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulacan State University"
+            },
+            {
+               "offset" : 26,
+               "value" : "Malolos"
+            },
+            {
+               "offset" : 35,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "point_of_interest",
+            "school",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Bulalacao, Oriental Mindoro, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZZ10IMsmuzMR9zur3XMgVtE",
+         "reference" : "ChIJZZ10IMsmuzMR9zur3XMgVtE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulalacao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Oriental Mindoro, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulalacao"
+            },
+            {
+               "offset" : 11,
+               "value" : "Oriental Mindoro"
+            },
+            {
+               "offset" : 29,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Bula, Camarines Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5afWiRSQoTMRYXRmlsAzUeQ",
+         "reference" : "ChIJ5afWiRSQoTMRYXRmlsAzUeQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bula",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Camarines Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bula"
+            },
+            {
+               "offset" : 6,
+               "value" : "Camarines Sur"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

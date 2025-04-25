@@ -1,0 +1,251 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Bulakan, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-1L98RZNljMRrV6ZM4WXvYY",
+         "reference" : "ChIJ-1L98RZNljMRrV6ZM4WXvYY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulakan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulakan"
+            },
+            {
+               "offset" : 9,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Bulakan, Bulacan Sports Arena, Bulakan, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJh-b_Aa5TljMRxL0HDUTcY1s",
+         "reference" : "ChIJh-b_Aa5TljMRxL0HDUTcY1s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulakan, Bulacan Sports Arena",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulakan, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulakan, Bulacan Sports Arena"
+            },
+            {
+               "offset" : 31,
+               "value" : "Bulakan"
+            },
+            {
+               "offset" : 40,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bulakan Municipal Hall - Bulacan, Bulakan, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJLacZ1KZSljMRhZiR9UoiGp0",
+         "reference" : "ChIJLacZ1KZSljMRhZiR9UoiGp0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulakan Municipal Hall - Bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulakan, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulakan Municipal Hall - Bulacan"
+            },
+            {
+               "offset" : 34,
+               "value" : "Bulakan"
+            },
+            {
+               "offset" : 43,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "city_hall",
+            "point_of_interest",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Bulakanon, Makilala, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ6fyjLJ1X-DIReP0IjMkcg08",
+         "reference" : "ChIJ6fyjLJ1X-DIReP0IjMkcg08",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulakanon",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Makilala, Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulakanon"
+            },
+            {
+               "offset" : 11,
+               "value" : "Makilala"
+            },
+            {
+               "offset" : 21,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 31,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "political",
+            "sublocality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Bulakan Public Market, Bagumbayan Street, Bulakan, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9-HqIqdSljMRDXEVs-5YMR0",
+         "reference" : "ChIJ9-HqIqdSljMRDXEVs-5YMR0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bulakan Public Market",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bagumbayan Street, Bulakan, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bulakan Public Market"
+            },
+            {
+               "offset" : 23,
+               "value" : "Bagumbayan Street"
+            },
+            {
+               "offset" : 42,
+               "value" : "Bulakan"
+            },
+            {
+               "offset" : 51,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

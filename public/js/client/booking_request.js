@@ -1399,15 +1399,15 @@ function openBookingDetailsModal(bookingId) {
                     </div>
                 </div>
                 
-                <div class="booking-detail-section">
+                <div class="booking-detail-section mb-2">
                     <h6 class="border-bottom pb-2"><i class="bi bi-list-check me-2"></i>Actions</h6>
                     <div class="d-flex flex-wrap gap-2">
-                        ${["Pending", "Confirmed", "Processing"].includes(booking.status) ? `
-                            <button class="btn btn-sm btn-outline-secondary edit-booking" data-booking-id="${booking.booking_id}">
-                                <i class="bi bi-pencil"></i> Edit Booking
+                        ${["Confirmed", "Processing"].includes(booking.status) ? `
+                            <button class="btn btn-sm btn-outline-info print-invoice" data-booking-id="${booking.booking_id}">
+                                <i class="bi bi-printer"></i> Print Invoice
                             </button>
                         ` : ''}
-                        
+
                         ${booking.status === "Confirmed" && parseFloat(booking.balance) > 0 ? `
                             <button class="btn btn-sm btn-outline-primary pay-booking" 
                                 data-bs-toggle="modal" 
@@ -1418,6 +1418,12 @@ function openBookingDetailsModal(bookingId) {
                                 <i class="bi bi-credit-card"></i> Make Payment
                             </button>
                         ` : ''}
+
+                        ${["Pending", "Confirmed", "Processing"].includes(booking.status) ? `
+                            <button class="btn btn-sm btn-outline-secondary edit-booking" data-booking-id="${booking.booking_id}">
+                                <i class="bi bi-pencil"></i> Edit Booking
+                            </button>
+                        ` : ''}
                         
                         ${["Pending", "Confirmed", "Processing"].includes(booking.status) ? `
                             <button class="btn btn-sm btn-outline-danger cancel-booking" data-booking-id="${booking.booking_id}">
@@ -1425,11 +1431,7 @@ function openBookingDetailsModal(bookingId) {
                             </button>
                         ` : ''}
 
-                        ${["Confirmed", "Processing"].includes(booking.status) ? `
-                            <button class="btn btn-sm btn-outline-info print-invoice" data-booking-id="${booking.booking_id}">
-                                <i class="bi bi-printer"></i> Print Invoice
-                            </button>
-                        ` : ''}
+                        
                     </div>
                 </div>
             `;

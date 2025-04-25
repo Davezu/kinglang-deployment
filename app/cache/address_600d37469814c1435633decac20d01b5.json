@@ -1,0 +1,244 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Hagonoy, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJcZadCSBQljMRINA_pTFuNSc",
+         "reference" : "ChIJcZadCSBQljMRINA_pTFuNSc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Hagonoy",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Hagonoy"
+            },
+            {
+               "offset" : 9,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Hagonoy, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJz_9Q9cjIlzMR-PTRCesX2bo",
+         "reference" : "ChIJz_9Q9cjIlzMR-PTRCesX2bo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Hagonoy",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Hagonoy"
+            },
+            {
+               "offset" : 9,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "geocode",
+            "political",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Hagonoy, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ6201D4W2-TIRB_q5ZGJCsgc",
+         "reference" : "ChIJ6201D4W2-TIRB_q5ZGJCsgc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Hagonoy",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Hagonoy"
+            },
+            {
+               "offset" : 9,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Hagonoy Sports Complex, Capistrano Street, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZcLJq1PPlzMRrBxeq2ic_nQ",
+         "reference" : "ChIJZcLJq1PPlzMRrBxeq2ic_nQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Hagonoy Sports Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Capistrano Street, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Hagonoy Sports Complex"
+            },
+            {
+               "offset" : 24,
+               "value" : "Capistrano Street"
+            },
+            {
+               "offset" : 43,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Hagonoy Municipal Hall, Hagonoy, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJmW1GiGpQljMRDjFpYKj9lNc",
+         "reference" : "ChIJmW1GiGpQljMRDjFpYKj9lNc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Hagonoy Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Hagonoy, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Hagonoy Municipal Hall"
+            },
+            {
+               "offset" : 24,
+               "value" : "Hagonoy"
+            },
+            {
+               "offset" : 33,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "city_hall",
+            "local_government_office",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

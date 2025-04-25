@@ -105,7 +105,7 @@ class Booking {
     public function getBooking($booking_id, $user_id) {
         try {
             $stmt = $this->conn->prepare("
-                SELECT b.*, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, u.email, c.base_cost, c.diesel_cost, c.total_cost, c.base_rate, c.diesel_price, c.total_distance
+                SELECT b.*, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, u.email, c.*
                 FROM bookings b
                 JOIN users u ON b.user_id = u.user_id
                 JOIN booking_costs c ON b.booking_id = c.booking_id

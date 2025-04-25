@@ -1,0 +1,247 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Paniqui, Tarlac, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJvTpAbizLljMRc9CZ7HinTTc",
+         "reference" : "ChIJvTpAbizLljMRc9CZ7HinTTc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paniqui",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tarlac, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paniqui"
+            },
+            {
+               "offset" : 9,
+               "value" : "Tarlac"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Paniman Beach ternate, Unnamed Road, Ternate, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJq40hEYKJvTMRsxbvjHiAsog",
+         "reference" : "ChIJq40hEYKJvTMRsxbvjHiAsog",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paniman Beach ternate",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Unnamed Road, Ternate, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paniman Beach ternate"
+            },
+            {
+               "offset" : 23,
+               "value" : "Unnamed Road"
+            },
+            {
+               "offset" : 37,
+               "value" : "Ternate"
+            },
+            {
+               "offset" : 46,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Panipuan, San Fernando, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHW14jILxljMRIyrqvIH8U7A",
+         "reference" : "ChIJHW14jILxljMRIyrqvIH8U7A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Panipuan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Fernando, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Panipuan"
+            },
+            {
+               "offset" : 10,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 24,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality",
+            "political",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Panitan, Capiz, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJd1Ru4on1pTMRQV7RdcL07wA",
+         "reference" : "ChIJd1Ru4on1pTMRQV7RdcL07wA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Panitan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Capiz, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Panitan"
+            },
+            {
+               "offset" : 9,
+               "value" : "Capiz"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Paninap Beach Camp, Real, Quezon Province, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJU2JqnnmKlzMR2sAVGJ6Bwok",
+         "reference" : "ChIJU2JqnnmKlzMR2sAVGJ6Bwok",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paninap Beach Camp",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Real, Quezon Province, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paninap Beach Camp"
+            },
+            {
+               "offset" : 20,
+               "value" : "Real"
+            },
+            {
+               "offset" : 26,
+               "value" : "Quezon Province"
+            },
+            {
+               "offset" : 43,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "natural_feature",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

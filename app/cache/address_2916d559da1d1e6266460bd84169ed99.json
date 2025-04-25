@@ -45,8 +45,8 @@
          ],
          "types" : 
          [
-            "route",
-            "geocode"
+            "geocode",
+            "route"
          ]
       },
       {
@@ -88,58 +88,6 @@
             },
             {
                "offset" : 57,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "point_of_interest",
-            "establishment"
-         ]
-      },
-      {
-         "description" : "Phase 9 Covered court, Barietto, Imus, Cavite, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 7,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJk82LfcLTlzMRqdiNz0jhxBo",
-         "reference" : "ChIJk82LfcLTlzMRqdiNz0jhxBo",
-         "structured_formatting" : 
-         {
-            "main_text" : "Phase 9 Covered court",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 7,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Barietto, Imus, Cavite, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Phase 9 Covered court"
-            },
-            {
-               "offset" : 23,
-               "value" : "Barietto"
-            },
-            {
-               "offset" : 33,
-               "value" : "Imus"
-            },
-            {
-               "offset" : 39,
-               "value" : "Cavite"
-            },
-            {
-               "offset" : 47,
                "value" : "Philippines"
             }
          ],
@@ -246,7 +194,59 @@
          "types" : 
          [
             "point_of_interest",
-            "local_government_office",
+            "establishment",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Phase 9 Covered court, Barietto, Imus, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJk82LfcLTlzMRqdiNz0jhxBo",
+         "reference" : "ChIJk82LfcLTlzMRqdiNz0jhxBo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Phase 9 Covered court",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Barietto, Imus, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Phase 9 Covered court"
+            },
+            {
+               "offset" : 23,
+               "value" : "Barietto"
+            },
+            {
+               "offset" : 33,
+               "value" : "Imus"
+            },
+            {
+               "offset" : 39,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
             "establishment"
          ]
       }

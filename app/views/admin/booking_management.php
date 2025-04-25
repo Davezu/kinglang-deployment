@@ -377,7 +377,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                                     <th class="sort" data-order="asc" data-column="destination">
                                         Destination <span class="sort-icon">↑</span>
                                     </th>
-                                    <th class="sort" data-order="asc" data-column="pickup_point">
+                                    <th class="sort" data-order="asc" data-column="total_cost">
                                         Total Cost <span class="sort-icon">↑</span>
                                     </th>
                                     <th class="sort" data-order="asc" data-column="date_of_tour">
@@ -399,7 +399,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                            
                         </tbody>
                     </table>
-                    </div>
+                </div>
                 </div>
             </div>
 
@@ -439,10 +439,10 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                 <div class="modal-body" id="bookingDetailsContent">
                     <!-- Content will be loaded dynamically -->
                 </div>
-                <div class="modal-footer bg-light">
+                <!-- <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" id="viewFullDetails">View Full Details</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

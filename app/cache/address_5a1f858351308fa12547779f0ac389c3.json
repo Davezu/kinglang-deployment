@@ -153,8 +153,8 @@
          ],
          "types" : 
          [
-            "geocode",
-            "subpremise"
+            "subpremise",
+            "geocode"
          ]
       },
       {
@@ -249,8 +249,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       }
    ],

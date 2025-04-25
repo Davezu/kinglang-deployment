@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "Agas BnB Villa Harap sa Dagat, Taberna, Taberna Beach Homes, Brgy. Rd, Bauang, 2501 La Union, Philippines",
+      "Maligaya St, Quezon City, Metro Manila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "Maligaya St, Quezon City, Metro Manila, Philippines",
+      "Agas BnB Villa Harap sa Dagat, Taberna, Taberna Beach Homes, Brgy. Rd, Bauang, 2501 La Union, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "253 km",
+                  "value" : 252784
+               },
+               "duration" : 
+               {
+                  "text" : "4 hours 2 mins",
+                  "value" : 14508
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "254 km",
+                  "value" : 254387
+               },
+               "duration" : 
+               {
+                  "text" : "4 hours 7 mins",
+                  "value" : 14790
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

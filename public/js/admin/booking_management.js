@@ -669,7 +669,7 @@ function showBookingDetails(bookingId) {
                     </div>
                 </div>
                 
-                <div class="booking-detail-section">
+                <div class="booking-detail-section mb-2">
                     <h6 class="text-success mb-3"><i class="bi bi-list-check me-2"></i>Actions</h6>
                     <div class="d-flex flex-wrap gap-2">
                         ${booking.status === "Pending" ? `
@@ -687,19 +687,23 @@ function showBookingDetails(bookingId) {
                             </button>
                         ` : ''}
                         
-                        <button class="btn btn-sm btn-outline-primary" id="fullDetailBtn">
-                            <i class="bi bi-eye"></i> View Full Details
+                        <button class="btn btn-sm btn-outline-primary view-invoice" data-booking-id="${booking.booking_id}">
+                            <i class="bi bi-file-earmark-text"></i> Invoice
                         </button>
                     </div>
                 </div>
             `;
             
-            // Set the View Full Details button link
-            document.getElementById('fullDetailBtn').onclick = function() {
-                window.location.href = `/admin/booking/${bookingId}`;
-            };
-            
             // Add event listeners to action buttons
+            const viewInvoiceBtn = bookingDetailsContent.querySelector(".view-invoice");
+            if (viewInvoiceBtn) {
+                viewInvoiceBtn.addEventListener("click", function () {
+                    const bookingId = this.getAttribute("data-booking-id");
+                    window.open(`/admin/print-invoice/${bookingId}`);
+                })
+
+            }            
+
             const confirmBtn = bookingDetailsContent.querySelector('.confirm-booking-modal');
             if (confirmBtn) {
                 confirmBtn.addEventListener('click', function() {
@@ -709,19 +713,33 @@ function showBookingDetails(bookingId) {
                     bootstrap.Modal.getInstance(document.getElementById('bookingDetailsModal')).hide();
                     
                     Swal.fire({
-                        title: 'Confirm Booking?',
-                        html: '<p>Are you sure you want to confirm this booking request?</p>',
-                        footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
-                        icon: 'question',
+                        title: 'Enter Discount Rate',
+                        text: 'Enter a discount percentage (0-100)',
+                        input: 'number',
+                        inputPlaceholder: 'e.g., 15 for 15%',
                         showCancelButton: true,
-                        confirmButtonText: 'Confirm',
+                        confirmButtonText: 'Confirm Booking',
                         cancelButtonText: 'Cancel',
                         confirmButtonColor: '#28a745',
                         cancelButtonColor: '#6c757d',
-                        focusConfirm: false
+                        inputAttributes: {
+                            min: 0,
+                            max: 100,
+                            step: 0.01
+                        },
+                        inputValidator: (value) => {
+                            if (!value) {
+                                return 'Please enter a discount rate';
+                            }
+                            const numValue = parseFloat(value);
+                            if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+                                return 'Discount must be between 0 and 100';
+                            }
+                        }
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            confirmBooking(bookingId);
+                            const discount = parseFloat(result.value || 0);
+                            confirmBooking(bookingId, discount);
                         }
                     });
                 });
@@ -1039,7 +1057,7 @@ async function renderBookings(data) {
         destinationCell.style.whiteSpace = "nowrap";
         destinationCell.title = booking.destination;
         
-        pickupPointCell.textContent = booking.total_cost;
+        pickupPointCell.textContent = parseFloat(booking.total_cost).toLocaleString('en-PH', { style: 'currency', currency: 'PHP' });
         
         dateOfTourCell.textContent = formatDate(booking.date_of_tour);
         dateOfTourCell.style.maxWidth = "120px";
@@ -1099,22 +1117,36 @@ function actionButton(booking) {
                 function() {
                     const bookingId = booking.booking_id;
         
-        Swal.fire({
-            title: 'Confirm Booking?',
-            html: '<p>Are you sure you want to confirm this booking request?</p>',
-            footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Confirm',
-            cancelButtonText: 'Cancel',
-            confirmButtonColor: '#28a745',
-            cancelButtonColor: '#6c757d',
-            focusConfirm: false
-        }).then((result) => {
-            if (result.isConfirmed) {
-                confirmBooking(bookingId);
-            }
-        });
+                    Swal.fire({
+                        title: 'Enter Discount Rate',
+                        text: 'Enter a discount percentage (0-100)',
+                        input: 'number',
+                        inputPlaceholder: 'e.g., 15 for 15%',
+                        showCancelButton: true,
+                        confirmButtonText: 'Confirm Booking',
+                        cancelButtonText: 'Cancel',
+                        confirmButtonColor: '#28a745',
+                        cancelButtonColor: '#6c757d',
+                        inputAttributes: {
+                            min: 0,
+                            max: 100,
+                            step: 0.01
+                        },
+                        inputValidator: (value) => {
+                            if (!value) {
+                                return 'Please enter a discount rate';
+                            }
+                            const numValue = parseFloat(value);
+                            if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+                                return 'Discount must be between 0 and 100';
+                            }
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const discount = parseFloat(result.value || 0);
+                            confirmBooking(bookingId, discount);
+                        }
+                    });
                 }
             )
         );
@@ -1281,12 +1313,12 @@ function renderPagination(pagination) {
 }
 
 // New function to handle confirm booking API call
-async function confirmBooking(bookingId) {
+async function confirmBooking(bookingId, discount) {
     try {
         const response = await fetch("/admin/confirm-booking", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ bookingId })
+            body: JSON.stringify({ bookingId, discount })
         });
     
         const data = await response.json();

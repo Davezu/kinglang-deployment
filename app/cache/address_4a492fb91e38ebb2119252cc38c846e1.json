@@ -1,0 +1,247 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Tarlac City, Tarlac, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJDY62Sj_GljMRS_1bel1B-RM",
+         "reference" : "ChIJDY62Sj_GljMRS_1bel1B-RM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tarlac City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tarlac, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tarlac City"
+            },
+            {
+               "offset" : 13,
+               "value" : "Tarlac"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Tarlac, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8ynBRXS3ljMRReyDuZq4_gY",
+         "reference" : "ChIJ8ynBRXS3ljMRReyDuZq4_gY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tarlac",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tarlac"
+            },
+            {
+               "offset" : 8,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "administrative_area_level_2",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Tarlac State University (TSU), Romulo Boulevard, Tarlac City, Tarlac, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJG1oyuTnGljMRuPJm2xAW_NA",
+         "reference" : "ChIJG1oyuTnGljMRuPJm2xAW_NA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tarlac State University (TSU)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Romulo Boulevard, Tarlac City, Tarlac, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tarlac State University (TSU)"
+            },
+            {
+               "offset" : 31,
+               "value" : "Romulo Boulevard"
+            },
+            {
+               "offset" : 49,
+               "value" : "Tarlac City"
+            },
+            {
+               "offset" : 62,
+               "value" : "Tarlac"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "university",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Tarlac - Pangasinan - La Union Expressway, Cuyapo, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EktUYXJsYWMgLSBQYW5nYXNpbmFuIC0gTGEgVW5pb24gRXhwcmVzc3dheSwgQ3V5YXBvLCBOdWV2YSBFY2lqYSwgUGhpbGlwcGluZXMiLiosChQKEgnZbaSDhM-WMxESoYriP1NVVRIUChIJrSMXHAExkTMRIf-dZaaRUp0",
+         "reference" : "EktUYXJsYWMgLSBQYW5nYXNpbmFuIC0gTGEgVW5pb24gRXhwcmVzc3dheSwgQ3V5YXBvLCBOdWV2YSBFY2lqYSwgUGhpbGlwcGluZXMiLiosChQKEgnZbaSDhM-WMxESoYriP1NVVRIUChIJrSMXHAExkTMRIf-dZaaRUp0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tarlac - Pangasinan - La Union Expressway",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cuyapo, Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tarlac - Pangasinan - La Union Expressway"
+            },
+            {
+               "offset" : 43,
+               "value" : "Cuyapo"
+            },
+            {
+               "offset" : 51,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 64,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Tarlac Provincial Hospital (TPH), Hospital Drive, Tarlac City, Tarlac, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJSSyXOvzHljMRhCMannqA9Mo",
+         "reference" : "ChIJSSyXOvzHljMRhCMannqA9Mo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tarlac Provincial Hospital (TPH)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Hospital Drive, Tarlac City, Tarlac, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tarlac Provincial Hospital (TPH)"
+            },
+            {
+               "offset" : 34,
+               "value" : "Hospital Drive"
+            },
+            {
+               "offset" : 50,
+               "value" : "Tarlac City"
+            },
+            {
+               "offset" : 63,
+               "value" : "Tarlac"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "hospital",
+            "health"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

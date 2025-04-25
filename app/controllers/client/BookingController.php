@@ -248,7 +248,7 @@ class BookingController {
         $input = json_decode(file_get_contents("php://input"), true);
         $number_of_buses = (int) $input["numberOfBuses"] ?? 0;
         $number_of_days = (int) $input["numberOfDays"] ?? 0;
-        $distance = (float) $input["distance"] ?? 0;
+        $distance = (float) number_format($input["distance"], 2) ?? 0;
         $diesel_price = (float) $this->getDieselPrice() ?? 0;
         $locations = $input["locations"] ?? [];
         $destination = $input["destination"] ?? "";
@@ -262,7 +262,8 @@ class BookingController {
         // Define rates per region
         $regional_rates = [
             'NCR' => 19560, // Metro Manila
-            'CAR' => 117539, // Cordillera Administrative Region
+            'CAR' => 71040, // Cordillera Administrative Region
+            'Region 1' => 117539, // Ilocos Region
             'Region 2' => 71040, // Cagayan Valley
             'Region 3' => 45020, // Central Luzon
             'Region 4A' => 20772, // Calabarzon
@@ -352,6 +353,23 @@ class BookingController {
                 'barlig', 'bauko', 'besao', 'natonin', 'paracelis', 'sadanga', 'sagada', 'tadian', 'banaue',
                 'aguinaldo', 'asipulo', 'hingyon', 'hungduan', 'kiangan', 'lagawe', 'lamut', 'mayoyao', 'tinoc'
             ],
+            'Region 1' => [
+                'ilocos region', 'region 1', 'ilocos norte', 'ilocos sur', 'la union', 'pangasinan',
+                'laoag', 'vigan', 'san fernando', 'dagupan', 'batac', 'candon', 'alaminos', 'urdaneta',
+                'san carlos', 'pagudpud', 'bangui', 'burgos', 'pasuquin', 'bacarra', 'vintar', 'paoay',
+                'currimao', 'badoc', 'pinili', 'marcos', 'nueva era', 'sarrat', 'piddig', 'carasi', 'solsona',
+                'dingras', 'san nicolas', 'cabugao', 'sinait', 'santa catalina', 'santa lucia', 'santa cruz',
+                'san vicente', 'santa', 'narvacan', 'santa maria', 'san esteban', 'santiago', 'bantay',
+                'caoayan', 'magsingal', 'santo domingo', 'san ildefonso', 'san juan', 'san vicente', 'aringay',
+                'agoo', 'bauang', 'caba', 'santo tomas', 'rosario', 'pugo', 'tubao', 'naguilian', 'bagulin',
+                'burgos', 'san gabriel', 'santol', 'sudipen', 'luna', 'bangar', 'balaoan', 'bacnotan',
+                'lingayen', 'bolinao', 'san fabian', 'manaoag', 'binmaley', 'calasiao', 'santa barbara',
+                'malasiqui', 'bayambang', 'basista', 'bautista', 'alcala', 'santo tomas', 'mangaldan',
+                'mangatarem', 'aguilar', 'bugallon', 'labrador', 'infanta', 'mabini', 'burgos', 'dasol',
+                'agno', 'bani', 'alaminos', 'sual', 'san manuel', 'binalonan', 'laoac', 'pozorrubio',
+                'san jacinto', 'san nicolas', 'tayug', 'natividad', 'san quintin', 'umingan', 'balungao',
+                'rosales', 'asingan', 'santa maria', 'villasis', 'anda', 'sison', 'san carlos'
+            ],
             'Region 2' => [
                 'cagayan valley', 'region 2', 'cagayan', 'isabela', 'nueva vizcaya', 'quirino', 'batanes',
                 'tuguegarao', 'ilagan', 'cauayan', 'santiago', 'alaminos', 'alicia', 'angadanan', 'aurora',
@@ -397,6 +415,7 @@ class BookingController {
         $region_matches = [
             'NCR' => 0,
             'CAR' => 0,
+            'Region 1' => 0,
             'Region 2' => 0,
             'Region 3' => 0,
             'Region 4A' => 0

@@ -39,8 +39,8 @@ require_client_auth(); // Use helper function
             font-size: 1.5rem;
         }
         .table-container {
-            max-height: calc(100vh - 350px);
-            overflow-y: auto;
+            /* max-height: calc(100vh - 350px); */
+            /* overflow-y: auto; */
             margin-bottom: 1rem;
         }
         .actions-compact {
@@ -425,10 +425,10 @@ require_client_auth(); // Use helper function
                 <div class="modal-body" id="bookingDetailsContent">
                     <!-- Content will be loaded dynamically -->
                 </div>
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" id="viewFullDetails">View Full Details</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

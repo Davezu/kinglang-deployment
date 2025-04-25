@@ -224,8 +224,9 @@ class BookingManagementController {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = json_decode(file_get_contents("php://input"), true);
             $booking_id = $data["bookingId"];
+            $discount = isset($data["discount"]) ? (float)$data["discount"] : 0;
         
-            $result = $this->bookingModel->confirmBooking($booking_id);
+            $result = $this->bookingModel->confirmBooking($booking_id, $discount);
         
             header("Content-Type: application/json");
             
@@ -275,8 +276,9 @@ class BookingManagementController {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = json_decode(file_get_contents("php://input"), true);
             $rebooking_id = $data["bookingId"];
+            $discount = isset($data["discount"]) ? (float)$data["discount"] : 0;
 
-            $result = $this->bookingModel->confirmRebookingRequest($rebooking_id);
+            $result = $this->bookingModel->confirmRebookingRequest($rebooking_id, $discount);
             header("Content-Type: application/json");
 
             echo json_encode([
@@ -362,6 +364,32 @@ class BookingManagementController {
                 "message" => "Booking not found"
             ]);
         }
+    }
+
+    public function printInvoice($booking_id = null) {
+        if (!$booking_id) {
+            // Redirect to bookings page if no ID provided
+            header("Location: /admin/booking-requests");
+            exit();
+        }
+        
+        // Get booking details
+        $booking = $this->bookingModel->getBooking($booking_id);
+        
+        if (!$booking) {
+            // Booking not found
+            header("Location: /admin/booking-requests");
+            exit();
+        }
+        
+        // Get booking stops
+        $stops = $this->bookingModel->getBookingStops($booking_id);
+        
+        // Get payment history
+        $payments = $this->bookingModel->getPaymentHistory($booking_id);
+        
+        // Load the invoice template view
+        require_once __DIR__ . "/../../views/admin/invoice.php";
     }
 
     public function cancelBooking() {

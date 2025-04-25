@@ -1,0 +1,248 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Buaya, Lapu-Lapu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJTTirnXKXqTMRXi75AF051No",
+         "reference" : "ChIJTTirnXKXqTMRXi75AF051No",
+         "structured_formatting" : 
+         {
+            "main_text" : "Buaya",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lapu-Lapu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Buaya"
+            },
+            {
+               "offset" : 7,
+               "value" : "Lapu-Lapu City"
+            },
+            {
+               "offset" : 23,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 29,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "sublocality_level_2",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Buanoy, Balamban, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJvXHIihoMqTMRyKU-snCWMCw",
+         "reference" : "ChIJvXHIihoMqTMRyKU-snCWMCw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Buanoy",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Balamban, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Buanoy"
+            },
+            {
+               "offset" : 8,
+               "value" : "Balamban"
+            },
+            {
+               "offset" : 18,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "sublocality",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Buayang Bato, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPQIPqETIlzMRRzp3uFMWVx8",
+         "reference" : "ChIJPQIPqETIlzMRRzp3uFMWVx8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Buayang Bato",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Buayang Bato"
+            },
+            {
+               "offset" : 14,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 28,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "political",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Buagsong, Cordova, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJafQY2fiaqTMRN0Wr7-3PNaM",
+         "reference" : "ChIJafQY2fiaqTMRN0Wr7-3PNaM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Buagsong",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cordova, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Buagsong"
+            },
+            {
+               "offset" : 10,
+               "value" : "Cordova"
+            },
+            {
+               "offset" : 19,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Buayan, South Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPbVcJ2x19zIRyUJdBNOUqhQ",
+         "reference" : "ChIJPbVcJ2x19zIRyUJdBNOUqhQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Buayan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "South Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Buayan"
+            },
+            {
+               "offset" : 8,
+               "value" : "South Cotabato"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "sublocality_level_2",
+            "sublocality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

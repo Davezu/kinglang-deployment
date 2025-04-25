@@ -36,7 +36,7 @@ class SettingsController {
             $groupedSettings[$group][] = $setting;
         }
         
-        include __DIR__ . "/../../views/admin/settings/index.php";
+        include __DIR__ . "/../../views/admin/settings.php";
     }
 
     public function getAllSettings() {

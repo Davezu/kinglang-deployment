@@ -349,6 +349,12 @@ switch ($request) {
         $controller = new BookingManagementController();
         $controller->getBookingDetails();
         break;
+    case "/admin/print-invoice":
+    case preg_match('|^/admin/print-invoice/([0-9]+)$|', $request, $matches) ? $request : "":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->printInvoice($matches[1] ?? null);
+        break;
 
     case "/admin/get-users":
         require_once $controllerClasses['admin']['UserManagementController'];

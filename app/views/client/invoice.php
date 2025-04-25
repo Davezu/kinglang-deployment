@@ -1,5 +1,7 @@
 <?php 
 require_client_auth(); // Use helper function
+
+// echo round((float) $booking["diesel_price"] * (float) $booking["total_distance"], 2); // Example calculation
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +17,7 @@ require_client_auth(); // Use helper function
             font-family: 'Work Sans', sans-serif;
             background-color: #f8f9fa;
             padding: 20px;
+            font-size: 0.9rem;
         }
         .invoice-container {
             max-width: 800px;
@@ -22,22 +25,31 @@ require_client_auth(); // Use helper function
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            padding: 30px;
+            padding: 20px;
         }
         .invoice-header {
             border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .invoice-logo-container {
+            display: flex;
+            align-items: center;
         }
         .invoice-logo {
-            max-width: 150px;
+            max-width: 100px;
             height: auto;
+            object-fit: contain;
         }
         .company-info {
-            margin-top: 10px;
+            margin-top: 5px;
+        }
+        .company-info p {
+            margin-bottom: 2px;
+            line-height: 1.3;
         }
         .invoice-number {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #198754;
         }
@@ -46,31 +58,48 @@ require_client_auth(); // Use helper function
         }
         .invoice-details {
             border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
         }
         .client-info {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+        }
+        h5 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 5px;
         }
         .table-invoice th {
             background-color: #d1f7c4;
             color: #333;
+            padding: 6px;
+        }
+        .table-invoice td {
+            padding: 4px;
+            vertical-align: middle;
+        }
+        .table-invoice {
+            margin-bottom: 10px;
         }
         .table-totals {
             width: 300px;
             margin-left: auto;
         }
         .table-totals td {
-            padding: 8px;
+            padding: 3px;
         }
         .payment-history {
-            margin-top: 20px;
+            margin-top: 15px;
             border-top: 1px solid #eee;
-            padding-top: 20px;
+            padding-top: 15px;
         }
         .status-badge {
             display: inline-block;
-            padding: 5px 10px;
+            padding: 4px 8px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 600;
             text-align: center;
         }
@@ -98,6 +127,13 @@ require_client_auth(); // Use helper function
             text-align: center;
             margin: 20px 0;
         }
+        .letterhead {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #198754;
+        }
         @media print {
             body {
                 background-color: #fff;
@@ -114,34 +150,43 @@ require_client_auth(); // Use helper function
             .no-print {
                 display: none;
             }
+            .letterhead {
+                background-color: transparent;
+                border-bottom: 2px solid #198754;
+            }
         }
     </style>
 </head>
 <body>
     <div class="invoice-container">
-        <div class="invoice-header d-flex justify-content-between align-items-start">
-            <div>
-                <img src="/../../../public/images/logo.png" alt="Kinglang Bus Logo" class="invoice-logo">
-                <div class="company-info">
-                    <h5>Kinglang Transport</h5>
-                    <p class="mb-0">123 Main Street, Manila</p>
-                    <p class="mb-0">Phone: (02) 123-4567</p>
-                    <p class="mb-0">Email: kinglang.transport@gmail.com</p>
+        <div class="letterhead">
+            <div class="invoice-header d-flex justify-content-between align-items-start mb-2">
+                <div class="invoice-logo-container">
+                    <img src="/../../../public/images/logo.png" alt="Kinglang Bus Logo" class="invoice-logo">
+                    <div class="company-info ms-3">
+                        <h5 class="mb-1">Kinglang Transport</h5>
+                        <p class="mb-0">123 Main Street, Manila</p>
+                        <p class="mb-0">Phone: (02) 123-4567</p>
+                        <p class="mb-0">Email: kinglang.transport@gmail.com</p>
+                    </div>
                 </div>
-            </div>
-            <div class="text-end">
-                <div class="invoice-number">Invoice #<?php echo $booking['booking_id']; ?></div>
-                <div class="invoice-date">Date: <?php echo date('F d, Y'); ?></div>
-                <div class="mt-3"> 
-                    <span class="status-badge status-<?php echo strtolower($booking['status']); ?>">
-                        <?php echo $booking['status']; ?>
-                    </span>
+                <div class="text-end">
+                    <div class="invoice-number">Invoice #<?php echo $booking['booking_id']; ?></div>
+                    <div class="invoice-date">Date: <?php 
+                        $booking['confirmed_at'] = new DateTime($booking['confirmed_at']);
+                        echo $booking['confirmed_at']->format('F j, Y'); 
+                    ?></div>
+                    <div class="mt-3"> 
+                        <span class="status-badge status-<?php echo strtolower($booking['status']); ?>">
+                            <?php echo $booking['status']; ?>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="d-flex justify-content-between invoice-details pb-3">
-            <div class=" w-50">
+        <div class="d-flex justify-content-between invoice-details pb-2">
+            <div class="w-50 pe-2">
                 <div>
                     <h5>Client Information</h5>
                     <p class="mb-1"><strong>Name:</strong> <?php echo $booking['client_name']; ?></p>
@@ -150,10 +195,10 @@ require_client_auth(); // Use helper function
                 </div>
             </div>
             <div class="w-50">
-                <div >
+                <div>
                     <h5>Booking Details</h5>
                     <p class="mb-1"><strong>Booking Date:</strong> <?php echo date('F d, Y', strtotime($booking['booked_at'])); ?></p>
-                    <p class="mb-1"><strong>Tour Date:</strong> <?php echo date('F d, Y', strtotime($booking['date_of_tour'])) . " to " . date('F d, Y', strtotime($booking['end_of_tour'])); ?></p>
+                    <p class="mb-1"><strong>Tour Date:</strong> <?php echo date('M d, Y', strtotime($booking['date_of_tour'])) . " to " . date('M d, Y', strtotime($booking['end_of_tour'])); ?></p>
                     <p class="mb-1"><strong>Duration:</strong> <?php echo $booking['number_of_days']; ?> day(s)</p>
                     <p class="mb-1"><strong>Pickup Time:</strong> <?php echo $booking['pickup_time']; ?></p>
                 </div>
@@ -161,11 +206,11 @@ require_client_auth(); // Use helper function
         </div>
         
         <div class="invoice-details">
-            <h5 class="mt-4">Trip Details</h5>
-            <div class="d-flex justify-content-between gap-2">
-                <div class="w-50">
-                    <p><strong>Pickup Point:</strong> <?php echo $booking['pickup_point']; ?></p>
-                    <p><strong>Destination:</strong> <?php 
+            <h5 class="mt-2">Trip Details</h5>
+            <div class="d-flex justify-content-between">
+                <div class="w-50 pe-2">
+                    <p class="mb-1"><strong>Pickup Point:</strong> <?php echo $booking['pickup_point']; ?></p>
+                    <p class="mb-1"><strong>Destination:</strong> <?php 
                         if ($booking['stops'] != null) {
                             foreach ($booking['stops'] as $stop) {
                                 echo $stop['location'] . "<i class='bi bi-arrow-right mx-1 text-danger'></i>";
@@ -185,13 +230,13 @@ require_client_auth(); // Use helper function
         </div>
         <!-- <?php
             echo "<pre>";
-            print_r($payments);
+            print_r($booking);
             echo "</pre>";
         ?> -->
          <?php if (!empty($payments)): ?>
-        <div class="mt-4 invoice-details">
+        <div class="mt-3">
             <h5>Payment History</h5>
-            <table class="table table-bordered table-invoice">
+            <table class="table table-bordered table-invoice table-sm">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -204,7 +249,7 @@ require_client_auth(); // Use helper function
                     <?php foreach ($payments as $payment): ?>
                     <?php if ($payment['is_canceled'] == 0): ?>
                     <tr>
-                        <td><?php echo date('F d, Y', strtotime($payment['payment_date'])); ?></td>
+                        <td><?php echo date('M d, Y', strtotime($payment['payment_date'])); ?></td>
                         <td>₱<?php echo number_format($payment['amount'], 2); ?></td>
                         <td><?php echo $payment['payment_method']; ?></td>
                         <td>
@@ -220,7 +265,7 @@ require_client_auth(); // Use helper function
         </div>
         <?php endif; ?>
                         
-        <div class="mt-4">
+        <div class="mt-3">
             <table class="table-totals">
                 <tr>
                     <td><strong>Base Cost:</strong></td>
@@ -230,6 +275,20 @@ require_client_auth(); // Use helper function
                     <td><strong>Diesel Cost:</strong></td>
                     <td class="text-start">₱<?php echo number_format($booking['diesel_cost'], 2); ?></td>
                 </tr>
+                <?php if (!empty($booking['gross_price']) && $booking['discount'] > 0): ?>
+                <tr>
+                    <td><strong>Original Price:</strong></td>
+                    <td class="text-start">₱<?php echo number_format($booking['gross_price'], 2); ?></td>
+                </tr>
+                <tr>
+                    <td><strong>Discount Rate:</strong></td>
+                    <td class="text-start"><?php echo number_format($booking['discount'], 2); ?>%</td>
+                </tr>
+                <tr>
+                    <td><strong>Discount Amount:</strong></td>
+                    <td class="text-start">₱<?php echo number_format($booking['gross_price'] - $booking['total_cost'], 2); ?></td>
+                </tr>
+                <?php endif; ?>
                 <tr>
                     <td><strong>Total Cost:</strong></td>
                     <td class="text-start">₱<?php echo number_format($booking['total_cost'], 2); ?></td>
@@ -245,8 +304,8 @@ require_client_auth(); // Use helper function
             </table>
         </div>
         
-        <div class="mt-4">
-            <p><strong>Note:</strong> This is an official invoice from Kinglang Bus. Thank you for choosing our services!</p>
+        <div class="mt-2">
+            <p class="small"><strong>Note:</strong> This is an official invoice from Kinglang Bus. Thank you for choosing our services!</p>
         </div>
     </div>
     

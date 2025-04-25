@@ -1,0 +1,249 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJc7uW2Z-QkTMREawSMEL1Dag",
+         "reference" : "ChIJc7uW2Z-QkTMREawSMEL1Dag",
+         "structured_formatting" : 
+         {
+            "main_text" : "La Union",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 10,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_2",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "La Union, San Juan, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJhVzB9WyNkTMRQtfixAjP70I",
+         "reference" : "ChIJhVzB9WyNkTMRQtfixAjP70I",
+         "structured_formatting" : 
+         {
+            "main_text" : "La Union",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Juan, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 10,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 20,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "La Union, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EitMYSBVbmlvbiwgTWFuaWxhLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJ6UKjWMrIlzMRItzw3HHJd7USFAoSCYvDHlcDypczER_BaRB11dFp",
+         "reference" : "EitMYSBVbmlvbiwgTWFuaWxhLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJ6UKjWMrIlzMRItzw3HHJd7USFAoSCYvDHlcDypczER_BaRB11dFp",
+         "structured_formatting" : 
+         {
+            "main_text" : "La Union",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 10,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 18,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "La Union Beachfront Oceanview Resort & BnB by AGAS, Taberna, Brgy. Road, Bauang, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJR6USSwCFkTMRzQ1JLnZXifA",
+         "reference" : "ChIJR6USSwCFkTMRzQ1JLnZXifA",
+         "structured_formatting" : 
+         {
+            "main_text" : "La Union Beachfront Oceanview Resort & BnB by AGAS",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taberna, Brgy. Road, Bauang, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "La Union Beachfront Oceanview Resort & BnB by AGAS"
+            },
+            {
+               "offset" : 52,
+               "value" : "Taberna"
+            },
+            {
+               "offset" : 61,
+               "value" : "Brgy. Road"
+            },
+            {
+               "offset" : 73,
+               "value" : "Bauang"
+            },
+            {
+               "offset" : 81,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 91,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "La Union Convention Center, San Fernando, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJya3oQsqPkTMR640F_QrZqY8",
+         "reference" : "ChIJya3oQsqPkTMR640F_QrZqY8",
+         "structured_formatting" : 
+         {
+            "main_text" : "La Union Convention Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Fernando, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "La Union Convention Center"
+            },
+            {
+               "offset" : 28,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 42,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -64,6 +64,8 @@ CREATE TABLE `booking_costs` (
   `diesel_price` decimal(10,2) DEFAULT NULL,
   `diesel_cost` decimal(10,2) DEFAULT NULL,
   `base_cost` decimal(10,2) DEFAULT NULL,
+  `gross_price` decimal(10,2) DEFAULT NULL,
+  `discount` decimal(5,2) DEFAULT 0.00,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
