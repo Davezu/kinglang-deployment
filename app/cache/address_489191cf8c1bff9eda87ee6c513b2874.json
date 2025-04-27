@@ -49,9 +49,9 @@
          ],
          "types" : 
          [
+            "point_of_interest",
             "establishment",
-            "shopping_mall",
-            "point_of_interest"
+            "shopping_mall"
          ]
       },
       {
@@ -106,9 +106,9 @@
          ],
          "types" : 
          [
-            "shopping_mall",
             "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "shopping_mall"
          ]
       },
       {
@@ -159,9 +159,9 @@
          ],
          "types" : 
          [
+            "point_of_interest",
             "establishment",
-            "shopping_mall",
-            "point_of_interest"
+            "shopping_mall"
          ]
       },
       {
@@ -216,13 +216,13 @@
          ],
          "types" : 
          [
-            "establishment",
             "point_of_interest",
-            "shopping_mall"
+            "shopping_mall",
+            "establishment"
          ]
       },
       {
-         "description" : "SM City Bicutan, South Luzon Expressway, Parañaque, Metro Manila, Philippines",
+         "description" : "SM City Manila, San Marcelino Street, Ermita, Manila, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -230,11 +230,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJte9wFAXPlzMRaP6smmOPacU",
-         "reference" : "ChIJte9wFAXPlzMRaP6smmOPacU",
+         "place_id" : "ChIJEap5lCDLlzMRZ7Mbe0i0LYc",
+         "reference" : "ChIJEap5lCDLlzMRZ7Mbe0i0LYc",
          "structured_formatting" : 
          {
-            "main_text" : "SM City Bicutan",
+            "main_text" : "SM City Manila",
             "main_text_matched_substrings" : 
             [
                {
@@ -242,36 +242,40 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "South Luzon Expressway, Parañaque, Metro Manila, Philippines"
+            "secondary_text" : "San Marcelino Street, Ermita, Manila, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "SM City Bicutan"
+               "value" : "SM City Manila"
             },
             {
-               "offset" : 17,
-               "value" : "South Luzon Expressway"
+               "offset" : 16,
+               "value" : "San Marcelino Street"
             },
             {
-               "offset" : 41,
-               "value" : "Parañaque"
+               "offset" : 38,
+               "value" : "Ermita"
             },
             {
-               "offset" : 52,
+               "offset" : 46,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 54,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 66,
+               "offset" : 68,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
+            "point_of_interest",
             "establishment",
-            "shopping_mall",
-            "point_of_interest"
+            "shopping_mall"
          ]
       }
    ],

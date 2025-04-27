@@ -161,20 +161,25 @@ require_client_auth(); // Use helper function
     <div class="invoice-container">
         <div class="letterhead">
             <div class="invoice-header d-flex justify-content-between align-items-start mb-2">
-                <div class="invoice-logo-container">
+                <div class="invoice-logo-container" style="width: 60%;">
                     <img src="/../../../public/images/logo.png" alt="Kinglang Bus Logo" class="invoice-logo">
                     <div class="company-info ms-3">
                         <h5 class="mb-1">Kinglang Transport</h5>
-                        <p class="mb-0">123 Main Street, Manila</p>
-                        <p class="mb-0">Phone: (02) 123-4567</p>
+                        <p class="mb-0">295-B, Purok 4, M. L. Quezon Ave, Lower Bicutan, Taguig, 1632 Metro Manila</p>
+                        <p class="mb-0">Phone:  0917-882-2727 or 0933-862-4323</p>
                         <p class="mb-0">Email: kinglang.transport@gmail.com</p>
                     </div>
                 </div>
                 <div class="text-end">
                     <div class="invoice-number">Invoice #<?php echo $booking['booking_id']; ?></div>
-                    <div class="invoice-date">Date: <?php 
-                        $booking['confirmed_at'] = new DateTime($booking['confirmed_at']);
-                        echo $booking['confirmed_at']->format('F j, Y'); 
+                    <div class="invoice-date">Issued Date: <?php 
+                        $issued_date = new DateTime($booking['confirmed_at']);
+                        echo $issued_date->format('F j, Y'); 
+                    ?></div>
+                    <div class="invoice-date">Due Date: <?php 
+                        $due_date = new DateTime($booking['date_of_tour']);
+                        $due_date->modify('-2 day');
+                        echo $due_date->format('F j, Y'); 
                     ?></div>
                     <div class="mt-3"> 
                         <span class="status-badge status-<?php echo strtolower($booking['status']); ?>">
@@ -192,6 +197,7 @@ require_client_auth(); // Use helper function
                     <p class="mb-1"><strong>Name:</strong> <?php echo $booking['client_name']; ?></p>
                     <p class="mb-1"><strong>Email:</strong> <?php echo $booking['email']; ?></p>
                     <p class="mb-1"><strong>Phone:</strong> <?php echo $booking['contact_number']; ?></p>
+                    <p class="mb-1"><strong>Company Name:</strong> <?php echo $booking['company_name'] ?? "None"; ?></p>
                 </div>
             </div>
             <div class="w-50">

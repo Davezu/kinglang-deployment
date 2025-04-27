@@ -1,0 +1,79 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Enchanted Kingdom, RSBS Boulevard, Santa Rosa, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 17,
+               "offset" : 0
+            },
+            {
+               "length" : 10,
+               "offset" : 35
+            },
+            {
+               "length" : 11,
+               "offset" : 55
+            }
+         ],
+         "place_id" : "ChIJc4aHZRbYlzMRbJ_Oa0wPqP4",
+         "reference" : "ChIJc4aHZRbYlzMRbJ_Oa0wPqP4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Enchanted Kingdom",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 17,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "RSBS Boulevard, Santa Rosa, Laguna, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 16
+               },
+               {
+                  "length" : 11,
+                  "offset" : 36
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Enchanted Kingdom"
+            },
+            {
+               "offset" : 19,
+               "value" : "RSBS Boulevard"
+            },
+            {
+               "offset" : 35,
+               "value" : "Santa Rosa"
+            },
+            {
+               "offset" : 47,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "tourist_attraction",
+            "establishment",
+            "amusement_park",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

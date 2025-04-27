@@ -91,6 +91,13 @@
                                         </div>
                                         
                                         <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <label for="companyName" class="form-label">Company Name (Optional)</label>
+                                                <input type="text" id="companyName" class="form-control" placeholder="Your company or organization name">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
                                             <div class="col-md-6 mb-3 mb-md-0">
                                                 <label for="email" class="form-label">Email Address</label>
                                                 <input type="email" id="email" class="form-control" required>

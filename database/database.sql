@@ -200,6 +200,7 @@ CREATE TABLE `payments` (
   `status` enum('Confirmed','Pending','Rejected') DEFAULT 'Pending',
   `payment_date` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
+  `notes` text DEFAULT NULL,
   PRIMARY KEY (`payment_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

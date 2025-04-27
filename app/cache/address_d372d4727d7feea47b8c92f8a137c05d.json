@@ -45,10 +45,10 @@
          ],
          "types" : 
          [
-            "geocode",
             "political",
             "sublocality",
-            "sublocality_level_2"
+            "sublocality_level_2",
+            "geocode"
          ]
       },
       {
@@ -95,9 +95,9 @@
          ],
          "types" : 
          [
+            "geocode",
             "political",
             "sublocality_level_2",
-            "geocode",
             "sublocality"
          ]
       },
@@ -146,8 +146,8 @@
          "types" : 
          [
             "tourist_attraction",
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -190,13 +190,13 @@
          ],
          "types" : 
          [
-            "geocode",
             "political",
-            "locality"
+            "locality",
+            "geocode"
          ]
       },
       {
-         "description" : "Malitbog, Bukidnon, Philippines",
+         "description" : "Malinao, Albay, Philippines",
          "matched_substrings" : 
          [
             {
@@ -204,11 +204,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJOY3D56XG_zIR9HyfmPDDEyY",
-         "reference" : "ChIJOY3D56XG_zIR9HyfmPDDEyY",
+         "place_id" : "ChIJcTwaAPixoTMRLEQp4zoPsE8",
+         "reference" : "ChIJcTwaAPixoTMRLEQp4zoPsE8",
          "structured_formatting" : 
          {
-            "main_text" : "Malitbog",
+            "main_text" : "Malinao",
             "main_text_matched_substrings" : 
             [
                {
@@ -216,27 +216,27 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Bukidnon, Philippines"
+            "secondary_text" : "Albay, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Malitbog"
+               "value" : "Malinao"
             },
             {
-               "offset" : 10,
-               "value" : "Bukidnon"
+               "offset" : 9,
+               "value" : "Albay"
             },
             {
-               "offset" : 20,
+               "offset" : 16,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "geocode",
             "locality",
+            "geocode",
             "political"
          ]
       }

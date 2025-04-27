@@ -14,6 +14,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         maxDate: new Date(new Date().setMonth(new Date().getMonth() + 1)),
     });
 
+    // Initialize all remove icons on page load
+    document.querySelectorAll(".address").forEach(input => {
+        updateRemoveIconPosition(input);
+    });
+
     if (!isRebooking) return;
 
     const data = await getBooking(bookingId);
@@ -161,21 +166,41 @@ document.addEventListener("DOMContentLoaded", function() {
 document.getElementById("nextButton").addEventListener("click", function () {
     // Get all address inputs
     const addressInputs = document.querySelectorAll(".address");
-    const allAddressesFilled = Array.from(addressInputs).every(input => input.value.trim() !== "");
     
-    if (!allAddressesFilled) {
-        // Show error message
+    // Check if all inputs are filled AND validated
+    let allValid = true;
+    let invalidInputs = [];
+    
+    addressInputs.forEach(input => {
+        if (input.value.trim() === "") {
+            input.classList.add("is-invalid");
+            allValid = false;
+            invalidInputs.push("empty fields");
+        } else if (input.dataset.validated !== "true") {
+            input.classList.add("is-invalid");
+            allValid = false;
+            invalidInputs.push("unverified locations");
+        } else {
+            input.classList.add("is-valid");
+            input.classList.remove("is-invalid");
+        }
+    });
+    
+    if (!allValid) {
+        // Show detailed error message
+        let errorMessage = "Please fix the following issues: " + [...new Set(invalidInputs)].join(", ");
+        
         Swal.fire({
             icon: 'error',
             title: 'Validation Error',
-            text: 'Please fill in all location fields before proceeding.',
-            timer: 2000,
+            text: errorMessage,
+            timer: 3000,
             timerProgressBar: true
         });
         return;
     }
     
-    // If all addresses are filled, proceed to next step
+    // If all addresses are valid, proceed to next step
     document.getElementById("firstInfo").classList.add("d-none");
     document.getElementById("nextInfo").classList.remove("d-none");
 });
@@ -420,15 +445,17 @@ document.querySelectorAll(".address").forEach(input => {
 });
 
 function allInputsFilled() {
-    const pickupPoint = document.getElementById("pickup_point").value.trim();
+    const pickupPoint = document.getElementById("pickup_point");
     const destinationInputs = document.querySelectorAll(".address");
-    const destination = destinationInputs[destinationInputs.length - 1].value.trim();
+    const destination = destinationInputs[destinationInputs.length - 1];
     const numberOfDays = document.getElementById("number_of_days").textContent;
     const numberOfBuses = document.getElementById("number_of_buses").textContent;
     
-    // Check if all required fields are filled
-    return pickupPoint !== "" && 
-           destination !== "" && 
+    // Check if all required fields are filled AND validated
+    return pickupPoint.value.trim() !== "" && 
+           pickupPoint.dataset.validated === "true" &&
+           destination.value.trim() !== "" && 
+           destination.dataset.validated === "true" &&
            parseInt(numberOfDays) > 0 && 
            parseInt(numberOfBuses) > 0;
 }
@@ -458,13 +485,42 @@ async function getAddress(input, suggestionList, inputElement) {
     }
 }
 
+// Add a function to manage icon visibility and positioning
+function updateRemoveIconPosition(inputElement) {
+    if (!inputElement) return;
+    
+    // Find the closest remove icon
+    const removeIcon = inputElement.parentNode.querySelector('.remove-icon');
+    if (removeIcon) {
+        // If input is validated (valid or invalid), position the remove icon correctly
+        if (inputElement.classList.contains('is-valid') || inputElement.classList.contains('is-invalid')) {
+            removeIcon.style.right = '30px';
+        } else {
+            removeIcon.style.right = '8px';
+        }
+    }
+    
+    // Also update the add icon if present
+    const addIcon = inputElement.parentNode.querySelector('.add-icon');
+    if (addIcon) {
+        // If input is validated, position the add icon correctly
+        if (inputElement.classList.contains('is-valid') || inputElement.classList.contains('is-invalid')) {
+            addIcon.style.right = '30px';
+        } else {
+            addIcon.style.right = '8px';
+        }
+    }
+}
+
+// Update the displaySuggestions function
 function displaySuggestions(data, suggestionList, inputElement) {
     suggestionList.innerHTML = "";
     suggestionList.style.border = "1px solid #ccc"; 
     
-    if (data.status !== "OK") {
+    if (data.status !== "OK" || data.predictions.length === 0) {
         const list = document.createElement("li");
         list.textContent = "No places found.";
+        list.className = "no-results";
         suggestionList.appendChild(list);
         return;
     }
@@ -510,14 +566,26 @@ function displaySuggestions(data, suggestionList, inputElement) {
         list.appendChild(suggestionContainer);
 
         list.addEventListener("click", function () {
-            inputElement.value = place.description; 
+            inputElement.value = place.description;
+            inputElement.dataset.validated = "true"; // Mark as validated
+            inputElement.classList.add("is-valid");
+            inputElement.classList.remove("is-invalid");
+            
+            // Update the position of the remove icon
+            updateRemoveIconPosition(inputElement);
+            
             calculateRoute();
             suggestionList.innerHTML = "";
             suggestionList.style.border = "none";
+            
+            // Check if we should calculate total cost
+            if (allInputsFilled()) {
+                renderTotalCost();
+            }
         });
 
         document.addEventListener("click", function (e) {
-            if (e.target !== list && !list.contains(e.target)) {
+            if (e.target !== list && !list.contains(e.target) && e.target !== inputElement) {
                 suggestionList.innerHTML = "";
                 suggestionList.style.border = "none";
             }
@@ -666,15 +734,22 @@ async function calculateRoute() {
     const stops = Array.from(document.querySelectorAll(".added-stop")).map((stop, i) => stop.value ).filter(stop => stop.trim() !== "");
     stops.pop();
 
-    // Check if pickup and destination are filled
+    // Validate if we have both pickup and destination
     if (!pickupPoint || !destination) {
-        // Show a notification if either pickup or destination is missing
-        return;
+        return; // Not enough data to calculate route
     }
 
-    // Show loading indicator
+    // Show loading indicator on the map
     const mapElement = document.getElementById("map");
-    mapElement.innerHTML = '<div class="d-flex justify-content-center align-items-center h-100"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
+    if (!mapElement.querySelector('.route-loading')) {
+        mapElement.innerHTML = `
+            <div class="d-flex flex-column justify-content-center align-items-center h-100 route-loading">
+                <div class="spinner-border text-success mb-3" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="text-center">Calculating best route...</p>
+            </div>`;
+    }
     
     try {
         const response = await fetch("/get-route", {
@@ -690,15 +765,33 @@ async function calculateRoute() {
         
         if (data.error) {
             console.error(data.error);
+            
             // Show error notification
             Swal.fire({
                 icon: 'error',
                 title: 'Route Calculation Error',
                 text: 'Unable to calculate the route. Please check your locations and try again.',
-                timer: 2000,
+                timer: 3000,
                 timerProgressBar: true
             });
+            
+            // Mark all address inputs as invalid
+            document.querySelectorAll(".address").forEach(input => {
+                input.dataset.validated = "false";
+                input.classList.add("is-invalid");
+            });
+            
+            return;
         }
+
+        // Mark all inputs as validated if we got here (successful route)
+        document.querySelectorAll(".address").forEach(input => {
+            if (input.value.trim() !== "") {
+                input.dataset.validated = "true";
+                input.classList.add("is-valid");
+                input.classList.remove("is-invalid");
+            }
+        });
 
         const waypoints = data.stops.map(stop => ({ location: stop, stopover: true }));
         const request = {
@@ -712,19 +805,58 @@ async function calculateRoute() {
             if (status === google.maps.DirectionsStatus.OK) {
                 directionsRenderer.setDirections(result);
                 
-                // Show success notification with route details
+                // Extract route information for display
                 const route = result.routes[0];
                 const distance = route.legs.reduce((total, leg) => total + leg.distance.value, 0) / 1000; // in km
                 const duration = route.legs.reduce((total, leg) => total + leg.duration.value, 0) / 60; // in minutes
                 
-                // Only show notification if the route is significantly different from previous calculations
+                // Format the duration for display
+                let durationText = '';
+                if (duration >= 60) {
+                    const hours = Math.floor(duration / 60);
+                    const mins = Math.round(duration % 60);
+                    durationText = `${hours} hr${hours > 1 ? 's' : ''} ${mins} min`;
+                } else {
+                    durationText = `${Math.round(duration)} min`;
+                }
+                
+                // Add route info to the map
+                const routeInfoDiv = document.createElement('div');
+                routeInfoDiv.className = 'route-info bg-light p-2 rounded position-absolute';
+                routeInfoDiv.style.bottom = '10px';
+                routeInfoDiv.style.left = '10px';
+                routeInfoDiv.style.zIndex = '1000';
+                routeInfoDiv.innerHTML = `
+                    <div class="small">
+                        <div class="fw-bold text-success mb-1">Route Details</div>
+                        <div>Distance: ${distance.toFixed(1)} km</div>
+                        <div>Est. travel time: ${durationText}</div>
+                    </div>
+                `;
+                
+                // Remove any existing route info
+                const existingRouteInfo = document.querySelector('.route-info');
+                if (existingRouteInfo) {
+                    existingRouteInfo.remove();
+                }
+                
+                // Add the route info to the map
+                document.getElementById('map').appendChild(routeInfoDiv);
+                
+                // Only show notification if this is a significant route change
                 if (window.lastCalculatedDistance && Math.abs(window.lastCalculatedDistance - distance) < 1) {
-                    return; // Skip notification if distance is similar to previous calculation
+                    return; // Skip notification for minor changes
                 }
                 
                 window.lastCalculatedDistance = distance;
             } else {
                 console.error("Directions request failed due to " + status);
+                
+                // Mark inputs as invalid
+                document.querySelectorAll(".address").forEach(input => {
+                    input.dataset.validated = "false";
+                    input.classList.add("is-invalid");
+                });
                 
                 // Show specific error message based on status
                 let errorMessage = "Unable to calculate the route. ";
@@ -747,7 +879,7 @@ async function calculateRoute() {
                     icon: 'error',
                     title: 'Route Calculation Failed',
                     text: errorMessage,
-                    timer: 2000,
+                    timer: 3000,
                     timerProgressBar: true
                 });
             }
@@ -758,16 +890,27 @@ async function calculateRoute() {
         // Reinitialize the map
         initMap();
         
+        // Mark inputs as invalid on connection error
+        document.querySelectorAll(".address").forEach(input => {
+            input.dataset.validated = "false";
+            input.classList.add("is-invalid");
+        });
+        
         // Show error notification
         Swal.fire({
             icon: 'error',
             title: 'Connection Error',
             text: 'Unable to connect to the route service. Please check your internet connection and try again.',
-            timer: 2000,
+            timer: 3000,
             timerProgressBar: true
         });
         return;
     }   
+
+    // After marking all inputs as valid or invalid, update remove icon positions
+    document.querySelectorAll(".address").forEach(input => {
+        updateRemoveIconPosition(input);
+    });
 }
 
 
@@ -788,6 +931,7 @@ document.getElementById("addStop").addEventListener("click", () => {
     input.id = "destination";
     input.placeholder = "Add a stop";
     input.autocomplete = "off";
+    input.dataset.validated = "false"; // Add validation attribute
     input.classList.add("form-control", "address", "added-stop", "position-relative", "px-4", "py-2", "destination");
     ul.classList.add("suggestions");
 
@@ -795,8 +939,23 @@ document.getElementById("addStop").addEventListener("click", () => {
         const suggestionList = e.target.nextElementSibling;
         const input = this.value;
         const inputElement = this;
+        
+        // Reset validation state when input changes
+        this.dataset.validated = "false";
+        this.classList.remove("is-valid");
+        this.classList.remove("is-invalid");
+        
+        // Update remove icon position
+        updateRemoveIconPosition(this);
     
         debouncedGetAddress(input, suggestionList, inputElement);    
+    });
+    
+    // Add blur validation
+    input.addEventListener("blur", function() {
+        if (this.value.trim() !== "" && this.dataset.validated !== "true") {
+            validateManualAddress(this);
+        }
     });
 
     input.addEventListener("change", async function () {
@@ -812,6 +971,7 @@ document.getElementById("addStop").addEventListener("click", () => {
     const removeButton = document.createElement("i");
     removeButton.classList.add("bi", "bi-x-circle-fill", "remove-icon");
     removeButton.title = "Remove stop";
+    removeButton.style.right = "8px"; // Initialize position
 
     removeButton.addEventListener("click", function () {
         div.remove();
@@ -830,6 +990,9 @@ document.getElementById("addStop").addEventListener("click", () => {
 
     div.append(input, ul);
     form.insertBefore(div, referenceElement);
+    
+    // Initialize remove icon position
+    updateRemoveIconPosition(input);
 });
 
 // Add event listeners to all address inputs to check for total cost calculation
@@ -840,3 +1003,93 @@ document.querySelectorAll(".address").forEach(input => {
         }
     });
 });
+
+// Add validation for manual input (when user doesn't select from dropdown)
+document.querySelectorAll(".address").forEach(input => {
+    // On focus out, validate if the input has a value but wasn't selected from dropdown
+    input.addEventListener("blur", function() {
+        if (this.value.trim() !== "" && this.dataset.validated !== "true") {
+            validateManualAddress(this);
+        }
+    });
+    
+    // Reset validation state when input changes
+    input.addEventListener("input", function() {
+        this.dataset.validated = "false";
+        this.classList.remove("is-valid");
+        this.classList.remove("is-invalid");
+        
+        // Reset remove icon position
+        updateRemoveIconPosition(this);
+    });
+});
+
+// Update the validateManualAddress function
+async function validateManualAddress(inputElement) {
+    const address = inputElement.value.trim();
+    
+    if (address === "") return;
+    
+    try {
+        // Show loading indicator
+        const loadingIcon = document.createElement("span");
+        loadingIcon.className = "spinner-border spinner-border-sm validation-spinner";
+        loadingIcon.setAttribute("role", "status");
+        inputElement.parentNode.appendChild(loadingIcon);
+        
+        const response = await fetch("/get-address", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ address: address })
+        });
+
+        const data = await response.json();
+        
+        // Remove loading indicator
+        const spinner = inputElement.parentNode.querySelector(".validation-spinner");
+        if (spinner) spinner.remove();
+        
+        if (data.status === "OK" && data.predictions.length > 0) {
+            // Use the first prediction as the validated address
+            inputElement.value = data.predictions[0].description;
+            inputElement.dataset.validated = "true";
+            inputElement.classList.add("is-valid");
+            inputElement.classList.remove("is-invalid");
+            
+            // Update the position of the remove icon
+            updateRemoveIconPosition(inputElement);
+            
+            // Calculate route with the validated address
+            calculateRoute();
+            
+            // Check if we should calculate total cost
+            if (allInputsFilled()) {
+                renderTotalCost();
+            }
+        } else {
+            // Mark as invalid
+            inputElement.dataset.validated = "false";
+            inputElement.classList.add("is-invalid");
+            
+            // Update the position of the remove icon
+            updateRemoveIconPosition(inputElement);
+            
+            // Show small feedback message near the input
+            const existingFeedback = inputElement.parentNode.querySelector(".invalid-feedback");
+            if (!existingFeedback) {
+                const feedback = document.createElement("div");
+                feedback.className = "invalid-feedback";
+                feedback.textContent = "Please select a valid location from the suggestions";
+                inputElement.parentNode.appendChild(feedback);
+            }
+        }
+    } catch (error) {
+        console.error("Error validating address:", error);
+        // Handle error case
+        inputElement.dataset.validated = "false";
+        inputElement.classList.add("is-invalid");
+        
+        // Update the position of the remove icon
+        updateRemoveIconPosition(inputElement);
+    }
+}

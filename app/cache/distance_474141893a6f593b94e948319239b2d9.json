@@ -23,7 +23,7 @@
                "duration" : 
                {
                   "text" : "1 hour 40 mins",
-                  "value" : 6020
+                  "value" : 5977
                },
                "status" : "OK"
             },
@@ -66,8 +66,8 @@
                },
                "duration" : 
                {
-                  "text" : "1 hour 39 mins",
-                  "value" : 5934
+                  "text" : "1 hour 38 mins",
+                  "value" : 5888
                },
                "status" : "OK"
             }

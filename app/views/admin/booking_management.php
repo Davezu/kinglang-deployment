@@ -63,6 +63,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
             padding: 12px 8px;
             cursor: pointer;
             transition: background-color 0.2s;
+            user-select: none;
         }
         .table thead th:hover {
             background-color:rgba(40, 167, 69, 0.2);
@@ -236,12 +237,12 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
 
             <div class="row g-3 mb-3">
                 <!-- Search and Filters Bar -->
-                <div class="col-xl-8">
+                <div class="col-xl-6">
                     <div class="card mb-0 border-0 shadow-sm">
                         <div class="card-body py-2">
                             <div class="row g-2 align-items-center">
                                 <!-- Search -->
-                                <div class="col-lg-5 col-md-5">
+                                <div class="col-lg-8 col-md-8">
                                     <div class="input-group">
                                         <span class="input-group-text bg-light border-end-0">
                                             <i class="bi bi-search"></i>
@@ -252,41 +253,43 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                                 </div>
                                 
                                 <!-- Status Filter -->
-                                <div class="col-lg-4 col-md-4">
+                                <div class="col-lg-0 col-md-0 d-none">
                                     <div class="input-group">
                                         <span class="input-group-text bg-light">
                                             <i class="bi bi-filter"></i>
                                         </span>
-                    <select name="status" id="statusSelect" class="form-select">
+                                        <select name="status" id="statusSelect" class="form-select">
                                             <option value="All">All Bookings</option>
                                             <option value="Pending" selected>Pending</option>
-                        <option value="Confirmed">Confirmed</option>
-                        <option value="Canceled">Canceled</option>
-                        <option value="Rejected">Rejected</option>
-                        <option value="Completed">Completed</option>
-                    </select>
-                </div>
+                                            <option value="Confirmed">Confirmed</option>
+                                            <option value="Canceled">Canceled</option>
+                                            <option value="Rejected">Rejected</option>
+                                            <option value="Completed">Completed</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 
                                 <!-- Records Per Page -->
-                                <div class="col-lg-3 col-md-3">
+                                <div class="col-lg-4 col-md-4">
                                     <div class="input-group">
                                         <span class="input-group-text bg-light">
                                             <i class="bi bi-list-ol"></i>
                                         </span>
-                    <select name="limit" id="limitSelect" class="form-select">
+                                        <select name="limit" id="limitSelect" class="form-select">
                                             <option value="5">5 rows</option>
                                             <option value="10" selected>10 rows</option>
                                             <option value="25">25 rows</option>
                                             <option value="50">50 rows</option>
                                             <option value="100">100 rows</option>
-                    </select>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-2 col-md-2"></div>
                 
                 <!-- View Switcher -->
                 <div class="col-xl-4">
@@ -317,6 +320,9 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
             <div class="row g-3 mb-3">
                 <div class="col-xl-8">
                     <div class="d-flex gap-2 flex-wrap">
+                        <button class="btn btn-sm btn-success" id="createBookingBtn">
+                            <i class="bi bi-plus-circle"></i> Create Booking
+                        </button>
                         <button class="btn btn-sm btn-outline-secondary quick-filter" data-status="All">
                             <i class="bi bi-funnel"></i> All
                         </button>
@@ -443,6 +449,181 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" id="viewFullDetails">View Full Details</button>
                 </div> -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create Booking Modal -->
+    <div class="modal fade" id="createBookingModal" tabindex="-1" aria-labelledby="createBookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createBookingModalLabel">Create New Booking</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="adminBookingForm">
+                        <!-- Client Information Section -->
+                        <div class="card mb-3 border-0 shadow-sm">
+                            <div class="card-header bg-success-subtle">
+                                <h5 class="mb-0"><i class="bi bi-person me-2"></i>Client Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="clientName" class="form-label">Client Name</label>
+                                        <input type="text" class="form-control" id="clientName" name="clientName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="contactNumber" class="form-label">Contact Number</label>
+                                        <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="address" name="address">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tour Details Section -->
+                        <div class="card mb-3 border-0 shadow-sm">
+                            <div class="card-header bg-success-subtle">
+                                <h5 class="mb-0"><i class="bi bi-geo-alt me-2"></i>Tour Details</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <label for="destination" class="form-label">Main Destination</label>
+                                        <input type="text" class="form-control" id="destination" name="destination" required>
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <label for="pickupPoint" class="form-label">Pickup Point</label>
+                                        <input type="text" class="form-control" id="pickupPoint" name="pickupPoint" required>
+                                    </div>
+                                    
+                                    <!-- Stops Section -->
+                                    <div class="col-md-12">
+                                        <label class="form-label">Stops Along The Way (Optional)</label>
+                                        <div id="stopsContainer">
+                                            <div class="stop-entry mb-2">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="stops[]" placeholder="Enter a stop location">
+                                                    <button type="button" class="btn btn-outline-danger remove-stop"><i class="bi bi-dash-circle"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-outline-success mt-2" id="addStopBtn">
+                                            <i class="bi bi-plus-circle"></i> Add Another Stop
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label for="dateOfTour" class="form-label">Date of Tour</label>
+                                        <input type="date" class="form-control" id="dateOfTour" name="dateOfTour" required>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label for="numberOfDays" class="form-label">Number of Days</label>
+                                        <input type="number" class="form-control" id="numberOfDays" name="numberOfDays" min="1" value="1" required>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label for="numberOfBuses" class="form-label">Number of Buses</label>
+                                        <input type="number" class="form-control" id="numberOfBuses" name="numberOfBuses" min="1" value="1" required>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label for="estimatedPax" class="form-label">Estimated Number of Passengers</label>
+                                        <input type="number" class="form-control" id="estimatedPax" name="estimatedPax" min="1" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Information Section -->
+                        <div class="card mb-3 border-0 shadow-sm">
+                            <div class="card-header bg-success-subtle">
+                                <h5 class="mb-0"><i class="bi bi-cash me-2"></i>Payment Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="totalCost" class="form-label">Total Cost (PHP)</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">₱</span>
+                                            <input type="number" class="form-control" id="totalCost" name="totalCost" min="0" step="0.01" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label for="discount" class="form-label">Discount (%)</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="discount" name="discount" min="0" max="100" value="0" step="0.01">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <hr>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="initialPaymentCheck" name="initialPaymentCheck">
+                                            <label class="form-check-label" for="initialPaymentCheck">
+                                                Record Initial Payment
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 initialPaymentField" style="display: none;">
+                                        <label for="amountPaid" class="form-label">Amount Paid (PHP)</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">₱</span>
+                                            <input type="number" class="form-control" id="amountPaid" name="amountPaid" min="0" step="0.01">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 initialPaymentField" style="display: none;">
+                                        <label for="paymentMethod" class="form-label">Payment Method</label>
+                                        <select class="form-select" id="paymentMethod" name="paymentMethod">
+                                            <option value="Cash">Cash</option>
+                                            <option value="Bank Transfer">Bank Transfer</option>
+                                            <option value="GCash">GCash</option>
+                                            <option value="Credit Card">Credit Card</option>
+                                            <option value="Check">Check</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-md-12 initialPaymentField" style="display: none;">
+                                        <label for="paymentReference" class="form-label">Reference Number (Optional)</label>
+                                        <input type="text" class="form-control" id="paymentReference" name="paymentReference">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Notes Section -->
+                        <div class="card mb-3 border-0 shadow-sm">
+                            <div class="card-header bg-success-subtle">
+                                <h5 class="mb-0"><i class="bi bi-journal-text me-2"></i>Additional Notes</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="notes" class="form-label">Notes (Optional)</label>
+                                    <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" id="submitBookingBtn">Create Booking</button>
+                </div>
             </div>
         </div>
     </div>

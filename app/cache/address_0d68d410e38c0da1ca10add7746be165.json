@@ -45,9 +45,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "tourist_attraction",
             "establishment",
+            "point_of_interest",
             "museum"
          ]
       },
@@ -99,8 +99,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -200,8 +200,8 @@
          "types" : 
          [
             "establishment",
-            "car_repair",
-            "point_of_interest"
+            "point_of_interest",
+            "car_repair"
          ]
       },
       {
@@ -252,8 +252,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       }
    ],

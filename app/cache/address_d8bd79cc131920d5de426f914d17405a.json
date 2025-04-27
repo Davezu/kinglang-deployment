@@ -1,0 +1,234 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Mindanao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJw7fZkAXkVTIRtM_T7GTyucc",
+         "reference" : "ChIJw7fZkAXkVTIRtM_T7GTyucc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mindanao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mindanao"
+            },
+            {
+               "offset" : 10,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "natural_feature",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Mindoro, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJo7DwlaeCvDMRm7Az31p9yac",
+         "reference" : "ChIJo7DwlaeCvDMRm7Az31p9yac",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mindoro",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mindoro"
+            },
+            {
+               "offset" : 9,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Mines View Park, Baguio, Benguet, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJT8QveAOkkTMRsukWY41vhig",
+         "reference" : "ChIJT8QveAOkkTMRsukWY41vhig",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mines View Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Baguio, Benguet, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mines View Park"
+            },
+            {
+               "offset" : 17,
+               "value" : "Baguio"
+            },
+            {
+               "offset" : 25,
+               "value" : "Benguet"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "political",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Mindanao Avenue Extension, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EkFNaW5kYW5hbyBBdmVudWUgRXh0ZW5zaW9uLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCcFIeJnYtpczEd8AgYId45flEhQKEgl1c-9CCbqXMxFAPQj-2TKaSg",
+         "reference" : "EkFNaW5kYW5hbyBBdmVudWUgRXh0ZW5zaW9uLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCcFIeJnYtpczEd8AgYId45flEhQKEgl1c-9CCbqXMxFAPQj-2TKaSg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mindanao Avenue Extension",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mindanao Avenue Extension"
+            },
+            {
+               "offset" : 27,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 40,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Minalungao National Park, General Tinio, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-2uCrco9lzMRDU46dyAwfUg",
+         "reference" : "ChIJ-2uCrco9lzMRDU46dyAwfUg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Minalungao National Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Tinio, Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Minalungao National Park"
+            },
+            {
+               "offset" : 26,
+               "value" : "General Tinio"
+            },
+            {
+               "offset" : 41,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "park",
+            "point_of_interest",
+            "establishment",
+            "tourist_attraction"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,255 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Malabon, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbTDTbGu0lzMRevHRY44dJSA",
+         "reference" : "ChIJbTDTbGu0lzMRevHRY44dJSA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malabon",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malabon"
+            },
+            {
+               "offset" : 9,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Malabon City Hall, F. Sevilla Boulevard, Malabon, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJRQAT3VK0lzMRGMZBeJwueEU",
+         "reference" : "ChIJRQAT3VK0lzMRGMZBeJwueEU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malabon City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "F. Sevilla Boulevard, Malabon, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malabon City Hall"
+            },
+            {
+               "offset" : 19,
+               "value" : "F. Sevilla Boulevard"
+            },
+            {
+               "offset" : 41,
+               "value" : "Malabon"
+            },
+            {
+               "offset" : 50,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 64,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "point_of_interest",
+            "establishment",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Malabon Zoo, Gov. Pascual Avenue, Malabon, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJX-KNbCa0lzMRNZ23Yjdz2NU",
+         "reference" : "ChIJX-KNbCa0lzMRNZ23Yjdz2NU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malabon Zoo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gov. Pascual Avenue, Malabon, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malabon Zoo"
+            },
+            {
+               "offset" : 13,
+               "value" : "Gov. Pascual Avenue"
+            },
+            {
+               "offset" : 34,
+               "value" : "Malabon"
+            },
+            {
+               "offset" : 43,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "zoo",
+            "tourist_attraction",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Malabon Sports Complex(OVAL), Malabon, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJC8TI7Ue1lzMRjqND2twEBtQ",
+         "reference" : "ChIJC8TI7Ue1lzMRjqND2twEBtQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malabon Sports Complex(OVAL)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malabon, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malabon Sports Complex(OVAL)"
+            },
+            {
+               "offset" : 30,
+               "value" : "Malabon"
+            },
+            {
+               "offset" : 39,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Malabon Bridge, General Trias, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjJNYWxhYm9uIEJyaWRnZSwgR2VuZXJhbCBUcmlhcywgQ2F2aXRlLCBQaGlsaXBwaW5lcyIuKiwKFAoSCe8QdJRg1ZczEct6HVYConomEhQKEgl9LPlMzSqWMxFdm_vn0Dd5wA",
+         "reference" : "EjJNYWxhYm9uIEJyaWRnZSwgR2VuZXJhbCBUcmlhcywgQ2F2aXRlLCBQaGlsaXBwaW5lcyIuKiwKFAoSCe8QdJRg1ZczEct6HVYConomEhQKEgl9LPlMzSqWMxFdm_vn0Dd5wA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malabon Bridge",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Trias, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malabon Bridge"
+            },
+            {
+               "offset" : 16,
+               "value" : "General Trias"
+            },
+            {
+               "offset" : 31,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

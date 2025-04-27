@@ -1,0 +1,287 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "SM City Bicutan, South Luzon Expressway, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJte9wFAXPlzMRaP6smmOPacU",
+         "reference" : "ChIJte9wFAXPlzMRaP6smmOPacU",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM City Bicutan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "South Luzon Expressway, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM City Bicutan"
+            },
+            {
+               "offset" : 17,
+               "value" : "South Luzon Expressway"
+            },
+            {
+               "offset" : 41,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "SM City Legazpi, Imelda Roces Avenue, Legazpi City, Albay, Bicol, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            },
+            {
+               "length" : 2,
+               "offset" : 59
+            }
+         ],
+         "place_id" : "ChIJKXmCVfIBoTMRSSLlti0nSw8",
+         "reference" : "ChIJKXmCVfIBoTMRSSLlti0nSw8",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM City Legazpi",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Imelda Roces Avenue, Legazpi City, Albay, Bicol, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 42
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM City Legazpi"
+            },
+            {
+               "offset" : 17,
+               "value" : "Imelda Roces Avenue"
+            },
+            {
+               "offset" : 38,
+               "value" : "Legazpi City"
+            },
+            {
+               "offset" : 52,
+               "value" : "Albay"
+            },
+            {
+               "offset" : 59,
+               "value" : "Bicol"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "shopping_mall",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "SM City Bicutan - Building B, Doña Soledad Avenue, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 28,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJaVYuDAXPlzMRGqicYCqYrLg",
+         "reference" : "ChIJaVYuDAXPlzMRGqicYCqYrLg",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM City Bicutan - Building B",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 28,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Doña Soledad Avenue, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM City Bicutan - Building B"
+            },
+            {
+               "offset" : 30,
+               "value" : "Doña Soledad Avenue"
+            },
+            {
+               "offset" : 51,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 62,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 76,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Starbucks SM City Bicutan, Doña Soledad Avenue, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 25,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJX6HjOAXPlzMRHo270du2RR8",
+         "reference" : "ChIJX6HjOAXPlzMRHo270du2RR8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Starbucks SM City Bicutan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 25,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Doña Soledad Avenue, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Starbucks SM City Bicutan"
+            },
+            {
+               "offset" : 27,
+               "value" : "Doña Soledad Avenue"
+            },
+            {
+               "offset" : 48,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "food",
+            "store",
+            "point_of_interest",
+            "cafe"
+         ]
+      },
+      {
+         "description" : "SM City Bicutan Building A, Doña Soledad Avenue, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 26,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJsdjjOAXPlzMRYQirdqj99aw",
+         "reference" : "ChIJsdjjOAXPlzMRYQirdqj99aw",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM City Bicutan Building A",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 26,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Doña Soledad Avenue, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM City Bicutan Building A"
+            },
+            {
+               "offset" : 28,
+               "value" : "Doña Soledad Avenue"
+            },
+            {
+               "offset" : 49,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 60,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

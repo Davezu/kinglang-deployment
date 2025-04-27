@@ -59,7 +59,7 @@ class ClientAuthModel {
         return preg_match($pattern, $password);
     }
 
-    public function signup($first_name, $last_name, $email, $contact_number, $password) {
+    public function signup($first_name, $last_name, $company_name, $email, $contact_number, $password) {
         if ($this->emailExist($email)) {
             return "Email already exists.";
         }
@@ -71,10 +71,11 @@ class ClientAuthModel {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
         try {
-            $stmt = $this->conn->prepare("INSERT INTO users (first_name, last_name, email, contact_number, password) VALUES (:first_name, :last_name, :email, :contact_number, :password)");
+            $stmt = $this->conn->prepare("INSERT INTO users (first_name, last_name, company_name, email, contact_number, password) VALUES (:first_name, :last_name, :company_name, :email, :contact_number, :password)");
             $result = $stmt->execute([
                 ":first_name" => $first_name,
                 ":last_name" => $last_name,
+                ":company_name" => $company_name,
                 ":email" => $email,
                 ":contact_number" => $contact_number,
                 ":password" => $hashed_password
@@ -123,7 +124,7 @@ class ClientAuthModel {
     public function getClientInformation() {
         $user_id = $_SESSION["user_id"];
         try {
-            $stmt = $this->conn->prepare("SELECT first_name, last_name, email, contact_number FROM users WHERE user_id = :user_id");
+            $stmt = $this->conn->prepare("SELECT first_name, last_name, email, contact_number, company_name FROM users WHERE user_id = :user_id");
             $stmt->execute([":user_id" => $user_id]);
 
             $client = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -134,12 +135,13 @@ class ClientAuthModel {
         }
     }
 
-    public function updateClientInformation($first_name, $last_name, $contact_number, $email_address) {
+    public function updateClientInformation($first_name, $last_name, $company_name, $contact_number, $email_address, $address = null) {
         try {
-            $stmt = $this->conn->prepare("UPDATE users SET first_name = :first_name, last_name = :last_name, email = :email, contact_number = :contact_number WHERE user_id = :user_id");
+            $stmt = $this->conn->prepare("UPDATE users SET first_name = :first_name, last_name = :last_name, company_name = :company_name, email = :email, contact_number = :contact_number WHERE user_id = :user_id");
             $stmt->execute([
                 ":first_name" => $first_name,
                 ":last_name" => $last_name,
+                ":company_name" => $company_name,
                 ":email" => $email_address,
                 ":contact_number" => $contact_number,
                 ":user_id" => $_SESSION["user_id"]

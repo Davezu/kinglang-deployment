@@ -353,23 +353,6 @@ class BookingController {
                 'barlig', 'bauko', 'besao', 'natonin', 'paracelis', 'sadanga', 'sagada', 'tadian', 'banaue',
                 'aguinaldo', 'asipulo', 'hingyon', 'hungduan', 'kiangan', 'lagawe', 'lamut', 'mayoyao', 'tinoc'
             ],
-            'Region 1' => [
-                'ilocos region', 'region 1', 'ilocos norte', 'ilocos sur', 'la union', 'pangasinan',
-                'laoag', 'vigan', 'san fernando', 'dagupan', 'batac', 'candon', 'alaminos', 'urdaneta',
-                'san carlos', 'pagudpud', 'bangui', 'burgos', 'pasuquin', 'bacarra', 'vintar', 'paoay',
-                'currimao', 'badoc', 'pinili', 'marcos', 'nueva era', 'sarrat', 'piddig', 'carasi', 'solsona',
-                'dingras', 'san nicolas', 'cabugao', 'sinait', 'santa catalina', 'santa lucia', 'santa cruz',
-                'san vicente', 'santa', 'narvacan', 'santa maria', 'san esteban', 'santiago', 'bantay',
-                'caoayan', 'magsingal', 'santo domingo', 'san ildefonso', 'san juan', 'san vicente', 'aringay',
-                'agoo', 'bauang', 'caba', 'santo tomas', 'rosario', 'pugo', 'tubao', 'naguilian', 'bagulin',
-                'burgos', 'san gabriel', 'santol', 'sudipen', 'luna', 'bangar', 'balaoan', 'bacnotan',
-                'lingayen', 'bolinao', 'san fabian', 'manaoag', 'binmaley', 'calasiao', 'santa barbara',
-                'malasiqui', 'bayambang', 'basista', 'bautista', 'alcala', 'santo tomas', 'mangaldan',
-                'mangatarem', 'aguilar', 'bugallon', 'labrador', 'infanta', 'mabini', 'burgos', 'dasol',
-                'agno', 'bani', 'alaminos', 'sual', 'san manuel', 'binalonan', 'laoac', 'pozorrubio',
-                'san jacinto', 'san nicolas', 'tayug', 'natividad', 'san quintin', 'umingan', 'balungao',
-                'rosales', 'asingan', 'santa maria', 'villasis', 'anda', 'sison', 'san carlos'
-            ],
             'Region 2' => [
                 'cagayan valley', 'region 2', 'cagayan', 'isabela', 'nueva vizcaya', 'quirino', 'batanes',
                 'tuguegarao', 'ilagan', 'cauayan', 'santiago', 'alaminos', 'alicia', 'angadanan', 'aurora',
@@ -391,7 +374,7 @@ class BookingController {
             ],
             'Region 4A' => [
                 'calabarzon', 'region 4a', 'cavite', 'laguna', 'batangas', 'rizal', 'quezon', 'lucena',
-                'tagaytay', 'calamba', 'santa rosa', 'lipa', 'batangas city', 'antipolo', 'taytay', 'cainta',
+                'tagaytay', 'calamba', 'santa rosa', 'sta. rosa', 'lipa', 'batangas city', 'antipolo', 'taytay', 'cainta',
                 'biñan', 'san pedro', 'cabuyao', 'tanauan', 'bacoor', 'dasmariñas', 'imus', 'general trias',
                 'trece martires', 'kawit', 'alfonso', 'amadeo', 'carmona', 'cavite city', 'general mariano alvarez',
                 'indang', 'magallanes', 'maragondon', 'mendez', 'naic', 'noveleta', 'rosario', 'silang', 'tanza',
@@ -407,7 +390,24 @@ class BookingController {
                 'dolores', 'general luna', 'general nakar', 'guinayangan', 'gumaca', 'infanta', 'jomalig', 'lopez',
                 'lucban', 'macalelon', 'mauban', 'mulanay', 'padre burgos', 'pagbilao', 'panukulan', 'patnanungan',
                 'perez', 'pitogo', 'plaridel', 'polillo', 'quezon', 'real', 'sampaloc', 'san andres', 'san antonio',
-                'san francisco', 'san narciso', 'sariaya', 'tagkawayan', 'tiaong', 'unisan'
+                'san francisco', 'san narciso', 'sariaya', 'tagkawayan', 'tiaong', 'unisan', 'enchanted kingdom'
+            ],
+            'Region 1' => [
+                'ilocos region', 'region 1', 'ilocos norte', 'ilocos sur', 'la union', 'pangasinan',
+                'laoag', 'vigan', 'san fernando', 'dagupan', 'batac', 'candon', 'alaminos', 'urdaneta',
+                'san carlos', 'pagudpud', 'bangui', 'burgos', 'pasuquin', 'bacarra', 'vintar', 'paoay',
+                'currimao', 'badoc', 'pinili', 'marcos', 'nueva era', 'sarrat', 'piddig', 'carasi', 'solsona',
+                'dingras', 'san nicolas', 'cabugao', 'sinait', 'santa catalina', 'santa lucia', 'santa cruz',
+                'san vicente', 'santa', 'narvacan', 'santa maria', 'san esteban', 'santiago', 'bantay',
+                'caoayan', 'magsingal', 'santo domingo', 'san ildefonso', 'san juan', 'san vicente', 'aringay',
+                'agoo', 'bauang', 'caba', 'santo tomas', 'rosario', 'pugo', 'tubao', 'naguilian', 'bagulin',
+                'burgos', 'san gabriel', 'santol', 'sudipen', 'luna', 'bangar', 'balaoan', 'bacnotan',
+                'lingayen', 'bolinao', 'san fabian', 'manaoag', 'binmaley', 'calasiao', 'santa barbara',
+                'malasiqui', 'bayambang', 'basista', 'bautista', 'alcala', 'santo tomas', 'mangaldan',
+                'mangatarem', 'aguilar', 'bugallon', 'labrador', 'infanta', 'mabini', 'burgos', 'dasol',
+                'agno', 'bani', 'alaminos', 'sual', 'san manuel', 'binalonan', 'laoac', 'pozorrubio',
+                'san jacinto', 'san nicolas', 'tayug', 'natividad', 'san quintin', 'umingan', 'balungao',
+                'rosales', 'asingan', 'santa maria', 'villasis', 'anda', 'sison', 'san carlos'
             ]
         ];
 
@@ -424,13 +424,37 @@ class BookingController {
         // Look for region keywords in each location
         foreach ($locations as $location) {
             $location = strtolower($location);
+            
+            // First check for exact region matches
             foreach ($region_keywords as $region => $keywords) {
+                if (strpos($location, strtolower($region)) !== false) {
+                    $region_matches[$region] += 2; // Give higher weight to exact region matches
+                    continue;
+                }
+                
                 foreach ($keywords as $keyword) {
-                    if (strpos($location, $keyword) !== false) {
+                    // To avoid partial word matches, check if the keyword is a whole word or part of a compound word
+                    // Using word boundary check for common keywords that might cause false matches
+                    if ($keyword === 'santa' || $keyword === 'san') {
+                        // For 'santa' and 'san', make sure they're followed by another word
+                        if (preg_match('/\b' . preg_quote($keyword, '/') . '\s+[a-z]+\b/i', $location)) {
+                            $region_matches[$region]++;
+                        }
+                    }
+                    else if (strpos($location, $keyword) !== false) {
                         $region_matches[$region]++;
-                        break; // Found a match for this region in this location
+                        // Don't break here - allow multiple matches per region for better accuracy
                     }
                 }
+            }
+            
+            // Give higher weight to more specific location matches
+            if (strpos($location, 'santa rosa') !== false && strpos($location, 'laguna') !== false) {
+                $region_matches['Region 4A'] += 3; // Strong indicator for Region 4A
+            }
+            
+            if (strpos($location, 'enchanted kingdom') !== false) {
+                $region_matches['Region 4A'] += 2; // Enchanted Kingdom is definitely in Region 4A
             }
         }
 

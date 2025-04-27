@@ -28,6 +28,7 @@ class ClientAuthController {
         
         $first_name = trim($data["firstName"]);
         $last_name = trim($data["lastName"]);
+        $company_name = isset($data["companyName"]) ? trim($data["companyName"]) : null;
         $email = trim($data["email"]);
         $contact_number = trim($data["contactNumber"]);
         $password = trim($data["password"]);
@@ -56,7 +57,7 @@ class ClientAuthController {
             return;
         }
         
-        $message = $this->authModel->signup($first_name, $last_name, $email, $contact_number, $password);
+        $message = $this->authModel->signup($first_name, $last_name, $company_name, $email, $contact_number, $password);
     
         if ($message === "success") {
             echo json_encode(["success" => true, "message" => "Sign up successfully."]);
@@ -111,8 +112,10 @@ class ClientAuthController {
 
             $first_name = $data["firstName"];
             $last_name = $data["lastName"];
+            $company_name = isset($data["companyName"]) ? $data["companyName"] : null;
             $contact_number = $data["contactNumber"];
             $email_address = $data["email"];
+            $address = isset($data["address"]) ? $data["address"] : null;
             
             // Validate phone number (11 digits starting with 09)
             // Check both formats: with hyphens (09XX-XXX-XXXX) or without (09XXXXXXXX)
@@ -125,7 +128,7 @@ class ClientAuthController {
                 }
             }
 
-            $result = $this->authModel->updateClientInformation($first_name, $last_name, $contact_number, $email_address);
+            $result = $this->authModel->updateClientInformation($first_name, $last_name, $company_name, $contact_number, $email_address, $address);
 
             header("Content-Type: application/json");
 

@@ -49,9 +49,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "establishment",
             "lodging",
-            "establishment"
+            "point_of_interest"
          ]
       },
       {
@@ -98,8 +98,8 @@
          ],
          "types" : 
          [
-            "route",
-            "geocode"
+            "geocode",
+            "route"
          ]
       },
       {
@@ -147,9 +147,9 @@
          "types" : 
          [
             "sublocality",
-            "political",
+            "sublocality_level_2",
             "geocode",
-            "sublocality_level_2"
+            "political"
          ]
       },
       {
@@ -200,9 +200,9 @@
          ],
          "types" : 
          [
+            "establishment",
             "premise",
-            "point_of_interest",
-            "establishment"
+            "point_of_interest"
          ]
       },
       {
@@ -254,9 +254,9 @@
          "types" : 
          [
             "point_of_interest",
-            "university",
             "establishment",
-            "school"
+            "school",
+            "university"
          ]
       }
    ],

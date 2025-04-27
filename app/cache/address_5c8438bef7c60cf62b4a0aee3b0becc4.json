@@ -49,8 +49,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -93,9 +93,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "establishment",
-            "lodging"
+            "lodging",
+            "point_of_interest"
          ]
       },
       {
@@ -147,8 +147,8 @@
          "types" : 
          [
             "establishment",
-            "point_of_interest",
-            "travel_agency"
+            "travel_agency",
+            "point_of_interest"
          ]
       },
       {
@@ -248,8 +248,8 @@
          "types" : 
          [
             "establishment",
-            "point_of_interest",
             "food",
+            "point_of_interest",
             "restaurant"
          ]
       }

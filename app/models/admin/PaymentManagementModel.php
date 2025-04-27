@@ -249,5 +249,194 @@ class PaymentManagementModel {
             error_log("Error in rejectPayment: " . $e->getMessage());
             throw new Exception("Failed to reject payment: " . $e->getMessage());
         }
-    }   
+    }
+
+    public function recordManualPayment($bookingId, $userId, $amount, $paymentMethod, $notes = '') {
+        try {
+            $this->conn->beginTransaction();
+            
+            // Insert the payment record
+            $sql = "INSERT INTO payments (booking_id, user_id, amount, payment_method, status, notes) 
+                    VALUES (:booking_id, :user_id, :amount, :payment_method, 'Confirmed', :notes)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':booking_id' => $bookingId,
+                ':user_id' => $userId,
+                ':amount' => $amount,
+                ':payment_method' => $paymentMethod,
+                ':notes' => $notes
+            ]);
+            
+            $paymentId = $this->conn->lastInsertId();
+            
+            // Get booking info for notification
+            $sql = "SELECT b.destination, CONCAT(u.first_name, ' ', u.last_name) AS client_name 
+                    FROM bookings b
+                    JOIN users u ON b.user_id = u.user_id
+                    WHERE b.booking_id = :booking_id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':booking_id' => $bookingId]);
+            $bookingInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            // Update payment status and balance in bookings table
+            $stmt = $this->conn->prepare("SELECT SUM(amount) AS total_paid FROM payments WHERE booking_id = :booking_id AND status = 'Confirmed'");
+            $stmt->execute([":booking_id" => $bookingId]);
+            $total_paid = $stmt->fetch(PDO::FETCH_ASSOC)["total_paid"] ?? 0;
+
+            $stmt = $this->conn->prepare("SELECT c.total_cost FROM bookings b JOIN booking_costs c ON b.booking_id = c.booking_id WHERE b.booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $bookingId]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $total_cost = $result["total_cost"] ?? 0;
+
+            // Calculate balance
+            $balance = round($total_cost - $total_paid, 2);
+            
+            // Handle tiny negative balances
+            if ($balance > -0.1 && $balance < 0) {
+                $balance = 0;
+            }
+
+            $new_status = "Unpaid";
+            if ($total_paid > 0 && $total_paid < $total_cost) {
+                $new_status = "Partially Paid";
+            } elseif ($total_paid >= $total_cost) {
+                $new_status = "Paid";
+            }
+
+            $stmt = $this->conn->prepare("UPDATE bookings SET payment_status = :payment_status, status = 'Confirmed', balance = :balance WHERE booking_id = :booking_id");
+            $stmt->execute([
+                ":payment_status" => $new_status,
+                ":booking_id" => $bookingId,
+                ":balance" => $balance
+            ]);
+            
+            // Add client notification
+            if (isset($bookingInfo['client_name']) && isset($bookingInfo['destination'])) {
+                $message = "Your payment of PHP " . number_format($amount, 2) . " for booking to " . $bookingInfo['destination'] . " has been recorded.";
+                $this->clientNotificationModel->addNotification($userId, "payment_recorded", $message, $bookingId);
+            }
+            
+            $this->conn->commit();
+            return ["success" => true, "payment_id" => $paymentId];
+        } catch (PDOException $e) {
+            $this->conn->rollBack();
+            error_log("Error in recordManualPayment: " . $e->getMessage());
+            throw new Exception("Failed to record payment: " . $e->getMessage());
+        }
+    }
+
+    public function searchBookings($search) {
+        try {
+            $search = "%$search%";
+            $sql = "
+                SELECT b.booking_id, b.destination, b.date_of_tour, b.status, b.payment_status, 
+                       b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name,
+                       c.total_cost, b.balance
+                FROM bookings b
+                JOIN users u ON b.user_id = u.user_id
+                JOIN booking_costs c ON b.booking_id = c.booking_id
+                WHERE b.is_rebooked = 0 AND b.is_rebooking = 0 
+                   AND (b.booking_id LIKE :search 
+                   OR b.destination LIKE :search
+                   OR CONCAT(u.first_name, ' ', u.last_name) LIKE :search)
+                ORDER BY b.booking_id DESC
+                LIMIT 10
+            ";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':search', $search);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error in searchBookings: " . $e->getMessage());
+            throw new Exception("Failed to search bookings: " . $e->getMessage());
+        }
+    }
+    
+    public function searchClients($search) {
+        try {
+            $search = "%$search%";
+            $sql = "
+                SELECT user_id, CONCAT(first_name, ' ', last_name) AS client_name, email, contact_number
+                FROM users 
+                WHERE role = 'Client'
+                AND (user_id LIKE :search 
+                  OR first_name LIKE :search 
+                  OR last_name LIKE :search
+                  OR CONCAT(first_name, ' ', last_name) LIKE :search
+                  OR email LIKE :search)
+                ORDER BY last_name, first_name
+                LIMIT 10
+            ";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':search', $search);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error in searchClients: " . $e->getMessage());
+            throw new Exception("Failed to search clients: " . $e->getMessage());
+        }
+    }
+    
+    public function getBookingDetails($bookingId) {
+        try {
+            $sql = "SELECT 
+                        b.booking_id,
+                        b.user_id,
+                        b.destination,
+                        b.payment_status,
+                        b.balance,
+                        c.total_cost,
+                        CONCAT(u.first_name, ' ', u.last_name) AS client_name
+                    FROM bookings b
+                    JOIN booking_costs c ON b.booking_id = c.booking_id
+                    JOIN users u ON b.user_id = u.user_id
+                    WHERE b.booking_id = :booking_id";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':booking_id' => $bookingId]);
+            
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error in getBookingDetails: " . $e->getMessage());
+            throw new Exception("Failed to get booking details: " . $e->getMessage());
+        }
+    }
+    
+    public function getPaymentStats() {
+        try {
+            // Get total count
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM payments WHERE is_canceled = 0");
+            $stmt->execute();
+            $total = $stmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
+            
+            // Get confirmed count
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as confirmed FROM payments WHERE status = 'CONFIRMED' AND is_canceled = 0");
+            $stmt->execute();
+            $confirmed = $stmt->fetch(PDO::FETCH_ASSOC)['confirmed'] ?? 0;
+            
+            // Get pending count
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as pending FROM payments WHERE status = 'PENDING' AND is_canceled = 0");
+            $stmt->execute();
+            $pending = $stmt->fetch(PDO::FETCH_ASSOC)['pending'] ?? 0;
+            
+            // Get rejected count
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as rejected FROM payments WHERE status = 'REJECTED' AND is_canceled = 0");
+            $stmt->execute();
+            $rejected = $stmt->fetch(PDO::FETCH_ASSOC)['rejected'] ?? 0;
+            
+            return [
+                'total' => $total,
+                'confirmed' => $confirmed,
+                'pending' => $pending,
+                'rejected' => $rejected
+            ];
+        } catch (PDOException $e) {
+            error_log("Error in getPaymentStats: " . $e->getMessage());
+            throw new Exception("Failed to get payment statistics: " . $e->getMessage());
+        }
+    }
 } 

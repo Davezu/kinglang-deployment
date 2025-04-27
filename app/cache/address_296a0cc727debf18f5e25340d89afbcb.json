@@ -1,0 +1,258 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Tanza, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9VD0kEoqljMRjF-LXrXs4nQ",
+         "reference" : "ChIJ9VD0kEoqljMRjF-LXrXs4nQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanza",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanza"
+            },
+            {
+               "offset" : 7,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 15,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Tanza Oasis Hotel and Resort, Antero Soriano Highway, Tanza, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJl0ft528pljMRyYlBGMYTOwo",
+         "reference" : "ChIJl0ft528pljMRyYlBGMYTOwo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanza Oasis Hotel and Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Antero Soriano Highway, Tanza, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanza Oasis Hotel and Resort"
+            },
+            {
+               "offset" : 30,
+               "value" : "Antero Soriano Highway"
+            },
+            {
+               "offset" : 54,
+               "value" : "Tanza"
+            },
+            {
+               "offset" : 61,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment",
+            "restaurant",
+            "food"
+         ]
+      },
+      {
+         "description" : "Tanza Public Market, Tanza, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5XGbVI8sljMRv6QJBdJVy0M",
+         "reference" : "ChIJ5XGbVI8sljMRv6QJBdJVy0M",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanza Public Market",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tanza, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanza Public Market"
+            },
+            {
+               "offset" : 21,
+               "value" : "Tanza"
+            },
+            {
+               "offset" : 28,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      },
+      {
+         "description" : "Tanza-Esperanza, Iloilo City Proper, Iloilo City, Iloilo, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeQsroF3lrjMRG4gTFSsX0O4",
+         "reference" : "ChIJeQsroF3lrjMRG4gTFSsX0O4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanza-Esperanza, Iloilo City Proper",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Iloilo City, Iloilo, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanza-Esperanza"
+            },
+            {
+               "offset" : 17,
+               "value" : "Iloilo City Proper"
+            },
+            {
+               "offset" : 37,
+               "value" : "Iloilo City"
+            },
+            {
+               "offset" : 50,
+               "value" : "Iloilo"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "sublocality_level_2",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Tanza Specialists Medical Center, Tanza, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ2-u1JrQtljMRZ-wg7AruDUA",
+         "reference" : "ChIJ2-u1JrQtljMRZ-wg7AruDUA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanza Specialists Medical Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tanza, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanza Specialists Medical Center"
+            },
+            {
+               "offset" : 34,
+               "value" : "Tanza"
+            },
+            {
+               "offset" : 41,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "hospital",
+            "establishment",
+            "health"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

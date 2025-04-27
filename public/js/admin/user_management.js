@@ -343,12 +343,24 @@ function displayUsers(users) {
         
         idCell.textContent = user.user_id;
         
-        nameCell.textContent = `${user.first_name} ${user.last_name}`;
-        nameCell.style.maxWidth = "120px";
+        // Add company name if available
+        const nameContent = document.createElement("div");
+        nameContent.textContent = `${user.first_name} ${user.last_name}`;
+        nameCell.appendChild(nameContent);
+        
+        if (user.company_name) {
+            const companyInfo = document.createElement("small");
+            companyInfo.classList.add("text-muted", "d-block");
+            companyInfo.textContent = user.company_name;
+            nameCell.appendChild(companyInfo);
+        }
+        
+        nameCell.style.maxWidth = "150px";
         nameCell.style.overflow = "hidden";
         nameCell.style.textOverflow = "ellipsis";
-        nameCell.style.whiteSpace = "nowrap";
-        nameCell.title = `${user.first_name} ${user.last_name}`;
+        nameCell.title = user.company_name ? 
+            `${user.first_name} ${user.last_name} (${user.company_name})` : 
+            `${user.first_name} ${user.last_name}`;
         
         emailCell.textContent = user.email;
         emailCell.style.maxWidth = "150px";
@@ -479,6 +491,7 @@ async function getUserDetails(userId) {
         document.getElementById("editUserId").value = user.user_id;
         document.getElementById("editFirstName").value = user.first_name;
         document.getElementById("editLastName").value = user.last_name;
+        document.getElementById("editCompanyName").value = user.company_name || '';
         document.getElementById("editEmail").value = user.email;
         document.getElementById("editContactNumber").value = user.contact_number;
         document.getElementById("editPassword").value = ""; // Clear password field
@@ -554,6 +567,7 @@ document.getElementById("addUserForm").addEventListener("submit", async function
     const formDataObject = {
         firstName: formData.get("firstName"),
         lastName: formData.get("lastName"),
+        companyName: formData.get("companyName"),
         email: formData.get("email"),
         contactNumber: formatPhoneNumberForDB(formData.get("contactNumber")),
         password: formData.get("password"),
@@ -668,6 +682,7 @@ document.getElementById("editUserForm").addEventListener("submit", async functio
         userId: formData.get("userId"),
         firstName: formData.get("firstName"),
         lastName: formData.get("lastName"),
+        companyName: formData.get("companyName"),
         email: formData.get("email"),
         contactNumber: formatPhoneNumberForDB(formData.get("contactNumber")),
         password: formData.get("password"),

@@ -1,0 +1,263 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJCV0X-V3OlzMR5UIoC7sbBC0",
+         "reference" : "ChIJCV0X-V3OlzMR5UIoC7sbBC0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Parañaque",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 11,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Parqal Mall Aseana, Diosdado Macapagal Boulevard, Tambo, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJT-uc4qTJlzMRnkn8PQ_dF9Y",
+         "reference" : "ChIJT-uc4qTJlzMRnkn8PQ_dF9Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "Parqal Mall Aseana",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Diosdado Macapagal Boulevard, Tambo, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Parqal Mall Aseana"
+            },
+            {
+               "offset" : 20,
+               "value" : "Diosdado Macapagal Boulevard"
+            },
+            {
+               "offset" : 50,
+               "value" : "Tambo"
+            },
+            {
+               "offset" : 57,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 68,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 82,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Parkmall, Mandaue City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJiwMeDKmZqTMRYNgZPq0O5ow",
+         "reference" : "ChIJiwMeDKmZqTMRYNgZPq0O5ow",
+         "structured_formatting" : 
+         {
+            "main_text" : "Parkmall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mandaue City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Parkmall"
+            },
+            {
+               "offset" : 10,
+               "value" : "Mandaue City"
+            },
+            {
+               "offset" : 24,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "shopping_mall"
+         ]
+      },
+      {
+         "description" : "Paranaque City Hall, San Antonio Avenue, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-xr5BlDOlzMRJXgY-2mOcH4",
+         "reference" : "ChIJ-xr5BlDOlzMRJXgY-2mOcH4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paranaque City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Antonio Avenue, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paranaque City Hall"
+            },
+            {
+               "offset" : 21,
+               "value" : "San Antonio Avenue"
+            },
+            {
+               "offset" : 41,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "local_government_office",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Partas Bus Terminal Pasay, Edang, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJee1qWE_JlzMRRNdbWkUkfuc",
+         "reference" : "ChIJee1qWE_JlzMRRNdbWkUkfuc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Partas Bus Terminal Pasay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Edang, Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Partas Bus Terminal Pasay"
+            },
+            {
+               "offset" : 27,
+               "value" : "Edang"
+            },
+            {
+               "offset" : 34,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 41,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -45,9 +45,9 @@
          ],
          "types" : 
          [
+            "tourist_attraction",
             "establishment",
             "museum",
-            "tourist_attraction",
             "point_of_interest"
          ]
       }

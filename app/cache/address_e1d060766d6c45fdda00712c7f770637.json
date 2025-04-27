@@ -1,0 +1,267 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "MAKA-TRILLO SIZZLING HAUZ, Candelaria, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ25xKlgJHvTMRFYaMbNjDkIs",
+         "reference" : "ChIJ25xKlgJHvTMRFYaMbNjDkIs",
+         "structured_formatting" : 
+         {
+            "main_text" : "MAKA-TRILLO SIZZLING HAUZ",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Candelaria, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MAKA-TRILLO SIZZLING HAUZ"
+            },
+            {
+               "offset" : 27,
+               "value" : "Candelaria"
+            },
+            {
+               "offset" : 39,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "point_of_interest",
+            "establishment",
+            "food"
+         ]
+      },
+      {
+         "description" : "Maka Food Company, Daang Batang, Street, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-1EYU43OlzMRlvJ46Vfl0Cw",
+         "reference" : "ChIJ-1EYU43OlzMRlvJ46Vfl0Cw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maka Food Company",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Daang Batang, Street, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maka Food Company"
+            },
+            {
+               "offset" : 19,
+               "value" : "Daang Batang"
+            },
+            {
+               "offset" : 33,
+               "value" : "Street"
+            },
+            {
+               "offset" : 41,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "store",
+            "grocery_or_supermarket",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Maka-ina Beach, Bien Unido, Bohol, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJKZziDHf9qTMRqmDHLPhX1vs",
+         "reference" : "ChIJKZziDHf9qTMRqmDHLPhX1vs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maka-ina Beach",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bien Unido, Bohol, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maka-ina Beach"
+            },
+            {
+               "offset" : 16,
+               "value" : "Bien Unido"
+            },
+            {
+               "offset" : 28,
+               "value" : "Bohol"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "MAKA HOUSE, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ88FEBwDPlzMRbohTrFP3Y-w",
+         "reference" : "ChIJ88FEBwDPlzMRbohTrFP3Y-w",
+         "structured_formatting" : 
+         {
+            "main_text" : "MAKA HOUSE",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MAKA HOUSE"
+            },
+            {
+               "offset" : 12,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "MAKA, Tondo, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJnTTLKIG1lzMRsIGfdoXzAvY",
+         "reference" : "ChIJnTTLKIG1lzMRsIGfdoXzAvY",
+         "structured_formatting" : 
+         {
+            "main_text" : "MAKA",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tondo, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MAKA"
+            },
+            {
+               "offset" : 6,
+               "value" : "Tondo"
+            },
+            {
+               "offset" : 13,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 21,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "food",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

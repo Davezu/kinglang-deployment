@@ -105,13 +105,13 @@ if (!isset($_SESSION["user_id"])) {
                         <h3 class="mb-3" id="bookingHeader">Book a Trip</h3>
                         <div class="mb-3 position-relative">
                             <i class="bi bi-geo-alt-fill location-icon"></i>
-                            <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address py-2 px-4" autocomplete="off" placeholder="Pickup Location" required>
+                            <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address py-2 px-4" autocomplete="off" placeholder="Pickup Location" data-validated="false" required>
                             <ul id="pickupPointSuggestions" class="suggestions"></ul>
                         </div> 
                         <div class="mb-3 position-relative">
                             <i class="bi bi-geo-alt-fill location-icon"></i>
                             <i class="bi bi-plus-circle-fill add-icon" id="addStop" title="Add stop"></i>
-                            <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop py-2 px-4" autocomplete="off" placeholder="Dropoff Location" required>
+                            <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop py-2 px-4" autocomplete="off" placeholder="Dropoff Location" data-validated="false" required>
                             <ul id="destinationSuggestions" class="suggestions"></ul>
                         </div>
 

@@ -1,0 +1,260 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Reliance Street, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjdSZWxpYW5jZSBTdHJlZXQsIE1hbmRhbHV5b25nLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJp9b60EPIlzMR3c3ke54sSpASFAoSCXmbe8c1yJczEfg30rnIR0nc",
+         "reference" : "EjdSZWxpYW5jZSBTdHJlZXQsIE1hbmRhbHV5b25nLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJp9b60EPIlzMR3c3ke54sSpASFAoSCXmbe8c1yJczEfg30rnIR0nc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Reliance Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mandaluyong, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Reliance Street"
+            },
+            {
+               "offset" : 17,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 30,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Reliance IT Center, Eulogio Rodriguez Jr. Avenue, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJrRbo9g7JlzMRk1l3_DnP6NI",
+         "reference" : "ChIJrRbo9g7JlzMRk1l3_DnP6NI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Reliance IT Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Eulogio Rodriguez Jr. Avenue, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Reliance IT Center"
+            },
+            {
+               "offset" : 20,
+               "value" : "Eulogio Rodriguez Jr. Avenue"
+            },
+            {
+               "offset" : 50,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Reli Tours - SM Mall of Asia, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJzcTlBfzLlzMR4FUzjr3UYVM",
+         "reference" : "ChIJzcTlBfzLlzMR4FUzjr3UYVM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Reli Tours - SM Mall of Asia",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Reli Tours - SM Mall of Asia"
+            },
+            {
+               "offset" : 30,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 37,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Reliance, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjBSZWxpYW5jZSwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgk5lV27D7GXMxGxdcEmyxs76RIUChIJdXPvQgm6lzMRQD0I_tkymko",
+         "reference" : "EjBSZWxpYW5jZSwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgk5lV27D7GXMxGxdcEmyxs76RIUChIJdXPvQgm6lzMRQD0I_tkymko",
+         "structured_formatting" : 
+         {
+            "main_text" : "Reliance",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Reliance"
+            },
+            {
+               "offset" : 10,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 23,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Relish, Hello Happiness!, Sct. Limbaga Street, Diliman, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJd7EP_lG2lzMRcAfirGsyPZM",
+         "reference" : "ChIJd7EP_lG2lzMRcAfirGsyPZM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Relish, Hello Happiness!",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sct. Limbaga Street, Diliman, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Relish, Hello Happiness!"
+            },
+            {
+               "offset" : 26,
+               "value" : "Sct. Limbaga Street"
+            },
+            {
+               "offset" : 47,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 56,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 69,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 83,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "food",
+            "restaurant",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

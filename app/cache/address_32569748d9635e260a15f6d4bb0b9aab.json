@@ -1,0 +1,265 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Diamond Hotel Philippines, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHXJDhyvKlzMR83_6sX4bAsc",
+         "reference" : "ChIJHXJDhyvKlzMR83_6sX4bAsc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Diamond Hotel Philippines",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Diamond Hotel Philippines"
+            },
+            {
+               "offset" : 27,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 35,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 43,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Diamond Suites and Residences, Apitong Street, Cebu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ0eZe5j6ZqTMRD62xUkUeqSo",
+         "reference" : "ChIJ0eZe5j6ZqTMRD62xUkUeqSo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Diamond Suites and Residences",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Apitong Street, Cebu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Diamond Suites and Residences"
+            },
+            {
+               "offset" : 31,
+               "value" : "Apitong Street"
+            },
+            {
+               "offset" : 47,
+               "value" : "Cebu City"
+            },
+            {
+               "offset" : 58,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 64,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Diamond Water Edge Resort, Malay, Aklan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQ5CwGxc8pTMR1NUXZjCI7Lc",
+         "reference" : "ChIJQ5CwGxc8pTMR1NUXZjCI7Lc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Diamond Water Edge Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malay, Aklan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Diamond Water Edge Resort"
+            },
+            {
+               "offset" : 27,
+               "value" : "Malay"
+            },
+            {
+               "offset" : 34,
+               "value" : "Aklan"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Diamond Village, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJO-uLdxnUlzMRKS6EY9TF-KQ",
+         "reference" : "ChIJO-uLdxnUlzMRKS6EY9TF-KQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Diamond Village",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Diamond Village"
+            },
+            {
+               "offset" : 17,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 29,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "DIAMOND JUBILEE HALL, Mabini Street, Iloilo City Proper, Iloilo City, Iloilo, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJferHP2nlrjMRAQuEuk8fU8E",
+         "reference" : "ChIJferHP2nlrjMRAQuEuk8fU8E",
+         "structured_formatting" : 
+         {
+            "main_text" : "DIAMOND JUBILEE HALL",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mabini Street, Iloilo City Proper, Iloilo City, Iloilo, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "DIAMOND JUBILEE HALL"
+            },
+            {
+               "offset" : 22,
+               "value" : "Mabini Street"
+            },
+            {
+               "offset" : 37,
+               "value" : "Iloilo City Proper"
+            },
+            {
+               "offset" : 57,
+               "value" : "Iloilo City"
+            },
+            {
+               "offset" : 70,
+               "value" : "Iloilo"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

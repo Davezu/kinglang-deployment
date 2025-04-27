@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
-            "political",
             "locality",
-            "geocode"
+            "geocode",
+            "political"
          ]
       },
       {
@@ -90,10 +90,10 @@
          ],
          "types" : 
          [
-            "establishment",
-            "home_goods_store",
+            "store",
             "point_of_interest",
-            "store"
+            "home_goods_store",
+            "establishment"
          ]
       },
       {
@@ -140,8 +140,8 @@
          ],
          "types" : 
          [
-            "premise",
-            "geocode"
+            "geocode",
+            "premise"
          ]
       },
       {
@@ -188,8 +188,8 @@
          ],
          "types" : 
          [
-            "premise",
-            "geocode"
+            "geocode",
+            "premise"
          ]
       },
       {
@@ -236,8 +236,8 @@
          ],
          "types" : 
          [
-            "premise",
-            "geocode"
+            "geocode",
+            "premise"
          ]
       }
    ],

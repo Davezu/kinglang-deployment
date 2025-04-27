@@ -149,8 +149,8 @@
          ],
          "types" : 
          [
-            "locality",
             "geocode",
+            "locality",
             "political"
          ]
       },
@@ -194,9 +194,9 @@
          ],
          "types" : 
          [
-            "locality",
             "political",
-            "geocode"
+            "geocode",
+            "locality"
          ]
       },
       {
@@ -240,8 +240,8 @@
          "types" : 
          [
             "political",
-            "geocode",
-            "locality"
+            "locality",
+            "geocode"
          ]
       }
    ],

@@ -100,7 +100,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
         <div class="modal-dialog modal-dialog-centered">
             <form action="" method="post" class="modal-content compact-form" id="addUserForm">
                 <div class="modal-header py-2">
-                    <h5 class="modal-title">Add New User</h5>
+                    <h5 class="modal-title">Add User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -114,6 +114,10 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                             <label for="lastName" class="form-label">Last Name</label>
                             <input type="text" class="form-control" id="lastName" name="lastName" required>
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="companyName" class="form-label">Company Name (Optional)</label>
+                        <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Company or organization name">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
@@ -176,6 +180,10 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                             <label for="editLastName" class="form-label">Last Name</label>
                             <input type="text" class="form-control" id="editLastName" name="lastName" required>
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCompanyName" class="form-label">Company Name (Optional)</label>
+                        <input type="text" class="form-control" id="editCompanyName" name="companyName" placeholder="Company or organization name">
                     </div>
                     <div class="mb-3">
                         <label for="editEmail" class="form-label">Email</label>

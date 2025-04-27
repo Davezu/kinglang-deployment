@@ -2,7 +2,7 @@
    "predictions" : 
    [
       {
-         "description" : "Malaria Road, Caloocan, Metro Manila, Philippines",
+         "description" : "Malabon, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -10,11 +10,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "EjFNYWxhcmlhIFJvYWQsIENhbG9vY2FuLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJszatrPmvlzMRYM3cfbSemQsSFAoSCV8bhBm1sZczERotBCXicOcF",
-         "reference" : "EjFNYWxhcmlhIFJvYWQsIENhbG9vY2FuLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJszatrPmvlzMRYM3cfbSemQsSFAoSCV8bhBm1sZczERotBCXicOcF",
+         "place_id" : "ChIJbTDTbGu0lzMRevHRY44dJSA",
+         "reference" : "ChIJbTDTbGu0lzMRevHRY44dJSA",
          "structured_formatting" : 
          {
-            "main_text" : "Malaria Road",
+            "main_text" : "Malabon",
             "main_text_matched_substrings" : 
             [
                {
@@ -22,231 +22,212 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+            "secondary_text" : "Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Malaria Road"
+               "value" : "Malabon"
             },
             {
-               "offset" : 14,
-               "value" : "Caloocan"
-            },
-            {
-               "offset" : 24,
+               "offset" : 9,
                "value" : "Metro Manila"
-            },
-            {
-               "offset" : 38,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "geocode",
-            "route"
-         ]
-      },
-      {
-         "description" : "Malagamot Road, Bunawan, Davao City, Davao del Sur, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 4,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "Ej9NYWxhZ2Ftb3QgUm9hZCwgQnVuYXdhbiwgRGF2YW8gQ2l0eSwgRGF2YW8gZGVsIFN1ciwgUGhpbGlwcGluZXMiLiosChQKEgkRCzfTrWv5MhHuZWWr8TaaZBIUChIJB4394-xB-TIRyJPBvtf2Qy8",
-         "reference" : "Ej9NYWxhZ2Ftb3QgUm9hZCwgQnVuYXdhbiwgRGF2YW8gQ2l0eSwgRGF2YW8gZGVsIFN1ciwgUGhpbGlwcGluZXMiLiosChQKEgkRCzfTrWv5MhHuZWWr8TaaZBIUChIJB4394-xB-TIRyJPBvtf2Qy8",
-         "structured_formatting" : 
-         {
-            "main_text" : "Malagamot Road",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 4,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Bunawan, Davao City, Davao del Sur, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Malagamot Road"
-            },
-            {
-               "offset" : 16,
-               "value" : "Bunawan"
-            },
-            {
-               "offset" : 25,
-               "value" : "Davao City"
-            },
-            {
-               "offset" : 37,
-               "value" : "Davao del Sur"
-            },
-            {
-               "offset" : 52,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "geocode",
-            "route"
-         ]
-      },
-      {
-         "description" : "Malabon Bridge, General Trias, Cavite, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 4,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "EjJNYWxhYm9uIEJyaWRnZSwgR2VuZXJhbCBUcmlhcywgQ2F2aXRlLCBQaGlsaXBwaW5lcyIuKiwKFAoSCe8QdJRg1ZczEct6HVYConomEhQKEgl9LPlMzSqWMxFdm_vn0Dd5wA",
-         "reference" : "EjJNYWxhYm9uIEJyaWRnZSwgR2VuZXJhbCBUcmlhcywgQ2F2aXRlLCBQaGlsaXBwaW5lcyIuKiwKFAoSCe8QdJRg1ZczEct6HVYConomEhQKEgl9LPlMzSqWMxFdm_vn0Dd5wA",
-         "structured_formatting" : 
-         {
-            "main_text" : "Malabon Bridge",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 4,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "General Trias, Cavite, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Malabon Bridge"
-            },
-            {
-               "offset" : 16,
-               "value" : "General Trias"
-            },
-            {
-               "offset" : 31,
-               "value" : "Cavite"
-            },
-            {
-               "offset" : 39,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "geocode",
-            "route"
-         ]
-      },
-      {
-         "description" : "Malakas Street, Diliman, Quezon City, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 4,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "Ej9NYWxha2FzIFN0cmVldCwgRGlsaW1hbiwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkdblDypreXMxHQqIyCFfQMdRIUChIJ1bo_R6i3lzMR5ogt2UEBZno",
-         "reference" : "Ej9NYWxha2FzIFN0cmVldCwgRGlsaW1hbiwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkdblDypreXMxHQqIyCFfQMdRIUChIJ1bo_R6i3lzMR5ogt2UEBZno",
-         "structured_formatting" : 
-         {
-            "main_text" : "Malakas Street",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 4,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Diliman, Quezon City, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Malakas Street"
-            },
-            {
-               "offset" : 16,
-               "value" : "Diliman"
-            },
-            {
-               "offset" : 25,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 38,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 52,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "geocode",
-            "route"
-         ]
-      },
-      {
-         "description" : "Malagasang Road, Imus, Cavite, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 4,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "EipNYWxhZ2FzYW5nIFJvYWQsIEltdXMsIENhdml0ZSwgUGhpbGlwcGluZXMiLiosChQKEgmrOyy-kNSXMxHM5si7Cek0SRIUChIJETxPuFLSlzMR3-gz-OHysDg",
-         "reference" : "EipNYWxhZ2FzYW5nIFJvYWQsIEltdXMsIENhdml0ZSwgUGhpbGlwcGluZXMiLiosChQKEgmrOyy-kNSXMxHM5si7Cek0SRIUChIJETxPuFLSlzMR3-gz-OHysDg",
-         "structured_formatting" : 
-         {
-            "main_text" : "Malagasang Road",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 4,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Imus, Cavite, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Malagasang Road"
-            },
-            {
-               "offset" : 17,
-               "value" : "Imus"
             },
             {
                "offset" : 23,
-               "value" : "Cavite"
-            },
-            {
-               "offset" : 31,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
             "geocode",
-            "route"
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Malapascua Island, Daanbantayan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJL4V2qmDepzMRYzMNVDZ4I-k",
+         "reference" : "ChIJL4V2qmDepzMRYzMNVDZ4I-k",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malapascua Island",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Daanbantayan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malapascua Island"
+            },
+            {
+               "offset" : 19,
+               "value" : "Daanbantayan"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHwpokyrKlzMRhU-mRz5cIcc",
+         "reference" : "ChIJHwpokyrKlzMRhU-mRz5cIcc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malate",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 8,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 16,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_1",
+            "sublocality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Malaybalay, Bukidnon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJSWIHgDyq_zIRVxYbf57JdIs",
+         "reference" : "ChIJSWIHgDyq_zIRVxYbf57JdIs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malaybalay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bukidnon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malaybalay"
+            },
+            {
+               "offset" : 12,
+               "value" : "Bukidnon"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Malasiqui, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJmYVDzZJGkTMRBdq5TNIRH1M",
+         "reference" : "ChIJmYVDzZJGkTMRBdq5TNIRH1M",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malasiqui",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malasiqui"
+            },
+            {
+               "offset" : 11,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
          ]
       }
    ],

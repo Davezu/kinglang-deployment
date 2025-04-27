@@ -41,8 +41,8 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
+            "political",
             "locality"
          ]
       },
@@ -86,9 +86,9 @@
          ],
          "types" : 
          [
-            "geocode",
+            "political",
             "locality",
-            "political"
+            "geocode"
          ]
       },
       {
@@ -131,8 +131,8 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
+            "political",
             "locality"
          ]
       },
@@ -176,13 +176,13 @@
          ],
          "types" : 
          [
-            "geocode",
             "political",
+            "geocode",
             "locality"
          ]
       },
       {
-         "description" : "Maranding, Lanao del Norte, Philippines",
+         "description" : "Maravilla Beach, Tabuelan, Cebu, Philippines",
          "matched_substrings" : 
          [
             {
@@ -190,11 +190,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJt1K1PyA1VDIRmieO9qwVL0s",
-         "reference" : "ChIJt1K1PyA1VDIRmieO9qwVL0s",
+         "place_id" : "ChIJN8FzyeZbqDMRFK3Gw60sQEY",
+         "reference" : "ChIJN8FzyeZbqDMRFK3Gw60sQEY",
          "structured_formatting" : 
          {
-            "main_text" : "Maranding",
+            "main_text" : "Maravilla Beach",
             "main_text_matched_substrings" : 
             [
                {
@@ -202,29 +202,31 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Lanao del Norte, Philippines"
+            "secondary_text" : "Tabuelan, Cebu, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maranding"
+               "value" : "Maravilla Beach"
             },
             {
-               "offset" : 11,
-               "value" : "Lanao del Norte"
+               "offset" : 17,
+               "value" : "Tabuelan"
             },
             {
-               "offset" : 28,
+               "offset" : 27,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 33,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "sublocality_level_2",
-            "sublocality",
-            "geocode",
-            "political"
+            "natural_feature",
+            "establishment"
          ]
       }
    ],

@@ -1,0 +1,244 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Kaybiang Tunnel, Maragondon, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjBLYXliaWFuZyBUdW5uZWwsIE1hcmFnb25kb24sIENhdml0ZSwgUGhpbGlwcGluZXMiLiosChQKEglRtzv4uo69MxHrB9Tw0vxinRIUChIJob3jwNGFvTMR24rbvKOqt7A",
+         "reference" : "EjBLYXliaWFuZyBUdW5uZWwsIE1hcmFnb25kb24sIENhdml0ZSwgUGhpbGlwcGluZXMiLiosChQKEglRtzv4uo69MxHrB9Tw0vxinRIUChIJob3jwNGFvTMR24rbvKOqt7A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kaybiang Tunnel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maragondon, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kaybiang Tunnel"
+            },
+            {
+               "offset" : 17,
+               "value" : "Maragondon"
+            },
+            {
+               "offset" : 29,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Kidapawan City, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJccxvZAv5-DIR8z_Up1N3CvA",
+         "reference" : "ChIJccxvZAv5-DIR8z_Up1N3CvA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kidapawan City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kidapawan City"
+            },
+            {
+               "offset" : 16,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 26,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Kamay Ni Hesus, Tayabas Road, Lucban, Quezon Province, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbarSyppTvTMRMwEPZWlQbto",
+         "reference" : "ChIJbarSyppTvTMRMwEPZWlQbto",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kamay Ni Hesus",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tayabas Road, Lucban, Quezon Province, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kamay Ni Hesus"
+            },
+            {
+               "offset" : 16,
+               "value" : "Tayabas Road"
+            },
+            {
+               "offset" : 30,
+               "value" : "Lucban"
+            },
+            {
+               "offset" : 38,
+               "value" : "Quezon Province"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "tourist_attraction",
+            "establishment",
+            "place_of_worship",
+            "point_of_interest",
+            "church"
+         ]
+      },
+      {
+         "description" : "Kawit, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8cKI0LfSlzMRlYRZsYKcrn8",
+         "reference" : "ChIJ8cKI0LfSlzMRlYRZsYKcrn8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kawit",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kawit"
+            },
+            {
+               "offset" : 7,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 15,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Koronadal City, South Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJt0fbpZEY-DIRyME1OiHXhrw",
+         "reference" : "ChIJt0fbpZEY-DIRyME1OiHXhrw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Koronadal City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "South Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Koronadal City"
+            },
+            {
+               "offset" : 16,
+               "value" : "South Cotabato"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

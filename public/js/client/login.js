@@ -41,22 +41,28 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if (data.success) {
                     // Show success message with SweetAlert2
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Login Successful',
-                        text: 'Redirecting you to dashboard...',
-                        timer: 1500,
-                        timerProgressBar: true,
-                        showConfirmButton: false
-                    }).then(() => {
-                        // Add page transition before redirect
-                        document.body.style.transition = 'opacity 0.5s ease';
-                        document.body.style.opacity = '0';
+                    // Swal.fire({
+                    //     icon: 'success',
+                    //     title: 'Login Successful',
+                    //     text: 'Redirecting you to dashboard...',
+                    //     timer: 1500,
+                    //     timerProgressBar: true,
+                    //     showConfirmButton: false
+                    // }).then(() => {
+                    //     // Add page transition before redirect
+                    //     document.body.style.transition = 'opacity 0.5s ease';
+                    //     document.body.style.opacity = '0';
                         
-                        setTimeout(() => {
-                            window.location.href = data.redirect || '/home/booking-requests';
-                        }, 300);
-                    });
+                    //     setTimeout(() => {
+                    //         window.location.href = data.redirect || '/home/booking-requests';
+                    //     }, 300);
+                    // });
+                    document.body.style.transition = 'opacity 0.5s ease';
+                    document.body.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        window.location.href = data.redirect || '/home/booking-requests';
+                    }, 300);
                 } else {
                     // Show error message with SweetAlert2
                     Swal.fire({

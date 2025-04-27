@@ -1,0 +1,240 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Masbate City, Masbate, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJodQJuo3EpjMRZpULMDFOncc",
+         "reference" : "ChIJodQJuo3EpjMRZpULMDFOncc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Masbate City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Masbate, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Masbate City"
+            },
+            {
+               "offset" : 14,
+               "value" : "Masbate"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Masbate Island, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJiclDC4XvpjMR7ZVockygbys",
+         "reference" : "ChIJiclDC4XvpjMR7ZVockygbys",
+         "structured_formatting" : 
+         {
+            "main_text" : "Masbate Island",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Masbate Island"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Masbate, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ei9NYXNiYXRlLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCQU3CtNQtpczEf08Oyz0YAs0EhQKEgl1c-9CCbqXMxFAPQj-2TKaSg",
+         "reference" : "Ei9NYXNiYXRlLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCQU3CtNQtpczEf08Oyz0YAs0EhQKEgl1c-9CCbqXMxFAPQj-2TKaSg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Masbate",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Masbate"
+            },
+            {
+               "offset" : 9,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 22,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Masbate Airport, Ibañez St, Masbate City, Masbate, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJtfgLlFnbpjMRkRYIYpLUgJE",
+         "reference" : "ChIJtfgLlFnbpjMRkRYIYpLUgJE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Masbate Airport",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ibañez St, Masbate City, Masbate, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Masbate Airport"
+            },
+            {
+               "offset" : 17,
+               "value" : "Ibañez St"
+            },
+            {
+               "offset" : 28,
+               "value" : "Masbate City"
+            },
+            {
+               "offset" : 42,
+               "value" : "Masbate"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "airport"
+         ]
+      },
+      {
+         "description" : "Masbate Port, Masbate City, Masbate, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJSaXLv6rEpjMR2ueYm2NS-Ns",
+         "reference" : "ChIJSaXLv6rEpjMR2ueYm2NS-Ns",
+         "structured_formatting" : 
+         {
+            "main_text" : "Masbate Port",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Masbate City, Masbate, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Masbate Port"
+            },
+            {
+               "offset" : 14,
+               "value" : "Masbate City"
+            },
+            {
+               "offset" : 28,
+               "value" : "Masbate"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

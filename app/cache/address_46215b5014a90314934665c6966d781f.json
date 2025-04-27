@@ -45,9 +45,9 @@
          ],
          "types" : 
          [
-            "establishment",
+            "point_of_interest",
             "school",
-            "point_of_interest"
+            "establishment"
          ]
       },
       {
@@ -98,9 +98,9 @@
          ],
          "types" : 
          [
-            "school",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "school"
          ]
       },
       {
@@ -151,8 +151,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -204,12 +204,12 @@
          "types" : 
          [
             "school",
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
-         "description" : "Victorious Cross Christian Fellowship, Maharlika, Los Baños, Laguna, Philippines",
+         "description" : "Victorious Events Place, Alfonso, Cavite, Philippines",
          "matched_substrings" : 
          [
             {
@@ -217,11 +217,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJizI9tDthvTMRhxRcgohZj4k",
-         "reference" : "ChIJizI9tDthvTMRhxRcgohZj4k",
+         "place_id" : "ChIJxbIQn5udvTMR8qiZ2lh6zMA",
+         "reference" : "ChIJxbIQn5udvTMR8qiZ2lh6zMA",
          "structured_formatting" : 
          {
-            "main_text" : "Victorious Cross Christian Fellowship",
+            "main_text" : "Victorious Events Place",
             "main_text_matched_substrings" : 
             [
                {
@@ -229,37 +229,31 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Maharlika, Los Baños, Laguna, Philippines"
+            "secondary_text" : "Alfonso, Cavite, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Victorious Cross Christian Fellowship"
+               "value" : "Victorious Events Place"
             },
             {
-               "offset" : 39,
-               "value" : "Maharlika"
+               "offset" : 25,
+               "value" : "Alfonso"
             },
             {
-               "offset" : 50,
-               "value" : "Los Baños"
+               "offset" : 34,
+               "value" : "Cavite"
             },
             {
-               "offset" : 61,
-               "value" : "Laguna"
-            },
-            {
-               "offset" : 69,
+               "offset" : 42,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "church",
-            "establishment",
             "point_of_interest",
-            "place_of_worship"
+            "establishment"
          ]
       }
    ],

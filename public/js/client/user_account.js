@@ -169,6 +169,11 @@ async function loadUserInformation() {
             document.getElementById("contactNumber").value = client.contact_number;
             document.getElementById("email").value = client.email;
             
+            // Set company name if available
+            if (client.company_name) {
+                document.getElementById("companyName").value = client.company_name;
+            }
+            
             // Set address if available
             const addressField = document.getElementById("address");
             if (addressField && client.address) {
@@ -193,7 +198,7 @@ async function loadUserInformation() {
  * Calculate and display user's profile completion percentage
  */
 function calculateProfileCompletion(user) {
-    const totalFields = 5; // first_name, last_name, email, contact_number, address
+    const totalFields = 6; // first_name, last_name, email, contact_number, address, company_name
     let filledFields = 0;
     
     if (user.first_name) filledFields++;
@@ -201,6 +206,7 @@ function calculateProfileCompletion(user) {
     if (user.email) filledFields++;
     if (user.contact_number) filledFields++;
     if (user.address) filledFields++;
+    if (user.company_name) filledFields++;
     
     const percentage = Math.round((filledFields / totalFields) * 100);
     
@@ -247,10 +253,11 @@ async function handleProfileUpdate(e) {
     const formData = {
         firstName: document.getElementById("firstName")?.value,
         lastName: document.getElementById("lastName")?.value,
+        companyName: document.getElementById("companyName")?.value,
         contactNumber: formatPhoneNumberForDB(document.getElementById("contactNumber")?.value),
         email: document.getElementById("email")?.value,
-        address: document.getElementById("address")?.value
-    };    
+        address: document.getElementById("address")?.value || ''
+    };
 
     try {
         const response = await fetch("/update-client-information", {

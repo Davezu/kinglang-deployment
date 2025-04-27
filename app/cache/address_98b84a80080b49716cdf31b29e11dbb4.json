@@ -1,0 +1,271 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Emraud Square Plaza, L. Sumulong Memorial Circle, Antipolo, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ21lN2KnAlzMRIXc-qP9heZs",
+         "reference" : "ChIJ21lN2KnAlzMRIXc-qP9heZs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Emraud Square Plaza",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "L. Sumulong Memorial Circle, Antipolo, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Emraud Square Plaza"
+            },
+            {
+               "offset" : 21,
+               "value" : "L. Sumulong Memorial Circle"
+            },
+            {
+               "offset" : 50,
+               "value" : "Antipolo"
+            },
+            {
+               "offset" : 60,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "shopping_mall",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "EMR Center, Gensan Drive, Koronadal City, South Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ2VgzOfYY-DIRGpKmuF3itY4",
+         "reference" : "ChIJ2VgzOfYY-DIRGpKmuF3itY4",
+         "structured_formatting" : 
+         {
+            "main_text" : "EMR Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gensan Drive, Koronadal City, South Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "EMR Center"
+            },
+            {
+               "offset" : 12,
+               "value" : "Gensan Drive"
+            },
+            {
+               "offset" : 26,
+               "value" : "Koronadal City"
+            },
+            {
+               "offset" : 42,
+               "value" : "South Cotabato"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "restaurant",
+            "establishment",
+            "food"
+         ]
+      },
+      {
+         "description" : "Emrys Café, Agoncillo, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJD9slBsd1vTMRei7XKdn8A90",
+         "reference" : "ChIJD9slBsd1vTMRei7XKdn8A90",
+         "structured_formatting" : 
+         {
+            "main_text" : "Emrys Café",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Agoncillo, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Emrys Café"
+            },
+            {
+               "offset" : 12,
+               "value" : "Agoncillo"
+            },
+            {
+               "offset" : 23,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "cafe",
+            "restaurant",
+            "point_of_interest",
+            "establishment",
+            "food"
+         ]
+      },
+      {
+         "description" : "Emriz Bulalohan at Tapsihan, Guerrero, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8xHK3zLIlzMRcRPTNC8yg2o",
+         "reference" : "ChIJ8xHK3zLIlzMRcRPTNC8yg2o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Emriz Bulalohan at Tapsihan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Guerrero, Mandaluyong, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Emriz Bulalohan at Tapsihan"
+            },
+            {
+               "offset" : 29,
+               "value" : "Guerrero"
+            },
+            {
+               "offset" : 39,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "food",
+            "restaurant"
+         ]
+      },
+      {
+         "description" : "EMR Suites, Gensan Drive, Koronadal City, South Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv5r_OvYY-DIRt3d2367OnUM",
+         "reference" : "ChIJv5r_OvYY-DIRt3d2367OnUM",
+         "structured_formatting" : 
+         {
+            "main_text" : "EMR Suites",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gensan Drive, Koronadal City, South Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "EMR Suites"
+            },
+            {
+               "offset" : 12,
+               "value" : "Gensan Drive"
+            },
+            {
+               "offset" : 26,
+               "value" : "Koronadal City"
+            },
+            {
+               "offset" : 42,
+               "value" : "South Cotabato"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

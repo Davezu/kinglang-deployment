@@ -45,9 +45,9 @@
          ],
          "types" : 
          [
-            "geocode",
-            "political",
             "sublocality",
+            "political",
+            "geocode",
             "sublocality_level_1"
          ]
       },
@@ -103,9 +103,9 @@
          ],
          "types" : 
          [
-            "parking",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "parking"
          ]
       },
       {
@@ -212,8 +212,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {

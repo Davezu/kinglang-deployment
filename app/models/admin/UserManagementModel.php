@@ -63,7 +63,7 @@ class UserManagementModel {
 
     public function getUserById($userId) {
         try {
-            $stmt = $this->conn->prepare("SELECT user_id, first_name, last_name, email, contact_number, role, created_at 
+            $stmt = $this->conn->prepare("SELECT user_id, first_name, last_name, email, contact_number, role, created_at, company_name
                                          FROM users WHERE user_id = :userId");
             $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
             $stmt->execute();

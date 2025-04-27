@@ -1,0 +1,267 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJx2-Va4fJlzMRUsqrIbAmN3s",
+         "reference" : "ChIJx2-Va4fJlzMRUsqrIbAmN3s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ermita",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 8,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 16,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "sublocality_level_1",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Ermita Center Building, Roxas Boulevard, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5bzDlS7KlzMRbS-ARUyga0I",
+         "reference" : "ChIJ5bzDlS7KlzMRbS-ARUyga0I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ermita Center Building",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Roxas Boulevard, Ermita, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ermita Center Building"
+            },
+            {
+               "offset" : 24,
+               "value" : "Roxas Boulevard"
+            },
+            {
+               "offset" : 41,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 49,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      },
+      {
+         "description" : "Ermita Church, A. Flores, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJKexkbi_KlzMRP01MtRMdWJ0",
+         "reference" : "ChIJKexkbi_KlzMRP01MtRMdWJ0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ermita Church",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "A. Flores, Ermita, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ermita Church"
+            },
+            {
+               "offset" : 15,
+               "value" : "A. Flores"
+            },
+            {
+               "offset" : 26,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 34,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "church",
+            "point_of_interest",
+            "establishment",
+            "tourist_attraction",
+            "place_of_worship"
+         ]
+      },
+      {
+         "description" : "Ermita Hill, Baler, Aurora, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJCbLP89emkDMRMmXfRPG-rXg",
+         "reference" : "ChIJCbLP89emkDMRMmXfRPG-rXg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ermita Hill",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Baler, Aurora, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ermita Hill"
+            },
+            {
+               "offset" : 13,
+               "value" : "Baler"
+            },
+            {
+               "offset" : 20,
+               "value" : "Aurora"
+            },
+            {
+               "offset" : 28,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "natural_feature",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Ermita Barangay Hall, Cebu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJVVVVpeSbqTMRyUQyCwwJuIM",
+         "reference" : "ChIJVVVVpeSbqTMRyUQyCwwJuIM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ermita Barangay Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cebu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ermita Barangay Hall"
+            },
+            {
+               "offset" : 22,
+               "value" : "Cebu City"
+            },
+            {
+               "offset" : 33,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

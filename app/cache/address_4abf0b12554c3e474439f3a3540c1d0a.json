@@ -1,0 +1,268 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Pinagbuhatan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPS5-eNHHlzMRMWSueq9Q5A0",
+         "reference" : "ChIJPS5-eNHHlzMRMWSueq9Q5A0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pinagbuhatan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pinagbuhatan"
+            },
+            {
+               "offset" : 14,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 28,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "political",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Pinagbuhatan pasig, Mahogany Street, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeR62kurHlzMRo2FjGS9szSU",
+         "reference" : "ChIJeR62kurHlzMRo2FjGS9szSU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pinagbuhatan pasig",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mahogany Street, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pinagbuhatan pasig"
+            },
+            {
+               "offset" : 20,
+               "value" : "Mahogany Street"
+            },
+            {
+               "offset" : 37,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 44,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "car_repair",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Pinagbuhatan High School, Urbano Velasco Avenue, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJVShgQs3HlzMRyu12c5eFoGQ",
+         "reference" : "ChIJVShgQs3HlzMRyu12c5eFoGQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pinagbuhatan High School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Urbano Velasco Avenue, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pinagbuhatan High School"
+            },
+            {
+               "offset" : 26,
+               "value" : "Urbano Velasco Avenue"
+            },
+            {
+               "offset" : 49,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 56,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "primary_school",
+            "establishment",
+            "school",
+            "secondary_school"
+         ]
+      },
+      {
+         "description" : "Pinagbuhatan Barangay Hall, M.H. del Pilar Street, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBZ5wb83HlzMRRMSWQ_AfSMk",
+         "reference" : "ChIJBZ5wb83HlzMRRMSWQ_AfSMk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pinagbuhatan Barangay Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M.H. del Pilar Street, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pinagbuhatan Barangay Hall"
+            },
+            {
+               "offset" : 28,
+               "value" : "M.H. del Pilar Street"
+            },
+            {
+               "offset" : 51,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 58,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 72,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "hospital",
+            "health",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Pinagbuhatan Elementary School, C M Cruz, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-TU38M3HlzMRnKK6K0ztaOE",
+         "reference" : "ChIJ-TU38M3HlzMRnKK6K0ztaOE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pinagbuhatan Elementary School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "C M Cruz, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pinagbuhatan Elementary School"
+            },
+            {
+               "offset" : 32,
+               "value" : "C M Cruz"
+            },
+            {
+               "offset" : 42,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 49,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "primary_school",
+            "school",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

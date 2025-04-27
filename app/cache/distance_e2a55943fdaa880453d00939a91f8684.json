@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "Mahogany St, Pasig, Metro Manila, Philippines",
+      "118 Legazpi Street, Legazpi Village, Makati, 1229 Kalakhang Maynila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "118 Legazpi Street, Legazpi Village, Makati, 1229 Kalakhang Maynila, Philippines",
+      "Mahogany St, Pasig, Metro Manila, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "19.1 km",
+                  "value" : 19076
+               },
+               "duration" : 
+               {
+                  "text" : "36 mins",
+                  "value" : 2162
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "19.1 km",
+                  "value" : 19071
+               },
+               "duration" : 
+               {
+                  "text" : "36 mins",
+                  "value" : 2178
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

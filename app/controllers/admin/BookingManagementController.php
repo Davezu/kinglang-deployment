@@ -477,5 +477,88 @@ class BookingManagementController {
         
         echo json_encode($revenue);
     }
+    
+    // New method for showing the create booking form
+    public function showCreateBookingForm() {
+        include_once __DIR__ . "/../../views/admin/create_booking.php";
+    }
+    
+    // New method for processing admin-created bookings
+    public function createBooking() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $data = json_decode(file_get_contents("php://input"), true);
+            
+            // Validate required fields
+            $requiredFields = [
+                'clientName', 'contactNumber', 'email', 
+                'destination', 'pickupPoint', 'dateOfTour', 
+                'numberOfDays', 'numberOfBuses', 'totalCost'
+            ];
+            
+            foreach ($requiredFields as $field) {
+                if (!isset($data[$field]) || $data[$field] === '') {
+                    header("Content-Type: application/json");
+                    echo json_encode([
+                        "success" => false, 
+                        "message" => "Please fill in all required fields.",
+                        "field" => $field
+                    ]);
+                    return;
+                }
+            }
+            
+            // Prepare booking data for the model
+            $bookingData = [
+                'client_name' => $data['clientName'],
+                'contact_number' => $data['contactNumber'],
+                'email' => $data['email'],
+                'address' => $data['address'],
+                'destination' => $data['destination'],
+                'pickup_point' => $data['pickupPoint'],
+                'date_of_tour' => $data['dateOfTour'],
+                'number_of_days' => (int)$data['numberOfDays'],
+                'number_of_buses' => (int)$data['numberOfBuses'],
+                'estimated_pax' => isset($data['estimatedPax']) ? (int)$data['estimatedPax'] : 0,
+                'total_cost' => (float)$data['totalCost'],
+                'discount' => isset($data['discount']) ? (float)$data['discount'] : 0,
+                'notes' => isset($data['notes']) ? $data['notes'] : '',
+                'status' => 'Confirmed', // Admin-created bookings are auto-confirmed
+                'created_by' => 'admin', // Mark as created by admin
+                'stops' => isset($data['stops']) ? $data['stops'] : [],
+            ];
+            
+            // Calculate the end date based on start date and number of days
+            $startDate = new DateTime($data['dateOfTour']);
+            $endDate = clone $startDate;
+            $endDate->modify('+' . ((int)$data['numberOfDays'] - 1) . ' days');
+            $bookingData['end_of_tour'] = $endDate->format('Y-m-d');
+            
+            // Add initial payment if provided
+            if (isset($data['initialPayment']) && $data['initialPayment']) {
+                $bookingData['initial_payment'] = [
+                    'amount_paid' => (float)$data['initialPayment']['amountPaid'],
+                    'payment_method' => $data['initialPayment']['paymentMethod'],
+                    'payment_reference' => $data['initialPayment']['paymentReference'] ?? null
+                ];
+            }
+            
+            // Process the booking creation
+            $result = $this->bookingModel->createBookingByAdmin($bookingData);
+            
+            header("Content-Type: application/json");
+            if ($result['success']) {
+                echo json_encode([
+                    "success" => true, 
+                    "message" => "Booking created successfully!",
+                    "booking_id" => $result['booking_id']
+                ]);
+            } else {
+                echo json_encode([
+                    "success" => false, 
+                    "message" => $result['message']
+                ]);
+            }
+        }
+    }
 }
 ?>

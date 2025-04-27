@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
-            "geocode",
+            "locality",
             "political",
-            "locality"
+            "geocode"
          ]
       },
       {

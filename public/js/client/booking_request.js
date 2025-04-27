@@ -118,6 +118,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     const mobilePaymentSection = document.getElementById("mobilePaymentSection");
     
     if (paymentMethodSelect && accountInfoSection && proofUploadSection && mobilePaymentSection) {
+        // Show account info section by default when modal opens
+        accountInfoSection.style.display = "block";
+        proofUploadSection.style.display = "block";
+        
         paymentMethodSelect.addEventListener("change", function() {
             const selectedMethod = this.value;
             
@@ -161,6 +165,20 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     // Initialize reset filters button
     document.getElementById("resetFilters")?.addEventListener("click", resetFilters);
+    
+    // Initialize the payment modal event
+    const paymentModal = document.getElementById('paymentModal');
+    if (paymentModal) {
+        paymentModal.addEventListener('show.bs.modal', function() {
+            // Make sure account info section is shown by default
+            const accountInfoSection = document.getElementById("accountInfoSection");
+            const proofUploadSection = document.getElementById("proofUploadSection");
+            if (accountInfoSection && proofUploadSection) {
+                accountInfoSection.style.display = "block";
+                proofUploadSection.style.display = "block";
+            }
+        });
+    }
 });
 
 // Update booking statistics
@@ -1048,7 +1066,9 @@ function renderBookings(bookings) {
             row.appendChild(statusCell);
             
             // Actions
-            row.appendChild(actionCell(booking));
+            const actionTd = document.createElement("td");
+            actionTd.appendChild(actionCell(booking))
+            row.appendChild(actionTd);
             
             tableBody.appendChild(row);
         });
@@ -1197,6 +1217,7 @@ function addCardActions(container, booking) {
         payBtn.setAttribute("data-bs-target", "#paymentModal");
         payBtn.setAttribute("data-booking-id", booking.booking_id);
         payBtn.setAttribute("data-total-cost", booking.total_cost);
+        payBtn.setAttribute("data-balance", booking.balance);
         payBtn.setAttribute("data-client-id", booking.client_id);
         
         payBtn.addEventListener("click", function() {
@@ -1210,21 +1231,28 @@ function addCardActions(container, booking) {
             const paymentMethodSelect = document.getElementById("paymentMethod");
             if (paymentMethodSelect) {
                 paymentMethodSelect.selectedIndex = 0;
-                const event = new Event('change');
-                paymentMethodSelect.dispatchEvent(event);
+                
+                // Show account info section by default
+                const accountInfoSection = document.getElementById("accountInfoSection");
+                const proofUploadSection = document.getElementById("proofUploadSection");
+                if (accountInfoSection && proofUploadSection) {
+                    accountInfoSection.style.display = "block";
+                    proofUploadSection.style.display = "block";
+                }
             }
             
             const totalCost = this.getAttribute("data-total-cost");
+            const balance = this.getAttribute("data-balance");
             const bookingID = this.getAttribute("data-booking-id");
-    
+
             document.getElementById("fullAmnt").style.display = "block";  
             document.getElementById("downPayment").textContent = "Down Payment";
             
-            if (parseFloat(booking.balance) < parseFloat(booking.total_cost)) {
+            if (parseFloat(balance) < parseFloat(totalCost)) {
                 document.getElementById("fullAmnt").style.display = "none";   
                 document.getElementById("downPayment").textContent = "Final Payment";
                 // Use the balance amount as the final payment amount
-                partialAmount.textContent = formatNumber(booking.balance);
+                partialAmount.textContent = formatNumber(balance);
                 // Auto-select the down payment option when full payment is not available
                 setTimeout(() => {
                     document.querySelectorAll(".amount-payment")[1].click();
@@ -1348,8 +1376,6 @@ function openBookingDetailsModal(bookingId) {
         if (data.success) {
             const booking = data.booking;
             const payment = data.payments;
-            console.log(booking);
-            console.log(payment);
             
             // Format the booking details as HTML with comprehensive information
             modalContent.innerHTML = `
@@ -1414,6 +1440,7 @@ function openBookingDetailsModal(bookingId) {
                                 data-bs-target="#paymentModal"
                                 data-booking-id="${booking.booking_id}"
                                 data-total-cost="${booking.total_cost}"
+                                data-balance="${booking.balance}"
                                 data-client-id="${booking.client_id}">
                                 <i class="bi bi-credit-card"></i> Make Payment
                             </button>
@@ -1454,17 +1481,26 @@ function openBookingDetailsModal(bookingId) {
                 
                 // Get payment details
                 const totalCost = this.getAttribute("data-total-cost");
+                const balance = this.getAttribute("data-balance");
                 const bookingID = this.getAttribute("data-booking-id");
+                
+                // Show account info section by default
+                const accountInfoSection = document.getElementById("accountInfoSection");
+                const proofUploadSection = document.getElementById("proofUploadSection");
+                if (accountInfoSection && proofUploadSection) {
+                    accountInfoSection.style.display = "block";
+                    proofUploadSection.style.display = "block";
+                }
                 
                 document.getElementById("fullAmnt").style.display = "block";  
                 document.getElementById("downPayment").textContent = "Down Payment";
                 
-                if (parseFloat(booking.balance) < parseFloat(booking.total_cost)) {
+                if (parseFloat(balance) < parseFloat(totalCost)) {
                     document.getElementById("fullAmnt").style.display = "none";   
                     document.getElementById("downPayment").textContent = "Final Payment";
-                    partialAmount.textContent = formatNumber(booking.balance);
+                    partialAmount.textContent = formatNumber(balance);
                     
-                    // Auto-select the down payment option
+                    // Auto-select the down payment option  
                     setTimeout(() => {
                         document.querySelectorAll(".amount-payment")[1].click();
                     }, 300);
@@ -1580,22 +1616,57 @@ function actionCell(booking) {
                 'bi bi-credit-card',
                 'Pay',
                 () => {
+                    // Reset form state
+                    document.getElementById("amount").textContent = "";
+                    document.querySelectorAll(".amount-payment").forEach(el => {
+                        el.classList.remove("selected");
+                    });
+                    
+                    // Show payment modal
                     $('#paymentModal').modal('show');
+                    
+                    // Show account info section by default
+                    const accountInfoSection = document.getElementById("accountInfoSection");
+                    const proofUploadSection = document.getElementById("proofUploadSection");
+                    if (accountInfoSection && proofUploadSection) {
+                        accountInfoSection.style.display = "block";
+                        proofUploadSection.style.display = "block";
+                    }
+                    
+                    // Set booking details in the payment form
                     let bookingDetails = {
                         id: booking.booking_id,
                         user_id: booking.user_id,
-                        full_payment: parseFloat(booking.balance),
-                        partial_payment: parseFloat(booking.balance) * 0.50
+                        balance: parseFloat(booking.balance),
+                        total_cost: parseFloat(booking.total_cost)
                     };
 
                     bookingIDinput.value = bookingDetails.id;
                     userIDinput.value = bookingDetails.user_id;
 
-                    fullAmount.innerHTML = formatNumber(bookingDetails.full_payment);
-                    partialAmount.innerHTML = formatNumber(bookingDetails.partial_payment);
-
-                    // Simulate a click on the full payment option
-                    document.getElementById('fullAmnt').click();
+                    // Check if partial payment already made
+                    if (bookingDetails.balance < bookingDetails.total_cost) {
+                        // Only show final payment option
+                        document.getElementById("fullAmnt").style.display = "none";
+                        document.getElementById("downPayment").textContent = "Final Payment";
+                        partialAmount.innerHTML = formatNumber(bookingDetails.balance);
+                        
+                        // Auto-select the final payment option
+                        setTimeout(() => {
+                            document.querySelectorAll(".amount-payment")[1].click();
+                        }, 300);
+                    } else {
+                        // Show both payment options
+                        document.getElementById("fullAmnt").style.display = "block";
+                        document.getElementById("downPayment").textContent = "Down Payment";
+                        fullAmount.innerHTML = formatNumber(bookingDetails.total_cost);
+                        partialAmount.innerHTML = formatNumber(bookingDetails.total_cost * 0.5);
+                        
+                        // Simulate a click on the full payment option
+                        setTimeout(() => {
+                            document.getElementById('fullAmnt').click();
+                        }, 300);
+                    }
                 }
             )
         );

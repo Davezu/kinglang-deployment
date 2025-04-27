@@ -38,8 +38,8 @@
          "types" : 
          [
             "political",
-            "administrative_area_level_2",
-            "geocode"
+            "geocode",
+            "administrative_area_level_2"
          ]
       },
       {
@@ -78,8 +78,8 @@
          ],
          "types" : 
          [
-            "natural_feature",
-            "establishment"
+            "establishment",
+            "natural_feature"
          ]
       },
       {
@@ -126,9 +126,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "airport",
             "establishment",
-            "airport"
+            "point_of_interest"
          ]
       },
       {
@@ -180,7 +180,7 @@
          ]
       },
       {
-         "description" : "Marinduque State University, Panfilo M. Manguera, Sr. Road, Boac, Marinduque, Philippines",
+         "description" : "Marinduque Provincial Capitol, Boac, Marinduque, Philippines",
          "matched_substrings" : 
          [
             {
@@ -188,11 +188,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJSxDgQEwmozMRuvYq27a4b_A",
-         "reference" : "ChIJSxDgQEwmozMRuvYq27a4b_A",
+         "place_id" : "ChIJ75f4_xUmozMRlQeROtgh3_E",
+         "reference" : "ChIJ75f4_xUmozMRlQeROtgh3_E",
          "structured_formatting" : 
          {
-            "main_text" : "Marinduque State University",
+            "main_text" : "Marinduque Provincial Capitol",
             "main_text_matched_substrings" : 
             [
                {
@@ -200,40 +200,32 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Panfilo M. Manguera, Sr. Road, Boac, Marinduque, Philippines"
+            "secondary_text" : "Boac, Marinduque, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Marinduque State University"
+               "value" : "Marinduque Provincial Capitol"
             },
             {
-               "offset" : 29,
-               "value" : "Panfilo M. Manguera"
-            },
-            {
-               "offset" : 50,
-               "value" : "Sr. Road"
-            },
-            {
-               "offset" : 60,
+               "offset" : 31,
                "value" : "Boac"
             },
             {
-               "offset" : 66,
+               "offset" : 37,
                "value" : "Marinduque"
             },
             {
-               "offset" : 78,
+               "offset" : 49,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "point_of_interest",
             "establishment",
-            "university"
+            "point_of_interest",
+            "local_government_office"
          ]
       }
    ],

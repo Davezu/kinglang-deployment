@@ -1,0 +1,229 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Mindoro, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJo7DwlaeCvDMRm7Az31p9yac",
+         "reference" : "ChIJo7DwlaeCvDMRm7Az31p9yac",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mindoro",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mindoro"
+            },
+            {
+               "offset" : 9,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Mindoro Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJUYh3HkdhuzMRTyMrJgYTTwk",
+         "reference" : "ChIJUYh3HkdhuzMRTyMrJgYTTwk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mindoro Oriental",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mindoro Oriental"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "administrative_area_level_2",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Mindoro Occidental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPUlPa8eEuzMRXdtMCQGpLMY",
+         "reference" : "ChIJPUlPa8eEuzMRXdtMCQGpLMY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mindoro Occidental",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mindoro Occidental"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_2",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Mindoro, Paco, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjBNaW5kb3JvLCBQYWNvLCBNYW5pbGEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgnZW9AricmXMxEw0wWKIK8byRIUChIJeQ1nHobJlzMRyR1CG6A_v-g",
+         "reference" : "EjBNaW5kb3JvLCBQYWNvLCBNYW5pbGEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgnZW9AricmXMxEw0wWKIK8byRIUChIJeQ1nHobJlzMRyR1CG6A_v-g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mindoro",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Paco, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mindoro"
+            },
+            {
+               "offset" : 9,
+               "value" : "Paco"
+            },
+            {
+               "offset" : 15,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 23,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Mindoro, Calapan, Oriental Mindoro, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJi6lTsz3nvDMRSXC9ZL6TLqg",
+         "reference" : "ChIJi6lTsz3nvDMRSXC9ZL6TLqg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mindoro",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Calapan, Oriental Mindoro, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mindoro"
+            },
+            {
+               "offset" : 9,
+               "value" : "Calapan"
+            },
+            {
+               "offset" : 18,
+               "value" : "Oriental Mindoro"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

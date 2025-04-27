@@ -1,0 +1,259 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Baliwag, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJS8rXHwAAlzMR3UAFAyQ0k0g",
+         "reference" : "ChIJS8rXHwAAlzMR3UAFAyQ0k0g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baliwag",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baliwag"
+            },
+            {
+               "offset" : 9,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Baliwag Transit, Inc. - Cubao Terminal, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ7337F7m3lzMRr0zsvxGQAgw",
+         "reference" : "ChIJ7337F7m3lzMRr0zsvxGQAgw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baliwag Transit, Inc. - Cubao Terminal",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baliwag Transit, Inc. - Cubao Terminal"
+            },
+            {
+               "offset" : 40,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 53,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Baliwag Terminal, 5th Avenue, Grace Park West, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ50d4exu1lzMRlOnsYgQifBg",
+         "reference" : "ChIJ50d4exu1lzMRlOnsYgQifBg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baliwag Terminal",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "5th Avenue, Grace Park West, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baliwag Terminal"
+            },
+            {
+               "offset" : 18,
+               "value" : "5th Avenue"
+            },
+            {
+               "offset" : 30,
+               "value" : "Grace Park West"
+            },
+            {
+               "offset" : 47,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Baliwag Best Halo-Halo, Doña Remedios Trinidad Highway, Baliwag, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_SXiFwABlzMRWkJn2Qq_GzA",
+         "reference" : "ChIJ_SXiFwABlzMRWkJn2Qq_GzA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baliwag Best Halo-Halo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Doña Remedios Trinidad Highway, Baliwag, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baliwag Best Halo-Halo"
+            },
+            {
+               "offset" : 24,
+               "value" : "Doña Remedios Trinidad Highway"
+            },
+            {
+               "offset" : 56,
+               "value" : "Baliwag"
+            },
+            {
+               "offset" : 65,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "establishment",
+            "point_of_interest",
+            "restaurant"
+         ]
+      },
+      {
+         "description" : "Baliwagan, Balingasag, Misamis Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5dMAVZvh_zIRU8Q0L7afGVI",
+         "reference" : "ChIJ5dMAVZvh_zIRU8Q0L7afGVI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baliwagan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Balingasag, Misamis Oriental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baliwagan"
+            },
+            {
+               "offset" : 11,
+               "value" : "Balingasag"
+            },
+            {
+               "offset" : 23,
+               "value" : "Misamis Oriental"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality_level_2",
+            "geocode",
+            "sublocality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

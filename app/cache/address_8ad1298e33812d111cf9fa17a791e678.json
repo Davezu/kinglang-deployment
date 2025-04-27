@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
-            "political",
             "locality",
-            "geocode"
+            "geocode",
+            "political"
          ]
       },
       {
@@ -94,10 +94,10 @@
          ],
          "types" : 
          [
-            "restaurant",
-            "establishment",
             "food",
             "point_of_interest",
+            "restaurant",
+            "establishment",
             "lodging"
          ]
       },
@@ -145,8 +145,8 @@
          ],
          "types" : 
          [
-            "premise",
-            "geocode"
+            "geocode",
+            "premise"
          ]
       },
       {
@@ -197,10 +197,10 @@
          ],
          "types" : 
          [
+            "geocode",
             "sublocality_level_2",
             "political",
-            "sublocality",
-            "geocode"
+            "sublocality"
          ]
       },
       {
@@ -247,10 +247,10 @@
          ],
          "types" : 
          [
-            "political",
-            "sublocality_level_2",
             "sublocality",
-            "geocode"
+            "sublocality_level_2",
+            "geocode",
+            "political"
          ]
       }
    ],

@@ -53,8 +53,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -106,8 +106,8 @@
          "types" : 
          [
             "food",
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -158,14 +158,14 @@
          ],
          "types" : 
          [
-            "car_repair",
-            "store",
+            "establishment",
             "point_of_interest",
-            "establishment"
+            "store",
+            "car_repair"
          ]
       },
       {
-         "description" : "Kinglany store, Mt. Dumagat st, Montalban, Rizal, Philippines",
+         "description" : "Kinglet St., Antipolo, Rizal, Philippines",
          "matched_substrings" : 
          [
             {
@@ -173,11 +173,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJP1ZDRwC_lzMR5maT438KCwQ",
-         "reference" : "ChIJP1ZDRwC_lzMR5maT438KCwQ",
+         "place_id" : "EilLaW5nbGV0IFN0LiwgQW50aXBvbG8sIFJpemFsLCBQaGlsaXBwaW5lcyIuKiwKFAoSCcdUcGZOuJczEQLWrRmR-GFZEhQKEgnFEIONDL-XMxGjgL9_Wo7cNA",
+         "reference" : "EilLaW5nbGV0IFN0LiwgQW50aXBvbG8sIFJpemFsLCBQaGlsaXBwaW5lcyIuKiwKFAoSCcdUcGZOuJczEQLWrRmR-GFZEhQKEgnFEIONDL-XMxGjgL9_Wo7cNA",
          "structured_formatting" : 
          {
-            "main_text" : "Kinglany store",
+            "main_text" : "Kinglet St.",
             "main_text_matched_substrings" : 
             [
                {
@@ -185,42 +185,35 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Mt. Dumagat st, Montalban, Rizal, Philippines"
+            "secondary_text" : "Antipolo, Rizal, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Kinglany store"
+               "value" : "Kinglet St."
             },
             {
-               "offset" : 16,
-               "value" : "Mt. Dumagat st"
+               "offset" : 13,
+               "value" : "Antipolo"
             },
             {
-               "offset" : 32,
-               "value" : "Montalban"
-            },
-            {
-               "offset" : 43,
+               "offset" : 23,
                "value" : "Rizal"
             },
             {
-               "offset" : 50,
+               "offset" : 30,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "grocery_or_supermarket",
-            "point_of_interest",
-            "store",
-            "food",
-            "establishment"
+            "geocode",
+            "route"
          ]
       },
       {
-         "description" : "Kingland Marketing Company Inc., Entrance to Golden City Subdivision, Santa Rosa, Laguna, Philippines",
+         "description" : "Kinglet, Angono, Rizal, Philippines",
          "matched_substrings" : 
          [
             {
@@ -228,11 +221,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJVT2y9OFjvTMR85Fb00qWM6o",
-         "reference" : "ChIJVT2y9OFjvTMR85Fb00qWM6o",
+         "place_id" : "EiNLaW5nbGV0LCBBbmdvbm8sIFJpemFsLCBQaGlsaXBwaW5lcyIuKiwKFAoSCUFe3FzFwJczEXFDPPZg_f8gEhQKEgk_L6BV1MaXMxESTnkxEt2ptA",
+         "reference" : "EiNLaW5nbGV0LCBBbmdvbm8sIFJpemFsLCBQaGlsaXBwaW5lcyIuKiwKFAoSCUFe3FzFwJczEXFDPPZg_f8gEhQKEgk_L6BV1MaXMxESTnkxEt2ptA",
          "structured_formatting" : 
          {
-            "main_text" : "Kingland Marketing Company Inc.",
+            "main_text" : "Kinglet",
             "main_text_matched_substrings" : 
             [
                {
@@ -240,36 +233,31 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Entrance to Golden City Subdivision, Santa Rosa, Laguna, Philippines"
+            "secondary_text" : "Angono, Rizal, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Kingland Marketing Company Inc."
+               "value" : "Kinglet"
             },
             {
-               "offset" : 33,
-               "value" : "Entrance to Golden City Subdivision"
+               "offset" : 9,
+               "value" : "Angono"
             },
             {
-               "offset" : 70,
-               "value" : "Santa Rosa"
+               "offset" : 17,
+               "value" : "Rizal"
             },
             {
-               "offset" : 82,
-               "value" : "Laguna"
-            },
-            {
-               "offset" : 90,
+               "offset" : 24,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "point_of_interest",
-            "store",
-            "establishment"
+            "route",
+            "geocode"
          ]
       }
    ],

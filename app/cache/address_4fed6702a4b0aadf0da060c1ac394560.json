@@ -1,0 +1,255 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Apalit, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJI17MQUtWljMRVEhzsOm1t6Y",
+         "reference" : "ChIJI17MQUtWljMRVEhzsOm1t6Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apalit",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apalit"
+            },
+            {
+               "offset" : 8,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Apalit Municipal Hall, Gonzales Ave, Apalit, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ6yOs6DdWljMR-Djlict4zCA",
+         "reference" : "ChIJ6yOs6DdWljMR-Djlict4zCA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apalit Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gonzales Ave, Apalit, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apalit Municipal Hall"
+            },
+            {
+               "offset" : 23,
+               "value" : "Gonzales Ave"
+            },
+            {
+               "offset" : 37,
+               "value" : "Apalit"
+            },
+            {
+               "offset" : 45,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "local_government_office",
+            "establishment",
+            "city_hall"
+         ]
+      },
+      {
+         "description" : "Apalit Public Market, MacArthur Highway, Apalit, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJL1ToUUtWljMRimD9zWfP-3w",
+         "reference" : "ChIJL1ToUUtWljMRimD9zWfP-3w",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apalit Public Market",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "MacArthur Highway, Apalit, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apalit Public Market"
+            },
+            {
+               "offset" : 22,
+               "value" : "MacArthur Highway"
+            },
+            {
+               "offset" : 41,
+               "value" : "Apalit"
+            },
+            {
+               "offset" : 49,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Apalit Bypass Road, Pulilan, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjFBcGFsaXQgQnlwYXNzIFJvYWQsIFB1bGlsYW4sIEJ1bGFjYW4sIFBoaWxpcHBpbmVzIi4qLAoUChIJ98hRLPpVljMRBVWY9RSeqQ4SFAoSCdsA-aKsVZYzEYwbJQdnYD9V",
+         "reference" : "EjFBcGFsaXQgQnlwYXNzIFJvYWQsIFB1bGlsYW4sIEJ1bGFjYW4sIFBoaWxpcHBpbmVzIi4qLAoUChIJ98hRLPpVljMRBVWY9RSeqQ4SFAoSCdsA-aKsVZYzEYwbJQdnYD9V",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apalit Bypass Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pulilan, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apalit Bypass Road"
+            },
+            {
+               "offset" : 20,
+               "value" : "Pulilan"
+            },
+            {
+               "offset" : 29,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Apalit, Floridablanca, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJvWAUQathljMRcv5g25TpXxM",
+         "reference" : "ChIJvWAUQathljMRcv5g25TpXxM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apalit",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Floridablanca, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apalit"
+            },
+            {
+               "offset" : 8,
+               "value" : "Floridablanca"
+            },
+            {
+               "offset" : 23,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality_level_2",
+            "sublocality",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

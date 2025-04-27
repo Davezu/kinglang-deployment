@@ -90,8 +90,8 @@ require_admin_auth(); // Use helper function
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="rounded p-4 summary-metrics-card">
-                        <h4>Payment Method Distribution</h4>
-                        <canvas id="paymentMethodChart" height="300"></canvas>
+                        <h4>Revenue Trends</h4>
+                        <canvas id="revenueTrendsChart" height="300"></canvas>
                     </div>
                 </div>
             </div>
@@ -111,8 +111,8 @@ require_admin_auth(); // Use helper function
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="rounded p-4 summary-metrics-card">
-                        <h4>Revenue Trends</h4>
-                        <canvas id="revenueTrendsChart" height="300"></canvas>
+                        <h4>Payment Method Distribution</h4>
+                        <canvas id="paymentMethodChart" height="300"></canvas>
                     </div>
                 </div>
             </div>

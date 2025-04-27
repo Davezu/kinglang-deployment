@@ -56,15 +56,39 @@ class PaymentManagementController {
         }
     }
     
+    public function getPaymentStats() {
+        header('Content-Type: application/json');
+        
+        try {
+            $stats = $this->paymentModel->getPaymentStats();
+            
+            echo json_encode([
+                'success' => true,
+                'total' => $stats['total'] ?? 0,
+                'confirmed' => $stats['confirmed'] ?? 0,
+                'pending' => $stats['pending'] ?? 0,
+                'rejected' => $stats['rejected'] ?? 0
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+    
     public function confirmPayment() {
         header('Content-Type: application/json');
         
         try {
-            if (!isset($_POST['payment_id'])) {
+            $data = json_decode(file_get_contents('php://input'), true);
+            
+            if (!isset($data['payment_id'])) {
                 throw new Exception('Payment ID is required');
             }
 
-            $paymentId = (int)$_POST['payment_id'];
+            $paymentId = (int)$data['payment_id'];
             $this->paymentModel->confirmPayment($paymentId);
 
             echo json_encode([
@@ -84,12 +108,14 @@ class PaymentManagementController {
         header('Content-Type: application/json');
         
         try {
-            if (!isset($_POST['payment_id']) || !isset($_POST['reason'])) {
+            $data = json_decode(file_get_contents('php://input'), true);
+            
+            if (!isset($data['payment_id']) || !isset($data['reason'])) {
                 throw new Exception('Payment ID and reason are required');
             }
 
-            $paymentId = (int)$_POST['payment_id'];
-            $reason = $_POST['reason'];
+            $paymentId = (int)$data['payment_id'];
+            $reason = $data['reason'];
             $this->paymentModel->rejectPayment($paymentId, $reason);
 
             echo json_encode([
@@ -102,6 +128,164 @@ class PaymentManagementController {
                 'success' => false,
                 'message' => $e->getMessage()
             ]);
+        }
+    }
+    
+    public function recordManualPayment() {
+        header('Content-Type: application/json');
+        
+        try {
+            $data = json_decode(file_get_contents('php://input'), true);
+            
+            if (!isset($data['booking_id']) || !isset($data['user_id']) || !isset($data['amount']) || !isset($data['payment_method'])) {
+                throw new Exception('Missing required fields');
+            }
+
+            $bookingId = (int)$data['booking_id'];
+            $userId = (int)$data['user_id'];
+            $amount = (float)$data['amount'];
+            $paymentMethod = $data['payment_method'];
+            $notes = $data['notes'] ?? '';
+            
+            if ($amount <= 0) {
+                throw new Exception('Amount must be greater than zero');
+            }
+            
+            $result = $this->paymentModel->recordManualPayment($bookingId, $userId, $amount, $paymentMethod, $notes);
+
+            echo json_encode([
+                'success' => true,
+                'message' => 'Payment recorded successfully',
+                'payment_id' => $result['payment_id']
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+    
+    public function searchBookings() {
+        header('Content-Type: application/json');
+        
+        try {
+            $data = json_decode(file_get_contents('php://input'), true);
+            $search = $data['search'] ?? '';
+            
+            $bookings = $this->paymentModel->searchBookings($search);
+
+            echo json_encode([
+                'success' => true,
+                'bookings' => $bookings
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+    
+    public function searchClients() {
+        header('Content-Type: application/json');
+        
+        try {
+            $data = json_decode(file_get_contents('php://input'), true);
+            $search = $data['search'] ?? '';
+            
+            $clients = $this->paymentModel->searchClients($search);
+
+            echo json_encode([
+                'success' => true,
+                'clients' => $clients
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+    
+    public function getBookingDetails() {
+        header('Content-Type: application/json');
+        
+        try {
+            $data = json_decode(file_get_contents('php://input'), true);
+            
+            if (!isset($data['booking_id'])) {
+                throw new Exception('Booking ID is required');
+            }
+            
+            $bookingId = (int)$data['booking_id'];
+            $bookingDetails = $this->paymentModel->getBookingDetails($bookingId);
+            
+            if (!$bookingDetails) {
+                throw new Exception('Booking not found');
+            }
+
+            echo json_encode([
+                'success' => true,
+                'booking' => $bookingDetails
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+    
+    public function viewProof() {
+        try {
+            $url = isset($_GET['url']) ? urldecode($_GET['url']) : null;
+            
+            if (!$url) {
+                throw new Exception('Proof URL is required');
+            }
+            
+            // Ensure the URL is for an image file
+            $validExtensions = ['jpg', 'jpeg', 'png', 'gif', 'pdf'];
+            $extension = strtolower(pathinfo($url, PATHINFO_EXTENSION));
+            
+            if (!in_array($extension, $validExtensions)) {
+                throw new Exception('Invalid file type');
+            }
+            
+            // For security, ensure the file is in the uploads directory
+            $uploadsDir = '/app/uploads/payments/';
+            if (strpos($url, $uploadsDir) === false) {
+                $url = $uploadsDir . basename($url);
+            }
+            
+            // Display the file
+            $filePath = $_SERVER['DOCUMENT_ROOT'] . $url;
+            
+            if (!file_exists($filePath)) {
+                throw new Exception('File not found');
+            }
+            
+            if ($extension === 'pdf') {
+                header('Content-Type: application/pdf');
+                header('Content-Disposition: inline; filename="' . basename($filePath) . '"');
+            } else {
+                header('Content-Type: image/' . ($extension === 'jpg' ? 'jpeg' : $extension));
+            }
+            
+            readfile($filePath);
+            exit;
+        } catch (Exception $e) {
+            header('Content-Type: text/html');
+            echo '<div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">';
+            echo '<h2 style="color: #d9534f;">Error</h2>';
+            echo '<p>' . htmlspecialchars($e->getMessage()) . '</p>';
+            echo '<a href="/admin/payments" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #28a745; color: white; text-decoration: none; border-radius: 4px;">Back to Payments</a>';
+            echo '</div>';
         }
     }
 } 

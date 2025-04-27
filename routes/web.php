@@ -403,6 +403,16 @@ switch ($request) {
         $controller = new PaymentManagementController();
         $controller->getPayments();
         break;
+    case "/admin/payments/stats":
+        require_once $controllerClasses['admin']['PaymentManagementController'];
+        $controller = new PaymentManagementController();
+        $controller->getPaymentStats();
+        break;
+    case "/admin/payments/view-proof":
+        require_once $controllerClasses['admin']['PaymentManagementController'];
+        $controller = new PaymentManagementController();
+        $controller->viewProof();
+        break;
     case "/admin/payments/confirm":
         require_once $controllerClasses['admin']['PaymentManagementController'];
         $controller = new PaymentManagementController();
@@ -412,6 +422,26 @@ switch ($request) {
         require_once $controllerClasses['admin']['PaymentManagementController'];
         $controller = new PaymentManagementController();
         $controller->rejectPayment();
+        break;
+    case "/admin/payments/record-manual":
+        require_once $controllerClasses['admin']['PaymentManagementController'];
+        $controller = new PaymentManagementController();
+        $controller->recordManualPayment();
+        break;
+    case "/admin/payments/search-bookings":
+        require_once $controllerClasses['admin']['PaymentManagementController'];
+        $controller = new PaymentManagementController();
+        $controller->searchBookings();
+        break;
+    case "/admin/payments/search-clients":
+        require_once $controllerClasses['admin']['PaymentManagementController'];
+        $controller = new PaymentManagementController();
+        $controller->searchClients();
+        break;
+    case "/admin/payments/get-booking-details":
+        require_once $controllerClasses['admin']['PaymentManagementController'];
+        $controller = new PaymentManagementController();
+        $controller->getBookingDetails();
         break;
 
     // Reports Module Routes
@@ -563,7 +593,20 @@ switch ($request) {
         $controller = new BookingManagementController();
         $controller->exportBookings();
         break;
-    
+
+    // New routes for admin booking creation
+    case "/admin/create-booking":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->showCreateBookingForm();
+        break;
+        
+    case "/admin/submit-booking":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->createBooking();
+        break;
+
     default:
         // 404 Not Found
         header("HTTP/1.0 404 Not Found");

@@ -105,6 +105,10 @@ if (is_client_authenticated()) {
                     </div>   
                 </div>
                 <div class="mb-3">
+                    <label for="companyName" class="form-label text-secondary">Company Name (Optional)</label>
+                    <input type="text" name="companyName" id="companyName" class="form-control" placeholder="Your company or organization name">
+                </div>
+                <div class="mb-3">
                     <label for="email" class="form-label text-secondary">Email</label>
                     <input type="email" name="email" id="email" class="form-control">
                 </div>

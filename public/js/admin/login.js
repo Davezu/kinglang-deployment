@@ -41,22 +41,28 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if (data.success) {
                     // Add page transition before redirect
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Login Successful',
-                        text: 'Redirecting you to dashboard...',
-                        timer: 1500,
-                        timerProgressBar: true,
-                        showConfirmButton: false
-                    }).then(() => {
-                        // Add page transition before redirect
-                        document.body.style.transition = 'opacity 0.5s ease';
-                        document.body.style.opacity = '0';
+                    // Swal.fire({
+                    //     icon: 'success',
+                    //     title: 'Login Successful',
+                    //     text: 'Redirecting you to dashboard...',
+                    //     timer: 1500,
+                    //     timerProgressBar: true,
+                    //     showConfirmButton: false
+                    // }).then(() => {
+                    //     // Add page transition before redirect
+                    //     document.body.style.transition = 'opacity 0.5s ease';
+                    //     document.body.style.opacity = '0';
                         
-                        setTimeout(() => {
-                            window.location.href = data.redirect || '/admin/dashboard';
-                        }, 300);
-                    });
+                    //     setTimeout(() => {
+                    //         window.location.href = data.redirect || '/admin/dashboard';
+                    //     }, 300);
+                    // });
+                    document.body.style.transition = 'opacity 0.5s ease';
+                    document.body.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        window.location.href = data.redirect || '/admin/dashboard';
+                    }, 300);
                 } else {
                     Swal.fire({
                         icon: 'error',

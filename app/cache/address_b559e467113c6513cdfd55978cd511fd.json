@@ -1,0 +1,249 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Victory Liner Cubao Terminal, Epifanio de los Santos Avenue, Cubao, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPf75JEfJlzMRTcyW1pF6TBE",
+         "reference" : "ChIJPf75JEfJlzMRTcyW1pF6TBE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Victory Liner Cubao Terminal",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Epifanio de los Santos Avenue, Cubao, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Victory Liner Cubao Terminal"
+            },
+            {
+               "offset" : 30,
+               "value" : "Epifanio de los Santos Avenue"
+            },
+            {
+               "offset" : 61,
+               "value" : "Cubao"
+            },
+            {
+               "offset" : 68,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 81,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 95,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Victory Liner (Pasay Terminal), Epifanio de los Santos Avenue, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAbskxEbJlzMR7MxSFX9zx14",
+         "reference" : "ChIJAbskxEbJlzMR7MxSFX9zx14",
+         "structured_formatting" : 
+         {
+            "main_text" : "Victory Liner (Pasay Terminal)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Epifanio de los Santos Avenue, Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Victory Liner (Pasay Terminal)"
+            },
+            {
+               "offset" : 32,
+               "value" : "Epifanio de los Santos Avenue"
+            },
+            {
+               "offset" : 63,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 70,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 84,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Victoria, Tarlac, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQd6-qNnNljMROgS6RPDfcL8",
+         "reference" : "ChIJQd6-qNnNljMROgS6RPDfcL8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Victoria",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tarlac, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Victoria"
+            },
+            {
+               "offset" : 10,
+               "value" : "Tarlac"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Victoria, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJgWYwyd_hlzMRLmVTxRDIT7o",
+         "reference" : "ChIJgWYwyd_hlzMRLmVTxRDIT7o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Victoria",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Victoria"
+            },
+            {
+               "offset" : 10,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Victorias City, Negros Occidental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJTQSW8SgtrzMRCz24AcJFffI",
+         "reference" : "ChIJTQSW8SgtrzMRCz24AcJFffI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Victorias City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Negros Occidental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Victorias City"
+            },
+            {
+               "offset" : 16,
+               "value" : "Negros Occidental"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -49,8 +49,8 @@
          ],
          "types" : 
          [
-            "geocode",
-            "premise"
+            "premise",
+            "geocode"
          ]
       },
       {
@@ -97,9 +97,9 @@
          ],
          "types" : 
          [
-            "tourist_attraction",
-            "establishment",
             "park",
+            "establishment",
+            "tourist_attraction",
             "point_of_interest"
          ]
       },
@@ -200,8 +200,8 @@
          ],
          "types" : 
          [
-            "establishment",
             "museum",
+            "establishment",
             "point_of_interest"
          ]
       },
@@ -249,8 +249,8 @@
          ],
          "types" : 
          [
-            "amusement_park",
             "establishment",
+            "amusement_park",
             "point_of_interest"
          ]
       }

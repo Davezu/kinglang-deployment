@@ -1,0 +1,247 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Maligaya Street, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            },
+            {
+               "length" : 11,
+               "offset" : 17
+            },
+            {
+               "length" : 12,
+               "offset" : 30
+            },
+            {
+               "length" : 11,
+               "offset" : 44
+            }
+         ],
+         "place_id" : "EjdNYWxpZ2F5YSBTdHJlZXQsIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJH4rYqGmwlzMR0a0YPRADHeESFAoSCXVz70IJupczEUA9CP7ZMppK",
+         "reference" : "EjdNYWxpZ2F5YSBTdHJlZXQsIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJH4rYqGmwlzMR0a0YPRADHeESFAoSCXVz70IJupczEUA9CP7ZMppK",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               },
+               {
+                  "length" : 12,
+                  "offset" : 13
+               },
+               {
+                  "length" : 11,
+                  "offset" : 27
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya Street"
+            },
+            {
+               "offset" : 17,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 30,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Quezon city, Maligaya Street, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            },
+            {
+               "length" : 15,
+               "offset" : 13
+            },
+            {
+               "length" : 12,
+               "offset" : 55
+            },
+            {
+               "length" : 11,
+               "offset" : 69
+            }
+         ],
+         "place_id" : "ChIJUcDmOgCxlzMRBF0mu33lgKM",
+         "reference" : "ChIJUcDmOgCxlzMRBF0mu33lgKM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Quezon city",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maligaya Street, Novaliches, Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               },
+               {
+                  "length" : 12,
+                  "offset" : 42
+               },
+               {
+                  "length" : 11,
+                  "offset" : 56
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Quezon city"
+            },
+            {
+               "offset" : 13,
+               "value" : "Maligaya Street"
+            },
+            {
+               "offset" : 30,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 42,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Maligaya Street, baragay 147, Maligaya Street, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            },
+            {
+               "length" : 11,
+               "offset" : 47
+            },
+            {
+               "length" : 12,
+               "offset" : 60
+            },
+            {
+               "length" : 11,
+               "offset" : 74
+            }
+         ],
+         "place_id" : "ChIJw3ieTACxlzMR2IyOoX5QgKI",
+         "reference" : "ChIJw3ieTACxlzMR2IyOoX5QgKI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "baragay 147, Maligaya Street, Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 30
+               },
+               {
+                  "length" : 12,
+                  "offset" : 43
+               },
+               {
+                  "length" : 11,
+                  "offset" : 57
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya Street"
+            },
+            {
+               "offset" : 17,
+               "value" : "baragay 147"
+            },
+            {
+               "offset" : 30,
+               "value" : "Maligaya Street"
+            },
+            {
+               "offset" : 47,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 60,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

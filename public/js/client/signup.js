@@ -4,6 +4,7 @@ $("#signupForm").submit(function (e) {
     var formData = {
         firstName: $("#firstName").val(),
         lastName: $("#lastName").val(),
+        companyName: $("#companyName").val(),
         email: $("#email").val(),
         contactNumber: formatPhoneNumberForDB($("#contactNumber").val()),
         password: $("#password").val(),

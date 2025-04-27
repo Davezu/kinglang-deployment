@@ -1,0 +1,239 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Minalungao National Park, General Tinio, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-2uCrco9lzMRDU46dyAwfUg",
+         "reference" : "ChIJ-2uCrco9lzMRDU46dyAwfUg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Minalungao National Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Tinio, Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Minalungao National Park"
+            },
+            {
+               "offset" : 26,
+               "value" : "General Tinio"
+            },
+            {
+               "offset" : 41,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "park",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Minalin, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHRJ14GxYljMRF1jCLJ93C3w",
+         "reference" : "ChIJHRJ14GxYljMRF1jCLJ93C3w",
+         "structured_formatting" : 
+         {
+            "main_text" : "Minalin",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Minalin"
+            },
+            {
+               "offset" : 9,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 19,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Minalabac, Camarines Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJsUf7sROMoTMRhIycS0FZcfo",
+         "reference" : "ChIJsUf7sROMoTMRhIycS0FZcfo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Minalabac",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Camarines Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Minalabac"
+            },
+            {
+               "offset" : 11,
+               "value" : "Camarines Sur"
+            },
+            {
+               "offset" : 26,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Mina Falls, Trece Martires, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJMWWYQIh_vTMRxdKLPbLvTHs",
+         "reference" : "ChIJMWWYQIh_vTMRxdKLPbLvTHs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mina Falls",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Trece Martires, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mina Falls"
+            },
+            {
+               "offset" : 12,
+               "value" : "Trece Martires"
+            },
+            {
+               "offset" : 28,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Mina, Iloilo, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-f-sIxEbrzMRyqplQBOyP4c",
+         "reference" : "ChIJ-f-sIxEbrzMRyqplQBOyP4c",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mina",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Iloilo, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mina"
+            },
+            {
+               "offset" : 6,
+               "value" : "Iloilo"
+            },
+            {
+               "offset" : 14,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

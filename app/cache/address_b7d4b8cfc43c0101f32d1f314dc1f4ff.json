@@ -1,0 +1,271 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Saint Louis University, Upper Bonifacio Street, Baguio, Benguet, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJu7vmG16hkTMRi_IrVPDRryQ",
+         "reference" : "ChIJu7vmG16hkTMRi_IrVPDRryQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Saint Louis University",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Upper Bonifacio Street, Baguio, Benguet, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Saint Louis University"
+            },
+            {
+               "offset" : 24,
+               "value" : "Upper Bonifacio Street"
+            },
+            {
+               "offset" : 48,
+               "value" : "Baguio"
+            },
+            {
+               "offset" : 56,
+               "value" : "Benguet"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "university",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Saint Jude Shrine, Jose Laurel Street, San Miguel, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJheWhk_DJlzMRAvKu8Bg0eYE",
+         "reference" : "ChIJheWhk_DJlzMRAvKu8Bg0eYE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Saint Jude Shrine",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Jose Laurel Street, San Miguel, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Saint Jude Shrine"
+            },
+            {
+               "offset" : 19,
+               "value" : "Jose Laurel Street"
+            },
+            {
+               "offset" : 39,
+               "value" : "San Miguel"
+            },
+            {
+               "offset" : 51,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "church",
+            "point_of_interest",
+            "place_of_worship"
+         ]
+      },
+      {
+         "description" : "Saint Monique Valais, Avenue Monique, Binangonan, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJI8q0N2rBlzMRp6dZiCnVf3Q",
+         "reference" : "ChIJI8q0N2rBlzMRp6dZiCnVf3Q",
+         "structured_formatting" : 
+         {
+            "main_text" : "Saint Monique Valais",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Avenue Monique, Binangonan, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Saint Monique Valais"
+            },
+            {
+               "offset" : 22,
+               "value" : "Avenue Monique"
+            },
+            {
+               "offset" : 38,
+               "value" : "Binangonan"
+            },
+            {
+               "offset" : 50,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Saint Bernard, Southern Leyte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJuQ5x21EZBzMRFLSQXWljyxc",
+         "reference" : "ChIJuQ5x21EZBzMRFLSQXWljyxc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Saint Bernard",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Southern Leyte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Saint Bernard"
+            },
+            {
+               "offset" : 15,
+               "value" : "Southern Leyte"
+            },
+            {
+               "offset" : 31,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Saint Pedro Poveda College, P. Poveda Road, Ortigas Center, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJjQIKOBjIlzMRL78dU2ZoRSQ",
+         "reference" : "ChIJjQIKOBjIlzMRL78dU2ZoRSQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Saint Pedro Poveda College",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "P. Poveda Road, Ortigas Center, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Saint Pedro Poveda College"
+            },
+            {
+               "offset" : 28,
+               "value" : "P. Poveda Road"
+            },
+            {
+               "offset" : 44,
+               "value" : "Ortigas Center"
+            },
+            {
+               "offset" : 60,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 73,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 87,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

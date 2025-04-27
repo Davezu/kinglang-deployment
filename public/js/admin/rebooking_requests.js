@@ -9,6 +9,17 @@
 document.addEventListener('DOMContentLoaded', async function () {
     const requests = await getRebookingRequests('All', 'asc', 'booking_id');
     renderRebookingRequests(requests);
+    updateStatCounters(requests);
+    
+    // Add event listener for search button
+    document.getElementById('searchBtn')?.addEventListener('click', handleSearch);
+    
+    // Add event listener for enter key on search input
+    document.getElementById('searchRebookings')?.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            handleSearch();
+        }
+    });
 }); 
 
 document.getElementById('statusSelect').addEventListener('change', async function () {
@@ -273,5 +284,56 @@ async function rejectBookingRequest(bookingId, reason, userId) {
             icon: 'error',
             confirmButtonColor: '#dc3545'
         });
+    }
+}
+
+// Search functionality
+function handleSearch() {
+    const searchTerm = document.getElementById('searchRebookings')?.value.toLowerCase() || '';
+    const status = document.getElementById('statusSelect')?.value || 'All';
+    
+    if (!searchTerm.trim()) {
+        // If search is empty, just filter by status
+        performSearch(status);
+        return;
+    }
+    
+    performSearch(status, searchTerm);
+}
+
+async function performSearch(status, searchTerm = '') {
+    const requests = await getRebookingRequests(status, 'asc', 'client_name');
+    
+    if (!searchTerm) {
+        renderRebookingRequests(requests);
+        return;
+    }
+    
+    // Filter results by search term
+    const filteredRequests = requests.filter(request => {
+        return request.client_name.toLowerCase().includes(searchTerm) ||
+               request.email.toLowerCase().includes(searchTerm) ||
+               request.contact_number.toLowerCase().includes(searchTerm);
+    });
+    
+    renderRebookingRequests(filteredRequests);
+}
+
+// Update stats counters
+function updateStatCounters(requests) {
+    const totalElement = document.getElementById('totalRebookingsCount');
+    const confirmedElement = document.getElementById('confirmedRebookingsCount');
+    const pendingElement = document.getElementById('pendingRebookingsCount');
+
+    if (totalElement) totalElement.textContent = requests.length;
+    
+    if (confirmedElement) {
+        const confirmedCount = requests.filter(req => req.status === 'Confirmed').length;
+        confirmedElement.textContent = confirmedCount;
+    }
+    
+    if (pendingElement) {
+        const pendingCount = requests.filter(req => req.status === 'Pending').length;
+        pendingElement.textContent = pendingCount;
     }
 }

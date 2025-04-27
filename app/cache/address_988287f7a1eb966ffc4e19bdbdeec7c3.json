@@ -1,0 +1,239 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Kidapawan City, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJccxvZAv5-DIR8z_Up1N3CvA",
+         "reference" : "ChIJccxvZAv5-DIR8z_Up1N3CvA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kidapawan City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kidapawan City"
+            },
+            {
+               "offset" : 16,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 26,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Kiamba, Sarangani, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJYdCOXzDF9zIR1EVaHTJIjJs",
+         "reference" : "ChIJYdCOXzDF9zIR1EVaHTJIjJs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kiamba",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sarangani, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kiamba"
+            },
+            {
+               "offset" : 8,
+               "value" : "Sarangani"
+            },
+            {
+               "offset" : 19,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Kingsford Hotel Manila, J.W. Diokno Boulevard, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-_mvpATMlzMRkiErfNMwyys",
+         "reference" : "ChIJ-_mvpATMlzMRkiErfNMwyys",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kingsford Hotel Manila",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "J.W. Diokno Boulevard, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kingsford Hotel Manila"
+            },
+            {
+               "offset" : 24,
+               "value" : "J.W. Diokno Boulevard"
+            },
+            {
+               "offset" : 47,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 58,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 72,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Kibawe, Bukidnon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZV6ydyIz_zIRfvO7CZQVTRo",
+         "reference" : "ChIJZV6ydyIz_zIRfvO7CZQVTRo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kibawe",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bukidnon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kibawe"
+            },
+            {
+               "offset" : 8,
+               "value" : "Bukidnon"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Kitaotao, Bukidnon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJpyziHs8t_zIRbfCkeLfSw5Y",
+         "reference" : "ChIJpyziHs8t_zIRbfCkeLfSw5Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kitaotao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bukidnon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kitaotao"
+            },
+            {
+               "offset" : 10,
+               "value" : "Bukidnon"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1081,5 +1081,244 @@ class BookingManagementModel {
             return [];
         }
     }
+    
+    // New method for creating bookings by admin
+    public function createBookingByAdmin($data) {
+        try {
+            $this->conn->beginTransaction();
+            
+            // Check if client already exists based on email
+            $existingUserId = null;
+            $stmt = $this->conn->prepare("SELECT user_id FROM users WHERE email = :email LIMIT 1");
+            $stmt->execute([":email" => $data['email']]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if ($result) {
+                $existingUserId = $result['user_id'];
+            }
+            
+            // Create or update user record
+            if ($existingUserId) {
+                // Update existing user
+                $stmt = $this->conn->prepare("
+                    UPDATE users SET 
+                    first_name = :first_name,
+                    last_name = :last_name,
+                    contact_number = :contact_number,
+                    address = :address
+                    WHERE user_id = :user_id
+                ");
+                
+                // Split the client name into first and last name
+                $nameParts = explode(" ", $data['client_name'], 2);
+                $firstName = $nameParts[0];
+                $lastName = isset($nameParts[1]) ? $nameParts[1] : "";
+                
+                $stmt->execute([
+                    ":first_name" => $firstName,
+                    ":last_name" => $lastName,
+                    ":contact_number" => $data['contact_number'],
+                    ":address" => $data['address'] ?? '',
+                    ":user_id" => $existingUserId
+                ]);
+                
+                $userId = $existingUserId;
+            } else {
+                // Create new user
+                $stmt = $this->conn->prepare("
+                    INSERT INTO users (
+                        first_name, last_name, email, contact_number, address,
+                        role, created_at, status, created_by
+                    ) VALUES (
+                        :first_name, :last_name, :email, :contact_number, :address,
+                        'Client', NOW(), 'Active', 'Admin'
+                    )
+                ");
+                
+                // Split the client name into first and last name
+                $nameParts = explode(" ", $data['client_name'], 2);
+                $firstName = $nameParts[0];
+                $lastName = isset($nameParts[1]) ? $nameParts[1] : "";
+                
+                $stmt->execute([
+                    ":first_name" => $firstName,
+                    ":last_name" => $lastName,
+                    ":email" => $data['email'],
+                    ":contact_number" => $data['contact_number'],
+                    ":address" => $data['address'] ?? ''
+                ]);
+                
+                $userId = $this->conn->lastInsertId();
+            }
+            
+            // Create booking record
+            $stmt = $this->conn->prepare("
+                INSERT INTO bookings (
+                    user_id, destination, pickup_point, date_of_tour, end_of_tour,
+                    number_of_days, number_of_buses, status, payment_status, 
+                    is_rebooking, is_rebooked, created_at, booked_at, balance,
+                    estimated_pax, notes, created_by
+                ) VALUES (
+                    :user_id, :destination, :pickup_point, :date_of_tour, :end_of_tour,
+                    :number_of_days, :number_of_buses, :status, :payment_status,
+                    0, 0, NOW(), NOW(), :balance, :estimated_pax, :notes, :created_by
+                )
+            ");
+            
+            // Set status based on data or default to confirmed for admin-created bookings
+            $status = isset($data['status']) ? $data['status'] : 'Confirmed';
+            $paymentStatus = isset($data['payment_status']) ? $data['payment_status'] : 'Unpaid';
+            
+            $stmt->execute([
+                ":user_id" => $userId,
+                ":destination" => $data['destination'],
+                ":pickup_point" => $data['pickup_point'],
+                ":date_of_tour" => $data['date_of_tour'],
+                ":end_of_tour" => $data['end_of_tour'] ?? null,
+                ":number_of_days" => $data['number_of_days'],
+                ":number_of_buses" => $data['number_of_buses'],
+                ":status" => $status,
+                ":payment_status" => $paymentStatus,
+                ":balance" => $data['total_cost'] ?? 0,
+                ":estimated_pax" => $data['estimated_pax'] ?? 0,
+                ":notes" => $data['notes'] ?? '',
+                ":created_by" => $data['created_by'] ?? 'admin'
+            ]);
+            
+            $bookingId = $this->conn->lastInsertId();
+            
+            // Create booking cost record
+            $stmt = $this->conn->prepare("
+                INSERT INTO booking_costs (
+                    booking_id, gross_price, total_cost, discount, calculated_at
+                ) VALUES (
+                    :booking_id, :gross_price, :total_cost, :discount, NOW()
+                )
+            ");
+            
+            $totalCost = (float)$data['total_cost'];
+            $discount = (float)($data['discount'] ?? 0);
+            
+            // Calculate gross price (total before discount)
+            $grossPrice = $totalCost;
+            if ($discount > 0) {
+                $grossPrice = $totalCost / (1 - ($discount / 100));
+            }
+            
+            $stmt->execute([
+                ":booking_id" => $bookingId,
+                ":gross_price" => $grossPrice,
+                ":total_cost" => $totalCost,
+                ":discount" => $discount
+            ]);
+            
+            // If stops are provided, insert them
+            if (isset($data['stops']) && !empty($data['stops'])) {
+                $stmt = $this->conn->prepare("
+                    INSERT INTO booking_stops (
+                        booking_id, location, stop_order
+                    ) VALUES (
+                        :booking_id, :location, :stop_order
+                    )
+                ");
+                
+                foreach ($data['stops'] as $index => $stopLocation) {
+                    $stmt->execute([
+                        ":booking_id" => $bookingId,
+                        ":location" => $stopLocation,
+                        ":stop_order" => $index + 1
+                    ]);
+                }
+            }
+            
+            // If initial payment is provided, record it
+            if (isset($data['initial_payment']) && !empty($data['initial_payment'])) {
+                $amountPaid = (float)$data['initial_payment']['amount_paid'];
+                $paymentMethod = $data['initial_payment']['payment_method'];
+                $paymentReference = $data['initial_payment']['payment_reference'] ?? 'Admin recorded';
+                
+                $stmt = $this->conn->prepare("
+                    INSERT INTO payments (
+                        booking_id, user_id, amount, payment_method,
+                        reference_number, proof_of_payment, status, payment_date, created_at
+                    ) VALUES (
+                        :booking_id, :user_id, :amount, :payment_method,
+                        :reference_number, :proof_of_payment, 'Confirmed', NOW(), NOW()
+                    )
+                ");
+                
+                $stmt->execute([
+                    ":booking_id" => $bookingId,
+                    ":user_id" => $userId,
+                    ":amount" => $amountPaid,
+                    ":payment_method" => $paymentMethod,
+                    ":reference_number" => $paymentReference,
+                    ":proof_of_payment" => 'Admin created'
+                ]);
+                
+                // Update payment status and balance
+                $balance = $totalCost - $amountPaid;
+                $newPaymentStatus = 'Unpaid';
+                
+                if ($balance <= 0) {
+                    $newPaymentStatus = 'Paid';
+                    $balance = 0;
+                } elseif ($amountPaid > 0) {
+                    $newPaymentStatus = 'Partially Paid';
+                }
+                
+                $stmt = $this->conn->prepare("
+                    UPDATE bookings SET 
+                    payment_status = :payment_status,
+                    balance = :balance,
+                    amount_paid = :amount_paid
+                    WHERE booking_id = :booking_id
+                ");
+                
+                $stmt->execute([
+                    ":payment_status" => $newPaymentStatus,
+                    ":balance" => $balance,
+                    ":amount_paid" => $amountPaid,
+                    ":booking_id" => $bookingId
+                ]);
+            }
+            
+            // If booking is confirmed, set confirmed_at
+            if ($status === 'Confirmed') {
+                $stmt = $this->conn->prepare("
+                    UPDATE bookings SET 
+                    confirmed_at = NOW()
+                    WHERE booking_id = :booking_id
+                ");
+                
+                $stmt->execute([":booking_id" => $bookingId]);
+                
+                // Add notification for client
+                $clientMessage = "Your booking to " . $data['destination'] . " has been created and confirmed by admin.";
+                $this->clientNotificationModel->addNotification($userId, "booking_created", $clientMessage, $bookingId);
+            }
+            
+            $this->conn->commit();
+            
+            return [
+                'success' => true,
+                'booking_id' => $bookingId,
+                'message' => 'Booking created successfully'
+            ];
+            
+        } catch (PDOException $e) {
+            $this->conn->rollBack();
+            return [
+                'success' => false,
+                'message' => 'Database error: ' . $e->getMessage()
+            ];
+        } catch (Exception $e) {
+            $this->conn->rollBack();
+            return [
+                'success' => false,
+                'message' => 'Error: ' . $e->getMessage()
+            ];
+        }
+    }
 }
 ?>

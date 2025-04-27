@@ -1,0 +1,246 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Madaum, Tagum, Davao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJn8Pd7T5R-TIR39f3i7jprMs",
+         "reference" : "ChIJn8Pd7T5R-TIR39f3i7jprMs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Madaum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagum, Davao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Madaum"
+            },
+            {
+               "offset" : 8,
+               "value" : "Tagum"
+            },
+            {
+               "offset" : 15,
+               "value" : "Davao del Norte"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "political",
+            "geocode",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Madapdap Resettlement mabalacat city, Mabalacat, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJhQEAACXsljMRpGWymdQkGek",
+         "reference" : "ChIJhQEAACXsljMRpGWymdQkGek",
+         "structured_formatting" : 
+         {
+            "main_text" : "Madapdap Resettlement mabalacat city",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mabalacat, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Madapdap Resettlement mabalacat city"
+            },
+            {
+               "offset" : 38,
+               "value" : "Mabalacat"
+            },
+            {
+               "offset" : 49,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "school",
+            "primary_school"
+         ]
+      },
+      {
+         "description" : "Madalag, Aklan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJYb1BxJ6GrzMRuzbFst1r2N0",
+         "reference" : "ChIJYb1BxJ6GrzMRuzbFst1r2N0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Madalag",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Aklan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Madalag"
+            },
+            {
+               "offset" : 9,
+               "value" : "Aklan"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Madalum, Lanao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQTi7zYfBVTIRBQmRfBgaoOU",
+         "reference" : "ChIJQTi7zYfBVTIRBQmRfBgaoOU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Madalum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lanao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Madalum"
+            },
+            {
+               "offset" : 9,
+               "value" : "Lanao del Sur"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Madayegdeg, San Fernando, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJ4T_LUyOkTMRAVOZCqtO7J8",
+         "reference" : "ChIJJ4T_LUyOkTMRAVOZCqtO7J8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Madayegdeg",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Fernando, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Madayegdeg"
+            },
+            {
+               "offset" : 12,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 26,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "political",
+            "geocode",
+            "sublocality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

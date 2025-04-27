@@ -1,0 +1,251 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Apras Headquaters, Cainta, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJsUL2lrrHlzMR1h34L3VoNg4",
+         "reference" : "ChIJsUL2lrrHlzMR1h34L3VoNg4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apras Headquaters",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cainta, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apras Headquaters"
+            },
+            {
+               "offset" : 19,
+               "value" : "Cainta"
+            },
+            {
+               "offset" : 27,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "APRAZ Design and Construction Corporation, San Fernando, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQ0lgaQDzljMRBCQIE1pJbkg",
+         "reference" : "ChIJQ0lgaQDzljMRBCQIE1pJbkg",
+         "structured_formatting" : 
+         {
+            "main_text" : "APRAZ Design and Construction Corporation",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Fernando, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "APRAZ Design and Construction Corporation"
+            },
+            {
+               "offset" : 43,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 57,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "general_contractor"
+         ]
+      },
+      {
+         "description" : "Blk 8 apras anak pawis floodway, Cainta, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 6
+            }
+         ],
+         "place_id" : "ChIJq3SfcxHHlzMRVRO8iLpcea4",
+         "reference" : "ChIJq3SfcxHHlzMRVRO8iLpcea4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Blk 8 apras anak pawis floodway",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 6
+               }
+            ],
+            "secondary_text" : "Cainta, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Blk 8 apras anak pawis floodway"
+            },
+            {
+               "offset" : 33,
+               "value" : "Cainta"
+            },
+            {
+               "offset" : 41,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "APRACA, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJhRvulCvKlzMRsrpRZKxARJM",
+         "reference" : "ChIJhRvulCvKlzMRsrpRZKxARJM",
+         "structured_formatting" : 
+         {
+            "main_text" : "APRACA",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "APRACA"
+            },
+            {
+               "offset" : 8,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 16,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "APRAGUST STORE, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJa9cJkBWwlzMRoVet-W3_UAQ",
+         "reference" : "ChIJa9cJkBWwlzMRoVet-W3_UAQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "APRAGUST STORE",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "APRAGUST STORE"
+            },
+            {
+               "offset" : 16,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 26,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

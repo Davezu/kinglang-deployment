@@ -1,0 +1,268 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Mkai Food Specialists Inc., Eulogio Rodriguez Jr. Avenue, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ69CBoPi3lzMRVsXY42BOmnU",
+         "reference" : "ChIJ69CBoPi3lzMRVsXY42BOmnU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mkai Food Specialists Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Eulogio Rodriguez Jr. Avenue, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mkai Food Specialists Inc."
+            },
+            {
+               "offset" : 28,
+               "value" : "Eulogio Rodriguez Jr. Avenue"
+            },
+            {
+               "offset" : 58,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 71,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 85,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "bakery",
+            "establishment",
+            "food",
+            "store",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "MKAYE'S SPLASH VILLE, MKAYE'S SPLASH VILLE, Purok 5, Calamba, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJFU5ZkT17vTMRnxZOCY5POtU",
+         "reference" : "ChIJFU5ZkT17vTMRnxZOCY5POtU",
+         "structured_formatting" : 
+         {
+            "main_text" : "MKAYE'S SPLASH VILLE",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "MKAYE'S SPLASH VILLE, Purok 5, Calamba, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MKAYE'S SPLASH VILLE"
+            },
+            {
+               "offset" : 22,
+               "value" : "MKAYE'S SPLASH VILLE"
+            },
+            {
+               "offset" : 44,
+               "value" : "Purok 5"
+            },
+            {
+               "offset" : 53,
+               "value" : "Calamba"
+            },
+            {
+               "offset" : 62,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "MKADC, Valencia City, Bukidnon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNTCVWgAb_zIRRCGeZZbx_ro",
+         "reference" : "ChIJNTCVWgAb_zIRRCGeZZbx_ro",
+         "structured_formatting" : 
+         {
+            "main_text" : "MKADC",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Valencia City, Bukidnon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MKADC"
+            },
+            {
+               "offset" : 7,
+               "value" : "Valencia City"
+            },
+            {
+               "offset" : 22,
+               "value" : "Bukidnon"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "MKAVI-1, Lantapan, Bukidnon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJnREI-TIP_zIRtbq6CwTZSfs",
+         "reference" : "ChIJnREI-TIP_zIRtbq6CwTZSfs",
+         "structured_formatting" : 
+         {
+            "main_text" : "MKAVI-1",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lantapan, Bukidnon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MKAVI-1"
+            },
+            {
+               "offset" : 9,
+               "value" : "Lantapan"
+            },
+            {
+               "offset" : 19,
+               "value" : "Bukidnon"
+            },
+            {
+               "offset" : 29,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "MKA Burgers, Jose Rizal St, Koronadal City, South Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8W_7eKcZ-DIRq_XZ9XbOEB4",
+         "reference" : "ChIJ8W_7eKcZ-DIRq_XZ9XbOEB4",
+         "structured_formatting" : 
+         {
+            "main_text" : "MKA Burgers",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Jose Rizal St, Koronadal City, South Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MKA Burgers"
+            },
+            {
+               "offset" : 13,
+               "value" : "Jose Rizal St"
+            },
+            {
+               "offset" : 28,
+               "value" : "Koronadal City"
+            },
+            {
+               "offset" : 44,
+               "value" : "South Cotabato"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "establishment",
+            "point_of_interest",
+            "food"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

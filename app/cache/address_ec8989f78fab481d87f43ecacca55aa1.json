@@ -46,9 +46,9 @@
          "types" : 
          [
             "tourist_attraction",
-            "museum",
+            "point_of_interest",
             "establishment",
-            "point_of_interest"
+            "museum"
          ]
       },
       {
@@ -99,8 +99,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -151,10 +151,10 @@
          ],
          "types" : 
          [
-            "establishment",
             "food",
-            "store",
             "point_of_interest",
+            "store",
+            "establishment",
             "cafe"
          ]
       },
@@ -202,9 +202,9 @@
          ],
          "types" : 
          [
-            "establishment",
+            "point_of_interest",
             "store",
-            "point_of_interest"
+            "establishment"
          ]
       },
       {
@@ -255,8 +255,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       }
    ],

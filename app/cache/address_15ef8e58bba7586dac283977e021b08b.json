@@ -1,0 +1,260 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Maginhawa, Diliman, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjpNYWdpbmhhd2EsIERpbGltYW4sIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJVy2g3HS3lzMRMtZJ7pKIkvMSFAoSCdW6P0eot5czEeaILdlBAWZ6",
+         "reference" : "EjpNYWdpbmhhd2EsIERpbGltYW4sIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJVy2g3HS3lzMRMtZJ7pKIkvMSFAoSCdW6P0eot5czEeaILdlBAWZ6",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maginhawa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Diliman, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maginhawa"
+            },
+            {
+               "offset" : 11,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 20,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 33,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Maginhawa Street, Maginhawa, Diliman, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ2zu1enO3lzMRzoHZjMysYog",
+         "reference" : "ChIJ2zu1enO3lzMRzoHZjMysYog",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maginhawa Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maginhawa, Diliman, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maginhawa Street"
+            },
+            {
+               "offset" : 18,
+               "value" : "Maginhawa"
+            },
+            {
+               "offset" : 29,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 38,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Maginoo, Diliman, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjhNYWdpbm9vLCBEaWxpbWFuLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCYO-X6uht5czEd7uldn5Qa2aEhQKEgnVuj9HqLeXMxHmiC3ZQQFmeg",
+         "reference" : "EjhNYWdpbm9vLCBEaWxpbWFuLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCYO-X6uht5czEd7uldn5Qa2aEhQKEgnVuj9HqLeXMxHmiC3ZQQFmeg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maginoo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Diliman, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maginoo"
+            },
+            {
+               "offset" : 9,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 18,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 31,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Magindanao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJWxKcKE3QVzIR-6qMsxyBg4Y",
+         "reference" : "ChIJWxKcKE3QVzIR-6qMsxyBg4Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "Magindanao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Magindanao"
+            },
+            {
+               "offset" : 12,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "administrative_area_level_2"
+         ]
+      },
+      {
+         "description" : "Maginhawa St, Maginhawa, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ4aaB38_JlzMR-Gjeg9mDGKo",
+         "reference" : "ChIJ4aaB38_JlzMR-Gjeg9mDGKo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maginhawa St",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maginhawa, Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maginhawa St"
+            },
+            {
+               "offset" : 14,
+               "value" : "Maginhawa"
+            },
+            {
+               "offset" : 25,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 32,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

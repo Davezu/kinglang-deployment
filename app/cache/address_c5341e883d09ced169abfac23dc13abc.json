@@ -1,0 +1,270 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "FASTMED-ANGELES BRANCH, Agapito Del Rosario Street, Angeles, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBUy_jS_zljMRlOo33brl-u4",
+         "reference" : "ChIJBUy_jS_zljMRlOo33brl-u4",
+         "structured_formatting" : 
+         {
+            "main_text" : "FASTMED-ANGELES BRANCH",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Agapito Del Rosario Street, Angeles, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FASTMED-ANGELES BRANCH"
+            },
+            {
+               "offset" : 24,
+               "value" : "Agapito Del Rosario Street"
+            },
+            {
+               "offset" : 52,
+               "value" : "Angeles"
+            },
+            {
+               "offset" : 61,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "health"
+         ]
+      },
+      {
+         "description" : "FASTLANE FAIRVIEW BRANCH, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZ726jCaxlzMRhvLNmilbaqI",
+         "reference" : "ChIJZ726jCaxlzMRhvLNmilbaqI",
+         "structured_formatting" : 
+         {
+            "main_text" : "FASTLANE FAIRVIEW BRANCH",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FASTLANE FAIRVIEW BRANCH"
+            },
+            {
+               "offset" : 26,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 39,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "car_repair",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "FastBytes, Filinvest City, Muntinlupa, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqflB8DHQlzMRGZM_8jABA8A",
+         "reference" : "ChIJqflB8DHQlzMRGZM_8jABA8A",
+         "structured_formatting" : 
+         {
+            "main_text" : "FastBytes",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Filinvest City, Muntinlupa, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FastBytes"
+            },
+            {
+               "offset" : 11,
+               "value" : "Filinvest City"
+            },
+            {
+               "offset" : 27,
+               "value" : "Muntinlupa"
+            },
+            {
+               "offset" : 39,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "food"
+         ]
+      },
+      {
+         "description" : "Fastpace Tractor Corporation, 11th Avenue, Brgy. 97, Z-9, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ739EbSm0lzMR5rILEtYKaUo",
+         "reference" : "ChIJ739EbSm0lzMR5rILEtYKaUo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Fastpace Tractor Corporation",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "11th Avenue, Brgy. 97, Z-9, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Fastpace Tractor Corporation"
+            },
+            {
+               "offset" : 30,
+               "value" : "11th Avenue"
+            },
+            {
+               "offset" : 43,
+               "value" : "Brgy. 97, Z-9"
+            },
+            {
+               "offset" : 58,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 68,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 82,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Fast Autoworks - Pasig City, Eusebio, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv3DXvODHlzMRJ3I72IwfvOI",
+         "reference" : "ChIJv3DXvODHlzMRJ3I72IwfvOI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Fast Autoworks - Pasig City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Eusebio, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Fast Autoworks - Pasig City"
+            },
+            {
+               "offset" : 29,
+               "value" : "Eusebio"
+            },
+            {
+               "offset" : 38,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 45,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "car_repair"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

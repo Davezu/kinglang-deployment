@@ -261,8 +261,16 @@ async function performSearch() {
 
 // Function to set up quick filters
 function setupQuickFilters() {
-    document.querySelectorAll(".quick-filter").forEach(button => {
+    const quickFilterBtns = document.querySelectorAll(".quick-filter");
+
+    quickFilterBtns.forEach(button => {
         button.addEventListener("click", function() {
+            // Remove active class from all buttons
+            quickFilterBtns.forEach(btn => btn.classList.remove("active"));
+
+            // Add active class to the clicked button
+            this.classList.add("active");   
+
             const status = this.getAttribute("data-status");
             const payment = this.getAttribute("data-payment");
             
