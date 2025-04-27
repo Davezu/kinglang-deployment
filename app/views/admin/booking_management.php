@@ -14,7 +14,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Booking Management</title>
     <style>
-        .content.collapsed {
+        /* .content.collapsed {
             margin-left: 78px;
             transition: margin-left 0.3s ease;
             width: calc(100% - 78px);
@@ -23,7 +23,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
             margin-left: 250px;
             transition: margin-left 0.3s ease;
             width: calc(100% - 250px);
-        }
+        } */
         .compact-card {
             padding: 0.5rem;
         }
@@ -159,7 +159,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
     <?php include_once __DIR__ . "/../assets/admin_sidebar.php"; ?>
 
     <div class="content collapsed" id="content">
-        <div class="container-fluid py-3 px-3 px-xl-4">
+        <div class="container-fluid py-3 px-4 px-xl-4">
             <!-- Header with admin profile -->
             <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0 mb-2">
                 <div class="p-0">
@@ -368,7 +368,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
             <div id="tableViewContainer">
                 <div class="table-container">
                     <div class="table-responsive">
-                        <table class="table table-hover overflow-hidden rounded shadow-sm">
+                        <table class="table table-hover text-secondary overflow-hidden rounded shadow-sm">
                         <thead>
                             <tr>
                                     <th class="sort" data-order="asc" data-column="booking_id">
@@ -401,7 +401,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                                     <th style="text-align: center; width: 15%;">Action</th>
                                 </tr>
                         </thead>
-                            <tbody class="table-group" id="tableBody"> 
+                            <tbody class="table-group-divider" id="tableBody"> 
                            
                         </tbody>
                     </table>

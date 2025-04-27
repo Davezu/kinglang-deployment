@@ -49,17 +49,23 @@ class UserManagementController {
             $page = isset($data['page']) ? (int)$data['page'] : 1;
             $limit = isset($data['limit']) ? (int)$data['limit'] : 10;
             $searchTerm = isset($data['search']) ? $data['search'] : '';
+            $sortColumn = isset($data['sortColumn']) ? $data['sortColumn'] : 'created_at';
+            $sortDirection = isset($data['sortDirection']) ? $data['sortDirection'] : 'DESC';
+            $roleFilter = isset($data['roleFilter']) ? $data['roleFilter'] : '';
         } else {
             // Handle regular GET requests for backward compatibility
             $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
             $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
             $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+            $sortColumn = isset($_GET['sortColumn']) ? $_GET['sortColumn'] : 'created_at';
+            $sortDirection = isset($_GET['sortDirection']) ? $_GET['sortDirection'] : 'DESC';
+            $roleFilter = isset($_GET['roleFilter']) ? $_GET['roleFilter'] : '';
         }
         
         $offset = ($page - 1) * $limit;
         
-        $users = $this->userModel->getAllUsers($offset, $limit, $searchTerm);
-        $totalUsers = $this->userModel->getTotalUsersCount($searchTerm);
+        $users = $this->userModel->getAllUsers($offset, $limit, $searchTerm, $sortColumn, $sortDirection, $roleFilter);
+        $totalUsers = $this->userModel->getTotalUsersCount($searchTerm, $roleFilter);
         
         $totalPages = ceil($totalUsers / $limit);
         
@@ -68,7 +74,10 @@ class UserManagementController {
             'users' => $users,
             'totalUsers' => $totalUsers,
             'totalPages' => $totalPages,
-            'currentPage' => $page
+            'currentPage' => $page,
+            'sortColumn' => $sortColumn,
+            'sortDirection' => $sortDirection,
+            'roleFilter' => $roleFilter
         ]);
     }
     
@@ -197,6 +206,7 @@ class UserManagementController {
             $contactNumber = isset($data['contactNumber']) ? trim($data['contactNumber']) : '';
             $password = isset($data['password']) && !empty($data['password']) ? $data['password'] : null;
             $role = isset($data['role']) ? $data['role'] : 'Client';
+            $companyName = isset($data['companyName']) ? $data['companyName'] : '';
         } else {
             // Get traditional POST data
             $userId = isset($_POST['userId']) ? (int)$_POST['userId'] : 0;
@@ -206,6 +216,7 @@ class UserManagementController {
             $contactNumber = isset($_POST['contactNumber']) ? trim($_POST['contactNumber']) : '';
             $password = isset($_POST['password']) && !empty($_POST['password']) ? $_POST['password'] : null;
             $role = isset($_POST['role']) ? $_POST['role'] : 'Client';
+            $companyName = isset($_POST['companyName']) ? $_POST['companyName'] : '';
         }
         
         // Validate input
@@ -245,7 +256,7 @@ class UserManagementController {
         }
         
         // Update user
-        $result = $this->userModel->updateUser($userId, $firstName, $lastName, $email, $contactNumber, $role, $password);
+        $result = $this->userModel->updateUser($userId, $firstName, $lastName, $email, $contactNumber, $role, $companyName, $password);
         
         header('Content-Type: application/json');
         echo json_encode($result);
@@ -282,6 +293,34 @@ class UserManagementController {
         
         header('Content-Type: application/json');
         echo json_encode($result);
+    }
+    
+    public function getUserStats() {
+        header('Content-Type: application/json');
+        
+        $method = $_SERVER['REQUEST_METHOD'];
+        
+        if ($method === 'GET') {
+            try {
+                $model = new UserManagementModel();
+                $stats = $model->getUserStatistics();
+                
+                echo json_encode([
+                    'status' => 'success',
+                    'data' => $stats
+                ]);
+            } catch (Exception $e) {
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => $e->getMessage()
+                ]);
+            }
+        } else {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Method not allowed'
+            ]);
+        }
     }
 }
 ?> 

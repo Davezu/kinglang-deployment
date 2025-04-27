@@ -49,9 +49,9 @@
          ],
          "types" : 
          [
-            "establishment",
             "amusement_park",
             "tourist_attraction",
+            "establishment",
             "point_of_interest"
          ]
       },
@@ -103,9 +103,9 @@
          ],
          "types" : 
          [
-            "establishment",
             "amusement_park",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -160,8 +160,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -264,9 +264,9 @@
          ],
          "types" : 
          [
-            "establishment",
             "lodging",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       }
    ],

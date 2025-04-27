@@ -97,8 +97,8 @@
          ],
          "types" : 
          [
-            "university",
             "establishment",
+            "university",
             "point_of_interest"
          ]
       },
@@ -146,10 +146,10 @@
          ],
          "types" : 
          [
-            "political",
-            "sublocality_level_2",
+            "geocode",
             "sublocality",
-            "geocode"
+            "political",
+            "sublocality_level_2"
          ]
       },
       {
@@ -197,12 +197,12 @@
          "types" : 
          [
             "establishment",
-            "school",
-            "point_of_interest"
+            "point_of_interest",
+            "school"
          ]
       },
       {
-         "description" : "Maligaya, Lemery, Batangas, Philippines",
+         "description" : "Maligaya, Cabiao, Nueva Ecija, Philippines",
          "matched_substrings" : 
          [
             {
@@ -210,8 +210,8 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJCVXR_B0KvTMRM7tbaFuLoA8",
-         "reference" : "ChIJCVXR_B0KvTMRM7tbaFuLoA8",
+         "place_id" : "ChIJI1fjh7XhljMR4915PEX1lcg",
+         "reference" : "ChIJI1fjh7XhljMR4915PEX1lcg",
          "structured_formatting" : 
          {
             "main_text" : "Maligaya",
@@ -222,7 +222,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Lemery, Batangas, Philippines"
+            "secondary_text" : "Cabiao, Nueva Ecija, Philippines"
          },
          "terms" : 
          [
@@ -232,22 +232,22 @@
             },
             {
                "offset" : 10,
-               "value" : "Lemery"
+               "value" : "Cabiao"
             },
             {
                "offset" : 18,
-               "value" : "Batangas"
+               "value" : "Nueva Ecija"
             },
             {
-               "offset" : 28,
+               "offset" : 31,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
             "political",
-            "sublocality",
             "geocode",
+            "sublocality",
             "sublocality_level_2"
          ]
       }

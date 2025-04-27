@@ -554,10 +554,26 @@ class BookingManagementModel {
             // Get current year
             $year = date('Y');
             
+            // Get booking counts
+            $stmt = $this->conn->prepare("
+                SELECT 
+                    MONTH(date_of_tour) as month,
+                    COUNT(booking_id) as booking_count
+                FROM bookings
+                WHERE YEAR(date_of_tour) = :year
+                AND is_rebooking = 0
+                AND is_rebooked = 0
+                GROUP BY MONTH(date_of_tour)
+                ORDER BY month
+            ");
+            $stmt->bindValue(':year', $year);
+            $stmt->execute();
+            $bookingResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Get revenue data
             $stmt = $this->conn->prepare("
                 SELECT 
                     MONTH(b.date_of_tour) as month,
-                    COUNT(b.booking_id) as booking_count,
                     SUM(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) as total_revenue
                 FROM bookings b
                 LEFT JOIN payments p ON b.booking_id = p.booking_id
@@ -569,7 +585,7 @@ class BookingManagementModel {
             ");
             $stmt->bindValue(':year', $year);
             $stmt->execute();
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $revenueResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
             // Initialize data for all months
             $monthlyData = [];
@@ -581,13 +597,14 @@ class BookingManagementModel {
                 ];
             }
             
-            // Fill in actual data
-            foreach ($results as $row) {
-                $monthlyData[$row['month']] = [
-                    'month' => (int)$row['month'],
-                    'booking_count' => (int)$row['booking_count'],
-                    'total_revenue' => (float)$row['total_revenue']
-                ];
+            // Fill in booking counts
+            foreach ($bookingResults as $row) {
+                $monthlyData[$row['month']]['booking_count'] = (int)$row['booking_count'];
+            }
+
+            // Fill in revenue data  
+            foreach ($revenueResults as $row) {
+                $monthlyData[$row['month']]['total_revenue'] = (float)$row['total_revenue'];
             }
             
             // Format for chart

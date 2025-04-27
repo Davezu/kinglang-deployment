@@ -1,0 +1,262 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Rose and Grace Restaurant, 1, Santo Tomas, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNZ2_lpVlvTMRaGPTYJMYsLk",
+         "reference" : "ChIJNZ2_lpVlvTMRaGPTYJMYsLk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Rose and Grace Restaurant",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "1, Santo Tomas, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Rose and Grace Restaurant"
+            },
+            {
+               "offset" : 27,
+               "value" : "1"
+            },
+            {
+               "offset" : 30,
+               "value" : "Santo Tomas"
+            },
+            {
+               "offset" : 43,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "point_of_interest",
+            "establishment",
+            "restaurant"
+         ]
+      },
+      {
+         "description" : "Rose Pharmacy, Padriga Street, Cebu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJx6T8aZyZqTMRDraUIjC9iaA",
+         "reference" : "ChIJx6T8aZyZqTMRDraUIjC9iaA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Rose Pharmacy",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Padriga Street, Cebu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Rose Pharmacy"
+            },
+            {
+               "offset" : 15,
+               "value" : "Padriga Street"
+            },
+            {
+               "offset" : 31,
+               "value" : "Cebu City"
+            },
+            {
+               "offset" : 42,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "health",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Rose garden hotel, P. Victor, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-2POWEjJlzMRO5FgaprLZEQ",
+         "reference" : "ChIJ-2POWEjJlzMRO5FgaprLZEQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Rose garden hotel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "P. Victor, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Rose garden hotel"
+            },
+            {
+               "offset" : 19,
+               "value" : "P. Victor"
+            },
+            {
+               "offset" : 30,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Rose Marie Lane, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjFSb3NlIE1hcmllIExhbmUsIFBhc2lnLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJQ5ilvG_IlzMR0PxwmLy7OLcSFAoSCU-y94jcx5czEYn9NEsrK1lK",
+         "reference" : "EjFSb3NlIE1hcmllIExhbmUsIFBhc2lnLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJQ5ilvG_IlzMR0PxwmLy7OLcSFAoSCU-y94jcx5czEYn9NEsrK1lK",
+         "structured_formatting" : 
+         {
+            "main_text" : "Rose Marie Lane",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Rose Marie Lane"
+            },
+            {
+               "offset" : 17,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Rose Beach Resort, Lapu-Lapu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJoX54L76RqTMRB220coAMU94",
+         "reference" : "ChIJoX54L76RqTMRB220coAMU94",
+         "structured_formatting" : 
+         {
+            "main_text" : "Rose Beach Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lapu-Lapu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Rose Beach Resort"
+            },
+            {
+               "offset" : 19,
+               "value" : "Lapu-Lapu City"
+            },
+            {
+               "offset" : 35,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

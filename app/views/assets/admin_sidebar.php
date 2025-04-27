@@ -175,6 +175,10 @@
                     <i class="bi bi-journals fs-5"></i>
                     <span class="menu-text">Bookings</span>
                 </a>
+                <a href="/admin/create-booking" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'create-booking' ? 'active' : ''; ?>">
+                    <i class="bi bi-plus-circle"></i>
+                    <span class="menu-text">Create Booking</span>
+                </a>
                 <a href="/admin/users" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'users' ? 'active' : ''; ?>">
                     <i class="bi bi-people"></i>
                     <span class="menu-text">Clients</span>

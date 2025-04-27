@@ -19,7 +19,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
     <title>User Management</title>
     <style>
         /* Compact form styling */
-        .modal-body {
+        /* .modal-body {
             padding: 1rem 1.5rem;
         }
         .compact-form .mb-3 {
@@ -40,7 +40,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
         }
         .modal-footer {
             padding: 0.5rem 1.5rem 1rem;
-        }
+        } */
         /* Password field styling */
         .input-group {
             position: relative;
@@ -92,11 +92,83 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
         .requirement i.bi-check-circle {
             color: #5db434 !important;
         }
+        /* Table sorting styles */
+        .table thead th {
+            background-color: #d1f7c4;
+            font-weight: 600;
+            padding: 12px 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            user-select: none;
+            white-space: nowrap;
+            position: relative;
+        }   
+        .table thead th:hover {
+            background-color: rgba(40, 167, 69, 0.2);
+        }
+        /* .table thead th.active {
+            background-color: #b8e6a3;
+        } */
+        .sort-icon {
+            font-size: 0.75rem;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+        /* Quick Filter Styles */
+        .quick-filter {
+            transition: all 0.2s ease;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        .quick-filter.active {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+        /* Stats card styling */
+        .compact-card {
+            padding: 0.5rem;
+        }
+        .compact-card .card-body {
+            padding: 0.75rem;
+        }
+        .stats-dashboard {
+            margin-bottom: 1rem;
+        }
+        .stats-number {
+            font-size: 1.5rem;
+        }
+        .stats-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        @media (min-width: 1400px) {
+            .container-fluid {
+                max-width: 98%;
+            }
+        }
+        
+        /* Lighter modal backdrop */
+        .modal-backdrop {
+            opacity: 0.1 !important;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        .modal-content {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 0.5rem;
+        }
     </style>
 </head>
 <body>
     <!-- Add User Modal -->
-    <div class="modal fade" aria-labelledby="addUserModal" tabindex="-1" id="addUserModal" aria-hidden="true">
+    <div class="modal fade" aria-labelledby="addUserModal" tabindex="-1"  id="addUserModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form action="" method="post" class="modal-content compact-form" id="addUserForm">
                 <div class="modal-header py-2">
@@ -194,7 +266,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                         <input type="text" class="form-control" id="editContactNumber" name="contactNumber" placeholder="0939-494-4394" maxlength="13">
                         <small class="form-text phone-validation"></small>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 d-none">
                         <label for="editPassword" class="form-label">Password</label>
                         <div class="password-container">
                             <input type="password" class="form-control" id="editPassword" name="password" placeholder="Leave blank to keep current password" minlength="8">
@@ -229,45 +301,148 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
     <?php include_once __DIR__ . "/../assets/admin_sidebar.php"; ?>
 
     <div class="content collapsed" id="content">
-        <div class="container-fluid py-4 px-4 px-xl-5">
-            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
-                <h3>User Management</h3>
+        <div class="container-fluid py-3 px-3 px-xl-4">
+            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0 mb-2">
+                <div class="p-0">
+                    <h3><i class="bi bi-people me-2 text-success"></i>User Management</h3>
+                    <p class="text-muted mb-0">Manage user accounts and access permissions</p>
+                </div>
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
-            <div class="d-flex gap-3 my-3 flex-wrap">
-                <div class="input-group" style="max-width: 300px;">
-                    <input type="text" class="form-control" id="searchUser" placeholder="Search by name, email or contact">
-                    <button class="btn btn-outline-success" type="button" id="searchBtn">
-                        <i class="bi bi-search"></i> Search
-                    </button>
+            
+            <!-- User Statistics Cards -->
+            <div class="row stats-dashboard g-2 mt-3">
+                <div class="col-xl-3 col-md-6 col-sm-6">
+                    <div class="card border-0 shadow-sm stats-card compact-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="stats-icon bg-success-subtle text-success">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="mb-0 text-muted">Total Users</h6>
+                                    <h3 class="fw-bold mb-0 stats-number" id="totalUsersCount">--</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="input-group" style="max-width: 250px;">
-                    <span class="input-group-text bg-success-subtle" id="basic-addon2">Records per page</span>
+                <div class="col-xl-3 col-md-6 col-sm-6">
+                    <div class="card border-0 shadow-sm stats-card compact-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="stats-icon bg-primary-subtle text-primary">
+                                    <i class="bi bi-calendar-plus"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="mb-0 text-muted">New Users (30 days)</h6>
+                                    <h3 class="fw-bold mb-0 stats-number" id="recentUsersCount">--</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-sm-6">
+                    <div class="card border-0 shadow-sm stats-card compact-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="stats-icon bg-info-subtle text-info">
+                                    <i class="bi bi-shield-fill"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="mb-0 text-muted">Admin Users</h6>
+                                    <h3 class="fw-bold mb-0 stats-number" id="activeUsersCount">--</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-sm-6">
+                    <div class="card border-0 shadow-sm stats-card compact-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="stats-icon bg-warning-subtle text-warning">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h6 class="mb-0 text-muted">Client Users</h6>
+                                    <h3 class="fw-bold mb-0 stats-number" id="inactiveUsersCount">--</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex gap-3 my-3 flex-wrap">
+                <div class="input-group" style="max-width: 400px;">
+                    <span class="input-group-text bg-light border-end-0">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" class="form-control" id="searchUser" placeholder="Search by name, email or contact">
+                    <button class="btn btn-success" type="button" id="searchBtn">Search</button>
+                </div>
+                <div class="input-group" style="max-width: 200px;">
+                    <span class="input-group-text bg-light">
+                        <i class="bi bi-list-ol"></i>
+                    </span>
                     <select name="limit" id="limitSelect" class="form-select">
-                        <option value="5">5</option>
-                        <option value="10" selected>10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
+                        <option value="5">5 rows</option>
+                        <option value="10" selected>10 rows</option>
+                        <option value="25">25 rows</option>
+                        <option value="50">50 rows</option>
+                        <option value="100">100 rows</option>
                     </select>
                 </div>
                 <button type="button" class="btn btn-success ms-auto" data-bs-toggle="modal" data-bs-target="#addUserModal">
-                    <i class="bi bi-plus-circle"></i> Add New User
+                    <i class="bi bi-plus-circle"></i> Add User
                 </button>
             </div>
+            <div class="row g-3 mb-3">
+                <div class="col-xl-8">
+                    <div class="d-flex gap-2 flex-wrap">
+                        <!-- <span class="fw-bold me-2 pt-1">Role Filters:</span> -->
+                        <button class="btn btn-sm btn-outline-secondary quick-filter active" data-role="All">
+                            <i class="bi bi-funnel"></i> All
+                        </button>
+                        <button class="btn btn-sm btn-outline-info quick-filter" data-role="Client">
+                            <i class="bi bi-person"></i> Client
+                        </button>
+                        <button class="btn btn-sm btn-outline-warning quick-filter" data-role="Admin">
+                            <i class="bi bi-shield"></i> Admin
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger quick-filter" data-role="Super Admin">
+                            <i class="bi bi-shield-lock"></i> Super Admin
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div class="table-responsive-xl">
-                <table class="table table-hover text-secondary overflow-hidden border rounded px-4">
+                <table class="table table-hover text-secondary overflow-hidden border rounded shadow-sm px-4">
                     <thead>
                         <tr>
-                            <th style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">ID</th>
-                            <th style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Name</th>
-                            <th style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Email</th>
-                            <th style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Contact Number</th>
-                            <th style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Role</th>
-                            <th style="cursor: pointer; background-color: #d1f7c4; white-space: nowrap;">Created At</th>
-                            <th style="text-align: center; width: 15%; background-color: #d1f7c4; white-space: nowrap;">Actions</th>
+                            <th class="sort" data-order="asc" data-column="user_id">
+                                ID <span class="sort-icon">↑</span>
+                            </th>
+                            <th class="sort" data-order="asc" data-column="first_name">
+                                Name <span class="sort-icon">↑</span>
+                            </th>
+                            <th class="sort" data-order="asc" data-column="email">
+                                Email <span class="sort-icon">↑</span>
+                            </th>
+                            <th class="sort" data-order="asc" data-column="contact_number">
+                                Contact Number <span class="sort-icon">↑</span>
+                            </th>
+                            <th class="sort" data-order="asc" data-column="role">
+                                Role <span class="sort-icon">↑</span>
+                            </th>
+                            <th class="sort active" data-order="desc" data-column="created_at">
+                                Created At <span class="sort-icon">↓</span>
+                            </th>
+                            <th style="text-align: center; width: 15%; background-color: #d1f7c4; white-space: nowrap; cursor: default;">Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="usersTableBody">
+                    <tbody id="usersTableBody" class="table-group-divider">
                         <!-- Users data will be loaded here -->
                     </tbody>
                 </table>

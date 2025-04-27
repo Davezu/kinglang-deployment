@@ -1,9 +1,17 @@
 const addUserModal = new bootstrap.Modal(document.getElementById("addUserModal"));
 const editUserModal = new bootstrap.Modal(document.getElementById("editUserModal"));
 
+// Add these variables at the beginning of the file, after the modal declarations
+let currentSortColumn = 'created_at';
+let currentSortDirection = 'DESC';
+let currentRoleFilter = 'All';
+
 document.addEventListener("DOMContentLoaded", async function () {
     const limit = document.getElementById("limitSelect").value;
-    loadUsers(1, "", limit);
+    loadUsers(1, "", limit, currentSortColumn, currentSortDirection, currentRoleFilter);
+    
+    // Load user statistics
+    loadUserStats();
     
     // Initialize phone number formatting and validation
     setupPhoneNumberValidation("contactNumber");
@@ -12,6 +20,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Initialize password validation
     setupPasswordValidation("password");
     setupPasswordValidation("editPassword", true); // optional for edit form
+    
+    // Setup sorting
+    setupTableSorting();
+    
+    // Setup quick filters
+    setupQuickFilters();
 });
 
 // Function to format phone numbers consistently
@@ -260,40 +274,44 @@ function validateForm(formElement) {
     return isValid;
 }
 
-document.getElementById("limitSelect").addEventListener("change", function() {
-    const limit = this.value;
-    const searchTerm = document.getElementById("searchUser").value;
-    loadUsers(1, searchTerm, limit);
-});
-
-document.getElementById("searchBtn").addEventListener("click", function() {
-    const searchTerm = document.getElementById("searchUser").value;
-    const limit = document.getElementById("limitSelect").value;
-    loadUsers(1, searchTerm, limit);
-});
-
-document.getElementById("searchUser").addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-        const searchTerm = this.value;
-        const limit = document.getElementById("limitSelect").value;
-        loadUsers(1, searchTerm, limit);
-    }
-});
-
-function formatDate(date) {
-    return new Date(date).toLocaleDateString("en-US", {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
+// Function to set up quick filter buttons
+function setupQuickFilters() {
+    const quickFilterBtns = document.querySelectorAll(".quick-filter");
+    
+    quickFilterBtns.forEach(button => {
+        button.addEventListener("click", function() {
+            // Remove active class from all buttons
+            quickFilterBtns.forEach(btn => btn.classList.remove("active"));
+            
+            // Add active class to the clicked button
+            this.classList.add("active");
+            
+            // Get the role from data attribute
+            const role = this.getAttribute("data-role");
+            currentRoleFilter = role;
+            
+            // Reset to page 1 and reload with the filter
+            const searchTerm = document.getElementById("searchUser").value;
+            const limit = document.getElementById("limitSelect").value;
+            loadUsers(1, searchTerm, limit, currentSortColumn, currentSortDirection, currentRoleFilter);
+        });
     });
 }
 
-async function loadUsers(page, searchTerm = "", limit = 10) {
+// Update the loadUsers function to include role filter parameter
+async function loadUsers(page, searchTerm = "", limit = 10, sortColumn = currentSortColumn, sortDirection = currentSortDirection, roleFilter = currentRoleFilter) {
     try {
         const response = await fetch("/admin/get-users", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ page, limit, search: searchTerm })
+            body: JSON.stringify({ 
+                page, 
+                limit, 
+                search: searchTerm,
+                sortColumn,
+                sortDirection,
+                roleFilter
+            })
         });
         
         const data = await response.json();
@@ -301,6 +319,42 @@ async function loadUsers(page, searchTerm = "", limit = 10) {
         if (data.users) {
             displayUsers(data.users);
             displayPagination(data.totalPages, data.currentPage);
+            
+            // Update the current sort values if they came from the server
+            if (data.sortColumn && data.sortDirection) {
+                currentSortColumn = data.sortColumn;
+                currentSortDirection = data.sortDirection;
+                
+                // Update the UI to show the current sort
+                document.querySelectorAll('.sort').forEach(header => {
+                    header.classList.remove('active');
+                    const column = header.getAttribute('data-column');
+                    
+                    // Reset all sort icons
+                    const icon = header.querySelector('.sort-icon');
+                    if (icon) {
+                        icon.textContent = '↑';
+                    }
+                    
+                    // Set active column
+                    if (column === currentSortColumn) {
+                        header.classList.add('active');
+                        header.setAttribute('data-order', currentSortDirection.toLowerCase());
+                        
+                        // Update the sort icon
+                        const sortIcon = header.querySelector('.sort-icon');
+                        if (sortIcon) {
+                            sortIcon.textContent = currentSortDirection === 'ASC' ? '↑' : '↓';
+                        }
+                    }
+                });
+            }
+            
+            // Update role filter if it came from server
+            if (data.roleFilter) {
+                currentRoleFilter = data.roleFilter;
+            }
+            
             return data;
         }
     } catch (error) {
@@ -394,8 +448,8 @@ function createActionButtons(user) {
     buttonGroup.classList.add("d-flex", "gap-2", "align-items-center", "justify-content-center");
     
     const editButton = document.createElement("button");
-    editButton.classList.add("btn", "bg-primary-subtle", "text-primary", "btn-sm", "fw-bold", "edit-user");
-    editButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: .75rem;");
+    editButton.classList.add("btn", "btn-outline-primary", "btn-sm", "edit-user");
+    // editButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: .75rem;");
     editButton.setAttribute("data-id", user.user_id);
     
     const editIcon = document.createElement("i");
@@ -405,8 +459,8 @@ function createActionButtons(user) {
     editButton.appendChild(editText);
     
     const deleteButton = document.createElement("button");
-    deleteButton.classList.add("btn", "bg-danger-subtle", "text-danger", "btn-sm", "fw-bold", "delete-user");
-    deleteButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: .75rem;");
+    deleteButton.classList.add("btn", "btn-outline-danger", "btn-sm", "delete-user");
+    // deleteButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: .75rem;");
     deleteButton.setAttribute("data-id", user.user_id);
     
     const deleteIcon = document.createElement("i");
@@ -462,7 +516,7 @@ function displayPagination(totalPages, currentPage) {
         onPageChange: (page) => {
             const searchTerm = document.getElementById("searchUser").value;
             const limit = document.getElementById("limitSelect").value;
-            loadUsers(page, searchTerm, limit);
+            loadUsers(page, searchTerm, limit, currentSortColumn, currentSortDirection, currentRoleFilter);
         }
     });
 }
@@ -607,7 +661,7 @@ document.getElementById("addUserForm").addEventListener("submit", async function
             
             const searchTerm = document.getElementById("searchUser").value;
             const limit = document.getElementById("limitSelect").value;
-            loadUsers(1, searchTerm, limit);
+            loadUsers(1, searchTerm, limit, currentSortColumn, currentSortDirection, currentRoleFilter);
         }
     } catch (error) {
         console.error("Error adding user:", error);
@@ -723,7 +777,7 @@ document.getElementById("editUserForm").addEventListener("submit", async functio
             const limit = document.getElementById("limitSelect").value;
             const currentPage = document.querySelector(".pagination .active") ? 
                 parseInt(document.querySelector(".pagination .active").textContent) : 1;
-            loadUsers(currentPage, searchTerm, limit);
+            loadUsers(currentPage, searchTerm, limit, currentSortColumn, currentSortDirection, currentRoleFilter);
         }
     } catch (error) {
         console.error("Error updating user:", error);
@@ -773,7 +827,7 @@ async function deleteUser(userId) {
             const limit = document.getElementById("limitSelect").value;
             const currentPage = document.querySelector(".pagination .active") ? 
                 parseInt(document.querySelector(".pagination .active").textContent) : 1;
-            loadUsers(currentPage, searchTerm, limit);
+            loadUsers(currentPage, searchTerm, limit, currentSortColumn, currentSortDirection, currentRoleFilter);
         }
     } catch (error) {
         console.error("Error deleting user:", error);
@@ -802,4 +856,104 @@ function formatPhoneNumberForDB(value) {
     
     // Format as 09XX-XXX-XXXX
     return `${digits.substring(0, 4)}-${digits.substring(4, 7)}-${digits.substring(7, 11)}`;
+}
+
+function formatDate(date) {
+    return new Date(date).toLocaleDateString("en-US", {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+}
+
+// Add this function to set up sorting on table headers
+function setupTableSorting() {
+    const headers = document.querySelectorAll('.sort');
+    
+    headers.forEach(header => {
+        header.addEventListener('click', function() {
+            // Clear active class from all headers
+            document.querySelectorAll('.sort').forEach(header => {
+                header.classList.remove('active');
+                
+                // Reset sort icons
+                const icon = header.querySelector('.sort-icon');
+                if (icon) {
+                    icon.textContent = '↑';
+                }
+            });
+            
+            // Add active class to the clicked header
+            this.classList.add('active');
+            
+            const column = this.getAttribute('data-column');
+            
+            // Toggle sort order if clicking on the same column
+            if (column === currentSortColumn) {
+                currentSortDirection = currentSortDirection === 'ASC' ? 'DESC' : 'ASC';
+            } else {
+                currentSortColumn = column;
+                currentSortDirection = 'ASC'; // Default to ascending for new column
+            }
+            
+            // Update the data-order attribute
+            this.setAttribute('data-order', currentSortDirection.toLowerCase());
+            
+            // Update sort icon
+            const sortIcon = this.querySelector('.sort-icon');
+            if (sortIcon) {
+                sortIcon.textContent = currentSortDirection === 'ASC' ? '↑' : '↓';
+            }
+            
+            // Reload data with new sort
+            const searchTerm = document.getElementById("searchUser").value;
+            const limit = document.getElementById("limitSelect").value;
+            loadUsers(1, searchTerm, limit, currentSortColumn, currentSortDirection, currentRoleFilter);
+        });
+    });
+}
+
+// Update search functions to include the role filter
+document.getElementById("searchBtn").addEventListener("click", function() {
+    const searchTerm = document.getElementById("searchUser").value;
+    const limit = document.getElementById("limitSelect").value;
+    loadUsers(1, searchTerm, limit, currentSortColumn, currentSortDirection, currentRoleFilter);
+});
+
+document.getElementById("searchUser").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        const searchTerm = this.value;
+        const limit = document.getElementById("limitSelect").value;
+        loadUsers(1, searchTerm, limit, currentSortColumn, currentSortDirection, currentRoleFilter);
+    }
+});
+
+document.getElementById("limitSelect").addEventListener("change", function() {
+    const limit = this.value;
+    const searchTerm = document.getElementById("searchUser").value;
+    loadUsers(1, searchTerm, limit, currentSortColumn, currentSortDirection, currentRoleFilter);
+});
+
+// Function to load user statistics
+async function loadUserStats() {
+    try {
+        const response = await fetch('/admin/get-user-stats');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        if (result.status === 'success' && result.data) {
+            // Update UI with statistics
+            document.getElementById('totalUsersCount').textContent = result.data.totalUsers || 0;
+            document.getElementById('recentUsersCount').textContent = result.data.recentUsers || 0;
+            document.getElementById('activeUsersCount').textContent = result.data.activeUsers || 0;
+            document.getElementById('inactiveUsersCount').textContent = result.data.inactiveUsers || 0;
+        } else {
+            console.error('Error loading user statistics:', result.message || 'Unknown error');
+        }
+    } catch (error) {
+        console.error('Error fetching user statistics:', error);
+    }
 } 

@@ -28,17 +28,17 @@ require_once __DIR__ . "/../../controllers/admin/PaymentManagementController.php
             --hover-green: #20c997;
         }
         
-        .content.collapsed {
+        /* .content.collapsed {
             margin-left: 78px;
             transition: margin-left 0.3s ease;
             width: calc(100% - 78px);
         }
-        
+
         .content {
             margin-left: 250px;
             transition: margin-left 0.3s ease;
             width: calc(100% - 250px);
-        }
+        } */
         
         .compact-card {
             padding: 0.5rem;
@@ -73,6 +73,7 @@ require_once __DIR__ . "/../../controllers/admin/PaymentManagementController.php
             padding: 12px 8px;
             cursor: pointer;
             transition: background-color 0.2s;
+            user-select: none;
         }
         
         .table thead th:hover {

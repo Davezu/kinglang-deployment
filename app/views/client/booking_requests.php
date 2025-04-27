@@ -148,12 +148,12 @@ require_client_auth(); // Use helper function
 
             <div class="row g-3 mb-3">
                 <!-- Search and Filters Bar -->
-                <div class="col-xl-8">
+                <div class="col-xl-6">
                     <div class="card mb-0 border-0 shadow-sm">
                         <div class="card-body py-2">
                             <div class="row g-2 align-items-center">
                                 <!-- Search -->
-                                <div class="col-lg-5 col-md-5">
+                                <div class="col-lg-8 col-md-8">
                                     <div class="input-group">
                                         <span class="input-group-text bg-light border-end-0">
                                             <i class="bi bi-search"></i>
@@ -164,7 +164,7 @@ require_client_auth(); // Use helper function
                                 </div>
                                 
                                 <!-- Status Filter -->
-                                <div class="col-lg-4 col-md-4">
+                                <div class="col-lg-4 col-md-4 d-none">
                                     <div class="input-group">
                                         <span class="input-group-text bg-light">
                                             <i class="bi bi-filter"></i>
@@ -182,7 +182,7 @@ require_client_auth(); // Use helper function
                                 </div>
                                 
                                 <!-- Records Per Page -->
-                                <div class="col-lg-3 col-md-3">
+                                <div class="col-lg-4 col-md-4">
                                     <div class="input-group">
                                         <span class="input-group-text bg-light">
                                             <i class="bi bi-list-ol"></i>
@@ -199,6 +199,8 @@ require_client_auth(); // Use helper function
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-2 col-md-2"></div>
                 
                 <!-- View Switcher -->
                 <div class="col-xl-4">

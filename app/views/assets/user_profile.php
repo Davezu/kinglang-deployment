@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadNotifications();
     
     // Refresh notifications every 30 seconds
-    setInterval(loadNotifications, 30000);
+    // setInterval(loadNotifications, 30000);
     
     // Mark notification as read when clicked
     document.addEventListener('click', async function(e) {

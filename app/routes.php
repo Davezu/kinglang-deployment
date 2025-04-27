@@ -9,4 +9,8 @@ $router->post('/admin/calendar-bookings', 'BookingManagementController@getCalend
 $router->get('/admin/booking-stats', 'BookingManagementController@getBookingStats');
 $router->post('/admin/get-booking', 'BookingManagementController@getBooking');
 $router->post('/admin/get-booking-details', 'BookingManagementController@getBookingDetails');
-$router->get('/admin/export-bookings', 'BookingManagementController@exportBookings'); 
+$router->get('/admin/export-bookings', 'BookingManagementController@exportBookings');
+
+// New admin create booking routes
+$router->get('/admin/create-booking', 'BookingManagementController@showCreateBookingForm');
+$router->post('/admin/create-booking', 'BookingManagementController@createBooking'); 

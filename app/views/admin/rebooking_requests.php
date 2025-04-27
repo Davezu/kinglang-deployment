@@ -3,66 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Booking Management</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Rebooking Requests</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
-        .content.collapsed {
-            margin-left: 78px;
-            transition: margin-left 0.3s ease;
-            width: calc(100% - 78px);
+        /* Booking details modal styling */
+        .booking-detail-section {
+            margin-bottom: 1.5rem;
         }
-        .content {
-            margin-left: 250px;
-            transition: margin-left 0.3s ease;
-            width: calc(100% - 250px);
-        }
-        /* Table header styles */
-        .table thead th {
-            background-color: #d1f7c4;
+        .booking-detail-section h6 {
             font-weight: 600;
-            padding: 12px 8px;
-            cursor: pointer;
-            transition: background-color 0.2s;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            color: #28a745;
         }
-        .table thead th:hover {
-            background-color:rgba(40, 167, 69, 0.2);
+        .booking-detail-section p {
+            margin-bottom: 0.5rem;
         }
-        .table thead th.active:after {
-            content: attr(data-order) === "asc" ? " ↑" : " ↓";
-            font-size: 0.8rem;
-            margin-left: 5px;
+        .booking-detail-section:last-child {
+            margin-bottom: 0;
         }
-        .sort-icon {
-            font-size: 0.75rem;
-            margin-left: 5px;
-            vertical-align: middle;
+        .booking-detail-section strong {
+            color: #495057;
         }
-        .table tbody tr:hover {
-            background-color: rgba(40, 167, 69, 0.05);
+        #bookingDetailsModal .modal-header {
+            background-color: var(--light-green);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
-        .stats-dashboard {
-            margin-bottom: 1rem;
+        #bookingDetailsModal .modal-body {
+            padding: 20px;
         }
-        .stats-number {
-            font-size: 1.5rem;
+        #bookingDetailsModal .modal-content {
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
         }
-        .stats-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+        #bookingDetailsModal .badge {
+            padding: 0.4rem 0.7rem;
+            font-weight: 500;
         }
-        .compact-card {
-            padding: 0.5rem;
-        }
-        .compact-card .card-body {
-            padding: 0.75rem;
+        @media (min-width: 1400px) {
+            .container-fluid {
+                max-width: 98%;
+            }
         }
     </style>
 </head>
@@ -71,120 +54,50 @@
 
     <div class="content collapsed" id="content">
         <div class="container-fluid py-3 px-3 px-xl-4">
-            <!-- Header with admin profile -->
             <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0 mb-2">
-                <div class="p-0">
-                    <h3><i class="bi bi-arrow-repeat me-2 text-success"></i>Rebooking Requests</h3>
-                    <p class="text-muted mb-0">Manage and track all rebooking requests from clients</p>
-                </div>
+                <h3>Booking Management</h3>
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
-            
             <?php include_once __DIR__ . "/../assets/admin_navtab.php"; ?>
-            
-            <!-- Stats Dashboard Cards -->
-            <div class="row stats-dashboard g-2 mt-3">
-                <div class="col-xl-4 col-md-4 col-sm-6">
-                    <div class="card border-0 shadow-sm stats-card compact-card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="stats-icon bg-primary-subtle text-primary">
-                                    <i class="bi bi-arrow-repeat"></i>
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="mb-0 text-muted">Total Rebookings</h6>
-                                    <h3 class="fw-bold mb-0 stats-number" id="totalRebookingsCount">-</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4 col-sm-6">
-                    <div class="card border-0 shadow-sm stats-card compact-card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="stats-icon bg-success-subtle text-success">
-                                    <i class="bi bi-check-circle"></i>
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="mb-0 text-muted">Confirmed</h6>
-                                    <h3 class="fw-bold mb-0 stats-number" id="confirmedRebookingsCount">-</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4 col-sm-6">
-                    <div class="card border-0 shadow-sm stats-card compact-card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="stats-icon bg-warning-subtle text-warning">
-                                    <i class="bi bi-hourglass-split"></i>
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="mb-0 text-muted">Pending</h6>
-                                    <h3 class="fw-bold mb-0 stats-number" id="pendingRebookingsCount">-</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="input-group w-25 w-md-50 my-3">
+                <span class="input-group-text bg-success-subtle" id="basic-addon1">Filter by Remarks</span>
+                <select name="status" id="statusSelect" class="form-select">
+                    <option value="All">All</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
             </div>
+            <div class="table-responsive-xl ">
+                <table class="table table-hover border overflow-hidden rounded">
+                    <thead>
+                        <tr>
+                            <th class="sort" data-order="asc" data-column="client_name">Client Name</th>
+                            <th class="sort" data-order="asc" data-column="contact_number">Contact Number</th>
+                            <th class="sort" data-order="asc" data-column="email">Email Address</th>
+                            <th class="sort" data-order="asc" data-column="date_of_tour">Date of Tour</th>
+                            <th class="sort" data-order="asc" data-column="status">Remarks</th>
+                            <th class="sort" data-order="asc" style="text-align: center; width: 15%;">Action</th>
+                        </tr> 
+                    </thead>
+                    <tbody id="tableBody" class="fs-6">
 
-            <!-- Search and Filters -->
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-body p-3">
-                    <div class="row g-2 align-items-center">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="input-group">
-                                <span class="input-group-text bg-light border-end-0">
-                                    <i class="bi bi-search"></i>
-                                </span>
-                                <input type="text" id="searchRebookings" class="form-control border-start-0" placeholder="Search clients...">
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="input-group">
-                                <span class="input-group-text bg-success-subtle text-success border-end-0">
-                                    <i class="bi bi-funnel"></i>
-                                </span>
-                                <select name="status" id="statusSelect" class="form-select border-start-0">
-                                    <option value="All">All Status</option>
-                                    <option value="Pending">Pending</option>
-                                    <option value="Confirmed">Confirmed</option>
-                                    <option value="Rejected">Rejected</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4">
-                            <button id="searchBtn" class="btn btn-success w-100">
-                                <i class="bi bi-search me-1"></i> Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    </tbody>
+                </table>
             </div>
+        </div>
+    </div>
 
-            <!-- Table -->
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table table-hover mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="sort" data-order="asc" data-column="client_name">Client Name <i class="bi bi-arrow-down-up sort-icon"></i></th>
-                                    <th class="sort" data-order="asc" data-column="contact_number">Contact Number <i class="bi bi-arrow-down-up sort-icon"></i></th>
-                                    <th class="sort" data-order="asc" data-column="email">Email Address <i class="bi bi-arrow-down-up sort-icon"></i></th>
-                                    <th class="sort" data-order="asc" data-column="date_of_tour">Date of Tour <i class="bi bi-arrow-down-up sort-icon"></i></th>
-                                    <th class="sort" data-order="asc" data-column="status">Remarks <i class="bi bi-arrow-down-up sort-icon"></i></th>
-                                    <th class="text-center" style="width: 15%;">Action</th>
-                                </tr> 
-                            </thead>
-                            <tbody id="tableBody" class="fs-6">
-                                <!-- Table data will be dynamically populated here -->
-                            </tbody>
-                        </table>
-                    </div>
+    <!-- Booking Details Modal -->
+    <div class="modal fade" id="bookingDetailsModal" tabindex="-1" aria-labelledby="bookingDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title fs-4" id="bookingDetailsModalLabel">Booking Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="bookingDetailsContent">
+                    <!-- Content will be loaded dynamically -->
                 </div>
             </div>
         </div>

@@ -1,0 +1,54 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "New Cuyo roaf, Roxas, Palawan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 9
+            }
+         ],
+         "place_id" : "ChIJHz_aJQDJtTMRAQWnD_mDrrM",
+         "reference" : "ChIJHz_aJQDJtTMRAQWnD_mDrrM",
+         "structured_formatting" : 
+         {
+            "main_text" : "New Cuyo roaf",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 9
+               }
+            ],
+            "secondary_text" : "Roxas, Palawan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "New Cuyo roaf"
+            },
+            {
+               "offset" : 15,
+               "value" : "Roxas"
+            },
+            {
+               "offset" : 22,
+               "value" : "Palawan"
+            },
+            {
+               "offset" : 31,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

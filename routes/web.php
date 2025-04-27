@@ -392,6 +392,12 @@ switch ($request) {
         $controller->getUserDetails();
         break;
 
+    case "/admin/get-user-stats":
+        require_once $controllerClasses['admin']['UserManagementController'];
+        $controller = new UserManagementController();
+        $controller->getUserStats();
+        break;
+
     // Payment Management Routes
     case "/admin/payment-management":
         require_once $controllerClasses['admin']['PaymentManagementController'];
@@ -605,6 +611,13 @@ switch ($request) {
         require_once $controllerClasses['admin']['BookingManagementController'];
         $controller = new BookingManagementController();
         $controller->createBooking();
+        break;
+
+    // Route for fetching diesel price (used by both client and admin booking)
+    case "/getDieselPrice":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getDieselPrice();
         break;
 
     default:
