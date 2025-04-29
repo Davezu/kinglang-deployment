@@ -33,7 +33,7 @@ class Booking {
 
             if ($is_rebooking && $this->bookingIsNotConfirmed($rebooking_id)) {
                 $this->updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $base_cost, $diesel_cost, $base_rate, $diesel_price, $total_distance, $pickup_time);
-                return ["success" => true, "message" => "Booking updated successfully!"];
+                return ["success" => true, "message" => "Booking updated successfully!", "booking_id" => $rebooking_id];
             }
 
             $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, pickup_time, number_of_days, number_of_buses, user_id, balance, is_rebooking) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :pickup_time, :number_of_days, :number_of_buses, :user_id, :balance, :is_rebooking)");
@@ -96,7 +96,7 @@ class Booking {
                 ]);
             }
 
-            return ["success" => true, "message" => "Booking request submitted successfully!"];
+            return ["success" => true, "message" => "Booking request submitted successfully!", "booking_id" => $booking_id];
         } catch (PDOException $e) {
             return ["success" => false, "message" => "Database error: " . $e->getMessage()];
         }
@@ -581,7 +581,34 @@ class Booking {
         }
     }
 
-    
+    // Add a new method to save terms agreement information
+    public function saveTermsAgreement($booking_id, $user_id, $agreed_terms, $user_ip) {
+        try {
+            $stmt = $this->conn->prepare("INSERT INTO terms_agreements (booking_id, user_id, agreed_terms, user_ip) VALUES (:booking_id, :user_id, :agreed_terms, :user_ip)");
+            $stmt->execute([
+                ":booking_id" => $booking_id,
+                ":user_id" => $user_id,
+                ":agreed_terms" => $agreed_terms ? 1 : 0,
+                ":user_ip" => $user_ip
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            error_log("Error saving terms agreement: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    // Add a method to get terms agreement information for a booking
+    public function getTermsAgreement($booking_id) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM terms_agreements WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error getting terms agreement: " . $e->getMessage());
+            return false;
+        }
+    }
 }
 
 

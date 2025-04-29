@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
-            "geocode",
+            "locality",
             "political",
-            "locality"
+            "geocode"
          ]
       },
       {
@@ -139,8 +139,8 @@
          ],
          "types" : 
          [
-            "establishment",
             "point_of_interest",
+            "establishment",
             "tourist_attraction"
          ]
       },
@@ -192,10 +192,10 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "church",
             "place_of_worship",
             "establishment",
-            "church",
+            "point_of_interest",
             "tourist_attraction"
          ]
       },
@@ -247,9 +247,9 @@
          ],
          "types" : 
          [
-            "lodging",
             "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "lodging"
          ]
       }
    ],

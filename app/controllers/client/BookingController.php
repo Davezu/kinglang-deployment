@@ -479,106 +479,117 @@ class BookingController {
     }
 
     public function requestBooking() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $data = json_decode(file_get_contents("php://input"), true);
-            $date_of_tour = $data["dateOfTour"];
-            $destination = $data["destination"];
-            $stops = $data["stops"] ?? [];
-            $pickup_point = $data["pickupPoint"];
-            $pickup_time = $data["pickupTime"] ?? null;
-            $number_of_buses = (int) $data["numberOfBuses"];
-            $number_of_days = (int) $data["numberOfDays"];
-            $user_id = $_SESSION["user_id"];
-            $total_cost = (float) $data["totalCost"];
-            $balance = (float) $data["balance"];
-            $trip_distances = $data["tripDistances"];
-            $addresses = $data["addresses"];
-            $is_rebooking = $data["isRebooking"];
-            $rebooking_id = $data["rebookingId"];
-            
-            // Optional new fields for cost breakdown
-            $region = $data["region"] ?? null;
+        header("Content-Type: application/json");
 
-            $base_cost = $data["baseCost"] ?? null;
-            $diesel_cost = $data["dieselCost"] ?? null;
-            $base_rate = $data["baseRate"] ?? null;
-            $diesel_price = $data["dieselPrice"] ?? null;
-            $total_distance = $data["totalDistance"] ?? null;
-
-            // If we received region info but didn't calculate it properly, recalculate
-            if (!$region) {
-                // Get all locations
-                $all_locations = [$pickup_point];
-                if (!empty($stops)) {
-                    $all_locations = array_merge($all_locations, $stops);
-                }
-                $all_locations[] = $destination;
-                
-                // Define rates per region
-                $regional_rates = [
-                    'NCR' => 19560, // Metro Manila
-                    'CAR' => 117539, // Cordillera Administrative Region
-                    'Region 2' => 71040, // Cagayan Valley
-                    'Region 3' => 45020, // Central Luzon
-                    'Region 4A' => 20772, // Calabarzon
-                ];
-                
-                // Determine region for each location
-                $highest_rate = 0;
-                $farthest_region = 'Region 4A'; // Default
-                
-                foreach ($all_locations as $location) {
-                    $location_region = $this->determineRegionFromLocations([$location]);
-                    $location_rate = $regional_rates[$location_region] ?? $regional_rates['Region 4A'];
-                    
-                    if ($location_rate > $highest_rate) {
-                        $highest_rate = $location_rate;
-                        $farthest_region = $location_region;
-                    }
-                }
-                
-                $region = $farthest_region;
-            }
-
-            $result = $this->bookingModel->requestBooking(
-                $date_of_tour, 
-                $destination, 
-                $pickup_point, 
-                $number_of_days, 
-                $number_of_buses, 
-                $user_id, 
-                $stops, 
-                $total_cost, 
-                $balance, 
-                $trip_distances, 
-                $addresses, 
-                $is_rebooking, 
-                $rebooking_id,
-                
-                $base_cost, 
-                $diesel_cost,
-                $base_rate,
-                $diesel_price,
-                $total_distance,
-                $pickup_time
-            );
-            
-            // Create notification for admin if booking was successful
-            if (isset($result["success"]) && $result["success"]) {
-                // Get the last inserted booking ID
-                $booking_id = $this->bookingModel->conn->lastInsertId();
-                $user_name = $_SESSION["client_name"];
-                $message = "New booking request from {$user_name} to {$destination}";
-                $this->notificationModel->addNotification("booking_request", $message, $booking_id);
-            }
-
-            header("Content-Type: application/json");
-
-            echo json_encode([
-                "success" => $result["success"], 
-                "message" => $result["message"]
-            ]);
+        if (!isset($_SESSION["user_id"])) {
+            echo json_encode(["success" => false, "message" => "You are not logged in."]);
+            return;
         }
+
+        $input = json_decode(file_get_contents("php://input"), true);
+
+        // Validate required data
+        if (empty($input["pickupPoint"]) || empty($input["destination"]) || empty($input["dateOfTour"]) || empty($input["numberOfDays"]) || empty($input["numberOfBuses"])) {
+            echo json_encode(["success" => false, "message" => "Missing required data."]);
+            return;
+        }
+
+        // Validate terms agreement
+        if (!isset($input["agreeTerms"]) || $input["agreeTerms"] !== true) {
+            echo json_encode(["success" => false, "message" => "You must agree to the terms and conditions."]);
+            return;
+        }
+
+        // Get the user's IP address
+        $user_ip = $this->getUserIP();
+
+        $pickup_point = $input["pickupPoint"];
+        $destination = $input["destination"];
+        $date_of_tour = $input["dateOfTour"];
+        $pickup_time = $input["pickupTime"] ?? null;
+        $number_of_days = $input["numberOfDays"];
+        $number_of_buses = $input["numberOfBuses"];
+        $stops = $input["stops"] ?? [];
+        $total_cost = $input["totalCost"] ?? 0;
+        $balance = $input["balance"] ?? $total_cost;
+        $trip_distances = $input["tripDistances"] ?? [];
+        $addresses = $input["addresses"] ?? [];
+        $is_rebooking = isset($input["isRebooking"]) && $input["isRebooking"] === true;
+        $rebooking_id = $input["rebookingId"] ?? null;
+        $base_cost = $input["baseCost"] ?? null;
+        $diesel_cost = $input["dieselCost"] ?? null;
+        $base_rate = $input["baseRate"] ?? null;
+        $diesel_price = $input["dieselPrice"] ?? null;
+        $total_distance = $input["totalDistance"] ?? null;
+        
+        $booking_result = $this->bookingModel->requestBooking(
+            $date_of_tour,
+            $destination,
+            $pickup_point,
+            $number_of_days,
+            $number_of_buses,
+            $_SESSION["user_id"],
+            $stops,
+            $total_cost,
+            $balance,
+            $trip_distances,
+            $addresses,
+            $is_rebooking,
+            $rebooking_id,
+            $base_cost,
+            $diesel_cost,
+            $base_rate,
+            $diesel_price,
+            $total_distance,
+            $pickup_time
+        );
+
+        if ($booking_result["success"]) {
+            // Get the booking ID 
+            $booking_id = $booking_result["booking_id"];
+            
+            // Save the terms agreement
+            if ($booking_id) {
+                $this->bookingModel->saveTermsAgreement(
+                    $booking_id,
+                    $_SESSION["user_id"],
+                    true, // $input["agreeTerms"] is already validated to be true
+                    $user_ip
+                );
+            }
+
+            // Create notification for admin
+            $user = $this->getUserInfo($_SESSION["user_id"]);
+            $user_name = $user["first_name"] . " " . $user["last_name"];
+            $notification_message = "New booking request from " . $user_name;
+            $this->notificationModel->addNotification("booking_request", $notification_message, $booking_id);
+        }
+
+        echo json_encode($booking_result);
+    }
+
+    /**
+     * Get the current user's IP address
+     * @return string
+     */
+    private function getUserIP() {
+        $ip = '';
+        
+        // Check for proxy forwarded IP
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } 
+        // Check for shared IP
+        elseif (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } 
+        // Get the remote address
+        elseif (!empty($_SERVER['REMOTE_ADDR'])) {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        
+        // Sanitize the IP to prevent SQL injection
+        return filter_var($ip, FILTER_VALIDATE_IP) ?: '0.0.0.0';
     }
 
     // public function findAvailableBuses() { // if the system will let the client select their prefered bus
@@ -975,6 +986,47 @@ class BookingController {
         
         // Load the invoice template view
         require_once __DIR__ . "/../../views/client/invoice.php";
+    }
+    
+    public function printContract($booking_id = null) {
+        if (!$booking_id) {
+            // Redirect to bookings page if no ID provided
+            header("Location: /home/booking-requests");
+            exit();
+        }
+        
+        $user_id = $_SESSION["user_id"];
+        
+        // Get booking details
+        $booking = $this->bookingModel->getBooking($booking_id, $user_id);
+        
+        if (!$booking) {
+            // Booking not found or doesn't belong to this user
+            header("Location: /home/booking-requests");
+            exit();
+        }
+        
+        // Get booking stops
+        $stops = $this->bookingModel->getBookingStops($booking_id);
+        
+        // Load the contract template view
+        require_once __DIR__ . "/../../views/client/contract.php";
+    }
+
+    /**
+     * Get user information by user ID
+     * @param int $user_id
+     * @return array
+     */
+    private function getUserInfo($user_id) {
+        try {
+            $stmt = $this->bookingModel->conn->prepare("SELECT * FROM users WHERE user_id = :user_id");
+            $stmt->execute([":user_id" => $user_id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error getting user info: " . $e->getMessage());
+            return [];
+        }
     }
 }
 ?>

@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "Malipaka Street, Quezon City, Metro Manila, Philippines",
+      "Maligaya St, Quezon City, Metro Manila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "Maligaya St, Quezon City, Metro Manila, Philippines",
+      "Malipaka Street, Quezon City, Metro Manila, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "0.9 km",
+                  "value" : 915
+               },
+               "duration" : 
+               {
+                  "text" : "3 mins",
+                  "value" : 199
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "0.9 km",
+                  "value" : 915
+               },
+               "duration" : 
+               {
+                  "text" : "3 mins",
+                  "value" : 194
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,256 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Nalin, Midsayap, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJV1uKDuOd-DIRq77OW3zceM4",
+         "reference" : "ChIJV1uKDuOd-DIRq77OW3zceM4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nalin",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Midsayap, Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nalin"
+            },
+            {
+               "offset" : 7,
+               "value" : "Midsayap"
+            },
+            {
+               "offset" : 17,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "geocode",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Nalibunan (Pob.), Abuyog, Leyte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ3_PurV-6BzMR1-A8B3TGUqg",
+         "reference" : "ChIJ3_PurV-6BzMR1-A8B3TGUqg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nalibunan (Pob.)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Abuyog, Leyte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nalibunan (Pob.)"
+            },
+            {
+               "offset" : 18,
+               "value" : "Abuyog"
+            },
+            {
+               "offset" : 26,
+               "value" : "Leyte"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Nalil, Bongao, Tawi-Tawi, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJZ3OaA4LQTIRCpm0IixbrnQ",
+         "reference" : "ChIJJZ3OaA4LQTIRCpm0IixbrnQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nalil",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bongao, Tawi-Tawi, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nalil"
+            },
+            {
+               "offset" : 7,
+               "value" : "Bongao"
+            },
+            {
+               "offset" : 15,
+               "value" : "Tawi-Tawi"
+            },
+            {
+               "offset" : 26,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "political",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Nalilidan, Kalamansig, Sultan Kudarat, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJsUplZ8KLVzIRSuK836ImGLA",
+         "reference" : "ChIJsUplZ8KLVzIRSuK836ImGLA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nalilidan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Kalamansig, Sultan Kudarat, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nalilidan"
+            },
+            {
+               "offset" : 11,
+               "value" : "Kalamansig"
+            },
+            {
+               "offset" : 23,
+               "value" : "Sultan Kudarat"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Naligusan, Ibajay, Aklan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZQgxGAhypTMR1UBtrI5kS04",
+         "reference" : "ChIJZQgxGAhypTMR1UBtrI5kS04",
+         "structured_formatting" : 
+         {
+            "main_text" : "Naligusan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ibajay, Aklan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Naligusan"
+            },
+            {
+               "offset" : 11,
+               "value" : "Ibajay"
+            },
+            {
+               "offset" : 19,
+               "value" : "Aklan"
+            },
+            {
+               "offset" : 26,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "geocode",
+            "sublocality",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

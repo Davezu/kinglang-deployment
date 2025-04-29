@@ -1,0 +1,267 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Maliag Studio Type Room for Rent, Caltex Road, Barangay Poblacion 3, Coron, Palawan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJievzQf4dujMR5tanxA-stco",
+         "reference" : "ChIJievzQf4dujMR5tanxA-stco",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maliag Studio Type Room for Rent",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caltex Road, Barangay Poblacion 3, Coron, Palawan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maliag Studio Type Room for Rent"
+            },
+            {
+               "offset" : 34,
+               "value" : "Caltex Road"
+            },
+            {
+               "offset" : 47,
+               "value" : "Barangay Poblacion 3"
+            },
+            {
+               "offset" : 69,
+               "value" : "Coron"
+            },
+            {
+               "offset" : 76,
+               "value" : "Palawan"
+            },
+            {
+               "offset" : 85,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Maliag Studio Type Room for Rent, Caltex Road, Coron, Palawan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbZyTKgBjvTMRzqxG9---4hE",
+         "reference" : "ChIJbZyTKgBjvTMRzqxG9---4hE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maliag Studio Type Room for Rent",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caltex Road, Coron, Palawan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maliag Studio Type Room for Rent"
+            },
+            {
+               "offset" : 34,
+               "value" : "Caltex Road"
+            },
+            {
+               "offset" : 47,
+               "value" : "Coron"
+            },
+            {
+               "offset" : 54,
+               "value" : "Palawan"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Mileage Drive, Tiange Road, Lapu-Lapu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNfZDsHCZqTMRkUwC6Vktxyw",
+         "reference" : "ChIJNfZDsHCZqTMRkUwC6Vktxyw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mileage Drive",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tiange Road, Lapu-Lapu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mileage Drive"
+            },
+            {
+               "offset" : 15,
+               "value" : "Tiange Road"
+            },
+            {
+               "offset" : 28,
+               "value" : "Lapu-Lapu City"
+            },
+            {
+               "offset" : 44,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 50,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "car_rental",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "MileAge Moto hub 2.0, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwzVABgCvlzMRoJ5mNf0NVTM",
+         "reference" : "ChIJwzVABgCvlzMRoJ5mNf0NVTM",
+         "structured_formatting" : 
+         {
+            "main_text" : "MileAge Moto hub 2.0",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MileAge Moto hub 2.0"
+            },
+            {
+               "offset" : 22,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 32,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "car_repair"
+         ]
+      },
+      {
+         "description" : "Mileage Gasoline Station, Daet, Camarines Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJH5K3XOiumDMRLNBuQ9dNe6c",
+         "reference" : "ChIJH5K3XOiumDMRLNBuQ9dNe6c",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mileage Gasoline Station",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Daet, Camarines Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mileage Gasoline Station"
+            },
+            {
+               "offset" : 26,
+               "value" : "Daet"
+            },
+            {
+               "offset" : 32,
+               "value" : "Camarines Norte"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "gas_station",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

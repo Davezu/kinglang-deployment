@@ -42,8 +42,8 @@
          "types" : 
          [
             "locality",
-            "geocode",
-            "political"
+            "political",
+            "geocode"
          ]
       },
       {
@@ -87,8 +87,8 @@
          "types" : 
          [
             "political",
-            "locality",
-            "geocode"
+            "geocode",
+            "locality"
          ]
       },
       {
@@ -179,10 +179,10 @@
          ],
          "types" : 
          [
-            "geocode",
             "sublocality",
-            "sublocality_level_2",
-            "political"
+            "political",
+            "geocode",
+            "sublocality_level_2"
          ]
       },
       {
@@ -226,8 +226,8 @@
          "types" : 
          [
             "locality",
-            "geocode",
-            "political"
+            "political",
+            "geocode"
          ]
       }
    ],

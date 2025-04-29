@@ -222,6 +222,13 @@ switch ($request) {
         $controller->printInvoice($matches[1] ?? null);
         break;
 
+    case "/home/print-contract":
+    case preg_match('|^/home/print-contract/([0-9]+)$|', $request, $matches) ? $request : "":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->printContract($matches[1] ?? null);
+        break;
+
     case "/payment/process":
         require_once $controllerClasses['client']['BookingController'];
         $controller = new BookingController();
@@ -611,6 +618,28 @@ switch ($request) {
         require_once $controllerClasses['admin']['BookingManagementController'];
         $controller = new BookingManagementController();
         $controller->createBooking();
+        break;
+
+    // Admin booking helper routes
+    case "/admin/get-address":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getAddress();
+        break;   
+    case "/admin/get-distance":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getDistance();
+        break;
+    case "/admin/get-route":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->processCoordinates();
+        break;
+    case "/admin/get-total-cost":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getTotalCost();
         break;
 
     // Route for fetching diesel price (used by both client and admin booking)

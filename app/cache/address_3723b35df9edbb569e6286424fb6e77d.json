@@ -1,0 +1,116 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "AMKA Trading, Downtown District, Dagupan, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJl6l-GxFnkTMR4ZdAIK5mxGc",
+         "reference" : "ChIJl6l-GxFnkTMR4ZdAIK5mxGc",
+         "structured_formatting" : 
+         {
+            "main_text" : "AMKA Trading",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Downtown District, Dagupan, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "AMKA Trading"
+            },
+            {
+               "offset" : 14,
+               "value" : "Downtown District"
+            },
+            {
+               "offset" : 33,
+               "value" : "Dagupan"
+            },
+            {
+               "offset" : 42,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Mitsubishi Amcar Automotive Corp Sales and service, Greenfield Automall Greenfield City, Santa Rosa - Tagaytay Road, Santa Rosa, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 50,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJXaA1QlB9vTMR6x_e-sBG5LE",
+         "reference" : "ChIJXaA1QlB9vTMR6x_e-sBG5LE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mitsubishi Amcar Automotive Corp Sales and service",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 50,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Greenfield Automall Greenfield City, Santa Rosa - Tagaytay Road, Santa Rosa, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mitsubishi Amcar Automotive Corp Sales and service"
+            },
+            {
+               "offset" : 52,
+               "value" : "Greenfield Automall Greenfield City"
+            },
+            {
+               "offset" : 89,
+               "value" : "Santa Rosa - Tagaytay Road"
+            },
+            {
+               "offset" : 117,
+               "value" : "Santa Rosa"
+            },
+            {
+               "offset" : 129,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 137,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "car_dealer",
+            "point_of_interest",
+            "store"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

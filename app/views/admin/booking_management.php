@@ -320,9 +320,6 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
             <div class="row g-3 mb-3">
                 <div class="col-xl-8">
                     <div class="d-flex gap-2 flex-wrap">
-                        <button class="btn btn-sm btn-success" id="createBookingBtn">
-                            <i class="bi bi-plus-circle"></i> Create Booking
-                        </button>
                         <button class="btn btn-sm btn-outline-secondary quick-filter" data-status="All">
                             <i class="bi bi-funnel"></i> All
                         </button>

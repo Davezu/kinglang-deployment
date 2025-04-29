@@ -186,7 +186,16 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                 </div>
                 <div class="text-end">
                     <div class="invoice-number">Invoice #<?php echo $booking['booking_id']; ?></div>
-                    <div class="invoice-date">Date: <?php echo date('F d, Y'); ?></div>
+                    <div class="invoice-number">Invoice #<?php echo $booking['booking_id']; ?></div>
+                    <div class="invoice-date">Issued Date: <?php 
+                        $issued_date = new DateTime($booking['confirmed_at']);
+                        echo $issued_date->format('F j, Y') ?? "N/A"; 
+                    ?></div>
+                    <div class="invoice-date">Due Date: <?php 
+                        $due_date = new DateTime($booking['date_of_tour']);
+                        $due_date->modify('-7 day');
+                        echo $due_date->format('F j, Y') ?? "N/A"; 
+                    ?></div>
                     <div class="mt-3"> 
                         <span class="status-badge status-<?php echo strtolower($booking['status']); ?>">
                             <?php echo $booking['status']; ?>

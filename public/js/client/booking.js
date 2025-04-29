@@ -256,6 +256,19 @@ document.getElementById("back").addEventListener("click", function () {
 document.getElementById("bookingForm").addEventListener("submit", async function (e) {
     e.preventDefault(); 
     
+    // Validate terms and conditions checkbox
+    const agreeTermsCheckbox = document.getElementById("agreeTerms");
+    if (!agreeTermsCheckbox.checked) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Terms Agreement Required',
+            text: 'You must agree to the Terms and Conditions to proceed with booking.',
+            timer: 3000,
+            timerProgressBar: true
+        });
+        return;
+    }
+
     const stops = Array.from(document.querySelectorAll(".added-stop")).map((stop, i) => stop.value).filter(stop => stop.trim() !== "");
     const destination = stops[stops.length - 1];
     stops.pop();
@@ -292,7 +305,8 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         dieselCost: costBreakdown.dieselCost || null,
         baseRate: costBreakdown.baseRate || null,
         dieselPrice: costBreakdown.dieselPrice || null,
-        totalDistance: costBreakdown.totalDistance || null
+        totalDistance: costBreakdown.totalDistance || null,
+        agreeTerms: agreeTermsCheckbox.checked
     }
 
     console.log("Total distance: ", costBreakdown.totalDistance);

@@ -1,0 +1,252 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Makaira - Daraitan Road, Tanay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjJNYWthaXJhIC0gRGFyYWl0YW4gUm9hZCwgVGFuYXksIFJpemFsLCBQaGlsaXBwaW5lcyIuKiwKFAoSCdFFQjPZkpczEcoHQcECamtNEhQKEgm1nlvRX5OXMxGeL9hhMbmIhg",
+         "reference" : "EjJNYWthaXJhIC0gRGFyYWl0YW4gUm9hZCwgVGFuYXksIFJpemFsLCBQaGlsaXBwaW5lcyIuKiwKFAoSCdFFQjPZkpczEcoHQcECamtNEhQKEgm1nlvRX5OXMxGeL9hhMbmIhg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makaira - Daraitan Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tanay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makaira - Daraitan Road"
+            },
+            {
+               "offset" : 25,
+               "value" : "Tanay"
+            },
+            {
+               "offset" : 32,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Makai Bowls, San Juan, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJX1RtEYSNkTMRJ_RmN08_Bxc",
+         "reference" : "ChIJX1RtEYSNkTMRJ_RmN08_Bxc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makai Bowls",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Juan, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makai Bowls"
+            },
+            {
+               "offset" : 13,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 23,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "cafe",
+            "food"
+         ]
+      },
+      {
+         "description" : "MAKAI TRANSIENT INN, Naguituban-Urbiztondo Road, San Juan, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJ9ts5amNkTMRL69gePmxkGE",
+         "reference" : "ChIJJ9ts5amNkTMRL69gePmxkGE",
+         "structured_formatting" : 
+         {
+            "main_text" : "MAKAI TRANSIENT INN",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Naguituban-Urbiztondo Road, San Juan, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MAKAI TRANSIENT INN"
+            },
+            {
+               "offset" : 21,
+               "value" : "Naguituban-Urbiztondo Road"
+            },
+            {
+               "offset" : 49,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 59,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Makainis, General S.K. Pendatun, Maguindanao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ7UAKd6Bv-DIRgeZyPWtICDE",
+         "reference" : "ChIJ7UAKd6Bv-DIRgeZyPWtICDE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makainis",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General S.K. Pendatun, Maguindanao, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makainis"
+            },
+            {
+               "offset" : 10,
+               "value" : "General S.K. Pendatun"
+            },
+            {
+               "offset" : 33,
+               "value" : "Maguindanao"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "geocode",
+            "political",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAe2gZALJlzMRzsoweNVuBis",
+         "reference" : "ChIJAe2gZALJlzMRzsoweNVuBis",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makati",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 8,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

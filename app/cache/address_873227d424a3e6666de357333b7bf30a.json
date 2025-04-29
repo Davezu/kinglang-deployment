@@ -54,8 +54,8 @@
          "types" : 
          [
             "establishment",
-            "point_of_interest",
-            "shopping_mall"
+            "shopping_mall",
+            "point_of_interest"
          ]
       },
       {
@@ -166,8 +166,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -215,8 +215,8 @@
          "types" : 
          [
             "establishment",
-            "transit_station",
-            "point_of_interest"
+            "point_of_interest",
+            "transit_station"
          ]
       },
       {
@@ -271,8 +271,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       }
    ],

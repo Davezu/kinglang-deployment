@@ -153,10 +153,10 @@
          ],
          "types" : 
          [
-            "food",
             "establishment",
             "store",
-            "point_of_interest"
+            "point_of_interest",
+            "food"
          ]
       },
       {
@@ -259,10 +259,10 @@
          ],
          "types" : 
          [
-            "establishment",
             "health",
-            "hair_care",
-            "point_of_interest"
+            "establishment",
+            "point_of_interest",
+            "hair_care"
          ]
       }
    ],

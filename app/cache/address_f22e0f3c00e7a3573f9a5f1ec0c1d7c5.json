@@ -1,0 +1,259 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJi8MeVwPKlzMRH8FpEHXV0Wk",
+         "reference" : "ChIJi8MeVwPKlzMRH8FpEHXV0Wk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 8,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbTgmYNLIlzMR0HiSrNoj7V8",
+         "reference" : "ChIJbTgmYNLIlzMR0HiSrNoj7V8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 8,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "administrative_area_level_1",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Manila International Airport (MNL), Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJd0270sXOlzMREUQRimL6JIo",
+         "reference" : "ChIJd0270sXOlzMREUQRimL6JIo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila International Airport (MNL)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila International Airport (MNL)"
+            },
+            {
+               "offset" : 36,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 43,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "airport",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Manila City Hall, Padre Burgos Avenue, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJVxSaAyLKlzMRcl0n6OEMiO8",
+         "reference" : "ChIJVxSaAyLKlzMRcl0n6OEMiO8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Padre Burgos Avenue, Ermita, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila City Hall"
+            },
+            {
+               "offset" : 18,
+               "value" : "Padre Burgos Avenue"
+            },
+            {
+               "offset" : 39,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 47,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "local_government_office",
+            "tourist_attraction",
+            "city_hall",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Manila Zoo, Adriatico Street, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ4_WFMX7JlzMRJOkBCvft38A",
+         "reference" : "ChIJ4_WFMX7JlzMRJOkBCvft38A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila Zoo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Adriatico Street, Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila Zoo"
+            },
+            {
+               "offset" : 12,
+               "value" : "Adriatico Street"
+            },
+            {
+               "offset" : 30,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 38,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "park",
+            "tourist_attraction",
+            "zoo",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

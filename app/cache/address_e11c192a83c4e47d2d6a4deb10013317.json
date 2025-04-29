@@ -2,6 +2,59 @@
    "predictions" : 
    [
       {
+         "description" : "Colegio de Muntinlupa, Mayor J.Posadas Avenue, Muntinlupa, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBxem0rjPlzMRRCTqypaZ1FU",
+         "reference" : "ChIJBxem0rjPlzMRRCTqypaZ1FU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio de Muntinlupa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mayor J.Posadas Avenue, Muntinlupa, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio de Muntinlupa"
+            },
+            {
+               "offset" : 23,
+               "value" : "Mayor J.Posadas Avenue"
+            },
+            {
+               "offset" : 47,
+               "value" : "Muntinlupa"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
          "description" : "Colegio de San Juan de Letran Calamba, Bucal Bypass Road, Calamba, Laguna, Philippines",
          "matched_substrings" : 
          [
@@ -50,13 +103,13 @@
          "types" : 
          [
             "school",
-            "university",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "university"
          ]
       },
       {
-         "description" : "Colegio de Muntinlupa, Mayor J.Posadas Avenue, Muntinlupa, Metro Manila, Philippines",
+         "description" : "Colegio De Sebastian Pampanga Incorporated, MacArthur Highway, San Fernando, Pampanga, Philippines",
          "matched_substrings" : 
          [
             {
@@ -64,11 +117,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJBxem0rjPlzMRRCTqypaZ1FU",
-         "reference" : "ChIJBxem0rjPlzMRRCTqypaZ1FU",
+         "place_id" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
+         "reference" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
          "structured_formatting" : 
          {
-            "main_text" : "Colegio de Muntinlupa",
+            "main_text" : "Colegio De Sebastian Pampanga Incorporated",
             "main_text_matched_substrings" : 
             [
                {
@@ -76,36 +129,36 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Mayor J.Posadas Avenue, Muntinlupa, Metro Manila, Philippines"
+            "secondary_text" : "MacArthur Highway, San Fernando, Pampanga, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Colegio de Muntinlupa"
+               "value" : "Colegio De Sebastian Pampanga Incorporated"
             },
             {
-               "offset" : 23,
-               "value" : "Mayor J.Posadas Avenue"
+               "offset" : 44,
+               "value" : "MacArthur Highway"
             },
             {
-               "offset" : 47,
-               "value" : "Muntinlupa"
+               "offset" : 63,
+               "value" : "San Fernando"
             },
             {
-               "offset" : 59,
-               "value" : "Metro Manila"
+               "offset" : 77,
+               "value" : "Pampanga"
             },
             {
-               "offset" : 73,
+               "offset" : 87,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
             "point_of_interest",
-            "establishment",
-            "university"
+            "university",
+            "establishment"
          ]
       },
       {
@@ -210,62 +263,9 @@
          "types" : 
          [
             "school",
-            "establishment",
             "point_of_interest",
-            "university"
-         ]
-      },
-      {
-         "description" : "Colegio De Sebastian Pampanga Incorporated, MacArthur Highway, San Fernando, Pampanga, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 7,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
-         "reference" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
-         "structured_formatting" : 
-         {
-            "main_text" : "Colegio De Sebastian Pampanga Incorporated",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 7,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "MacArthur Highway, San Fernando, Pampanga, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Colegio De Sebastian Pampanga Incorporated"
-            },
-            {
-               "offset" : 44,
-               "value" : "MacArthur Highway"
-            },
-            {
-               "offset" : 63,
-               "value" : "San Fernando"
-            },
-            {
-               "offset" : 77,
-               "value" : "Pampanga"
-            },
-            {
-               "offset" : 87,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "establishment",
-            "point_of_interest",
-            "university"
+            "university",
+            "establishment"
          ]
       }
    ],

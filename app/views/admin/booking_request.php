@@ -181,6 +181,13 @@
                 <p><span class="info-label">Contact:</span> <span id="contactNumber"></span></p>
             </div>
 
+            <div class="terms-agreement info-group">
+                <h3>TERMS AND CONDITIONS AGREEMENT</h3>
+                <div id="termsAgreementInfo">
+                    <p>Loading terms agreement information...</p>
+                </div>
+            </div>
+
             <div class="trip-info info-group">
                 <h3>TRIP DETAILS</h3>
                 <p><span class="info-label">Pickup Point:</span> <span id="pickupPoint"></span></p>
@@ -238,85 +245,135 @@
         let numberOfBuses = 0;
         let totalCost = 0;
 
-        document.addEventListener("DOMContentLoaded", async function () {
+        document.addEventListener("DOMContentLoaded", async function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const bookingId = urlParams.get("id") || localStorage.getItem("bookingId");
+            
+            if (localStorage.getItem("bookingId")) {
+                localStorage.removeItem("bookingId");
+            }
+            
+            if (!bookingId) {
+                alert("No booking ID provided");
+                return;
+            }
+            
+            // Set invoice date
             const currentDate = new Date();
             document.getElementById("invoiceDate").textContent = "Date: " + currentDate.toLocaleDateString();
-
-            const bookingId = localStorage.getItem("bookingId");
-            localStorage.removeItem("bookingId");
-
-            if (!bookingId) return;
+            
             try {
                 const response = await fetch("/admin/get-booking", {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ bookingId })
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ bookingId: bookingId })
                 });
-
-                const data = await response.json();
-
-                bookingData = data.booking;
-                stopsData = data.stops;
-                distancesData = data.distances;
-
-                totalDistanceInKm = data.distances.map(distance => parseFloat(distance.distance)).reduce((acc, curr) => acc + curr, 0) / 1000;
-                dieselPrice = parseFloat(data.diesel);
-                numberOfDays = parseInt(bookingData.number_of_days);
-                numberOfBuses = parseInt(bookingData.number_of_buses);
-
-                totalCost = new Intl.NumberFormat().format(totalDistanceInKm * dieselPrice * numberOfDays * numberOfBuses);
-
-                console.log("Booking info: ", data);
-
-                document.getElementById("clientName").textContent = bookingData.client_name;
-                document.getElementById("email").textContent = bookingData.email;
-                document.getElementById("contactNumber").textContent = bookingData.contact_number;
-                document.getElementById("pickupPoint").textContent = bookingData.pickup_point;
-                document.getElementById("destination").textContent = bookingData.destination;
-                document.getElementById("numberOfBuses").textContent = "Number of buses: " + numberOfBuses;
-                document.getElementById("numberOfDays").textContent = "Number of days: " + numberOfDays;
-                document.getElementById("dieselPrice").textContent = "Diesel price per liter: " + dieselPrice;
-                document.getElementById("totalDistance").textContent = "Total Distance: " + totalDistanceInKm + " km";
-                document.getElementById("totalCost").textContent = "Total Cost: ₱" + totalCost;
-
-                const tbody = document.getElementById("tbody");
-
-                tbody.innerHTML = "";
-                distancesData.forEach(distance => {
-                    const distanceInKm = distance.distance / 1000;
-                    
-                    const tr = document.createElement("tr");
-
-                    const originCell = document.createElement("td");
-                    const destinationCell = document.createElement("td");
-                    const distanceCell = document.createElement("td");
-
-                    originCell.textContent = distance.origin;
-                    destinationCell.textContent = distance.destination;
-                    distanceCell.textContent = distanceInKm + " km";
-
-                    tr.append(originCell, destinationCell, distanceCell);
-                    tbody.appendChild(tr);
-                });
-
-                if (stopsData.length === 0) {
-                    const p = document.createElement("p");
-                    p.textContent = "None";
-                    document.getElementById("stops").appendChild(p);
-                    return;
-                }
                 
-                const ul = document.createElement("ul");
-                ul.className = "stops-list";
-                stopsData.forEach(stop => {
-                    const li = document.createElement("li");
-                    li.textContent = stop.location;
-                    ul.appendChild(li);
-                });
-                document.getElementById("stops").appendChild(ul);
-
+                const data = await response.json();
+                
+                if (data.success) {
+                    bookingData = data.booking;
+                    stopsData = data.stops;
+                    distancesData = data.distances;
+                    
+                    // Try to get additional details including terms agreement
+                    try {
+                        const detailsResponse = await fetch('/admin/get-booking-details', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                booking_id: bookingId
+                            })
+                        });
+                        
+                        const detailsData = await detailsResponse.json();
+                        
+                        if (detailsData.success) {
+                            // If we have detailed data, use it
+                            if (detailsData.distances && detailsData.distances.length > 0) {
+                                distancesData = detailsData.distances;
+                            }
+                            
+                            // Display terms agreement information
+                            displayTermsAgreement(detailsData.terms_agreement);
+                        }
+                    } catch (detailsError) {
+                        console.error('Error fetching details:', detailsError);
+                    }
+                    
+                    // Process distance and cost calculations
+                    totalDistanceInKm = distancesData.map(distance => parseFloat(distance.distance)).reduce((acc, curr) => acc + curr, 0) / 1000;
+                    dieselPrice = parseFloat(data.diesel);
+                    numberOfDays = parseInt(bookingData.number_of_days);
+                    numberOfBuses = parseInt(bookingData.number_of_buses);
+                    
+                    totalCost = new Intl.NumberFormat().format(totalDistanceInKm * dieselPrice * numberOfDays * numberOfBuses);
+                    
+                    console.log("Booking info: ", data);
+                    
+                    // Populate client info
+                    document.getElementById("clientName").textContent = bookingData.client_name;
+                    document.getElementById("email").textContent = bookingData.email;
+                    document.getElementById("contactNumber").textContent = bookingData.contact_number;
+                    
+                    // Populate trip details
+                    document.getElementById("pickupPoint").textContent = bookingData.pickup_point;
+                    document.getElementById("destination").textContent = bookingData.destination;
+                    document.getElementById("numberOfBuses").textContent = "Number of buses: " + numberOfBuses;
+                    document.getElementById("numberOfDays").textContent = "Number of days: " + numberOfDays;
+                    document.getElementById("dieselPrice").textContent = "Diesel price per liter: " + dieselPrice;
+                    document.getElementById("totalDistance").textContent = "Total Distance: " + totalDistanceInKm + " km";
+                    document.getElementById("totalCost").textContent = "Total Cost: ₱" + totalCost;
+                    
+                    // Populate distance table
+                    const tbody = document.getElementById("tbody");
+                    tbody.innerHTML = "";
+                    
+                    distancesData.forEach(distance => {
+                        const distanceInKm = distance.distance / 1000;
+                        
+                        const tr = document.createElement("tr");
+                        
+                        const originCell = document.createElement("td");
+                        const destinationCell = document.createElement("td");
+                        const distanceCell = document.createElement("td");
+                        
+                        originCell.textContent = distance.origin;
+                        destinationCell.textContent = distance.destination;
+                        distanceCell.textContent = distanceInKm + " km";
+                        
+                        tr.append(originCell, destinationCell, distanceCell);
+                        tbody.appendChild(tr);
+                    });
+                    
+                    // Display stops
+                    const stopsContainer = document.getElementById("stops");
+                    stopsContainer.innerHTML = "";
+                    
+                    if (stopsData.length === 0) {
+                        const p = document.createElement("p");
+                        p.textContent = "None";
+                        stopsContainer.appendChild(p);
+                    } else {
+                        const ul = document.createElement("ul");
+                        ul.className = "stops-list";
+                        stopsData.forEach(stop => {
+                            const li = document.createElement("li");
+                            li.textContent = stop.location;
+                            ul.appendChild(li);
+                        });
+                        stopsContainer.appendChild(ul);
+                    }
+                } else {
+                    alert("Error loading booking: " + data.message);
+                }
             } catch (error) {
                 console.error(error);
+                alert("Error loading booking information");
             }
         });
 
@@ -508,6 +565,43 @@
                     loadingSpinner.style.display = 'none';
                 }
             });
+        }
+
+        // Function to display terms agreement information
+        function displayTermsAgreement(termsAgreement) {
+            const termsAgreementInfoDiv = document.getElementById('termsAgreementInfo');
+            
+            if (!termsAgreement) {
+                termsAgreementInfoDiv.innerHTML = `
+                    <p style="color: #856404; background-color: #fff3cd; padding: 10px; border-radius: 5px;">
+                        <i style="margin-right: 5px;">⚠️</i>
+                        No terms agreement information available for this booking.
+                    </p>
+                `;
+                return;
+            }
+            
+            const agreementDate = new Date(termsAgreement.agreed_date).toLocaleString();
+            const agreementStatus = termsAgreement.agreed_terms ? 
+                '<span style="color: green; font-weight: bold;">✓ Agreed</span>' : 
+                '<span style="color: red; font-weight: bold;">✗ Not Agreed</span>';
+                
+            termsAgreementInfoDiv.innerHTML = `
+                <table>
+                    <tr>
+                        <th>Agreement Status</th>
+                        <td>${agreementStatus}</td>
+                    </tr>
+                    <tr>
+                        <th>Agreement Date</th>
+                        <td>${agreementDate}</td>
+                    </tr>
+                    <tr>
+                        <th>Client IP Address</th>
+                        <td>${termsAgreement.user_ip}</td>
+                    </tr>
+                </table>
+            `;
         }
     </script>
 </body>

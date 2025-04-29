@@ -1,0 +1,176 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Mandaluyong City Hall, Maysilo Circle, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 21,
+               "offset" : 0
+            },
+            {
+               "length" : 14,
+               "offset" : 23
+            },
+            {
+               "length" : 11,
+               "offset" : 39
+            },
+            {
+               "length" : 12,
+               "offset" : 52
+            },
+            {
+               "length" : 11,
+               "offset" : 66
+            }
+         ],
+         "place_id" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
+         "reference" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 21,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maysilo Circle, Mandaluyong, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               },
+               {
+                  "length" : 11,
+                  "offset" : 16
+               },
+               {
+                  "length" : 12,
+                  "offset" : 29
+               },
+               {
+                  "length" : 11,
+                  "offset" : 43
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong City Hall"
+            },
+            {
+               "offset" : 23,
+               "value" : "Maysilo Circle"
+            },
+            {
+               "offset" : 39,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "local_government_office",
+            "establishment",
+            "point_of_interest",
+            "city_hall"
+         ]
+      },
+      {
+         "description" : "Maysilo Food Hall, Maysilo Circle, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 13
+            },
+            {
+               "length" : 14,
+               "offset" : 19
+            },
+            {
+               "length" : 11,
+               "offset" : 35
+            },
+            {
+               "length" : 11,
+               "offset" : 62
+            }
+         ],
+         "place_id" : "ChIJdT-Jp-XJlzMR7OUtTnKJwOg",
+         "reference" : "ChIJdT-Jp-XJlzMR7OUtTnKJwOg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maysilo Food Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 13
+               }
+            ],
+            "secondary_text" : "Maysilo Circle, Mandaluyong, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               },
+               {
+                  "length" : 11,
+                  "offset" : 16
+               },
+               {
+                  "length" : 11,
+                  "offset" : 43
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maysilo Food Hall"
+            },
+            {
+               "offset" : 19,
+               "value" : "Maysilo Circle"
+            },
+            {
+               "offset" : 35,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "restaurant",
+            "point_of_interest",
+            "food"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

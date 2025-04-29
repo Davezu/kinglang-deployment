@@ -1,0 +1,348 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            },
+            {
+               "length" : 12,
+               "offset" : 13
+            },
+            {
+               "length" : 11,
+               "offset" : 27
+            }
+         ],
+         "place_id" : "ChIJeZt7xzXIlzMR-DfSuchHSdw",
+         "reference" : "ChIJeZt7xzXIlzMR-DfSuchHSdw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               },
+               {
+                  "length" : 11,
+                  "offset" : 14
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 13,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Philippines Coast Guard, Senator Neptali A. Gonzales Street, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            },
+            {
+               "length" : 11,
+               "offset" : 61
+            },
+            {
+               "length" : 12,
+               "offset" : 74
+            }
+         ],
+         "place_id" : "ChIJSdnxOcvJlzMRl0gG395aoeg",
+         "reference" : "ChIJSdnxOcvJlzMRl0gG395aoeg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Philippines Coast Guard",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Senator Neptali A. Gonzales Street, Mandaluyong, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 36
+               },
+               {
+                  "length" : 12,
+                  "offset" : 49
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Philippines Coast Guard"
+            },
+            {
+               "offset" : 25,
+               "value" : "Senator Neptali A. Gonzales Street"
+            },
+            {
+               "offset" : 61,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 74,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 88,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      },
+      {
+         "description" : "1, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            },
+            {
+               "length" : 11,
+               "offset" : 3
+            },
+            {
+               "length" : 12,
+               "offset" : 16
+            }
+         ],
+         "place_id" : "EikxLCBNYW5kYWx1eW9uZywgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCW8PXyIhxo4zEfVS75kgGwpQEhQKEgl5m3vHNciXMxH4N9K5yEdJ3A",
+         "reference" : "EikxLCBNYW5kYWx1eW9uZywgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCW8PXyIhxo4zEfVS75kgGwpQEhQKEgl5m3vHNciXMxH4N9K5yEdJ3A",
+         "structured_formatting" : 
+         {
+            "main_text" : "1",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mandaluyong, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               },
+               {
+                  "length" : 12,
+                  "offset" : 13
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "1"
+            },
+            {
+               "offset" : 3,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 16,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Mandaluyong, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            },
+            {
+               "length" : 12,
+               "offset" : 26
+            },
+            {
+               "length" : 11,
+               "offset" : 40
+            }
+         ],
+         "place_id" : "ChIJrfmSQFbJlzMRvFL0yQnbjcY",
+         "reference" : "ChIJrfmSQFbJlzMRvFL0yQnbjcY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mandaluyong, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 13
+               },
+               {
+                  "length" : 11,
+                  "offset" : 27
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 13,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 26,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "mandaluyong, Pioneer Street, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            },
+            {
+               "length" : 12,
+               "offset" : 42
+            },
+            {
+               "length" : 11,
+               "offset" : 56
+            }
+         ],
+         "place_id" : "ChIJt2BzAwDJlzMRsBBjOyZ24zo",
+         "reference" : "ChIJt2BzAwDJlzMRsBBjOyZ24zo",
+         "structured_formatting" : 
+         {
+            "main_text" : "mandaluyong",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pioneer Street, Mandaluyong, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 29
+               },
+               {
+                  "length" : 11,
+                  "offset" : 43
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "mandaluyong"
+            },
+            {
+               "offset" : 13,
+               "value" : "Pioneer Street"
+            },
+            {
+               "offset" : 29,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

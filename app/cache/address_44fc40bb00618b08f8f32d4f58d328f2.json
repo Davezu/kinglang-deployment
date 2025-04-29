@@ -110,11 +110,11 @@
          ],
          "types" : 
          [
-            "shopping_mall",
-            "point_of_interest",
-            "establishment",
+            "store",
             "electronics_store",
-            "store"
+            "establishment",
+            "point_of_interest",
+            "shopping_mall"
          ]
       },
       {
@@ -176,8 +176,8 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -239,10 +239,10 @@
          ],
          "types" : 
          [
-            "food",
-            "establishment",
             "store",
+            "food",
             "bakery",
+            "establishment",
             "point_of_interest"
          ]
       }

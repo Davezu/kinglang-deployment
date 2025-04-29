@@ -1,0 +1,275 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Bethel Guest House, Rizal Boulevard, Dumaguete, Negros Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ0foEV-duqzMRUbvxpng6tFo",
+         "reference" : "ChIJ0foEV-duqzMRUbvxpng6tFo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bethel Guest House",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Rizal Boulevard, Dumaguete, Negros Oriental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bethel Guest House"
+            },
+            {
+               "offset" : 20,
+               "value" : "Rizal Boulevard"
+            },
+            {
+               "offset" : 37,
+               "value" : "Dumaguete"
+            },
+            {
+               "offset" : 48,
+               "value" : "Negros Oriental"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "lodging",
+            "establishment",
+            "point_of_interest",
+            "restaurant"
+         ]
+      },
+      {
+         "description" : "Bethel Christian School, Republic Avenue, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJp109x7mwlzMReoJWP4I8r6o",
+         "reference" : "ChIJp109x7mwlzMReoJWP4I8r6o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bethel Christian School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Republic Avenue, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bethel Christian School"
+            },
+            {
+               "offset" : 25,
+               "value" : "Republic Avenue"
+            },
+            {
+               "offset" : 42,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 54,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 67,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 81,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bethel Academy, Arnaldo Highway, General Trias, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJWZahS6YsljMRAaKXdJxkDpU",
+         "reference" : "ChIJWZahS6YsljMRAaKXdJxkDpU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bethel Academy",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Arnaldo Highway, General Trias, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bethel Academy"
+            },
+            {
+               "offset" : 16,
+               "value" : "Arnaldo Highway"
+            },
+            {
+               "offset" : 33,
+               "value" : "General Trias"
+            },
+            {
+               "offset" : 48,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Bethel Baptist Church Taguig, Salamat Street, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJSyzcqjTPlzMR5s1Jmf2RGQk",
+         "reference" : "ChIJSyzcqjTPlzMR5s1Jmf2RGQk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bethel Baptist Church Taguig",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Salamat Street, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bethel Baptist Church Taguig"
+            },
+            {
+               "offset" : 30,
+               "value" : "Salamat Street"
+            },
+            {
+               "offset" : 46,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 54,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "church",
+            "place_of_worship",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bethel, Victoria, Oriental Mindoro, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqbQ8J6S9vDMRjvZjs73IlAI",
+         "reference" : "ChIJqbQ8J6S9vDMRjvZjs73IlAI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bethel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Victoria, Oriental Mindoro, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bethel"
+            },
+            {
+               "offset" : 8,
+               "value" : "Victoria"
+            },
+            {
+               "offset" : 18,
+               "value" : "Oriental Mindoro"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "political",
+            "sublocality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

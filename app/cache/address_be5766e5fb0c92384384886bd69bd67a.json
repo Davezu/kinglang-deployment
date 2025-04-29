@@ -1,0 +1,227 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJfzKeUZ9t-TIRc8V5n1gkOrU",
+         "reference" : "ChIJfzKeUZ9t-TIRc8V5n1gkOrU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Davao City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 12,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Davao International Airport, Buhangin, Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJUds7WgZs-TIR9-6t9Gx25g4",
+         "reference" : "ChIJUds7WgZs-TIR9-6t9Gx25g4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Davao International Airport",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Buhangin, Davao City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Davao International Airport"
+            },
+            {
+               "offset" : 29,
+               "value" : "Buhangin"
+            },
+            {
+               "offset" : 39,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 51,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "airport",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ40AP8j5s9zIRqd8MaWdSFxo",
+         "reference" : "ChIJ40AP8j5s9zIRqd8MaWdSFxo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Davao del Sur",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 15,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_2",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Davao Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJcxTY00Bz_DIRpBvHwBC7z2I",
+         "reference" : "ChIJcxTY00Bz_DIRpBvHwBC7z2I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Davao Oriental",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Davao Oriental"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "administrative_area_level_2"
+         ]
+      },
+      {
+         "description" : "Davao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHSqPedBL-TIRi2ija0Q5qj0",
+         "reference" : "ChIJHSqPedBL-TIRi2ija0Q5qj0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Davao del Norte",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Davao del Norte"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_2",
+            "political",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -9,8 +9,13 @@ $router->post('/admin/calendar-bookings', 'BookingManagementController@getCalend
 $router->get('/admin/booking-stats', 'BookingManagementController@getBookingStats');
 $router->post('/admin/get-booking', 'BookingManagementController@getBooking');
 $router->post('/admin/get-booking-details', 'BookingManagementController@getBookingDetails');
-$router->get('/admin/export-bookings', 'BookingManagementController@exportBookings');
+$router->get('/admin/export-bookings', 'BookingManagementController@exportBookings'); 
 
-// New admin create booking routes
-$router->get('/admin/create-booking', 'BookingManagementController@showCreateBookingForm');
-$router->post('/admin/create-booking', 'BookingManagementController@createBooking'); 
+// New admin create booking routes with AdminBookingController
+$router->get('/admin/create-booking', 'AdminBookingController@showBookingForm');
+$router->post('/admin/create-booking', 'AdminBookingController@createBooking');
+$router->post('/admin/get-address', 'AdminBookingController@getAddress');
+$router->post('/admin/get-distance', 'AdminBookingController@getDistance');
+$router->post('/admin/process-coordinates', 'AdminBookingController@processCoordinates');
+$router->get('/admin/diesel-price', 'AdminBookingController@getDieselPrice');
+$router->post('/admin/calculate-cost', 'AdminBookingController@getTotalCost'); 

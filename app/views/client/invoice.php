@@ -178,7 +178,7 @@ require_client_auth(); // Use helper function
                     ?></div>
                     <div class="invoice-date">Due Date: <?php 
                         $due_date = new DateTime($booking['date_of_tour']);
-                        $due_date->modify('-2 day');
+                        $due_date->modify('-7 day');
                         echo $due_date->format('F j, Y'); 
                     ?></div>
                     <div class="mt-3"> 

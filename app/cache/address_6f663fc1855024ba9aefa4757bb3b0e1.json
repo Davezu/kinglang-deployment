@@ -1,0 +1,82 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Manila International Airport (MNL), Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 33,
+               "offset" : 0
+            },
+            {
+               "length" : 5,
+               "offset" : 36
+            },
+            {
+               "length" : 12,
+               "offset" : 43
+            },
+            {
+               "length" : 11,
+               "offset" : 57
+            }
+         ],
+         "place_id" : "ChIJd0270sXOlzMREUQRimL6JIo",
+         "reference" : "ChIJd0270sXOlzMREUQRimL6JIo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila International Airport (MNL)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 33,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pasay, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               },
+               {
+                  "length" : 12,
+                  "offset" : 7
+               },
+               {
+                  "length" : 11,
+                  "offset" : 21
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila International Airport (MNL)"
+            },
+            {
+               "offset" : 36,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 43,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "airport",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

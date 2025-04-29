@@ -41,8 +41,8 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
+            "political",
             "locality"
          ]
       },
@@ -94,10 +94,10 @@
          ],
          "types" : 
          [
-            "local_government_office",
+            "establishment",
             "point_of_interest",
             "city_hall",
-            "establishment"
+            "local_government_office"
          ]
       },
       {
@@ -140,9 +140,9 @@
          ],
          "types" : 
          [
+            "political",
             "administrative_area_level_3",
-            "geocode",
-            "political"
+            "geocode"
          ]
       },
       {
@@ -193,14 +193,14 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "health",
             "establishment",
+            "health",
+            "point_of_interest",
             "hospital"
          ]
       },
       {
-         "description" : "Mandaluyong Executive Mansion III, G. Enriquez, Mandaluyong, Metro Manila, Philippines",
+         "description" : "Mandaluyong Elementary School, Rt. Rev. G. Aglipay, Mandaluyong, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -208,11 +208,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJR1-XJQDJlzMRIvNfM3kfHZI",
-         "reference" : "ChIJR1-XJQDJlzMRIvNfM3kfHZI",
+         "place_id" : "ChIJnVECAcnJlzMRyZ2dfMCJ048",
+         "reference" : "ChIJnVECAcnJlzMRyZ2dfMCJ048",
          "structured_formatting" : 
          {
-            "main_text" : "Mandaluyong Executive Mansion III",
+            "main_text" : "Mandaluyong Elementary School",
             "main_text_matched_substrings" : 
             [
                {
@@ -220,35 +220,37 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "G. Enriquez, Mandaluyong, Metro Manila, Philippines"
+            "secondary_text" : "Rt. Rev. G. Aglipay, Mandaluyong, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Mandaluyong Executive Mansion III"
+               "value" : "Mandaluyong Elementary School"
             },
             {
-               "offset" : 35,
-               "value" : "G. Enriquez"
+               "offset" : 31,
+               "value" : "Rt. Rev. G. Aglipay"
             },
             {
-               "offset" : 48,
+               "offset" : 52,
                "value" : "Mandaluyong"
             },
             {
-               "offset" : 61,
+               "offset" : 65,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 75,
+               "offset" : 79,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "primary_school",
+            "school",
+            "point_of_interest"
          ]
       }
    ],

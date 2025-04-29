@@ -1,0 +1,250 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Nambalan River Tourist (Nambalan Saweng), Mayantoc, Tarlac, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJy29TBwCvljMRVJ6VPihuAqk",
+         "reference" : "ChIJy29TBwCvljMRVJ6VPihuAqk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nambalan River Tourist (Nambalan Saweng)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mayantoc, Tarlac, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nambalan River Tourist (Nambalan Saweng)"
+            },
+            {
+               "offset" : 42,
+               "value" : "Mayantoc"
+            },
+            {
+               "offset" : 52,
+               "value" : "Tarlac"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "tourist_attraction",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Nambalan, Mayantoc, Tarlac, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9Th7s_OvljMRDIWUBTzgMYE",
+         "reference" : "ChIJ9Th7s_OvljMRDIWUBTzgMYE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nambalan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mayantoc, Tarlac, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nambalan"
+            },
+            {
+               "offset" : 10,
+               "value" : "Mayantoc"
+            },
+            {
+               "offset" : 20,
+               "value" : "Tarlac"
+            },
+            {
+               "offset" : 28,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "geocode",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Nampicuan, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJL1tsCO8zkTMRT8oHdjcMxdk",
+         "reference" : "ChIJL1tsCO8zkTMRT8oHdjcMxdk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Nampicuan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Nampicuan"
+            },
+            {
+               "offset" : 11,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Namayan, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbb1DxLnJlzMRxZT73pDstXE",
+         "reference" : "ChIJbb1DxLnJlzMRxZT73pDstXE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Namayan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mandaluyong, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Namayan"
+            },
+            {
+               "offset" : 9,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 22,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "political",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Namatacan, San Narciso, Zambales, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJUVPXa7rVlTMRddzV_jRhVrQ",
+         "reference" : "ChIJUVPXa7rVlTMRddzV_jRhVrQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Namatacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Narciso, Zambales, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Namatacan"
+            },
+            {
+               "offset" : 11,
+               "value" : "San Narciso"
+            },
+            {
+               "offset" : 24,
+               "value" : "Zambales"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "sublocality",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "G289+PR5, Pasay, Metro Manila, Philippines",
+      "Makati, Metro Manila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "Makati, Metro Manila, Philippines",
+      "G289+PR5, Pasay, Metro Manila, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "5.9 km",
+                  "value" : 5852
+               },
+               "duration" : 
+               {
+                  "text" : "14 mins",
+                  "value" : 850
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "5.9 km",
+                  "value" : 5875
+               },
+               "duration" : 
+               {
+                  "text" : "13 mins",
+                  "value" : 750
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

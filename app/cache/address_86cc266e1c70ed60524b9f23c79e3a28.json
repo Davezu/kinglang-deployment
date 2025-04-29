@@ -86,9 +86,9 @@
          ],
          "types" : 
          [
-            "locality",
             "political",
-            "geocode"
+            "geocode",
+            "locality"
          ]
       },
       {
@@ -139,10 +139,10 @@
          ],
          "types" : 
          [
-            "city_hall",
+            "point_of_interest",
             "local_government_office",
             "establishment",
-            "point_of_interest"
+            "city_hall"
          ]
       },
       {
@@ -242,9 +242,9 @@
          ],
          "types" : 
          [
+            "establishment",
             "point_of_interest",
-            "lodging",
-            "establishment"
+            "lodging"
          ]
       }
    ],

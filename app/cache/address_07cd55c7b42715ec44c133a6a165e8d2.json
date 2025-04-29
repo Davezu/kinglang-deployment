@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
+            "locality",
             "political",
-            "geocode",
-            "locality"
+            "geocode"
          ]
       },
       {
@@ -82,8 +82,8 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
+            "political",
             "administrative_area_level_1"
          ]
       },
@@ -188,15 +188,15 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment",
             "local_government_office",
+            "point_of_interest",
             "city_hall",
-            "tourist_attraction"
+            "tourist_attraction",
+            "establishment"
          ]
       },
       {
-         "description" : "Manila Ocean Park, Ermita, Manila, Metro Manila, Philippines",
+         "description" : "Manila Zoo, Adriatico Street, Malate, Manila, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -204,11 +204,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJDXUM9QPKlzMRDOajr3iHEoQ",
-         "reference" : "ChIJDXUM9QPKlzMRDOajr3iHEoQ",
+         "place_id" : "ChIJ4_WFMX7JlzMRJOkBCvft38A",
+         "reference" : "ChIJ4_WFMX7JlzMRJOkBCvft38A",
          "structured_formatting" : 
          {
-            "main_text" : "Manila Ocean Park",
+            "main_text" : "Manila Zoo",
             "main_text_matched_substrings" : 
             [
                {
@@ -216,39 +216,42 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Ermita, Manila, Metro Manila, Philippines"
+            "secondary_text" : "Adriatico Street, Malate, Manila, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Manila Ocean Park"
+               "value" : "Manila Zoo"
             },
             {
-               "offset" : 19,
-               "value" : "Ermita"
+               "offset" : 12,
+               "value" : "Adriatico Street"
             },
             {
-               "offset" : 27,
+               "offset" : 30,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 38,
                "value" : "Manila"
             },
             {
-               "offset" : 35,
+               "offset" : 46,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 49,
+               "offset" : 60,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "amusement_park",
+            "zoo",
             "park",
             "establishment",
             "tourist_attraction",
-            "point_of_interest",
-            "aquarium"
+            "point_of_interest"
          ]
       }
    ],

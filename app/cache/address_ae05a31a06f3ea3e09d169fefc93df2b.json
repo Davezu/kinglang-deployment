@@ -1,0 +1,95 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Makati City Hall, Angono, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 16,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 18
+            },
+            {
+               "length" : 6,
+               "offset" : 26
+            },
+            {
+               "length" : 12,
+               "offset" : 34
+            },
+            {
+               "length" : 11,
+               "offset" : 48
+            }
+         ],
+         "place_id" : "ChIJ8XIoia7JlzMRbpMXuVFmt88",
+         "reference" : "ChIJ8XIoia7JlzMRbpMXuVFmt88",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makati City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Angono, Makati, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               },
+               {
+                  "length" : 6,
+                  "offset" : 8
+               },
+               {
+                  "length" : 12,
+                  "offset" : 16
+               },
+               {
+                  "length" : 11,
+                  "offset" : 30
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makati City Hall"
+            },
+            {
+               "offset" : 18,
+               "value" : "Angono"
+            },
+            {
+               "offset" : 26,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 34,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "local_government_office",
+            "point_of_interest",
+            "establishment",
+            "city_hall"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

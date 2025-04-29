@@ -1,0 +1,63 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Citadines Benavidez Makati, Benavidez Street, Legazpi Village, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 26,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJCZlfOTPJlzMRiCbV_pBa_4U",
+         "reference" : "ChIJCZlfOTPJlzMRiCbV_pBa_4U",
+         "structured_formatting" : 
+         {
+            "main_text" : "Citadines Benavidez Makati",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 26,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Benavidez Street, Legazpi Village, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Citadines Benavidez Makati"
+            },
+            {
+               "offset" : 28,
+               "value" : "Benavidez Street"
+            },
+            {
+               "offset" : 46,
+               "value" : "Legazpi Village"
+            },
+            {
+               "offset" : 63,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 71,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 85,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

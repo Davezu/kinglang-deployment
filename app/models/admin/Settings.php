@@ -33,6 +33,18 @@ class Settings {
             ['site_email', 'info@kinglangbooking.com', 'general', true],
             ['contact_phone', '+1234567890', 'general', true],
             
+            // Company Information
+            ['company_name', 'KINGLANG TOURS AND TRANSPORT SERVICES INC.', 'company', true],
+            ['company_address', 'Block 1 Lot 13 Phase 3 Egypt St. Ecotrend Subd. San Nicholas 1, Bacoor, Cavite', 'company', true],
+            ['company_contact', '0923-0810061 / 0977-3721958', 'company', true],
+            ['company_email', 'jaycris.traveltours@gmail.com', 'company', true],
+            
+            // Bank Details
+            ['bank_name', 'BPI Cainta Ortigas Extension Branch', 'payment', true],
+            ['bank_account_name', 'KINGLANG TOURS AND TRANSPORT SERVICES INC.', 'payment', true],
+            ['bank_account_number', '4091-0050-05', 'payment', true],
+            ['bank_swift_code', 'BPOIPHMM', 'payment', true],
+            
             // Booking settings
             ['min_booking_notice_hours', '24', 'booking', true],
             ['max_booking_days_in_advance', '60', 'booking', true],

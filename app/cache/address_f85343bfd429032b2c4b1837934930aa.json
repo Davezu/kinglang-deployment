@@ -1,0 +1,335 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Maligaya Park, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            },
+            {
+               "length" : 11,
+               "offset" : 27
+            },
+            {
+               "length" : 12,
+               "offset" : 40
+            },
+            {
+               "length" : 11,
+               "offset" : 54
+            }
+         ],
+         "place_id" : "ChIJqadJ8XixlzMRx007ulxb-vE",
+         "reference" : "ChIJqadJ8XixlzMRx007ulxb-vE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Novaliches, Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 12
+               },
+               {
+                  "length" : 12,
+                  "offset" : 25
+               },
+               {
+                  "length" : 11,
+                  "offset" : 39
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya Park"
+            },
+            {
+               "offset" : 15,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 27,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 40,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "university",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Rojas residence 50 sampaguita st.novaliches, Bautista, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 43,
+               "offset" : 0
+            },
+            {
+               "length" : 11,
+               "offset" : 67
+            },
+            {
+               "length" : 12,
+               "offset" : 80
+            },
+            {
+               "length" : 11,
+               "offset" : 94
+            }
+         ],
+         "place_id" : "ChIJb5yKTwCxlzMRoiXj7sRNFPo",
+         "reference" : "ChIJb5yKTwCxlzMRoiXj7sRNFPo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Rojas residence 50 sampaguita st.novaliches",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 43,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bautista, Novaliches, Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 22
+               },
+               {
+                  "length" : 12,
+                  "offset" : 35
+               },
+               {
+                  "length" : 11,
+                  "offset" : 49
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Rojas residence 50 sampaguita st.novaliches"
+            },
+            {
+               "offset" : 45,
+               "value" : "Bautista"
+            },
+            {
+               "offset" : 55,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 67,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 80,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 94,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Berong St. Maligaya Park Subdivision, Bering street l, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 11
+            },
+            {
+               "length" : 11,
+               "offset" : 67
+            },
+            {
+               "length" : 12,
+               "offset" : 80
+            },
+            {
+               "length" : 11,
+               "offset" : 94
+            }
+         ],
+         "place_id" : "ChIJH3Hi9uqxlzMRsesqBJ5zJ3Q",
+         "reference" : "ChIJH3Hi9uqxlzMRsesqBJ5zJ3Q",
+         "structured_formatting" : 
+         {
+            "main_text" : "Berong St. Maligaya Park Subdivision",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 11
+               }
+            ],
+            "secondary_text" : "Bering street l, Novaliches, Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 29
+               },
+               {
+                  "length" : 12,
+                  "offset" : 42
+               },
+               {
+                  "length" : 11,
+                  "offset" : 56
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Berong St. Maligaya Park Subdivision"
+            },
+            {
+               "offset" : 38,
+               "value" : "Bering street l"
+            },
+            {
+               "offset" : 55,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 67,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 80,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 94,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Quezon city, Maligaya Street, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            },
+            {
+               "length" : 15,
+               "offset" : 13
+            },
+            {
+               "length" : 12,
+               "offset" : 55
+            },
+            {
+               "length" : 11,
+               "offset" : 69
+            }
+         ],
+         "place_id" : "ChIJUcDmOgCxlzMRBF0mu33lgKM",
+         "reference" : "ChIJUcDmOgCxlzMRBF0mu33lgKM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Quezon city",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maligaya Street, Novaliches, Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               },
+               {
+                  "length" : 12,
+                  "offset" : 42
+               },
+               {
+                  "length" : 11,
+                  "offset" : 56
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Quezon city"
+            },
+            {
+               "offset" : 13,
+               "value" : "Maligaya Street"
+            },
+            {
+               "offset" : 30,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 42,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

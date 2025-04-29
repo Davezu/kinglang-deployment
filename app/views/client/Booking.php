@@ -175,6 +175,11 @@ if (!isset($_SESSION["user_id"])) {
                             <p id="totalCost" class="fw-bold text-success"></p>
                         </div>
 
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" name="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a></label>
+                        </div>
+
                         <div class="container-fluid d-flex justify-content-between align-items-center gap p-0">
                             <button type="submit" class="btn btn-success w-100" id="submitBooking">Request Booking</button>
                         </div>
@@ -194,4 +199,39 @@ if (!isset($_SESSION["user_id"])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
+
+<!-- Terms and Conditions Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Booking Terms and Conditions</h6>
+                <p>Please read the following terms and conditions carefully before confirming your booking:</p>
+                
+                <ol>
+                    <li><strong>Booking Confirmation:</strong> All bookings are subject to availability and confirmation.</li>
+                    <li><strong>Payment:</strong> Full payment or deposit as required must be made to secure booking.</li>
+                    <li><strong>Cancellation Policy:</strong> Cancellations must be made at least 48 hours before scheduled departure.</li>
+                    <li><strong>Refund Policy:</strong> Refunds are subject to our cancellation policy and may be partial or none depending on timing.</li>
+                    <li><strong>Schedule Changes:</strong> We reserve the right to modify schedules if necessary due to weather or unforeseen circumstances.</li>
+                    <li><strong>Customer Responsibility:</strong> Customers are responsible for ensuring all passenger information is accurate.</li>
+                    <li><strong>Travel Documents:</strong> Customers are responsible for carrying all necessary travel documents.</li>
+                    <li><strong>Conduct:</strong> We reserve the right to refuse service to customers displaying disruptive behavior.</li>
+                    <li><strong>Liability:</strong> We are not liable for loss, damage, or delay caused by circumstances beyond our control.</li>
+                    <li><strong>Data Use:</strong> By agreeing, you consent to our collection and use of your data as outlined in our privacy policy.</li>
+                </ol>
+                
+                <p>By checking the box, you acknowledge that you have read, understood, and agree to these terms and conditions.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </html>

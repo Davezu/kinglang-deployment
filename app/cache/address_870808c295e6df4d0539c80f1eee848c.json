@@ -1,0 +1,211 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Malipaka Street, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjdNYWxpcGFrYSBTdHJlZXQsIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJI91QwUGwlzMRZDSATDuWVFkSFAoSCXVz70IJupczEUA9CP7ZMppK",
+         "reference" : "EjdNYWxpcGFrYSBTdHJlZXQsIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJI91QwUGwlzMRZDSATDuWVFkSFAoSCXVz70IJupczEUA9CP7ZMppK",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malipaka Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malipaka Street"
+            },
+            {
+               "offset" : 17,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 30,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Malipaka Piglas HOA, Malipaka Street, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJH8gFCgCxlzMRPwqZoOzFOHc",
+         "reference" : "ChIJH8gFCgCxlzMRPwqZoOzFOHc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malipaka Piglas HOA",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malipaka Street, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malipaka Piglas HOA"
+            },
+            {
+               "offset" : 21,
+               "value" : "Malipaka Street"
+            },
+            {
+               "offset" : 38,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Malipaca dulo, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJTVWGiEmxlzMRWusQskUgmaQ",
+         "reference" : "ChIJTVWGiEmxlzMRWusQskUgmaQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malipaca dulo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malipaca dulo"
+            },
+            {
+               "offset" : 15,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 27,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 40,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Malipaka Dulo Half Court, Malipaka Street, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbWQKUgCxlzMRpvg9PS2el-s",
+         "reference" : "ChIJbWQKUgCxlzMRpvg9PS2el-s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malipaka Dulo Half Court",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malipaka Street, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malipaka Dulo Half Court"
+            },
+            {
+               "offset" : 26,
+               "value" : "Malipaka Street"
+            },
+            {
+               "offset" : 43,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 56,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

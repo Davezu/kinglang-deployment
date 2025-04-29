@@ -601,250 +601,268 @@ function attachCardEventListeners() {
 function showBookingDetails(bookingId) {
     // Get full booking details including stops 
     getBookingDetails(bookingId).then(booking => {
-        if (booking) {
-            const bookingDetailsContent = document.getElementById('bookingDetailsContent');
-            console.log("booking details: ", booking);
-            // Get status color classes
-            const statusColors = {
-                'Pending': 'warning',
-                'Confirmed': 'success',
-                'Canceled': 'danger',
-                'Rejected': 'secondary',
-                'Completed': 'info'
-            };
+        console.log("Booking details received:", booking);
+        
+        if (!booking) {
+            console.error("No booking details found for ID:", bookingId);
+            showMessage("Error", "Could not load booking details. Please try again.");
+            return;
+        }
+        
+        const bookingDetailsContent = document.getElementById('bookingDetailsContent');
+        if (!bookingDetailsContent) {
+            console.error("Booking details content element not found in the DOM");
+            return;
+        }
+        
+        // Get status color classes
+        const statusColors = {
+            'Pending': 'warning',
+            'Confirmed': 'success',
+            'Canceled': 'danger',
+            'Rejected': 'secondary',
+            'Completed': 'info'
+        };
+        
+        const statusColor = statusColors[booking.status] || 'secondary';
+        const paymentStatusColor = getPaymentStatusBadgeClass(booking.payment_status);
+        
+        bookingDetailsContent.innerHTML = `
+            <div class="booking-detail-section mb-3">
+                <h6 class="border-bottom pb-2"><i class="bi bi-geo-alt me-2"></i>Booking Information</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Booking ID:</strong> #${booking.booking_id}</p>
+                        <p><strong>Booking Date:</strong> ${formatDate(booking.booked_at)}</p>
+                        <p><strong>Status:</strong> <span class="status-badge status-${(booking.status || 'pending').toLowerCase()}">${booking.status || 'Pending'}</span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Client Name:</strong> ${booking.client_name || 'N/A'}</p>    
+                        <p><strong>Email:</strong> ${booking.email || 'N/A'}</p>
+                        <p><strong>Phone:</strong> ${booking.contact_number || 'N/A'}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="booking-detail-section mb-4">
+                <h6 class="border-bottom pb-2"><i class="bi bi-geo-alt me-2"></i>Trip Details</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="mb-2"><strong>Pickup Point:</strong> ${booking.pickup_point}</p>
+                        <p class="mb-2"><strong>Destination:</strong> 
+                             
+                            ${booking.stops && booking.stops.length > 0 ? 
+                                `${booking.stops.map(stop => 
+                                    `<span>${stop.location}</span>`
+                                ).join('<i class="bi bi-arrow-right mx-1 text-danger"></i>')} 
+                                <i class="bi bi-arrow-right mx-1 text-danger"></i>` 
+                            : ''}
+                            <span>${booking.destination}</span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                    <p class="mb-2"><strong>Tour Date:</strong> ${formatDate(booking.date_of_tour)}${booking.end_of_tour ? ` to ${formatDate(booking.end_of_tour)}` : ''}</p>
+                        <p class="mb-2"><strong>Duration:</strong> ${booking.number_of_days} day${booking.number_of_days > 1 ? 's' : ''}</p>
+                        <p class="mb-2"><strong>Number of Buses:</strong> ${booking.number_of_buses}</p>
+                        <p class="mb-2"><strong>Status:</strong> <span class="badge bg-${statusColor}">${booking.status}</span></p>
+                    </div>
+                </div>
+            </div>
             
-            const statusColor = statusColors[booking.status] || 'secondary';
-            const paymentStatusColor = getPaymentStatusBadgeClass(booking.payment_status);
+            <div class="booking-detail-section mb-4">
+                <h6 class="border-bottom pb-2"><i class="bi bi-cash-coin me-2"></i>Payment Information</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="mb-2"><strong>Total Cost:</strong> ₱${parseFloat(booking.total_cost).toLocaleString('en-PH')}</p>
+                        <p class="mb-2"><strong>Amount Paid:</strong> ₱${parseFloat(booking.amount_paid || 0).toLocaleString('en-PH')}</p>
+                        <p class="mb-2"><strong>Balance:</strong> ₱${(parseFloat(booking.total_cost) - parseFloat(booking.amount_paid || 0)).toLocaleString('en-PH')}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="mb-2"><strong>Payment Status:</strong> 
+                            <span class="badge bg-${paymentStatusColor}">
+                                ${booking.payment_status}
+                            </span>
+                        </p>
+                        <p><strong>Last Payment Date:</strong> ${booking?.payments && booking.payments.length > 0 && booking.payments[0]?.payment_date ? formatDate(booking.payments[0].payment_date) : 'No payments yet'}</p>
+                        <p><strong>Payment Method:</strong> ${booking?.payments && booking.payments.length > 0 ? booking.payments[0]?.payment_method || 'N/A' : 'N/A'}</p>
+                    </div>
+                </div>
+            </div>
             
-            bookingDetailsContent.innerHTML = `
-                <div class="booking-detail-section mb-3">
-                    <h6 class="border-bottom pb-2"><i class="bi bi-geo-alt me-2"></i>Booking Information</h6>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p><strong>Booking ID:</strong> #${booking.booking_id}</p>
-                            <p><strong>Booking Date:</strong> ${formatDate(booking.booked_at)}</p>
-                            <p><strong>Status:</strong> <span class="status-badge status-${booking.status.toLowerCase()}">${booking.status}</span></p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>Client Name:</strong> ${booking.client_name || 'N/A'}</p>
-                            <p><strong>Email:</strong> ${booking.email || 'N/A'}</p>
-                            <p><strong>Phone:</strong> ${booking.contact_number || 'N/A'}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="booking-detail-section mb-4">
-                    <h6 class="border-bottom pb-2"><i class="bi bi-geo-alt me-2"></i>Trip Details</h6>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p class="bm-2"><strong>Pickup Point:</strong> ${booking.pickup_point}</p>
-                            <p class="mb-2"><strong>Destination:</strong> 
-                                 
-                                ${booking.stops && booking.stops.length > 0 ? 
-                                    `${booking.stops.map(stop => 
-                                        `<span>${stop.location}</span>`
-                                    ).join('<i class="bi bi-arrow-right mx-1 text-danger"></i>')} 
-                                    <i class="bi bi-arrow-right mx-1 text-danger"></i>` 
-                                : ''}
-                                <span>${booking.destination}</span>
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                        <p class="mb-2"><strong>Tour Date:</strong> ${formatDate(booking.date_of_tour)}${booking.end_of_tour ? ` to ${formatDate(booking.end_of_tour)}` : ''}</p>
-                            <p class="mb-2"><strong>Duration:</strong> ${booking.number_of_days} day${booking.number_of_days > 1 ? 's' : ''}</p>
-                            <p class="mb-2"><strong>Number of Buses:</strong> ${booking.number_of_buses}</p>
-                            <p class="mb-2"><strong>Status:</strong> <span class="badge bg-${statusColor}">${booking.status}</span></p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="booking-detail-section mb-4">
-                    <h6 class="border-bottom pb-2"><i class="bi bi-cash-coin me-2"></i>Payment Information</h6>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p class="mb-2"><strong>Total Cost:</strong> ₱${parseFloat(booking.total_cost).toLocaleString('en-PH')}</p>
-                            <p class="mb-2"><strong>Amount Paid:</strong> ₱${parseFloat(booking.amount_paid || 0).toLocaleString('en-PH')}</p>
-                            <p class="mb-2"><strong>Balance:</strong> ₱${(parseFloat(booking.total_cost) - parseFloat(booking.amount_paid || 0)).toLocaleString('en-PH')}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="mb-2"><strong>Payment Status:</strong> 
-                                <span class="badge bg-${paymentStatusColor}">
-                                    ${booking.payment_status}
-                                </span>
-                            </p>
-                            <p><strong>Last Payment Date:</strong> ${booking.payments[0]?.payment_date ? formatDate(booking.payments[0]?.payment_date) : 'No payments yet'}</p>
-                            <p><strong>Payment Method:</strong> ${booking.payments[0]?.payment_method || 'N/A'}</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="booking-detail-section mb-2">
-                    <h6 class="text-success mb-3"><i class="bi bi-list-check me-2"></i>Actions</h6>
-                    <div class="d-flex flex-wrap gap-2">
-                        ${booking.status === "Pending" ? `
-                            <button class="btn btn-sm btn-outline-success confirm-booking-modal" data-booking-id="${booking.booking_id}">
-                                <i class="bi bi-check-circle"></i> Confirm Booking
-                            </button>
-                            <button class="btn btn-sm btn-outline-danger reject-booking-modal" data-booking-id="${booking.booking_id}" data-user-id="${booking.user_id}">
-                                <i class="bi bi-x-circle"></i> Reject Booking
-                            </button>
-                        ` : ''}
-                        
-                        ${booking.status === "Confirmed" ? `
-                            <button class="btn btn-sm btn-outline-danger cancel-booking-modal" data-booking-id="${booking.booking_id}" data-user-id="${booking.user_id}">
-                                <i class="bi bi-x-circle"></i> Cancel Booking
-                            </button>
-                        ` : ''}
-                        
-                        <button class="btn btn-sm btn-outline-primary view-invoice" data-booking-id="${booking.booking_id}">
-                            <i class="bi bi-file-earmark-text"></i> Invoice
+            <div class="booking-detail-section mb-2">
+                <h6 class="text-success mb-3"><i class="bi bi-list-check me-2"></i>Actions</h6>
+                <div class="d-flex flex-wrap gap-2">
+                    ${booking.status === "Pending" ? `
+                        <button class="btn btn-sm btn-outline-success confirm-booking-modal" data-booking-id="${booking.booking_id}">
+                            <i class="bi bi-check-circle"></i> Confirm Booking
                         </button>
-                    </div>
+                        <button class="btn btn-sm btn-outline-danger reject-booking-modal" data-booking-id="${booking.booking_id}" data-user-id="${booking.user_id}">
+                            <i class="bi bi-x-circle"></i> Reject Booking
+                        </button>
+                    ` : ''}
+                    
+                    ${booking.status === "Confirmed" ? `
+                        <button class="btn btn-sm btn-outline-danger cancel-booking-modal" data-booking-id="${booking.booking_id}" data-user-id="${booking.user_id}">
+                            <i class="bi bi-x-circle"></i> Cancel Booking
+                        </button>
+                    ` : ''}
+                    
+                    <button class="btn btn-sm btn-outline-primary view-invoice" data-booking-id="${booking.booking_id}">
+                        <i class="bi bi-file-earmark-text"></i> Invoice
+                    </button>
                 </div>
-            `;
-            
-            // Add event listeners to action buttons
-            const viewInvoiceBtn = bookingDetailsContent.querySelector(".view-invoice");
-            if (viewInvoiceBtn) {
-                viewInvoiceBtn.addEventListener("click", function () {
-                    const bookingId = this.getAttribute("data-booking-id");
-                    window.open(`/admin/print-invoice/${bookingId}`);
-                })
+            </div>
+        `;
+        
+        // Add event listeners to action buttons
+        const viewInvoiceBtn = bookingDetailsContent.querySelector(".view-invoice");
+        if (viewInvoiceBtn) {
+            viewInvoiceBtn.addEventListener("click", function () {
+                const bookingId = this.getAttribute("data-booking-id");
+                window.open(`/admin/print-invoice/${bookingId}`);
+            });
+        }            
 
-            }            
-
-            const confirmBtn = bookingDetailsContent.querySelector('.confirm-booking-modal');
-            if (confirmBtn) {
-                confirmBtn.addEventListener('click', function() {
-                    const bookingId = this.getAttribute('data-booking-id');
-                    
-                    // Close the modal before showing SweetAlert
-                    bootstrap.Modal.getInstance(document.getElementById('bookingDetailsModal')).hide();
-                    
-                    Swal.fire({
-                        title: 'Enter Discount Rate',
-                        text: 'Enter a discount percentage (0-100)',
-                        input: 'number',
-                        inputPlaceholder: 'e.g., 15 for 15%',
-                        showCancelButton: true,
-                        confirmButtonText: 'Confirm Booking',
-                        cancelButtonText: 'Cancel',
-                        confirmButtonColor: '#28a745',
-                        cancelButtonColor: '#6c757d',
-                        inputAttributes: {
-                            min: 0,
-                            max: 100,
-                            step: 0.01
-                        },
-                        inputValidator: (value) => {
-                            if (!value) {
-                                return 'Please enter a discount rate';
-                            }
-                            const numValue = parseFloat(value);
-                            if (isNaN(numValue) || numValue < 0 || numValue > 100) {
-                                return 'Discount must be between 0 and 100';
-                            }
+        const confirmBtn = bookingDetailsContent.querySelector('.confirm-booking-modal');
+        if (confirmBtn) {
+            confirmBtn.addEventListener('click', function() {
+                const bookingId = this.getAttribute('data-booking-id');
+                
+                // Close the modal before showing SweetAlert
+                bootstrap.Modal.getInstance(document.getElementById('bookingDetailsModal')).hide();
+                
+                Swal.fire({
+                    title: 'Enter Discount Rate',
+                    text: 'Enter a discount percentage (0-100)',
+                    input: 'number',
+                    inputPlaceholder: 'e.g., 15 for 15%',
+                    showCancelButton: true,
+                    confirmButtonText: 'Confirm Booking',
+                    cancelButtonText: 'Cancel',
+                    confirmButtonColor: '#28a745',
+                    cancelButtonColor: '#6c757d',
+                    inputAttributes: {
+                        min: 0,
+                        max: 100,
+                        step: 0.01
+                    },
+                    inputValidator: (value) => {
+                        if (!value) {
+                            return 'Please enter a discount rate';
                         }
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            const discount = parseFloat(result.value || 0);
-                            confirmBooking(bookingId, discount);
+                        const numValue = parseFloat(value);
+                        if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+                            return 'Discount must be between 0 and 100';
                         }
-                    });
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const discount = parseFloat(result.value || 0);
+                        confirmBooking(bookingId, discount);
+                    }
                 });
-            }
-            
-            const rejectBtn = bookingDetailsContent.querySelector('.reject-booking-modal');
-            if (rejectBtn) {
-                rejectBtn.addEventListener('click', function() {
-                    const bookingId = this.getAttribute('data-booking-id');
-                    const userId = this.getAttribute('data-user-id');
-                    
-                    // Close the modal before showing SweetAlert
-                    bootstrap.Modal.getInstance(document.getElementById('bookingDetailsModal')).hide();
-                    
-                    Swal.fire({
-                        title: 'Reject Booking?',
-                        html: '<p>Are you sure you want to reject this booking request?</p>',
-                        input: 'textarea',
-                        inputPlaceholder: 'Kindly provide the reason here.',
-                        inputAttributes: {
-                            'aria-label': 'Rejection reason'
-                        },
-                        footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
-                        showCancelButton: true,
-                        cancelButtonText: 'Cancel',
-                        confirmButtonText: 'Reject',
-                        confirmButtonColor: '#dc3545',
-                        cancelButtonColor: '#6c757d',
-                        showCloseButton: true,
-                        focusConfirm: false,
-                        allowOutsideClick: false,
-                        width: '32em',
-                        padding: '1em',
-                        didOpen: () => {
-                            // Fix textarea styling
-                            const textarea = Swal.getInput();
-                            textarea.style.height = '120px';
-                            textarea.style.marginTop = '10px';
-                            textarea.style.marginBottom = '10px';
-                        }
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            const reason = result.value;
-                            rejectBooking(bookingId, userId, reason);
-                        }
-                    });
+            });
+        }
+        
+        const rejectBtn = bookingDetailsContent.querySelector('.reject-booking-modal');
+        if (rejectBtn) {
+            rejectBtn.addEventListener('click', function() {
+                const bookingId = this.getAttribute('data-booking-id');
+                const userId = this.getAttribute('data-user-id');
+                
+                // Close the modal before showing SweetAlert
+                bootstrap.Modal.getInstance(document.getElementById('bookingDetailsModal')).hide();
+                
+                Swal.fire({
+                    title: 'Reject Booking?',
+                    html: '<p>Are you sure you want to reject this booking request?</p>',
+                    input: 'textarea',
+                    inputPlaceholder: 'Kindly provide the reason here.',
+                    inputAttributes: {
+                        'aria-label': 'Rejection reason'
+                    },
+                    footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancel',
+                    confirmButtonText: 'Reject',
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6c757d',
+                    showCloseButton: true,
+                    focusConfirm: false,
+                    allowOutsideClick: false,
+                    width: '32em',
+                    padding: '1em',
+                    didOpen: () => {
+                        // Fix textarea styling
+                        const textarea = Swal.getInput();
+                        textarea.style.height = '120px';
+                        textarea.style.marginTop = '10px';
+                        textarea.style.marginBottom = '10px';
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const reason = result.value;
+                        rejectBooking(bookingId, userId, reason);
+                    }
                 });
-            }
-            
-            const cancelBtn = bookingDetailsContent.querySelector('.cancel-booking-modal');
-            if (cancelBtn) {
-                cancelBtn.addEventListener('click', function() {
-                    const bookingId = this.getAttribute('data-booking-id');
-                    const userId = this.getAttribute('data-user-id');
-                    
-                    // Close the modal before showing SweetAlert
-                    bootstrap.Modal.getInstance(document.getElementById('bookingDetailsModal')).hide();
-                    
-                    Swal.fire({
-                        title: 'Cancel Booking?',
-                        html: '<p>Are you sure you want to cancel this booking?</p>',
-                        input: 'textarea',
-                        inputPlaceholder: 'Kindly provide the reason here.',
-                        inputAttributes: {
-                            'aria-label': 'Cancellation reason'
-                        },
-                        footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
-                        showCancelButton: true,
-                        cancelButtonText: 'Cancel',
-                        confirmButtonText: 'Confirm',
-                        confirmButtonColor: '#28a745',
-                        cancelButtonColor: '#6c757d',
-                        showCloseButton: true,
-                        focusConfirm: false,
-                        allowOutsideClick: false,
-                        width: '32em',
-                        padding: '1em',
-                        didOpen: () => {
-                            // Fix textarea styling
-                            const textarea = Swal.getInput();
-                            textarea.style.height = '120px';
-                            textarea.style.marginTop = '10px';
-                            textarea.style.marginBottom = '10px';
-                        }
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            const reason = result.value;
-                            cancelBooking(bookingId, userId, reason);
-                        }
-                    });
+            });
+        }
+        
+        const cancelBtn = bookingDetailsContent.querySelector('.cancel-booking-modal');
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', function() {
+                const bookingId = this.getAttribute('data-booking-id');
+                const userId = this.getAttribute('data-user-id');
+                
+                // Close the modal before showing SweetAlert
+                bootstrap.Modal.getInstance(document.getElementById('bookingDetailsModal')).hide();
+                
+                Swal.fire({
+                    title: 'Cancel Booking?',
+                    html: '<p>Are you sure you want to cancel this booking?</p>',
+                    input: 'textarea',
+                    inputPlaceholder: 'Kindly provide the reason here.',
+                    inputAttributes: {
+                        'aria-label': 'Cancellation reason'
+                    },
+                    footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancel',
+                    confirmButtonText: 'Confirm',
+                    confirmButtonColor: '#28a745',
+                    cancelButtonColor: '#6c757d',
+                    showCloseButton: true,
+                    focusConfirm: false,
+                    allowOutsideClick: false,
+                    width: '32em',
+                    padding: '1em',
+                    didOpen: () => {
+                        // Fix textarea styling
+                        const textarea = Swal.getInput();
+                        textarea.style.height = '120px';
+                        textarea.style.marginTop = '10px';
+                        textarea.style.marginBottom = '10px';
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const reason = result.value;
+                        cancelBooking(bookingId, userId, reason);
+                    }
                 });
-            }
-            
+            });
+        }
+        
+        try {
             // Show the modal
+            console.log("Attempting to show modal");
             const bookingDetailsModal = new bootstrap.Modal(document.getElementById('bookingDetailsModal'));
             bookingDetailsModal.show();
+            console.log("Modal shown successfully");
+        } catch (error) {
+            console.error("Error showing modal:", error);
         }
+    }).catch(error => {
+        console.error("Error in showBookingDetails:", error);
+        showMessage("Error", "An error occurred while loading booking details.");
     });
 }
 
@@ -862,7 +880,7 @@ async function getBookingDetails(bookingId) {
             console.log("Booking details response:", data);
             
             if (data.success) {
-                return data.booking;
+                return data.booking; // The API returns data.booking not data
             }
         }
         
@@ -1011,6 +1029,7 @@ async function getAllBookings(status, order, column, page = 1, limit = 10) {
 async function renderBookings(data) {
     const bookings = data.bookings;
     const tbody = document.getElementById("tableBody");
+    console.log("Booking table: ", bookings);
     tbody.innerHTML = "";
 
     if (!bookings || bookings.length === 0) {

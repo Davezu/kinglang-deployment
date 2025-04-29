@@ -429,7 +429,9 @@ require_client_auth(); // Use helper function
                 </div>
                 <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="viewFullDetails">View Full Details</button>
+                    <button type="button" class="btn btn-primary" id="printContractBtn">
+                        <i class="bi bi-printer"></i> Print Contract
+                    </button>
                 </div> -->
             </div>
         </div>

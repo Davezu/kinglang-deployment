@@ -53,8 +53,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -105,8 +105,8 @@
          ],
          "types" : 
          [
-            "food",
             "establishment",
+            "food",
             "point_of_interest"
          ]
       }

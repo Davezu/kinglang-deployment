@@ -1,0 +1,258 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeZt7xzXIlzMR-DfSuchHSdw",
+         "reference" : "ChIJeZt7xzXIlzMR-DfSuchHSdw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 13,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Mandaluyong City Hall, Maysilo Circle, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
+         "reference" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maysilo Circle, Mandaluyong, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong City Hall"
+            },
+            {
+               "offset" : 23,
+               "value" : "Maysilo Circle"
+            },
+            {
+               "offset" : 39,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "point_of_interest",
+            "establishment",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Mandaluyong City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbSLhLTTIlzMRZtox-A1pRK8",
+         "reference" : "ChIJbSLhLTTIlzMRZtox-A1pRK8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong City"
+            },
+            {
+               "offset" : 18,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "administrative_area_level_3",
+            "political"
+         ]
+      },
+      {
+         "description" : "Mandaluyong City Medical Center, F. Martinez Avenue, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJd0A9nDXIlzMRqWsYJnBOG50",
+         "reference" : "ChIJd0A9nDXIlzMRqWsYJnBOG50",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong City Medical Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "F. Martinez Avenue, Mandaluyong, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong City Medical Center"
+            },
+            {
+               "offset" : 33,
+               "value" : "F. Martinez Avenue"
+            },
+            {
+               "offset" : 53,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 66,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 80,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "hospital",
+            "point_of_interest",
+            "health"
+         ]
+      },
+      {
+         "description" : "Mandaluyong Elementary School, Rt. Rev. G. Aglipay, Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJnVECAcnJlzMRyZ2dfMCJ048",
+         "reference" : "ChIJnVECAcnJlzMRyZ2dfMCJ048",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong Elementary School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Rt. Rev. G. Aglipay, Mandaluyong, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong Elementary School"
+            },
+            {
+               "offset" : 31,
+               "value" : "Rt. Rev. G. Aglipay"
+            },
+            {
+               "offset" : 52,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 65,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 79,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "primary_school",
+            "point_of_interest",
+            "school"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

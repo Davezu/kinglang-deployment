@@ -97,9 +97,9 @@
          ],
          "types" : 
          [
+            "university",
             "establishment",
-            "point_of_interest",
-            "university"
+            "point_of_interest"
          ]
       },
       {
@@ -147,8 +147,8 @@
          "types" : 
          [
             "sublocality_level_2",
-            "political",
             "sublocality",
+            "political",
             "geocode"
          ]
       },
@@ -197,12 +197,12 @@
          "types" : 
          [
             "establishment",
-            "point_of_interest",
-            "school"
+            "school",
+            "point_of_interest"
          ]
       },
       {
-         "description" : "Maligaya, Lemery, Batangas, Philippines",
+         "description" : "Maligaya High School, Ilang-ilang, Novaliches, Quezon City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -210,11 +210,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJCVXR_B0KvTMRM7tbaFuLoA8",
-         "reference" : "ChIJCVXR_B0KvTMRM7tbaFuLoA8",
+         "place_id" : "ChIJs3bpG22wlzMRl3S7WrZuvOI",
+         "reference" : "ChIJs3bpG22wlzMRl3S7WrZuvOI",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya",
+            "main_text" : "Maligaya High School",
             "main_text_matched_substrings" : 
             [
                {
@@ -222,33 +222,41 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Lemery, Batangas, Philippines"
+            "secondary_text" : "Ilang-ilang, Novaliches, Quezon City, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligaya"
+               "value" : "Maligaya High School"
             },
             {
-               "offset" : 10,
-               "value" : "Lemery"
+               "offset" : 22,
+               "value" : "Ilang-ilang"
             },
             {
-               "offset" : 18,
-               "value" : "Batangas"
+               "offset" : 35,
+               "value" : "Novaliches"
             },
             {
-               "offset" : 28,
+               "offset" : 47,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 60,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 74,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "political",
-            "sublocality_level_2",
-            "geocode",
-            "sublocality"
+            "establishment",
+            "secondary_school",
+            "school",
+            "point_of_interest"
          ]
       }
    ],

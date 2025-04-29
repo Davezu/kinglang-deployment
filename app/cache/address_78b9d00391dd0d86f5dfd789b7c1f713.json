@@ -1,0 +1,265 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "MAKK Kubo House Beach Resort, Lobo, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJtxIckXEfvTMR8zwy7hU__IQ",
+         "reference" : "ChIJtxIckXEfvTMR8zwy7hU__IQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "MAKK Kubo House Beach Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lobo, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MAKK Kubo House Beach Resort"
+            },
+            {
+               "offset" : 30,
+               "value" : "Lobo"
+            },
+            {
+               "offset" : 36,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Makkan Ilocano Restaurant, Agoo, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ6QBVTHN3kTMR4jsRwwTZor0",
+         "reference" : "ChIJ6QBVTHN3kTMR4jsRwwTZor0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makkan Ilocano Restaurant",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Agoo, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makkan Ilocano Restaurant"
+            },
+            {
+               "offset" : 27,
+               "value" : "Agoo"
+            },
+            {
+               "offset" : 33,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 43,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "establishment",
+            "food",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Makki beach resort, sitio Bagatan, barangay Liozon, Palauig, Zambales, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJhxYrIgA9lDMRFp2PFFbx5QA",
+         "reference" : "ChIJhxYrIgA9lDMRFp2PFFbx5QA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makki beach resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "sitio Bagatan, barangay Liozon, Palauig, Zambales, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makki beach resort"
+            },
+            {
+               "offset" : 20,
+               "value" : "sitio Bagatan"
+            },
+            {
+               "offset" : 35,
+               "value" : "barangay Liozon"
+            },
+            {
+               "offset" : 52,
+               "value" : "Palauig"
+            },
+            {
+               "offset" : 61,
+               "value" : "Zambales"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "tourist_attraction",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Makki's Diner, T. Ramirez Sr. Street, General Santos City, South Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJo7hdCACf9zIRwD-4Rcl4kMY",
+         "reference" : "ChIJo7hdCACf9zIRwD-4Rcl4kMY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makki's Diner",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "T. Ramirez Sr. Street, General Santos City, South Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makki's Diner"
+            },
+            {
+               "offset" : 15,
+               "value" : "T. Ramirez Sr. Street"
+            },
+            {
+               "offset" : 38,
+               "value" : "General Santos City"
+            },
+            {
+               "offset" : 59,
+               "value" : "South Cotabato"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "restaurant",
+            "food"
+         ]
+      },
+      {
+         "description" : "Makkan, San Fernando, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJIbAff3SOkTMRDpAJDkmWaLo",
+         "reference" : "ChIJIbAff3SOkTMRDpAJDkmWaLo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makkan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Fernando, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makkan"
+            },
+            {
+               "offset" : 8,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 22,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "food",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -45,10 +45,10 @@
          ],
          "types" : 
          [
-            "political",
             "sublocality",
-            "sublocality_level_2",
-            "geocode"
+            "geocode",
+            "political",
+            "sublocality_level_2"
          ]
       },
       {
@@ -146,8 +146,8 @@
          "types" : 
          [
             "tourist_attraction",
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -190,8 +190,8 @@
          ],
          "types" : 
          [
-            "political",
             "locality",
+            "political",
             "geocode"
          ]
       },
@@ -235,9 +235,9 @@
          ],
          "types" : 
          [
-            "locality",
             "geocode",
-            "political"
+            "political",
+            "locality"
          ]
       }
    ],

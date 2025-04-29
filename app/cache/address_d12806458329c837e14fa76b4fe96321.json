@@ -1,0 +1,251 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Maragondon, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJob3jwNGFvTMR24rbvKOqt7A",
+         "reference" : "ChIJob3jwNGFvTMR24rbvKOqt7A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragondon",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragondon"
+            },
+            {
+               "offset" : 12,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Maragusan, Davao de Oro, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZxAofDbw-zIRZwgF-iXWRzI",
+         "reference" : "ChIJZxAofDbw-zIRZwgF-iXWRzI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragusan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Davao de Oro, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragusan"
+            },
+            {
+               "offset" : 11,
+               "value" : "Davao de Oro"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Maragondon Sanctuary, Ternate - Nasugbu Road, Nasugbu, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJzZuj3TSPvTMR5CcYPoP_u7c",
+         "reference" : "ChIJzZuj3TSPvTMR5CcYPoP_u7c",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragondon Sanctuary",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ternate - Nasugbu Road, Nasugbu, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragondon Sanctuary"
+            },
+            {
+               "offset" : 22,
+               "value" : "Ternate - Nasugbu Road"
+            },
+            {
+               "offset" : 46,
+               "value" : "Nasugbu"
+            },
+            {
+               "offset" : 55,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Maragusan Municipal Hall, Maragusan, Davao de Oro, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQcIFpjfw-zIRVaakEdM2y94",
+         "reference" : "ChIJQcIFpjfw-zIRVaakEdM2y94",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragusan Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maragusan, Davao de Oro, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragusan Municipal Hall"
+            },
+            {
+               "offset" : 26,
+               "value" : "Maragusan"
+            },
+            {
+               "offset" : 37,
+               "value" : "Davao de Oro"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Maragondon Municipal Hall, Col. Infante, Maragondon, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9U8jqcqHvTMRQpMOZ_B54hg",
+         "reference" : "ChIJ9U8jqcqHvTMRQpMOZ_B54hg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragondon Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Col. Infante, Maragondon, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragondon Municipal Hall"
+            },
+            {
+               "offset" : 27,
+               "value" : "Col. Infante"
+            },
+            {
+               "offset" : 41,
+               "value" : "Maragondon"
+            },
+            {
+               "offset" : 53,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "local_government_office",
+            "point_of_interest",
+            "city_hall"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,62 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Watchtower Bethel Branch Office of Jehovah’s Witnesses, Fernando Poe Jr. Ave, San Francisco del Monte, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 54,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQ_RiP1m2lzMRSMmwdX_tdEc",
+         "reference" : "ChIJQ_RiP1m2lzMRSMmwdX_tdEc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Watchtower Bethel Branch Office of Jehovah’s Witnesses",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 54,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Fernando Poe Jr. Ave, San Francisco del Monte, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Watchtower Bethel Branch Office of Jehovah’s Witnesses"
+            },
+            {
+               "offset" : 56,
+               "value" : "Fernando Poe Jr. Ave"
+            },
+            {
+               "offset" : 78,
+               "value" : "San Francisco del Monte"
+            },
+            {
+               "offset" : 103,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 116,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 130,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

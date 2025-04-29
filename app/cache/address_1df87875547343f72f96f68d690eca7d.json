@@ -1,0 +1,246 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Malingap, Diliman, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjlNYWxpbmdhcCwgRGlsaW1hbiwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgnXocY9dbeXMxHmT2RFUOn1BBIUChIJ1bo_R6i3lzMR5ogt2UEBZno",
+         "reference" : "EjlNYWxpbmdhcCwgRGlsaW1hbiwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgnXocY9dbeXMxHmT2RFUOn1BBIUChIJ1bo_R6i3lzMR5ogt2UEBZno",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malingap",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Diliman, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malingap"
+            },
+            {
+               "offset" : 10,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 19,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 32,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Malingao, Lanao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJG2TQM060VTIRjD_2Ll2_fYo",
+         "reference" : "ChIJG2TQM060VTIRjD_2Ll2_fYo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malingao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lanao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malingao"
+            },
+            {
+               "offset" : 10,
+               "value" : "Lanao del Norte"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Malingao, Maguindanao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwxaF6F7QVzIReFPCj-rqLFA",
+         "reference" : "ChIJwxaF6F7QVzIReFPCj-rqLFA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malingao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maguindanao, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malingao"
+            },
+            {
+               "offset" : 10,
+               "value" : "Maguindanao"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "political",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Malingao Shariff Aguak Maguindanao, Datu Unsay, Maguindanao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5eI5CwDXVzIRRHARVOAlF7M",
+         "reference" : "ChIJ5eI5CwDXVzIRRHARVOAlF7M",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malingao Shariff Aguak Maguindanao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Datu Unsay, Maguindanao, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malingao Shariff Aguak Maguindanao"
+            },
+            {
+               "offset" : 36,
+               "value" : "Datu Unsay"
+            },
+            {
+               "offset" : 48,
+               "value" : "Maguindanao"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "place_of_worship",
+            "mosque"
+         ]
+      },
+      {
+         "description" : "Malingao, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ18OGe9snVjIR-OWlccie2qw",
+         "reference" : "ChIJ18OGe9snVjIR-OWlccie2qw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malingao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malingao"
+            },
+            {
+               "offset" : 10,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "political",
+            "sublocality_level_2",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

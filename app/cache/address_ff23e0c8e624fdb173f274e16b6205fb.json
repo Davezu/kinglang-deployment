@@ -1,0 +1,253 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Maragat, Kabugao, Apayao, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJtajbupQZjzMRWG-pOFB2GHg",
+         "reference" : "ChIJtajbupQZjzMRWG-pOFB2GHg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragat",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Kabugao, Apayao, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragat"
+            },
+            {
+               "offset" : 9,
+               "value" : "Kabugao"
+            },
+            {
+               "offset" : 18,
+               "value" : "Apayao"
+            },
+            {
+               "offset" : 26,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality",
+            "political",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Maragaha Campsite, Botolan, Zambales, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-Y-qGnQvlDMReEC35dssOm0",
+         "reference" : "ChIJ-Y-qGnQvlDMReEC35dssOm0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragaha Campsite",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Botolan, Zambales, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragaha Campsite"
+            },
+            {
+               "offset" : 19,
+               "value" : "Botolan"
+            },
+            {
+               "offset" : 28,
+               "value" : "Zambales"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "park",
+            "establishment",
+            "campground"
+         ]
+      },
+      {
+         "description" : "Maragayap, Bacnotan, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ070nY4DtkTMR1j63DvEFn8E",
+         "reference" : "ChIJ070nY4DtkTMR1j63DvEFn8E",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragayap",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bacnotan, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragayap"
+            },
+            {
+               "offset" : 11,
+               "value" : "Bacnotan"
+            },
+            {
+               "offset" : 21,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 31,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "political",
+            "geocode",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Maragang, Tigbao, Zamboanga del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJlZ_wclYFVDIRkc5sQmfSxU0",
+         "reference" : "ChIJlZ_wclYFVDIRkc5sQmfSxU0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragang",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tigbao, Zamboanga del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragang"
+            },
+            {
+               "offset" : 10,
+               "value" : "Tigbao"
+            },
+            {
+               "offset" : 18,
+               "value" : "Zamboanga del Sur"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "political",
+            "sublocality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Maragatas, Davao Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZUCNt4HB-zIRfVNUi7ynJfs",
+         "reference" : "ChIJZUCNt4HB-zIRfVNUi7ynJfs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maragatas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Davao Oriental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maragatas"
+            },
+            {
+               "offset" : 11,
+               "value" : "Davao Oriental"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality",
+            "political",
+            "sublocality_level_2"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

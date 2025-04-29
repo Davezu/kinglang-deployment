@@ -1,0 +1,259 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Mlang, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJvRV4M89f-DIRlqqN2n1Kqu8",
+         "reference" : "ChIJvRV4M89f-DIRlqqN2n1Kqu8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mlang",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mlang"
+            },
+            {
+               "offset" : 7,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Mlang Municipal Plaza, M.H. del Pilar St, M'lang, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv3rwLclf-DIRKYiCRadNeQo",
+         "reference" : "ChIJv3rwLclf-DIRKYiCRadNeQo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mlang Municipal Plaza",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M.H. del Pilar St, M'lang, Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mlang Municipal Plaza"
+            },
+            {
+               "offset" : 23,
+               "value" : "M.H. del Pilar St"
+            },
+            {
+               "offset" : 42,
+               "value" : "M'lang"
+            },
+            {
+               "offset" : 50,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Mlang north cotabato, J.P. Laurel Street, M'lang, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJmQWzBQBf-DIRb24b4taoVgU",
+         "reference" : "ChIJmQWzBQBf-DIRb24b4taoVgU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mlang north cotabato",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "J.P. Laurel Street, M'lang, Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mlang north cotabato"
+            },
+            {
+               "offset" : 22,
+               "value" : "J.P. Laurel Street"
+            },
+            {
+               "offset" : 42,
+               "value" : "M'lang"
+            },
+            {
+               "offset" : 50,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "home_goods_store",
+            "point_of_interest",
+            "store"
+         ]
+      },
+      {
+         "description" : "Mlang Bagontapay Roundabout, Brgy, M'lang, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJX-wZk9xd-DIRDA6hYxPNT_Y",
+         "reference" : "ChIJX-wZk9xd-DIRDA6hYxPNT_Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mlang Bagontapay Roundabout",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Brgy, M'lang, Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mlang Bagontapay Roundabout"
+            },
+            {
+               "offset" : 29,
+               "value" : "Brgy"
+            },
+            {
+               "offset" : 35,
+               "value" : "M'lang"
+            },
+            {
+               "offset" : 43,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Mlang Specialist Medical Center, M'lang, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJ3uouEpe-DIRLfjzK4oPTL4",
+         "reference" : "ChIJJ3uouEpe-DIRLfjzK4oPTL4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mlang Specialist Medical Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M'lang, Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mlang Specialist Medical Center"
+            },
+            {
+               "offset" : 33,
+               "value" : "M'lang"
+            },
+            {
+               "offset" : 41,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "hospital",
+            "establishment",
+            "health"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

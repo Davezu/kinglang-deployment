@@ -1,0 +1,237 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJi8MeVwPKlzMRH8FpEHXV0Wk",
+         "reference" : "ChIJi8MeVwPKlzMRH8FpEHXV0Wk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 8,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Mandaluyong, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeZt7xzXIlzMR-DfSuchHSdw",
+         "reference" : "ChIJeZt7xzXIlzMR-DfSuchHSdw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong"
+            },
+            {
+               "offset" : 13,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Manaoag Church, Milo St, Manaoag, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJg7kVofNqkTMR5gkoSJHPDGs",
+         "reference" : "ChIJg7kVofNqkTMR5gkoSJHPDGs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manaoag Church",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Milo St, Manaoag, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manaoag Church"
+            },
+            {
+               "offset" : 16,
+               "value" : "Milo St"
+            },
+            {
+               "offset" : 25,
+               "value" : "Manaoag"
+            },
+            {
+               "offset" : 34,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "place_of_worship",
+            "church",
+            "establishment",
+            "point_of_interest",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Manaoag, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_wGsovFqkTMRFVCumLw31Oo",
+         "reference" : "ChIJ_wGsovFqkTMRFVCumLw31Oo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manaoag",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manaoag"
+            },
+            {
+               "offset" : 9,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbTgmYNLIlzMR0HiSrNoj7V8",
+         "reference" : "ChIJbTgmYNLIlzMR0HiSrNoj7V8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 8,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "administrative_area_level_1"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

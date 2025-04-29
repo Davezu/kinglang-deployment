@@ -1432,6 +1432,9 @@ function openBookingDetailsModal(bookingId) {
                             <button class="btn btn-sm btn-outline-info print-invoice" data-booking-id="${booking.booking_id}">
                                 <i class="bi bi-printer"></i> Print Invoice
                             </button>
+                            <button class="btn btn-sm btn-outline-info print-contract" data-booking-id="${booking.booking_id}">
+                                <i class="bi bi-printer"></i> Print Contract
+                            </button>
                         ` : ''}
 
                         ${booking.status === "Confirmed" && parseFloat(booking.balance) > 0 ? `
@@ -1534,25 +1537,7 @@ function openBookingDetailsModal(bookingId) {
                     confirmButtonColor: '#28a745',
                     cancelButtonColor: '#6c757d',
                     showCloseButton: true,
-                    focusConfirm: false,
-                    allowOutsideClick: false,
-                    width: '32em',
-                    padding: '1em',
-                    customClass: {
-                        container: 'swal2-container',
-                        popup: 'swal2-popup',
-                        header: 'swal2-header',
-                        title: 'swal2-title',
-                        input: 'form-control'
-                    },
-                    didOpen: () => {
-                        // Fix textarea styling
-                        const textarea = Swal.getInput();
-                        textarea.style.height = '120px';
-                        textarea.style.marginTop = '10px';
-                        textarea.style.marginBottom = '10px';
-                    }
-                }).then((result) => {
+                }).then(result => {
                     if (result.isConfirmed) {
                         const reason = result.value;
                         cancelBooking(bookingId, reason);
@@ -1560,9 +1545,21 @@ function openBookingDetailsModal(bookingId) {
                 });
             });
             
-            modalContent.querySelector(".print-invoice")?.addEventListener("click", function() {
-                printInvoice(this.dataset.bookingId);
-            });
+            // Add event listeners for print buttons safely
+            const printInvoiceBtn = modalContent.querySelector(".print-invoice");
+            if (printInvoiceBtn) {
+                printInvoiceBtn.addEventListener("click", function() {
+                    printInvoice(this.dataset.bookingId);
+                });
+            }
+            
+            // Add event listener for the print contract button
+            const printContractBtn = modalContent.querySelector(".print-contract");
+            if (printContractBtn) {
+                printContractBtn.addEventListener("click", function() {
+                    printContract(this.dataset.bookingId);
+                });
+            }
             
         } else {
             modalContent.innerHTML = `
@@ -1752,4 +1749,9 @@ function formatNumber(number) {
 // Print invoice for a booking
 function printInvoice(bookingId) {
     window.open(`/home/print-invoice/${bookingId}`, '_blank');
+}
+
+// Function to print contract
+function printContract(bookingId) {
+    window.open(`/home/print-contract/${bookingId}`, '_blank');
 }

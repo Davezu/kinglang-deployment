@@ -45,10 +45,10 @@
          ],
          "types" : 
          [
-            "geocode",
-            "political",
             "sublocality",
-            "sublocality_level_2"
+            "political",
+            "sublocality_level_2",
+            "geocode"
          ]
       },
       {
@@ -97,106 +97,6 @@
          [
             "geocode",
             "route"
-         ]
-      },
-      {
-         "description" : "Malipayon-Delgado, Iloilo City Proper, Iloilo City, Iloilo, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 6,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJL6Cral3lrjMRnZcrQ1ZPPo4",
-         "reference" : "ChIJL6Cral3lrjMRnZcrQ1ZPPo4",
-         "structured_formatting" : 
-         {
-            "main_text" : "Malipayon-Delgado, Iloilo City Proper",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 6,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Iloilo City, Iloilo, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Malipayon-Delgado"
-            },
-            {
-               "offset" : 19,
-               "value" : "Iloilo City Proper"
-            },
-            {
-               "offset" : 39,
-               "value" : "Iloilo City"
-            },
-            {
-               "offset" : 52,
-               "value" : "Iloilo"
-            },
-            {
-               "offset" : 60,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "political",
-            "sublocality_level_2",
-            "geocode",
-            "sublocality"
-         ]
-      },
-      {
-         "description" : "Malipayon, Bukidnon, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 6,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJJ7J7cElK_zIRvfM82r4_4EQ",
-         "reference" : "ChIJJ7J7cElK_zIRvfM82r4_4EQ",
-         "structured_formatting" : 
-         {
-            "main_text" : "Malipayon",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 6,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Bukidnon, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Malipayon"
-            },
-            {
-               "offset" : 11,
-               "value" : "Bukidnon"
-            },
-            {
-               "offset" : 21,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "sublocality_level_2",
-            "geocode",
-            "political",
-            "sublocality"
          ]
       },
       {
@@ -252,8 +152,108 @@
          "types" : 
          [
             "lodging",
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Malipayon, Bukidnon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJ7J7cElK_zIRvfM82r4_4EQ",
+         "reference" : "ChIJJ7J7cElK_zIRvfM82r4_4EQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malipayon",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bukidnon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malipayon"
+            },
+            {
+               "offset" : 11,
+               "value" : "Bukidnon"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "political",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Malipayon-Delgado, Iloilo City Proper, Iloilo City, Iloilo, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJL6Cral3lrjMRnZcrQ1ZPPo4",
+         "reference" : "ChIJL6Cral3lrjMRnZcrQ1ZPPo4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malipayon-Delgado, Iloilo City Proper",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Iloilo City, Iloilo, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malipayon-Delgado"
+            },
+            {
+               "offset" : 19,
+               "value" : "Iloilo City Proper"
+            },
+            {
+               "offset" : 39,
+               "value" : "Iloilo City"
+            },
+            {
+               "offset" : 52,
+               "value" : "Iloilo"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "political",
+            "sublocality_level_2",
+            "geocode"
          ]
       }
    ],

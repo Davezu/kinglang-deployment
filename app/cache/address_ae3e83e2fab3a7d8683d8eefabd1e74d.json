@@ -1,0 +1,269 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Boogie Bounce, EDSA Extension, Brgy. 076, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJF3jsmAXJlzMRTRApzO1iJqM",
+         "reference" : "ChIJF3jsmAXJlzMRTRApzO1iJqM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Boogie Bounce",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "EDSA Extension, Brgy. 076, Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Boogie Bounce"
+            },
+            {
+               "offset" : 15,
+               "value" : "EDSA Extension"
+            },
+            {
+               "offset" : 31,
+               "value" : "Brgy. 076"
+            },
+            {
+               "offset" : 42,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 49,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "amusement_park",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Booy, Tagbilaran City, Bohol, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJEz7BFFtMqjMRsOo3lmFjfAQ",
+         "reference" : "ChIJEz7BFFtMqjMRsOo3lmFjfAQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Booy",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagbilaran City, Bohol, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Booy"
+            },
+            {
+               "offset" : 6,
+               "value" : "Tagbilaran City"
+            },
+            {
+               "offset" : 23,
+               "value" : "Bohol"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Bool, Bohol, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPfc0zNBNqjMRZ0WF5SWQTQ0",
+         "reference" : "ChIJPfc0zNBNqjMRZ0WF5SWQTQ0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bool",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bohol, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bool"
+            },
+            {
+               "offset" : 6,
+               "value" : "Bohol"
+            },
+            {
+               "offset" : 13,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "sublocality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Boom Chicken 붐 치킨 - Korea Town Angeles, Fil american Friendship Hwy, Angeles, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJewSbIpHyljMRr-GM5aSWDxs",
+         "reference" : "ChIJewSbIpHyljMRr-GM5aSWDxs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Boom Chicken 붐 치킨 - Korea Town Angeles",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Fil american Friendship Hwy, Angeles, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Boom Chicken 붐 치킨 - Korea Town Angeles"
+            },
+            {
+               "offset" : 40,
+               "value" : "Fil american Friendship Hwy"
+            },
+            {
+               "offset" : 69,
+               "value" : "Angeles"
+            },
+            {
+               "offset" : 78,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 88,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "establishment",
+            "point_of_interest",
+            "food"
+         ]
+      },
+      {
+         "description" : "Boost Basketball, 4th Avenue, Grace Park West, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_8TgEke1lzMRgd1mpsS6bhY",
+         "reference" : "ChIJ_8TgEke1lzMRgd1mpsS6bhY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Boost Basketball",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "4th Avenue, Grace Park West, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Boost Basketball"
+            },
+            {
+               "offset" : 18,
+               "value" : "4th Avenue"
+            },
+            {
+               "offset" : 30,
+               "value" : "Grace Park West"
+            },
+            {
+               "offset" : 47,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,112 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Bakugo Ramen, Light House Point, Hibbard Avenue, Dumaguete, Negros Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJw-2p88JvqzMRQZI3pM3_khA",
+         "reference" : "ChIJw-2p88JvqzMRQZI3pM3_khA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bakugo Ramen",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Light House Point, Hibbard Avenue, Dumaguete, Negros Oriental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bakugo Ramen"
+            },
+            {
+               "offset" : 14,
+               "value" : "Light House Point"
+            },
+            {
+               "offset" : 33,
+               "value" : "Hibbard Avenue"
+            },
+            {
+               "offset" : 49,
+               "value" : "Dumaguete"
+            },
+            {
+               "offset" : 60,
+               "value" : "Negros Oriental"
+            },
+            {
+               "offset" : 77,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "food",
+            "restaurant",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Balugo Barangay Hall, Dumaguete, Negros Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 20,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJX1vH46pvqzMR3kUu9yZ1PAc",
+         "reference" : "ChIJX1vH46pvqzMR3kUu9yZ1PAc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Balugo Barangay Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 20,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dumaguete, Negros Oriental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Balugo Barangay Hall"
+            },
+            {
+               "offset" : 22,
+               "value" : "Dumaguete"
+            },
+            {
+               "offset" : 33,
+               "value" : "Negros Oriental"
+            },
+            {
+               "offset" : 50,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}
