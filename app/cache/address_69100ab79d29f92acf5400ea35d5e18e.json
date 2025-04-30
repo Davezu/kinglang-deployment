@@ -1,0 +1,236 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Cabuyao, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJN1L8f4TYlzMRZZtXH0X2-u4",
+         "reference" : "ChIJN1L8f4TYlzMRZZtXH0X2-u4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabuyao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabuyao"
+            },
+            {
+               "offset" : 9,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Cabugao, Ilocos Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ3c1RQvOLjjMREDstHiZRJbA",
+         "reference" : "ChIJ3c1RQvOLjjMREDstHiZRJbA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabugao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ilocos Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabugao"
+            },
+            {
+               "offset" : 9,
+               "value" : "Ilocos Sur"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Cabuyao City, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJK6I905divTMRwH5y8KScMBA",
+         "reference" : "ChIJK6I905divTMRwH5y8KScMBA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabuyao City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabuyao City"
+            },
+            {
+               "offset" : 14,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "administrative_area_level_3"
+         ]
+      },
+      {
+         "description" : "Cabuco, Trece Martires, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-a2a4IyAvTMRhBnKufqlJbU",
+         "reference" : "ChIJ-a2a4IyAvTMRhBnKufqlJbU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabuco",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Trece Martires, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabuco"
+            },
+            {
+               "offset" : 8,
+               "value" : "Trece Martires"
+            },
+            {
+               "offset" : 24,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "political",
+            "geocode",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Cabusao, Camarines Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJIxXebuEdojMRoVW6iKNazw4",
+         "reference" : "ChIJIxXebuEdojMRoVW6iKNazw4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabusao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Camarines Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabusao"
+            },
+            {
+               "offset" : 9,
+               "value" : "Camarines Sur"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

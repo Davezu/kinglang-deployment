@@ -709,6 +709,10 @@ function showBookingDetails(bookingId) {
                     <button class="btn btn-sm btn-outline-primary view-invoice" data-booking-id="${booking.booking_id}">
                         <i class="bi bi-file-earmark-text"></i> Invoice
                     </button>
+                    
+                    <button class="btn btn-sm btn-outline-success view-contract" data-booking-id="${booking.booking_id}">
+                        <i class="bi bi-file-earmark-text"></i> Contract
+                    </button>
                 </div>
             </div>
         `;
@@ -720,8 +724,16 @@ function showBookingDetails(bookingId) {
                 const bookingId = this.getAttribute("data-booking-id");
                 window.open(`/admin/print-invoice/${bookingId}`);
             });
-        }            
+        }
 
+        const viewContractBtn = bookingDetailsContent.querySelector(".view-contract");
+        if (viewContractBtn) {
+            viewContractBtn.addEventListener("click", function () {
+                const bookingId = this.getAttribute("data-booking-id");
+                window.open(`/admin/print-contract/${bookingId}`);
+            });
+        }
+        
         const confirmBtn = bookingDetailsContent.querySelector('.confirm-booking-modal');
         if (confirmBtn) {
             confirmBtn.addEventListener('click', function() {

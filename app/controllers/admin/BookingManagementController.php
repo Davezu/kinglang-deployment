@@ -392,6 +392,29 @@ class BookingManagementController {
         require_once __DIR__ . "/../../views/admin/invoice.php";
     }
 
+    public function printContract($booking_id = null) {
+        if (!$booking_id) {
+            // Redirect to bookings page if no ID provided
+            header("Location: /admin/booking-requests");
+            exit();
+        }
+        
+        // Get booking details
+        $booking = $this->bookingModel->getBooking($booking_id);
+        
+        if (!$booking) {
+            // Booking not found
+            header("Location: /admin/booking-requests");
+            exit();
+        }
+        
+        // Get booking stops
+        $stops = $this->bookingModel->getBookingStops($booking_id);
+        
+        // Load the contract template view
+        require_once __DIR__ . "/../../views/admin/contract.php";
+    }
+
     public function cancelBooking() {
         header("Content-Type: application/json");
 

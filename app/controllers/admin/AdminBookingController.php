@@ -239,8 +239,13 @@ class AdminBookingController {
 
     public function getDieselPrice() {
         header("Content-Type: application/json");
-        $currentDieselPrice = 65.00; // Default price, can be updated from a database or API
-        echo json_encode(["price" => $currentDieselPrice]);
+        require_once __DIR__ . "/../../models/admin/Settings.php";
+        $settings = new Settings();
+        $currentDieselPrice = $settings->getSetting('diesel_price');
+        if (!$currentDieselPrice) {
+            $currentDieselPrice = 65.00; // Default fallback if setting is not found
+        }
+        echo json_encode(["price" => (float)$currentDieselPrice]);
     }
 
     public function getTotalCost() {
@@ -264,7 +269,14 @@ class AdminBookingController {
         // Add distance-based costs
         $estimatedDistanceKm = 150 * $days; // Default estimate
         $fuelEfficiency = 3; // km per liter
-        $dieselPrice = 65.00; // Default price per liter
+        
+        // Get diesel price from settings
+        require_once __DIR__ . "/../../models/admin/Settings.php";
+        $settings = new Settings();
+        $dieselPrice = (float)$settings->getSetting('diesel_price');
+        if (!$dieselPrice) {
+            $dieselPrice = 65.00; // Default fallback if setting is not found
+        }
         
         $estimatedFuelLiters = $estimatedDistanceKm / $fuelEfficiency;
         $fuelCost = $estimatedFuelLiters * $dieselPrice * $buses;

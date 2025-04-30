@@ -1,0 +1,73 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Tala calocan, Rosal St, barrio sanlazaro tala, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 14
+            }
+         ],
+         "place_id" : "ChIJF9YT_n6xlzMR8tP3opHRhfo",
+         "reference" : "ChIJF9YT_n6xlzMR8tP3opHRhfo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tala calocan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Rosal St, barrio sanlazaro tala, Caloocan, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tala calocan"
+            },
+            {
+               "offset" : 14,
+               "value" : "Rosal St"
+            },
+            {
+               "offset" : 24,
+               "value" : "barrio sanlazaro tala"
+            },
+            {
+               "offset" : 47,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

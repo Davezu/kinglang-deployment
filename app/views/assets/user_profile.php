@@ -1,6 +1,27 @@
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<style>
+    .booking-details-popup {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: opacity 0.2s ease-in-out;
+    }
+    
+    .notification-item:hover {
+        background-color: rgba(25, 135, 84, 0.05);
+    }
+    
+    .booking-summary small {
+        color: #6c757d;
+        font-size: 0.75rem;
+    }
+    
+    .booking-summary .badge {
+        font-size: 0.75rem;
+        padding: 0.35em 0.65em;
+    }
+</style>
 </head>
 
 <div class="p-2 d-flex align-items-center gap-2">
@@ -32,6 +53,24 @@
         </div>
     </div>
     
+    <!-- Booking Details Popup -->
+    <div class="booking-details-popup position-absolute bg-white rounded shadow-lg p-3" style="display: none; width: 300px; z-index: 1060; right: 0; transform: translateX(310px);">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="m-0 booking-title">Booking Details</h6>
+            <button type="button" class="btn-close close-booking-details" aria-label="Close"></button>
+        </div>
+        <div class="booking-details-content">
+            <div class="text-center p-3">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+        <div class="mt-2 text-center">
+            <a href="#" class="btn btn-sm btn-success view-full-details">View Full Details</a>
+        </div>
+    </div>
+    
     <img src="../../../public/images/profile.png" alt="profile" class="me-2" height="35px">
     <div class="text-sm">
         <div class="name text-success fw-bold" style="font-size: 12px"><?= $_SESSION["client_name"]; ?> </div>
@@ -49,6 +88,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const notificationList = document.querySelector('.notification-list');
     const noNotifications = document.querySelector('.no-notifications');
     const markAllReadBtn = document.querySelector('.mark-all-read');
+    const bookingDetailsPopup = document.querySelector('.booking-details-popup');
+    const bookingDetailsContent = document.querySelector('.booking-details-content');
+    const closeBookingDetailsBtn = document.querySelector('.close-booking-details');
+    const viewFullDetailsBtn = document.querySelector('.view-full-details');
+    let currentBookingId = null;
     
     // Function to load notifications
     async function loadNotifications() {
@@ -84,6 +128,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         notificationItem.href = getNotificationLink(notification);
                         notificationItem.className = `dropdown-item p-2 border-bottom notification-item ${!notification.is_read ? 'bg-light' : ''}`;
                         notificationItem.setAttribute('data-id', notification.notification_id);
+                        notificationItem.setAttribute('data-reference-id', notification.reference_id);
+                        notificationItem.setAttribute('data-type', notification.type);
                         
                         // Icon based on notification type
                         let iconClass = 'bi-info-circle-fill text-primary';
@@ -138,17 +184,63 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Load notifications when the page loads
-    loadNotifications();
-    
-    // Refresh notifications every 30 seconds
-    // setInterval(loadNotifications, 30000);
-    
     // Mark notification as read when clicked
     document.addEventListener('click', async function(e) {
         const notificationItem = e.target.closest('.notification-item');
         if (notificationItem) {
+            e.preventDefault(); // Prevent navigation
             const notificationId = notificationItem.getAttribute('data-id');
+            const referenceId = notificationItem.getAttribute('data-reference-id');
+            const notificationType = notificationItem.getAttribute('data-type');
+            
+            // Only show booking details for booking-related notifications
+            if (notificationType && (
+                notificationType.includes('booking') || 
+                notificationType.includes('payment')
+            )) {
+                // Position the booking details popup relative to the notification item
+                const rect = notificationItem.getBoundingClientRect();
+                
+                bookingDetailsPopup.style.position = 'fixed';
+                bookingDetailsPopup.style.top = `${rect.top}px`;
+                bookingDetailsPopup.style.left = `${rect.right}px`;
+                bookingDetailsPopup.style.transform = 'translateX(10px)';
+                
+                // Get notification message and created time
+                const notificationMessage = notificationItem.querySelector('.small.fw-semibold').textContent;
+                const notificationTime = notificationItem.querySelector('.text-muted.small').textContent;
+                
+                // Set the current booking ID for the "View Full Details" button
+                currentBookingId = referenceId;
+                viewFullDetailsBtn.href = `/home/booking-details/${referenceId}`;
+                
+                // Get notification status from type
+                let status = 'pending';
+                if (notificationType.includes('confirmed')) {
+                    status = 'confirmed';
+                } else if (notificationType.includes('rejected') || notificationType.includes('canceled')) {
+                    status = 'rejected';
+                }
+                
+                // Display notification content directly
+                bookingDetailsPopup.style.display = 'block';
+                bookingDetailsContent.innerHTML = `
+                    <div class="booking-summary">
+                        <div class="mb-3">
+                            <div class="fw-semibold">${notificationMessage}</div>
+                            <small class="text-muted">${notificationTime}</small>
+                        </div>
+                        <div class="mb-2">
+                            <small class="text-muted d-block">Status</small>
+                            <div class="badge ${getStatusBadgeClass(status)}">${status}</div>
+                        </div>
+                        <div class="mb-2">
+                            <small class="text-muted d-block">Booking ID</small>
+                            <div>${referenceId}</div>
+                        </div>
+                    </div>
+                `;
+            }
             
             try {
                 const response = await fetch('/client/notifications/mark-read', {
@@ -179,7 +271,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error marking notification as read:', error);
             }
         }
+        
+        // Close booking details popup when clicking outside or when notification dropdown is closed
+        if (!bookingDetailsPopup.contains(e.target) && 
+            !e.target.closest('.notification-item') &&
+            bookingDetailsPopup.style.display === 'block') {
+            bookingDetailsPopup.style.display = 'none';
+        }
     });
+    
+    // Close booking details popup when close button is clicked
+    if (closeBookingDetailsBtn) {
+        closeBookingDetailsBtn.addEventListener('click', function() {
+            bookingDetailsPopup.style.display = 'none';
+        });
+    }
+    
+    // Handle bootstrap dropdown events to close booking details popup
+    notificationToggle.addEventListener('hidden.bs.dropdown', function() {
+        if (bookingDetailsPopup.style.display === 'block') {
+            bookingDetailsPopup.style.display = 'none';
+        }
+    });
+    
+    // Helper function to get badge class based on status
+    function getStatusBadgeClass(status) {
+        switch(status.toLowerCase()) {
+            case 'confirmed':
+                return 'bg-success';
+            case 'pending':
+                return 'bg-warning';
+            case 'rejected':
+            case 'canceled':
+                return 'bg-danger';
+            default:
+                return 'bg-secondary';
+        }
+    }
     
     // Mark all as read
     if (markAllReadBtn) {
@@ -210,5 +338,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Load notifications when the page loads
+    loadNotifications();
+    
+    // Refresh notifications every 30 seconds
+    // setInterval(loadNotifications, 30000);
 });
 </script>

@@ -1,0 +1,242 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Maira-Ira Resort and Residences, Pagudpud, Ilocos Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJn4DkEVcgiTMRi5EqIUQw28o",
+         "reference" : "ChIJn4DkEVcgiTMRi5EqIUQw28o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maira-Ira Resort and Residences",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pagudpud, Ilocos Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maira-Ira Resort and Residences"
+            },
+            {
+               "offset" : 33,
+               "value" : "Pagudpud"
+            },
+            {
+               "offset" : 43,
+               "value" : "Ilocos Norte"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Mairok Ibaba, Unisan, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-WOVMeS9ojMRwv9ROxiAApc",
+         "reference" : "ChIJ-WOVMeS9ojMRwv9ROxiAApc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mairok Ibaba",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Unisan, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mairok Ibaba"
+            },
+            {
+               "offset" : 14,
+               "value" : "Unisan"
+            },
+            {
+               "offset" : 22,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Mauraro, Albay, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJl5M7LkAPoTMRiFR3idit1bQ",
+         "reference" : "ChIJl5M7LkAPoTMRiFR3idit1bQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mauraro",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Albay, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mauraro"
+            },
+            {
+               "offset" : 9,
+               "value" : "Albay"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Mairok Ilaya, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPcgJvcm9ojMREkVceObipsM",
+         "reference" : "ChIJPcgJvcm9ojMREkVceObipsM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mairok Ilaya",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mairok Ilaya"
+            },
+            {
+               "offset" : 14,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "political",
+            "sublocality_level_2",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Maura, Cagayan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJIZSCmNMchjMRKcZTlOFhtYs",
+         "reference" : "ChIJIZSCmNMchjMRKcZTlOFhtYs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maura",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cagayan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maura"
+            },
+            {
+               "offset" : 7,
+               "value" : "Cagayan"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "sublocality_level_2",
+            "political",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

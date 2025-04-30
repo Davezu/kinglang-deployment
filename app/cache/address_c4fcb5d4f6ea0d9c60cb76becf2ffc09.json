@@ -1,0 +1,250 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Silang, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJP5h4rf7VlzMRGAKBm9728R4",
+         "reference" : "ChIJP5h4rf7VlzMRGAKBm9728R4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Silang",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Silang"
+            },
+            {
+               "offset" : 8,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Silang Municipal Hall, Silang, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJnUaNN5d-vTMRAswASSW2rr8",
+         "reference" : "ChIJnUaNN5d-vTMRAswASSW2rr8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Silang Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Silang, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Silang Municipal Hall"
+            },
+            {
+               "offset" : 23,
+               "value" : "Silang"
+            },
+            {
+               "offset" : 31,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Silang Specialists Medical Center, Aguinaldo Highway, Silang, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJA4Jczo5-vTMR6sHZIH0bCuw",
+         "reference" : "ChIJA4Jczo5-vTMR6sHZIH0bCuw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Silang Specialists Medical Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Aguinaldo Highway, Silang, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Silang Specialists Medical Center"
+            },
+            {
+               "offset" : 35,
+               "value" : "Aguinaldo Highway"
+            },
+            {
+               "offset" : 54,
+               "value" : "Silang"
+            },
+            {
+               "offset" : 62,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "health",
+            "hospital"
+         ]
+      },
+      {
+         "description" : "Silang, Cavite, Silang, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJV7rtMgB9vTMRcyEQ0WYPsvA",
+         "reference" : "ChIJV7rtMgB9vTMRcyEQ0WYPsvA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Silang, Cavite",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Silang, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Silang, Cavite"
+            },
+            {
+               "offset" : 16,
+               "value" : "Silang"
+            },
+            {
+               "offset" : 24,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Silang Public Market, Silang, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJXSdzmpZ-vTMRTrHnfWwJzXU",
+         "reference" : "ChIJXSdzmpZ-vTMRTrHnfWwJzXU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Silang Public Market",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Silang, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Silang Public Market"
+            },
+            {
+               "offset" : 22,
+               "value" : "Silang"
+            },
+            {
+               "offset" : 30,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

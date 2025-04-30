@@ -1428,15 +1428,6 @@ function openBookingDetailsModal(bookingId) {
                 <div class="booking-detail-section mb-2">
                     <h6 class="border-bottom pb-2"><i class="bi bi-list-check me-2"></i>Actions</h6>
                     <div class="d-flex flex-wrap gap-2">
-                        ${["Confirmed", "Processing"].includes(booking.status) ? `
-                            <button class="btn btn-sm btn-outline-info print-invoice" data-booking-id="${booking.booking_id}">
-                                <i class="bi bi-printer"></i> Print Invoice
-                            </button>
-                            <button class="btn btn-sm btn-outline-info print-contract" data-booking-id="${booking.booking_id}">
-                                <i class="bi bi-printer"></i> Print Contract
-                            </button>
-                        ` : ''}
-
                         ${booking.status === "Confirmed" && parseFloat(booking.balance) > 0 ? `
                             <button class="btn btn-sm btn-outline-primary pay-booking" 
                                 data-bs-toggle="modal" 
@@ -1461,7 +1452,14 @@ function openBookingDetailsModal(bookingId) {
                             </button>
                         ` : ''}
 
-                        
+                        ${["Confirmed", "Processing"].includes(booking.status) ? `
+                            <button class="btn btn-sm btn-outline-success print-invoice" data-booking-id="${booking.booking_id}">
+                                <i class="bi bi-printer"></i> Print Invoice
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary print-contract" data-booking-id="${booking.booking_id}">
+                                <i class="bi bi-printer"></i> Print Contract
+                            </button>
+                        ` : ''}
                     </div>
                 </div>
             `;

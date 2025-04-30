@@ -12,12 +12,241 @@ document.addEventListener("DOMContentLoaded", async function () {
         altFormat: "D, M j", 
         minDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
         maxDate: new Date(new Date().setMonth(new Date().getMonth() + 1)),
+        onChange: function(selectedDates, dateStr) {
+            // When user selects a date, check bus availability
+            checkBusAvailabilityForDate(dateStr);
+        }
     });
 
-    // Initialize all remove icons on page load
-    document.querySelectorAll(".address").forEach(input => {
-        updateRemoveIconPosition(input);
+    // Add a check buses availability button
+    const viewBusesBtn = document.createElement('button');
+    viewBusesBtn.type = 'button';
+    viewBusesBtn.className = 'btn btn-outline-success btn-sm mt-2';
+    viewBusesBtn.textContent = 'View Available Buses';
+    viewBusesBtn.id = 'viewAvailableBuses';
+    viewBusesBtn.style.position = 'relative';
+    viewBusesBtn.style.zIndex = '1050';
+    
+    // Insert the button after the date picker
+    const datePickerContainer = document.getElementById('date_of_tour').parentNode;
+    datePickerContainer.classList.add('date-picker-container');
+    datePickerContainer.appendChild(viewBusesBtn);
+    
+    // Create a container for the bus availability calendar
+    const availabilityContainer = document.createElement('div');
+    availabilityContainer.id = 'busAvailabilityContainer';
+    availabilityContainer.className = 'bus-availability-container mt-2 d-none';
+    datePickerContainer.appendChild(availabilityContainer);
+    
+    // Add event listener to the button
+    viewBusesBtn.addEventListener('click', async function() {
+        // Toggle the visibility of the availability calendar
+        if (availabilityContainer.classList.contains('d-none')) {
+            await loadBusAvailability();
+            availabilityContainer.classList.remove('d-none');
+            viewBusesBtn.textContent = 'Hide Available Buses';
+        } else {
+            availabilityContainer.classList.add('d-none');
+            viewBusesBtn.textContent = 'View Available Buses';
+        }
     });
+    
+    async function loadBusAvailability() {
+        try {
+            // Show loading indicator
+            availabilityContainer.innerHTML = '<div class="text-center"><div class="spinner-border text-success" role="status"><span class="visually-hidden">Loading...</span></div></div>';
+            
+            // Set date range (current month)
+            const today = new Date();
+            const startDate = new Date(today.getFullYear(), today.getMonth(), 1);
+            const endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+            
+            // Format dates for API using our safe formatter
+            const startFormatted = formatDateYYYYMMDD(startDate);
+            const endFormatted = formatDateYYYYMMDD(endDate);
+            
+            // Check if we already have cached data
+            const cacheKey = getBusAvailabilityCacheKey(startFormatted, endFormatted);
+            if (busAvailabilityCache.has(cacheKey)) {
+                console.log("Using cached data for calendar view");
+                const data = {
+                    success: true,
+                    availability: busAvailabilityCache.get(cacheKey)
+                };
+                renderAvailabilityCalendar(data.availability, startDate);
+                return;
+            }
+            
+            // Fetch bus availability data
+            const response = await fetch('/get-bus-availability', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    start_date: startFormatted,
+                    end_date: endFormatted
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                // Cache the data
+                busAvailabilityCache.set(cacheKey, data.availability);
+                
+                // Set cache expiration (10 minutes)
+                setTimeout(() => {
+                    busAvailabilityCache.delete(cacheKey);
+                }, 10 * 60 * 1000);
+                
+                renderAvailabilityCalendar(data.availability, startDate);
+            } else {
+                availabilityContainer.innerHTML = `<div class="alert alert-danger">Error: ${data.message || 'Could not load bus availability'}</div>`;
+            }
+        } catch (error) {
+            availabilityContainer.innerHTML = '<div class="alert alert-danger">Error: Could not load bus availability</div>';
+            console.error('Error loading bus availability:', error);
+        }
+    }
+    
+    function renderAvailabilityCalendar(availability, startDate) {
+        // Clear container
+        availabilityContainer.innerHTML = '';
+        
+        // Create calendar container
+        const calendarContainer = document.createElement('div');
+        calendarContainer.className = 'bus-calendar';
+        
+        // Create header with month/year
+        const calendarHeader = document.createElement('div');
+        calendarHeader.className = 'calendar-header text-center mb-2';
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        calendarHeader.textContent = `${monthNames[startDate.getMonth()]} ${startDate.getFullYear()}`;
+        
+        // Create days header (Sun-Sat)
+        const daysHeader = document.createElement('div');
+        daysHeader.className = 'calendar-days-header d-flex';
+        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        
+        dayNames.forEach(day => {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day-name';
+            dayElement.textContent = day;
+            daysHeader.appendChild(dayElement);
+        });
+        
+        // Create dates grid
+        const datesGrid = document.createElement('div');
+        datesGrid.className = 'calendar-dates';
+        
+        // Get first day of month offset
+        const firstDay = new Date(startDate.getFullYear(), startDate.getMonth(), 1).getDay();
+        
+        // Add empty cells for days before month start
+        for (let i = 0; i < firstDay; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.className = 'calendar-date empty';
+            datesGrid.appendChild(emptyCell);
+        }
+        
+        // Convert availability array to a map for easier lookup
+        const availabilityMap = {};
+        availability.forEach(item => {
+            availabilityMap[item.date] = item;
+        });
+        
+        // Add cells for each day of the month
+        const lastDay = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0).getDate();
+        
+        for (let day = 1; day <= lastDay; day++) {
+            const date = new Date(startDate.getFullYear(), startDate.getMonth(), day);
+            // Fix for timezone issues - use YYYY-MM-DD format directly instead of ISO string
+            const dateStr = formatDateYYYYMMDD(date);
+            
+            const dateCell = document.createElement('div');
+            dateCell.className = 'calendar-date';
+            
+            // Add date number
+            const dateNumber = document.createElement('div');
+            dateNumber.className = 'date-number';
+            dateNumber.textContent = day;
+            dateCell.appendChild(dateNumber);
+            
+            // Add availability info if available
+            if (availabilityMap[dateStr]) {
+                const availableCount = availabilityMap[dateStr].available;
+                const totalCount = availabilityMap[dateStr].total;
+                
+                // Add availability indicator
+                const availabilityIndicator = document.createElement('div');
+                availabilityIndicator.className = 'availability-indicator';
+                
+                // Set color based on availability percentage
+                const availabilityPercent = (availableCount / totalCount) * 100;
+                
+                if (availabilityPercent === 0) {
+                    availabilityIndicator.classList.add('no-availability');
+                } else if (availabilityPercent < 30) {
+                    availabilityIndicator.classList.add('low-availability');
+                } else if (availabilityPercent < 70) {
+                    availabilityIndicator.classList.add('medium-availability');
+                } else {
+                    availabilityIndicator.classList.add('high-availability');
+                }
+                
+                // Add availability text with better formatting
+                availabilityIndicator.textContent = `${availableCount} of ${totalCount}`;
+                dateCell.appendChild(availabilityIndicator);
+                
+                // Make the cell clickable to set the date_of_tour value
+                dateCell.style.cursor = 'pointer';
+                dateCell.addEventListener('click', function() {
+                    if (availableCount > 0) {
+                        // Set the date in the date picker
+                        picker.setDate(dateStr);
+                        
+                        // Hide the calendar
+                        availabilityContainer.classList.add('d-none');
+                        viewBusesBtn.textContent = 'View Available Buses';
+                    }
+                });
+            } else {
+                // Date not in range or no data
+                dateCell.classList.add('unavailable');
+            }
+            
+            datesGrid.appendChild(dateCell);
+        }
+        
+        // Add legend
+        const legend = document.createElement('div');
+        legend.className = 'availability-legend mt-2';
+        legend.innerHTML = `
+            <div class="legend-title">Bus Availability Legend</div>
+            <div class="legend-item">
+                <span class="legend-color high-availability"></span>
+                <span>High availability</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color medium-availability"></span>
+                <span>Medium availability</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color low-availability"></span>
+                <span>Low availability</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color no-availability"></span>
+                <span>No buses available</span>
+            </div>
+        `;
+        
+        // Assemble calendar
+        calendarContainer.appendChild(calendarHeader);
+        calendarContainer.appendChild(daysHeader);
+        calendarContainer.appendChild(datesGrid);
+        availabilityContainer.appendChild(calendarContainer);
+        availabilityContainer.appendChild(legend);
+    }
 
     if (!isRebooking) return;
 
@@ -121,10 +350,37 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("increaseDays").addEventListener("click", function() {
         const currentDays = parseInt(daysElement.textContent);
         const newDays = currentDays + 1;
+        
+        // Check availability for the new duration
+        const dateOfTour = document.getElementById("date_of_tour").value;
+        const numberOfBuses = parseInt(document.getElementById("number_of_buses").textContent);
+        
+        if (dateOfTour && numberOfBuses > 0) {
+            // Validate that buses are available for all days
+            checkBusAvailabilityForDateRange(dateOfTour, newDays, numberOfBuses).then(available => {
+                if (available) {
         daysElement.textContent = newDays;
         localStorage.setItem("days", newDays);
         if (allInputsFilled()) {
             renderTotalCost();
+                    }
+                } else {
+                    // Show error that buses are not available for the extended duration
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Bus Availability',
+                        text: `Sorry, there are not enough buses available for a ${newDays}-day trip starting on the selected date.`,
+                        timer: 3000,
+                        timerProgressBar: true
+                    });
+                }
+            });
+        } else {
+            daysElement.textContent = newDays;
+            localStorage.setItem("days", newDays);
+            if (allInputsFilled()) {
+                renderTotalCost();
+            }
         }
     });
     
@@ -143,10 +399,36 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("increaseBuses").addEventListener("click", function() {
         const currentBuses = parseInt(busesElement.textContent);
         const newBuses = currentBuses + 1;
+        
+        // Check if new number of buses is available on the selected date
+        const dateOfTour = document.getElementById("date_of_tour").value;
+        const numberOfDays = parseInt(document.getElementById("number_of_days").textContent);
+        
+        if (dateOfTour && numberOfDays > 0) {
+            checkBusAvailabilityForDateRange(dateOfTour, numberOfDays, newBuses).then(available => {
+                if (available) {
         busesElement.textContent = newBuses;
         localStorage.setItem("buses", newBuses);
         if (allInputsFilled()) {
             renderTotalCost();
+                    }
+                } else {
+                    // Show error that requested buses are not available
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Bus Availability',
+                        text: `Sorry, there are not enough buses available for a ${numberOfDays}-day trip starting on the selected date.`,
+                        timer: 3000,
+                        timerProgressBar: true
+                    });
+                }
+            });
+        } else {
+            busesElement.textContent = newBuses;
+            localStorage.setItem("buses", newBuses);
+            if (allInputsFilled()) {
+                renderTotalCost();
+            }
         }
     });
     
@@ -166,41 +448,21 @@ document.addEventListener("DOMContentLoaded", function() {
 document.getElementById("nextButton").addEventListener("click", function () {
     // Get all address inputs
     const addressInputs = document.querySelectorAll(".address");
+    const allAddressesFilled = Array.from(addressInputs).every(input => input.value.trim() !== "");
     
-    // Check if all inputs are filled AND validated
-    let allValid = true;
-    let invalidInputs = [];
-    
-    addressInputs.forEach(input => {
-        if (input.value.trim() === "") {
-            input.classList.add("is-invalid");
-            allValid = false;
-            invalidInputs.push("empty fields");
-        } else if (input.dataset.validated !== "true") {
-            input.classList.add("is-invalid");
-            allValid = false;
-            invalidInputs.push("unverified locations");
-        } else {
-            input.classList.add("is-valid");
-            input.classList.remove("is-invalid");
-        }
-    });
-    
-    if (!allValid) {
-        // Show detailed error message
-        let errorMessage = "Please fix the following issues: " + [...new Set(invalidInputs)].join(", ");
-        
+    if (!allAddressesFilled) {
+        // Show error message
         Swal.fire({
             icon: 'error',
             title: 'Validation Error',
-            text: errorMessage,
-            timer: 3000,
+            text: 'Please fill in all location fields before proceeding.',
+            timer: 2000,
             timerProgressBar: true
         });
         return;
     }
     
-    // If all addresses are valid, proceed to next step
+    // If all addresses are filled, proceed to next step
     document.getElementById("firstInfo").classList.add("d-none");
     document.getElementById("nextInfo").classList.remove("d-none");
 });
@@ -253,22 +515,211 @@ document.getElementById("back").addEventListener("click", function () {
 
 // submit booking 
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Pre-validate bus availability when all necessary values are set
+    function checkAndPrevalidateAvailability() {
+        const dateOfTour = document.getElementById("date_of_tour").value;
+        const numberOfDays = parseInt(document.getElementById("number_of_days").textContent);
+        const numberOfBuses = parseInt(document.getElementById("number_of_buses").textContent);
+        
+        if (dateOfTour && numberOfDays > 0 && numberOfBuses > 0) {
+            console.log("Pre-validating availability for faster form submission");
+            
+            // Don't show loading indicator for pre-validation
+            checkBusAvailabilityForDateRange(dateOfTour, numberOfDays, numberOfBuses)
+                .then(available => {
+                    // Store result in a data attribute on the form for quick access during submission
+                    document.getElementById("bookingForm").dataset.busesPrevalidated = available ? "true" : "false";
+                    console.log("Pre-validation complete, buses available:", available);
+                    
+                    // Show warning if not available
+                    if (!available) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Bus Availability Issue',
+                            html: `There are not enough buses available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please adjust your selection before submitting the form.`,
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Error in pre-validation:", error);
+                });
+        }
+    }
+    
+    // Add listeners to trigger pre-validation
+    document.getElementById("date_of_tour").addEventListener("change", function() {
+        // Clear previous pre-validation
+        document.getElementById("bookingForm").dataset.busesPrevalidated = "";
+        // Pre-validate after a short delay
+        setTimeout(checkAndPrevalidateAvailability, 500);
+    });
+    
+    document.getElementById("increaseDays").addEventListener("click", function() {
+        // Previous increaseDays code...
+        // After the original handler completes, trigger pre-validation
+        setTimeout(checkAndPrevalidateAvailability, 500);
+    });
+    
+    document.getElementById("increaseBuses").addEventListener("click", function() {
+        // Previous increaseBuses code...
+        // After the original handler completes, trigger pre-validation
+        setTimeout(checkAndPrevalidateAvailability, 500);
+    });
+    
+    document.getElementById("decreaseDays").addEventListener("click", function() {
+        // Previous decreaseDays code...
+        // After the original handler completes, trigger pre-validation
+        setTimeout(checkAndPrevalidateAvailability, 500);
+    });
+    
+    document.getElementById("decreaseBuses").addEventListener("click", function() {
+        // Previous decreaseBuses code...
+        // After the original handler completes, trigger pre-validation
+        setTimeout(checkAndPrevalidateAvailability, 500);
+    });
+});
+
 document.getElementById("bookingForm").addEventListener("submit", async function (e) {
     e.preventDefault(); 
     
-    // Validate terms and conditions checkbox
-    const agreeTermsCheckbox = document.getElementById("agreeTerms");
-    if (!agreeTermsCheckbox.checked) {
+    console.log("Form submission started");
+    
+    // Check if terms are agreed to
+    const agreeTerms = document.getElementById("agreeTerms").checked;
+    if (!agreeTerms) {
         Swal.fire({
             icon: 'error',
-            title: 'Terms Agreement Required',
-            text: 'You must agree to the Terms and Conditions to proceed with booking.',
-            timer: 3000,
+            title: 'Terms Required',
+            text: 'You must agree to the terms and conditions to proceed.',
+            timer: 2000,
             timerProgressBar: true
         });
         return;
     }
-
+    
+    // Validate all required fields
+    const dateOfTour = document.getElementById("date_of_tour").value;
+    const numberOfDays = parseInt(document.getElementById("number_of_days").textContent);
+    const numberOfBuses = parseInt(document.getElementById("number_of_buses").textContent);
+    
+    if (!dateOfTour) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Date Required',
+            text: 'Please select a date for your tour.',
+            timer: 2000,
+            timerProgressBar: true
+        });
+        return;
+    }
+    
+    if (numberOfDays <= 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Days Required',
+            text: 'Please select at least 1 day for your trip.',
+            timer: 2000,
+            timerProgressBar: true
+        });
+        return;
+    }
+    
+    if (numberOfBuses <= 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Buses Required',
+            text: 'Please select at least 1 bus for your trip.',
+            timer: 2000,
+            timerProgressBar: true
+        });
+        return;
+    }
+    
+    // Check if we have a pre-validated result
+    const prevalidated = this.dataset.busesPrevalidated;
+    if (prevalidated === "false") {
+        console.log("Using pre-validated result: buses not available");
+        Swal.fire({
+            icon: 'error',
+            title: 'No Buses Available',
+            html: `There are not enough buses available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please choose a different date, reduce the number of days, or reduce the number of buses.`,
+            confirmButtonText: 'OK'
+        });
+        return;
+    }
+    
+    // Variable to track bus availability
+    let busesAvailable = prevalidated === "true";
+    
+    // Only check availability if not already pre-validated
+    if (prevalidated !== "true") {
+        try {
+            console.log("No pre-validation result, checking bus availability...");
+            
+            // Show loading indicator
+            await Swal.fire({
+                title: 'Checking bus availability...',
+                text: 'Please wait while we verify bus availability.',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showConfirmButton: false,
+                willOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+            
+            // Clear any previous validation results
+            busesAvailable = false;
+            
+            // Check availability for the entire date range
+            console.log(`Checking availability for ${numberOfBuses} buses for ${numberOfDays} days starting ${dateOfTour}`);
+            busesAvailable = await checkBusAvailabilityForDateRange(dateOfTour, numberOfDays, numberOfBuses);
+            console.log("Buses available:", busesAvailable);
+            
+            // Close the loading indicator
+            Swal.close();
+            
+            if (!busesAvailable) {
+                console.log("No buses available, showing error");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No Buses Available',
+                    html: `Sorry, there are not enough buses available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please choose a different date, reduce the number of days, or reduce the number of buses.`,
+                    confirmButtonText: 'OK'
+                });
+                return; // Prevent form submission
+            }
+        } catch (error) {
+            console.error("Error checking bus availability:", error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Verification Error',
+                text: 'Unable to verify bus availability. Please try again later.',
+                timer: 3000,
+                timerProgressBar: true
+            });
+            return; // Prevent form submission on error
+        }
+    }
+    
+    // Double-check that buses are available before proceeding
+    if (!busesAvailable) {
+        console.error("Validation bypassed! Stopping submission.");
+        Swal.fire({
+            icon: 'error',
+            title: 'Validation Error',
+            text: 'Unable to verify bus availability. Please try again.',
+            timer: 3000,
+            timerProgressBar: true
+        });
+        return; // Extra safety check
+    }
+    
+    console.log("Buses are available, proceeding with form submission");
+    
+    // Continue with form submission only if buses are available
     const stops = Array.from(document.querySelectorAll(".added-stop")).map((stop, i) => stop.value).filter(stop => stop.trim() !== "");
     const destination = stops[stops.length - 1];
     stops.pop();
@@ -281,35 +732,45 @@ document.getElementById("bookingForm").addEventListener("submit", async function
 
     const totalCost = await getTotalCost();
     console.log("Total Cost: ", totalCost);
-    if (!totalCost || totalCost === 0) return;
+    if (!totalCost || totalCost === 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Cost Calculation Error',
+            text: 'Unable to calculate the total cost. Please try again.',
+            timer: 3000,
+            timerProgressBar: true
+        });
+        return;
+    }
     
     // Get the cost breakdown (if available)
     const costBreakdown = window.costBreakdown || {};
     
     const formData = {
-        dateOfTour: document.getElementById("date_of_tour")?.value,
+        dateOfTour: dateOfTour,
         destination: destination,
-        pickupPoint: document.getElementById("pickup_point")?.value,
-        pickupTime: document.getElementById("pickup_time")?.value,
+        pickupPoint: document.getElementById("pickup_point").value,
+        pickupTime: document.getElementById("pickup_time").value,
         stops: stops,
-        numberOfBuses: document.getElementById("number_of_buses")?.textContent,
-        numberOfDays: document.getElementById("number_of_days")?.textContent,
+        numberOfBuses: numberOfBuses,
+        numberOfDays: numberOfDays,
         totalCost: totalCost,
         balance: totalCost,
         tripDistances: tripDistances,
         addresses: addresses,
         isRebooking: isRebooking,
         rebookingId: bookingId,
+        agreeTerms: agreeTerms,
+        busesVerified: true, // Add flag to indicate buses were verified
 
         baseCost: costBreakdown.baseCost || null,
         dieselCost: costBreakdown.dieselCost || null,
         baseRate: costBreakdown.baseRate || null,
         dieselPrice: costBreakdown.dieselPrice || null,
-        totalDistance: costBreakdown.totalDistance || null,
-        agreeTerms: agreeTermsCheckbox.checked
-    }
+        totalDistance: costBreakdown.totalDistance || null
+    };
 
-    console.log("Total distance: ", costBreakdown.totalDistance);
+    console.log("Submitting booking request with data:", formData);
 
     try {
         const response = await fetch("/request-booking", {
@@ -353,7 +814,7 @@ document.getElementById("bookingForm").addEventListener("submit", async function
             });
         }
     } catch (error) {
-        console.error("Error fetching data: ", error.message);
+        console.error("Error submitting booking:", error.message);
         Swal.fire({
             icon: 'error',
             title: 'Error',
@@ -369,6 +830,16 @@ document.getElementById("bookingForm").addEventListener("submit", async function
 // Array.from(document.getElementsByTagName("input")).forEach(input => {
 //     input.addEventListener("change", renderTotalCost);
 // });
+
+// Handle terms and conditions modal accept button
+document.addEventListener("DOMContentLoaded", function() {
+    const acceptTermsBtn = document.getElementById("acceptTerms");
+    if (acceptTermsBtn) {
+        acceptTermsBtn.addEventListener("click", function() {
+            document.getElementById("agreeTerms").checked = true;
+        });
+    }
+});
 
 async function getTripDistances() {
     const addressInputs = document.querySelectorAll(".address");
@@ -459,19 +930,178 @@ document.querySelectorAll(".address").forEach(input => {
 });
 
 function allInputsFilled() {
-    const pickupPoint = document.getElementById("pickup_point");
+    const pickupPoint = document.getElementById("pickup_point").value.trim();
     const destinationInputs = document.querySelectorAll(".address");
-    const destination = destinationInputs[destinationInputs.length - 1];
+    const destination = destinationInputs[destinationInputs.length - 1].value.trim();
     const numberOfDays = document.getElementById("number_of_days").textContent;
     const numberOfBuses = document.getElementById("number_of_buses").textContent;
     
-    // Check if all required fields are filled AND validated
-    return pickupPoint.value.trim() !== "" && 
-           pickupPoint.dataset.validated === "true" &&
-           destination.value.trim() !== "" && 
-           destination.dataset.validated === "true" &&
+    // Check if all required fields are filled
+    return pickupPoint !== "" && 
+           destination !== "" && 
            parseInt(numberOfDays) > 0 && 
            parseInt(numberOfBuses) > 0;
+}
+
+/**
+ * Check bus availability for a date range
+ * @param {string} startDate - Start date in YYYY-MM-DD format
+ * @param {number} numberOfDays - The number of days for the booking
+ * @param {number} requestedBuses - The number of buses requested
+ * @returns {Promise<boolean>} - Whether the requested buses are available for the entire period
+ */
+async function checkBusAvailabilityForDateRange(startDate, numberOfDays, requestedBuses) {
+    if (!startDate || numberOfDays <= 0 || requestedBuses <= 0) {
+        console.error("Invalid parameters for bus availability check:", { startDate, numberOfDays, requestedBuses });
+        return false;
+    }
+    
+    try {
+        console.log(`Checking availability for ${requestedBuses} buses for ${numberOfDays} days starting ${startDate}`);
+        
+        // Calculate end date based on start date and number of days
+        const start = new Date(startDate);
+        const end = new Date(startDate);
+        end.setDate(end.getDate() + (numberOfDays - 1)); // -1 because the start day counts as day 1
+        
+        // Use our safe formatter to get the end date string
+        const endDateStr = formatDateYYYYMMDD(end);
+        console.log(`Date range: ${startDate} to ${endDateStr}`);
+        
+        // Check if we have cached data for this date range
+        const cacheKey = getBusAvailabilityCacheKey(startDate, endDateStr);
+        if (busAvailabilityCache.has(cacheKey)) {
+            console.log("Using cached availability data");
+            const cachedData = busAvailabilityCache.get(cacheKey);
+            
+            // Check if all days have enough buses available
+            const hasEnoughBuses = cachedData.every(day => day.available >= requestedBuses);
+            console.log("Buses available from cache:", hasEnoughBuses);
+            return hasEnoughBuses;
+        }
+        
+        // No cached data, send request to server
+        console.log("Fetching bus availability data...");
+        const response = await fetch('/get-bus-availability', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                start_date: startDate,
+                end_date: endDateStr
+            })
+        });
+        
+        const data = await response.json();
+        console.log("Received availability data:", data);
+        
+        if (!data.success) {
+            console.error("API returned error:", data.message);
+            return false;
+        }
+        
+        if (!data.availability || data.availability.length === 0) {
+            console.error("No availability data returned");
+            return false;
+        }
+        
+        // Cache the availability data
+        busAvailabilityCache.set(cacheKey, data.availability);
+        
+        // Set cache expiration (10 minutes)
+        setTimeout(() => {
+            busAvailabilityCache.delete(cacheKey);
+        }, 10 * 60 * 1000);
+        
+        // Log the availability for each day
+        data.availability.forEach(day => {
+            console.log(`Date: ${day.date}, Available: ${day.available}/${day.total}, Requested: ${requestedBuses}`);
+        });
+        
+        // Check if there are any days with insufficient buses
+        const insufficientDays = data.availability.filter(day => day.available < requestedBuses);
+        if (insufficientDays.length > 0) {
+            console.warn("Insufficient buses available for some days:", insufficientDays);
+            return false;
+        }
+        
+        // Make sure we got data for all days in the range
+        const expectedDays = daysBetween(new Date(startDate), new Date(endDateStr)) + 1; // +1 to include end date
+        if (data.availability.length < expectedDays) {
+            console.error(`Expected data for ${expectedDays} days, but got ${data.availability.length} days`);
+            return false;
+        }
+        
+        // If we reach here, buses are available for all days
+        console.log("Buses are available for all days in the requested period");
+        return true;
+    } catch (error) {
+        console.error("Error checking bus availability for date range:", error);
+        return false;
+    }
+}
+
+/**
+ * Calculate the number of days between two dates
+ * @param {Date} start - Start date
+ * @param {Date} end - End date
+ * @returns {number} - Number of days between the two dates (inclusive)
+ */
+function daysBetween(start, end) {
+    // Use our own date formatter to get consistent date strings without timezone issues
+    const startStr = formatDateYYYYMMDD(start);
+    const endStr = formatDateYYYYMMDD(end);
+    
+    // Create new Date objects using the formatted strings to avoid timezone issues
+    const startDate = new Date(startStr + "T00:00:00");
+    const endDate = new Date(endStr + "T00:00:00");
+    
+    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    return Math.round(Math.abs((startDate - endDate) / oneDay));
+}
+
+/**
+ * Check bus availability for a specific date and update UI accordingly
+ * @param {string} date - The date to check in YYYY-MM-DD format
+ */
+async function checkBusAvailabilityForDate(date) {
+    if (!date) return;
+    
+    try {
+        // Get current requested buses and days
+        const requestedBuses = parseInt(document.getElementById("number_of_buses").textContent);
+        const numberOfDays = parseInt(document.getElementById("number_of_days").textContent);
+        
+        if (requestedBuses <= 0 || numberOfDays <= 0) return; // No need to check if no buses requested
+        
+        // Check availability for the entire date range
+        const available = await checkBusAvailabilityForDateRange(date, numberOfDays, requestedBuses);
+        
+        // If not available, show warning
+        if (!available) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Limited Availability',
+                text: `There are not enough buses available for a ${numberOfDays}-day trip starting on the selected date. Please choose another date or adjust your requirements.`,
+                timer: 4000,
+                timerProgressBar: true
+            });
+        }
+    } catch (error) {
+        console.error("Error checking bus availability:", error);
+    }
+}
+
+/**
+ * Format a date as YYYY-MM-DD without timezone issues
+ * @param {Date} date - The date to format
+ * @returns {string} - Date formatted as YYYY-MM-DD
+ */
+function formatDateYYYYMMDD(date) {
+    const year = date.getFullYear();
+    // Add 1 to month because getMonth() is zero-indexed
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
 }
 
 async function getAddress(input, suggestionList, inputElement) {
@@ -499,42 +1129,13 @@ async function getAddress(input, suggestionList, inputElement) {
     }
 }
 
-// Add a function to manage icon visibility and positioning
-function updateRemoveIconPosition(inputElement) {
-    if (!inputElement) return;
-    
-    // Find the closest remove icon
-    const removeIcon = inputElement.parentNode.querySelector('.remove-icon');
-    if (removeIcon) {
-        // If input is validated (valid or invalid), position the remove icon correctly
-        if (inputElement.classList.contains('is-valid') || inputElement.classList.contains('is-invalid')) {
-            removeIcon.style.right = '30px';
-        } else {
-            removeIcon.style.right = '8px';
-        }
-    }
-    
-    // Also update the add icon if present
-    const addIcon = inputElement.parentNode.querySelector('.add-icon');
-    if (addIcon) {
-        // If input is validated, position the add icon correctly
-        if (inputElement.classList.contains('is-valid') || inputElement.classList.contains('is-invalid')) {
-            addIcon.style.right = '30px';
-        } else {
-            addIcon.style.right = '8px';
-        }
-    }
-}
-
-// Update the displaySuggestions function
 function displaySuggestions(data, suggestionList, inputElement) {
     suggestionList.innerHTML = "";
     suggestionList.style.border = "1px solid #ccc"; 
     
-    if (data.status !== "OK" || data.predictions.length === 0) {
+    if (data.status !== "OK") {
         const list = document.createElement("li");
         list.textContent = "No places found.";
-        list.className = "no-results";
         suggestionList.appendChild(list);
         return;
     }
@@ -580,26 +1181,14 @@ function displaySuggestions(data, suggestionList, inputElement) {
         list.appendChild(suggestionContainer);
 
         list.addEventListener("click", function () {
-            inputElement.value = place.description;
-            inputElement.dataset.validated = "true"; // Mark as validated
-            inputElement.classList.add("is-valid");
-            inputElement.classList.remove("is-invalid");
-            
-            // Update the position of the remove icon
-            updateRemoveIconPosition(inputElement);
-            
+            inputElement.value = place.description; 
             calculateRoute();
             suggestionList.innerHTML = "";
             suggestionList.style.border = "none";
-            
-            // Check if we should calculate total cost
-            if (allInputsFilled()) {
-                renderTotalCost();
-            }
         });
 
         document.addEventListener("click", function (e) {
-            if (e.target !== list && !list.contains(e.target) && e.target !== inputElement) {
+            if (e.target !== list && !list.contains(e.target)) {
                 suggestionList.innerHTML = "";
                 suggestionList.style.border = "none";
             }
@@ -748,22 +1337,15 @@ async function calculateRoute() {
     const stops = Array.from(document.querySelectorAll(".added-stop")).map((stop, i) => stop.value ).filter(stop => stop.trim() !== "");
     stops.pop();
 
-    // Validate if we have both pickup and destination
+    // Check if pickup and destination are filled
     if (!pickupPoint || !destination) {
-        return; // Not enough data to calculate route
+        // Show a notification if either pickup or destination is missing
+        return;
     }
 
-    // Show loading indicator on the map
+    // Show loading indicator
     const mapElement = document.getElementById("map");
-    if (!mapElement.querySelector('.route-loading')) {
-        mapElement.innerHTML = `
-            <div class="d-flex flex-column justify-content-center align-items-center h-100 route-loading">
-                <div class="spinner-border text-success mb-3" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-                <p class="text-center">Calculating best route...</p>
-            </div>`;
-    }
+    mapElement.innerHTML = '<div class="d-flex justify-content-center align-items-center h-100"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
     
     try {
         const response = await fetch("/get-route", {
@@ -779,33 +1361,15 @@ async function calculateRoute() {
         
         if (data.error) {
             console.error(data.error);
-            
             // Show error notification
             Swal.fire({
                 icon: 'error',
                 title: 'Route Calculation Error',
                 text: 'Unable to calculate the route. Please check your locations and try again.',
-                timer: 3000,
+                timer: 2000,
                 timerProgressBar: true
             });
-            
-            // Mark all address inputs as invalid
-            document.querySelectorAll(".address").forEach(input => {
-                input.dataset.validated = "false";
-                input.classList.add("is-invalid");
-            });
-            
-            return;
         }
-
-        // Mark all inputs as validated if we got here (successful route)
-        document.querySelectorAll(".address").forEach(input => {
-            if (input.value.trim() !== "") {
-                input.dataset.validated = "true";
-                input.classList.add("is-valid");
-                input.classList.remove("is-invalid");
-            }
-        });
 
         const waypoints = data.stops.map(stop => ({ location: stop, stopover: true }));
         const request = {
@@ -819,58 +1383,19 @@ async function calculateRoute() {
             if (status === google.maps.DirectionsStatus.OK) {
                 directionsRenderer.setDirections(result);
                 
-                // Extract route information for display
+                // Show success notification with route details
                 const route = result.routes[0];
                 const distance = route.legs.reduce((total, leg) => total + leg.distance.value, 0) / 1000; // in km
                 const duration = route.legs.reduce((total, leg) => total + leg.duration.value, 0) / 60; // in minutes
                 
-                // Format the duration for display
-                let durationText = '';
-                if (duration >= 60) {
-                    const hours = Math.floor(duration / 60);
-                    const mins = Math.round(duration % 60);
-                    durationText = `${hours} hr${hours > 1 ? 's' : ''} ${mins} min`;
-                } else {
-                    durationText = `${Math.round(duration)} min`;
-                }
-                
-                // Add route info to the map
-                const routeInfoDiv = document.createElement('div');
-                routeInfoDiv.className = 'route-info bg-light p-2 rounded position-absolute';
-                routeInfoDiv.style.bottom = '10px';
-                routeInfoDiv.style.left = '10px';
-                routeInfoDiv.style.zIndex = '1000';
-                routeInfoDiv.innerHTML = `
-                    <div class="small">
-                        <div class="fw-bold text-success mb-1">Route Details</div>
-                        <div>Distance: ${distance.toFixed(1)} km</div>
-                        <div>Est. travel time: ${durationText}</div>
-                    </div>
-                `;
-                
-                // Remove any existing route info
-                const existingRouteInfo = document.querySelector('.route-info');
-                if (existingRouteInfo) {
-                    existingRouteInfo.remove();
-                }
-                
-                // Add the route info to the map
-                document.getElementById('map').appendChild(routeInfoDiv);
-                
-                // Only show notification if this is a significant route change
+                // Only show notification if the route is significantly different from previous calculations
                 if (window.lastCalculatedDistance && Math.abs(window.lastCalculatedDistance - distance) < 1) {
-                    return; // Skip notification for minor changes
+                    return; // Skip notification if distance is similar to previous calculation
                 }
                 
                 window.lastCalculatedDistance = distance;
             } else {
                 console.error("Directions request failed due to " + status);
-                
-                // Mark inputs as invalid
-                document.querySelectorAll(".address").forEach(input => {
-                    input.dataset.validated = "false";
-                    input.classList.add("is-invalid");
-                });
                 
                 // Show specific error message based on status
                 let errorMessage = "Unable to calculate the route. ";
@@ -893,7 +1418,7 @@ async function calculateRoute() {
                     icon: 'error',
                     title: 'Route Calculation Failed',
                     text: errorMessage,
-                    timer: 3000,
+                    timer: 2000,
                     timerProgressBar: true
                 });
             }
@@ -904,27 +1429,16 @@ async function calculateRoute() {
         // Reinitialize the map
         initMap();
         
-        // Mark inputs as invalid on connection error
-        document.querySelectorAll(".address").forEach(input => {
-            input.dataset.validated = "false";
-            input.classList.add("is-invalid");
-        });
-        
         // Show error notification
         Swal.fire({
             icon: 'error',
             title: 'Connection Error',
             text: 'Unable to connect to the route service. Please check your internet connection and try again.',
-            timer: 3000,
+            timer: 2000,
             timerProgressBar: true
         });
         return;
     }   
-
-    // After marking all inputs as valid or invalid, update remove icon positions
-    document.querySelectorAll(".address").forEach(input => {
-        updateRemoveIconPosition(input);
-    });
 }
 
 
@@ -945,7 +1459,6 @@ document.getElementById("addStop").addEventListener("click", () => {
     input.id = "destination";
     input.placeholder = "Add a stop";
     input.autocomplete = "off";
-    input.dataset.validated = "false"; // Add validation attribute
     input.classList.add("form-control", "address", "added-stop", "position-relative", "px-4", "py-2", "destination");
     ul.classList.add("suggestions");
 
@@ -953,23 +1466,8 @@ document.getElementById("addStop").addEventListener("click", () => {
         const suggestionList = e.target.nextElementSibling;
         const input = this.value;
         const inputElement = this;
-        
-        // Reset validation state when input changes
-        this.dataset.validated = "false";
-        this.classList.remove("is-valid");
-        this.classList.remove("is-invalid");
-        
-        // Update remove icon position
-        updateRemoveIconPosition(this);
     
         debouncedGetAddress(input, suggestionList, inputElement);    
-    });
-    
-    // Add blur validation
-    input.addEventListener("blur", function() {
-        if (this.value.trim() !== "" && this.dataset.validated !== "true") {
-            validateManualAddress(this);
-        }
     });
 
     input.addEventListener("change", async function () {
@@ -985,7 +1483,6 @@ document.getElementById("addStop").addEventListener("click", () => {
     const removeButton = document.createElement("i");
     removeButton.classList.add("bi", "bi-x-circle-fill", "remove-icon");
     removeButton.title = "Remove stop";
-    removeButton.style.right = "8px"; // Initialize position
 
     removeButton.addEventListener("click", function () {
         div.remove();
@@ -1004,9 +1501,6 @@ document.getElementById("addStop").addEventListener("click", () => {
 
     div.append(input, ul);
     form.insertBefore(div, referenceElement);
-    
-    // Initialize remove icon position
-    updateRemoveIconPosition(input);
 });
 
 // Add event listeners to all address inputs to check for total cost calculation
@@ -1018,92 +1512,15 @@ document.querySelectorAll(".address").forEach(input => {
     });
 });
 
-// Add validation for manual input (when user doesn't select from dropdown)
-document.querySelectorAll(".address").forEach(input => {
-    // On focus out, validate if the input has a value but wasn't selected from dropdown
-    input.addEventListener("blur", function() {
-        if (this.value.trim() !== "" && this.dataset.validated !== "true") {
-            validateManualAddress(this);
-        }
-    });
-    
-    // Reset validation state when input changes
-    input.addEventListener("input", function() {
-        this.dataset.validated = "false";
-        this.classList.remove("is-valid");
-        this.classList.remove("is-invalid");
-        
-        // Reset remove icon position
-        updateRemoveIconPosition(this);
-    });
-});
+// Add a global cache for bus availability results
+const busAvailabilityCache = new Map();
 
-// Update the validateManualAddress function
-async function validateManualAddress(inputElement) {
-    const address = inputElement.value.trim();
-    
-    if (address === "") return;
-    
-    try {
-        // Show loading indicator
-        const loadingIcon = document.createElement("span");
-        loadingIcon.className = "spinner-border spinner-border-sm validation-spinner";
-        loadingIcon.setAttribute("role", "status");
-        inputElement.parentNode.appendChild(loadingIcon);
-        
-        const response = await fetch("/get-address", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ address: address })
-        });
-
-        const data = await response.json();
-        
-        // Remove loading indicator
-        const spinner = inputElement.parentNode.querySelector(".validation-spinner");
-        if (spinner) spinner.remove();
-        
-        if (data.status === "OK" && data.predictions.length > 0) {
-            // Use the first prediction as the validated address
-            inputElement.value = data.predictions[0].description;
-            inputElement.dataset.validated = "true";
-            inputElement.classList.add("is-valid");
-            inputElement.classList.remove("is-invalid");
-            
-            // Update the position of the remove icon
-            updateRemoveIconPosition(inputElement);
-            
-            // Calculate route with the validated address
-            calculateRoute();
-            
-            // Check if we should calculate total cost
-            if (allInputsFilled()) {
-                renderTotalCost();
-            }
-        } else {
-            // Mark as invalid
-            inputElement.dataset.validated = "false";
-            inputElement.classList.add("is-invalid");
-            
-            // Update the position of the remove icon
-            updateRemoveIconPosition(inputElement);
-            
-            // Show small feedback message near the input
-            const existingFeedback = inputElement.parentNode.querySelector(".invalid-feedback");
-            if (!existingFeedback) {
-                const feedback = document.createElement("div");
-                feedback.className = "invalid-feedback";
-                feedback.textContent = "Please select a valid location from the suggestions";
-                inputElement.parentNode.appendChild(feedback);
-            }
-        }
-    } catch (error) {
-        console.error("Error validating address:", error);
-        // Handle error case
-        inputElement.dataset.validated = "false";
-        inputElement.classList.add("is-invalid");
-        
-        // Update the position of the remove icon
-        updateRemoveIconPosition(inputElement);
-    }
+/**
+ * Cache key generator for bus availability
+ * @param {string} startDate - Start date in YYYY-MM-DD format
+ * @param {string} endDate - End date in YYYY-MM-DD format
+ * @returns {string} - Cache key
+ */
+function getBusAvailabilityCacheKey(startDate, endDate) {
+    return `${startDate}_to_${endDate}`;
 }

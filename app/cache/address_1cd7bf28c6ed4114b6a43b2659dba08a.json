@@ -56,9 +56,9 @@
          ],
          "types" : 
          [
-            "lodging",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "lodging"
          ]
       },
       {
@@ -124,10 +124,10 @@
          ],
          "types" : 
          [
-            "school",
-            "university",
+            "establishment",
             "point_of_interest",
-            "establishment"
+            "university",
+            "school"
          ]
       },
       {
@@ -186,70 +186,9 @@
          "types" : 
          [
             "geocode",
-            "political",
-            "sublocality_level_2",
-            "sublocality"
-         ]
-      },
-      {
-         "description" : "Emmanuel Bergado II, Dasmariñas, Cavite, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 1,
-               "offset" : 0
-            },
-            {
-               "length" : 5,
-               "offset" : 21
-            }
-         ],
-         "place_id" : "ChIJJzCJCbTVlzMRlwv9cZiWZD8",
-         "reference" : "ChIJJzCJCbTVlzMRlwv9cZiWZD8",
-         "structured_formatting" : 
-         {
-            "main_text" : "Emmanuel Bergado II",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 1,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Dasmariñas, Cavite, Philippines",
-            "secondary_text_matched_substrings" : 
-            [
-               {
-                  "length" : 5,
-                  "offset" : 0
-               }
-            ]
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Emmanuel Bergado II"
-            },
-            {
-               "offset" : 21,
-               "value" : "Dasmariñas"
-            },
-            {
-               "offset" : 33,
-               "value" : "Cavite"
-            },
-            {
-               "offset" : 41,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "geocode",
-            "political",
             "sublocality",
-            "sublocality_level_2"
+            "sublocality_level_2",
+            "political"
          ]
       },
       {
@@ -309,6 +248,67 @@
          [
             "geocode",
             "route"
+         ]
+      },
+      {
+         "description" : "Emmanuel Bergado II, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            },
+            {
+               "length" : 5,
+               "offset" : 21
+            }
+         ],
+         "place_id" : "ChIJJzCJCbTVlzMRlwv9cZiWZD8",
+         "reference" : "ChIJJzCJCbTVlzMRlwv9cZiWZD8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Emmanuel Bergado II",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Emmanuel Bergado II"
+            },
+            {
+               "offset" : 21,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 33,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "political",
+            "sublocality_level_2",
+            "geocode"
          ]
       }
    ],

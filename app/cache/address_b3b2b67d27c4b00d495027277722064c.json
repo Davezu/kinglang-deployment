@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
-            "locality",
             "geocode",
-            "political"
+            "political",
+            "locality"
          ]
       },
       {
@@ -90,10 +90,10 @@
          ],
          "types" : 
          [
-            "store",
             "point_of_interest",
             "home_goods_store",
-            "establishment"
+            "establishment",
+            "store"
          ]
       },
       {
@@ -140,8 +140,60 @@
          ],
          "types" : 
          [
-            "geocode",
-            "premise"
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "DASMA Coliseum, Salitran, Dasmariñas City, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_eQcCPfUlzMRfD_S67UivCc",
+         "reference" : "ChIJ_eQcCPfUlzMRfD_S67UivCc",
+         "structured_formatting" : 
+         {
+            "main_text" : "DASMA Coliseum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Salitran, Dasmariñas City, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "DASMA Coliseum"
+            },
+            {
+               "offset" : 16,
+               "value" : "Salitran"
+            },
+            {
+               "offset" : 26,
+               "value" : "Dasmariñas City"
+            },
+            {
+               "offset" : 43,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -188,56 +240,8 @@
          ],
          "types" : 
          [
-            "geocode",
-            "premise"
-         ]
-      },
-      {
-         "description" : "Dasma 1 Golden City, Dasmariñas, Cavite, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 5,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJs1W1GhzUlzMRXFjtrLVoLDQ",
-         "reference" : "ChIJs1W1GhzUlzMRXFjtrLVoLDQ",
-         "structured_formatting" : 
-         {
-            "main_text" : "Dasma 1 Golden City",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 5,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Dasmariñas, Cavite, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Dasma 1 Golden City"
-            },
-            {
-               "offset" : 21,
-               "value" : "Dasmariñas"
-            },
-            {
-               "offset" : 33,
-               "value" : "Cavite"
-            },
-            {
-               "offset" : 41,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "geocode",
-            "premise"
+            "premise",
+            "geocode"
          ]
       }
    ],

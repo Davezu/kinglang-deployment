@@ -496,6 +496,16 @@ class BookingManagementModel {
 
     public function getDieselPrice() {
         try {
+            // First check if the price is in settings
+            require_once __DIR__ . "/Settings.php";
+            $settings = new Settings();
+            $diesel_price = $settings->getSetting('diesel_price');
+            
+            if ($diesel_price !== null) {
+                return (float)$diesel_price;
+            }
+            
+            // Fall back to the diesel_per_liter table if setting not found
             $stmt = $this->conn->prepare("SELECT price FROM diesel_per_liter ORDER BY date DESC LIMIT 1");
             $stmt->execute();
             $diesel_price = $stmt->fetchColumn() ?? 0;

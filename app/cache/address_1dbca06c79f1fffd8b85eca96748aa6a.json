@@ -1,0 +1,286 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Manila Zoo, Adriatico Street, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ4_WFMX7JlzMRJOkBCvft38A",
+         "reference" : "ChIJ4_WFMX7JlzMRJOkBCvft38A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila Zoo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Adriatico Street, Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila Zoo"
+            },
+            {
+               "offset" : 12,
+               "value" : "Adriatico Street"
+            },
+            {
+               "offset" : 30,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 38,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "tourist_attraction",
+            "point_of_interest",
+            "zoo",
+            "park",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Manila Zoo Playground, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJiRLGQH7JlzMRJPHYlJr4hY0",
+         "reference" : "ChIJiRLGQH7JlzMRJPHYlJr4hY0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila Zoo Playground",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila Zoo Playground"
+            },
+            {
+               "offset" : 23,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 31,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 39,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "premise",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Manila Zoo Admin Building, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJRTBs7s_JlzMR0BG_nvNWYRs",
+         "reference" : "ChIJRTBs7s_JlzMR0BG_nvNWYRs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila Zoo Admin Building",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila Zoo Admin Building"
+            },
+            {
+               "offset" : 27,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 35,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 43,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Zoo Lake, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 18
+            }
+         ],
+         "place_id" : "ChIJD_xHPH7JlzMRxqqmhYY4xy8",
+         "reference" : "ChIJD_xHPH7JlzMRxqqmhYY4xy8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Zoo Lake",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malate, Manila, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 8
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Zoo Lake"
+            },
+            {
+               "offset" : 10,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 18,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 26,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "natural_feature",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "The Butterfly Garden, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 20,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9-UnibrJlzMRChrYy4eFFkM",
+         "reference" : "ChIJ9-UnibrJlzMRChrYy4eFFkM",
+         "structured_formatting" : 
+         {
+            "main_text" : "The Butterfly Garden",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 20,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "The Butterfly Garden"
+            },
+            {
+               "offset" : 22,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 30,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "park",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

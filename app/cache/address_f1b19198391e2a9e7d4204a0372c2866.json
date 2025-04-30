@@ -97,9 +97,9 @@
          ],
          "types" : 
          [
+            "establishment",
             "point_of_interest",
-            "university",
-            "establishment"
+            "university"
          ]
       },
       {
@@ -146,10 +146,10 @@
          ],
          "types" : 
          [
-            "geocode",
+            "sublocality_level_2",
             "political",
-            "sublocality",
-            "sublocality_level_2"
+            "geocode",
+            "sublocality"
          ]
       },
       {
@@ -196,13 +196,13 @@
          ],
          "types" : 
          [
-            "school",
+            "establishment",
             "point_of_interest",
-            "establishment"
+            "school"
          ]
       },
       {
-         "description" : "Maligaya High School, Ilang-ilang, Novaliches, Quezon City, Metro Manila, Philippines",
+         "description" : "Maligaya, Cabiao, Nueva Ecija, Philippines",
          "matched_substrings" : 
          [
             {
@@ -210,11 +210,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJs3bpG22wlzMRl3S7WrZuvOI",
-         "reference" : "ChIJs3bpG22wlzMRl3S7WrZuvOI",
+         "place_id" : "ChIJI1fjh7XhljMR4915PEX1lcg",
+         "reference" : "ChIJI1fjh7XhljMR4915PEX1lcg",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya High School",
+            "main_text" : "Maligaya",
             "main_text_matched_substrings" : 
             [
                {
@@ -222,41 +222,33 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Ilang-ilang, Novaliches, Quezon City, Metro Manila, Philippines"
+            "secondary_text" : "Cabiao, Nueva Ecija, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligaya High School"
+               "value" : "Maligaya"
             },
             {
-               "offset" : 22,
-               "value" : "Ilang-ilang"
+               "offset" : 10,
+               "value" : "Cabiao"
             },
             {
-               "offset" : 35,
-               "value" : "Novaliches"
+               "offset" : 18,
+               "value" : "Nueva Ecija"
             },
             {
-               "offset" : 47,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 60,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 74,
+               "offset" : 31,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "point_of_interest",
-            "school",
-            "secondary_school",
-            "establishment"
+            "political",
+            "sublocality_level_2",
+            "sublocality",
+            "geocode"
          ]
       }
    ],

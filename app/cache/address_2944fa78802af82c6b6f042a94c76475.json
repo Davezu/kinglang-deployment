@@ -1,0 +1,266 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Guiguinto, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJU42-mtlSljMR63vgm1IAF9k",
+         "reference" : "ChIJU42-mtlSljMR63vgm1IAF9k",
+         "structured_formatting" : 
+         {
+            "main_text" : "Guiguinto",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Guiguinto"
+            },
+            {
+               "offset" : 11,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Guiguinto Municipal Hall, MacArthur Highway, Guiguinto, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJo107-dtSljMRcWi4JgZA3b0",
+         "reference" : "ChIJo107-dtSljMRcWi4JgZA3b0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Guiguinto Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "MacArthur Highway, Guiguinto, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Guiguinto Municipal Hall"
+            },
+            {
+               "offset" : 26,
+               "value" : "MacArthur Highway"
+            },
+            {
+               "offset" : 45,
+               "value" : "Guiguinto"
+            },
+            {
+               "offset" : 56,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "local_government_office",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Guiguinto, bulacan, purok 5, daungan, Guiguinto, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJ_WE5m9TljMRBq57uEFx1Yg",
+         "reference" : "ChIJJ_WE5m9TljMRBq57uEFx1Yg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Guiguinto, bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "purok 5, daungan, Guiguinto, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Guiguinto, bulacan"
+            },
+            {
+               "offset" : 20,
+               "value" : "purok 5"
+            },
+            {
+               "offset" : 29,
+               "value" : "daungan"
+            },
+            {
+               "offset" : 38,
+               "value" : "Guiguinto"
+            },
+            {
+               "offset" : 49,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "primary_school",
+            "school",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Guiguinto Municipal Athletic & Cultural Center, Guiguinto, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJg8BS8dtSljMR24ME0ZkpGas",
+         "reference" : "ChIJg8BS8dtSljMR24ME0ZkpGas",
+         "structured_formatting" : 
+         {
+            "main_text" : "Guiguinto Municipal Athletic & Cultural Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Guiguinto, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Guiguinto Municipal Athletic & Cultural Center"
+            },
+            {
+               "offset" : 48,
+               "value" : "Guiguinto"
+            },
+            {
+               "offset" : 59,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "local_government_office",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Guiguinto Polymedic Hospital, 1, Guiguinto, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ3Y1XVQNTljMRdhWbIUnkbE0",
+         "reference" : "ChIJ3Y1XVQNTljMRdhWbIUnkbE0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Guiguinto Polymedic Hospital",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "1, Guiguinto, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Guiguinto Polymedic Hospital"
+            },
+            {
+               "offset" : 30,
+               "value" : "1"
+            },
+            {
+               "offset" : 33,
+               "value" : "Guiguinto"
+            },
+            {
+               "offset" : 44,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "hospital",
+            "establishment",
+            "health"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

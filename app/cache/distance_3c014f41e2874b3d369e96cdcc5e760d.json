@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "Intramuros, Manila, 1002 Metro Manila, Philippines",
+      "2 Amorsolo Street, Legazpi Village, Makati, 1229 Kalakhang Maynila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "2 Amorsolo Street, Legazpi Village, Makati, 1229 Kalakhang Maynila, Philippines",
+      "Intramuros, Manila, 1002 Metro Manila, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "9.2 km",
+                  "value" : 9226
+               },
+               "duration" : 
+               {
+                  "text" : "29 mins",
+                  "value" : 1751
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "7.8 km",
+                  "value" : 7845
+               },
+               "duration" : 
+               {
+                  "text" : "27 mins",
+                  "value" : 1599
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

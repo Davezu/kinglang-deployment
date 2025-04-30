@@ -1,0 +1,236 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "San Juan, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJp1auUQ87vTMR7nT-Ko_5AzU",
+         "reference" : "ChIJp1auUQ87vTMR7nT-Ko_5AzU",
+         "structured_formatting" : 
+         {
+            "main_text" : "San Juan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 10,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "San Juan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJcRVe-CnIlzMRNPQOOXNw7ek",
+         "reference" : "ChIJcRVe-CnIlzMRNPQOOXNw7ek",
+         "structured_formatting" : 
+         {
+            "main_text" : "San Juan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 10,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "San Juan, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHc5U9oGNkTMRtOtAOmhhJSE",
+         "reference" : "ChIJHc5U9oGNkTMRtOtAOmhhJSE",
+         "structured_formatting" : 
+         {
+            "main_text" : "San Juan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 10,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "San Juan, Siquijor, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQ6sjXos-qzMRPZz_-bcdT5E",
+         "reference" : "ChIJQ6sjXos-qzMRPZz_-bcdT5E",
+         "structured_formatting" : 
+         {
+            "main_text" : "San Juan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Siquijor, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 10,
+               "value" : "Siquijor"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "San Juan, Taytay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJpXBWYqrHlzMRwI6U8JEqRWs",
+         "reference" : "ChIJpXBWYqrHlzMRwI6U8JEqRWs",
+         "structured_formatting" : 
+         {
+            "main_text" : "San Juan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taytay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 10,
+               "value" : "Taytay"
+            },
+            {
+               "offset" : 18,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "sublocality_level_2",
+            "political",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

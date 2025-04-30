@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "P3M2+GFP, Skylark, Novaliches, Quezon City, Metro Manila, Philippines",
+      "7573 Swimming Pool, Novaliches, Caloocan, Metro Manila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "7573 Swimming Pool, Novaliches, Caloocan, Metro Manila, Philippines",
+      "P3M2+GFP, Skylark, Novaliches, Quezon City, Metro Manila, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "2.2 km",
+                  "value" : 2166
+               },
+               "duration" : 
+               {
+                  "text" : "7 mins",
+                  "value" : 448
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "2.4 km",
+                  "value" : 2374
+               },
+               "duration" : 
+               {
+                  "text" : "9 mins",
+                  "value" : 522
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

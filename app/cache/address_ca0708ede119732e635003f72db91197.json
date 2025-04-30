@@ -1,0 +1,269 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Intramuros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ--F1Ez3KlzMRCLrAWKa_ngQ",
+         "reference" : "ChIJ--F1Ez3KlzMRCLrAWKa_ngQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Intramuros",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 12,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality",
+            "sublocality_level_1",
+            "political"
+         ]
+      },
+      {
+         "description" : "Intramuros, Intramuros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBdFqWD3KlzMR1UOCEG4QzGU",
+         "reference" : "ChIJBdFqWD3KlzMR1UOCEG4QzGU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Intramuros",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Intramuros, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 12,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 24,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 32,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Intramuros Golf Club, Intramuros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJK6yULT3KlzMRqLjdEP7VNLY",
+         "reference" : "ChIJK6yULT3KlzMRqLjdEP7VNLY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Intramuros Golf Club",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Intramuros, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Intramuros Golf Club"
+            },
+            {
+               "offset" : 22,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 34,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Intramuros Walls, Intramuros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJq6qqVzvKlzMRezzgVjT7h7g",
+         "reference" : "ChIJq6qqVzvKlzMRezzgVjT7h7g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Intramuros Walls",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Intramuros, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Intramuros Walls"
+            },
+            {
+               "offset" : 18,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 30,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "IntraMall, Escuela Street, Intramuros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJmXVDN1TLlzMRJgh1cTq-l-U",
+         "reference" : "ChIJmXVDN1TLlzMRJgh1cTq-l-U",
+         "structured_formatting" : 
+         {
+            "main_text" : "IntraMall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Escuela Street, Intramuros, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "IntraMall"
+            },
+            {
+               "offset" : 11,
+               "value" : "Escuela Street"
+            },
+            {
+               "offset" : 27,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 39,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 47,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

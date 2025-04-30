@@ -1,0 +1,323 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Parang, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 8
+            }
+         ],
+         "place_id" : "ChIJE_YQj5C5lzMR-eoEwW6SxlE",
+         "reference" : "ChIJE_YQj5C5lzMR-eoEwW6SxlE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Parang",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marikina, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Parang"
+            },
+            {
+               "offset" : 8,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 18,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality",
+            "political",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Parang High School, Tandang Sora Street, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 41
+            }
+         ],
+         "place_id" : "ChIJE4buIZC5lzMR-QcP-skH08g",
+         "reference" : "ChIJE4buIZC5lzMR-QcP-skH08g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Parang High School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tandang Sora Street, Marikina, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 21
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Parang High School"
+            },
+            {
+               "offset" : 20,
+               "value" : "Tandang Sora Street"
+            },
+            {
+               "offset" : 41,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "secondary_school",
+            "point_of_interest",
+            "school",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Parang Elementary School, P. Paterno, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 38
+            }
+         ],
+         "place_id" : "ChIJGTqOF5e5lzMRG80MCSbp52w",
+         "reference" : "ChIJGTqOF5e5lzMRG80MCSbp52w",
+         "structured_formatting" : 
+         {
+            "main_text" : "Parang Elementary School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "P. Paterno, Marikina, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 12
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Parang Elementary School"
+            },
+            {
+               "offset" : 26,
+               "value" : "P. Paterno"
+            },
+            {
+               "offset" : 38,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "primary_school",
+            "school",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Parang Marikina Playground, M. L. Quezon Street, Marikina, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 49
+            }
+         ],
+         "place_id" : "ChIJfSnL15C5lzMRwB0xwmSxYU4",
+         "reference" : "ChIJfSnL15C5lzMRwB0xwmSxYU4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Parang Marikina Playground",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M. L. Quezon Street, Marikina, Quezon, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 21
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Parang Marikina Playground"
+            },
+            {
+               "offset" : 28,
+               "value" : "M. L. Quezon Street"
+            },
+            {
+               "offset" : 49,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 59,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Parang Barangay Hall, P Lopez, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 31
+            }
+         ],
+         "place_id" : "ChIJa3Uu1pC5lzMRMO8ZlbBlAJE",
+         "reference" : "ChIJa3Uu1pC5lzMRMO8ZlbBlAJE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Parang Barangay Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "P Lopez, Marikina, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 9
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Parang Barangay Hall"
+            },
+            {
+               "offset" : 22,
+               "value" : "P Lopez"
+            },
+            {
+               "offset" : 31,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 41,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

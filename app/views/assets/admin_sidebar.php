@@ -7,6 +7,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/066bf74adc.js" crossorigin="anonymous"></script>
+    <script>
+        // Set initial sidebar state before page renders to prevent flickering
+        (function() {
+            // Apply state immediately
+            const isCollapsed = localStorage.getItem('sidebarCollapsed');
+            if (isCollapsed === 'true') {
+                // Add class to html element for CSS rules to apply immediately
+                document.documentElement.classList.add('sidebar-collapsed');
+            } else if (isCollapsed === 'false') {
+                document.documentElement.classList.add('sidebar-expanded');
+            } else {
+                // If no saved state, default to expanded on desktop, collapsed on mobile
+                if (window.innerWidth <= 768) {
+                    document.documentElement.classList.add('sidebar-collapsed');
+                    localStorage.setItem('sidebarCollapsed', 'true');
+                } else {
+                    document.documentElement.classList.add('sidebar-expanded');
+                    localStorage.setItem('sidebarCollapsed', 'false');
+                }
+            }
+        })();
+    </script>
     <style>
         .sidebar {
             position: fixed;
@@ -22,6 +44,43 @@
             border-radius: 0 10px 10px 0;
             flex-direction: column;
             overflow-x: hidden; /* Prevent horizontal scroll */
+            width: 250px; /* Default expanded state */
+        }
+
+        /* Collapsed state applied directly through HTML class */
+        html.sidebar-collapsed .sidebar {
+            width: 4.5rem;
+        }
+        
+        html.sidebar-collapsed .content {
+            margin-left: 4.5rem;
+        }
+        
+        html.sidebar-collapsed .sidebar .menu-text {
+            opacity: 0;
+        }
+        
+        html.sidebar-collapsed .toggle-btn {
+            left: 0.75rem;
+            opacity: 0;
+        }
+
+        /* Apply expanded class by default if html has sidebar-expanded class */
+        html.sidebar-expanded .sidebar {
+            width: 250px;
+        }
+        
+        html.sidebar-expanded .content {
+            margin-left: 250px;
+        }
+        
+        html.sidebar-expanded .sidebar .menu-text {
+            opacity: 1;
+        }
+        
+        html.sidebar-expanded .toggle-btn {
+            left: 200px;
+            opacity: 1;
         }
 
         .sidebar.collapsed {
@@ -138,7 +197,7 @@
         }
 
         @media (max-width: 768px) {
-            .sidebar.expanded {
+            .sidebar {
                 width: 4.5rem;
             }
             .content {
@@ -154,13 +213,13 @@
     </style>
 </head>
 <body>
-    <div class="sidebar collapsed" id="sidebar">
+    <div class="sidebar" id="sidebar">
         <!-- Sidebar Header -->
         <div class="sidebar-header border-bottom border-secondary">
             <img src="../../../../public/images/main-logo.png" alt="logo" height="35px">
             <h5 class="brand-text menu-text">KingLang</h5>
             <button class="toggle-btn" id="toggleBtn">
-                <i class="bi bi-chevron-right fs-4"></i>
+                <i class="bi bi-chevron-left fs-4"></i>
             </button>
         </div>
 
@@ -175,10 +234,10 @@
                     <i class="bi bi-journals fs-5"></i>
                     <span class="menu-text">Bookings</span>
                 </a>
-                <a href="/admin/create-booking" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'create-booking' ? 'active' : ''; ?>">
+                <!-- <a href="/admin/create-booking" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'create-booking' ? 'active' : ''; ?>">
                     <i class="bi bi-plus-circle"></i>
                     <span class="menu-text">Create Booking</span>
-                </a>
+                </a> -->
                 <a href="/admin/users" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'users' ? 'active' : ''; ?>">
                     <i class="bi bi-people"></i>
                     <span class="menu-text">Clients</span>
@@ -212,36 +271,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- <script>
-        const sidebar = document.getElementById('sidebar');
-        const content = document.getElementById('content');
-        const toggleBtn = document.getElementById('toggleBtn');
-        const toggleIcon = toggleBtn.querySelector('i');
-
-        toggleBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('collapsed');
-            sidebar.classList.toggle('expanded');
-            content.classList.toggle('collapsed');
-            toggleIcon.classList.toggle('bi-chevron-left');
-            toggleIcon.classList.toggle('bi-chevron-right');
-        });
-
-        function checkWidth() {
-            if (window.innerWidth <= 768) {
-                sidebar.classList.add('collapsed');
-                sidebar.classList.remove('expanded');
-                content.classList.add('collapsed');
-            } else {
-                if (!sidebar.classList.contains('collapsed')) {
-                    sidebar.classList.add('expanded');
-                    sidebar.classList.remove('collapsed');
-                    content.classList.remove('collapsed');
-                }
-            }
-        }
-
-        window.addEventListener('resize', checkWidth);
-        checkWidth();
-    </script> -->
 </body>
 </html>

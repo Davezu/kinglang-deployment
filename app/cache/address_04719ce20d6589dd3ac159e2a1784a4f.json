@@ -53,8 +53,8 @@
          ],
          "types" : 
          [
-            "street_address",
-            "geocode"
+            "geocode",
+            "street_address"
          ]
       },
       {
@@ -157,8 +157,8 @@
          ],
          "types" : 
          [
-            "street_address",
-            "geocode"
+            "geocode",
+            "street_address"
          ]
       }
    ],

@@ -41,8 +41,8 @@
          ],
          "types" : 
          [
-            "locality",
             "geocode",
+            "locality",
             "political"
          ]
       },
@@ -94,10 +94,10 @@
          ],
          "types" : 
          [
-            "city_hall",
-            "point_of_interest",
+            "local_government_office",
             "establishment",
-            "local_government_office"
+            "point_of_interest",
+            "city_hall"
          ]
       },
       {
@@ -193,10 +193,10 @@
          ],
          "types" : 
          [
-            "establishment",
             "hospital",
             "point_of_interest",
-            "health"
+            "health",
+            "establishment"
          ]
       },
       {
@@ -247,10 +247,10 @@
          ],
          "types" : 
          [
-            "establishment",
-            "primary_school",
             "point_of_interest",
-            "school"
+            "establishment",
+            "school",
+            "primary_school"
          ]
       }
    ],

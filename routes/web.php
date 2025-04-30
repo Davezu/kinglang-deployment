@@ -148,6 +148,11 @@ switch ($request) {
         $controller = new BookingController();
         $controller->processCoordinates();
         break;
+    case "/get-bus-availability":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getAvailableBuses();
+        break;
     case "/get-total-cost":
         require_once $controllerClasses['client']['BookingController'];
         $controller = new BookingController();
@@ -363,6 +368,82 @@ switch ($request) {
         $controller->printInvoice($matches[1] ?? null);
         break;
 
+    case "/admin/print-contract":
+    case preg_match('|^/admin/print-contract/([0-9]+)$|', $request, $matches) ? $request : "":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->printContract($matches[1] ?? null);
+        break;
+
+    case "/admin/booking-stats":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getBookingStats();
+        break;
+
+    case "/admin/calendar-bookings":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getCalendarBookings();
+        break;
+
+    case "/admin/search-bookings":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->searchBookings();
+        break;
+
+    case "/admin/unpaid-bookings":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getUnpaidBookings();
+        break;
+
+    case "/admin/export-bookings":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->exportBookings();
+        break;
+
+    case "/admin/create-booking":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->showCreateBookingForm();
+        break;
+        
+    case "/admin/submit-booking":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->createBooking();
+        break;
+
+    case "/admin/get-address":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getAddress();
+        break;   
+    case "/admin/get-distance":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getDistance();
+        break;
+    case "/admin/get-route":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->processCoordinates();
+        break;
+    case "/admin/get-total-cost":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getTotalCost();
+        break;
+
+    case "/getDieselPrice":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getDieselPrice();
+        break;
+
     case "/admin/get-users":
         require_once $controllerClasses['admin']['UserManagementController'];
         $controller = new UserManagementController();
@@ -405,7 +486,6 @@ switch ($request) {
         $controller->getUserStats();
         break;
 
-    // Payment Management Routes
     case "/admin/payment-management":
         require_once $controllerClasses['admin']['PaymentManagementController'];
         $controller = new PaymentManagementController();
@@ -457,7 +537,6 @@ switch ($request) {
         $controller->getBookingDetails();
         break;
 
-    // Reports Module Routes
     case "/admin/reports":
         require_once $controllerClasses['admin']['ReportController'];
         $controller = new ReportController();
@@ -501,10 +580,9 @@ switch ($request) {
     case "/admin/reports/export-bookings":
         require_once $controllerClasses['admin']['ReportController'];
         $controller = new ReportController();
-        $controller->getDetailedBookingList(); // Reuse the same endpoint for CSV export
+        $controller->getDetailedBookingList();
         break;
 
-    // Settings Module Routes
     case "/admin/settings":
         require_once $controllerClasses['admin']['SettingsController'];
         $controller = new SettingsController();
@@ -536,7 +614,6 @@ switch ($request) {
         $controller->deleteSetting();
         break;
         
-    // Notifications
     case "/admin/notifications":
         require_once $controllerClasses['admin']['NotificationsController'];
         $controller = new NotificationsController();
@@ -553,7 +630,6 @@ switch ($request) {
         $controller->markAllAsRead();
         break;
         
-    // Client notifications
     case "/client/notifications":
         require_once $controllerClasses['client']['NotificationsController'];
         $controller = new ClientNotificationsController();
@@ -580,75 +656,6 @@ switch ($request) {
         $controller->addTestNotification();
         break;
         
-    // New routes for booking management features
-    case "/admin/booking-stats":
-        require_once $controllerClasses['admin']['BookingManagementController'];
-        $controller = new BookingManagementController();
-        $controller->getBookingStats();
-        break;
-    case "/admin/calendar-bookings":
-        require_once $controllerClasses['admin']['BookingManagementController'];
-        $controller = new BookingManagementController();
-        $controller->getCalendarBookings();
-        break;
-    case "/admin/search-bookings":
-        require_once $controllerClasses['admin']['BookingManagementController'];
-        $controller = new BookingManagementController();
-        $controller->searchBookings();
-        break;
-    case "/admin/unpaid-bookings":
-        require_once $controllerClasses['admin']['BookingManagementController'];
-        $controller = new BookingManagementController();
-        $controller->getUnpaidBookings();
-        break;
-    case "/admin/export-bookings":
-        require_once $controllerClasses['admin']['BookingManagementController'];
-        $controller = new BookingManagementController();
-        $controller->exportBookings();
-        break;
-
-    // New routes for admin booking creation
-    case "/admin/create-booking":
-        require_once $controllerClasses['admin']['BookingManagementController'];
-        $controller = new BookingManagementController();
-        $controller->showCreateBookingForm();
-        break;
-        
-    case "/admin/submit-booking":
-        require_once $controllerClasses['admin']['BookingManagementController'];
-        $controller = new BookingManagementController();
-        $controller->createBooking();
-        break;
-
-    // Admin booking helper routes
-    case "/admin/get-address":
-        require_once $controllerClasses['admin']['BookingManagementController'];
-        $controller = new BookingManagementController();
-        $controller->getAddress();
-        break;   
-    case "/admin/get-distance":
-        require_once $controllerClasses['admin']['BookingManagementController'];
-        $controller = new BookingManagementController();
-        $controller->getDistance();
-        break;
-    case "/admin/get-route":
-        require_once $controllerClasses['admin']['BookingManagementController'];
-        $controller = new BookingManagementController();
-        $controller->processCoordinates();
-        break;
-    case "/admin/get-total-cost":
-        require_once $controllerClasses['admin']['BookingManagementController'];
-        $controller = new BookingManagementController();
-        $controller->getTotalCost();
-        break;
-
-    // Route for fetching diesel price (used by both client and admin booking)
-    case "/getDieselPrice":
-        require_once $controllerClasses['client']['BookingController'];
-        $controller = new BookingController();
-        $controller->getDieselPrice();
-        break;
-
     default:
         // 404 Not Found
         header("HTTP/1.0 404 Not Found");

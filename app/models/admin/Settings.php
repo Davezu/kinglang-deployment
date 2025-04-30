@@ -50,6 +50,7 @@ class Settings {
             ['max_booking_days_in_advance', '60', 'booking', true],
             ['allow_rebooking', '1', 'booking', true],
             ['rebooking_fee_percentage', '10', 'booking', true],
+            ['diesel_price', '65.00', 'booking', true],
             
             // Payment settings
             ['payment_methods', 'Cash,Credit Card,Bank Transfer', 'payment', true],

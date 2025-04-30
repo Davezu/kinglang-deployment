@@ -239,7 +239,9 @@ class BookingController {
     
 
     public function getDieselPrice() {
-        return $this->bookingModel->getDieselPrice();
+        require_once __DIR__ . "/../../models/admin/Settings.php";
+        $settings = new Settings();
+        return $settings->getSetting('diesel_price');
     }
 
     public function getTotalCost() {
@@ -307,7 +309,7 @@ class BookingController {
         $base_cost = round($base_rate * $number_of_buses * $number_of_days, 2);
         
         // Calculate fuel cost based on distance and diesel price
-        $diesel_cost = round($distance * $diesel_price, 2);
+        $diesel_cost = round($distance * $diesel_price * $number_of_buses, 2);
         
         // Total cost is base cost plus fuel cost
         $total_cost = round($base_cost + $diesel_cost, 2);
@@ -848,6 +850,120 @@ class BookingController {
             "success" => true,
             "events" => $events
         ]);
+    }
+    
+    public function getAvailableBuses() {
+        header("Content-Type: application/json");
+        
+        $data = json_decode(file_get_contents("php://input"), true);
+        $start_date = isset($data["start_date"]) ? $data["start_date"] : null;
+        $end_date = isset($data["end_date"]) ? $data["end_date"] : null;
+        
+        if (!$start_date || !$end_date) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Start and end dates are required"
+            ]);
+            return;
+        }
+        
+        // Validate date formats
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $start_date) || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $end_date)) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Invalid date format. Use YYYY-MM-DD."
+            ]);
+            return;
+        }
+        
+        try {
+            // Get total number of active buses
+            $stmt = $this->bookingModel->conn->prepare("SELECT COUNT(*) FROM buses WHERE status = 'active'");
+            $stmt->execute();
+            $total_buses = (int) $stmt->fetchColumn();
+            
+            if ($total_buses <= 0) {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "No active buses found in the system."
+                ]);
+                return;
+            }
+            
+            // Create an array for each date in the range
+            $start = new DateTime($start_date);
+            $end = new DateTime($end_date);
+            
+            // Validate that end date is not before start date
+            if ($end < $start) {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "End date cannot be before start date."
+                ]);
+                return;
+            }
+            
+            $interval = DateInterval::createFromDateString('1 day');
+            $period = new DatePeriod($start, $interval, $end->modify('+1 day'));
+            
+            $availability = [];
+            
+            foreach ($period as $dt) {
+                $current_date = $dt->format("Y-m-d");
+                
+                // For each date, find how many buses are already booked
+                $stmt = $this->bookingModel->conn->prepare("
+                    SELECT COUNT(DISTINCT bb.bus_id) 
+                    FROM booking_buses bb
+                    JOIN bookings bo ON bb.booking_id = bo.booking_id
+                    WHERE 
+                        -- Only consider bookings with active statuses
+                        (bo.status = 'Confirmed' OR bo.status = 'Processing')
+                        -- Date range check
+                        AND (bo.date_of_tour <= :current_date AND bo.end_of_tour >= :current_date)
+                ");
+                $stmt->bindParam(":current_date", $current_date);
+                $stmt->execute();
+                $booked_buses = (int) $stmt->fetchColumn();
+                
+                // Calculate available buses
+                $available_buses = $total_buses - $booked_buses;
+                if ($available_buses < 0) $available_buses = 0;
+                
+                $availability[] = [
+                    "date" => $current_date,
+                    "available" => $available_buses,
+                    "total" => $total_buses,
+                    "booked" => $booked_buses
+                ];
+            }
+            
+            // Add debugging information in development environment
+            $debug_info = [];
+            if (defined('ENVIRONMENT') && ENVIRONMENT === 'development') {
+                $debug_info = [
+                    'query_params' => [
+                        'start_date' => $start_date,
+                        'end_date' => $end_date
+                    ],
+                    'total_buses' => $total_buses,
+                    'date_count' => count($availability)
+                ];
+            }
+            
+            echo json_encode([
+                "success" => true,
+                "availability" => $availability,
+                "debug" => $debug_info
+            ]);
+            
+        } catch (Exception $e) {
+            error_log("Error in getAvailableBuses: " . $e->getMessage());
+            echo json_encode([
+                "success" => false,
+                "message" => "Error retrieving bus availability: " . $e->getMessage()
+            ]);
+        }
     }
     
     public function getBookingDetails() {

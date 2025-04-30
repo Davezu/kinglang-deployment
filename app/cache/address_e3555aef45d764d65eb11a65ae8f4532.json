@@ -1,0 +1,267 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Manila Bay, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJuV1u-pIwljMRQ3YecCNfzZ8",
+         "reference" : "ChIJuV1u-pIwljMRQ3YecCNfzZ8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila Bay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila Bay"
+            },
+            {
+               "offset" : 12,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Manila Bay Beach, Roxas Boulevard, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJdZRIcurLlzMRAwQo8NyVtEA",
+         "reference" : "ChIJdZRIcurLlzMRAwQo8NyVtEA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila Bay Beach",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Roxas Boulevard, Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila Bay Beach"
+            },
+            {
+               "offset" : 18,
+               "value" : "Roxas Boulevard"
+            },
+            {
+               "offset" : 35,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 43,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Manila Bay Spinning Mills, Inc., Lopez Jaena Street, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJR2zhMi24lzMR4aPiPEBYhrM",
+         "reference" : "ChIJR2zhMi24lzMR4aPiPEBYhrM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila Bay Spinning Mills, Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lopez Jaena Street, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila Bay Spinning Mills, Inc."
+            },
+            {
+               "offset" : 33,
+               "value" : "Lopez Jaena Street"
+            },
+            {
+               "offset" : 53,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 63,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 77,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "storage",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Manila Bay Kitchen, Gen. Malvar Street, Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_SJlI17LlzMRTVa0VDC4c1Q",
+         "reference" : "ChIJ_SJlI17LlzMRTVa0VDC4c1Q",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila Bay Kitchen",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gen. Malvar Street, Malate, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila Bay Kitchen"
+            },
+            {
+               "offset" : 20,
+               "value" : "Gen. Malvar Street"
+            },
+            {
+               "offset" : 40,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 48,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "restaurant",
+            "point_of_interest",
+            "food"
+         ]
+      },
+      {
+         "description" : "Manila Bay Thread Corporation, Lopez Jaena Street, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJkeijjNK5lzMRl3H5g1wyR9k",
+         "reference" : "ChIJkeijjNK5lzMRl3H5g1wyR9k",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila Bay Thread Corporation",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lopez Jaena Street, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila Bay Thread Corporation"
+            },
+            {
+               "offset" : 31,
+               "value" : "Lopez Jaena Street"
+            },
+            {
+               "offset" : 51,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 61,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "store",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

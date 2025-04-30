@@ -105,13 +105,13 @@ if (!isset($_SESSION["user_id"])) {
                         <h3 class="mb-3" id="bookingHeader">Book a Trip</h3>
                         <div class="mb-3 position-relative">
                             <i class="bi bi-geo-alt-fill location-icon"></i>
-                            <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address py-2 px-4" autocomplete="off" placeholder="Pickup Location" data-validated="false" required>
+                            <input type="text" name="pickup_point" id="pickup_point" class="form-control text-truncate address py-2 px-4" autocomplete="off" placeholder="Pickup Location" required>
                             <ul id="pickupPointSuggestions" class="suggestions"></ul>
                         </div> 
                         <div class="mb-3 position-relative">
                             <i class="bi bi-geo-alt-fill location-icon"></i>
                             <i class="bi bi-plus-circle-fill add-icon" id="addStop" title="Add stop"></i>
-                            <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop py-2 px-4" autocomplete="off" placeholder="Dropoff Location" data-validated="false" required>
+                            <input type="text" name="destination" id="destination" class="form-control text-truncate address destination added-stop py-2 px-4" autocomplete="off" placeholder="Dropoff Location" required>
                             <ul id="destinationSuggestions" class="suggestions"></ul>
                         </div>
 
@@ -176,8 +176,8 @@ if (!isset($_SESSION["user_id"])) {
                         </div>
 
                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="agreeTerms" name="agreeTerms" required>
-                            <label class="form-check-label" for="agreeTerms">I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a></label>
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" name="agreeTerms">
+                            <label class="form-check-label" for="agreeTerms">I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">terms and conditions</a></label>
                         </div>
 
                         <div class="container-fluid d-flex justify-content-between align-items-center gap p-0">
@@ -198,40 +198,43 @@ if (!isset($_SESSION["user_id"])) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-</body>
-
-<!-- Terms and Conditions Modal -->
-<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h6>Booking Terms and Conditions</h6>
-                <p>Please read the following terms and conditions carefully before confirming your booking:</p>
-                
-                <ol>
-                    <li><strong>Booking Confirmation:</strong> All bookings are subject to availability and confirmation.</li>
-                    <li><strong>Payment:</strong> Full payment or deposit as required must be made to secure booking.</li>
-                    <li><strong>Cancellation Policy:</strong> Cancellations must be made at least 48 hours before scheduled departure.</li>
-                    <li><strong>Refund Policy:</strong> Refunds are subject to our cancellation policy and may be partial or none depending on timing.</li>
-                    <li><strong>Schedule Changes:</strong> We reserve the right to modify schedules if necessary due to weather or unforeseen circumstances.</li>
-                    <li><strong>Customer Responsibility:</strong> Customers are responsible for ensuring all passenger information is accurate.</li>
-                    <li><strong>Travel Documents:</strong> Customers are responsible for carrying all necessary travel documents.</li>
-                    <li><strong>Conduct:</strong> We reserve the right to refuse service to customers displaying disruptive behavior.</li>
-                    <li><strong>Liability:</strong> We are not liable for loss, damage, or delay caused by circumstances beyond our control.</li>
-                    <li><strong>Data Use:</strong> By agreeing, you consent to our collection and use of your data as outlined in our privacy policy.</li>
-                </ol>
-                
-                <p>By checking the box, you acknowledge that you have read, understood, and agree to these terms and conditions.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+    <!-- Terms and Conditions Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5>Booking Terms and Conditions</h5>
+                    <p>By checking the "I agree to the terms and conditions" box, you acknowledge that you have read, understood, and agree to be bound by the following terms:</p>
+                    
+                    <ol>
+                        <li><strong>Booking Confirmation:</strong> All bookings are subject to availability and confirmation by Kinglang Booking.</li>
+                        <li><strong>Payment Terms:</strong> A 50% non-refundable deposit is required to secure your booking. The balance must be paid at least 7 days before the tour date.</li>
+                        <li><strong>Cancellation Policy:</strong>
+                            <ul>
+                                <li>Cancellations made 14 days or more before the tour: 50% of deposit refunded</li>
+                                <li>Cancellations made 7-13 days before the tour: 25% of deposit refunded</li>
+                                <li>Cancellations made less than 7 days before the tour: No refund</li>
+                            </ul>
+                        </li>
+                        <li><strong>Changes to Booking:</strong> Any changes to your booking must be made in writing and are subject to availability and additional charges.</li>
+                        <li><strong>Liability:</strong> Kinglang Booking is not liable for any loss, damage, delay, inconvenience, or direct or consequential loss, however caused, unless due to our employees' negligence.</li>
+                        <li><strong>Insurance:</strong> We recommend that all passengers have travel insurance to cover incidents such as cancellation, personal effects, and any additional costs.</li>
+                        <li><strong>Data Collection:</strong> When you agree to these terms, we will collect your IP address and timestamp for verification purposes.</li>
+                    </ol>
+                    
+                    <p>These terms and conditions are governed by the laws of the Philippines.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="acceptTerms" data-bs-dismiss="modal">Accept</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
+</body>
 </html>

@@ -1,0 +1,254 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Bacoor, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJP0MEe0DSlzMRTC09a81UkXc",
+         "reference" : "ChIJP0MEe0DSlzMRTC09a81UkXc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bacoor",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bacoor"
+            },
+            {
+               "offset" : 8,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Bacoor City Hall, Bacoor Boulevard, Bacoor, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBR0XhhPSlzMRnW3tWPP31fc",
+         "reference" : "ChIJBR0XhhPSlzMRnW3tWPP31fc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bacoor City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bacoor Boulevard, Bacoor, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bacoor City Hall"
+            },
+            {
+               "offset" : 18,
+               "value" : "Bacoor Boulevard"
+            },
+            {
+               "offset" : 36,
+               "value" : "Bacoor"
+            },
+            {
+               "offset" : 44,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "city_hall",
+            "establishment",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Bacoor Coliseum, Bacoor, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ15ig9tjTlzMR8JD33UD7wwY",
+         "reference" : "ChIJ15ig9tjTlzMR8JD33UD7wwY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bacoor Coliseum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bacoor, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bacoor Coliseum"
+            },
+            {
+               "offset" : 17,
+               "value" : "Bacoor"
+            },
+            {
+               "offset" : 25,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Bacoor National High School - Main, Molino Road, Bacoor, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_173o3nSlzMRk-7uOyA67xA",
+         "reference" : "ChIJ_173o3nSlzMRk-7uOyA67xA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bacoor National High School - Main",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Molino Road, Bacoor, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bacoor National High School - Main"
+            },
+            {
+               "offset" : 36,
+               "value" : "Molino Road"
+            },
+            {
+               "offset" : 49,
+               "value" : "Bacoor"
+            },
+            {
+               "offset" : 57,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bacoor Boulevard, Bacoor, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ei1CYWNvb3IgQm91bGV2YXJkLCBCYWNvb3IsIENhdml0ZSwgUGhpbGlwcGluZXMiLiosChQKEgkv_6obPNKXMxHKF-fk5GiXbxIUChIJP0MEe0DSlzMRTC09a81UkXc",
+         "reference" : "Ei1CYWNvb3IgQm91bGV2YXJkLCBCYWNvb3IsIENhdml0ZSwgUGhpbGlwcGluZXMiLiosChQKEgkv_6obPNKXMxHKF-fk5GiXbxIUChIJP0MEe0DSlzMRTC09a81UkXc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bacoor Boulevard",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bacoor, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bacoor Boulevard"
+            },
+            {
+               "offset" : 18,
+               "value" : "Bacoor"
+            },
+            {
+               "offset" : 26,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

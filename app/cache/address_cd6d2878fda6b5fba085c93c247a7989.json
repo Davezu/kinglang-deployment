@@ -53,13 +53,13 @@
          ],
          "types" : 
          [
+            "establishment",
             "shopping_mall",
-            "point_of_interest",
-            "establishment"
+            "point_of_interest"
          ]
       },
       {
-         "description" : "MOA Arena, J.W. Diokno Boulevard, Pasay, Metro Manila, Philippines",
+         "description" : "MOA Arena, Coral Way, Pasay, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -79,7 +79,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "J.W. Diokno Boulevard, Pasay, Metro Manila, Philippines"
+            "secondary_text" : "Coral Way, Pasay, Metro Manila, Philippines"
          },
          "terms" : 
          [
@@ -89,25 +89,25 @@
             },
             {
                "offset" : 11,
-               "value" : "J.W. Diokno Boulevard"
+               "value" : "Coral Way"
             },
             {
-               "offset" : 34,
+               "offset" : 22,
                "value" : "Pasay"
             },
             {
-               "offset" : 41,
+               "offset" : 29,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 55,
+               "offset" : 43,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -155,8 +155,8 @@
          "types" : 
          [
             "tourist_attraction",
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -208,8 +208,8 @@
          "types" : 
          [
             "tourist_attraction",
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -260,9 +260,9 @@
          ],
          "types" : 
          [
+            "establishment",
             "shopping_mall",
-            "point_of_interest",
-            "establishment"
+            "point_of_interest"
          ]
       }
    ],
