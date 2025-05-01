@@ -96,9 +96,9 @@
          [
             "place_of_worship",
             "church",
-            "point_of_interest",
+            "establishment",
             "tourist_attraction",
-            "establishment"
+            "point_of_interest"
          ]
       },
       {
@@ -153,10 +153,10 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "lodging",
-            "tourist_attraction",
-            "establishment"
+            "establishment",
+            "point_of_interest",
+            "tourist_attraction"
          ]
       },
       {
@@ -257,9 +257,9 @@
          ],
          "types" : 
          [
+            "political",
             "geocode",
             "sublocality_level_2",
-            "political",
             "sublocality"
          ]
       }

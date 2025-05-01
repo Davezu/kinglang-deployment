@@ -249,6 +249,9 @@ require_client_auth(); // Use helper function
                         <button class="btn btn-sm btn-outline-primary quick-filter" data-date="past">
                             <i class="bi bi-calendar-x"></i> Past
                         </button>
+                        <button class="btn btn-sm btn-outline-danger quick-filter" data-status="canceled">
+                            <i class="bi bi-x-circle"></i> Canceled
+                        </button>
                         <button class="btn btn-sm btn-outline-danger quick-filter" data-balance="unpaid">
                             <i class="bi bi-cash"></i> Unpaid
                         </button>
@@ -271,6 +274,9 @@ require_client_auth(); // Use helper function
                     </div>
                 </div>
             </div>
+
+            <!-- Current Filter Description -->
+            <div id="currentFilter" class="alert alert-light border small text-muted mb-3" style="display: none;"></div>
 
             <!-- TABLE VIEW -->
             <div id="tableViewContainer">
@@ -372,9 +378,10 @@ require_client_auth(); // Use helper function
                                 <div class="alert alert-info">
                                     <h5 class="alert-heading"><i class="bi bi-info-circle me-2"></i>Account Details</h5>
                                     <div class="mt-2">
-                                        <p class="mb-1"><strong>Bank:</strong> <span id="bankName">BDO</span></p>
-                                        <p class="mb-1"><strong>Name:</strong> <span id="accountName">Kinglang Bus</span></p>
-                                        <p class="mb-0"><strong>Number:</strong> <span id="accountNumber">1234567890</span></p>
+                                        <p class="mb-1"><strong>Bank:</strong> <span id="bankName">BPI Cainta Ortigas Extension Branch</span></p>
+                                        <p class="mb-1"><strong>Name:</strong> <span id="accountName">KINGLANG TOURS AND TRANSPORT SERVICES INC.</span></p>
+                                        <p class="mb-0"><strong>Number:</strong> <span id="accountNumber">4091-0050-05</span></p>
+                                        <p class="mb-0"><strong>Swift Code:</strong> <span id="accountNumber">BPOIPHMM</span></p>
                                     </div>
                                 </div>
                             </div>

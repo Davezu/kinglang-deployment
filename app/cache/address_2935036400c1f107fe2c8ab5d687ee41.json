@@ -1,0 +1,251 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Makalangot, Arakan, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPWp7O3rc-DIRTzbQ_zn3Ulk",
+         "reference" : "ChIJPWp7O3rc-DIRTzbQ_zn3Ulk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makalangot",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Arakan, Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makalangot"
+            },
+            {
+               "offset" : 12,
+               "value" : "Arakan"
+            },
+            {
+               "offset" : 20,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "sublocality",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Makalaya, Tiwi, Albay, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EiJNYWthbGF5YSwgVGl3aSwgQWxiYXksIFBoaWxpcHBpbmVzIi4qLAoUChIJB49m9hSxoTMRE6LsznT_5b0SFAoSCc1m_0CmsKEzEYg3oqKOcgXD",
+         "reference" : "EiJNYWthbGF5YSwgVGl3aSwgQWxiYXksIFBoaWxpcHBpbmVzIi4qLAoUChIJB49m9hSxoTMRE6LsznT_5b0SFAoSCc1m_0CmsKEzEYg3oqKOcgXD",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makalaya",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tiwi, Albay, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makalaya"
+            },
+            {
+               "offset" : 10,
+               "value" : "Tiwi"
+            },
+            {
+               "offset" : 16,
+               "value" : "Albay"
+            },
+            {
+               "offset" : 23,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Macalaya, Castilla, Sorsogon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJS12U2CIgoTMRyXUZDrRQd7U",
+         "reference" : "ChIJS12U2CIgoTMRyXUZDrRQd7U",
+         "structured_formatting" : 
+         {
+            "main_text" : "Macalaya",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Castilla, Sorsogon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Macalaya"
+            },
+            {
+               "offset" : 10,
+               "value" : "Castilla"
+            },
+            {
+               "offset" : 20,
+               "value" : "Sorsogon"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "political",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Makalangot Old Barangay Hall, Arakan, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJo3yeqSHd-DIRI_0MPWGfcKc",
+         "reference" : "ChIJo3yeqSHd-DIRI_0MPWGfcKc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makalangot Old Barangay Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Arakan, Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makalangot Old Barangay Hall"
+            },
+            {
+               "offset" : 30,
+               "value" : "Arakan"
+            },
+            {
+               "offset" : 38,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Makalangot High School, Arakan, Cotabato, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJzwCql5_Z-DIRdGklanDpV2A",
+         "reference" : "ChIJzwCql5_Z-DIRdGklanDpV2A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makalangot High School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Arakan, Cotabato, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makalangot High School"
+            },
+            {
+               "offset" : 24,
+               "value" : "Arakan"
+            },
+            {
+               "offset" : 32,
+               "value" : "Cotabato"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "school",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

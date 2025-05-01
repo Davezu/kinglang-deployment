@@ -45,10 +45,10 @@
          ],
          "types" : 
          [
-            "restaurant",
             "point_of_interest",
+            "food",
             "establishment",
-            "food"
+            "restaurant"
          ]
       },
       {
@@ -103,11 +103,11 @@
          ],
          "types" : 
          [
+            "point_of_interest",
             "food",
             "store",
             "grocery_or_supermarket",
-            "establishment",
-            "point_of_interest"
+            "establishment"
          ]
       },
       {
@@ -154,58 +154,9 @@
          ],
          "types" : 
          [
+            "establishment",
             "point_of_interest",
-            "lodging",
-            "establishment"
-         ]
-      },
-      {
-         "description" : "MAKA HOUSE, Taguig, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 4,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJ88FEBwDPlzMRbohTrFP3Y-w",
-         "reference" : "ChIJ88FEBwDPlzMRbohTrFP3Y-w",
-         "structured_formatting" : 
-         {
-            "main_text" : "MAKA HOUSE",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 4,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Taguig, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "MAKA HOUSE"
-            },
-            {
-               "offset" : 12,
-               "value" : "Taguig"
-            },
-            {
-               "offset" : 20,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 34,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "lodging",
-            "point_of_interest",
-            "establishment"
+            "lodging"
          ]
       },
       {
@@ -256,9 +207,58 @@
          ],
          "types" : 
          [
-            "restaurant",
             "food",
             "establishment",
+            "point_of_interest",
+            "restaurant"
+         ]
+      },
+      {
+         "description" : "MAKA HOUSE, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ88FEBwDPlzMRbohTrFP3Y-w",
+         "reference" : "ChIJ88FEBwDPlzMRbohTrFP3Y-w",
+         "structured_formatting" : 
+         {
+            "main_text" : "MAKA HOUSE",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MAKA HOUSE"
+            },
+            {
+               "offset" : 12,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
             "point_of_interest"
          ]
       }

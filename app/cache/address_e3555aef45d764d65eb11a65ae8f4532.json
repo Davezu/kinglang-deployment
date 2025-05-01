@@ -93,8 +93,8 @@
          ],
          "types" : 
          [
-            "establishment",
             "point_of_interest",
+            "establishment",
             "tourist_attraction"
          ]
       },
@@ -203,9 +203,9 @@
          ],
          "types" : 
          [
+            "point_of_interest",
             "establishment",
             "restaurant",
-            "point_of_interest",
             "food"
          ]
       },
@@ -257,9 +257,9 @@
          ],
          "types" : 
          [
+            "point_of_interest",
             "store",
-            "establishment",
-            "point_of_interest"
+            "establishment"
          ]
       }
    ],

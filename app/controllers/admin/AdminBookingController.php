@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../models/admin/AdminBookingModel.php';
 require_once __DIR__ . '/../../models/admin/NotificationModel.php';
 
-class AdminBookingController {
+class AdminBookingController {  
     private $bookingModel;
     private $notificationModel;
 

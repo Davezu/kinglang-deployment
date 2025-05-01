@@ -233,7 +233,45 @@ class Booking {
     public function getAllBookings($user_id, $status, $column, $order, $page = 1, $limit = 10, $search = "", $date_filter = null, $balance_filter = null) {
         $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "processing", "all"];
         $status = in_array($status, $allowed_status) ? $status : "all";
-        $status_condition = $status === "all" ? "" : " AND b.status = '".ucfirst($status)."'";
+        
+        // Build the status condition based on filter combinations
+        $status_condition = "";
+        
+        // Special handling for balance_filter=unpaid (only confirmed or processing)
+        if ($balance_filter === "unpaid") {
+            if ($status === "all") {
+                // If status is "all" and we're filtering for unpaid, only include confirmed or processing
+                $status_condition = " AND (b.status = 'Confirmed' OR b.status = 'Processing')";
+            } else {
+                // If a specific status is selected with unpaid filter, use that status
+                $status_condition = " AND b.status = '".ucfirst($status)."'";
+            }
+        } 
+        // Special handling for date_filter=past (only confirmed or completed)
+        else if ($date_filter === "past") {
+            if ($status === "all") {
+                // For past bookings, focus on completed bookings 
+                $status_condition = " AND b.status = 'Completed'";
+            } else {
+                // If a specific status is selected with past filter, use that status
+                $status_condition = " AND b.status = '".ucfirst($status)."'";
+            }
+        }
+        // Special handling for date_filter=upcoming (only confirmed)
+        else if ($date_filter === "upcoming") {
+            // For upcoming, we always want confirmed bookings regardless of status filter
+            $status_condition = " AND b.status = 'Confirmed'";
+        }
+        // Special handling for canceled filter
+        else if ($status === "canceled") {
+            // Always show canceled bookings when canceled filter is selected
+            $status_condition = " AND b.status = 'Canceled'";
+        }
+        // Default status handling
+        else if ($status !== "all") {
+            // Simple status filter if no special cases apply
+            $status_condition = " AND b.status = '".ucfirst($status)."'";
+        }
 
         $allowed_columns = ["destination", "date_of_tour", "end_of_tour", "number_of_days", "number_of_buses", "total_cost", "balance", "status", "payment_status", "booking_id"];
         $column = in_array($column, $allowed_columns) ? $column : "date_of_tour";
@@ -251,7 +289,10 @@ class Booking {
         if ($date_filter === "upcoming") {
             $date_condition = " AND b.date_of_tour >= CURDATE()";
         } else if ($date_filter === "past") {
-            $date_condition = " AND b.end_of_tour < CURDATE()";
+            // A booking is considered past if:
+            // 1. It has already ended (end_of_tour < today), OR
+            // 2. It started in the past and should already be over based on number_of_days
+            $date_condition = " AND ((b.end_of_tour < CURDATE()) OR (b.date_of_tour < CURDATE() AND DATEDIFF(CURDATE(), b.date_of_tour) >= b.number_of_days))";
         }
         
         // Add balance filter condition if provided
@@ -297,6 +338,13 @@ class Booking {
                 LIMIT :limit OFFSET :offset
             ";
             
+            // Debug log - write query to error log for troubleshooting
+            if ($date_filter === "past") {
+                error_log("PAST FILTER QUERY: " . $sql);
+                error_log("Status condition: " . $status_condition);
+                error_log("Date condition: " . $date_condition);
+            }
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":user_id", $user_id);
             
@@ -310,6 +358,14 @@ class Booking {
 
             $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
+            // Debug log - log the results for past filter
+            if ($date_filter === "past") {
+                error_log("PAST FILTER RESULTS COUNT: " . count($bookings));
+                foreach ($bookings as $index => $booking) {
+                    error_log("Booking #$index - ID: {$booking['booking_id']}, Status: {$booking['status']}, Date: {$booking['date_of_tour']}, End: {$booking['end_of_tour']}");
+                }
+            }
+
             // Calculate total pages
             $total_pages = ceil($total_records / $limit);
             

@@ -53,61 +53,9 @@
          ],
          "types" : 
          [
-            "establishment",
             "shopping_mall",
+            "establishment",
             "point_of_interest"
-         ]
-      },
-      {
-         "description" : "MOA Arena, Coral Way, Pasay, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 3,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJxzMKm_7LlzMRmu_pTjEa5Co",
-         "reference" : "ChIJxzMKm_7LlzMRmu_pTjEa5Co",
-         "structured_formatting" : 
-         {
-            "main_text" : "MOA Arena",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 3,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Coral Way, Pasay, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "MOA Arena"
-            },
-            {
-               "offset" : 11,
-               "value" : "Coral Way"
-            },
-            {
-               "offset" : 22,
-               "value" : "Pasay"
-            },
-            {
-               "offset" : 29,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 43,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "point_of_interest",
-            "establishment"
          ]
       },
       {
@@ -155,8 +103,8 @@
          "types" : 
          [
             "tourist_attraction",
-            "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
@@ -260,8 +208,57 @@
          ],
          "types" : 
          [
-            "establishment",
             "shopping_mall",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "MOA Square, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJkfX1bdPLlzMRcKZkrqOkFrI",
+         "reference" : "ChIJkfX1bdPLlzMRcKZkrqOkFrI",
+         "structured_formatting" : 
+         {
+            "main_text" : "MOA Square",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MOA Square"
+            },
+            {
+               "offset" : 12,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 19,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "establishment",
             "point_of_interest"
          ]
       }

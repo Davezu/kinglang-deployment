@@ -1,0 +1,259 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Baesa, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNVOrgL-2lzMRyfUzPFUjQo8",
+         "reference" : "ChIJNVOrgL-2lzMRyfUzPFUjQo8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baesa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baesa"
+            },
+            {
+               "offset" : 7,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality",
+            "geocode",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Baesa Road, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ei9CYWVzYSBSb2FkLCBDYWxvb2NhbiwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCS11z2W-tpczEQJlhX3qHPDPEhQKEglfG4QZtbGXMxEaLQQl4nDnBQ",
+         "reference" : "Ei9CYWVzYSBSb2FkLCBDYWxvb2NhbiwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCS11z2W-tpczEQJlhX3qHPDPEhQKEglfG4QZtbGXMxEaLQQl4nDnBQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baesa Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baesa Road"
+            },
+            {
+               "offset" : 12,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 22,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Baesa Town Center, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJIaS71sC2lzMRxw9uo-RWybE",
+         "reference" : "ChIJIaS71sC2lzMRxw9uo-RWybE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baesa Town Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baesa Town Center"
+            },
+            {
+               "offset" : 19,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 32,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "shopping_mall",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Baesa High School, Reparo Road, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJXSRJcLy2lzMRBMweeb2aK1w",
+         "reference" : "ChIJXSRJcLy2lzMRBMweeb2aK1w",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baesa High School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Reparo Road, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baesa High School"
+            },
+            {
+               "offset" : 19,
+               "value" : "Reparo Road"
+            },
+            {
+               "offset" : 32,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "secondary_school",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Baesa Industrial Compound, Quirino Highway, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAdDjdMG2lzMRG56GRyVa5cw",
+         "reference" : "ChIJAdDjdMG2lzMRG56GRyVa5cw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Baesa Industrial Compound",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quirino Highway, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Baesa Industrial Compound"
+            },
+            {
+               "offset" : 27,
+               "value" : "Quirino Highway"
+            },
+            {
+               "offset" : 44,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

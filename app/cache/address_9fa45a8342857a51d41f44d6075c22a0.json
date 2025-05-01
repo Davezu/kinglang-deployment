@@ -1,0 +1,257 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Ma-a, Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5yCFQj5t-TIRvGC06nsA_9k",
+         "reference" : "ChIJ5yCFQj5t-TIRvGC06nsA_9k",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ma-a",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Davao City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ma-a"
+            },
+            {
+               "offset" : 6,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 18,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality_level_2",
+            "political",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Ma-Cho Temple (Taoist Temple), Quezon Avenue, San Fernando, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBVvWfGyOkTMRkLC-V5m6STk",
+         "reference" : "ChIJBVvWfGyOkTMRkLC-V5m6STk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ma-Cho Temple (Taoist Temple)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon Avenue, San Fernando, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ma-Cho Temple (Taoist Temple)"
+            },
+            {
+               "offset" : 31,
+               "value" : "Quezon Avenue"
+            },
+            {
+               "offset" : 46,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 60,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "tourist_attraction",
+            "point_of_interest",
+            "place_of_worship",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Ma-ayon, Capiz, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJyX7fC85brzMRyNJ_Bnyizgg",
+         "reference" : "ChIJyX7fC85brzMRyNJ_Bnyizgg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ma-ayon",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Capiz, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ma-ayon"
+            },
+            {
+               "offset" : 9,
+               "value" : "Capiz"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Ma Mon Luk, Quezon Avenue, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJRxdBzRW2lzMRiCVTaL_uiFA",
+         "reference" : "ChIJRxdBzRW2lzMRiCVTaL_uiFA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ma Mon Luk",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon Avenue, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ma Mon Luk"
+            },
+            {
+               "offset" : 12,
+               "value" : "Quezon Avenue"
+            },
+            {
+               "offset" : 27,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 40,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "restaurant",
+            "food"
+         ]
+      },
+      {
+         "description" : "Ma-ao, Bago City, Negros Occidental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjBNYS1hbywgQmFnbyBDaXR5LCBOZWdyb3MgT2NjaWRlbnRhbCwgUGhpbGlwcGluZXMiLiosChQKEgk1AxtmR8quMxFYyDXomTS-1RIUChIJ6R_5MirGrjMRnfXU886eccI",
+         "reference" : "EjBNYS1hbywgQmFnbyBDaXR5LCBOZWdyb3MgT2NjaWRlbnRhbCwgUGhpbGlwcGluZXMiLiosChQKEgk1AxtmR8quMxFYyDXomTS-1RIUChIJ6R_5MirGrjMRnfXU886eccI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ma-ao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bago City, Negros Occidental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ma-ao"
+            },
+            {
+               "offset" : 7,
+               "value" : "Bago City"
+            },
+            {
+               "offset" : 18,
+               "value" : "Negros Occidental"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

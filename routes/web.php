@@ -656,6 +656,20 @@ switch ($request) {
         $controller->addTestNotification();
         break;
         
+    // Payment deadline check routes
+    case "/admin/check-payment-deadlines":
+        require_once __DIR__ . "/../app/controllers/admin/BookingDeadlineController.php";
+        $controller = new BookingDeadlineController();
+        $controller->checkDeadlines();
+        break;
+
+    // Booking completion check routes
+    case "/admin/check-booking-completions":
+        require_once __DIR__ . "/../app/controllers/admin/BookingCompletionController.php";
+        $controller = new BookingCompletionController();
+        $controller->checkCompletions();
+        break;
+
     default:
         // 404 Not Found
         header("HTTP/1.0 404 Not Found");

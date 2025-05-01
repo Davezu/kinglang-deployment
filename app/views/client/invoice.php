@@ -373,17 +373,24 @@ require_client_auth(); // Use helper function
             <div class="mt-3">
                 <h4 class="title">OFFICIAL INVOICE</h4>
                 <div class="d-flex justify-content-between align-items-center mt-3">
-                    <div>
-                        <strong><i class="bi bi-receipt text-success me-1"></i>Invoice #:</strong> <?php echo $booking['booking_id']; ?><br>
-                        <strong><i class="bi bi-calendar-date text-success me-1"></i>Date Issued:</strong> <?php 
-                            $issued_date = new DateTime($booking['confirmed_at']);
-                            echo $issued_date->format('F j, Y'); 
-                        ?><br>
-                        <strong><i class="bi bi-calendar-range text-success me-1"></i>Due Date:</strong> <?php 
-                            $due_date = new DateTime($booking['date_of_tour']);
-                            $due_date->modify('-7 day');
-                            echo $due_date->format('F j, Y'); 
-                        ?>
+                    <div class="d-flex">
+                        <div class="text-start me-2">
+                            <strong><i class="bi bi-receipt text-success"></i> Invoice #:</strong> <br>
+                            <strong><i class="bi bi-calendar-date text-success"></i> Date Issued:</strong> <br>
+                            <strong><i class="bi bi-calendar-range text-success me-1"></i>Due Date:</strong>
+                        </div>
+                        
+                        <div class="text-start">
+                            <?php echo $booking['booking_id']; ?> <br>
+                            <?php 
+                                $confirmed_at = new DateTime($booking['confirmed_at']);
+                                echo $confirmed_at->format('F j, Y') ?? "N/A"; 
+                            ?> <br>
+                            <?php
+                                $due_date = new DateTime($booking['payment_deadline']);
+                                echo $due_date->format('F j, Y'); 
+                            ?>
+                        </div> 
                     </div>
                     <div>
                         <span class="status-badge status-<?php echo strtolower($booking['status']); ?>">
@@ -393,7 +400,7 @@ require_client_auth(); // Use helper function
                 </div>
             </div>
         </div>
-        
+                
         <div class="invoice-details">
             <div class="d-flex flex-wrap">
                 <div class="col-md-6">

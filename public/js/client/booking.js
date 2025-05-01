@@ -18,25 +18,29 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
-    // Add a check buses availability button
+    // Add a check buses availability button - in a separate container
+    const busAvailabilityButtonContainer = document.createElement('div');
+    busAvailabilityButtonContainer.className = 'bus-availability-button-container mt-3 mb-3';
+    
     const viewBusesBtn = document.createElement('button');
     viewBusesBtn.type = 'button';
-    viewBusesBtn.className = 'btn btn-outline-success btn-sm mt-2';
+    viewBusesBtn.className = 'btn btn-outline-success btn-sm w-100';
     viewBusesBtn.textContent = 'View Available Buses';
     viewBusesBtn.id = 'viewAvailableBuses';
     viewBusesBtn.style.position = 'relative';
     viewBusesBtn.style.zIndex = '1050';
     
-    // Insert the button after the date picker
-    const datePickerContainer = document.getElementById('date_of_tour').parentNode;
-    datePickerContainer.classList.add('date-picker-container');
-    datePickerContainer.appendChild(viewBusesBtn);
+    busAvailabilityButtonContainer.appendChild(viewBusesBtn);
     
     // Create a container for the bus availability calendar
     const availabilityContainer = document.createElement('div');
     availabilityContainer.id = 'busAvailabilityContainer';
     availabilityContainer.className = 'bus-availability-container mt-2 d-none';
-    datePickerContainer.appendChild(availabilityContainer);
+    busAvailabilityButtonContainer.appendChild(availabilityContainer);
+    
+    // Insert the button after the time picker
+    const timePickerContainer = document.getElementById('pickup_time').parentNode;
+    timePickerContainer.parentNode.insertBefore(busAvailabilityButtonContainer, timePickerContainer.nextSibling);
     
     // Add event listener to the button
     viewBusesBtn.addEventListener('click', async function() {
@@ -45,11 +49,29 @@ document.addEventListener("DOMContentLoaded", async function () {
             await loadBusAvailability();
             availabilityContainer.classList.remove('d-none');
             viewBusesBtn.textContent = 'Hide Available Buses';
+            
+            // Add click event listener to close calendar when clicking outside
+            setTimeout(() => {
+                document.addEventListener('click', closeCalendarOnClickOutside);
+            }, 100);
         } else {
             availabilityContainer.classList.add('d-none');
             viewBusesBtn.textContent = 'View Available Buses';
+            // Remove the click outside listener
+            document.removeEventListener('click', closeCalendarOnClickOutside);
         }
     });
+    
+    // Function to close calendar when clicking outside
+    function closeCalendarOnClickOutside(event) {
+        if (!availabilityContainer.classList.contains('d-none') && 
+            !availabilityContainer.contains(event.target) && 
+            event.target !== viewBusesBtn) {
+            availabilityContainer.classList.add('d-none');
+            viewBusesBtn.textContent = 'View Available Buses';
+            document.removeEventListener('click', closeCalendarOnClickOutside);
+        }
+    }
     
     async function loadBusAvailability() {
         try {
@@ -194,7 +216,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
                 
                 // Add availability text with better formatting
-                availabilityIndicator.textContent = `${availableCount} of ${totalCount}`;
+                availabilityIndicator.textContent = `${availableCount}/${totalCount}`;
                 dateCell.appendChild(availabilityIndicator);
                 
                 // Make the cell clickable to set the date_of_tour value
@@ -218,34 +240,34 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
         
         // Add legend
-        const legend = document.createElement('div');
-        legend.className = 'availability-legend mt-2';
-        legend.innerHTML = `
-            <div class="legend-title">Bus Availability Legend</div>
-            <div class="legend-item">
-                <span class="legend-color high-availability"></span>
-                <span>High availability</span>
-            </div>
-            <div class="legend-item">
-                <span class="legend-color medium-availability"></span>
-                <span>Medium availability</span>
-            </div>
-            <div class="legend-item">
-                <span class="legend-color low-availability"></span>
-                <span>Low availability</span>
-            </div>
-            <div class="legend-item">
-                <span class="legend-color no-availability"></span>
-                <span>No buses available</span>
-            </div>
-        `;
+        // const legend = document.createElement('div');
+        // legend.className = 'availability-legend mt-2';
+        // legend.innerHTML = `
+        //     <div class="legend-title">Bus Availability Legend</div>
+        //     <div class="legend-item">
+        //         <span class="legend-color high-availability"></span>
+        //         <span>High availability</span>
+        //     </div>
+        //     <div class="legend-item">
+        //         <span class="legend-color medium-availability"></span>
+        //         <span>Medium availability</span>
+        //     </div>
+        //     <div class="legend-item">
+        //         <span class="legend-color low-availability"></span>
+        //         <span>Low availability</span>
+        //     </div>
+        //     <div class="legend-item">
+        //         <span class="legend-color no-availability"></span>
+        //         <span>No buses available</span>
+        //     </div>
+        // `;
         
         // Assemble calendar
         calendarContainer.appendChild(calendarHeader);
         calendarContainer.appendChild(daysHeader);
         calendarContainer.appendChild(datesGrid);
         availabilityContainer.appendChild(calendarContainer);
-        availabilityContainer.appendChild(legend);
+        // availabilityContainer.appendChild(legend);
     }
 
     if (!isRebooking) return;
@@ -351,6 +373,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const currentDays = parseInt(daysElement.textContent);
         const newDays = currentDays + 1;
         
+        // Skip availability check if rebooking
+        if (isRebooking) {
+            daysElement.textContent = newDays;
+            localStorage.setItem("days", newDays);
+            if (allInputsFilled()) {
+                renderTotalCost();
+            }
+            return;
+        }
+        
         // Check availability for the new duration
         const dateOfTour = document.getElementById("date_of_tour").value;
         const numberOfBuses = parseInt(document.getElementById("number_of_buses").textContent);
@@ -359,10 +391,10 @@ document.addEventListener("DOMContentLoaded", function() {
             // Validate that buses are available for all days
             checkBusAvailabilityForDateRange(dateOfTour, newDays, numberOfBuses).then(available => {
                 if (available) {
-        daysElement.textContent = newDays;
-        localStorage.setItem("days", newDays);
-        if (allInputsFilled()) {
-            renderTotalCost();
+                    daysElement.textContent = newDays;
+                    localStorage.setItem("days", newDays);
+                    if (allInputsFilled()) {
+                        renderTotalCost();
                     }
                 } else {
                     // Show error that buses are not available for the extended duration
@@ -400,6 +432,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const currentBuses = parseInt(busesElement.textContent);
         const newBuses = currentBuses + 1;
         
+        // Skip availability check if rebooking
+        if (isRebooking) {
+            busesElement.textContent = newBuses;
+            localStorage.setItem("buses", newBuses);
+            if (allInputsFilled()) {
+                renderTotalCost();
+            }
+            return;
+        }
+        
         // Check if new number of buses is available on the selected date
         const dateOfTour = document.getElementById("date_of_tour").value;
         const numberOfDays = parseInt(document.getElementById("number_of_days").textContent);
@@ -407,10 +449,10 @@ document.addEventListener("DOMContentLoaded", function() {
         if (dateOfTour && numberOfDays > 0) {
             checkBusAvailabilityForDateRange(dateOfTour, numberOfDays, newBuses).then(available => {
                 if (available) {
-        busesElement.textContent = newBuses;
-        localStorage.setItem("buses", newBuses);
-        if (allInputsFilled()) {
-            renderTotalCost();
+                    busesElement.textContent = newBuses;
+                    localStorage.setItem("buses", newBuses);
+                    if (allInputsFilled()) {
+                        renderTotalCost();
                     }
                 } else {
                     // Show error that requested buses are not available
@@ -637,89 +679,81 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         return;
     }
     
-    // Check if we have a pre-validated result
-    const prevalidated = this.dataset.busesPrevalidated;
-    if (prevalidated === "false") {
-        console.log("Using pre-validated result: buses not available");
-        Swal.fire({
-            icon: 'error',
-            title: 'No Buses Available',
-            html: `There are not enough buses available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please choose a different date, reduce the number of days, or reduce the number of buses.`,
-            confirmButtonText: 'OK'
-        });
-        return;
-    }
+    // Skip bus availability check if this is a rebooking
+    let busesAvailable = false;
     
-    // Variable to track bus availability
-    let busesAvailable = prevalidated === "true";
-    
-    // Only check availability if not already pre-validated
-    if (prevalidated !== "true") {
-        try {
-            console.log("No pre-validation result, checking bus availability...");
-            
-            // Show loading indicator
-            await Swal.fire({
-                title: 'Checking bus availability...',
-                text: 'Please wait while we verify bus availability.',
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                showConfirmButton: false,
-                willOpen: () => {
-                    Swal.showLoading();
-                }
-            });
-            
-            // Clear any previous validation results
-            busesAvailable = false;
-            
-            // Check availability for the entire date range
-            console.log(`Checking availability for ${numberOfBuses} buses for ${numberOfDays} days starting ${dateOfTour}`);
-            busesAvailable = await checkBusAvailabilityForDateRange(dateOfTour, numberOfDays, numberOfBuses);
-            console.log("Buses available:", busesAvailable);
-            
-            // Close the loading indicator
-            Swal.close();
-            
-            if (!busesAvailable) {
-                console.log("No buses available, showing error");
-                Swal.fire({
-                    icon: 'error',
-                    title: 'No Buses Available',
-                    html: `Sorry, there are not enough buses available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please choose a different date, reduce the number of days, or reduce the number of buses.`,
-                    confirmButtonText: 'OK'
-                });
-                return; // Prevent form submission
-            }
-        } catch (error) {
-            console.error("Error checking bus availability:", error);
+    if (isRebooking) {
+        // For rebooking, we'll let the server handle availability check
+        console.log("Rebooking: Skipping frontend availability check");
+        busesAvailable = true;
+    } else {
+        // Check if we have a pre-validated result
+        const prevalidated = this.dataset.busesPrevalidated;
+        if (prevalidated === "false") {
+            console.log("Using pre-validated result: buses not available");
             Swal.fire({
                 icon: 'error',
-                title: 'Verification Error',
-                text: 'Unable to verify bus availability. Please try again later.',
-                timer: 3000,
-                timerProgressBar: true
+                title: 'No Buses Available',
+                html: `There are not enough buses available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please choose a different date, reduce the number of days, or reduce the number of buses.`,
+                confirmButtonText: 'OK'
             });
-            return; // Prevent form submission on error
+            return;
+        }
+        
+        // Only check availability if not already pre-validated and not rebooking
+        if (prevalidated !== "true") {
+            try {
+                console.log("No pre-validation result, checking bus availability...");
+                
+                // Show loading indicator
+                await Swal.fire({
+                    title: 'Checking bus availability...',
+                    text: 'Please wait while we verify bus availability.',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    showConfirmButton: false,
+                    willOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+                
+                // Check availability for the entire date range
+                console.log(`Checking availability for ${numberOfBuses} buses for ${numberOfDays} days starting ${dateOfTour}`);
+                busesAvailable = await checkBusAvailabilityForDateRange(dateOfTour, numberOfDays, numberOfBuses);
+                console.log("Buses available:", busesAvailable);
+                
+                // Close the loading indicator
+                Swal.close();
+                
+                if (!busesAvailable) {
+                    console.log("No buses available, showing error");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'No Buses Available',
+                        html: `Sorry, there are not enough buses available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please choose a different date, reduce the number of days, or reduce the number of buses.`,
+                        confirmButtonText: 'OK'
+                    });
+                    return; // Prevent form submission
+                }
+            } catch (error) {
+                console.error("Error checking bus availability:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Verification Error',
+                    text: 'Unable to verify bus availability. Please try again later.',
+                    timer: 3000,
+                    timerProgressBar: true
+                });
+                return; // Prevent form submission on error
+            }
+        } else {
+            busesAvailable = true;
         }
     }
     
-    // Double-check that buses are available before proceeding
-    if (!busesAvailable) {
-        console.error("Validation bypassed! Stopping submission.");
-        Swal.fire({
-            icon: 'error',
-            title: 'Validation Error',
-            text: 'Unable to verify bus availability. Please try again.',
-            timer: 3000,
-            timerProgressBar: true
-        });
-        return; // Extra safety check
-    }
+    // Continue with form submission only if buses are available or we're rebooking
+    console.log("Proceeding with form submission");
     
-    console.log("Buses are available, proceeding with form submission");
-    
-    // Continue with form submission only if buses are available
     const stops = Array.from(document.querySelectorAll(".added-stop")).map((stop, i) => stop.value).filter(stop => stop.trim() !== "");
     const destination = stops[stops.length - 1];
     stops.pop();
@@ -1065,6 +1099,12 @@ function daysBetween(start, end) {
  */
 async function checkBusAvailabilityForDate(date) {
     if (!date) return;
+    
+    // Skip availability check if rebooking
+    if (isRebooking) {
+        console.log("Rebooking: Skipping availability check for date change");
+        return;
+    }
     
     try {
         // Get current requested buses and days
@@ -1524,3 +1564,5 @@ const busAvailabilityCache = new Map();
 function getBusAvailabilityCacheKey(startDate, endDate) {
     return `${startDate}_to_${endDate}`;
 }
+
+

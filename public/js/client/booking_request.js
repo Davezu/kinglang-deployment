@@ -284,8 +284,9 @@ function initializeQuickFilters() {
                 // Reset to first page
                 currentPage = 1;
                 
-                // Check if it's a status filter or date filter
+                // Reset all filters first
                 if (this.dataset.status) {
+                    // Status filter clicked - clear other filters
                     filterStatus = this.dataset.status;
                     filterDate = null;
                     filterBalance = null;
@@ -296,14 +297,69 @@ function initializeQuickFilters() {
                         statusSelect.value = filterStatus;
                     }
                 } else if (this.dataset.date) {
+                    // Date filter clicked - we'll use "all" for status but specifically filter confirmed/completed bookings
                     filterDate = this.dataset.date;
+                    
+                    // For "upcoming" we only want confirmed bookings
+                    // For "past" we want all non-canceled/rejected bookings
+                    if (filterDate === "upcoming") {
+                        filterStatus = "confirmed"; // Only show confirmed bookings for upcoming
+                    } else {
+                        filterStatus = "all"; // For past, we'll filter at the server side
+                    }
+                    
                     filterBalance = null;
                     
-                    // Keep the current status if it's a date filter
+                    // Update the status select dropdown
+                    const statusSelect = document.getElementById("statusSelect");
+                    if (statusSelect) {
+                        statusSelect.value = filterStatus;
+                    }
                 } else if (this.dataset.balance) {
+                    // Balance filter clicked - set to confirmed or processing status only
                     filterBalance = this.dataset.balance;
+                    
+                    // For unpaid filter, we only want confirmed or processing bookings
+                    // not pending, canceled, or rejected
+                    if (filterBalance === "unpaid") {
+                        filterStatus = "confirmed"; // Default to confirmed, but we'll include processing in the API call
+                    } else {
+                        filterStatus = "all";
+                    }
+                    
                     filterDate = null;
+                    
+                    // Update the status select dropdown
+                    const statusSelect = document.getElementById("statusSelect");
+                    if (statusSelect) {
+                        statusSelect.value = filterStatus;
+                    }
                 }
+                
+                // Update the UI to show the current filter state
+                // const filterDescription = document.getElementById("currentFilter");
+                // if (filterDescription) {
+                //     let filterText = "";
+                    
+                //     if (this.dataset.status === "canceled") {
+                //         filterText = "Showing all canceled bookings";
+                //     } else if (this.dataset.date === "past") {
+                //         filterText = "Showing completed bookings";
+                //     } else if (this.dataset.date === "upcoming") {
+                //         filterText = "Showing upcoming bookings";
+                //     } else if (this.dataset.balance === "unpaid") {
+                //         filterText = "Showing bookings with outstanding balances";
+                //     } else if (this.dataset.status) {
+                //         filterText = `Showing ${this.dataset.status} bookings`;
+                //     }
+                    
+                //     if (filterText) {
+                //         filterDescription.textContent = filterText;
+                //         filterDescription.style.display = "block";
+                //     } else {
+                //         filterDescription.style.display = "none";
+                //     }
+                // }
                 
                 refreshBookings();
             });
@@ -317,8 +373,10 @@ if (statusSelectElement) {
     statusSelectElement.addEventListener("change", async function () {
         filterStatus = this.value;
         currentPage = 1; // Reset to first page when filter changes
-        filterDate = null; // Reset any date filters
-        filterBalance = null; // Reset any balance filters
+        
+        // Clear other filters when status filter is used
+        filterDate = null;
+        filterBalance = null;
         
         // Remove active class from all quick filter buttons
         document.querySelectorAll(".quick-filter").forEach(btn => btn.classList.remove("active"));
@@ -579,6 +637,12 @@ function resetFilters() {
     // Remove active class from all quick filter buttons
     document.querySelectorAll(".quick-filter").forEach(btn => btn.classList.remove("active"));
     
+    // Activate the "All" filter button if it exists
+    const allFilterBtn = document.querySelector('.quick-filter[data-status="all"]');
+    if (allFilterBtn) {
+        allFilterBtn.classList.add("active");
+    }
+    
     // Reset to table view if not already
     document.getElementById("tableView").checked = true;
     document.getElementById("tableViewContainer").style.display = "block";
@@ -586,8 +650,20 @@ function resetFilters() {
     document.getElementById("calendarViewContainer").style.display = "none";
     currentViewMode = "table";
     
-    // Refresh bookings
+    // Refresh bookings with cleared filters
     refreshBookings();
+    
+    // Show confirmation toast
+    Swal.fire({
+        icon: 'success',
+        title: 'Filters Reset',
+        text: 'All filters have been cleared.',
+        timer: 1500,
+        timerProgressBar: true,
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false
+    });
 }
 
 // Initialize calendar view
@@ -904,6 +980,16 @@ function renderPagination(pagination) {
 // Enhanced getAllBookings to support all filtering options
 async function getAllBookings(status, column, order, page = 1, limit = 10, search = "", dateFilter = null, balanceFilter = null) {
     try {
+        // Log the filter parameters for debugging
+        console.log("Filters:", { 
+            status, 
+            dateFilter, 
+            balanceFilter,
+            search,
+            page,
+            limit
+        });
+        
         const response = await fetch("/home/get-booking-requests", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -1331,18 +1417,18 @@ function addCardActions(container, booking) {
                 }
             });
         });
-        
+        // Print Invoice button (for all bookings)
+        const invoiceBtn = document.createElement("button");
+        invoiceBtn.className = "btn btn-sm btn-outline-info";
+        invoiceBtn.innerHTML = '<i class="bi bi-printer"></i> Invoice';
+        invoiceBtn.addEventListener("click", function() {
+            printInvoice(booking.booking_id);
+        });
+        container.appendChild(invoiceBtn);
         container.appendChild(cancelBtn);
     }
     
-    // Print Invoice button (for all bookings)
-    const invoiceBtn = document.createElement("button");
-    invoiceBtn.className = "btn btn-sm btn-outline-info";
-    invoiceBtn.innerHTML = '<i class="bi bi-printer"></i> Invoice';
-    invoiceBtn.addEventListener("click", function() {
-        printInvoice(booking.booking_id);
-    });
-    container.appendChild(invoiceBtn);
+    
 }
 
 // Open booking details modal
@@ -1452,7 +1538,7 @@ function openBookingDetailsModal(bookingId) {
                             </button>
                         ` : ''}
 
-                        ${["Confirmed", "Processing"].includes(booking.status) ? `
+                        ${["Confirmed", "Processing", "Completed", "Canceled"].includes(booking.status) ? `
                             <button class="btn btn-sm btn-outline-success print-invoice" data-booking-id="${booking.booking_id}">
                                 <i class="bi bi-printer"></i> Print Invoice
                             </button>
@@ -1530,11 +1616,6 @@ function openBookingDetailsModal(bookingId) {
                     },
                     footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
                     showCancelButton: true,
-                    cancelButtonText: 'Cancel',
-                    confirmButtonText: 'Confirm',
-                    confirmButtonColor: '#28a745',
-                    cancelButtonColor: '#6c757d',
-                    showCloseButton: true,
                 }).then(result => {
                     if (result.isConfirmed) {
                         const reason = result.value;
@@ -1586,8 +1667,9 @@ function actionCell(booking) {
     const isConfirmed = booking.status === 'Confirmed';
     const isCanceled = booking.status === 'Canceled';
     const isRejected = booking.status === 'Rejected';
+    const isCompleted = booking.status === 'Completed';
     const canBeCanceled = isPending || isProcessing;
-    const canBePaid = !isRejected && !isCanceled && !isPending && parseFloat(booking.balance) > 0;
+    const canBePaid = !isRejected && !isCanceled && !isPending && !isProcessing  && !isFullyPaid && !isCompleted && parseFloat(booking.balance) > 0;
     const hasCompletedPayment = parseFloat(booking.balance) <= 0 && (isConfirmed || isProcessing);
 
     const buttonSection = document.createElement('div');
@@ -1753,3 +1835,18 @@ function printInvoice(bookingId) {
 function printContract(bookingId) {
     window.open(`/home/print-contract/${bookingId}`, '_blank');
 }
+
+fetch('/admin/check-payment-deadlines')
+  .then(response => response.json())
+  .then(data => {
+    // Optionally handle the result
+    console.log(data);
+  });
+
+// Also check for completed bookings
+fetch('/admin/check-booking-completions')
+.then(response => response.json())
+.then(data => {
+  // Optionally handle the result
+  console.log(data);
+});

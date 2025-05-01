@@ -1,0 +1,246 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Pila, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJkTevYAXilzMR_Gcpo2vT3zM",
+         "reference" : "ChIJkTevYAXilzMR_Gcpo2vT3zM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pila",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pila"
+            },
+            {
+               "offset" : 6,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 14,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Pila laguna, Pila, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJs-8GikPjlzMRVoilmblN7_I",
+         "reference" : "ChIJs-8GikPjlzMRVoilmblN7_I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pila laguna",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pila, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pila laguna"
+            },
+            {
+               "offset" : 13,
+               "value" : "Pila"
+            },
+            {
+               "offset" : 19,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "school",
+            "establishment",
+            "secondary_school"
+         ]
+      },
+      {
+         "description" : "Pila Town Plaza, Pila, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv2oTNgXilzMRnP7NiDth2Zw",
+         "reference" : "ChIJv2oTNgXilzMRnP7NiDth2Zw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pila Town Plaza",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pila, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pila Town Plaza"
+            },
+            {
+               "offset" : 17,
+               "value" : "Pila"
+            },
+            {
+               "offset" : 23,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 31,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "premise",
+            "park",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "PILA-PILA Binangonan, Binangonan, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJFZLKoD3DlzMRlNfGNbKGnYU",
+         "reference" : "ChIJFZLKoD3DlzMRlNfGNbKGnYU",
+         "structured_formatting" : 
+         {
+            "main_text" : "PILA-PILA Binangonan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Binangonan, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "PILA-PILA Binangonan"
+            },
+            {
+               "offset" : 22,
+               "value" : "Binangonan"
+            },
+            {
+               "offset" : 34,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "travel_agency"
+         ]
+      },
+      {
+         "description" : "Pila Pila, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJybGxogXDlzMRZjQfUYBxVfk",
+         "reference" : "ChIJybGxogXDlzMRZjQfUYBxVfk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pila Pila",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pila Pila"
+            },
+            {
+               "offset" : 11,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "sublocality_level_2",
+            "geocode",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

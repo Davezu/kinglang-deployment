@@ -251,7 +251,15 @@ function showBookingDetails(bookingId) {
                     <div class="row">
                         <div class="col-md-6">
                             <p class="mb-2"><strong>Pickup Point:</strong> ${booking.pickup_point || 'N/A'}</p>
-                            <p class="mb-2"><strong>Destination:</strong> ${booking.destination || 'N/A'}</p>
+                            <p class="mb-2"><strong>Destination:</strong> 
+                                ${booking.stops && booking.stops.length > 0 ? 
+                                    `${booking.stops.map(stop => 
+                                        `<span>${stop.location}</span>`
+                                    ).join('<i class="bi bi-arrow-right mx-1 text-danger"></i>')} 
+                                    <i class="bi bi-arrow-right mx-1 text-danger"></i>` 
+                                : ''}
+                                <span>${booking.destination}</span>
+                            </p>
                         </div>
                         <div class="col-md-6">
                             <p class="mb-2"><strong>Tour Date:</strong> ${formatDate(booking.date_of_tour)}${booking.end_of_tour ? ` to ${formatDate(booking.end_of_tour)}` : ''}</p>

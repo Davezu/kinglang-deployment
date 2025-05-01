@@ -49,11 +49,11 @@
          ],
          "types" : 
          [
-            "bakery",
             "establishment",
-            "food",
             "store",
-            "point_of_interest"
+            "point_of_interest",
+            "bakery",
+            "food"
          ]
       },
       {
@@ -108,9 +108,9 @@
          ],
          "types" : 
          [
+            "point_of_interest",
             "establishment",
-            "lodging",
-            "point_of_interest"
+            "lodging"
          ]
       },
       {
@@ -258,8 +258,8 @@
          "types" : 
          [
             "restaurant",
-            "establishment",
             "point_of_interest",
+            "establishment",
             "food"
          ]
       }

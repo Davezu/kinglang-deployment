@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
+            "geocode",
             "political",
-            "locality",
-            "geocode"
+            "locality"
          ]
       },
       {
@@ -82,9 +82,9 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
-            "administrative_area_level_1"
+            "administrative_area_level_1",
+            "political"
          ]
       },
       {
@@ -131,9 +131,9 @@
          ],
          "types" : 
          [
+            "establishment",
             "point_of_interest",
-            "airport",
-            "establishment"
+            "airport"
          ]
       },
       {
@@ -188,11 +188,11 @@
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest",
             "city_hall",
             "local_government_office",
-            "tourist_attraction"
+            "establishment",
+            "tourist_attraction",
+            "point_of_interest"
          ]
       },
       {
@@ -247,11 +247,11 @@
          ],
          "types" : 
          [
-            "zoo",
-            "establishment",
             "point_of_interest",
-            "park",
-            "tourist_attraction"
+            "tourist_attraction",
+            "establishment",
+            "zoo",
+            "park"
          ]
       }
    ],

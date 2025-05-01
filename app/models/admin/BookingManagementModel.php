@@ -98,8 +98,14 @@ class BookingManagementModel {
 
     public function confirmBooking($booking_id, $discount = 0) {
         try {
-            $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Confirmed', confirmed_at = NOW() WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $booking_id]);
+            // Set the payment deadline to 2 days from now
+            $payment_deadline = date('Y-m-d H:i:s', strtotime('+2 days'));
+            
+            $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Confirmed', confirmed_at = NOW(), payment_deadline = :payment_deadline WHERE booking_id = :booking_id");
+            $stmt->execute([
+                ":booking_id" => $booking_id,
+                ":payment_deadline" => $payment_deadline
+            ]);
             
             // Get booking information
             $bookingInfo = $this->getBooking($booking_id);

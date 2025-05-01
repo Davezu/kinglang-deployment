@@ -919,6 +919,7 @@ class BookingController {
                     WHERE 
                         -- Only consider bookings with active statuses
                         (bo.status = 'Confirmed' OR bo.status = 'Processing')
+                        AND (bo.is_rebooked = 0)
                         -- Date range check
                         AND (bo.date_of_tour <= :current_date AND bo.end_of_tour >= :current_date)
                 ");

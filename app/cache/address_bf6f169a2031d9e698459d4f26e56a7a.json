@@ -1,0 +1,250 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Cansinala, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJnQZngwZWljMRsMG-YIf19KI",
+         "reference" : "ChIJnQZngwZWljMRsMG-YIf19KI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cansinala",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cansinala"
+            },
+            {
+               "offset" : 11,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality",
+            "political",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "cansinala barangay hall, Apalit, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ3c5hZgBXljMRqtnc_5NjuyY",
+         "reference" : "ChIJ3c5hZgBXljMRqtnc_5NjuyY",
+         "structured_formatting" : 
+         {
+            "main_text" : "cansinala barangay hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Apalit, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "cansinala barangay hall"
+            },
+            {
+               "offset" : 25,
+               "value" : "Apalit"
+            },
+            {
+               "offset" : 33,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 43,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Cansinala, Apalit, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EihDYW5zaW5hbGEsIEFwYWxpdCwgUGFtcGFuZ2EsIFBoaWxpcHBpbmVzIi4qLAoUChIJCQGwC6H4ljMR2I7eH3yQwXESFAoSCSNezEFLVpYzEVRIc7Dptbem",
+         "reference" : "EihDYW5zaW5hbGEsIEFwYWxpdCwgUGFtcGFuZ2EsIFBoaWxpcHBpbmVzIi4qLAoUChIJCQGwC6H4ljMR2I7eH3yQwXESFAoSCSNezEFLVpYzEVRIc7Dptbem",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cansinala",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Apalit, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cansinala"
+            },
+            {
+               "offset" : 11,
+               "value" : "Apalit"
+            },
+            {
+               "offset" : 19,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 29,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Cansinala National High School, Apalit, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJTRSzU6f4ljMRUMP490foeVE",
+         "reference" : "ChIJTRSzU6f4ljMRUMP490foeVE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cansinala National High School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Apalit, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cansinala National High School"
+            },
+            {
+               "offset" : 32,
+               "value" : "Apalit"
+            },
+            {
+               "offset" : 40,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 50,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Cansinala Riverside Resort & Events Place, purok5, Apalit, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHamGk7D5ljMRTctAqy49HAs",
+         "reference" : "ChIJHamGk7D5ljMRTctAqy49HAs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cansinala Riverside Resort & Events Place",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "purok5, Apalit, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cansinala Riverside Resort & Events Place"
+            },
+            {
+               "offset" : 43,
+               "value" : "purok5"
+            },
+            {
+               "offset" : 51,
+               "value" : "Apalit"
+            },
+            {
+               "offset" : 59,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "tourist_attraction"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

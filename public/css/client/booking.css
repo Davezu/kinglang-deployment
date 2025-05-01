@@ -185,12 +185,18 @@ input {
     position: relative;
 }
 
+/* Bus Availability Button and Calendar Container */
+.bus-availability-button-container {
+    position: relative;
+    width: 100%;
+}
+
 /* Bus Availability Calendar Styles */
 .bus-availability-container {
     position: absolute;
     top: calc(100% + 5px);
-    left: -10%;
-    right: -10%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -199,8 +205,9 @@ input {
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     margin-top: 0;
     max-height: 400px;
-    overflow-y: auto;
-    width: 120%;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 100%;
 }
 
 /* Scrollbar styling for the bus availability container */
@@ -253,7 +260,7 @@ input {
 .calendar-dates {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 6px;
+    gap: 8px;
     width: 100%;
 }
 
@@ -263,16 +270,17 @@ input {
     border-radius: 6px;
     background-color: #f8f9fa;
     text-align: center;
-    padding: 6px 3px;
+    padding: 4px 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
-    min-width: 0; /* Prevents overflow */
-    overflow: hidden;
+    min-width: 42px;
+    overflow: visible;
     box-sizing: border-box;
     width: 100%;
+    z-index: 1000;
 }
 
 .calendar-date:hover {
@@ -292,21 +300,23 @@ input {
     font-weight: 500;
     font-size: 1rem;
     color: #333;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
 }
 
 .availability-indicator {
     font-size: 0.75rem;
     font-weight: 600;
-    border-radius: 10px;
-    padding: 2px 4px;
+    border-radius: 12px;
+    padding: 1px 4px;
     margin-top: 3px;
     color: white;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    min-width: 80%;
+    overflow: visible;
+    text-overflow: clip;
+    max-width: none;
+    min-width: auto;
+    width: auto;
+    display: inline-block;
 }
 
 .high-availability {

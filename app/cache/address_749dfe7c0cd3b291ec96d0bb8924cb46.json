@@ -41,8 +41,8 @@
          ],
          "types" : 
          [
-            "locality",
             "political",
+            "locality",
             "geocode"
          ]
       },
@@ -86,8 +86,8 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
+            "political",
             "locality"
          ]
       },
@@ -136,6 +136,56 @@
          ]
       },
       {
+         "description" : "Malate, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHwpokyrKlzMRhU-mRz5cIcc",
+         "reference" : "ChIJHwpokyrKlzMRhU-mRz5cIcc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malate",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malate"
+            },
+            {
+               "offset" : 8,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 16,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_1",
+            "political",
+            "geocode",
+            "sublocality"
+         ]
+      },
+      {
          "description" : "Malico, San Nicolas, Pangasinan, Philippines",
          "matched_substrings" : 
          [
@@ -179,55 +229,10 @@
          ],
          "types" : 
          [
-            "sublocality",
-            "political",
             "geocode",
-            "sublocality_level_2"
-         ]
-      },
-      {
-         "description" : "Malaybalay, Bukidnon, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 3,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJSWIHgDyq_zIRVxYbf57JdIs",
-         "reference" : "ChIJSWIHgDyq_zIRVxYbf57JdIs",
-         "structured_formatting" : 
-         {
-            "main_text" : "Malaybalay",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 3,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Bukidnon, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Malaybalay"
-            },
-            {
-               "offset" : 12,
-               "value" : "Bukidnon"
-            },
-            {
-               "offset" : 22,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "locality",
-            "political",
-            "geocode"
+            "sublocality_level_2",
+            "sublocality",
+            "political"
          ]
       }
    ],

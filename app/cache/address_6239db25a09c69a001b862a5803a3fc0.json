@@ -1,0 +1,244 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "NAIA Terminal 3, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbW6OtMvOlzMRn6M0scencg8",
+         "reference" : "ChIJbW6OtMvOlzMRn6M0scencg8",
+         "structured_formatting" : 
+         {
+            "main_text" : "NAIA Terminal 3",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "NAIA Terminal 3"
+            },
+            {
+               "offset" : 17,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Naic, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJl7qvKkqHvTMRXhTnUD9iHCU",
+         "reference" : "ChIJl7qvKkqHvTMRXhTnUD9iHCU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Naic",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Naic"
+            },
+            {
+               "offset" : 6,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 14,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "NAIA Terminal 2, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJWWdJG8fOlzMRDMSOyWZnDWs",
+         "reference" : "ChIJWWdJG8fOlzMRDMSOyWZnDWs",
+         "structured_formatting" : 
+         {
+            "main_text" : "NAIA Terminal 2",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "NAIA Terminal 2"
+            },
+            {
+               "offset" : 17,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "NAIA Terminal 3 Departure Area Ramp, Pasay, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EkVOQUlBIFRlcm1pbmFsIDMgRGVwYXJ0dXJlIEFyZWEgUmFtcCwgUGFzYXksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgmfb86Ty86XMxEQ3EsnS6T2DhIUChIJbeLv-EnJlzMRYGYlOUfvTJU",
+         "reference" : "EkVOQUlBIFRlcm1pbmFsIDMgRGVwYXJ0dXJlIEFyZWEgUmFtcCwgUGFzYXksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgmfb86Ty86XMxEQ3EsnS6T2DhIUChIJbeLv-EnJlzMRYGYlOUfvTJU",
+         "structured_formatting" : 
+         {
+            "main_text" : "NAIA Terminal 3 Departure Area Ramp",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pasay, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "NAIA Terminal 3 Departure Area Ramp"
+            },
+            {
+               "offset" : 37,
+               "value" : "Pasay"
+            },
+            {
+               "offset" : 44,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "NAIA Terminal 1 - Parking A Lot, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJTd1aPrzOlzMR4dKg-Tl6_rA",
+         "reference" : "ChIJTd1aPrzOlzMR4dKg-Tl6_rA",
+         "structured_formatting" : 
+         {
+            "main_text" : "NAIA Terminal 1 - Parking A Lot",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "NAIA Terminal 1 - Parking A Lot"
+            },
+            {
+               "offset" : 33,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 44,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "parking",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

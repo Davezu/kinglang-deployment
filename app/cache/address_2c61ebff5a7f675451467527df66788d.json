@@ -1,0 +1,240 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Candelaria, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJOdJJRbVHvTMRZrMawaFjfzo",
+         "reference" : "ChIJOdJJRbVHvTMRZrMawaFjfzo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Candelaria",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Candelaria"
+            },
+            {
+               "offset" : 12,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Canyon Cove Hotel & Spa, Nasugbu, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJO7a4zlmRvTMRDzdroyG5pJ4",
+         "reference" : "ChIJO7a4zlmRvTMRDzdroyG5pJ4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Canyon Cove Hotel & Spa",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Nasugbu, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Canyon Cove Hotel & Spa"
+            },
+            {
+               "offset" : 25,
+               "value" : "Nasugbu"
+            },
+            {
+               "offset" : 34,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Candon, Ilocos Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJzWl0Lu4ZjjMRBxHrcaizBwQ",
+         "reference" : "ChIJzWl0Lu4ZjjMRBxHrcaizBwQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Candon",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ilocos Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Candon"
+            },
+            {
+               "offset" : 8,
+               "value" : "Ilocos Sur"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Canlubang, Calamba, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJj2Eib2B7vTMRhhPqcf9CDEU",
+         "reference" : "ChIJj2Eib2B7vTMRhhPqcf9CDEU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Canlubang",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Calamba, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Canlubang"
+            },
+            {
+               "offset" : 11,
+               "value" : "Calamba"
+            },
+            {
+               "offset" : 20,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 28,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "geocode",
+            "political",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Candaba, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJDSLwyYr8ljMRrjLADF_Nbco",
+         "reference" : "ChIJDSLwyYr8ljMRrjLADF_Nbco",
+         "structured_formatting" : 
+         {
+            "main_text" : "Candaba",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Candaba"
+            },
+            {
+               "offset" : 9,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 19,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

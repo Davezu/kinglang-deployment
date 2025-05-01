@@ -1,5 +1,5 @@
 <?php 
-require_client_auth(); // Use helper function
+require_admin_auth(); // Use helper function
 
 // Include the settings helper functions
 require_once __DIR__ . '/../../../config/settings.php';

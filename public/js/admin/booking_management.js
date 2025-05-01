@@ -1521,3 +1521,18 @@ function getPaymentStatusTextClass(status) {
             return 'secondary';
     }
 }
+
+fetch('/admin/check-payment-deadlines')
+  .then(response => response.json())
+  .then(data => {
+    // Optionally handle the result
+    console.log(data);
+  });
+
+// Also check for completed bookings
+fetch('/admin/check-booking-completions')
+  .then(response => response.json())
+  .then(data => {
+    // Optionally handle the result
+    console.log(data);
+  });

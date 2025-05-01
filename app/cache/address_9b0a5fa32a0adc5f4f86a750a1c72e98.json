@@ -1,0 +1,266 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "AEE Computer Online Network Inc., Legazpi Port District, Legazpi City, Albay, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJmWOFdIABoTMRCkHuqIXCXbQ",
+         "reference" : "ChIJmWOFdIABoTMRCkHuqIXCXbQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "AEE Computer Online Network Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Legazpi Port District, Legazpi City, Albay, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "AEE Computer Online Network Inc."
+            },
+            {
+               "offset" : 34,
+               "value" : "Legazpi Port District"
+            },
+            {
+               "offset" : 57,
+               "value" : "Legazpi City"
+            },
+            {
+               "offset" : 71,
+               "value" : "Albay"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "store",
+            "establishment",
+            "electronics_store"
+         ]
+      },
+      {
+         "description" : "AEEL Residence, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJg3-2NITJlzMRAqSvuHLdyUw",
+         "reference" : "ChIJg3-2NITJlzMRAqSvuHLdyUw",
+         "structured_formatting" : 
+         {
+            "main_text" : "AEEL Residence",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "AEEL Residence"
+            },
+            {
+               "offset" : 16,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "AeeZee's Food HUB, Felix Gorriceta Jr. Avenue, Pavia, Iloilo, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJWVhqhaH7rjMRR68lxLVhRUQ",
+         "reference" : "ChIJWVhqhaH7rjMRR68lxLVhRUQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "AeeZee's Food HUB",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Felix Gorriceta Jr. Avenue, Pavia, Iloilo, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "AeeZee's Food HUB"
+            },
+            {
+               "offset" : 19,
+               "value" : "Felix Gorriceta Jr. Avenue"
+            },
+            {
+               "offset" : 47,
+               "value" : "Pavia"
+            },
+            {
+               "offset" : 54,
+               "value" : "Iloilo"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "food"
+         ]
+      },
+      {
+         "description" : "Aeeyyss Piso Net, Dayas, Talisay, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ43KACwCdqTMR2yofTNHxB4Y",
+         "reference" : "ChIJ43KACwCdqTMR2yofTNHxB4Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "Aeeyyss Piso Net",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dayas, Talisay, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Aeeyyss Piso Net"
+            },
+            {
+               "offset" : 18,
+               "value" : "Dayas"
+            },
+            {
+               "offset" : 25,
+               "value" : "Talisay"
+            },
+            {
+               "offset" : 34,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Aeea Printing Services, Brgy, Plaridel, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJMXPQQ4WrlzMRPOK1t5d27Oo",
+         "reference" : "ChIJMXPQQ4WrlzMRPOK1t5d27Oo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Aeea Printing Services",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Brgy, Plaridel, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Aeea Printing Services"
+            },
+            {
+               "offset" : 24,
+               "value" : "Brgy"
+            },
+            {
+               "offset" : 30,
+               "value" : "Plaridel"
+            },
+            {
+               "offset" : 40,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "store",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

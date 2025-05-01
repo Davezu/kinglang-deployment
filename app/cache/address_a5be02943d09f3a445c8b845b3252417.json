@@ -94,8 +94,8 @@
          ],
          "types" : 
          [
-            "geocode",
-            "route"
+            "route",
+            "geocode"
          ]
       },
       {
@@ -150,10 +150,10 @@
          ],
          "types" : 
          [
-            "establishment",
             "hospital",
+            "health",
             "point_of_interest",
-            "health"
+            "establishment"
          ]
       },
       {
@@ -204,10 +204,10 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment",
             "city_hall",
-            "local_government_office"
+            "point_of_interest",
+            "local_government_office",
+            "establishment"
          ]
       },
       {

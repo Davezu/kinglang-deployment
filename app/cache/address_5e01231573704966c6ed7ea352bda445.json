@@ -1,0 +1,263 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "VAG Bldg., Ortigas Avenue, San Juan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJm6EzGti3lzMRSPxSW-PxvzU",
+         "reference" : "ChIJm6EzGti3lzMRSPxSW-PxvzU",
+         "structured_formatting" : 
+         {
+            "main_text" : "VAG Bldg.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ortigas Avenue, San Juan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "VAG Bldg."
+            },
+            {
+               "offset" : 11,
+               "value" : "Ortigas Avenue"
+            },
+            {
+               "offset" : 27,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 37,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Vagabond MMA Studio, J. Alcantara Street, Cebu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJezo2hVWZqTMRcmuaohbnK_o",
+         "reference" : "ChIJezo2hVWZqTMRcmuaohbnK_o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Vagabond MMA Studio",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "J. Alcantara Street, Cebu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Vagabond MMA Studio"
+            },
+            {
+               "offset" : 21,
+               "value" : "J. Alcantara Street"
+            },
+            {
+               "offset" : 42,
+               "value" : "Cebu City"
+            },
+            {
+               "offset" : 53,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "health",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Vagallon Street, San Enrique, Negros Occidental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjxWYWdhbGxvbiBTdHJlZXQsIFNhbiBFbnJpcXVlLCBOZWdyb3MgT2NjaWRlbnRhbCwgUGhpbGlwcGluZXMiLiosChQKEgnxUYxhK7quMxFfYZIYjDBb9xIUChIJY-q2H4i5rjMRbX7UAml9CDc",
+         "reference" : "EjxWYWdhbGxvbiBTdHJlZXQsIFNhbiBFbnJpcXVlLCBOZWdyb3MgT2NjaWRlbnRhbCwgUGhpbGlwcGluZXMiLiosChQKEgnxUYxhK7quMxFfYZIYjDBb9xIUChIJY-q2H4i5rjMRbX7UAml9CDc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Vagallon Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Enrique, Negros Occidental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Vagallon Street"
+            },
+            {
+               "offset" : 17,
+               "value" : "San Enrique"
+            },
+            {
+               "offset" : 30,
+               "value" : "Negros Occidental"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "VAG Complex, Patubig Road, Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-0PDAnSylzMRB9JwOAXPN68",
+         "reference" : "ChIJ-0PDAnSylzMRB9JwOAXPN68",
+         "structured_formatting" : 
+         {
+            "main_text" : "VAG Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Patubig Road, Marilao, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "VAG Complex"
+            },
+            {
+               "offset" : 13,
+               "value" : "Patubig Road"
+            },
+            {
+               "offset" : 27,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 36,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "VAG Trading, Manalili Street, Cebu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJdXWdYOKbqTMRQ9upo8eDCjQ",
+         "reference" : "ChIJdXWdYOKbqTMRQ9upo8eDCjQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "VAG Trading",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manalili Street, Cebu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "VAG Trading"
+            },
+            {
+               "offset" : 13,
+               "value" : "Manalili Street"
+            },
+            {
+               "offset" : 30,
+               "value" : "Cebu City"
+            },
+            {
+               "offset" : 41,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

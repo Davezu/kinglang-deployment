@@ -97,8 +97,8 @@
          ],
          "types" : 
          [
-            "establishment",
             "point_of_interest",
+            "establishment",
             "university"
          ]
       },
@@ -146,10 +146,10 @@
          ],
          "types" : 
          [
-            "geocode",
-            "sublocality_level_2",
+            "political",
             "sublocality",
-            "political"
+            "geocode",
+            "sublocality_level_2"
          ]
       },
       {
@@ -196,9 +196,9 @@
          ],
          "types" : 
          [
-            "school",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "school"
          ]
       },
       {
@@ -246,9 +246,9 @@
          "types" : 
          [
             "sublocality_level_2",
-            "political",
             "geocode",
-            "sublocality"
+            "sublocality",
+            "political"
          ]
       }
    ],

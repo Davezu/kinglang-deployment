@@ -1,0 +1,258 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Metro manial, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 6
+            }
+         ],
+         "place_id" : "ChIJsQkqVgC3lzMR0lhGUiD-rGI",
+         "reference" : "ChIJsQkqVgC3lzMR0lhGUiD-rGI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Metro manial",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 6
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Metro manial"
+            },
+            {
+               "offset" : 14,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 22,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Manialac inn, San Carlos City, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJr5AXQABbkTMR0sbapi7fKuY",
+         "reference" : "ChIJr5AXQABbkTMR0sbapi7fKuY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manialac inn",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Carlos City, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manialac inn"
+            },
+            {
+               "offset" : 14,
+               "value" : "San Carlos City"
+            },
+            {
+               "offset" : 31,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 43,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Manialong, Aliaga, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAzSSOrvXljMRzzSxBhPYQto",
+         "reference" : "ChIJAzSSOrvXljMRzzSxBhPYQto",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manialong",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Aliaga, Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manialong"
+            },
+            {
+               "offset" : 11,
+               "value" : "Aliaga"
+            },
+            {
+               "offset" : 19,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Mañalac Dental Clinic, Rizal Avenue, Cauayan City, Isabela, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 21,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJC-UaGSVRhTMROM2N7fBeujc",
+         "reference" : "ChIJC-UaGSVRhTMROM2N7fBeujc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mañalac Dental Clinic",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 21,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Rizal Avenue, Cauayan City, Isabela, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mañalac Dental Clinic"
+            },
+            {
+               "offset" : 23,
+               "value" : "Rizal Avenue"
+            },
+            {
+               "offset" : 37,
+               "value" : "Cauayan City"
+            },
+            {
+               "offset" : 51,
+               "value" : "Isabela"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "dentist",
+            "point_of_interest",
+            "health"
+         ]
+      },
+      {
+         "description" : "MCCID College of Technology, Barangay Silangan Road, San Mateo, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 27,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ89ARQnu5lzMR1HYEQjehG7o",
+         "reference" : "ChIJ89ARQnu5lzMR1HYEQjehG7o",
+         "structured_formatting" : 
+         {
+            "main_text" : "MCCID College of Technology",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 27,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Barangay Silangan Road, San Mateo, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "MCCID College of Technology"
+            },
+            {
+               "offset" : 29,
+               "value" : "Barangay Silangan Road"
+            },
+            {
+               "offset" : 53,
+               "value" : "San Mateo"
+            },
+            {
+               "offset" : 64,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "school"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

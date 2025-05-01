@@ -93,10 +93,10 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "establishment",
-            "cafe",
-            "food"
+            "point_of_interest",
+            "food",
+            "cafe"
          ]
       },
       {
@@ -147,9 +147,54 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "lodging",
             "establishment",
-            "lodging"
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAe2gZALJlzMRzsoweNVuBis",
+         "reference" : "ChIJAe2gZALJlzMRzsoweNVuBis",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makati",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 8,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
          ]
       },
       {
@@ -198,52 +243,7 @@
          [
             "sublocality",
             "geocode",
-            "political",
-            "sublocality_level_2"
-         ]
-      },
-      {
-         "description" : "Makati, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 6,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJAe2gZALJlzMRzsoweNVuBis",
-         "reference" : "ChIJAe2gZALJlzMRzsoweNVuBis",
-         "structured_formatting" : 
-         {
-            "main_text" : "Makati",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 6,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Makati"
-            },
-            {
-               "offset" : 8,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 22,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "locality",
-            "geocode",
+            "sublocality_level_2",
             "political"
          ]
       }

@@ -1,0 +1,231 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Cabanatuan City, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJy0wvZSEplzMREXHTuoag3D0",
+         "reference" : "ChIJy0wvZSEplzMREXHTuoag3D0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabanatuan City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabanatuan City"
+            },
+            {
+               "offset" : 17,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 30,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Cabuyao, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJN1L8f4TYlzMRZZtXH0X2-u4",
+         "reference" : "ChIJN1L8f4TYlzMRZZtXH0X2-u4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabuyao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabuyao"
+            },
+            {
+               "offset" : 9,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Cabangan, Zambales, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ65I_F58plDMR3cwd4FJAZjo",
+         "reference" : "ChIJ65I_F58plDMR3cwd4FJAZjo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabangan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Zambales, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabangan"
+            },
+            {
+               "offset" : 10,
+               "value" : "Zambales"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Cabiao, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8UPU1KrhljMRvr2D9pskv2w",
+         "reference" : "ChIJ8UPU1KrhljMRvr2D9pskv2w",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabiao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabiao"
+            },
+            {
+               "offset" : 8,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Cabadbaran City, Agusan Del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJx0EYoji9ATMR0ZL7vomm5x0",
+         "reference" : "ChIJx0EYoji9ATMR0ZL7vomm5x0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cabadbaran City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Agusan Del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cabadbaran City"
+            },
+            {
+               "offset" : 17,
+               "value" : "Agusan Del Norte"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      }
+   ],
+   "status" : "OK"
+}
