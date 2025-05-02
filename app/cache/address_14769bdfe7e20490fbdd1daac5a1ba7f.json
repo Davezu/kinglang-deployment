@@ -37,8 +37,8 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
+            "political",
             "administrative_area_level_2"
          ]
       },
@@ -86,9 +86,9 @@
          ],
          "types" : 
          [
+            "tourist_attraction",
             "establishment",
-            "point_of_interest",
-            "tourist_attraction"
+            "point_of_interest"
          ]
       },
       {
@@ -135,8 +135,8 @@
          ],
          "types" : 
          [
-            "route",
-            "geocode"
+            "geocode",
+            "route"
          ]
       },
       {

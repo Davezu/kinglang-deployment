@@ -18,8 +18,7 @@ class UserManagementController {
             if (!isset($_SESSION['role'])) {
                 header('Location: /admin/login');
                 exit();
-            } else if (isset($_SESSION['role']) && 
-                      ($_SESSION['role'] !== 'Super Admin' && $_SESSION['role'] !== 'Admin')) {
+            } else if (isset($_SESSION['role']) && $_SESSION['role'] !== 'Super Admin') {
                 header('Location: /admin/login');
                 exit();
             }

@@ -154,5 +154,36 @@ class ClientAuthModel {
             return "Database error: $e";
         }
     }
+
+    /**
+     * Update password for a logged-in user (requires current password verification)
+     */
+    public function updatePasswordForLoggedInUser($user_id, $currentPassword, $newPassword) {
+        try {
+            // Fetch current hashed password
+            $stmt = $this->conn->prepare("SELECT password FROM users WHERE user_id = :user_id");
+            $stmt->execute([':user_id' => $user_id]);
+            $hashedPassword = $stmt->fetchColumn();
+            if (!$hashedPassword) {
+                return ["success" => false, "message" => "User not found."];
+            }
+            // Verify current password
+            if (!password_verify($currentPassword, $hashedPassword)) {
+                return ["success" => false, "message" => "Current password is incorrect."];
+            }
+            // Validate new password
+            if (!$this->isValidPassword($newPassword)) {
+                return ["success" => false, "message" => "New password does not meet requirements."];
+            }
+            // Hash new password
+            $newHashed = password_hash($newPassword, PASSWORD_BCRYPT);
+            // Update password in DB
+            $stmt = $this->conn->prepare("UPDATE users SET password = :password WHERE user_id = :user_id");
+            $stmt->execute([':password' => $newHashed, ':user_id' => $user_id]);
+            return ["success" => true, "message" => "Password updated successfully."];
+        } catch (PDOException $e) {
+            return ["success" => false, "message" => "Database error: " . $e->getMessage()];
+        }
+    }
 }
 ?>

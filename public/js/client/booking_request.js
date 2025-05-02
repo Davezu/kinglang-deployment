@@ -1491,25 +1491,28 @@ function openBookingDetailsModal(bookingId) {
                     </div>
                 </div>
                 
-                <div class="booking-detail-section mb-3">
-                    <h6 class="border-bottom pb-2"><i class="bi bi-cash-coin me-2"></i>Payment Information</h6>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p><strong>Total Cost:</strong> ${formatNumber(booking.total_cost)}</p>
-                            <p><strong>Amount Paid:</strong> ${formatNumber(booking.total_cost - booking.balance)}</p>
-                            <p><strong>Balance:</strong> ${formatNumber(booking.balance)}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>Payment Status:</strong> 
-                                <span class="badge ${parseFloat(booking.balance) == 0.0 ? 'bg-success' : parseFloat(booking.balance) >= parseFloat(booking.total_cost) ? 'bg-danger' : 'bg-warning'} p-2">
-                                    ${booking.payment_status}
-                                </span>
-                            </p>
-                            <p><strong>Last Payment Date:</strong> ${payment[0]?.payment_date ? formatDate(payment[0]?.payment_date) : 'No payments yet'}</p>
-                            <p><strong>Payment Method:</strong> ${payment[0]?.payment_method || 'N/A'}</p>
+                ${['Paid', 'Partially Paid'].includes(booking.payment_status) ? `
+                     <div class="booking-detail-section mb-3">
+                        <h6 class="border-bottom pb-2"><i class="bi bi-cash-coin me-2"></i>Payment Information</h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Total Cost:</strong> ${formatNumber(booking.total_cost)}</p>
+                                <p><strong>Amount Paid:</strong> ${formatNumber(booking.total_cost - booking.balance)}</p>
+                                <p><strong>Balance:</strong> ${formatNumber(booking.balance)}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Payment Status:</strong> 
+                                    <span class="badge ${parseFloat(booking.balance) == 0.0 ? 'bg-success' : parseFloat(booking.balance) >= parseFloat(booking.total_cost) ? 'bg-danger' : 'bg-warning'} p-2">
+                                        ${booking.payment_status}
+                                    </span>
+                                </p>
+                                <p><strong>Last Payment Date:</strong> ${payment[0]?.payment_date ? formatDate(payment[0]?.payment_date) : 'No payments yet'}</p>
+                                <p><strong>Payment Method:</strong> ${payment[0]?.payment_method || 'N/A'}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                ` : ``}
+               
                 
                 <div class="booking-detail-section mb-2">
                     <h6 class="border-bottom pb-2"><i class="bi bi-list-check me-2"></i>Actions</h6>

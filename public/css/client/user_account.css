@@ -3,7 +3,7 @@
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
     padding: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .profile-header {
@@ -17,7 +17,7 @@
 .profile-avatar {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
+    border-radius: 100%;
     background-color: #e9f5e9;
     display: flex;
     align-items: center;
@@ -50,9 +50,9 @@
     transition: opacity 0.3s;
 }
 
-.profile-avatar:hover .upload-overlay {
+/* .profile-avatar:hover .upload-overlay {
     opacity: 1;
-}
+} */
 
 .profile-info h2 {
     margin-bottom: 5px;

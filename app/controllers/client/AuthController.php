@@ -221,5 +221,30 @@ class ClientAuthController {
             echo json_encode(["success" => false, "message" => "Failed to reset password."]);
         }
     }
+
+    /**
+     * Update password for logged-in user (AJAX endpoint)
+     */
+    public function updateClientPassword() {
+        header("Content-Type: application/json");
+        if (!isset($_SESSION["user_id"])) {
+            echo json_encode(["success" => false, "message" => "Not authenticated."]);
+            return;
+        }
+        $data = json_decode(file_get_contents("php://input"), true);
+        $currentPassword = $data["currentPassword"] ?? '';
+        $newPassword = $data["newPassword"] ?? '';
+        $confirmPassword = $data["confirmPassword"] ?? '';
+        if (empty($currentPassword) || empty($newPassword) || empty($confirmPassword)) {
+            echo json_encode(["success" => false, "message" => "All fields are required."]);
+            return;
+        }
+        if ($newPassword !== $confirmPassword) {
+            echo json_encode(["success" => false, "message" => "New passwords do not match."]);
+            return;
+        }
+        $result = $this->authModel->updatePasswordForLoggedInUser($_SESSION["user_id"], $currentPassword, $newPassword);
+        echo json_encode($result);
+    }
 }
 ?>

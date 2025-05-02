@@ -668,25 +668,27 @@ function showBookingDetails(bookingId) {
                 </div>
             </div>
             
-            <div class="booking-detail-section mb-4">
-                <h6 class="border-bottom pb-2"><i class="bi bi-cash-coin me-2"></i>Payment Information</h6>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p class="mb-2"><strong>Total Cost:</strong> ₱${parseFloat(booking.total_cost).toLocaleString('en-PH')}</p>
-                        <p class="mb-2"><strong>Amount Paid:</strong> ₱${parseFloat(booking.amount_paid || 0).toLocaleString('en-PH')}</p>
-                        <p class="mb-2"><strong>Balance:</strong> ₱${(parseFloat(booking.total_cost) - parseFloat(booking.amount_paid || 0)).toLocaleString('en-PH')}</p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="mb-2"><strong>Payment Status:</strong> 
-                            <span class="badge bg-${paymentStatusColor}">
-                                ${booking.payment_status}
-                            </span>
-                        </p>
-                        <p><strong>Last Payment Date:</strong> ${booking?.payments && booking.payments.length > 0 && booking.payments[0]?.payment_date ? formatDate(booking.payments[0].payment_date) : 'No payments yet'}</p>
-                        <p><strong>Payment Method:</strong> ${booking?.payments && booking.payments.length > 0 ? booking.payments[0]?.payment_method || 'N/A' : 'N/A'}</p>
+            ${['Paid', 'Partially Paid'].includes(booking.payment_status) ? `
+                <div class="booking-detail-section mb-4">
+                    <h6 class="border-bottom pb-2"><i class="bi bi-cash-coin me-2"></i>Payment Information</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="mb-2"><strong>Total Cost:</strong> ₱${parseFloat(booking.total_cost).toLocaleString('en-PH')}</p>
+                            <p class="mb-2"><strong>Amount Paid:</strong> ₱${parseFloat(booking.amount_paid || 0).toLocaleString('en-PH')}</p>
+                            <p class="mb-2"><strong>Balance:</strong> ₱${parseFloat(booking.balance).toLocaleString('en-PH')}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-2"><strong>Payment Status:</strong> 
+                                <span class="badge bg-${paymentStatusColor}">
+                                    ${booking.payment_status}
+                                </span>
+                            </p>
+                            <p><strong>Last Payment Date:</strong> ${booking?.payments && booking.payments.length > 0 && booking.payments[0]?.payment_date ? formatDate(booking.payments[0].payment_date) : 'No payments yet'}</p>
+                            <p><strong>Payment Method:</strong> ${booking?.payments && booking.payments.length > 0 ? booking.payments[0]?.payment_method || 'N/A' : 'N/A'}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            ` : ''}
             
             <div class="booking-detail-section mb-2">
                 <h6 class="text-success mb-3"><i class="bi bi-list-check me-2"></i>Actions</h6>

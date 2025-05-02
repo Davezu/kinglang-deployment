@@ -13,7 +13,7 @@ class PaymentManagementController {
             strpos($requestUri, '/admin/login') === false && 
             strpos($requestUri, '/admin/submit-login') === false) {
             
-            if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "Super Admin") {
+            if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSION["role"] !== "Admin")) {
                 header("Location: /admin/login");
                 exit();
             }

@@ -507,19 +507,21 @@ function renderBookingTable(bookings) {
             const tourDate = new Date(booking.date_of_tour);
             const formattedDate = tourDate.toLocaleDateString();
             
-            // Create status badge class
+            // Status badge with icon
             let statusClass = 'bg-secondary';
-            if (booking.status === 'Confirmed') statusClass = 'bg-success';
-            if (booking.status === 'Pending') statusClass = 'bg-warning text-dark';
-            if (booking.status === 'Canceled') statusClass = 'bg-danger';
-            if (booking.status === 'Completed') statusClass = 'bg-info';
-            if (booking.status === 'Rejected') statusClass = 'bg-dark';
+            let statusIcon = 'bi-question-circle';
+            if (booking.status === 'Confirmed') { statusClass = 'bg-success'; statusIcon = 'bi-check-circle'; }
+            if (booking.status === 'Pending')   { statusClass = 'bg-warning text-dark'; statusIcon = 'bi-hourglass-split'; }
+            if (booking.status === 'Canceled')  { statusClass = 'bg-danger'; statusIcon = 'bi-x-circle'; }
+            if (booking.status === 'Completed') { statusClass = 'bg-info'; statusIcon = 'bi-flag'; }
+            if (booking.status === 'Rejected')  { statusClass = 'bg-dark'; statusIcon = 'bi-slash-circle'; }
             
-            // Create payment status badge class
+            // Payment status badge with icon
             let paymentStatusClass = 'bg-secondary';
-            if (booking.payment_status === 'Paid') paymentStatusClass = 'bg-success';
-            if (booking.payment_status === 'Partially Paid') paymentStatusClass = 'bg-warning text-dark';
-            if (booking.payment_status === 'Unpaid') paymentStatusClass = 'bg-danger';
+            let paymentStatusIcon = 'bi-question-circle';
+            if (booking.payment_status === 'Paid')            { paymentStatusClass = 'bg-success'; paymentStatusIcon = 'bi-cash-stack'; }
+            if (booking.payment_status === 'Partially Paid')  { paymentStatusClass = 'bg-warning text-dark'; paymentStatusIcon = 'bi-cash'; }
+            if (booking.payment_status === 'Unpaid')          { paymentStatusClass = 'bg-danger'; paymentStatusIcon = 'bi-exclamation-circle'; }
             
             tableBody.append(`
                 <tr>
@@ -527,8 +529,16 @@ function renderBookingTable(bookings) {
                     <td>${booking.destination}</td>
                     <td>${formattedDate}</td>
                     <td>${formatCurrency(booking.total_cost)}</td>
-                    <td><span class="badge ${statusClass}">${booking.status}</span></td>
-                    <td><span class="badge ${paymentStatusClass}">${booking.payment_status}</span></td>
+                    <td>
+                        <span class="badge badge-status rounded-pill px-3 py-2 ${statusClass}">
+                            <i class="bi ${statusIcon}"></i> ${booking.status}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge badge-status rounded-pill px-3 py-2 ${paymentStatusClass}">
+                            <i class="bi ${paymentStatusIcon}"></i> ${booking.payment_status}
+                        </span>
+                    </td>
                 </tr>
             `);
         });

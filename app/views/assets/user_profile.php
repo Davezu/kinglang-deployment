@@ -31,7 +31,7 @@
     <div class="dropdown">
         <a href="#" class="position-relative text-success notification-toggle" id="notificationToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-bell-fill me-2 fs-5"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge" style="display: none;">
+            <span class="position-absolute top-0 translate-middle badge rounded-pill bg-danger notification-badge" style="display: none; left: 1.3rem;">
                 <span class="notification-count">0</span>
                 <span class="visually-hidden">unread notifications</span>
             </span>
@@ -218,8 +218,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 let status = 'pending';
                 if (notificationType.includes('confirmed')) {
                     status = 'confirmed';
-                } else if (notificationType.includes('rejected') || notificationType.includes('canceled')) {
+                } else if (notificationType.includes('rejected')) {
                     status = 'rejected';
+                } else if (notificationType.includes('canceled')) {
+                    status = 'canceled';
                 }
                 
                 // Display notification content directly

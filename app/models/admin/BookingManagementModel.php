@@ -771,49 +771,76 @@ class BookingManagementModel {
     
     public function getRevenueTrends() {
         try {
-            // Get data for last 6 months
+            // Get current year
+            $year = date('Y');
+            
+            // Get booking counts
             $stmt = $this->conn->prepare("
                 SELECT 
-                    DATE_FORMAT(b.date_of_tour, '%Y-%m') as month_year,
-                    MONTH(b.date_of_tour) as month,
-                    YEAR(b.date_of_tour) as year,
-                    COUNT(b.booking_id) as booking_count,
-                    SUM(c.total_cost) as total_revenue
-                FROM bookings b
-                JOIN booking_costs c ON b.booking_id = c.booking_id
-                WHERE b.status IN ('Confirmed', 'Completed')
-                AND b.payment_status IN ('Paid', 'Partially Paid')
-                AND b.is_rebooked = 0
-                AND b.is_rebooking = 0
-                AND b.date_of_tour >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
-                GROUP BY month_year, YEAR(b.date_of_tour), MONTH(b.date_of_tour)
-                ORDER BY year, month
+                    MONTH(date_of_tour) as month,
+                    COUNT(booking_id) as booking_count
+                FROM bookings
+                WHERE YEAR(date_of_tour) = :year
+                AND is_rebooking = 0
+                AND is_rebooked = 0
+                GROUP BY MONTH(date_of_tour)
+                ORDER BY month
             ");
+            $stmt->bindValue(':year', $year);
             $stmt->execute();
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $bookingResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Get revenue data
+            $stmt = $this->conn->prepare("
+                SELECT 
+                    MONTH(b.date_of_tour) as month,
+                    SUM(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) as total_revenue
+                FROM bookings b
+                LEFT JOIN payments p ON b.booking_id = p.booking_id
+                WHERE YEAR(b.date_of_tour) = :year
+                AND b.is_rebooking = 0
+                AND b.is_rebooked = 0
+                GROUP BY MONTH(b.date_of_tour)
+                ORDER BY month
+            ");
+            $stmt->bindValue(':year', $year);
+            $stmt->execute();
+            $revenueResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
-            if (empty($results)) {
-                return [
-                    'labels' => [],
-                    'counts' => [],
-                    'revenues' => []
+            // Initialize data for all months
+            $monthlyData = [];
+            for ($i = 1; $i <= 12; $i++) {
+                $monthlyData[$i] = [
+                    'month' => $i,
+                    'booking_count' => 0,
+                    'total_revenue' => 0
                 ];
             }
             
+            // Fill in booking counts
+            foreach ($bookingResults as $row) {
+                $monthlyData[$row['month']]['booking_count'] = (int)$row['booking_count'];
+            }
+
+            // Fill in revenue data  
+            foreach ($revenueResults as $row) {
+                $monthlyData[$row['month']]['total_revenue'] = (float)$row['total_revenue'];
+            }
+            
             // Format for chart
-            $labels = [];
+            $months = [];
             $counts = [];
             $revenues = [];
             
-            foreach ($results as $row) {
-                $monthName = date("M Y", mktime(0, 0, 0, $row['month'], 1, $row['year']));
-                $labels[] = $monthName;
-                $counts[] = (int)$row['booking_count'];
-                $revenues[] = (float)$row['total_revenue'];
+            foreach ($monthlyData as $monthData) {
+                $months[] = date('F', mktime(0, 0, 0, $monthData['month'], 1));
+                $counts[] = $monthData['booking_count'];
+                $revenues[] = $monthData['total_revenue'];
             }
             
             return [
-                'labels' => $labels,
+                'year' => $year,
+                'labels' => $months,
                 'counts' => $counts,
                 'revenues' => $revenues
             ];

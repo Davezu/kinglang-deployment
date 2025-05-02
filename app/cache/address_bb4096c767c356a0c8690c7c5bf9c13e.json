@@ -1,0 +1,419 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Maligaya Park, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            },
+            {
+               "length" : 11,
+               "offset" : 27
+            },
+            {
+               "length" : 12,
+               "offset" : 40
+            },
+            {
+               "length" : 11,
+               "offset" : 54
+            }
+         ],
+         "place_id" : "ChIJqadJ8XixlzMRx007ulxb-vE",
+         "reference" : "ChIJqadJ8XixlzMRx007ulxb-vE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Novaliches, Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 12
+               },
+               {
+                  "length" : 12,
+                  "offset" : 25
+               },
+               {
+                  "length" : 11,
+                  "offset" : 39
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya Park"
+            },
+            {
+               "offset" : 15,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 27,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 40,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "university",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Quezon city, Maligaya Street, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 13
+            },
+            {
+               "length" : 12,
+               "offset" : 55
+            },
+            {
+               "length" : 11,
+               "offset" : 69
+            }
+         ],
+         "place_id" : "ChIJUcDmOgCxlzMRBF0mu33lgKM",
+         "reference" : "ChIJUcDmOgCxlzMRBF0mu33lgKM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Quezon city",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maligaya Street, Novaliches, Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               },
+               {
+                  "length" : 12,
+                  "offset" : 42
+               },
+               {
+                  "length" : 11,
+                  "offset" : 56
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Quezon city"
+            },
+            {
+               "offset" : 13,
+               "value" : "Maligaya Street"
+            },
+            {
+               "offset" : 30,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 42,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Furnishing Home G&CMaligaya Dulo, Bagbag (, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 19
+            },
+            {
+               "length" : 11,
+               "offset" : 56
+            },
+            {
+               "length" : 12,
+               "offset" : 69
+            },
+            {
+               "length" : 11,
+               "offset" : 83
+            }
+         ],
+         "place_id" : "ChIJ66vIjiaxlzMRRRVH0JyV3Bw",
+         "reference" : "ChIJ66vIjiaxlzMRRRVH0JyV3Bw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Furnishing Home G&CMaligaya Dulo, Bagbag (",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 19
+               }
+            ],
+            "secondary_text" : "Novaliches, Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 12
+               },
+               {
+                  "length" : 12,
+                  "offset" : 25
+               },
+               {
+                  "length" : 11,
+                  "offset" : 39
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Furnishing Home G&CMaligaya Dulo, Bagbag ("
+            },
+            {
+               "offset" : 44,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 56,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 69,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 83,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Maligaya High School, Ilang-ilang, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            },
+            {
+               "length" : 11,
+               "offset" : 47
+            },
+            {
+               "length" : 12,
+               "offset" : 60
+            },
+            {
+               "length" : 11,
+               "offset" : 74
+            }
+         ],
+         "place_id" : "ChIJs3bpG22wlzMRl3S7WrZuvOI",
+         "reference" : "ChIJs3bpG22wlzMRl3S7WrZuvOI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya High School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ilang-ilang, Novaliches, Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 25
+               },
+               {
+                  "length" : 12,
+                  "offset" : 38
+               },
+               {
+                  "length" : 11,
+                  "offset" : 52
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya High School"
+            },
+            {
+               "offset" : 22,
+               "value" : "Ilang-ilang"
+            },
+            {
+               "offset" : 35,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 47,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 60,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "secondary_school",
+            "school",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Maligaya Christian Community Church, Champaca, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            },
+            {
+               "length" : 11,
+               "offset" : 59
+            },
+            {
+               "length" : 12,
+               "offset" : 72
+            },
+            {
+               "length" : 11,
+               "offset" : 86
+            }
+         ],
+         "place_id" : "ChIJ71LZXmqwlzMRVolfopwlAoQ",
+         "reference" : "ChIJ71LZXmqwlzMRVolfopwlAoQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya Christian Community Church",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Champaca, Novaliches, Quezon City, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 22
+               },
+               {
+                  "length" : 12,
+                  "offset" : 35
+               },
+               {
+                  "length" : 11,
+                  "offset" : 49
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya Christian Community Church"
+            },
+            {
+               "offset" : 37,
+               "value" : "Champaca"
+            },
+            {
+               "offset" : 47,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 59,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 72,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 86,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "place_of_worship",
+            "church",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

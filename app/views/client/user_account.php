@@ -21,10 +21,10 @@
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
 
-            <div class="container-fluid my-4">
+            <div class="container-fluid mt-4 mb-3">
                 <div class="row">
                     <div class="col-lg-3 mb-4">
-                        <!-- Profile Summary Card -->
+                       
                         <div class="user-account-container">
                             <div class="profile-header">
                                 <div class="profile-avatar" id="profileAvatarContainer">
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             
-                            <!-- Profile Completion -->
+                           
                             <div class="completion-meter">
                                 <div class="d-flex justify-content-between align-items-center mb-1">
                                     <small>Profile Completion</small>
@@ -53,7 +53,7 @@
                                 <small class="text-muted" id="completionMessage">Complete your profile to improve your experience</small>
                             </div>
                             
-                            <!-- Navigation Pills -->
+                           
                             <div class="nav flex-column nav-pills mt-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 <button class="nav-link active mb-2" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true">
                                     <i class="bi bi-person me-2"></i> Profile Information
@@ -61,10 +61,10 @@
                                 <button class="nav-link mb-2" id="v-pills-security-tab" data-bs-toggle="pill" data-bs-target="#v-pills-security" type="button" role="tab" aria-controls="v-pills-security" aria-selected="false">
                                     <i class="bi bi-shield-lock me-2"></i> Security
                                 </button>
-                                <button class="nav-link mb-2" id="v-pills-bookings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-bookings" type="button" role="tab" aria-controls="v-pills-bookings" aria-selected="false">
+                                <button class="nav-link mb-2 d-none" id="v-pills-bookings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-bookings" type="button" role="tab" aria-controls="v-pills-bookings" aria-selected="false">
                                     <i class="bi bi-journal-check me-2"></i> Booking History
                                 </button>
-                                <button class="nav-link" id="v-pills-preferences-tab" data-bs-toggle="pill" data-bs-target="#v-pills-preferences" type="button" role="tab" aria-controls="v-pills-preferences" aria-selected="false">
+                                <button class="nav-link d-none" id="v-pills-preferences-tab" data-bs-toggle="pill" data-bs-target="#v-pills-preferences" type="button" role="tab" aria-controls="v-pills-preferences" aria-selected="false">
                                     <i class="bi bi-gear me-2"></i> Preferences
                                 </button>
                             </div>
@@ -109,7 +109,7 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="row mb-3">
+                                        <div class="row mb-3 d-none">
                                             <div class="col-md-12">
                                                 <label for="address" class="form-label">Home Address</label>
                                                 <textarea id="address" class="form-control" rows="2"></textarea>
@@ -158,10 +158,10 @@
                                         <div id="passwordMessage" class="mt-3"></div>
                                     </form>
                                     
-                                    <hr class="my-4">
+                                    <!-- <hr class="my-4">
                                     
-                                    <h5 class="mb-3">Login Sessions</h5>
-                                    <div class="card mb-3">
+                                    <h5 class="mb-3">Login Sessions</h5> -->
+                                    <div class="card mb-0 d-none">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <div>

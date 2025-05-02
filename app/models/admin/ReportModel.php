@@ -37,14 +37,14 @@ class ReportModel {
                 SUM(CASE WHEN b.status = 'Canceled' THEN 1 ELSE 0 END) AS canceled_bookings,
                 SUM(CASE WHEN b.status = 'Rejected' THEN 1 ELSE 0 END) AS rejected_bookings,
                 SUM(CASE WHEN b.status = 'Completed' THEN 1 ELSE 0 END) AS completed_bookings,
-                SUM(CASE WHEN b.status IN ('Confirmed', 'Completed') THEN c.total_cost ELSE 0 END) AS total_revenue,
-                SUM(CASE WHEN b.payment_status = 'Paid' THEN c.total_cost ELSE 0 END) AS collected_revenue,
-                SUM(CASE WHEN b.payment_status = 'Partially Paid' THEN balance ELSE 0 END) AS outstanding_balance,
-                AVG(c.total_cost) AS average_booking_value,
+                SUM(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) AS total_revenue,
+                SUM(CASE WHEN b.payment_status = 'Paid' THEN (CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) ELSE 0 END) AS collected_revenue,
+                SUM(CASE WHEN b.payment_status = 'Partially Paid' THEN b.balance ELSE 0 END) AS outstanding_balance,
+                AVG(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE NULL END) AS average_booking_value,
                 SUM(b.number_of_buses) AS total_buses_booked,
                 SUM(b.number_of_days) AS total_days_booked
             FROM bookings b
-            JOIN booking_costs c ON b.booking_id = c.booking_id
+            LEFT JOIN payments p ON b.booking_id = p.booking_id
             $whereClause";
             
             $stmt = $this->conn->prepare($sql);
@@ -68,7 +68,7 @@ class ReportModel {
     public function getMonthlyBookingTrend($startDate = null, $endDate = null) {
         try {
             $params = [];
-            $whereClause = "WHERE is_rebooking = 0 AND is_rebooked = 0 AND status != 'Canceled'";
+            $whereClause = "WHERE is_rebooking = 0 AND is_rebooked = 0";
             
             if ($startDate) {
                 $whereClause .= " AND date_of_tour >= :start_date";
@@ -78,31 +78,43 @@ class ReportModel {
             if ($endDate) {
                 $whereClause .= " AND date_of_tour <= :end_date";
                 $params[':end_date'] = $endDate;
-                
                 $whereClause .= " AND is_rebooked = :is_rebooked";
                 $params[':is_rebooked'] = 0;
             }
-            
-            $sql = "SELECT 
+
+            // Query 1: total bookings per month
+            $sqlBookings = "SELECT 
                 MONTH(b.date_of_tour) AS month,
-                COUNT(b.booking_id) AS total_bookings,
-                SUM(c.total_cost) AS total_revenue
+                COUNT(b.booking_id) AS total_bookings
             FROM bookings b
-            JOIN booking_costs c ON b.booking_id = c.booking_id
             $whereClause
             GROUP BY MONTH(b.date_of_tour)
             ORDER BY month";
-            
-            $stmt = $this->conn->prepare($sql);
-            
+
+            $stmtBookings = $this->conn->prepare($sqlBookings);
             foreach ($params as $key => $value) {
-                $stmt->bindValue($key, $value);
+                $stmtBookings->bindValue($key, $value);
             }
-            
-            $stmt->execute();
-            
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
+            $stmtBookings->execute();
+            $bookingsResult = $stmtBookings->fetchAll(PDO::FETCH_ASSOC);
+
+            // Query 2: total revenue per month
+            $sqlRevenue = "SELECT 
+                MONTH(b.date_of_tour) AS month,
+                SUM(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) as total_revenue
+            FROM bookings b
+            LEFT JOIN payments p ON b.booking_id = p.booking_id
+            $whereClause
+            GROUP BY MONTH(b.date_of_tour)
+            ORDER BY month";
+
+            $stmtRevenue = $this->conn->prepare($sqlRevenue);
+            foreach ($params as $key => $value) {
+                $stmtRevenue->bindValue($key, $value);
+            }
+            $stmtRevenue->execute();
+            $revenueResult = $stmtRevenue->fetchAll(PDO::FETCH_ASSOC);
+
             // Fill in missing months with zero values
             $monthlyData = [];
             for ($i = 1; $i <= 12; $i++) {
@@ -112,11 +124,14 @@ class ReportModel {
                     'total_revenue' => 0
                 ];
             }
-            
-            foreach ($result as $row) {
-                $monthlyData[$row['month']] = $row;
+
+            foreach ($bookingsResult as $row) {
+                $monthlyData[$row['month']]['total_bookings'] = (int)$row['total_bookings'];
             }
-            
+            foreach ($revenueResult as $row) {
+                $monthlyData[$row['month']]['total_revenue'] = (float)$row['total_revenue'];
+            }
+
             return array_values($monthlyData);
         } catch (PDOException $e) {
             error_log("Error in getMonthlyBookingTrend: " . $e->getMessage());

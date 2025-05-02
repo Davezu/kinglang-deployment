@@ -93,6 +93,11 @@ switch ($request) {
         $controller = new ClientAuthController();
         $controller->logout();
         break;
+    case "/update-client-password":
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->updateClientPassword();
+        break;
 
     // forgot password
     case "/fogot-password":

@@ -74,6 +74,71 @@
             color: #198754;
             fill: #198754;
         }
+        /* Detailed Booking Report Table Enhancements */
+        .summary-metrics-card table {
+            font-size: 0.97rem;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .summary-metrics-card table thead th {
+            position: sticky;
+            top: 0;
+            background: #e9f7ef;
+            z-index: 2;
+            border-bottom: 2px solid #198754;
+            color: #198754;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .summary-metrics-card table tbody tr {
+            transition: background 0.2s;
+        }
+        .summary-metrics-card table tbody tr:hover {
+            background: #f6fdf9;
+        }
+        .summary-metrics-card table tbody td {
+            vertical-align: middle;
+            padding-top: 0.65rem;
+            padding-bottom: 0.65rem;
+        }
+        .summary-metrics-card table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .badge-status {
+            font-size: 0.97em;
+            padding: 0.5em 1.2em;
+            font-weight: 500;
+        }
+        /* Use Bootstrap's rounded-pill and badge classes in HTML */
+        /* Soften specific status backgrounds using Bootstrap palette */
+        .badge-status.bg-success {
+            background: #e9f7ef !important;
+            color: #198754 !important;
+        }
+        .badge-status.bg-warning {
+            background: #fffbe6 !important;
+            color: #b8860b !important;
+        }
+        .badge-status.bg-danger {
+            background: #fdeaea !important;
+            color: #d9534f !important;
+        }
+        .badge-status.bg-info {
+            background: #e6f4fa !important;
+            color: #17a2b8 !important;
+        }
+        .badge-status.bg-dark {
+            background: #e9ecef !important;
+            color: #343a40 !important;
+        }
+        .badge-status.bg-secondary {
+            background: #f3f6f9 !important;
+            color: #6c757d !important;
+        }
+        .badge-status.text-dark {
+            color: #343a40 !important;
+        }
     </style>
 </head>
 <body>
@@ -111,7 +176,7 @@
 
             <!-- Summary Cards -->
             <div class="row mt-3">
-                <div class="col-md-6 col-lg-3 mb-4">
+                <div class="col-md-6 col-lg-4 col-xl mb-4">
                     <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
                         <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
                             <i class="bi bi-calendar-check fs-4 text-success"></i>
@@ -122,7 +187,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 mb-4">
+                <div class="col-md-6 col-lg-4 col-xl mb-4">
                     <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
                         <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
                             <i class="bi bi-cash-stack fs-4 text-success"></i>
@@ -133,7 +198,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 mb-4">
+                <div class="col-md-6 col-lg-4 col-xl mb-4">
                     <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
                         <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
                             <i class="bi bi-wallet2 fs-4 text-success"></i>
@@ -144,7 +209,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 mb-4">
+                <div class="col-md-6 col-lg-4 col-xl mb-4">
                     <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
                         <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
                             <i class="bi bi-bar-chart-line fs-4 text-success"></i>
@@ -209,9 +274,9 @@
                             <h4 class="mb-0">Detailed Booking Report</h4>
                             <button id="exportCsv" class="btn btn-success btn-sm">Export CSV</button>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="table-success">
+                        <div class="table-responsive ">
+                            <table class="table table-hover text-secondary">
+                                <thead class="">
                                     <tr>
                                         <th>Client Name</th>
                                         <th>Destination</th>

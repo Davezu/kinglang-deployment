@@ -8,114 +8,30 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System Settings - Kinglang Booking</title>
-    <link rel="stylesheet" href="../../../public/css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../public/icons/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .setting-card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 1rem;
-        }
-        
-        .setting-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-        }
-        
-        .side-nav-card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            height: 100%;
-        }
-        
-        .settings-main-card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        
         .nav-pills .nav-link.active {
-            background-color: #19BC3F;
+            background-color: #0d6efd;
             color: white;
         }
-        
         .nav-pills .nav-link {
             color: #212529;
-            padding: 0.8rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: all 0.2s;
         }
-        
-        .nav-pills .nav-link:hover {
-            background-color: #d1f7c4;
+        .setting-card {
+            transition: all 0.3s ease;
         }
-        
+        .setting-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
         .badge-public {
-            background-color: #19BC3F;
+            background-color: #0d6efd;
             color: white;
-            padding: 0.35rem 0.65rem;
-            border-radius: 0.5rem;
-            font-size: 0.75rem;
         }
-        
         .badge-private {
             background-color: #6c757d;
             color: white;
-            padding: 0.35rem 0.65rem;
-            border-radius: 0.5rem;
-            font-size: 0.75rem;
-        }
-        
-        .settings-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(255, 245, 225, 1);
-            color: #19BC3F;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        
-        .icon-bg {
-            background-color: rgba(255, 245, 225, 1);
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-        }
-        
-        .btn-primary {
-            background-color: #19BC3F;
-            border-color: #19BC3F;
-        }
-        
-        .btn-primary:hover {
-            background-color: #148f32;
-            border-color: #148f32;
-        }
-        
-        .btn-success {
-            background-color: #19BC3F;
-            border-color: #19BC3F;
-        }
-        
-        .btn-success:hover {
-            background-color: #148f32;
-            border-color: #148f32;
-        }
-        
-        .content {
-            background-color: #f8f9fa;
         }
     </style>
 </head>
@@ -123,29 +39,19 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
     <?php include_once __DIR__ . "/../assets/admin_sidebar.php"; ?>
 
     <div class="content collapsed" id="content">
-        <div class="container-fluid py-4 px-4">
+        <div class="container-fluid mt-4 px-4">
             <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
-                <div class="d-flex align-items-center">
-                    <div class="settings-icon">
-                        <i class="bi bi-gear-fill fs-5"></i>
-                    </div>
-                    <h3>System Settings</h3>
-                </div>
+                <h2><i class="fas fa-cogs me-2"></i>System Settings</h2>
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
             <p class="text-muted">Manage application settings and configurations</p>
             <hr>
 
-            <div class="row mt-4">
-                <div class="col-md-3 mb-4">
-                    <div class="side-nav-card">
-                        <div class="card-header bg-white py-3 border-bottom">
-                            <div class="d-flex align-items-center">
-                                <div class="icon-bg">
-                                    <i class="bi bi-layers fs-5 text-success"></i>
-                                </div>
-                                <h5 class="mb-0">Setting Groups</h5>
-                            </div>
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Setting Groups</h5>
                         </div>
                         <div class="card-body p-0">
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -154,56 +60,31 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
                                 foreach (array_keys($groupedSettings) as $group) {
                                     $groupName = ucfirst($group);
                                     $active = $first ? 'active' : '';
-                                    $icon = 'gear';
-                                    
-                                    // Assign specific icons based on group name
-                                    if ($group == 'general') $icon = 'sliders';
-                                    if ($group == 'booking') $icon = 'calendar-check';
-                                    if ($group == 'payment') $icon = 'credit-card';
-                                    if ($group == 'notification') $icon = 'bell';
-                                    if ($group == 'security') $icon = 'shield-lock';
-                                    if ($group == 'api') $icon = 'code-slash';
-                                    
                                     echo "<a class='nav-link $active' id='v-pills-$group-tab' data-bs-toggle='pill' href='#v-pills-$group' role='tab' aria-controls='v-pills-$group' aria-selected='true'>
-                                            <i class='bi bi-$icon me-2'></i>$groupName
+                                            <i class='fas fa-layer-group me-2'></i>$groupName
                                         </a>";
                                     $first = false;
                                 }
                                 ?>
                                 <a class="nav-link" id="v-pills-new-tab" data-bs-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="false">
-                                    <i class='bi bi-plus-circle me-2'></i>Add New Setting
+                                    <i class="fas fa-plus-circle me-2"></i>Add New Setting
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-9 mb-4">
-                    <div class="settings-main-card">
-                        <div class="card-body p-4">
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-body">
                             <div class="tab-content" id="v-pills-tabContent">
                                 <?php
                                 $first = true;
                                 foreach ($groupedSettings as $group => $settings) {
                                     $active = $first ? 'show active' : '';
-                                    $icon = 'gear';
-                                    
-                                    // Assign specific icons based on group name
-                                    if ($group == 'general') $icon = 'sliders';
-                                    if ($group == 'booking') $icon = 'calendar-check';
-                                    if ($group == 'payment') $icon = 'credit-card';
-                                    if ($group == 'notification') $icon = 'bell';
-                                    if ($group == 'security') $icon = 'shield-lock';
-                                    if ($group == 'api') $icon = 'code-slash';
-                                    
                                     echo "<div class='tab-pane fade $active' id='v-pills-$group' role='tabpanel' aria-labelledby='v-pills-$group-tab'>";
-                                    echo "<div class='d-flex align-items-center mb-3'>";
-                                    echo "<div class='icon-bg'><i class='bi bi-$icon fs-5 text-success'></i></div>";
-                                    echo "<h4 class='mb-0'>" . ucfirst($group) . " Settings</h4>";
-                                    echo "</div>";
-                                    echo "<div class='alert alert-info d-flex align-items-center'>";
-                                    echo "<i class='bi bi-info-circle me-2'></i><span>These settings control " . strtolower(ucfirst($group)) . " functionality of the application.</span>";
-                                    echo "</div>";
+                                    echo "<h4 class='mb-3'>" . ucfirst($group) . " Settings</h4>";
+                                    echo "<div class='alert alert-info'><i class='fas fa-info-circle me-2'></i>These settings control " . strtolower(ucfirst($group)) . " functionality of the application.</div>";
                                     echo "<form id='form-$group'>";
                                     
                                     foreach ($settings as $setting) {
@@ -226,9 +107,9 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
                                             $inputType = 'textarea';
                                         }
                                         
-                                        echo "<div class='setting-card mb-3'>";
-                                        echo "<div class='card-body p-3'>";
-                                        echo "<label class='form-label fw-bold mb-2'>" . ucwords(str_replace('_', ' ', $setting['setting_key'])) . $publicBadge . "</label>";
+                                        echo "<div class='mb-3 card setting-card'>";
+                                        echo "<div class='card-body'>";
+                                        echo "<label class='form-label'>" . ucwords(str_replace('_', ' ', $setting['setting_key'])) . $publicBadge . "</label>";
                                         
                                         if ($inputType === 'textarea') {
                                             echo "<textarea class='form-control' name='{$setting['setting_key']}' rows='3'>$value</textarea>";
@@ -238,10 +119,7 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
                                             echo "</div>";
                                         } else if ($setting['setting_key'] === 'diesel_price') {
                                             // Special handling for diesel price to allow decimals
-                                            echo "<div class='input-group'>";
-                                            echo "<span class='input-group-text'>£</span>";
                                             echo "<input type='number' step='0.01' class='form-control' name='{$setting['setting_key']}' value='$value'>";
-                                            echo "</div>";
                                         } else {
                                             echo "<input type='$inputType' class='form-control' name='{$setting['setting_key']}' value='$value'>";
                                         }
@@ -251,8 +129,8 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
                                         echo "</div>";
                                     }
                                     
-                                    echo "<div class='d-flex justify-content-end mt-4'>";
-                                    echo "<button type='submit' class='btn btn-primary px-4'><i class='bi bi-save me-2'></i>Save " . ucfirst($group) . " Settings</button>";
+                                    echo "<div class='d-flex justify-content-end mt-3'>";
+                                    echo "<button type='submit' class='btn btn-primary'><i class='fas fa-save me-2'></i>Save " . ucfirst($group) . " Settings</button>";
                                     echo "</div>";
                                     echo "</form>";
                                     echo "</div>";
@@ -263,48 +141,41 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
                                 
                                 <!-- Add New Setting Tab -->
                                 <div class="tab-pane fade" id="v-pills-new" role="tabpanel" aria-labelledby="v-pills-new-tab">
-                                    <div class='d-flex align-items-center mb-3'>
-                                        <div class='icon-bg'><i class='bi bi-plus-circle fs-5 text-success'></i></div>
-                                        <h4 class='mb-0'>Add New Setting</h4>
+                                    <h4 class="mb-3">Add New Setting</h4>
+                                    <div class="alert alert-warning">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>
+                                        Adding new settings should be done with care. Use existing settings when possible.
                                     </div>
-                                    <div class="alert alert-warning d-flex align-items-center">
-                                        <i class="bi bi-exclamation-triangle me-2"></i>
-                                        <span>Adding new settings should be done with care. Use existing settings when possible.</span>
-                                    </div>
-                                    <form id="form-new-setting" class="mt-4">
-                                        <div class="setting-card mb-3">
-                                            <div class="card-body p-3">
-                                                <div class="mb-3">
-                                                    <label class="form-label fw-bold">Setting Key</label>
-                                                    <input type="text" class="form-control" name="key" required placeholder="e.g. new_feature_enabled">
-                                                    <small class="form-text text-muted">Use lowercase letters, numbers, and underscores only.</small>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label fw-bold">Setting Value</label>
-                                                    <input type="text" class="form-control" name="value" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label fw-bold">Setting Group</label>
-                                                    <select class="form-select" name="group" required>
-                                                        <?php foreach (array_keys($groupedSettings) as $group): ?>
-                                                            <option value="<?= $group ?>"><?= ucfirst($group) ?></option>
-                                                        <?php endforeach; ?>
-                                                        <option value="custom">Create New Group</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 d-none" id="custom-group-container">
-                                                    <label class="form-label fw-bold">New Group Name</label>
-                                                    <input type="text" class="form-control" name="custom_group" placeholder="e.g. security">
-                                                </div>
-                                                <div class="mb-3 form-check">
-                                                    <input type="checkbox" class="form-check-input" name="is_public" id="is_public">
-                                                    <label class="form-check-label" for="is_public">Make this setting public</label>
-                                                    <small class="form-text text-muted d-block">Public settings are accessible to the frontend/client-side.</small>
-                                                </div>
-                                            </div>
+                                    <form id="form-new-setting">
+                                        <div class="mb-3">
+                                            <label class="form-label">Setting Key</label>
+                                            <input type="text" class="form-control" name="key" required placeholder="e.g. new_feature_enabled">
+                                            <small class="form-text text-muted">Use lowercase letters, numbers, and underscores only.</small>
                                         </div>
-                                        <div class="d-flex justify-content-end mt-4">
-                                            <button type="submit" class="btn btn-success px-4"><i class="bi bi-plus-circle me-2"></i>Add Setting</button>
+                                        <div class="mb-3">
+                                            <label class="form-label">Setting Value</label>
+                                            <input type="text" class="form-control" name="value" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Setting Group</label>
+                                            <select class="form-select" name="group" required>
+                                                <?php foreach (array_keys($groupedSettings) as $group): ?>
+                                                    <option value="<?= $group ?>"><?= ucfirst($group) ?></option>
+                                                <?php endforeach; ?>
+                                                <option value="custom">Create New Group</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3 d-none" id="custom-group-container">
+                                            <label class="form-label">New Group Name</label>
+                                            <input type="text" class="form-control" name="custom_group" placeholder="e.g. security">
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" name="is_public" id="is_public">
+                                            <label class="form-check-label" for="is_public">Make this setting public</label>
+                                            <small class="form-text text-muted d-block">Public settings are accessible to the frontend/client-side.</small>
+                                        </div>
+                                        <div class="d-flex justify-content-end mt-3">
+                                            <button type="submit" class="btn btn-success"><i class="fas fa-plus-circle me-2"></i>Add Setting</button>
                                         </div>
                                     </form>
                                 </div>
@@ -317,9 +188,9 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
     </div>
 
     <!-- JavaScript -->
-    <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../../../public/js/assets/sidebar.js"></script>
+    <script src="../../../../public/js/assets/sidebar.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Show/hide custom group input when 'Create New Group' is selected
@@ -440,8 +311,7 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
                             icon: 'success',
                             title: 'Success!',
                             text: 'Setting added successfully',
-                            confirmButtonText: 'Reload Page',
-                            confirmButtonColor: '#19BC3F'
+                            confirmButtonText: 'Reload Page'
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 window.location.reload();

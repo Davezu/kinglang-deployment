@@ -269,19 +269,21 @@ function showBookingDetails(bookingId) {
                     </div>
                 </div>
                 
-                <div class="booking-detail-section mb-3">
-                    <h6 class="border-bottom pb-2"><i class="bi bi-cash-coin me-2"></i>Payment Information</h6>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p><strong>Total Cost:</strong> ₱${parseFloat(booking.total_cost).toLocaleString('en-PH')}</p>
-                            <p><strong>Payment Status:</strong> <span class="badge bg-${booking.payment_status === 'Paid' ? 'success' : booking.payment_status === 'Partially Paid' ? 'warning' : 'danger'}">${booking.payment_status}</span></p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>Payment Date:</strong> ${booking.payments && booking.payments.length > 0 ? formatDate(booking.payments[0].payment_date) : 'No payments yet'}</p>
-                            <p><strong>Payment Method:</strong> ${booking.payments && booking.payments.length > 0 ? booking.payments[0].payment_method : 'N/A'}</p>
+                ${['Paid', 'Partially Paid'].includes(booking.payment_status) ? `
+                    <div class="booking-detail-section mb-3">
+                        <h6 class="border-bottom pb-2"><i class="bi bi-cash-coin me-2"></i>Payment Information</h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Total Cost:</strong> ₱${parseFloat(booking.total_cost).toLocaleString('en-PH')}</p>
+                                <p><strong>Payment Status:</strong> <span class="badge bg-${booking.payment_status === 'Paid' ? 'success' : booking.payment_status === 'Partially Paid' ? 'warning' : 'danger'}">${booking.payment_status}</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Payment Date:</strong> ${booking.payments && booking.payments.length > 0 ? formatDate(booking.payments[0].payment_date) : 'No payments yet'}</p>
+                                <p><strong>Payment Method:</strong> ${booking.payments && booking.payments.length > 0 ? booking.payments[0].payment_method : 'N/A'}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                ` : ``}
                 
                 <div class="booking-detail-section mb-2">
                     <h6 class="text-success mb-3"><i class="bi bi-list-check me-2"></i>Actions</h6>

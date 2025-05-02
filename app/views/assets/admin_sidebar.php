@@ -109,7 +109,7 @@
         .brand-text {
             margin: 0;
             position: absolute;
-            left: 4rem;
+            left: 3rem;
             opacity: 1;
             transition: opacity 0.3s;
         }
@@ -238,10 +238,13 @@
                     <i class="bi bi-plus-circle"></i>
                     <span class="menu-text">Create Booking</span>
                 </a> -->
-                <a href="/admin/users" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'users' ? 'active' : ''; ?>">
-                    <i class="bi bi-people"></i>
-                    <span class="menu-text">Clients</span>
-                </a>
+                <?php if ($_SESSION['role'] == 'Super Admin'): ?>
+                    <a href="/admin/users" class="sidebar-link <?= basename($_SERVER['PHP_SELF']) == 'users' ? 'active' : ''; ?>">
+                        <i class="bi bi-people"></i>
+                        <span class="menu-text">Users</span>
+                    </a>
+                <?php endif; ?>
+                
                 <a href="/admin/payment-management" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'payment-management' ? 'active' : ''; ?>">
                     <i class="bi bi-wallet2"></i>
                     <span class="menu-text">Payments</span>

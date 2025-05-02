@@ -198,14 +198,13 @@ async function loadUserInformation() {
  * Calculate and display user's profile completion percentage
  */
 function calculateProfileCompletion(user) {
-    const totalFields = 6; // first_name, last_name, email, contact_number, address, company_name
+    const totalFields = 5; // first_name, last_name, email, contact_number, address, company_name
     let filledFields = 0;
     
     if (user.first_name) filledFields++;
     if (user.last_name) filledFields++;
     if (user.email) filledFields++;
-    if (user.contact_number) filledFields++;
-    if (user.address) filledFields++;
+    if (user.contact_number) filledFields++;    
     if (user.company_name) filledFields++;
     
     const percentage = Math.round((filledFields / totalFields) * 100);

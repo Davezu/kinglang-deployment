@@ -56,7 +56,7 @@ async function renderSummaryMetrics() {
         console.log(summaryMetrics);
 
         $("#totalBookings").text(summaryMetrics.total_bookings || 0);
-        $("#totalRevenue").text(parseFloat(summaryMetrics.total_revenue || 0).toLocaleString());
+        $("#totalRevenue").text(parseFloat(summaryMetrics.total_revenue || 0).toLocaleString('en-PH', { style: 'currency', currency: 'PHP' }));
         $("#upcomingTrips").text(summaryMetrics.upcoming_trips || 0);
         $("#pendingBookings").text(summaryMetrics.pending_bookings || 0);
         $("#flaggedBookings").text(summaryMetrics.flagged_bookings || 0); 
