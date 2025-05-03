@@ -11,6 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <style>
+        :root {
+            --primary-green: #198754;
+            --secondary-green: #28a745;
+            --light-green: #d1f7c4;
+            --hover-green: #20c997;
+        }
         .chart-container {
             position: relative;
             height: 300px;
@@ -139,20 +145,29 @@
         .badge-status.text-dark {
             color: #343a40 !important;
         }
+        @media (min-width: 1400px) {
+            .container-fluid {
+                max-width: 98%;
+            }
+        }
     </style>
 </head>
 <body>
     <?php include_once __DIR__ . "/../assets/admin_sidebar.php"; ?>
 
     <div class="content collapsed" id="content">
-        <div class="container-fluid py-4 px-4 px-xl-5">
-            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
-                <h3>Reports</h3>
+        <div class="container-fluid py-3 px-3 px-xl-4">
+            <!-- Header with admin profile styled like payment management -->
+            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0 mb-2">
+                <div class="p-0">
+                    <h3><i class="bi bi-bar-chart-line me-2 text-success"></i>Reports</h3>
+                    <p class="text-muted mb-0">View and analyze booking and payment statistics</p>
+                </div>
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
-
+            <hr>
             <!-- Date Range Filters -->
-            <div class="filters mt-4">
+            <div class="filters mt-0">
                 <div class="row">
                     <div class="col-md-5">
                         <label for="startDate" class="form-label">Start Date</label>

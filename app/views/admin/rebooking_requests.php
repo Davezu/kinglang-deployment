@@ -7,6 +7,12 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
+        :root {
+            --primary-green: #198754;
+            --secondary-green: #28a745;
+            --light-green: #d1f7c4;
+            --hover-green: #20c997;
+        }
         /* Booking details modal styling */
         .booking-detail-section {
             margin-bottom: 1.5rem;
@@ -54,8 +60,12 @@
 
     <div class="content collapsed" id="content">
         <div class="container-fluid py-3 px-3 px-xl-4">
+            <!-- Header with admin profile styled like payment management -->
             <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0 mb-2">
-                <h3>Booking Management</h3>
+                <div class="p-0">
+                    <h3><i class="bi bi-arrow-repeat me-2 text-success"></i>Rebooking Management</h3>
+                    <p class="text-muted mb-0">Manage and review rebooking requests</p>
+                </div>
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
             <?php include_once __DIR__ . "/../assets/admin_navtab.php"; ?>

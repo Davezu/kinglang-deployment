@@ -20,6 +20,7 @@
                 </div>
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
+            <hr>
 
             <div class="container-fluid mt-4 mb-3">
                 <div class="row">

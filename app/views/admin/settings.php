@@ -11,6 +11,12 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --primary-green: #198754;
+            --secondary-green: #28a745;
+            --light-green: #d1f7c4;
+            --hover-green: #20c997;
+        }
         .nav-pills .nav-link.active {
             background-color: #0d6efd;
             color: white;
@@ -33,18 +39,26 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
             background-color: #6c757d;
             color: white;
         }
+        @media (min-width: 1400px) {
+            .container-fluid {
+                max-width: 98%;
+            }
+        }
     </style>
 </head>
 <body>
     <?php include_once __DIR__ . "/../assets/admin_sidebar.php"; ?>
 
     <div class="content collapsed" id="content">
-        <div class="container-fluid mt-4 px-4">
-            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
-                <h2><i class="fas fa-cogs me-2"></i>System Settings</h2>
+        <div class="container-fluid py-3 px-3 px-xl-4">
+            <!-- Header with admin profile styled like payment management -->
+            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0 mb-2">
+                <div class="p-0">
+                    <h2><i class="fas fa-cogs me-2 text-success"></i>System Settings</h2>
+                    <p class="text-muted mb-0">Manage application settings and configurations</p>
+                </div>
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
-            <p class="text-muted">Manage application settings and configurations</p>
             <hr>
 
             <div class="row mt-3">

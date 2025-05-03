@@ -12,16 +12,33 @@ require_admin_auth(); // Use helper function
     <link rel="stylesheet" href="../../../public/css/admin/dashboard.css">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-green: #198754;
+            --secondary-green: #28a745;
+            --light-green: #d1f7c4;
+            --hover-green: #20c997;
+        }
+        @media (min-width: 1400px) {
+            .container-fluid {
+                max-width: 98%;
+            }
+        }
+    </style>
 </head>
 <body>
     <?php include_once __DIR__ . "/../assets/admin_sidebar.php"; ?>
 
     <div class="content collapsed" id="content">
-        <div class="container-fluid py-4 px-4 px-xl-5">
-            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
-                <h3>Dashboard</h3>
+        <div class="container-fluid py-3 px-3 px-xl-4">
+            <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0 mb-2">
+                <div class="p-0">
+                    <h3><i class="bi bi-speedometer2 me-2 text-success"></i>Dashboard</h3>
+                    <p class="text-muted mb-0">Overview of bookings, revenue, and activity</p>
+                </div>
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
+            <hr>
 
             <div class="row mt-3">
                 <div class="col-md-6 col-lg-4 col-xl mb-4">

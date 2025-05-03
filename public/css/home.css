@@ -22,13 +22,13 @@
         line-height: 1.6;
         color: var(--text-color);
         background-color: #ffffff;
+        font-size: 18px;
     }
     
     .container {
         width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
+        margin: 0;
+        padding: 0 60px;
     }
     
     h1, h2, h3, h4, h5, h6 {
@@ -37,14 +37,18 @@
     }
     
     h1 {
-        font-size: 3rem;
+        font-size: 3.6rem;
         line-height: 1.2;
     }
     
     h2 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         text-align: center;
         margin-bottom: 40px;
+    }
+    
+    h3 {
+        font-size: 2rem;
     }
     
     p {
@@ -68,13 +72,13 @@
     /* Buttons */
     .btn {
         display: inline-block;
-        padding: 7px 14px;
+        padding: 10px 20px;
         border-radius: var(--border-radius);
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
         border: none;
-        font-size: 0.9rem;
+        font-size: 1.1rem;
         background: transparent;
     }
     
@@ -113,16 +117,17 @@
         box-shadow: none;
         position: sticky;
         top: 15px;
+        width: 100%;
         z-index: 100;
     }
     
     .header-content {
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
+        width: 100%;
+        margin: 0;
         transition: all 0.3s ease;
     }
     
@@ -133,7 +138,7 @@
     }
     
     .logo img {
-        height: 40px;
+        height: 50px;
     }
     
     .navigation {
@@ -179,13 +184,13 @@
     }
     
     .navigation a {
-        padding: 7px 20px;
+        padding: 10px 26px;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 8px;
         font-weight: normal;
-        font-size: 0.85rem;
+        font-size: 1.1rem;
         transition: all 0.2s ease;
         background-color: transparent;
         border: none;
@@ -210,7 +215,7 @@
     
     .navigation a i {
         color: #0d6832;
-        font-size: 0.85rem;
+        font-size: .9rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -240,7 +245,7 @@
         background: transparent;
         border: none;
         padding: 0;
-        font-size: 14px;
+        font-size: 1rem;
         color: #555;
         font-weight: 500;
     }
@@ -273,7 +278,7 @@
     .hero-content {
         display: flex;
         align-items: center;
-        gap: 0;
+        gap: 2rem;
         position: relative;
         overflow: visible;
         min-height: 400px;
@@ -290,7 +295,7 @@
     .hero-text h1 {
         margin-bottom: 20px;
         color: var(--primary-color);
-        font-size: 4rem;
+        font-size: 4.5rem;
     }
     
     .hero-text .highlight {
@@ -344,7 +349,7 @@
     }
     
     .accreditations img {
-        height: 60px;
+        height: 80px;
         opacity: 0.8;
         filter: grayscale(20%);
         transition: all 0.3s ease;
@@ -412,13 +417,13 @@
     }
     
     .testimonial-card h3 {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         margin-bottom: 10px;
     }
     
     .testimonial-author {
         margin-top: 20px;
-        font-size: 0.9rem;
+        font-size: 1.1rem;
         color: var(--dark-gray);
     }
     
@@ -553,7 +558,7 @@
     }
     
     .footer-section h3 {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
         margin-bottom: 20px;
         font-weight: 650;
     }

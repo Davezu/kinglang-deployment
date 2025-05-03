@@ -1,0 +1,269 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Kasjie's fried noodle house, General Trias, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZVZTjtwtljMRPFiTELaMpvk",
+         "reference" : "ChIJZVZTjtwtljMRPFiTELaMpvk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kasjie's fried noodle house",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Trias, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kasjie's fried noodle house"
+            },
+            {
+               "offset" : 29,
+               "value" : "General Trias"
+            },
+            {
+               "offset" : 44,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "store",
+            "establishment",
+            "cafe",
+            "food",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Kaskag-San Juan Bridge, Surigao City, Surigao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ0TYPHMg3ATMRnh-eBkp_DlY",
+         "reference" : "ChIJ0TYPHMg3ATMRnh-eBkp_DlY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kaskag-San Juan Bridge",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Surigao City, Surigao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kaskag-San Juan Bridge"
+            },
+            {
+               "offset" : 24,
+               "value" : "Surigao City"
+            },
+            {
+               "offset" : 38,
+               "value" : "Surigao del Norte"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Kaskag Copraland, Ortiz Street, Surigao City, Surigao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ56oR2bc2ATMR8t9X4tl3X1k",
+         "reference" : "ChIJ56oR2bc2ATMR8t9X4tl3X1k",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kaskag Copraland",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ortiz Street, Surigao City, Surigao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kaskag Copraland"
+            },
+            {
+               "offset" : 18,
+               "value" : "Ortiz Street"
+            },
+            {
+               "offset" : 32,
+               "value" : "Surigao City"
+            },
+            {
+               "offset" : 46,
+               "value" : "Surigao del Norte"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Kaskada Cafe, Laoeng St, Poblacion, San Gabriel, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJWbzoO7iTkTMRhHRltLO4jIQ",
+         "reference" : "ChIJWbzoO7iTkTMRhHRltLO4jIQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Kaskada Cafe",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laoeng St, Poblacion, San Gabriel, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Kaskada Cafe"
+            },
+            {
+               "offset" : 14,
+               "value" : "Laoeng St"
+            },
+            {
+               "offset" : 25,
+               "value" : "Poblacion"
+            },
+            {
+               "offset" : 36,
+               "value" : "San Gabriel"
+            },
+            {
+               "offset" : 49,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "cafe",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "KASKASERO AUTO - MOTOR SUPPLY & SERVICES, MK Lina Street, Lipa, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqzQdbSgTvTMRSGrdcNo_u-s",
+         "reference" : "ChIJqzQdbSgTvTMRSGrdcNo_u-s",
+         "structured_formatting" : 
+         {
+            "main_text" : "KASKASERO AUTO - MOTOR SUPPLY & SERVICES",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "MK Lina Street, Lipa, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "KASKASERO AUTO - MOTOR SUPPLY & SERVICES"
+            },
+            {
+               "offset" : 42,
+               "value" : "MK Lina Street"
+            },
+            {
+               "offset" : 58,
+               "value" : "Lipa"
+            },
+            {
+               "offset" : 64,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "car_repair",
+            "store",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

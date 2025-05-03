@@ -168,7 +168,6 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                 </div>
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
-            
             <?php include_once __DIR__ . "/../assets/admin_navtab.php"; ?>
             
             <!-- Stats Dashboard Cards -->

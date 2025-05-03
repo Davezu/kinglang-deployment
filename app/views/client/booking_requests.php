@@ -43,6 +43,14 @@ require_client_auth(); // Use helper function
             /* overflow-y: auto; */
             margin-bottom: 1rem;
         }
+        .table thead th {
+            background-color: var(--light-green);
+            font-weight: 600;
+            padding: 12px 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            user-select: none;
+        }
         .actions-compact {
             display: flex;
             gap: 0.25rem;
@@ -71,6 +79,7 @@ require_client_auth(); // Use helper function
                 </div>
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>
             </div>
+            <hr>
 
             <!-- Stats Dashboard Cards -->
             <div class="row stats-dashboard g-2">
@@ -282,7 +291,7 @@ require_client_auth(); // Use helper function
             <div id="tableViewContainer">
                 <div class="table-container">
                     <div class="table-responsive">
-                        <table class="table table-hover overflow-hidden rounded shadow-sm">
+                        <table class="table table-hover overflow-hidden rounded shadow-sm text-secondary">
                             <thead>
                                 <tr>
                                     <th class="sort" data-order="asc" data-column="destination" style="white-space: nowrap;">Destination</th>
@@ -296,7 +305,7 @@ require_client_auth(); // Use helper function
                                     <th style="text-align: center; width: 18%; white-space: nowrap;">Action</th>
                                 </tr>
                             </thead>
-                            <tbody class="table-group" id="tableBody"></tbody>
+                            <tbody class="table-group-divider" id="tableBody"></tbody>
                         </table>     
                     </div>
                 </div>

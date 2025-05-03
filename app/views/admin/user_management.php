@@ -309,7 +309,8 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                 </div>
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
-            
+            <hr>
+
             <!-- User Statistics Cards -->
             <div class="row stats-dashboard g-2 mt-3">
                 <div class="col-xl-3 col-md-6 col-sm-6">

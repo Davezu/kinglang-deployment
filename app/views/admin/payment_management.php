@@ -364,6 +364,7 @@ require_once __DIR__ . "/../../controllers/admin/PaymentManagementController.php
                 </div>
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
+            <hr>
             
             <!-- Stats Dashboard Cards -->
             <div class="row stats-dashboard g-2 mt-3">
