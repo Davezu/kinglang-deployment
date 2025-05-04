@@ -200,7 +200,7 @@ if (!isset($_SESSION["user_id"])) {
 
     <!-- Terms and Conditions Modal -->
     <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
@@ -211,20 +211,27 @@ if (!isset($_SESSION["user_id"])) {
                     <p>By checking the "I agree to the terms and conditions" box, you acknowledge that you have read, understood, and agree to be bound by the following terms:</p>
                     
                     <ol>
-                        <li><strong>Booking Confirmation:</strong> All bookings are subject to availability and confirmation by Kinglang Booking.</li>
-                        <li><strong>Payment Terms:</strong> A 50% non-refundable deposit is required to secure your booking. The balance must be paid at least 7 days before the tour date.</li>
-                        <li><strong>Cancellation Policy:</strong>
+                        <li><strong>Booking Confirmation:</strong> A trip is only considered confirmed once a <strong>50% deposit</strong> has been received.</li>
+                        <li><strong>Payment Terms:</strong>
                             <ul>
-                                <li>Cancellations made 14 days or more before the tour: 50% of deposit refunded</li>
-                                <li>Cancellations made 7-13 days before the tour: 25% of deposit refunded</li>
-                                <li>Cancellations made less than 7 days before the tour: No refund</li>
+                                <li>A <strong>50% down payment</strong> is required to confirm the booking.</li>
+                                <li>The <strong>remaining balance</strong> must be settled before or during the trip date.</li>
+                                <li>We accept payments via <strong>cash</strong> or <strong>bank transfer</strong>.</li>
                             </ul>
                         </li>
-                        <li><strong>Changes to Booking:</strong> Any changes to your booking must be made in writing and are subject to availability and additional charges.</li>
-                        <li><strong>Liability:</strong> Kinglang Booking is not liable for any loss, damage, delay, inconvenience, or direct or consequential loss, however caused, unless due to our employees' negligence.</li>
-                        <li><strong>Insurance:</strong> We recommend that all passengers have travel insurance to cover incidents such as cancellation, personal effects, and any additional costs.</li>
-                        <li><strong>Data Collection:</strong> When you agree to these terms, we will collect your IP address and timestamp for verification purposes.</li>
+                        <li><strong>Cancellation Policy:</strong>
+                            <ul>
+                                <li>If canceled <strong>3 or more working days before</strong> the trip: <strong>50% deposit is forfeited</strong>.</li>
+                                <li>If canceled <strong>within 24 hours</strong> of the trip: <strong>Full payment is required</strong>.</li>
+                                <li><strong>No penalty</strong> for <strong>force majeure</strong> (e.g., typhoon).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Changes to Booking:</strong> Any changes to your booking must be made in <strong>writing</strong> and are subject to <strong>availability</strong> and additional charges.</li>
+                        <li><strong>Liability:</strong> KingLang Booking is not liable for any <strong>loss</strong>, <strong>damage</strong>, <strong>delay</strong>, <strong>inconvenience</strong>, or <strong>direct or consequential loss</strong>, however caused, unless due to our employees' <strong>negligence</strong>.</li>
+                        <li><strong>Insurance:</strong> We recommend that all passengers have <strong>travel insurance</strong> to cover incidents such as <strong>cancellation</strong>, <strong>personal effects</strong>, and any <strong>additional costs</strong>.</li>
+                        <li><strong>Data Collection:</strong> When you agree to these terms, we will collect your <strong>IP address</strong> and <strong>timestamp</strong> for verification purposes.</li>
                     </ol>
+
                     
                     <p>These terms and conditions are governed by the laws of the Philippines.</p>
                 </div>

@@ -1,0 +1,258 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Asdaf, Sitio Maname, Naic, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ7QumU-IpljMRCEUwOXKFlx0",
+         "reference" : "ChIJ7QumU-IpljMRCEUwOXKFlx0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Asdaf",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sitio Maname, Naic, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Asdaf"
+            },
+            {
+               "offset" : 7,
+               "value" : "Sitio Maname"
+            },
+            {
+               "offset" : 21,
+               "value" : "Naic"
+            },
+            {
+               "offset" : 27,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "ASDA FUEL STATION, San Juan - San Gabriel Road, San Juan, La Union, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJaf1LeQCTkTMRXiwapH3MUH8",
+         "reference" : "ChIJaf1LeQCTkTMRXiwapH3MUH8",
+         "structured_formatting" : 
+         {
+            "main_text" : "ASDA FUEL STATION",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Juan - San Gabriel Road, San Juan, La Union, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "ASDA FUEL STATION"
+            },
+            {
+               "offset" : 19,
+               "value" : "San Juan - San Gabriel Road"
+            },
+            {
+               "offset" : 48,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 58,
+               "value" : "La Union"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "ASDASHIDA, General Mariano Alvarez, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJiTkXPADXlzMRp5kG1ekSHFA",
+         "reference" : "ChIJiTkXPADXlzMRp5kG1ekSHFA",
+         "structured_formatting" : 
+         {
+            "main_text" : "ASDASHIDA",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "General Mariano Alvarez, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "ASDASHIDA"
+            },
+            {
+               "offset" : 11,
+               "value" : "General Mariano Alvarez"
+            },
+            {
+               "offset" : 36,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Asda Store, Santa Ana, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ66dUWOn6ljMRI6jymbmJdPo",
+         "reference" : "ChIJ66dUWOn6ljMRI6jymbmJdPo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Asda Store",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Ana, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Asda Store"
+            },
+            {
+               "offset" : 12,
+               "value" : "Santa Ana"
+            },
+            {
+               "offset" : 23,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "store",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "asdAS, Liloan, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJobDgQxC9qTMRQg-fKltEK3M",
+         "reference" : "ChIJobDgQxC9qTMRQg-fKltEK3M",
+         "structured_formatting" : 
+         {
+            "main_text" : "asdAS",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Liloan, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "asdAS"
+            },
+            {
+               "offset" : 7,
+               "value" : "Liloan"
+            },
+            {
+               "offset" : 15,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "store",
+            "food",
+            "point_of_interest",
+            "bakery"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

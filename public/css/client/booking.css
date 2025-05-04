@@ -132,7 +132,7 @@ input {
 .message-modal .modal-content {
     border-radius: 12px;
     border: none;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); */
 }
 
 .message-modal .modal-header {
@@ -177,7 +177,8 @@ input {
 
 /* Remove modal backdrop */
 .modal-backdrop {
-    display: none !important;
+    opacity: 0.1 !important;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Date picker container needs position relative for absolute positioning to work */

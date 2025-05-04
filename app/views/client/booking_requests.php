@@ -376,9 +376,9 @@ require_client_auth(); // Use helper function
                                 <label for="paymentMethod" class="form-label">Payment Method</label>
                                 <select name="payment_method" id="paymentMethod" class="form-select" aria-label="Payment method selection">
                                     <option value="Bank Transfer">Bank Transfer</option>
-                                    <option value="Online Payment">Online Payment</option>
+                                    <!-- <option value="Online Payment">Online Payment</option>
                                     <option value="GCash">GCash</option>
-                                    <option value="Maya">Maya</option>
+                                    <option value="Maya">Maya</option> -->
                                 </select>
                             </div>
 

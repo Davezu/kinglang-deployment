@@ -29,9 +29,9 @@ class Settings {
     private function addDefaultSettings() {
         $defaultSettings = [
             // General settings
-            ['site_name', 'Kinglang Booking', 'general', true],
-            ['site_email', 'info@kinglangbooking.com', 'general', true],
-            ['contact_phone', '+1234567890', 'general', true],
+            ['site_name', 'Kinglang Transport', 'general', true],
+            // ['site_email', 'info@kinglangbooking.com', 'general', true],
+            // ['contact_phone', '+1234567890', 'general', true],
             
             // Company Information
             ['company_name', 'KINGLANG TOURS AND TRANSPORT SERVICES INC.', 'company', true],
@@ -46,20 +46,20 @@ class Settings {
             ['bank_swift_code', 'BPOIPHMM', 'payment', true],
             
             // Booking settings
-            ['min_booking_notice_hours', '24', 'booking', true],
-            ['max_booking_days_in_advance', '60', 'booking', true],
+            // ['min_booking_notice_hours', '24', 'booking', true],
+            // ['max_booking_days_in_advance', '60', 'booking', true],
             ['allow_rebooking', '1', 'booking', true],
-            ['rebooking_fee_percentage', '10', 'booking', true],
+            // ['rebooking_fee_percentage', '10', 'booking', true],
             ['diesel_price', '65.00', 'booking', true],
             
             // Payment settings
-            ['payment_methods', 'Cash,Credit Card,Bank Transfer', 'payment', true],
+            ['payment_methods', 'Bank Transfer', 'payment', true],
             ['currency', 'PHP', 'payment', true],
             ['tax_rate', '12', 'payment', true],
             
             // Notification settings
-            ['enable_email_notifications', '1', 'notification', false],
-            ['enable_sms_notifications', '0', 'notification', false]
+            // ['enable_email_notifications', '1', 'notification', false],
+            // ['enable_sms_notifications', '0', 'notification', false]
         ];
 
         $stmt = $this->pdo->prepare("INSERT IGNORE INTO settings 

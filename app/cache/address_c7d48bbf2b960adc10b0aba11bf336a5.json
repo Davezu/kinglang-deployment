@@ -1,0 +1,60 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "FAF's, M. H. Del Pilar St, Alaminos, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJmZgZcz9pvTMRLIILsgWXIb8",
+         "reference" : "ChIJmZgZcz9pvTMRLIILsgWXIb8",
+         "structured_formatting" : 
+         {
+            "main_text" : "FAF's",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M. H. Del Pilar St, Alaminos, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FAF's"
+            },
+            {
+               "offset" : 7,
+               "value" : "M. H. Del Pilar St"
+            },
+            {
+               "offset" : 27,
+               "value" : "Alaminos"
+            },
+            {
+               "offset" : 37,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "establishment",
+            "restaurant",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

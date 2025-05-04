@@ -296,47 +296,6 @@ require_client_auth(); // Use helper function
                 color: #333 !important;
             }
             
-            /* Remove browser-added headers and footers */
-            @page {
-                size: auto;
-                margin: 0mm;
-            }
-            
-            /* Hide URL, date, etc when printing */
-            @page {
-                margin: 10mm 15mm 10mm 15mm;
-            }
-            
-            html {
-                background-color: #FFFFFF; 
-            }
-            
-            /* Hide URL, title, date from the header */
-            @page :first {
-                margin-top: 10mm;
-            }
-            
-            @page :left {
-                margin-left: 15mm;
-                margin-right: 15mm;
-            }
-            
-            @page :right {
-                margin-left: 15mm;
-                margin-right: 15mm;
-            }
-            
-            /* Add these rules to force hiding all headers and footers */
-            html, body, .invoice-container {
-                height: 100%;
-                overflow: hidden;
-                background: #fff;
-                font-size: 11pt;
-            }
-            
-            head, header, footer {
-                display: none !important;
-            }
         }
         
         @media (max-width: 768px) {
@@ -402,15 +361,15 @@ require_client_auth(); // Use helper function
         </div>
                 
         <div class="invoice-details">
-            <div class="d-flex flex-wrap">
-                <div class="col-md-6">
+            <div class="d-flex gap-3">
+                <div class="w-50">
                     <div class="section-title">Client Information</div>
                     <p><i class="bi bi-person-fill text-success me-1"></i><strong>Name:</strong> <?php echo $booking['client_name']; ?></p>
                     <p><i class="bi bi-envelope-fill text-success me-1"></i><strong>Email:</strong> <?php echo $booking['email']; ?></p>
                     <p><i class="bi bi-telephone-fill text-success me-1"></i><strong>Phone:</strong> <?php echo $booking['contact_number']; ?></p>
                     <p><i class="bi bi-building text-success me-1"></i><strong>Company Name:</strong> <?php echo $booking['company_name'] ?? "None"; ?></p>
                 </div>
-                <div class="col-md-6">
+                <div class="">
                     <div class="section-title">Booking Details</div>
                     <p><i class="bi bi-calendar-check text-success me-1"></i><strong>Booking Date:</strong> <?php echo date('F d, Y', strtotime($booking['booked_at'])); ?></p>
                     <p><i class="bi bi-calendar-event text-success me-1"></i><strong>Tour Date:</strong> <?php echo date('M d, Y', strtotime($booking['date_of_tour'])) . " to " . date('M d, Y', strtotime($booking['end_of_tour'])); ?></p>
@@ -419,11 +378,11 @@ require_client_auth(); // Use helper function
                 </div>
             </div>
         </div>
-        
-        <div class="section">
-            <div class="section-title"><i class="bi bi-geo-alt"></i>Trip Details</div>
-            <div class="d-flex flex-wrap">
-                <div class="col-md-6">
+
+        <div class="invoice-details">
+            <div class="section-title">Trip Details</div>
+            <div class="d-flex gap-3">
+                <div class="w-50">
                     <p><i class="bi bi-pin-map-fill text-success me-1"></i><strong>Pickup Point:</strong> <?php echo $booking['pickup_point']; ?></p>
                     <p><i class="bi bi-geo-alt-fill text-success me-1"></i><strong>Destination:</strong> <?php 
                         if ($booking['stops'] != null) {
@@ -435,7 +394,7 @@ require_client_auth(); // Use helper function
                     ?>
                     </p>
                 </div>
-                <div class="col-md-6">
+                <div class="justify-self-center">
                     <p><i class="bi bi-bus-front-fill text-success me-1"></i><strong>Number of Buses:</strong> <?php echo $booking['number_of_buses']; ?></p>
                     <p><i class="bi bi-fuel-pump-fill text-success me-1"></i><strong>Current Diesel Price:</strong> ₱<?php echo number_format($booking['diesel_price'], 2); ?></p>
                     <p><i class="bi bi-currency-exchange text-success me-1"></i><strong>Base Rate:</strong> ₱<?php echo number_format($booking['base_rate'], 2); ?></p>
@@ -443,6 +402,30 @@ require_client_auth(); // Use helper function
                 </div>
             </div>
         </div>
+        
+        <!-- <div class="section">
+            <div class="section-title"><i class="bi bi-geo-alt"></i>Trip Details</div>
+            <div class="d-flex justify-content-between gap-3">
+                <div class="w-50">
+                    <p><i class="bi bi-pin-map-fill text-success me-1"></i><strong>Pickup Point:</strong> <?php echo $booking['pickup_point']; ?></p>
+                    <p><i class="bi bi-geo-alt-fill text-success me-1"></i><strong>Destination:</strong> <?php 
+                        if ($booking['stops'] != null) {
+                            foreach ($booking['stops'] as $stop) {
+                                echo $stop['location'] . "<i class='bi bi-arrow-right mx-1 text-danger'></i>";
+                            }
+                        }
+                        echo $booking['destination']; 
+                    ?>
+                    </p>
+                </div>
+                <div class="">
+                    <p><i class="bi bi-bus-front-fill text-success me-1"></i><strong>Number of Buses:</strong> <?php echo $booking['number_of_buses']; ?></p>
+                    <p><i class="bi bi-fuel-pump-fill text-success me-1"></i><strong>Current Diesel Price:</strong> ₱<?php echo number_format($booking['diesel_price'], 2); ?></p>
+                    <p><i class="bi bi-currency-exchange text-success me-1"></i><strong>Base Rate:</strong> ₱<?php echo number_format($booking['base_rate'], 2); ?></p>
+                    <p><i class="bi bi-map text-success me-1"></i><strong>Total Distance:</strong> <?php echo $booking['total_distance']; ?> km</p>
+                </div>
+            </div>
+        </div> -->
 
         <?php if (!empty($payments)): ?>
         <div class="section">
@@ -465,7 +448,7 @@ require_client_auth(); // Use helper function
                         <td><?php echo $payment['payment_method']; ?></td>
                         <td>
                             <span class="status-badge status-<?php echo strtolower($payment['status']); ?>">
-                                <i class="bi bi-circle-fill me-1 small"></i><?php echo $payment['status']; ?>
+                                <?php echo $payment['status']; ?>
                             </span>
                         </td>
                     </tr>

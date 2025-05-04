@@ -491,7 +491,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                         <td><?php echo $payment['payment_method']; ?></td>
                         <td>
                             <span class="status-badge status-<?php echo strtolower($payment['status']); ?>">
-                                <i class="bi bi-circle-fill me-1 small"></i><?php echo $payment['status']; ?>
+                               <?php echo $payment['status']; ?>
                             </span>
                         </td>
                     </tr>

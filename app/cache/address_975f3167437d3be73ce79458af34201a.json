@@ -1,0 +1,270 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Fafa well, Kahel, Antipolo, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJmXwGDBm_lzMRsqOp1ANeM3c",
+         "reference" : "ChIJmXwGDBm_lzMRsqOp1ANeM3c",
+         "structured_formatting" : 
+         {
+            "main_text" : "Fafa well",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Kahel, Antipolo, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Fafa well"
+            },
+            {
+               "offset" : 11,
+               "value" : "Kahel"
+            },
+            {
+               "offset" : 18,
+               "value" : "Antipolo"
+            },
+            {
+               "offset" : 28,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "store",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Faffle + Coffee, Garnet Drive, Meycauayan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJb0NPshmzlzMRy4frhSxl3bM",
+         "reference" : "ChIJb0NPshmzlzMRy4frhSxl3bM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Faffle + Coffee",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Garnet Drive, Meycauayan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Faffle + Coffee"
+            },
+            {
+               "offset" : 17,
+               "value" : "Garnet Drive"
+            },
+            {
+               "offset" : 31,
+               "value" : "Meycauayan"
+            },
+            {
+               "offset" : 43,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "store",
+            "food",
+            "point_of_interest",
+            "establishment",
+            "cafe"
+         ]
+      },
+      {
+         "description" : "FAFA MAKOY CHICKEN INASAL, Tacurong City, Sultan Kudarat, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJjaS4WRMN-DIRG0jMwgXY2Tc",
+         "reference" : "ChIJjaS4WRMN-DIRG0jMwgXY2Tc",
+         "structured_formatting" : 
+         {
+            "main_text" : "FAFA MAKOY CHICKEN INASAL",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tacurong City, Sultan Kudarat, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FAFA MAKOY CHICKEN INASAL"
+            },
+            {
+               "offset" : 27,
+               "value" : "Tacurong City"
+            },
+            {
+               "offset" : 42,
+               "value" : "Sultan Kudarat"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "point_of_interest",
+            "restaurant",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Fafas Moto, Pres. Manuel L. Quezon St, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJb9cSOLrPlzMRASM1-iBcnZ4",
+         "reference" : "ChIJb9cSOLrPlzMRASM1-iBcnZ4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Fafas Moto",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pres. Manuel L. Quezon St, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Fafas Moto"
+            },
+            {
+               "offset" : 12,
+               "value" : "Pres. Manuel L. Quezon St"
+            },
+            {
+               "offset" : 39,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 47,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "store",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Fafa Fel online shop parts&accessories, Umangan - Julo Road, Aliaga, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8Zu4Sd0plzMRqRAROTbGOL0",
+         "reference" : "ChIJ8Zu4Sd0plzMRqRAROTbGOL0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Fafa Fel online shop parts&accessories",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Umangan - Julo Road, Aliaga, Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Fafa Fel online shop parts&accessories"
+            },
+            {
+               "offset" : 40,
+               "value" : "Umangan - Julo Road"
+            },
+            {
+               "offset" : 61,
+               "value" : "Aliaga"
+            },
+            {
+               "offset" : 69,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 82,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "car_repair",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}
