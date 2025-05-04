@@ -2,6 +2,7 @@
 $router->post('/admin/bookings', 'BookingManagementController@getAllBookings');
 $router->post('/admin/search-bookings', 'BookingManagementController@searchBookings');
 $router->post('/admin/unpaid-bookings', 'BookingManagementController@getUnpaidBookings');
+$router->post('/admin/partially-paid-bookings', 'BookingManagementController@getPartiallyPaidBookings');
 $router->post('/admin/confirm-booking', 'BookingManagementController@confirmBooking');
 $router->post('/admin/reject-booking', 'BookingManagementController@rejectBooking');
 $router->post('/admin/cancel-booking', 'BookingManagementController@cancelBooking');

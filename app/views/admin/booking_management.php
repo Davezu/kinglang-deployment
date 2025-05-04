@@ -340,6 +340,9 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                         <button class="btn btn-sm btn-outline-danger quick-filter" data-payment="Unpaid">
                             <i class="bi bi-cash"></i> Unpaid
                         </button>
+                        <button class="btn btn-sm btn-outline-warning quick-filter" data-payment="Partially Paid">
+                            <i class="bi bi-cash-coin"></i> Partially Paid
+                        </button>
                     </div>
                 </div>
                 <div class="col-xl-4">

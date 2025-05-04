@@ -93,9 +93,46 @@ class BookingManagementController {
         $data = json_decode(file_get_contents("php://input"), true);
         $page = isset($data["page"]) ? (int)$data["page"] : 1;
         $limit = isset($data["limit"]) ? (int)$data["limit"] : 10;
+        $column = isset($data["column"]) ? $data["column"] : "booking_id";
+        $order = isset($data["order"]) ? $data["order"] : "desc";
         
-        $bookings = $this->bookingModel->getUnpaidBookings($page, $limit);
+        $bookings = $this->bookingModel->getUnpaidBookings($page, $limit, $column, $order);
         $total = $this->bookingModel->getTotalUnpaidBookings();
+        
+        // Fix for pagination bug when total == limit
+        // We need to make sure totalPages is at least 1, and correctly calculated
+        $totalPages = max(1, ceil((int)$total / (int)$limit));
+        
+        $response = [
+            "success" => true, 
+            "bookings" => $bookings,
+            "pagination" => [
+                "total" => $total,
+                "totalPages" => $totalPages,
+                "currentPage" => $page,
+                "limit" => $limit
+            ]
+        ];
+        
+        header("Content-Type: application/json");
+        
+        if (is_array($bookings)) {
+            echo json_encode($response);
+        } else {
+            echo json_encode(["success" => false, "message" => $bookings]);
+        }
+    }
+    
+    // New method for partially paid bookings filter
+    public function getPartiallyPaidBookings() {
+        $data = json_decode(file_get_contents("php://input"), true);
+        $page = isset($data["page"]) ? (int)$data["page"] : 1;
+        $limit = isset($data["limit"]) ? (int)$data["limit"] : 10;
+        $column = isset($data["column"]) ? $data["column"] : "booking_id";
+        $order = isset($data["order"]) ? $data["order"] : "desc";
+        
+        $bookings = $this->bookingModel->getPartiallyPaidBookings($page, $limit, $column, $order);
+        $total = $this->bookingModel->getTotalPartiallyPaidBookings();
         
         // Fix for pagination bug when total == limit
         // We need to make sure totalPages is at least 1, and correctly calculated
@@ -224,73 +261,22 @@ class BookingManagementController {
     }
 
     public function confirmBooking() {
-        if (!isset($_POST['id']) || empty($_POST['id'])) {
-            echo json_encode(['error' => 'Booking ID is required.']);
-            return;
-        }
-        
-        $bookingId = $_POST['id'];
-        
-        // Get booking data before update for audit trail
-        $oldBookingData = $this->getEntityBeforeUpdate('bookings', 'booking_id', $bookingId);
-        
-        try {
-            global $pdo;
-            $pdo->beginTransaction();
-            
-            // Update booking status to confirmed
-            $stmt = $pdo->prepare("
-                UPDATE bookings 
-                SET status = 'Confirmed', confirmed_at = NOW() 
-                WHERE booking_id = ?
-            ");
-            $stmt->execute([$bookingId]);
-            
-            // Set payment deadline (e.g., 3 days from now)
-            $stmt = $pdo->prepare("
-                UPDATE bookings 
-                SET payment_deadline = DATE_ADD(NOW(), INTERVAL 3 DAY) 
-                WHERE booking_id = ? AND payment_deadline IS NULL
-            ");
-            $stmt->execute([$bookingId]);
-            
-            // Get the updated booking data
-            $stmt = $pdo->prepare("SELECT * FROM bookings WHERE booking_id = ?");
-            $stmt->execute([$bookingId]);
-            $newBookingData = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            // Create notification for admin
-            $stmt = $pdo->prepare("
-                INSERT INTO admin_notifications (type, message, reference_id) 
-                VALUES ('booking_confirmed', 'Booking #" . $bookingId . " has been confirmed.', ?)
-            ");
-            $stmt->execute([$bookingId]);
-            
-            // Create notification for client
-            $stmt = $pdo->prepare("
-                INSERT INTO client_notifications (user_id, type, message, reference_id) 
-                VALUES (?, 'booking_confirmed', 'Your booking #" . $bookingId . " has been confirmed. Please complete the payment before the deadline.', ?)
-            ");
-            $stmt->execute([$newBookingData['user_id'], $bookingId]);
-            
-            $pdo->commit();
-            
-            // Log to audit trail
-            $this->logAudit(
-                'update', 
-                'booking', 
-                $bookingId, 
-                $oldBookingData, 
-                $newBookingData
-            );
-            
-            echo json_encode(['success' => 'Booking confirmed successfully.']);
-            
-        } catch (PDOException $e) {
-            $pdo->rollBack();
-            error_log("Error confirming booking: " . $e->getMessage());
-            echo json_encode(['error' => 'Failed to confirm booking. Please try again.']);
-        }
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $data = json_decode(file_get_contents("php://input"), true);
+            $booking_id = $data["bookingId"];
+            $discount = isset($data["discount"]) ? (float)$data["discount"] : null;
+            $discountType = isset($data["discountType"]) ? $data["discountType"] : null;
+
+            $result = $this->bookingModel->confirmBooking($booking_id, $discount, $discountType);
+            header("Content-Type: application/json");
+
+            echo json_encode([
+                "success" => $result === "success",
+                "message" => $result === "success" 
+                    ? "Booking confirmed successfully." 
+                    : $result
+            ]);
+        }   
     }
 
     public function rejectBooking() {
@@ -398,9 +384,10 @@ class BookingManagementController {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = json_decode(file_get_contents("php://input"), true);
             $rebooking_id = $data["bookingId"];
-            $discount = isset($data["discount"]) ? (float)$data["discount"] : 0;
+            $discount = isset($data["discount"]) ? (float)$data["discount"] : null;
+            $discountType = isset($data["discountType"]) ? $data["discountType"] : null;
 
-            $result = $this->bookingModel->confirmRebookingRequest($rebooking_id, $discount);
+            $result = $this->bookingModel->confirmRebookingRequest($rebooking_id, $discount, $discountType);
             header("Content-Type: application/json");
 
             echo json_encode([

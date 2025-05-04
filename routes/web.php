@@ -409,6 +409,12 @@ switch ($request) {
         $controller->getUnpaidBookings();
         break;
 
+    case "/admin/partially-paid-bookings":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getPartiallyPaidBookings();
+        break;
+
     case "/admin/export-bookings":
         require_once $controllerClasses['admin']['BookingManagementController'];
         $controller = new BookingManagementController();

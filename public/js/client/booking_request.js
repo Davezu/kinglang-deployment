@@ -118,12 +118,16 @@ document.addEventListener("DOMContentLoaded", async function () {
             statusSelect.value = filterStatus;
             result = await getAllBookings(filterStatus, "booking_id", "desc", currentPage, limit, searchTerm);
             
+            document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+            document.querySelector('.quick-filter[data-status="processing"]').classList.add('active');
             // If no processing bookings, try confirmed bookings
             if (result.bookings.length === 0) {
                 filterStatus = "confirmed";
                 statusSelect.value = filterStatus;
                 result = await getAllBookings(filterStatus, "booking_id", "desc", currentPage, limit, searchTerm);
                 
+                document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+                document.querySelector('.quick-filter[data-status="confirmed"]').classList.add('active');
                 // If no confirmed bookings either, use "all"
                 if (result.bookings.length === 0) {
                     filterStatus = "all";
@@ -594,7 +598,7 @@ function checkForUpcomingTours(bookings) {
     const upcomingTours = bookings.filter(booking => {
         const tourDate = new Date(booking.date_of_tour);
         tourDate.setHours(0, 0, 0, 0);
-        return booking.status === "Confirmed" && tourDate > today;
+        return booking.status === "Confirmed" && booking.payment_status !== "Unpaid" && tourDate > today;
     });
     
     // Sort by nearest date

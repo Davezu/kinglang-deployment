@@ -96,7 +96,7 @@ class BookingManagementModel {
         }
     }
 
-    public function confirmBooking($booking_id, $discount = 0) {
+    public function confirmBooking($booking_id, $discount = null, $discountType = null) {
         try {
             // Set the payment deadline to 2 days from now
             $payment_deadline = date('Y-m-d H:i:s', strtotime('+2 days'));
@@ -111,22 +111,35 @@ class BookingManagementModel {
             $bookingInfo = $this->getBooking($booking_id);
             
             // Apply discount if provided
-            if ($discount > 0) {
+            if ($discount !== null && $discount > 0) {
                 // Get current booking cost
                 $stmt = $this->conn->prepare("SELECT total_cost FROM booking_costs WHERE booking_id = :booking_id");
                 $stmt->execute([":booking_id" => $booking_id]);
                 $originalCost = (float)$stmt->fetchColumn();
                 
-                // Calculate new discounted cost
-                $discountMultiplier = (100 - $discount) / 100;
-                $discountedCost = round($originalCost * $discountMultiplier, 2);
+                // Calculate new discounted cost based on discount type
+                $discountedCost = $originalCost;
+                $discountValue = $discount;
+                
+                if ($discountType === 'percentage') {
+                    // Percentage discount
+                    $discountMultiplier = (100 - $discount) / 100;
+                    $discountedCost = round($originalCost * $discountMultiplier, 2);
+                } else if ($discountType === 'flat') {
+                    // Flat amount discount
+                    $discountedCost = max(0, round($originalCost - $discount, 2));
+                    // Calculate equivalent percentage for storage
+                    $discountValue = min(100, round(($discount / $originalCost) * 100, 2));
+                }
                 
                 // Update the booking costs with discount
-                $stmt = $this->conn->prepare("UPDATE booking_costs SET gross_price = :gross_price, total_cost = :total_cost, discount = :discount WHERE booking_id = :booking_id");
+                $stmt = $this->conn->prepare("UPDATE booking_costs SET gross_price = :gross_price, total_cost = :total_cost, discount = :discount, discount_type = :discount_type, discount_amount = :discount_amount WHERE booking_id = :booking_id");
                 $stmt->execute([
                     ":gross_price" => $originalCost,
                     ":total_cost" => $discountedCost,
-                    ":discount" => $discount,
+                    ":discount" => $discountValue,
+                    ":discount_type" => $discountType,
+                    ":discount_amount" => ($discountType === 'flat') ? $discount : null,
                     ":booking_id" => $booking_id
                 ]);
                 
@@ -249,7 +262,7 @@ class BookingManagementModel {
         }
     }
 
-    public function confirmRebookingRequest($rebooking_id, $discount = 0) {
+    public function confirmRebookingRequest($rebooking_id, $discount = null, $discountType = null) {
         try {
             // First, let's verify the rebooking request exists
             $stmt = $this->conn->prepare("SELECT * FROM rebooking_request WHERE rebooking_id = :rebooking_id");
@@ -284,22 +297,35 @@ class BookingManagementModel {
             $stmt->execute([":rebooking_id" => $rebooking_id, ":booking_id" => $booking_id]);
 
             // Apply discount if provided
-            if ($discount > 0) {
+            if ($discount !== null && $discount > 0) {
                 // Get current booking cost
                 $stmt = $this->conn->prepare("SELECT total_cost FROM booking_costs WHERE booking_id = :booking_id");
                 $stmt->execute([":booking_id" => $rebooking_id]);
                 $originalCost = (float)$stmt->fetchColumn();
                 
-                // Calculate new discounted cost
-                $discountMultiplier = (100 - $discount) / 100;
-                $discountedCost = round($originalCost * $discountMultiplier, 2);
+                // Calculate new discounted cost based on discount type
+                $discountedCost = $originalCost;
+                $discountValue = $discount;
+                
+                if ($discountType === 'percentage') {
+                    // Percentage discount
+                    $discountMultiplier = (100 - $discount) / 100;
+                    $discountedCost = round($originalCost * $discountMultiplier, 2);
+                } else if ($discountType === 'flat') {
+                    // Flat amount discount
+                    $discountedCost = max(0, round($originalCost - $discount, 2));
+                    // Calculate equivalent percentage for storage
+                    $discountValue = min(100, round(($discount / $originalCost) * 100, 2));
+                }
                 
                 // Update the booking costs with discount
-                $stmt = $this->conn->prepare("UPDATE booking_costs SET gross_price = :gross_price, total_cost = :total_cost, discount = :discount WHERE booking_id = :booking_id");
+                $stmt = $this->conn->prepare("UPDATE booking_costs SET gross_price = :gross_price, total_cost = :total_cost, discount = :discount, discount_type = :discount_type, discount_amount = :discount_amount WHERE booking_id = :booking_id");
                 $stmt->execute([
                     ":gross_price" => $originalCost,
                     ":total_cost" => $discountedCost,
-                    ":discount" => $discount,
+                    ":discount" => $discountValue,
+                    ":discount_type" => $discountType,
+                    ":discount_amount" => ($discountType === 'flat') ? $discount : null,
                     ":booking_id" => $rebooking_id
                 ]);
                 
@@ -1063,9 +1089,16 @@ class BookingManagementModel {
     }
     
     // New method for getting unpaid bookings
-    public function getUnpaidBookings($page = 1, $limit = 10) {
+    public function getUnpaidBookings($page = 1, $limit = 10, $column = "booking_id", $order = "desc") {
         // Calculate offset for pagination
         $offset = ($page - 1) * $limit;
+        
+        // Validate the column to prevent SQL injection
+        $allowed_columns = ["booking_id", "client_name", "contact_number", "destination", "pickup_point", "date_of_tour", "end_of_tour", "number_of_days", "number_of_buses", "status", "payment_status", "total_cost"];
+        $column = in_array($column, $allowed_columns) ? $column : "booking_id";
+        
+        // Validate the order
+        $order = strtolower($order) === "asc" ? "ASC" : "DESC";
         
         try {
             $stmt = $this->conn->prepare("
@@ -1076,8 +1109,9 @@ class BookingManagementModel {
                 JOIN users u ON b.user_id = u.user_id
                 JOIN booking_costs c ON b.booking_id = c.booking_id
                 WHERE is_rebooking = 0 AND is_rebooked = 0
-                AND (b.payment_status = 'Unpaid' OR b.payment_status = 'Partially Paid')
-                ORDER BY b.booking_id DESC
+                AND b.status = 'Confirmed'
+                AND b.payment_status = 'Unpaid'
+                ORDER BY $column $order
                 LIMIT :limit OFFSET :offset
             ");
             
@@ -1097,8 +1131,65 @@ class BookingManagementModel {
             $stmt = $this->conn->prepare("
                 SELECT COUNT(*) as total
                 FROM bookings b
+                WHERE is_rebooking = 0 AND is_rebooked = 0 
+                AND status = 'Confirmed'
+                AND b.payment_status = 'Unpaid'
+            ");
+            
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['total'];
+        } catch (PDOException $e) {
+            return 0;
+        }
+    }
+    
+    // New method for getting partially paid bookings
+    public function getPartiallyPaidBookings($page = 1, $limit = 10, $column = "booking_id", $order = "desc") {
+        // Calculate offset for pagination
+        $offset = ($page - 1) * $limit;
+        
+        // Validate the column to prevent SQL injection
+        $allowed_columns = ["booking_id", "client_name", "contact_number", "destination", "pickup_point", "date_of_tour", "end_of_tour", "number_of_days", "number_of_buses", "status", "payment_status", "total_cost"];
+        $column = in_array($column, $allowed_columns) ? $column : "booking_id";
+        
+        // Validate the order
+        $order = strtolower($order) === "asc" ? "ASC" : "DESC";
+        
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT b.booking_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, 
+                u.contact_number, b.destination, b.pickup_point, b.date_of_tour, b.end_of_tour, 
+                b.number_of_days, b.number_of_buses, b.status, b.payment_status, c.total_cost, b.balance
+                FROM bookings b
+                JOIN users u ON b.user_id = u.user_id
+                JOIN booking_costs c ON b.booking_id = c.booking_id
                 WHERE is_rebooking = 0 AND is_rebooked = 0
-                AND (b.payment_status = 'Unpaid' OR b.payment_status = 'Partially Paid')
+                AND (b.status = 'Confirmed' OR b.status = 'Completed')
+                AND b.payment_status = 'Partially Paid'
+                ORDER BY $column $order
+                LIMIT :limit OFFSET :offset
+            ");
+            
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return "Database error: " . $e->getMessage();
+        }
+    }
+    
+    // New method for counting total partially paid bookings
+    public function getTotalPartiallyPaidBookings() {
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT COUNT(*) as total
+                FROM bookings b
+                WHERE is_rebooking = 0 AND is_rebooked = 0
+                AND b.payment_status = 'Partially Paid'
             ");
             
             $stmt->execute();

@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("statusSelect").value = "Pending";
         renderBookings(pendingBookings);
         renderPagination(pendingBookings.pagination);
+        document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+        document.querySelector('.quick-filter[data-status="Pending"]').classList.add('active');
     } else {
         // If no pending records, check for confirmed records
         const confirmedBookings = await getAllBookings("Confirmed", "desc", "booking_id", 1, limit);
@@ -27,12 +29,16 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.getElementById("statusSelect").value = "Confirmed";
             renderBookings(confirmedBookings);
             renderPagination(confirmedBookings.pagination);
+            document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+            document.querySelector('.quick-filter[data-status="Confirmed"]').classList.add('active');
         } else {
             // If no pending and no confirmed records, set to All
             document.getElementById("statusSelect").value = "All";
             const allBookings = await getAllBookings("All", "asc", "booking_id", 1, limit);
             renderBookings(allBookings);
             renderPagination(allBookings.pagination);
+            document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+            document.querySelector('.quick-filter[data-status="All"]').classList.add('active');
         }
     }
     
@@ -212,6 +218,13 @@ function setupSearch() {
     
     // Reset filters button
     document.getElementById("resetFilters")?.addEventListener("click", function() {
+        // Hide no results message
+        document.getElementById("noResultsFound").style.display = "none";
+        
+        // Remove active class from all filter buttons
+        document.querySelectorAll(".quick-filter").forEach(btn => btn.classList.remove("active"));
+        
+        // Reset form inputs
         searchInput.value = "";
         document.getElementById("statusSelect").value = "Pending";
         document.getElementById("limitSelect").value = "10";
@@ -271,6 +284,9 @@ function setupQuickFilters() {
             // Add active class to the clicked button
             this.classList.add("active");   
 
+            // Hide no results message initially when switching filters
+            document.getElementById("noResultsFound").style.display = "none";
+
             const status = this.getAttribute("data-status");
             const payment = this.getAttribute("data-payment");
             
@@ -279,8 +295,12 @@ function setupQuickFilters() {
                 const event = new Event("change");
                 document.getElementById("statusSelect").dispatchEvent(event);
             } else if (payment) {
-                // Handle payment filter (Unpaid)
-                filterUnpaidBookings();
+                // Handle payment filter (Unpaid or Partially Paid)
+                if (payment === "Unpaid") {
+                    filterUnpaidBookings();
+                } else if (payment === "Partially Paid") {
+                    filterPartiallyPaidBookings();
+                }
             }
         });
     });
@@ -289,14 +309,24 @@ function setupQuickFilters() {
 // Function to filter unpaid bookings
 async function filterUnpaidBookings() {
     try {
+        // Hide no results message initially while loading
+        document.getElementById("noResultsFound").style.display = "none";
+        
         const limit = document.getElementById("limitSelect").value;
+        // Get current sort settings (if any)
+        const column = document.querySelector(".sort.active") ? 
+            document.querySelector(".sort.active").getAttribute("data-column") : "booking_id";
+        const order = document.querySelector(".sort.active") ? 
+            document.querySelector(".sort.active").getAttribute("data-order") : "desc";
         
         const response = await fetch("/admin/unpaid-bookings", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ 
                 limit,
-                page: 1 
+                page: 1,
+                column,
+                order
             })
         });
         
@@ -319,6 +349,52 @@ async function filterUnpaidBookings() {
         }
     } catch (error) {
         console.error("Error fetching unpaid bookings:", error);
+    }
+}
+
+// Function to filter partially paid bookings
+async function filterPartiallyPaidBookings() {
+    try {
+        // Hide no results message initially while loading
+        document.getElementById("noResultsFound").style.display = "none";
+        
+        const limit = document.getElementById("limitSelect").value;
+        // Get current sort settings (if any)
+        const column = document.querySelector(".sort.active") ? 
+            document.querySelector(".sort.active").getAttribute("data-column") : "booking_id";
+        const order = document.querySelector(".sort.active") ? 
+            document.querySelector(".sort.active").getAttribute("data-order") : "desc";
+        
+        const response = await fetch("/admin/partially-paid-bookings", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                limit,
+                page: 1,
+                column,
+                order
+            })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            
+            if (data.success) {
+                renderBookings(data);
+                renderPagination(data.pagination);
+                
+                // Show/hide no results message
+                document.getElementById("noResultsFound").style.display = 
+                    (!data.bookings || data.bookings.length === 0) ? "block" : "none";
+                
+                // Update active view
+                if (document.getElementById("cardView").checked) {
+                    renderCardView();
+                }
+            }
+        }
+    } catch (error) {
+        console.error("Error fetching partially paid bookings:", error);
     }
 }
 
@@ -373,6 +449,9 @@ async function exportBookings(format) {
 
 // Function to refresh bookings
 async function refreshBookings() {
+    // Hide no results message initially while loading
+    document.getElementById("noResultsFound").style.display = "none";
+    
     const status = document.getElementById("statusSelect").value;
     const limit = document.getElementById("limitSelect").value;
     const column = document.querySelector(".sort.active") ? 
@@ -387,6 +466,10 @@ async function refreshBookings() {
     const bookings = await getAllBookings(status, order, column, 1, limit);
     renderBookings(bookings);
     renderPagination(bookings.pagination);
+    
+    // Show/hide no results message
+    document.getElementById("noResultsFound").style.display = 
+        (!bookings.bookings || bookings.bookings.length === 0) ? "block" : "none";
     
     // Update active view
     if (document.getElementById("cardView").checked) {
@@ -403,33 +486,16 @@ function renderCardView() {
     const cardContainer = document.getElementById("cardViewContainer");
     cardContainer.innerHTML = "";
     
-    const tbody = document.getElementById("tableBody");
-    const rows = tbody.querySelectorAll("tr");
-    
-    if (rows.length === 1 && rows[0].querySelector("td").colSpan) {
-        // No results found, show message
-        cardContainer.innerHTML = `
-            <div class="col-12 text-center py-5">
-                <i class="bi bi-search fs-1 text-muted"></i>
-                <h4 class="mt-3">No bookings found</h4>
-                <p class="text-muted">Try adjusting your search or filter criteria</p>
-            </div>
-        `;
-        return;
-    }
-    
     // Get all bookings data from the current API response
     getCurrentBookings().then(bookings => {
         if (!bookings || bookings.length === 0) {
-            cardContainer.innerHTML = `
-                <div class="col-12 text-center py-5">
-                    <i class="bi bi-search fs-1 text-muted"></i>
-                    <h4 class="mt-3">No bookings found</h4>
-                    <p class="text-muted">Try adjusting your search or filter criteria</p>
-                </div>
-            `;
+            // Show the centralized no results message instead of duplicating it
+            document.getElementById("noResultsFound").style.display = "block";
             return;
         }
+        
+        // Make sure the no results message is hidden if we have bookings
+        document.getElementById("noResultsFound").style.display = "none";
         
         bookings.forEach(booking => {
             const card = document.createElement("div");
@@ -532,7 +598,102 @@ function attachCardEventListeners() {
     document.querySelectorAll('.confirm-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const bookingId = this.getAttribute('data-booking-id');
-            confirmBooking(bookingId);
+            
+            Swal.fire({
+                title: 'Apply Discount?',
+                icon: 'question',
+                html: `
+                    <p>Would you like to apply a discount to this booking?</p>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" id="noDiscount" name="discountOption" value="none" checked>
+                        <label class="form-check-label" for="noDiscount">No discount</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" id="percentageDiscount" name="discountOption" value="percentage">
+                        <label class="form-check-label" for="percentageDiscount">Percentage discount</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" id="flatDiscount" name="discountOption" value="flat">
+                        <label class="form-check-label" for="flatDiscount">Flat amount discount</label>
+                    </div>
+                    <div id="discountInputContainer" style="display: none; margin-top: 15px;">
+                        <div id="percentageInput" style="display: none;">
+                            <label for="percentageValue" style="margin-bottom: 15px;">Discount percentage (0-100)</label>
+                            <div class="input-group">
+                                <input type="number" id="percentageValue" class="form-control" min="0" max="100" step="0.01" value="0">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                        <div id="flatInput" style="display: none;">
+                            <label for="flatValue" style="margin-bottom: 15px;">Discount amount (PHP)</label>
+                            <div class="input-group mt-2">
+                                <span class="input-group-text">₱</span>
+                                <input type="number" id="flatValue" class="form-control" min="0" step="0.01" value="0">
+                            </div>
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Confirm Booking',
+                cancelButtonText: 'Cancel',
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#6c757d',
+                didOpen: () => {
+                    // Show/hide discount inputs based on selection
+                    const discountOptions = document.getElementsByName('discountOption');
+                    const discountInputContainer = document.getElementById('discountInputContainer');
+                    const percentageInput = document.getElementById('percentageInput');
+                    const flatInput = document.getElementById('flatInput');
+                    
+                    discountOptions.forEach(option => {
+                        option.addEventListener('change', function() {
+                            if (this.value === 'none') {
+                                discountInputContainer.style.display = 'none';
+                            } else {
+                                discountInputContainer.style.display = 'block';
+                                if (this.value === 'percentage') {
+                                    percentageInput.style.display = 'block';
+                                    flatInput.style.display = 'none';
+                                } else if (this.value === 'flat') {
+                                    percentageInput.style.display = 'none';
+                                    flatInput.style.display = 'block';
+                                }
+                            }
+                        });
+                    });
+                },
+                preConfirm: () => {
+                    const selectedOption = document.querySelector('input[name="discountOption"]:checked').value;
+                    
+                    if (selectedOption === 'none') {
+                        return { discountValue: null, discountType: null };
+                    } else if (selectedOption === 'percentage') {
+                        const percentageValue = document.getElementById('percentageValue').value;
+                        const numValue = parseFloat(percentageValue);
+                        
+                        if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+                            Swal.showValidationMessage('Percentage must be between 0 and 100');
+                            return false;
+                        }
+                        
+                        return { discountValue: numValue, discountType: 'percentage' };
+                    } else if (selectedOption === 'flat') {
+                        const flatValue = document.getElementById('flatValue').value;
+                        const numValue = parseFloat(flatValue);
+                        
+                        if (isNaN(numValue) || numValue < 0) {
+                            Swal.showValidationMessage('Flat amount must be greater than or equal to 0');
+                            return false;
+                        }
+                        
+                        return { discountValue: numValue, discountType: 'flat' };
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    confirmBooking(bookingId, result.value.discountValue, result.value.discountType);
+                }
+            });
         });
     });
     
@@ -745,33 +906,98 @@ function showBookingDetails(bookingId) {
                 bootstrap.Modal.getInstance(document.getElementById('bookingDetailsModal')).hide();
                 
                 Swal.fire({
-                    title: 'Enter Discount Rate',
-                    text: 'Enter a discount percentage (0-100)',
-                    input: 'number',
-                    inputPlaceholder: 'e.g., 15 for 15%',
+                    title: 'Apply Discount?',
+                    icon: 'question',
+                    html: `
+                        <p>Would you like to apply a discount to this booking?</p>
+                        <div class="form-check mb-3">
+                            <input type="radio" class="form-check-input" id="noDiscount" name="discountOption" value="none" checked>
+                            <label class="form-check-label" for="noDiscount">No discount</label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="radio" class="form-check-input" id="percentageDiscount" name="discountOption" value="percentage">
+                            <label class="form-check-label" for="percentageDiscount">Percentage discount</label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="radio" class="form-check-input" id="flatDiscount" name="discountOption" value="flat">
+                            <label class="form-check-label" for="flatDiscount">Flat amount discount</label>
+                        </div>
+                        <div id="discountInputContainer" style="display: none; margin-top: 15px;">
+                            <div id="percentageInput" style="display: none;">
+                                <label for="percentageValue">Discount percentage (0-100)</label>
+                                <div class="input-group">
+                                    <input type="number" id="percentageValue" class="form-control" min="0" max="100" step="0.01" value="0">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                            </div>
+                            <div id="flatInput" style="display: none;">
+                                <label for="flatValue">Discount amount (PHP)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₱</span>
+                                    <input type="number" id="flatValue" class="form-control" min="0" step="0.01" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    `,
                     showCancelButton: true,
                     confirmButtonText: 'Confirm Booking',
                     cancelButtonText: 'Cancel',
                     confirmButtonColor: '#28a745',
                     cancelButtonColor: '#6c757d',
-                    inputAttributes: {
-                        min: 0,
-                        max: 100,
-                        step: 0.01
+                    didOpen: () => {
+                        // Show/hide discount inputs based on selection
+                        const discountOptions = document.getElementsByName('discountOption');
+                        const discountInputContainer = document.getElementById('discountInputContainer');
+                        const percentageInput = document.getElementById('percentageInput');
+                        const flatInput = document.getElementById('flatInput');
+                        
+                        discountOptions.forEach(option => {
+                            option.addEventListener('change', function() {
+                                if (this.value === 'none') {
+                                    discountInputContainer.style.display = 'none';
+                                } else {
+                                    discountInputContainer.style.display = 'block';
+                                    if (this.value === 'percentage') {
+                                        percentageInput.style.display = 'block';
+                                        flatInput.style.display = 'none';
+                                    } else if (this.value === 'flat') {
+                                        percentageInput.style.display = 'none';
+                                        flatInput.style.display = 'block';
+                                    }
+                                }
+                            });
+                        });
                     },
-                    inputValidator: (value) => {
-                        if (!value) {
-                            return 'Please enter a discount rate';
-                        }
-                        const numValue = parseFloat(value);
-                        if (isNaN(numValue) || numValue < 0 || numValue > 100) {
-                            return 'Discount must be between 0 and 100';
+                    preConfirm: () => {
+                        const selectedOption = document.querySelector('input[name="discountOption"]:checked').value;
+                        
+                        if (selectedOption === 'none') {
+                            return { discountValue: null, discountType: null };
+                        } else if (selectedOption === 'percentage') {
+                            const percentageValue = document.getElementById('percentageValue').value;
+                            const numValue = parseFloat(percentageValue);
+                            
+                            if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+                                Swal.showValidationMessage('Percentage must be between 0 and 100');
+                                return false;
+                            }
+                            
+                            return { discountValue: numValue, discountType: 'percentage' };
+                        } else if (selectedOption === 'flat') {
+                            const flatValue = document.getElementById('flatValue').value;
+                            const numValue = parseFloat(flatValue);
+                            
+                            if (isNaN(numValue) || numValue < 0) {
+                                Swal.showValidationMessage('Flat amount must be greater than or equal to 0');
+                                return false;
+                            }
+                            
+                            return { discountValue: numValue, discountType: 'flat' };
                         }
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        const discount = parseFloat(result.value || 0);
-                        confirmBooking(bookingId, discount);
+                        confirmBooking(bookingId, result.value.discountValue, result.value.discountType);
                     }
                 });
             });
@@ -949,10 +1175,18 @@ function showMessage(title, message) {
 document.getElementById("statusSelect").addEventListener("change", async function () {
     const status = this.value;  
     const limit = document.getElementById("limitSelect").value;
+    
+    // Hide no results message initially while loading
+    document.getElementById("noResultsFound").style.display = "none";
+    
     console.log(status);    
     const bookings = await getAllBookings(status, "asc", "client_name", 1, limit);
     renderBookings(bookings);
     renderPagination(bookings.pagination);
+    
+    // Show/hide no results message
+    document.getElementById("noResultsFound").style.display = 
+        (!bookings.bookings || bookings.bookings.length === 0) ? "block" : "none";
     
     // Update card view if active
     if (document.getElementById("cardView").checked) {
@@ -1002,15 +1236,107 @@ document.querySelectorAll(".sort").forEach(button => {
             sortIcon.textContent = order === "asc" ? "↑" : "↓";
         }
 
-        const bookings = await getAllBookings(status, order, column, currentPage, limit);
-        console.log(bookings);
-        renderBookings(bookings);
-        renderPagination(bookings.pagination);
+        // Check if we're in a filtered view
+        const activeFilterBtn = document.querySelector(".quick-filter.active");
+        if (activeFilterBtn && activeFilterBtn.getAttribute("data-payment")) {
+            const paymentFilter = activeFilterBtn.getAttribute("data-payment");
+            
+            if (paymentFilter === "Unpaid") {
+                // Handle sorting within unpaid filter
+                await handleSortedUnpaidBookings(order, column, currentPage, limit);
+            } else if (paymentFilter === "Partially Paid") {
+                // Handle sorting within partially paid filter
+                await handleSortedPartiallyPaidBookings(order, column, currentPage, limit);
+            }
+        } else {
+            // Regular bookings sorting
+            const bookings = await getAllBookings(status, order, column, currentPage, limit);
+            renderBookings(bookings);
+            renderPagination(bookings.pagination);
+        }
         
         // Toggle sort order for next click
         this.setAttribute("data-order", order === "asc" ? "desc" : "asc");
     });
 });
+
+// Function to handle sorting within unpaid filter
+async function handleSortedUnpaidBookings(order, column, page, limit) {
+    try {
+        // Hide no results message initially while loading
+        document.getElementById("noResultsFound").style.display = "none";
+        
+        const response = await fetch("/admin/unpaid-bookings", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                limit,
+                page,
+                order,
+                column
+            })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            
+            if (data.success) {
+                renderBookings(data);
+                renderPagination(data.pagination);
+                
+                // Show/hide no results message
+                document.getElementById("noResultsFound").style.display = 
+                    (!data.bookings || data.bookings.length === 0) ? "block" : "none";
+                
+                // Update active view
+                if (document.getElementById("cardView").checked) {
+                    renderCardView();
+                }
+            }
+        }
+    } catch (error) {
+        console.error("Error fetching sorted unpaid bookings:", error);
+    }
+}
+
+// Function to handle sorting within partially paid filter
+async function handleSortedPartiallyPaidBookings(order, column, page, limit) {
+    try {
+        // Hide no results message initially while loading
+        document.getElementById("noResultsFound").style.display = "none";
+        
+        const response = await fetch("/admin/partially-paid-bookings", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                limit,
+                page,
+                order,
+                column
+            })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            
+            if (data.success) {
+                renderBookings(data);
+                renderPagination(data.pagination);
+                
+                // Show/hide no results message
+                document.getElementById("noResultsFound").style.display = 
+                    (!data.bookings || data.bookings.length === 0) ? "block" : "none";
+                
+                // Update active view
+                if (document.getElementById("cardView").checked) {
+                    renderCardView();
+                }
+            }
+        }
+    } catch (error) {
+        console.error("Error fetching sorted partially paid bookings:", error);
+    }
+}
 
 function formatDate(date) {
     return new Date(date).toLocaleDateString("en-US", {
@@ -1046,15 +1372,11 @@ async function renderBookings(data) {
     console.log("Booking table: ", bookings);
     tbody.innerHTML = "";
 
-    if (!bookings || bookings.length === 0) {
-        const row = document.createElement("tr");
-        const cell = document.createElement("td");
-        cell.colSpan = 10; // Updated column count
-        cell.textContent = "No records found";
-        cell.className = "text-center";
-        row.appendChild(cell);
-        tbody.appendChild(row);
+    // Show/hide no results message
+    document.getElementById("noResultsFound").style.display = 
+        (!bookings || bookings.length === 0) ? "block" : "none";
 
+    if (!bookings || bookings.length === 0) {
         return;
     }
 
@@ -1159,33 +1481,98 @@ function actionButton(booking) {
                     const bookingId = booking.booking_id;
         
                     Swal.fire({
-                        title: 'Enter Discount Rate',
-                        text: 'Enter a discount percentage (0-100)',
-                        input: 'number',
-                        inputPlaceholder: 'e.g., 15 for 15%',
+                        title: 'Apply Discount?',
+                        icon: 'question',
+                        html: `
+                            <p>Would you like to apply a discount to this booking?</p>
+                            <div class="form-check mb-3">
+                                <input type="radio" class="form-check-input" id="noDiscount" name="discountOption" value="none" checked>
+                                <label class="form-check-label" for="noDiscount">No discount</label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input type="radio" class="form-check-input" id="percentageDiscount" name="discountOption" value="percentage">
+                                <label class="form-check-label" for="percentageDiscount">Percentage discount</label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input type="radio" class="form-check-input" id="flatDiscount" name="discountOption" value="flat">
+                                <label class="form-check-label" for="flatDiscount">Flat amount discount</label>
+                            </div>
+                            <div id="discountInputContainer" style="display: none; margin-top: 15px;">
+                                <div id="percentageInput" style="display: none;">
+                                    <label for="percentageValue">Discount percentage (0-100)</label>
+                                    <div class="input-group">
+                                        <input type="number" id="percentageValue" class="form-control" min="0" max="100" step="0.01" value="0">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                                <div id="flatInput" style="display: none;">
+                                    <label for="flatValue">Discount amount (PHP)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">₱</span>
+                                        <input type="number" id="flatValue" class="form-control" min="0" step="0.01" value="0">
+                                    </div>
+                                </div>
+                            </div>
+                        `,
                         showCancelButton: true,
                         confirmButtonText: 'Confirm Booking',
                         cancelButtonText: 'Cancel',
                         confirmButtonColor: '#28a745',
                         cancelButtonColor: '#6c757d',
-                        inputAttributes: {
-                            min: 0,
-                            max: 100,
-                            step: 0.01
+                        didOpen: () => {
+                            // Show/hide discount inputs based on selection
+                            const discountOptions = document.getElementsByName('discountOption');
+                            const discountInputContainer = document.getElementById('discountInputContainer');
+                            const percentageInput = document.getElementById('percentageInput');
+                            const flatInput = document.getElementById('flatInput');
+                            
+                            discountOptions.forEach(option => {
+                                option.addEventListener('change', function() {
+                                    if (this.value === 'none') {
+                                        discountInputContainer.style.display = 'none';
+                                    } else {
+                                        discountInputContainer.style.display = 'block';
+                                        if (this.value === 'percentage') {
+                                            percentageInput.style.display = 'block';
+                                            flatInput.style.display = 'none';
+                                        } else if (this.value === 'flat') {
+                                            percentageInput.style.display = 'none';
+                                            flatInput.style.display = 'block';
+                                        }
+                                    }
+                                });
+                            });
                         },
-                        inputValidator: (value) => {
-                            if (!value) {
-                                return 'Please enter a discount rate';
-                            }
-                            const numValue = parseFloat(value);
-                            if (isNaN(numValue) || numValue < 0 || numValue > 100) {
-                                return 'Discount must be between 0 and 100';
+                        preConfirm: () => {
+                            const selectedOption = document.querySelector('input[name="discountOption"]:checked').value;
+                            
+                            if (selectedOption === 'none') {
+                                return { discountValue: null, discountType: null };
+                            } else if (selectedOption === 'percentage') {
+                                const percentageValue = document.getElementById('percentageValue').value;
+                                const numValue = parseFloat(percentageValue);
+                                
+                                if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+                                    Swal.showValidationMessage('Percentage must be between 0 and 100');
+                                    return false;
+                                }
+                                
+                                return { discountValue: numValue, discountType: 'percentage' };
+                            } else if (selectedOption === 'flat') {
+                                const flatValue = document.getElementById('flatValue').value;
+                                const numValue = parseFloat(flatValue);
+                                
+                                if (isNaN(numValue) || numValue < 0) {
+                                    Swal.showValidationMessage('Flat amount must be greater than or equal to 0');
+                                    return false;
+                                }
+                                
+                                return { discountValue: numValue, discountType: 'flat' };
                             }
                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            const discount = parseFloat(result.value || 0);
-                            confirmBooking(bookingId, discount);
+                            confirmBooking(bookingId, result.value.discountValue, result.value.discountType);
                         }
                     });
                 }
@@ -1346,20 +1733,35 @@ function renderPagination(pagination) {
                 document.querySelector(".sort.active").getAttribute("data-order") : "asc";
             const limit = document.getElementById("limitSelect").value;
             
-            const bookings = await getAllBookings(status, order, column, page, limit);
-            renderBookings(bookings);
-            renderPagination(bookings.pagination);
+            // Check if we're in a filtered view
+            const activeFilterBtn = document.querySelector(".quick-filter.active");
+            if (activeFilterBtn && activeFilterBtn.getAttribute("data-payment")) {
+                const paymentFilter = activeFilterBtn.getAttribute("data-payment");
+                
+                if (paymentFilter === "Unpaid") {
+                    // Handle pagination within unpaid filter
+                    await handleSortedUnpaidBookings(order, column, page, limit);
+                } else if (paymentFilter === "Partially Paid") {
+                    // Handle pagination within partially paid filter
+                    await handleSortedPartiallyPaidBookings(order, column, page, limit);
+                }
+            } else {
+                // Regular pagination
+                const bookings = await getAllBookings(status, order, column, page, limit);
+                renderBookings(bookings);
+                renderPagination(bookings.pagination);
+            }
         }
     });
 }
 
-// New function to handle confirm booking API call
-async function confirmBooking(bookingId, discount) {
+// Function to handle confirm booking API call
+async function confirmBooking(bookingId, discount = null, discountType = null) {
     try {
         const response = await fetch("/admin/confirm-booking", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ bookingId, discount })
+            body: JSON.stringify({ bookingId, discount, discountType })
         });
     
         const data = await response.json();
