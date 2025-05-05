@@ -105,9 +105,9 @@
          ],
          "types" : 
          [
-            "establishment",
             "food",
-            "point_of_interest"
+            "point_of_interest",
+            "establishment"
          ]
       }
    ],

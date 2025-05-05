@@ -7,32 +7,262 @@
 
 
 document.addEventListener('DOMContentLoaded', async function () {
-    const requests = await getRebookingRequests('All', 'asc', 'booking_id');
-    renderRebookingRequests(requests);
+    // Initial data load - get all requests first to check counts
+    const allRequests = await getRebookingRequests('All', 'asc', 'booking_id');
+    
+    // Update stats counters
+    updateStatsCounters(allRequests);
+    
+    // Check if there are any pending requests
+    const pendingRequests = allRequests.filter(r => r.status === 'Pending');
+    
+    // If there are pending requests, show them by default, otherwise show all
+    const defaultStatus = pendingRequests.length > 0 ? 'Pending' : 'All';
+    
+    // Set the select value
+    document.getElementById('statusSelect').value = defaultStatus;
+    
+    // Update active filter button
+    document.querySelectorAll('.quick-filter').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-status') === defaultStatus) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Render the appropriate requests
+    if (defaultStatus === 'Pending') {
+        renderRebookingRequests(pendingRequests);
+    } else {
+        renderRebookingRequests(allRequests);
+    }
+    
+    // Set up event listeners for search and filters
+    setupEventListeners();
 }); 
 
-document.getElementById('statusSelect').addEventListener('change', async function () {
-    const status = this.value;
-    console.log(status);
-    const requests = await getRebookingRequests(status, 'asc', 'client_name');
-    renderRebookingRequests(requests);
-});
-
-document.querySelectorAll('.sort').forEach(button => {
-    button.style.cursor = 'pointer';
-    button.style.backgroundColor = '#d1f7c4';
-
-    button.addEventListener('click', async function () {
-        const status = document.getElementById('statusSelect').value;
-        const column = this.getAttribute('data-column');
-        const order = this.getAttribute('data-order');
-
-        const requests = await getRebookingRequests(status, order, column);
+function setupEventListeners() {
+    // Status select filter
+    document.getElementById('statusSelect').addEventListener('change', async function () {
+        const status = this.value;
+        console.log(status);
+        const requests = await getRebookingRequests(status, 'asc', 'client_name');
         renderRebookingRequests(requests);
-
-        this.setAttribute('data-order', order === 'asc' ? 'desc' : 'asc');
+        
+        // Update active filter button
+        document.querySelectorAll('.quick-filter').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-status') === status) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Show/hide no results message
+        document.getElementById('noResultsFound').style.display = 
+            (!requests || requests.length === 0) ? 'block' : 'none';
     });
-});
+
+    // Sort functionality
+    document.querySelectorAll('.sort').forEach(button => {
+        button.style.cursor = 'pointer';
+        
+        button.addEventListener('click', async function () {
+            // Clear active class from all headers
+            document.querySelectorAll('.sort').forEach(header => {
+                // Reset sort icons
+                const icon = header.querySelector('.sort-icon');
+                if (icon) {
+                    icon.textContent = '↑';
+                }
+            });
+            
+            const status = document.getElementById('statusSelect').value;
+            const column = this.getAttribute('data-column');
+            const order = this.getAttribute('data-order');
+
+            // Update sort icon
+            const sortIcon = this.querySelector('.sort-icon');
+            if (sortIcon) {
+                sortIcon.textContent = order === 'asc' ? '↑' : '↓';
+            }
+
+            const requests = await getRebookingRequests(status, order, column);
+            renderRebookingRequests(requests);
+
+            // Toggle sort order for next click
+            this.setAttribute('data-order', order === 'asc' ? 'desc' : 'asc');
+        });
+    });
+    
+    // Quick filter buttons
+    document.querySelectorAll('.quick-filter').forEach(button => {
+        button.addEventListener('click', async function() {
+            // Remove active class from all buttons
+            document.querySelectorAll('.quick-filter').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const status = this.getAttribute('data-status');
+            document.getElementById('statusSelect').value = status;
+            
+            const requests = await getRebookingRequests(status, 'asc', 'client_name');
+            renderRebookingRequests(requests);
+            
+            // Show/hide no results message
+            document.getElementById('noResultsFound').style.display = 
+                (!requests || requests.length === 0) ? 'block' : 'none';
+        });
+    });
+    
+    // Search functionality
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchRequests');
+    
+    if (searchBtn && searchInput) {
+        // Search on button click
+        searchBtn.addEventListener('click', performSearch);
+        
+        // Search on Enter key
+        searchInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+    }
+    
+    // Reset filters button
+    const resetFiltersBtn = document.getElementById('resetFilters');
+    if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener('click', async function() {
+            // Reset search input
+            if (searchInput) searchInput.value = '';
+            
+            // Reset status filter
+            document.getElementById('statusSelect').value = 'All';
+            
+            // Reset active filter button
+            document.querySelectorAll('.quick-filter').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-status') === 'All') {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Load all requests
+            const requests = await getRebookingRequests('All', 'asc', 'booking_id');
+            renderRebookingRequests(requests);
+            updateStatsCounters(requests);
+            
+            // Hide no results message
+            document.getElementById('noResultsFound').style.display = 'none';
+        });
+    }
+    
+    // Refresh button
+    const refreshBtn = document.getElementById('refreshRequests');
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', async function() {
+            const status = document.getElementById('statusSelect').value;
+            const requests = await getRebookingRequests(status, 'asc', 'booking_id');
+            renderRebookingRequests(requests);
+            updateStatsCounters(requests);
+            
+            // Show success toast
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: 'Data refreshed',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        });
+    }
+    
+    // Export buttons
+    const exportPDFBtn = document.getElementById('exportPDF');
+    const exportCSVBtn = document.getElementById('exportCSV');
+    
+    if (exportPDFBtn) {
+        exportPDFBtn.addEventListener('click', function() {
+            // PDF export functionality would be implemented here
+            Swal.fire({
+                icon: 'info',
+                title: 'Export to PDF',
+                text: 'This feature will be implemented soon!',
+                confirmButtonColor: '#198754'
+            });
+        });
+    }
+    
+    if (exportCSVBtn) {
+        exportCSVBtn.addEventListener('click', function() {
+            // CSV export functionality would be implemented here
+            Swal.fire({
+                icon: 'info',
+                title: 'Export to CSV',
+                text: 'This feature will be implemented soon!',
+                confirmButtonColor: '#198754'
+            });
+        });
+    }
+}
+
+// Function to perform search
+async function performSearch() {
+    const searchTerm = document.getElementById('searchRequests').value.trim();
+    const status = document.getElementById('statusSelect').value;
+    
+    if (!searchTerm) {
+        // If search term is empty, just load based on status
+        const requests = await getRebookingRequests(status, 'asc', 'client_name');
+        renderRebookingRequests(requests);
+        return;
+    }
+    
+    try {
+        // Get all requests for the current status
+        const allRequests = await getRebookingRequests(status, 'asc', 'client_name');
+        
+        // Filter requests based on search term (client name, email, or destination)
+        const filteredRequests = allRequests.filter(request => {
+            const searchFields = [
+                request.client_name,
+                request.email,
+                request.destination,
+                request.contact_number
+            ].filter(Boolean).map(field => field.toLowerCase());
+            
+            return searchFields.some(field => field.includes(searchTerm.toLowerCase()));
+        });
+        
+        renderRebookingRequests(filteredRequests);
+        
+        // Show/hide no results message
+        document.getElementById('noResultsFound').style.display = 
+            (!filteredRequests || filteredRequests.length === 0) ? 'block' : 'none';
+    } catch (error) {
+        console.error('Search error:', error);
+    }
+}
+
+// Update stats counters based on rebooking requests data
+function updateStatsCounters(requests) {
+    // Calculate counts
+    const totalCount = requests.length;
+    const pendingCount = requests.filter(r => r.status === 'Pending').length;
+    const confirmedCount = requests.filter(r => r.status === 'Confirmed').length;
+    const rejectedCount = requests.filter(r => r.status === 'Rejected').length;
+    
+    // Update the UI
+    document.getElementById('totalRequestsCount').textContent = totalCount;
+    document.getElementById('pendingRequestsCount').textContent = pendingCount;
+    document.getElementById('confirmedRequestsCount').textContent = confirmedCount;
+    document.getElementById('rejectedRequestsCount').textContent = rejectedCount;
+}
 
 function formatDate(date) {
     return new Date(date).toLocaleDateString("en-US", {
@@ -57,14 +287,22 @@ async function getRebookingRequests(status, order, column) {
         }
     } catch (error) {
         console.error('Fetch error:', error);
+        return [];
     }
 }
 
 async function renderRebookingRequests(requests) {
-    // const requests = await getRebookingRequests();
     console.log(requests);
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = '';
+    
+    // Show/hide no results message
+    document.getElementById('noResultsFound').style.display = 
+        (!requests || requests.length === 0) ? 'block' : 'none';
+    
+    if (!requests || requests.length === 0) {
+        return;
+    }
 
     requests.forEach(request => {
         const row = document.createElement('tr');
@@ -76,140 +314,214 @@ async function renderRebookingRequests(requests) {
         const statusCell = document.createElement('td');
 
         clientNameCell.textContent = request.client_name;
+        clientNameCell.style.maxWidth = "120px";
+        clientNameCell.style.overflow = "hidden";
+        clientNameCell.style.textOverflow = "ellipsis";
+        clientNameCell.style.whiteSpace = "nowrap";
+        clientNameCell.title = request.client_name;
+        
         clientContactCell.textContent = request.contact_number;
+        clientContactCell.style.maxWidth = "120px";
+        clientContactCell.style.overflow = "hidden";
+        clientContactCell.style.textOverflow = "ellipsis";
+        clientContactCell.style.whiteSpace = "nowrap";
+        
         clientEmailCell.textContent = request.email;
+        clientEmailCell.style.maxWidth = "150px";
+        clientEmailCell.style.overflow = "hidden";
+        clientEmailCell.style.textOverflow = "ellipsis";
+        clientEmailCell.style.whiteSpace = "nowrap";
+        clientEmailCell.title = request.email;
+        
         dateOfTourCell.textContent = formatDate(request.date_of_tour);
+        
+        // Style status cell based on status value
         statusCell.textContent = request.status;
+        const statusClasses = {
+            'Pending': 'text-warning fw-bold',
+            'Confirmed': 'text-success fw-bold',
+            'Rejected': 'text-danger fw-bold'
+        };
+        statusCell.className = statusClasses[request.status] || '';
 
-        row.append(clientNameCell, clientContactCell, clientEmailCell, dateOfTourCell, statusCell, actionButtons(request));
+        row.append(clientNameCell, clientContactCell, clientEmailCell, dateOfTourCell, statusCell, createActionButtons(request));
         tbody.appendChild(row);
     });
 }
 
-function actionButtons(request) {
+function createActionButtons(request) {
     const actionCell = document.createElement('td');
     const buttonGroup = document.createElement('div');
-    const confirmButton = document.createElement('button');
-    const rejectButton = document.createElement('button');
-    const viewButton = document.createElement('button');
+    buttonGroup.classList.add('d-flex', 'gap-2', 'justify-content-center');   
 
-    // style
-    buttonGroup.classList.add('d-flex', 'gap-2');   
-
-    confirmButton.classList.add('btn', 'btn-outline-success', 'd-flex', 'align-items-center', 'gap-1', 'btn-sm', 'approve');
-    // confirmButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
-
-    rejectButton.classList.add('btn', 'btn-outline-danger', 'd-flex', 'align-items-center', 'gap-1', 'btn-sm', 'decline');
-    // rejectButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
-
-    viewButton.classList.add('btn', 'btn-outline-primary', 'd-flex', 'align-items-center', 'gap-1', 'btn-sm', 'view');
-    // viewButton.setAttribute("style", "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .75rem;");
-
-    // icons
-    const confirmIcon = document.createElement("i");
-    confirmIcon.classList.add("bi", "bi-check-circle");
-    const confirmText = document.createTextNode(" Confirm");
-    confirmButton.appendChild(confirmIcon);
-    confirmButton.appendChild(confirmText);
-
-    const rejectIcon = document.createElement("i");
-    rejectIcon.classList.add("bi", "bi-x-circle");
-    const rejectText = document.createTextNode(" Reject");
-    rejectButton.appendChild(rejectIcon);
-    rejectButton.appendChild(rejectText);
-
-    const viewIcon = document.createElement("i");
-    viewIcon.classList.add("bi", "bi-info-circle");
-    const viewText = document.createTextNode(" Details");
-    viewButton.appendChild(viewIcon);
-    viewButton.appendChild(viewText);
+    // View details button (always present)
+    const viewButton = createButton('btn-outline-primary', 'bi-info-circle', 'Details', function() {
+        showBookingDetails(request.booking_id);
+    });
     
-    // data attribute
-    confirmButton.setAttribute("data-booking-id", request.booking_id);
+    buttonGroup.appendChild(viewButton);
 
-    rejectButton.setAttribute("data-booking-id", request.booking_id);
-    rejectButton.setAttribute("data-user-id", request.user_id);
-
-    viewButton.setAttribute("data-booking-id", request.booking_id);
-    
-    // logic
-    confirmButton.addEventListener('click', function () {
-        const bookingId = this.getAttribute("data-booking-id");
-        
-        Swal.fire({
-            title: 'Enter Discount Rate',
-            text: 'Enter a discount percentage (0-100)',
-            input: 'number',
-            inputPlaceholder: 'e.g., 15 for 15%',
-            showCancelButton: true,
-            confirmButtonColor: '#198754',
-            cancelButtonColor: '#6c757d',
-            confirmButtonText: 'Confirm',
-            cancelButtonText: 'Cancel',
-            inputAttributes: {
-                min: 0,
-                max: 100,
-                step: 0.01
-            },
-            inputValidator: (value) => {
-                if (!value) {
-                    return 'Please enter a discount rate';
+    // Add conditional buttons based on request status
+    if (request.status === 'Pending') {
+        // Confirm button
+        const confirmButton = createButton('btn-outline-success', 'bi-check-circle', 'Confirm', function() {
+            const bookingId = request.booking_id;
+            
+            Swal.fire({
+                title: 'Apply Discount?',
+                icon: 'question',
+                html: `
+                    <p>Would you like to apply a discount to this booking?</p>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" id="noDiscount" name="discountOption" value="none" checked>
+                        <label class="form-check-label" for="noDiscount">No discount</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" id="percentageDiscount" name="discountOption" value="percentage">
+                        <label class="form-check-label" for="percentageDiscount">Percentage discount</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" id="flatDiscount" name="discountOption" value="flat">
+                        <label class="form-check-label" for="flatDiscount">Flat amount discount</label>
+                    </div>
+                    <div id="discountInputContainer" style="display: none; margin-top: 15px;">
+                        <div id="percentageInput" style="display: none;">
+                            <label for="percentageValue">Discount percentage (0-100)</label>
+                            <div class="input-group">
+                                <input type="number" id="percentageValue" class="form-control" min="0" max="100" step="0.01" value="0">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                        <div id="flatInput" style="display: none;">
+                            <label for="flatValue">Discount amount (PHP)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₱</span>
+                                <input type="number" id="flatValue" class="form-control" min="0" step="0.01" value="0">
+                            </div>
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Confirm Booking',
+                cancelButtonText: 'Cancel',
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#6c757d',
+                didOpen: () => {
+                    // Show/hide discount inputs based on selection
+                    const discountOptions = document.getElementsByName('discountOption');
+                    const discountInputContainer = document.getElementById('discountInputContainer');
+                    const percentageInput = document.getElementById('percentageInput');
+                    const flatInput = document.getElementById('flatInput');
+                    
+                    discountOptions.forEach(option => {
+                        option.addEventListener('change', function() {
+                            if (this.value === 'none') {
+                                discountInputContainer.style.display = 'none';
+                            } else {
+                                discountInputContainer.style.display = 'block';
+                                if (this.value === 'percentage') {
+                                    percentageInput.style.display = 'block';
+                                    flatInput.style.display = 'none';
+                                } else if (this.value === 'flat') {
+                                    percentageInput.style.display = 'none';
+                                    flatInput.style.display = 'block';
+                                }
+                            }
+                        });
+                    });
+                },
+                preConfirm: () => {
+                    const selectedOption = document.querySelector('input[name="discountOption"]:checked').value;
+                    
+                    if (selectedOption === 'none') {
+                        return { discountValue: null, discountType: null };
+                    } else if (selectedOption === 'percentage') {
+                        const percentageValue = document.getElementById('percentageValue').value;
+                        const numValue = parseFloat(percentageValue);
+                        
+                        if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+                            Swal.showValidationMessage('Percentage must be between 0 and 100');
+                            return false;
+                        }
+                        
+                        return { discountValue: numValue, discountType: 'percentage' };
+                    } else if (selectedOption === 'flat') {
+                        const flatValue = document.getElementById('flatValue').value;
+                        const numValue = parseFloat(flatValue);
+                        
+                        if (isNaN(numValue) || numValue < 0) {
+                            Swal.showValidationMessage('Flat amount must be greater than or equal to 0');
+                            return false;
+                        }
+                        
+                        return { discountValue: numValue, discountType: 'flat' };
+                    }
                 }
-                const numValue = parseFloat(value);
-                if (isNaN(numValue) || numValue < 0 || numValue > 100) {
-                    return 'Discount must be between 0 and 100';
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    confirmBookingRequest(
+                        bookingId, 
+                        result.value.discountValue, 
+                        result.value.discountType
+                    );
                 }
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const discount = parseFloat(result.value || 0);
-                confirmBookingRequest(bookingId, discount);
-            }
+            });
         });
-    });
-
-    viewButton.addEventListener("click", function() {
-        const bookingId = this.getAttribute("data-booking-id");
-        showBookingDetails(bookingId);
-    });
-
-    rejectButton.addEventListener("click", function () {
-        const bookingId = this.getAttribute("data-booking-id");
-        const userId = this.getAttribute("data-user-id");
         
-        Swal.fire({
-            title: 'Reject Booking?',
-            text: 'Are you sure you want to reject this booking request?',
-            input: 'textarea',
-            inputLabel: 'Reason',
-            inputPlaceholder: 'Kindly provide the reason here.',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#dc3545',
-            cancelButtonColor: '#6c757d',
-            confirmButtonText: 'Reject',
-            cancelButtonText: 'Cancel',
-            inputValidator: (value) => {
-                if (!value) {
-                    return 'Please provide a reason for rejection!';
+        // Reject button
+        const rejectButton = createButton('btn-outline-danger', 'bi-x-circle', 'Reject', function() {
+            const bookingId = request.booking_id;
+            const userId = request.user_id;
+            
+            Swal.fire({
+                title: 'Reject Booking?',
+                text: 'Are you sure you want to reject this booking request?',
+                input: 'textarea',
+                inputLabel: 'Reason',
+                inputPlaceholder: 'Kindly provide the reason here.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Reject',
+                cancelButtonText: 'Cancel',
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'Please provide a reason for rejection!';
+                    }
                 }
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                rejectBookingRequest(bookingId, result.value, userId);
-            }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    rejectBookingRequest(bookingId, result.value, userId);
+                }
+            });
         });
-    });
-
-    if (request.status === 'Pending') {   
-        buttonGroup.append(confirmButton, rejectButton, viewButton);
-    } else {
-        buttonGroup.append(viewButton);
+        
+        buttonGroup.appendChild(confirmButton);
+        buttonGroup.appendChild(rejectButton);
     }
 
     actionCell.appendChild(buttonGroup);
-    
     return actionCell;
+}
+
+// Helper function to create buttons with consistent styling
+function createButton(btnClass, iconClass, text, clickHandler) {
+    const button = document.createElement('button');
+    button.className = `btn ${btnClass} btn-sm d-flex align-items-center gap-1`;
+    
+    const icon = document.createElement('i');
+    icon.className = `bi ${iconClass}`;
+    button.appendChild(icon);
+    
+    const buttonText = document.createTextNode(` ${text}`);
+    button.appendChild(buttonText);
+    
+    if (clickHandler) {
+        button.addEventListener('click', clickHandler);
+    }
+    
+    return button;
 }
 
 // Function to show booking details in a modal
@@ -300,6 +612,9 @@ function showBookingDetails(bookingId) {
                         <button class="btn btn-sm btn-outline-primary view-invoice" data-booking-id="${booking.booking_id}">
                             <i class="bi bi-file-earmark-text"></i> Invoice
                         </button>
+                        <button class="btn btn-sm btn-outline-success view-contract" data-booking-id="${booking.booking_id}">
+                            <i class="bi bi-file-earmark-text"></i> Contract
+                        </button>
                     </div>
                 </div>
             `;
@@ -314,33 +629,102 @@ function showBookingDetails(bookingId) {
                     bootstrap.Modal.getInstance(document.getElementById('bookingDetailsModal')).hide();
                     
                     Swal.fire({
-                        title: 'Enter Discount Rate',
-                        text: 'Enter a discount percentage (0-100)',
-                        input: 'number',
-                        inputPlaceholder: 'e.g., 15 for 15%',
+                        title: 'Apply Discount?',
+                        icon: 'question',
+                        html: `
+                            <p>Would you like to apply a discount to this booking?</p>
+                            <div class="form-check mb-3">
+                                <input type="radio" class="form-check-input" id="noDiscount" name="discountOption" value="none" checked>
+                                <label class="form-check-label" for="noDiscount">No discount</label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input type="radio" class="form-check-input" id="percentageDiscount" name="discountOption" value="percentage">
+                                <label class="form-check-label" for="percentageDiscount">Percentage discount</label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input type="radio" class="form-check-input" id="flatDiscount" name="discountOption" value="flat">
+                                <label class="form-check-label" for="flatDiscount">Flat amount discount</label>
+                            </div>
+                            <div id="discountInputContainer" style="display: none; margin-top: 15px;">
+                                <div id="percentageInput" style="display: none;">
+                                    <label for="percentageValue">Discount percentage (0-100)</label>
+                                    <div class="input-group">
+                                        <input type="number" id="percentageValue" class="form-control" min="0" max="100" step="0.01" value="0">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                                <div id="flatInput" style="display: none;">
+                                    <label for="flatValue">Discount amount (PHP)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">₱</span>
+                                        <input type="number" id="flatValue" class="form-control" min="0" step="0.01" value="0">
+                                    </div>
+                                </div>
+                            </div>
+                        `,
                         showCancelButton: true,
-                        confirmButtonColor: '#198754',
-                        cancelButtonColor: '#6c757d',
-                        confirmButtonText: 'Confirm',
+                        confirmButtonText: 'Confirm Booking',
                         cancelButtonText: 'Cancel',
-                        inputAttributes: {
-                            min: 0,
-                            max: 100,
-                            step: 0.01
+                        confirmButtonColor: '#28a745',
+                        cancelButtonColor: '#6c757d',
+                        didOpen: () => {
+                            // Show/hide discount inputs based on selection
+                            const discountOptions = document.getElementsByName('discountOption');
+                            const discountInputContainer = document.getElementById('discountInputContainer');
+                            const percentageInput = document.getElementById('percentageInput');
+                            const flatInput = document.getElementById('flatInput');
+                            
+                            discountOptions.forEach(option => {
+                                option.addEventListener('change', function() {
+                                    if (this.value === 'none') {
+                                        discountInputContainer.style.display = 'none';
+                                    } else {
+                                        discountInputContainer.style.display = 'block';
+                                        if (this.value === 'percentage') {
+                                            percentageInput.style.display = 'block';
+                                            flatInput.style.display = 'none';
+                                        } else if (this.value === 'flat') {
+                                            percentageInput.style.display = 'none';
+                                            flatInput.style.display = 'block';
+                                        }
+                                    }
+                                });
+                            });
                         },
-                        inputValidator: (value) => {
-                            if (!value) {
-                                return 'Please enter a discount rate';
-                            }
-                            const numValue = parseFloat(value);
-                            if (isNaN(numValue) || numValue < 0 || numValue > 100) {
-                                return 'Discount must be between 0 and 100';
+                        preConfirm: () => {
+                            const selectedOption = document.querySelector('input[name="discountOption"]:checked').value;
+                            
+                            if (selectedOption === 'none') {
+                                return { discountValue: null, discountType: null };
+                            } else if (selectedOption === 'percentage') {
+                                const percentageValue = document.getElementById('percentageValue').value;
+                                const numValue = parseFloat(percentageValue);
+                                
+                                if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+                                    Swal.showValidationMessage('Percentage must be between 0 and 100');
+                                    return false;
+                                }
+                                
+                                return { discountValue: numValue, discountType: 'percentage' };
+                            } else if (selectedOption === 'flat') {
+                                const flatValue = document.getElementById('flatValue').value;
+                                const numValue = parseFloat(flatValue);
+                                
+                                if (isNaN(numValue) || numValue < 0) {
+                                    Swal.showValidationMessage('Flat amount must be greater than or equal to 0');
+                                    return false;
+                                }
+                                
+                                return { discountValue: numValue, discountType: 'flat' };
                             }
                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            const discount = parseFloat(result.value || 0);
-                            confirmBookingRequest(bookingId, discount);
+                            confirmBookingRequest(
+                                bookingId, 
+                                result.value.discountValue, 
+                                result.value.discountType
+                            );
                         }
                     });
                 });
@@ -391,6 +775,14 @@ function showBookingDetails(bookingId) {
                     window.open(`/admin/print-invoice/${bookingId}`, '_blank');
                 });
             }
+
+            const viewContractBtn = bookingDetailsContent.querySelector(".view-contract");
+            if (viewContractBtn) {
+                viewContractBtn.addEventListener("click", function () {
+                    const bookingId = this.getAttribute("data-booking-id");
+                    window.open(`/admin/print-contract/${bookingId}`);
+                });
+            }
             
             // Show the modal
             const bookingDetailsModal = new bootstrap.Modal(document.getElementById('bookingDetailsModal'));
@@ -432,12 +824,12 @@ async function getBookingDetails(bookingId) {
     }
 }
 
-async function confirmBookingRequest(bookingId, discount) {
+async function confirmBookingRequest(bookingId, discount = null, discountType = null) {
     try {
         const response = await fetch("/admin/confirm-rebooking-request", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ bookingId, discount })
+            body: JSON.stringify({ bookingId, discount, discountType })
         });
     
         const data = await response.json();
@@ -461,6 +853,7 @@ async function confirmBookingRequest(bookingId, discount) {
         const status = document.getElementById("statusSelect").value;
         const bookings = await getRebookingRequests(status, "asc", "booking_id");
         renderRebookingRequests(bookings);
+        updateStatsCounters(bookings);
     } catch (error) {
         console.error(error);
         Swal.fire({
@@ -501,6 +894,7 @@ async function rejectBookingRequest(bookingId, reason, userId) {
         const status = document.getElementById("statusSelect").value;
         const bookings = await getRebookingRequests(status, "asc", "booking_id");
         renderRebookingRequests(bookings);
+        updateStatsCounters(bookings);
     } catch (error) {
         console.error(error);
         Swal.fire({

@@ -140,9 +140,9 @@
          "types" : 
          [
             "local_government_office",
-            "establishment",
+            "point_of_interest",
             "city_hall",
-            "point_of_interest"
+            "establishment"
          ]
       },
       {
@@ -186,8 +186,8 @@
          "types" : 
          [
             "political",
-            "geocode",
-            "administrative_area_level_3"
+            "administrative_area_level_3",
+            "geocode"
          ]
       },
       {
@@ -234,10 +234,10 @@
          ],
          "types" : 
          [
-            "sublocality_level_1",
-            "geocode",
             "sublocality",
-            "political"
+            "political",
+            "geocode",
+            "sublocality_level_1"
          ]
       }
    ],

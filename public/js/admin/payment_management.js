@@ -301,7 +301,7 @@ async function loadPaymentStats() {
 
 function renderPayments() {
     if (!payments || payments.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="7" class="text-center">No payments found.</td></tr>';
+        tableBody.innerHTML = '';
         return;
     }
 
@@ -780,7 +780,7 @@ searchBookingsBtn.addEventListener('click', async () => {
             });
         } else {
             bookingResults.style.display = 'block';
-            bookingResultsList.innerHTML = '<div class="list-group-item">No bookings found</div>';
+            // bookingResultsList.innerHTML = '<div class="list-group-item">No bookings found</div>';
         }
     } catch (error) {
         console.error('Error searching bookings:', error);

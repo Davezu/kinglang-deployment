@@ -56,7 +56,7 @@ if (is_admin_authenticated()) {
         <div class="logo">
             <img src="../../../public/images/logo.png" alt="">
         </div>
-        <div class="d-flex gap-3">
+        <div class="d-flex gap-3 user-actions">
             <a href="/home" class="text-dark">Home</a>
             <a href="#" class="text-dark">About</a>
         </div>

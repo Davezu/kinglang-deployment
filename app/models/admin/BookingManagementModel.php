@@ -399,7 +399,7 @@ class BookingManagementModel {
             ]);
 
             // Get booking information
-            $bookingInfo = $this->getBooking($rebooking_id);
+            $bookingInfo = $this->getBooking($booking_id);
             
             // Only proceed with notifications if bookingInfo is an array
             if (is_array($bookingInfo)) {

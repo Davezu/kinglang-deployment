@@ -2,7 +2,7 @@
    "predictions" : 
    [
       {
-         "description" : "Maligaya Street, Quezon City, Metro Manila, Philippines",
+         "description" : "Marikina, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -10,11 +10,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "EjdNYWxpZ2F5YSBTdHJlZXQsIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJH4rYqGmwlzMR0a0YPRADHeESFAoSCXVz70IJupczEUA9CP7ZMppK",
-         "reference" : "EjdNYWxpZ2F5YSBTdHJlZXQsIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJH4rYqGmwlzMR0a0YPRADHeESFAoSCXVz70IJupczEUA9CP7ZMppK",
+         "place_id" : "ChIJ-QB6d6K5lzMRxi-hKfTINm0",
+         "reference" : "ChIJ-QB6d6K5lzMRxi-hKfTINm0",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya Street",
+            "main_text" : "Marikina",
             "main_text_matched_substrings" : 
             [
                {
@@ -22,138 +22,130 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+            "secondary_text" : "Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligaya Street"
-            },
-            {
-               "offset" : 17,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 30,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 44,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "geocode",
-            "route"
-         ]
-      },
-      {
-         "description" : "Maligaya Park, Novaliches, Quezon City, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 8,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJqadJ8XixlzMRx007ulxb-vE",
-         "reference" : "ChIJqadJ8XixlzMRx007ulxb-vE",
-         "structured_formatting" : 
-         {
-            "main_text" : "Maligaya Park",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 8,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Novaliches, Quezon City, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Maligaya Park"
-            },
-            {
-               "offset" : 15,
-               "value" : "Novaliches"
-            },
-            {
-               "offset" : 27,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 40,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 54,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "university",
-            "establishment",
-            "point_of_interest"
-         ]
-      },
-      {
-         "description" : "Maligaya, Tarlac City, Tarlac, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 8,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
-         "reference" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
-         "structured_formatting" : 
-         {
-            "main_text" : "Maligaya",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 8,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Tarlac City, Tarlac, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Maligaya"
+               "value" : "Marikina"
             },
             {
                "offset" : 10,
-               "value" : "Tarlac City"
+               "value" : "Metro Manila"
             },
             {
-               "offset" : 23,
-               "value" : "Tarlac"
+               "offset" : 24,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "locality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Marikina Sports Center, Sumulong Highway, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJfUUgzDS4lzMRa0ThB7XW5Mc",
+         "reference" : "ChIJfUUgzDS4lzMRa0ThB7XW5Mc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marikina Sports Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sumulong Highway, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marikina Sports Center"
+            },
+            {
+               "offset" : 24,
+               "value" : "Sumulong Highway"
+            },
+            {
+               "offset" : 42,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Marikina Heights (Concepcion), Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJNS5a96G5lzMRKQOAKlOL6FQ",
+         "reference" : "ChIJNS5a96G5lzMRKQOAKlOL6FQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marikina Heights (Concepcion)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marikina Heights (Concepcion)"
             },
             {
                "offset" : 31,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 45,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
             "sublocality_level_2",
-            "geocode",
             "political",
+            "geocode",
             "sublocality"
          ]
       },
       {
-         "description" : "Maligaya Elementary School, Quezon City, Metro Manila, Philippines",
+         "description" : "Marikina Riverbanks, Marikina, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -161,11 +153,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJLwgAQGmwlzMRcEuu63QHI6A",
-         "reference" : "ChIJLwgAQGmwlzMRcEuu63QHI6A",
+         "place_id" : "ChIJBeTaqt-5lzMRZpnKh2m1fZY",
+         "reference" : "ChIJBeTaqt-5lzMRZpnKh2m1fZY",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya Elementary School",
+            "main_text" : "Marikina Riverbanks",
             "main_text_matched_substrings" : 
             [
                {
@@ -173,82 +165,86 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+            "secondary_text" : "Marikina, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligaya Elementary School"
+               "value" : "Marikina Riverbanks"
             },
             {
-               "offset" : 28,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 41,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 55,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "school",
-            "establishment",
-            "point_of_interest"
-         ]
-      },
-      {
-         "description" : "Maligaya, Cabiao, Nueva Ecija, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 8,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJI1fjh7XhljMR4915PEX1lcg",
-         "reference" : "ChIJI1fjh7XhljMR4915PEX1lcg",
-         "structured_formatting" : 
-         {
-            "main_text" : "Maligaya",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 8,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Cabiao, Nueva Ecija, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Maligaya"
-            },
-            {
-               "offset" : 10,
-               "value" : "Cabiao"
-            },
-            {
-               "offset" : 18,
-               "value" : "Nueva Ecija"
+               "offset" : 21,
+               "value" : "Marikina"
             },
             {
                "offset" : 31,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 45,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "geocode",
-            "sublocality_level_2",
-            "sublocality",
-            "political"
+            "park",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Marikina Valley Medical Center, Sumulong Highway, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJdcKHObW5lzMRRwX18j5LJxE",
+         "reference" : "ChIJdcKHObW5lzMRRwX18j5LJxE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marikina Valley Medical Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sumulong Highway, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marikina Valley Medical Center"
+            },
+            {
+               "offset" : 32,
+               "value" : "Sumulong Highway"
+            },
+            {
+               "offset" : 50,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 60,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "health",
+            "establishment",
+            "point_of_interest",
+            "hospital"
          ]
       }
    ],
