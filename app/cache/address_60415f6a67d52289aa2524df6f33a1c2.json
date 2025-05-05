@@ -2,7 +2,7 @@
    "predictions" : 
    [
       {
-         "description" : "Makati, Metro Manila, Philippines",
+         "description" : "Slide Coffee, Sacred Heart Street, Makati, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -10,11 +10,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJAe2gZALJlzMRzsoweNVuBis",
-         "reference" : "ChIJAe2gZALJlzMRzsoweNVuBis",
+         "place_id" : "ChIJdQrrBQDJlzMRqoNHOPzxtGw",
+         "reference" : "ChIJdQrrBQDJlzMRqoNHOPzxtGw",
          "structured_formatting" : 
          {
-            "main_text" : "Makati",
+            "main_text" : "Slide Coffee",
             "main_text_matched_substrings" : 
             [
                {
@@ -22,142 +22,42 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Metro Manila, Philippines"
+            "secondary_text" : "Sacred Heart Street, Makati, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
+               "value" : "Slide Coffee"
+            },
+            {
+               "offset" : 14,
+               "value" : "Sacred Heart Street"
+            },
+            {
+               "offset" : 35,
                "value" : "Makati"
             },
             {
-               "offset" : 8,
+               "offset" : 43,
                "value" : "Metro Manila"
-            },
-            {
-               "offset" : 22,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "political",
-            "geocode",
-            "locality"
-         ]
-      },
-      {
-         "description" : "Makabayan Street, Diliman, Quezon City, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 3,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "EkFNYWthYmF5YW4gU3RyZWV0LCBEaWxpbWFuLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCffGGwVLtpczETN76BUv1-szEhQKEgnVuj9HqLeXMxHmiC3ZQQFmeg",
-         "reference" : "EkFNYWthYmF5YW4gU3RyZWV0LCBEaWxpbWFuLCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCffGGwVLtpczETN76BUv1-szEhQKEgnVuj9HqLeXMxHmiC3ZQQFmeg",
-         "structured_formatting" : 
-         {
-            "main_text" : "Makabayan Street",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 3,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Diliman, Quezon City, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Makabayan Street"
-            },
-            {
-               "offset" : 18,
-               "value" : "Diliman"
-            },
-            {
-               "offset" : 27,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 40,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 54,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "route",
-            "geocode"
-         ]
-      },
-      {
-         "description" : "Makati Medical Center, Amorsolo Street, Legazpi Village, Makati, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 3,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJ0wmu7AvJlzMRA-6w4Np_FSs",
-         "reference" : "ChIJ0wmu7AvJlzMRA-6w4Np_FSs",
-         "structured_formatting" : 
-         {
-            "main_text" : "Makati Medical Center",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 3,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Amorsolo Street, Legazpi Village, Makati, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Makati Medical Center"
-            },
-            {
-               "offset" : 23,
-               "value" : "Amorsolo Street"
-            },
-            {
-               "offset" : 40,
-               "value" : "Legazpi Village"
             },
             {
                "offset" : 57,
-               "value" : "Makati"
-            },
-            {
-               "offset" : 65,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 79,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "establishment",
-            "health",
+            "food",
+            "cafe",
             "point_of_interest",
-            "hospital"
+            "establishment",
+            "store"
          ]
       },
       {
-         "description" : "Makati City Hall, Angono, Makati, Metro Manila, Philippines",
+         "description" : "Slimmers World Elite, 9th Avenue, Taguig, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -165,11 +65,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJ8XIoia7JlzMRbpMXuVFmt88",
-         "reference" : "ChIJ8XIoia7JlzMRbpMXuVFmt88",
+         "place_id" : "ChIJR7Pt31jJlzMRTRkcqn_InNo",
+         "reference" : "ChIJR7Pt31jJlzMRTRkcqn_InNo",
          "structured_formatting" : 
          {
-            "main_text" : "Makati City Hall",
+            "main_text" : "Slimmers World Elite",
             "main_text_matched_substrings" : 
             [
                {
@@ -177,17 +77,71 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Angono, Makati, Metro Manila, Philippines"
+            "secondary_text" : "9th Avenue, Taguig, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Makati City Hall"
+               "value" : "Slimmers World Elite"
             },
             {
-               "offset" : 18,
-               "value" : "Angono"
+               "offset" : 22,
+               "value" : "9th Avenue"
+            },
+            {
+               "offset" : 34,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "gym",
+            "establishment",
+            "health",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Slick Barbers Co., Yague, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJi_sTwabJlzMR8igj4ibLxvw",
+         "reference" : "ChIJi_sTwabJlzMR8igj4ibLxvw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Slick Barbers Co.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Yague, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Slick Barbers Co."
+            },
+            {
+               "offset" : 19,
+               "value" : "Yague"
             },
             {
                "offset" : 26,
@@ -204,14 +158,14 @@
          ],
          "types" : 
          [
-            "local_government_office",
-            "city_hall",
-            "establishment",
-            "point_of_interest"
+            "hair_care",
+            "health",
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
-         "description" : "Makati Avenue, Makati, Metro Manila, Philippines",
+         "description" : "Slick and Dapper Commonwealth, Commonwealth Avenue, Quezon City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -219,11 +173,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "EjBNYWthdGkgQXZlbnVlLCBNYWthdGksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgn9HeK0q8mXMxFtxA0EQKVHMRIUChIJAe2gZALJlzMRzsoweNVuBis",
-         "reference" : "EjBNYWthdGkgQXZlbnVlLCBNYWthdGksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgn9HeK0q8mXMxFtxA0EQKVHMRIUChIJAe2gZALJlzMRzsoweNVuBis",
+         "place_id" : "ChIJ0TstGgCxlzMR1I1tFzN3GCQ",
+         "reference" : "ChIJ0TstGgCxlzMR1I1tFzN3GCQ",
          "structured_formatting" : 
          {
-            "main_text" : "Makati Avenue",
+            "main_text" : "Slick and Dapper Commonwealth",
             "main_text_matched_substrings" : 
             [
                {
@@ -231,31 +185,87 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Makati, Metro Manila, Philippines"
+            "secondary_text" : "Commonwealth Avenue, Quezon City, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Makati Avenue"
+               "value" : "Slick and Dapper Commonwealth"
             },
             {
-               "offset" : 15,
-               "value" : "Makati"
+               "offset" : 31,
+               "value" : "Commonwealth Avenue"
             },
             {
-               "offset" : 23,
+               "offset" : 52,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 65,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 37,
+               "offset" : 79,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "route",
-            "geocode"
+            "hair_care",
+            "health",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "SLICK STREET BARBERS, Mandaue City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJUXbXnQGZqTMRrA9mWGeCPpI",
+         "reference" : "ChIJUXbXnQGZqTMRrA9mWGeCPpI",
+         "structured_formatting" : 
+         {
+            "main_text" : "SLICK STREET BARBERS",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mandaue City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SLICK STREET BARBERS"
+            },
+            {
+               "offset" : 22,
+               "value" : "Mandaue City"
+            },
+            {
+               "offset" : 36,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "health",
+            "hair_care",
+            "point_of_interest",
+            "establishment"
          ]
       }
    ],

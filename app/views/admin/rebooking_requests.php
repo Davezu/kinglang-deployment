@@ -196,8 +196,17 @@
                 </div>
             </div>
             
+        <div class="my-3" style="width: 40%">
+            <div class="input-group">
+                <span class="input-group-text bg-light border-end-0">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" id="searchRequests" class="form-control border-start-0" placeholder="Search client name or destination...">
+                <button id="searchBtn" class="btn btn-success">Search</button>
+            </div>
+        </div>
             <!-- Search and Filter Row -->
-            <div class="row g-3 mb-3">
+            <div class="row g-3 mb-3 d-none">
                 <!-- Search Bar -->
                 <div class="col-xl-6">
                     <div class="card mb-0 border-0 shadow-sm">
@@ -212,7 +221,7 @@
                                         <button id="searchBtn" class="btn btn-success">Search</button>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4">
+                                <div class="col-lg-4 col-md-4 d-none">
                                     <div class="input-group">
                                         <span class="input-group-text bg-success-subtle">
                                             <i class="bi bi-filter"></i>
@@ -231,7 +240,7 @@
                 </div>
                 
                 <!-- Actions -->
-                <div class="col-xl-6">
+                <div class="col-xl-6 d-none">
                     <div class="card mb-0 border-0 shadow-sm">
                         <div class="card-body py-2">
                             <div class="d-flex gap-2 justify-content-end">

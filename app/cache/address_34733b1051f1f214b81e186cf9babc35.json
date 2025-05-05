@@ -1,0 +1,251 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Masasa Beach, Tingloy, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJmz5AgWurvTMRtEai_ahiYmg",
+         "reference" : "ChIJmz5AgWurvTMRtEai_ahiYmg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Masasa Beach",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tingloy, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Masasa Beach"
+            },
+            {
+               "offset" : 14,
+               "value" : "Tingloy"
+            },
+            {
+               "offset" : 23,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Masamirey White Sand Beach, Sual, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJpadqLufekzMRWzincHG8Epc",
+         "reference" : "ChIJpadqLufekzMRWzincHG8Epc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Masamirey White Sand Beach",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sual, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Masamirey White Sand Beach"
+            },
+            {
+               "offset" : 28,
+               "value" : "Sual"
+            },
+            {
+               "offset" : 34,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Masantol, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJl98i87laljMRxRbaQugvrYk",
+         "reference" : "ChIJl98i87laljMRxRbaQugvrYk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Masantol",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Masantol"
+            },
+            {
+               "offset" : 10,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Masambong, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-RFTSGe2lzMRQZGQdWbPNYE",
+         "reference" : "ChIJ-RFTSGe2lzMRQZGQdWbPNYE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Masambong",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Masambong"
+            },
+            {
+               "offset" : 11,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality",
+            "political",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Masamirey Cove Resort, Sitio Masamirey, Sual, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAz1bLufekzMR25gJeuYjbtY",
+         "reference" : "ChIJAz1bLufekzMR25gJeuYjbtY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Masamirey Cove Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sitio Masamirey, Sual, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Masamirey Cove Resort"
+            },
+            {
+               "offset" : 23,
+               "value" : "Sitio Masamirey"
+            },
+            {
+               "offset" : 40,
+               "value" : "Sual"
+            },
+            {
+               "offset" : 46,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

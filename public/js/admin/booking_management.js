@@ -552,9 +552,9 @@ function renderCardView() {
                         </div>
                     </div>
                     <div class="card-footer bg-light border-0 py-2">
-                        <div class="d-flex gap-2 justify-content-between">
+                        <div class="d-flex gap-2 justify-content-start">
                             <button class="btn btn-sm btn-outline-primary view-booking-btn" data-booking-id="${booking.booking_id}">
-                                <i class="bi bi-eye"></i> View
+                                <i class="bi bi-info-circle"></i> Details
                             </button>
                             <div class="d-flex gap-1">
                                 ${booking.status === 'Pending' ? `

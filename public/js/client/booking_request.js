@@ -1305,7 +1305,7 @@ function renderCardView() {
                     </div>
                 </div>
             </div>
-            <div class="card-footer d-flex flex-wrap gap-2 justify-content-center bg-light" id="card-actions-${booking.booking_id}">
+            <div class="card-footer d-flex flex-wrap gap-2 justify-content-start bg-light" id="card-actions-${booking.booking_id}">
                 <!-- Action buttons will be added here -->
             </div>
         `;
@@ -1323,8 +1323,8 @@ function renderCardView() {
 function addCardActions(container, booking) {
     // View button (always present)
     const viewBtn = document.createElement("button");
-    viewBtn.className = "btn btn-sm btn-outline-success";
-    viewBtn.innerHTML = '<i class="bi bi-eye"></i> View';
+    viewBtn.className = "btn btn-sm btn-outline-primary";
+    viewBtn.innerHTML = '<i class="bi bi-info-circle"></i> Details';
     viewBtn.addEventListener("click", function() {
         openBookingDetailsModal(booking.booking_id);
     });
@@ -1392,16 +1392,16 @@ function addCardActions(container, booking) {
     }
     
     // Edit button (for pending, confirmed, processing bookings)
-    if (["Pending", "Confirmed", "Processing"].includes(booking.status)) {
-        const editBtn = document.createElement("button");
-        editBtn.className = "btn btn-sm btn-outline-secondary";
-        editBtn.innerHTML = '<i class="bi bi-pencil"></i> Edit';
-        editBtn.addEventListener("click", function() {
-            sessionStorage.setItem("bookingId", booking.booking_id);
-            window.location.href = "/home/book";
-        });
-        container.appendChild(editBtn);
-    }
+    // if (["Pending", "Confirmed", "Processing"].includes(booking.status)) {
+    //     const editBtn = document.createElement("button");
+    //     editBtn.className = "btn btn-sm btn-outline-secondary";
+    //     editBtn.innerHTML = '<i class="bi bi-pencil"></i> Edit';
+    //     editBtn.addEventListener("click", function() {
+    //         sessionStorage.setItem("bookingId", booking.booking_id);
+    //         window.location.href = "/home/book";
+    //     });
+    //     container.appendChild(editBtn);
+    // }
     
     // Cancel button (for pending, confirmed, processing bookings)
     if (["Pending", "Confirmed", "Processing"].includes(booking.status)) {
@@ -1453,14 +1453,23 @@ function addCardActions(container, booking) {
                 }
             });
         });
-        // Print Invoice button (for all bookings)
-        const invoiceBtn = document.createElement("button");
-        invoiceBtn.className = "btn btn-sm btn-outline-info";
-        invoiceBtn.innerHTML = '<i class="bi bi-printer"></i> Invoice';
-        invoiceBtn.addEventListener("click", function() {
-            printInvoice(booking.booking_id);
-        });
-        container.appendChild(invoiceBtn);
+        // if (['Confirmed', 'Processing', 'Completed'].includes(booking.status)) {
+        //     // Print Invoice button (for all bookings)
+        //     const invoiceBtn = document.createElement("button");
+        //     invoiceBtn.className = "btn btn-sm btn-outline-info";
+        //     invoiceBtn.innerHTML = '<i class="bi bi-printer"></i> Invoice';
+        //     invoiceBtn.addEventListener("click", function() {
+        //         printInvoice(booking.booking_id);
+        //     });
+        //     const contractBtn = document.createElement("button");
+        //     contractBtn.className = "btn btn-sm btn-outline-info";
+        //     contractBtn.innerHTML = '<i class="bi bi-printer"></i> Contract';
+        //     contractBtn.addEventListener("click", function() {
+        //         printContract(booking.booking_id);
+        //     });
+        //     container.appendChild(contractBtn);
+        //     container.appendChild(invoiceBtn);
+        // }
         container.appendChild(cancelBtn);
     }
     
@@ -1655,6 +1664,22 @@ function openBookingDetailsModal(bookingId) {
                     },
                     footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
                     showCancelButton: true,
+                    cancelButtonText: 'Cancel',
+                    confirmButtonText: 'Confirm',
+                    confirmButtonColor: '#28a745',
+                    cancelButtonColor: '#6c757d',
+                    showCloseButton: true,
+                    focusConfirm: false,
+                    allowOutsideClick: false,
+                    width: '32em',
+                    padding: '1em',
+                    customClass: {
+                    container: 'swal2-container',
+                    popup: 'swal2-popup',
+                    header: 'swal2-header',
+                    title: 'swal2-title',
+                    input: 'form-control'
+                },
                 }).then(result => {
                     if (result.isConfirmed) {
                         const reason = result.value;
@@ -1814,11 +1839,24 @@ function actionCell(booking) {
                         icon: 'warning',
                         input: 'textarea',
                         inputPlaceholder: 'Enter your reason here...',
+                        footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
                         showCancelButton: true,
-                        confirmButtonText: 'Yes, cancel it!',
-                        confirmButtonColor: '#dc3545',
-                        cancelButtonText: 'No, keep it',
+                        cancelButtonText: 'Cancel',
+                        confirmButtonText: 'Confirm',
+                        confirmButtonColor: '#28a745',
                         cancelButtonColor: '#6c757d',
+                        showCloseButton: true,
+                        focusConfirm: false,
+                        allowOutsideClick: false,
+                        width: '32em',
+                        padding: '1em',
+                        customClass: {
+                            container: 'swal2-container',
+                            popup: 'swal2-popup',
+                            header: 'swal2-header',
+                            title: 'swal2-title',
+                            input: 'form-control'
+                        },
                         inputValidator: (value) => {
                             if (!value) {
                                 return 'You need to provide a reason!';

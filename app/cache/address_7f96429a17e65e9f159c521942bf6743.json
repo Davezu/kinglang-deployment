@@ -45,8 +45,8 @@
          ],
          "types" : 
          [
-            "geocode",
-            "route"
+            "route",
+            "geocode"
          ]
       },
       {
@@ -146,9 +146,9 @@
          ],
          "types" : 
          [
+            "political",
             "sublocality_level_2",
             "geocode",
-            "political",
             "sublocality"
          ]
       },
@@ -245,10 +245,10 @@
          ],
          "types" : 
          [
-            "geocode",
+            "political",
             "sublocality_level_2",
-            "sublocality",
-            "political"
+            "geocode",
+            "sublocality"
          ]
       }
    ],

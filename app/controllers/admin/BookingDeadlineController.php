@@ -29,7 +29,7 @@ class BookingDeadlineController {
                 JOIN users u ON b.user_id = u.user_id
                 WHERE b.status = 'Confirmed' 
                   AND b.payment_status IN ('Unpaid')
-                  AND b.payment_deadline < NOW()
+                  AND b.payment_deadline < CURDATE()
                   AND NOT EXISTS (
                       SELECT 1 FROM canceled_trips ct 
                       WHERE ct.booking_id = b.booking_id

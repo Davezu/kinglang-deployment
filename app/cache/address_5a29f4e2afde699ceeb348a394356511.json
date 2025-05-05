@@ -41,8 +41,8 @@
          ],
          "types" : 
          [
-            "political",
             "locality",
+            "political",
             "geocode"
          ]
       },
@@ -98,10 +98,10 @@
          ],
          "types" : 
          [
-            "health",
             "point_of_interest",
             "hospital",
-            "establishment"
+            "establishment",
+            "health"
          ]
       },
       {
@@ -152,10 +152,68 @@
          ],
          "types" : 
          [
-            "local_government_office",
             "point_of_interest",
             "establishment",
+            "local_government_office",
             "city_hall"
+         ]
+      },
+      {
+         "description" : "Makati Shangri-La, Makati Avenue, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9yYMAQXJlzMRw9EjaWpOh24",
+         "reference" : "ChIJ9yYMAQXJlzMRw9EjaWpOh24",
+         "structured_formatting" : 
+         {
+            "main_text" : "Makati Shangri-La",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Makati Avenue, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Makati Shangri-La"
+            },
+            {
+               "offset" : 19,
+               "value" : "Makati Avenue"
+            },
+            {
+               "offset" : 34,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "restaurant",
+            "night_club",
+            "lodging",
+            "spa",
+            "establishment",
+            "bar",
+            "food"
          ]
       },
       {
@@ -204,63 +262,6 @@
          [
             "geocode",
             "route"
-         ]
-      },
-      {
-         "description" : "Makati Diamond Residences, Legazpi Street, Legazpi Village, Makati, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 6,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJnWJG7w_JlzMROHVDC8jzfrU",
-         "reference" : "ChIJnWJG7w_JlzMROHVDC8jzfrU",
-         "structured_formatting" : 
-         {
-            "main_text" : "Makati Diamond Residences",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 6,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Legazpi Street, Legazpi Village, Makati, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Makati Diamond Residences"
-            },
-            {
-               "offset" : 27,
-               "value" : "Legazpi Street"
-            },
-            {
-               "offset" : 43,
-               "value" : "Legazpi Village"
-            },
-            {
-               "offset" : 60,
-               "value" : "Makati"
-            },
-            {
-               "offset" : 68,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 82,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "lodging",
-            "point_of_interest",
-            "establishment"
          ]
       }
    ],
