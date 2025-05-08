@@ -1,0 +1,60 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Book Museum cum Ethnology Center, Southeast Dao, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJtZ5oiaG5lzMRWTUfY-h3i8Y",
+         "reference" : "ChIJtZ5oiaG5lzMRWTUfY-h3i8Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "Book Museum cum Ethnology Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Southeast Dao, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Book Museum cum Ethnology Center"
+            },
+            {
+               "offset" : 34,
+               "value" : "Southeast Dao"
+            },
+            {
+               "offset" : 49,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "museum",
+            "tourist_attraction"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,273 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Jericho, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ei5KZXJpY2hvLCBQYXJhw7FhcXVlLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJs7bzNIzOlzMRkXZiPHwCQdASFAoSCQldF_ldzpczEeVCKAu7GwQt",
+         "reference" : "Ei5KZXJpY2hvLCBQYXJhw7FhcXVlLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJs7bzNIzOlzMRkXZiPHwCQdASFAoSCQldF_ldzpczEeVCKAu7GwQt",
+         "structured_formatting" : 
+         {
+            "main_text" : "Jericho",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Jericho"
+            },
+            {
+               "offset" : 9,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Jerichos, Manila East Road, brgy aldea, Tanay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-YBgVDDrlzMRbj4E4oSM5Po",
+         "reference" : "ChIJ-YBgVDDrlzMRbj4E4oSM5Po",
+         "structured_formatting" : 
+         {
+            "main_text" : "Jerichos",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila East Road, brgy aldea, Tanay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Jerichos"
+            },
+            {
+               "offset" : 10,
+               "value" : "Manila East Road"
+            },
+            {
+               "offset" : 28,
+               "value" : "brgy aldea"
+            },
+            {
+               "offset" : 40,
+               "value" : "Tanay"
+            },
+            {
+               "offset" : 47,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "food",
+            "restaurant",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Jeric Dave Copy Center (Magdalo), Magdalo Street, La Paz, Iloilo City, Iloilo, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJJ6yK2xPlrjMR7Q4SJ1I0PUI",
+         "reference" : "ChIJJ6yK2xPlrjMR7Q4SJ1I0PUI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Jeric Dave Copy Center (Magdalo)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Magdalo Street, La Paz, Iloilo City, Iloilo, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Jeric Dave Copy Center (Magdalo)"
+            },
+            {
+               "offset" : 34,
+               "value" : "Magdalo Street"
+            },
+            {
+               "offset" : 50,
+               "value" : "La Paz"
+            },
+            {
+               "offset" : 58,
+               "value" : "Iloilo City"
+            },
+            {
+               "offset" : 71,
+               "value" : "Iloilo"
+            },
+            {
+               "offset" : 79,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "store"
+         ]
+      },
+      {
+         "description" : "Jerisil's Stop Shop, M. L. Quezon Street, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJqTELnJC5lzMRAZXW70h_ZZw",
+         "reference" : "ChIJqTELnJC5lzMRAZXW70h_ZZw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Jerisil's Stop Shop",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "M. L. Quezon Street, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Jerisil's Stop Shop"
+            },
+            {
+               "offset" : 21,
+               "value" : "M. L. Quezon Street"
+            },
+            {
+               "offset" : 42,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "store",
+            "point_of_interest",
+            "food",
+            "establishment",
+            "restaurant"
+         ]
+      },
+      {
+         "description" : "JERICOPIM'S PLACE, Jaen, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ0xacFjchlzMR70ugcze8RMQ",
+         "reference" : "ChIJ0xacFjchlzMR70ugcze8RMQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "JERICOPIM'S PLACE",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Jaen, Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "JERICOPIM'S PLACE"
+            },
+            {
+               "offset" : 19,
+               "value" : "Jaen"
+            },
+            {
+               "offset" : 25,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

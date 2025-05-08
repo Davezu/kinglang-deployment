@@ -1,0 +1,261 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Cavinti, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZ99ovUz8lzMR4y68r8XisTw",
+         "reference" : "ChIJZ99ovUz8lzMR4y68r8XisTw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavinti",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavinti"
+            },
+            {
+               "offset" : 9,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 17,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Cavinti laguna, Ramon Magsaysay St, Cavinti, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJrbA85xz_lzMRuIZE58cP174",
+         "reference" : "ChIJrbA85xz_lzMRuIZE58cP174",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavinti laguna",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ramon Magsaysay St, Cavinti, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavinti laguna"
+            },
+            {
+               "offset" : 16,
+               "value" : "Ramon Magsaysay St"
+            },
+            {
+               "offset" : 36,
+               "value" : "Cavinti"
+            },
+            {
+               "offset" : 45,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "park",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Cavinti Falls, Cavinti Bridge I, Cavinti, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwWA_9Vz8lzMRZQndZBK7G2k",
+         "reference" : "ChIJwWA_9Vz8lzMRZQndZBK7G2k",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavinti Falls",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavinti Bridge I, Cavinti, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavinti Falls"
+            },
+            {
+               "offset" : 15,
+               "value" : "Cavinti Bridge I"
+            },
+            {
+               "offset" : 33,
+               "value" : "Cavinti"
+            },
+            {
+               "offset" : 42,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 50,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "tourist_attraction",
+            "point_of_interest",
+            "park"
+         ]
+      },
+      {
+         "description" : "Cavinti Municipal Hall, Rizal Street, Cavinti, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJsaz9zkz8lzMR7s3xlMbpETM",
+         "reference" : "ChIJsaz9zkz8lzMR7s3xlMbpETM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavinti Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Rizal Street, Cavinti, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavinti Municipal Hall"
+            },
+            {
+               "offset" : 24,
+               "value" : "Rizal Street"
+            },
+            {
+               "offset" : 38,
+               "value" : "Cavinti"
+            },
+            {
+               "offset" : 47,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "local_government_office",
+            "establishment",
+            "point_of_interest",
+            "city_hall"
+         ]
+      },
+      {
+         "description" : "Cavinti Underground River and Cave Complex, Cavinti, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJW8sCIQ8CmDMRBVhFhaZZBnA",
+         "reference" : "ChIJW8sCIQ8CmDMRBVhFhaZZBnA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavinti Underground River and Cave Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavinti, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavinti Underground River and Cave Complex"
+            },
+            {
+               "offset" : 44,
+               "value" : "Cavinti"
+            },
+            {
+               "offset" : 53,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "tourist_attraction"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

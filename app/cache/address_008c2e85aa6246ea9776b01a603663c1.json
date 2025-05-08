@@ -1,0 +1,271 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Team Building Venue and Facilitators at San Rafael River Adventure, Barangay Talacsan Road, San Rafael, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 66,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeYwR1T4BlzMRJlm5rOgCgoA",
+         "reference" : "ChIJeYwR1T4BlzMRJlm5rOgCgoA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Team Building Venue and Facilitators at San Rafael River Adventure",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 66,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Barangay Talacsan Road, San Rafael, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Team Building Venue and Facilitators at San Rafael River Adventure"
+            },
+            {
+               "offset" : 68,
+               "value" : "Barangay Talacsan Road"
+            },
+            {
+               "offset" : 92,
+               "value" : "San Rafael"
+            },
+            {
+               "offset" : 104,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 113,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Team Building Philippines, Rada, Legazpi Village, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 25,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ44c9iq_JlzMRwr4BEprX-nw",
+         "reference" : "ChIJ44c9iq_JlzMRwr4BEprX-nw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Team Building Philippines",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 25,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Rada, Legazpi Village, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Team Building Philippines"
+            },
+            {
+               "offset" : 27,
+               "value" : "Rada"
+            },
+            {
+               "offset" : 33,
+               "value" : "Legazpi Village"
+            },
+            {
+               "offset" : 50,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 58,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 72,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "ClearWater Resort and Country Club, Centennial Road, Clark Freeport, Mabalacat, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 34,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ6RvacTXtljMRqgOOPQYy8wA",
+         "reference" : "ChIJ6RvacTXtljMRqgOOPQYy8wA",
+         "structured_formatting" : 
+         {
+            "main_text" : "ClearWater Resort and Country Club",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 34,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Centennial Road, Clark Freeport, Mabalacat, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "ClearWater Resort and Country Club"
+            },
+            {
+               "offset" : 36,
+               "value" : "Centennial Road"
+            },
+            {
+               "offset" : 53,
+               "value" : "Clark Freeport"
+            },
+            {
+               "offset" : 69,
+               "value" : "Mabalacat"
+            },
+            {
+               "offset" : 80,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 90,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "El Sitio Filipino Camping and Teambuilding Facility, Dumuclay Road, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 51,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBfO2f78bvTMRM4yIoXYeJ8g",
+         "reference" : "ChIJBfO2f78bvTMRM4yIoXYeJ8g",
+         "structured_formatting" : 
+         {
+            "main_text" : "El Sitio Filipino Camping and Teambuilding Facility",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 51,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dumuclay Road, Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "El Sitio Filipino Camping and Teambuilding Facility"
+            },
+            {
+               "offset" : 53,
+               "value" : "Dumuclay Road"
+            },
+            {
+               "offset" : 68,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 78,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Quest Adventure Camp Team Building Venue near Manila, Teresa, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 52,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJdRCu8OW_lzMRIvjHuJci_Uk",
+         "reference" : "ChIJdRCu8OW_lzMRIvjHuJci_Uk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Quest Adventure Camp Team Building Venue near Manila",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 52,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Teresa, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Quest Adventure Camp Team Building Venue near Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Teresa"
+            },
+            {
+               "offset" : 62,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "campground",
+            "establishment",
+            "park"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

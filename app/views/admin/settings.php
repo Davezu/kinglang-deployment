@@ -27,10 +27,10 @@ require_once __DIR__ . "/../../models/admin/Settings.php";
         .setting-card {
             transition: all 0.3s ease;
         }
-        .setting-card:hover {
+        /* .setting-card:hover {
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transform: translateY(-2px);
-        }
+        } */
         .badge-public {
             background-color: #0d6efd;
             color: white;

@@ -1,0 +1,105 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "REPTILAND ADVENTURE REPTILAND ADVENTURE, Alfonso, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJK_WW0RydvTMRFknae6D9y2c",
+         "reference" : "ChIJK_WW0RydvTMRFknae6D9y2c",
+         "structured_formatting" : 
+         {
+            "main_text" : "REPTILAND ADVENTURE REPTILAND ADVENTURE",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Alfonso, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "REPTILAND ADVENTURE REPTILAND ADVENTURE"
+            },
+            {
+               "offset" : 41,
+               "value" : "Alfonso"
+            },
+            {
+               "offset" : 50,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "amusement_park",
+            "point_of_interest",
+            "tourist_attraction",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Reptiland, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJrzevtUDHlzMR5NoM2Xcel_w",
+         "reference" : "ChIJrzevtUDHlzMR5NoM2Xcel_w",
+         "structured_formatting" : 
+         {
+            "main_text" : "Reptiland",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Reptiland"
+            },
+            {
+               "offset" : 11,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 18,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "park"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

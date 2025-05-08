@@ -27,7 +27,7 @@
                "duration" : 
                {
                   "text" : "35 mins",
-                  "value" : 2104
+                  "value" : 2071
                },
                "status" : "OK"
             },
@@ -39,8 +39,8 @@
                },
                "duration" : 
                {
-                  "text" : "59 mins",
-                  "value" : 3524
+                  "text" : "58 mins",
+                  "value" : 3494
                },
                "status" : "OK"
             },
@@ -52,8 +52,8 @@
                },
                "duration" : 
                {
-                  "text" : "35 mins",
-                  "value" : 2084
+                  "text" : "34 mins",
+                  "value" : 2068
                },
                "status" : "OK"
             },
@@ -97,7 +97,7 @@
                "duration" : 
                {
                   "text" : "37 mins",
-                  "value" : 2224
+                  "value" : 2215
                },
                "status" : "OK"
             },
@@ -110,7 +110,7 @@
                "duration" : 
                {
                   "text" : "58 mins",
-                  "value" : 3493
+                  "value" : 3456
                },
                "status" : "OK"
             },
@@ -123,7 +123,7 @@
                "duration" : 
                {
                   "text" : "35 mins",
-                  "value" : 2112
+                  "value" : 2093
                },
                "status" : "OK"
             }
@@ -141,7 +141,7 @@
                "duration" : 
                {
                   "text" : "40 mins",
-                  "value" : 2383
+                  "value" : 2376
                },
                "status" : "OK"
             },
@@ -162,12 +162,12 @@
                "distance" : 
                {
                   "text" : "47.3 km",
-                  "value" : 47344
+                  "value" : 47327
                },
                "duration" : 
                {
                   "text" : "1 hour 10 mins",
-                  "value" : 4219
+                  "value" : 4201
                },
                "status" : "OK"
             },
@@ -175,12 +175,12 @@
                "distance" : 
                {
                   "text" : "33.1 km",
-                  "value" : 33069
+                  "value" : 33052
                },
                "duration" : 
                {
-                  "text" : "1 hour 1 min",
-                  "value" : 3633
+                  "text" : "1 hour 0 mins",
+                  "value" : 3610
                },
                "status" : "OK"
             }
@@ -198,7 +198,7 @@
                "duration" : 
                {
                   "text" : "1 hour 0 mins",
-                  "value" : 3618
+                  "value" : 3573
                },
                "status" : "OK"
             },
@@ -210,8 +210,8 @@
                },
                "duration" : 
                {
-                  "text" : "1 hour 10 mins",
-                  "value" : 4192
+                  "text" : "1 hour 9 mins",
+                  "value" : 4155
                },
                "status" : "OK"
             },
@@ -237,7 +237,7 @@
                "duration" : 
                {
                   "text" : "32 mins",
-                  "value" : 1935
+                  "value" : 1915
                },
                "status" : "OK"
             }

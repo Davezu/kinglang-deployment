@@ -1,0 +1,264 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "River Breeze Resort, Floridablanca, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJWyQAOwBhljMR-flfh4SCO9c",
+         "reference" : "ChIJWyQAOwBhljMR-flfh4SCO9c",
+         "structured_formatting" : 
+         {
+            "main_text" : "River Breeze Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Floridablanca, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "River Breeze Resort"
+            },
+            {
+               "offset" : 21,
+               "value" : "Floridablanca"
+            },
+            {
+               "offset" : 36,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "River Banks Walkway, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjhSaXZlciBCYW5rcyBXYWxrd2F5LCBNYXJpa2luYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCV_fZPwvuJczEfSk-oE27KQtEhQKEgn5AHp3ormXMxHGL6Ep9Mg2bQ",
+         "reference" : "EjhSaXZlciBCYW5rcyBXYWxrd2F5LCBNYXJpa2luYSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCV_fZPwvuJczEfSk-oE27KQtEhQKEgn5AHp3ormXMxHGL6Ep9Mg2bQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "River Banks Walkway",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "River Banks Walkway"
+            },
+            {
+               "offset" : 21,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 31,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "River Ranch, Sta Ines Road, Tanay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJV96KSveXlzMR6b90B7FmAe0",
+         "reference" : "ChIJV96KSveXlzMR6b90B7FmAe0",
+         "structured_formatting" : 
+         {
+            "main_text" : "River Ranch",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sta Ines Road, Tanay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "River Ranch"
+            },
+            {
+               "offset" : 13,
+               "value" : "Sta Ines Road"
+            },
+            {
+               "offset" : 28,
+               "value" : "Tanay"
+            },
+            {
+               "offset" : 35,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "park",
+            "point_of_interest",
+            "campground"
+         ]
+      },
+      {
+         "description" : "River View Hotspring Resort and Hotel Asin Road, Tuba, Benguet, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJvQPF206fkTMRM6atiMc3YXQ",
+         "reference" : "ChIJvQPF206fkTMRM6atiMc3YXQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "River View Hotspring Resort and Hotel Asin Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tuba, Benguet, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "River View Hotspring Resort and Hotel Asin Road"
+            },
+            {
+               "offset" : 49,
+               "value" : "Tuba"
+            },
+            {
+               "offset" : 55,
+               "value" : "Benguet"
+            },
+            {
+               "offset" : 64,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment",
+            "spa"
+         ]
+      },
+      {
+         "description" : "River Green Residences, Pedro Gil Street, Santa Ana, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJVeN445XJlzMRjd_4aaYo-j4",
+         "reference" : "ChIJVeN445XJlzMRjd_4aaYo-j4",
+         "structured_formatting" : 
+         {
+            "main_text" : "River Green Residences",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pedro Gil Street, Santa Ana, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "River Green Residences"
+            },
+            {
+               "offset" : 24,
+               "value" : "Pedro Gil Street"
+            },
+            {
+               "offset" : 42,
+               "value" : "Santa Ana"
+            },
+            {
+               "offset" : 53,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 61,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

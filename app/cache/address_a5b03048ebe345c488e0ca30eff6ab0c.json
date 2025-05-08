@@ -1,0 +1,258 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Riverbanks Mall, A. Bonifacio Avenue, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJF41oLiq4lzMRJ92mQD6mlOQ",
+         "reference" : "ChIJF41oLiq4lzMRJ92mQD6mlOQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Riverbanks Mall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "A. Bonifacio Avenue, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Riverbanks Mall"
+            },
+            {
+               "offset" : 17,
+               "value" : "A. Bonifacio Avenue"
+            },
+            {
+               "offset" : 38,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "shopping_mall",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Riverbanks Center, Riverbanks Avenue, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbyCDfim4lzMRWTuJAojCtfo",
+         "reference" : "ChIJbyCDfim4lzMRWTuJAojCtfo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Riverbanks Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Riverbanks Avenue, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Riverbanks Center"
+            },
+            {
+               "offset" : 19,
+               "value" : "Riverbanks Avenue"
+            },
+            {
+               "offset" : 38,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "shopping_mall",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Riverside Street, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjhSaXZlcnNpZGUgU3RyZWV0LCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCTHrN0QJupczEbRJZgfeYDU-EhQKEgl1c-9CCbqXMxFAPQj-2TKaSg",
+         "reference" : "EjhSaXZlcnNpZGUgU3RyZWV0LCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCTHrN0QJupczEbRJZgfeYDU-EhQKEgl1c-9CCbqXMxFAPQj-2TKaSg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Riverside Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Riverside Street"
+            },
+            {
+               "offset" : 18,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 31,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "River Breeze Resort, Floridablanca, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJWyQAOwBhljMR-flfh4SCO9c",
+         "reference" : "ChIJWyQAOwBhljMR-flfh4SCO9c",
+         "structured_formatting" : 
+         {
+            "main_text" : "River Breeze Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Floridablanca, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "River Breeze Resort"
+            },
+            {
+               "offset" : 21,
+               "value" : "Floridablanca"
+            },
+            {
+               "offset" : 36,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Riverfront Garden Resort, Maragondon, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJkdKRt8yHvTMRkRCWVW-SXxM",
+         "reference" : "ChIJkdKRt8yHvTMRkRCWVW-SXxM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Riverfront Garden Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maragondon, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Riverfront Garden Resort"
+            },
+            {
+               "offset" : 26,
+               "value" : "Maragondon"
+            },
+            {
+               "offset" : 38,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

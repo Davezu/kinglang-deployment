@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "2600 Steps To Our Lady Of Atonement Cathedral, Baguio, Benguet, Philippines",
+      "P3M2+GFP, Skylark, Novaliches, Quezon City, Metro Manila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "P3M2+GFP, Skylark, Novaliches, Quezon City, Metro Manila, Philippines",
+      "2600 Steps To Our Lady Of Atonement Cathedral, Baguio, Benguet, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "239 km",
+                  "value" : 239203
+               },
+               "duration" : 
+               {
+                  "text" : "3 hours 55 mins",
+                  "value" : 14093
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "242 km",
+                  "value" : 241884
+               },
+               "duration" : 
+               {
+                  "text" : "4 hours 0 mins",
+                  "value" : 14409
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

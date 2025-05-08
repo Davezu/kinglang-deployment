@@ -1,0 +1,237 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Tagauayan Island, Cawayan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJKXZfytZWpjMRFmN0njLc5JY",
+         "reference" : "ChIJKXZfytZWpjMRFmN0njLc5JY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagauayan Island",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cawayan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagauayan Island"
+            },
+            {
+               "offset" : 18,
+               "value" : "Cawayan"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Tagau Island, South Ubian, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJjzPZvIOUQzIRDpHJJqi-q-c",
+         "reference" : "ChIJjzPZvIOUQzIRDpHJJqi-q-c",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagau Island",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "South Ubian, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagau Island"
+            },
+            {
+               "offset" : 14,
+               "value" : "South Ubian"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Tagauayan Island, Magsaysay, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwVjeVwS1sTMRkCpbNOG05sk",
+         "reference" : "ChIJwVjeVwS1sTMRkCpbNOG05sk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagauayan Island",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Magsaysay, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagauayan Island"
+            },
+            {
+               "offset" : 18,
+               "value" : "Magsaysay"
+            },
+            {
+               "offset" : 29,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Tagaum-om River, Mati, Davao Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJD1UZDd-3-zIRq2GehHVD5aA",
+         "reference" : "ChIJD1UZDd-3-zIRq2GehHVD5aA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagaum-om River",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mati, Davao Oriental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagaum-om River"
+            },
+            {
+               "offset" : 17,
+               "value" : "Mati"
+            },
+            {
+               "offset" : 23,
+               "value" : "Davao Oriental"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Purok 2A, Barangay San Miguel, Tagum City, Davao del Norte, Tagum, Davao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 58,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJDdma3hpT-TIR_YDlAa46LHY",
+         "reference" : "ChIJDdma3hpT-TIR_YDlAa46LHY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Purok 2A, Barangay San Miguel, Tagum City, Davao del Norte",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 58,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagum, Davao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Purok 2A, Barangay San Miguel, Tagum City, Davao del Norte"
+            },
+            {
+               "offset" : 60,
+               "value" : "Tagum"
+            },
+            {
+               "offset" : 67,
+               "value" : "Davao del Norte"
+            },
+            {
+               "offset" : 84,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "church",
+            "establishment",
+            "point_of_interest",
+            "place_of_worship"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

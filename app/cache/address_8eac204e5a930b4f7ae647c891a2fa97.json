@@ -1,0 +1,59 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Marikina Shoe Museum, J. P. Rizal Street, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 20,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJP8dmLW65lzMRBr-ETM65sd8",
+         "reference" : "ChIJP8dmLW65lzMRBr-ETM65sd8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marikina Shoe Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 20,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "J. P. Rizal Street, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marikina Shoe Museum"
+            },
+            {
+               "offset" : 22,
+               "value" : "J. P. Rizal Street"
+            },
+            {
+               "offset" : 42,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "museum"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

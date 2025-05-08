@@ -1,0 +1,254 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Caliraya Lake, Lumban, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJaVNLquH7lzMR-aWlmRY-U_k",
+         "reference" : "ChIJaVNLquH7lzMR-aWlmRY-U_k",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caliraya Lake",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lumban, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caliraya Lake"
+            },
+            {
+               "offset" : 15,
+               "value" : "Lumban"
+            },
+            {
+               "offset" : 23,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 31,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "natural_feature",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Caliraya Resort Club, Lumban, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ58HJo5v7lzMRJo77ggmeJhI",
+         "reference" : "ChIJ58HJo5v7lzMRJo77ggmeJhI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caliraya Resort Club",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lumban, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caliraya Resort Club"
+            },
+            {
+               "offset" : 22,
+               "value" : "Lumban"
+            },
+            {
+               "offset" : 30,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Caliraya, Lumban, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ8_jIXmz5lzMRAuhmO9jpr5o",
+         "reference" : "ChIJ8_jIXmz5lzMRAuhmO9jpr5o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caliraya",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lumban, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caliraya"
+            },
+            {
+               "offset" : 10,
+               "value" : "Lumban"
+            },
+            {
+               "offset" : 18,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 26,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality_level_2",
+            "sublocality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Caliraya Ecoville Recreation and Farm Resort, Lumban - Caliraya - Cavinti Road, Cavinti, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_6fFafX7lzMRdwmdiM_CT-s",
+         "reference" : "ChIJ_6fFafX7lzMRdwmdiM_CT-s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caliraya Ecoville Recreation and Farm Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lumban - Caliraya - Cavinti Road, Cavinti, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caliraya Ecoville Recreation and Farm Resort"
+            },
+            {
+               "offset" : 46,
+               "value" : "Lumban - Caliraya - Cavinti Road"
+            },
+            {
+               "offset" : 80,
+               "value" : "Cavinti"
+            },
+            {
+               "offset" : 89,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 97,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Caliraya Springs Golf Club, Lumban, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJq6qqqgP8lzMRaxByaxHzJic",
+         "reference" : "ChIJq6qqqgP8lzMRaxByaxHzJic",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caliraya Springs Golf Club",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lumban, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caliraya Springs Golf Club"
+            },
+            {
+               "offset" : 28,
+               "value" : "Lumban"
+            },
+            {
+               "offset" : 36,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

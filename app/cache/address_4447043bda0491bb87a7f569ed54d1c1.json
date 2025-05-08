@@ -1,0 +1,108 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Tanay Adventure Camp, Marikina-Infanta Highway, Tanay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 20,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9bC79W-UlzMRheQsiHmLr7I",
+         "reference" : "ChIJ9bC79W-UlzMRheQsiHmLr7I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanay Adventure Camp",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 20,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marikina-Infanta Highway, Tanay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanay Adventure Camp"
+            },
+            {
+               "offset" : 22,
+               "value" : "Marikina-Infanta Highway"
+            },
+            {
+               "offset" : 48,
+               "value" : "Tanay"
+            },
+            {
+               "offset" : 55,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Tanay Adventure Camp, Tanay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 20,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJR4zYqkiTlzMRC98T_E1GW0o",
+         "reference" : "ChIJR4zYqkiTlzMRC98T_E1GW0o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanay Adventure Camp",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 20,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tanay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanay Adventure Camp"
+            },
+            {
+               "offset" : 22,
+               "value" : "Tanay"
+            },
+            {
+               "offset" : 29,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "health",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

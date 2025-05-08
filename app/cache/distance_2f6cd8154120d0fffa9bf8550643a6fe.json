@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "Barangays Puypuy and, F.T. San Luis Avenue, Bay, 4033 Laguna, Philippines",
+      "EDSA, corner Doña Julia Vargas Ave, Ortigas Center, Mandaluyong, 1555 Metro Manila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "EDSA, corner Doña Julia Vargas Ave, Ortigas Center, Mandaluyong, 1555 Metro Manila, Philippines",
+      "Barangays Puypuy and, F.T. San Luis Avenue, Bay, 4033 Laguna, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "71.6 km",
+                  "value" : 71589
+               },
+               "duration" : 
+               {
+                  "text" : "1 hour 41 mins",
+                  "value" : 6083
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "71.9 km",
+                  "value" : 71862
+               },
+               "duration" : 
+               {
+                  "text" : "1 hour 39 mins",
+                  "value" : 5938
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

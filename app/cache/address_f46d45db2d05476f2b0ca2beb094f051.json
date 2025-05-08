@@ -1,0 +1,109 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Terra 28th, 28th Street, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPwdS5fHIlzMRcxceFAuDLjM",
+         "reference" : "ChIJPwdS5fHIlzMRcxceFAuDLjM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Terra 28th",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "28th Street, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Terra 28th"
+            },
+            {
+               "offset" : 12,
+               "value" : "28th Street"
+            },
+            {
+               "offset" : 25,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 33,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "premise",
+            "park"
+         ]
+      },
+      {
+         "description" : "Terra 28th, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJUZPxk-bJlzMRxdBD4RjPpmo",
+         "reference" : "ChIJUZPxk-bJlzMRxdBD4RjPpmo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Terra 28th",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Terra 28th"
+            },
+            {
+               "offset" : 12,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "park"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

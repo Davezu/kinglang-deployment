@@ -1,0 +1,265 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "River bank galarin, Urbiztondo, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeWD6BgBPkTMRAWnZNufQzn0",
+         "reference" : "ChIJeWD6BgBPkTMRAWnZNufQzn0",
+         "structured_formatting" : 
+         {
+            "main_text" : "River bank galarin",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Urbiztondo, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "River bank galarin"
+            },
+            {
+               "offset" : 20,
+               "value" : "Urbiztondo"
+            },
+            {
+               "offset" : 32,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "park",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "River Bank Silog At Ihaw-Ihaw, Santa Maria, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJQ1xUcrStlzMR7uE3h4e7J7o",
+         "reference" : "ChIJQ1xUcrStlzMR7uE3h4e7J7o",
+         "structured_formatting" : 
+         {
+            "main_text" : "River Bank Silog At Ihaw-Ihaw",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Maria, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "River Bank Silog At Ihaw-Ihaw"
+            },
+            {
+               "offset" : 31,
+               "value" : "Santa Maria"
+            },
+            {
+               "offset" : 44,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "establishment",
+            "restaurant",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Riverbank Park, Unnamed Road, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv0PexTq4lzMRWIFNeKaBAEM",
+         "reference" : "ChIJv0PexTq4lzMRWIFNeKaBAEM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Riverbank Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Unnamed Road, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Riverbank Park"
+            },
+            {
+               "offset" : 16,
+               "value" : "Unnamed Road"
+            },
+            {
+               "offset" : 30,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 40,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "RIVER BANK INDUSTRIAL SALES, STA.CRUZ, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJSbT6TSrKlzMRsq41XdfD2_I",
+         "reference" : "ChIJSbT6TSrKlzMRsq41XdfD2_I",
+         "structured_formatting" : 
+         {
+            "main_text" : "RIVER BANK INDUSTRIAL SALES",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "STA.CRUZ, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "RIVER BANK INDUSTRIAL SALES"
+            },
+            {
+               "offset" : 29,
+               "value" : "STA.CRUZ"
+            },
+            {
+               "offset" : 39,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 47,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "car_repair",
+            "establishment",
+            "store",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Riverbank Panciteria, Bonifacio Street, Tuguegarao City, Cagayan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 20,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJgfbx_-iFhTMRl2IW1p5F1kk",
+         "reference" : "ChIJgfbx_-iFhTMRl2IW1p5F1kk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Riverbank Panciteria",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 20,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bonifacio Street, Tuguegarao City, Cagayan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Riverbank Panciteria"
+            },
+            {
+               "offset" : 22,
+               "value" : "Bonifacio Street"
+            },
+            {
+               "offset" : 40,
+               "value" : "Tuguegarao City"
+            },
+            {
+               "offset" : 57,
+               "value" : "Cagayan"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "establishment",
+            "point_of_interest",
+            "food"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

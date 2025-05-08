@@ -1,0 +1,60 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Puzzle Mansion, I. Cuadra, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJffLip9t3vTMRBMNSHevj5iY",
+         "reference" : "ChIJffLip9t3vTMRBMNSHevj5iY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Puzzle Mansion",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "I. Cuadra, Tagaytay, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Puzzle Mansion"
+            },
+            {
+               "offset" : 16,
+               "value" : "I. Cuadra"
+            },
+            {
+               "offset" : 27,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 37,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "tourist_attraction",
+            "point_of_interest",
+            "museum",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

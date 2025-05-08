@@ -1,0 +1,308 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Tagaytay Rotonda, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ei9UYWdheXRheSBSb3RvbmRhLCBUYWdheXRheSwgQ2F2aXRlLCBQaGlsaXBwaW5lcyIuKiwKFAoSCSM0aVNgd70zERbKBvVG5UAWEhQKEgmPTLUae3e9MxHoK85RRFHMbg",
+         "reference" : "Ei9UYWdheXRheSBSb3RvbmRhLCBUYWdheXRheSwgQ2F2aXRlLCBQaGlsaXBwaW5lcyIuKiwKFAoSCSM0aVNgd70zERbKBvVG5UAWEhQKEgmPTLUae3e9MxHoK85RRFHMbg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagaytay Rotonda",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagaytay, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagaytay Rotonda"
+            },
+            {
+               "offset" : 18,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 28,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Tagaytay, Cavite, Republic of the Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            },
+            {
+               "length" : 1,
+               "offset" : 18
+            }
+         ],
+         "place_id" : "ChIJj0y1Gnt3vTMR6CvOUURRzG4",
+         "reference" : "ChIJj0y1Gnt3vTMR6CvOUURRzG4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagaytay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite, Republic of the Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 8
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 10,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 18,
+               "value" : "Republic of the Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Robinsons Tagaytay, Tagaytay - Nasugbu Highway, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 48
+            }
+         ],
+         "place_id" : "ChIJV4zkcAp3vTMRfEWzy59-f7E",
+         "reference" : "ChIJV4zkcAp3vTMRfEWzy59-f7E",
+         "structured_formatting" : 
+         {
+            "main_text" : "Robinsons Tagaytay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagaytay - Nasugbu Highway, Tagaytay, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 28
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Robinsons Tagaytay"
+            },
+            {
+               "offset" : 20,
+               "value" : "Tagaytay - Nasugbu Highway"
+            },
+            {
+               "offset" : 48,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 58,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "shopping_mall",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "RSM Tagaytay Magallanes - Bibingka Queen TAGAYTAY, Emilio Aguinaldo Hwy, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 73
+            }
+         ],
+         "place_id" : "ChIJm-K1CpB3vTMR-Tc_yLDkOfk",
+         "reference" : "ChIJm-K1CpB3vTMR-Tc_yLDkOfk",
+         "structured_formatting" : 
+         {
+            "main_text" : "RSM Tagaytay Magallanes - Bibingka Queen TAGAYTAY",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Emilio Aguinaldo Hwy, Tagaytay, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 22
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "RSM Tagaytay Magallanes - Bibingka Queen TAGAYTAY"
+            },
+            {
+               "offset" : 51,
+               "value" : "Emilio Aguinaldo Hwy"
+            },
+            {
+               "offset" : 73,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 83,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 91,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "establishment",
+            "point_of_interest",
+            "restaurant",
+            "store"
+         ]
+      },
+      {
+         "description" : "Royale Parc Hotel Tagaytay, Aguinaldo Highway, West, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 53
+            }
+         ],
+         "place_id" : "ChIJ04AfEBd6vTMRKIn8cGPozv4",
+         "reference" : "ChIJ04AfEBd6vTMRKIn8cGPozv4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Royale Parc Hotel Tagaytay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Aguinaldo Highway, West, Tagaytay, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 25
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Royale Parc Hotel Tagaytay"
+            },
+            {
+               "offset" : 28,
+               "value" : "Aguinaldo Highway"
+            },
+            {
+               "offset" : 47,
+               "value" : "West"
+            },
+            {
+               "offset" : 53,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 63,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

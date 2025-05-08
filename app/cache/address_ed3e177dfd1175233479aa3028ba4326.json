@@ -1,0 +1,59 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Riverbanks Center, Riverbanks Avenue, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 17,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbyCDfim4lzMRWTuJAojCtfo",
+         "reference" : "ChIJbyCDfim4lzMRWTuJAojCtfo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Riverbanks Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 17,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Riverbanks Avenue, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Riverbanks Center"
+            },
+            {
+               "offset" : 19,
+               "value" : "Riverbanks Avenue"
+            },
+            {
+               "offset" : 38,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,272 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Philippine Stock Exchange Centre, Pearl Drive, Ortigas Center, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 25,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJe1HhDRTIlzMROBWGmG_mLq8",
+         "reference" : "ChIJe1HhDRTIlzMROBWGmG_mLq8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Philippine Stock Exchange Centre",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 25,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pearl Drive, Ortigas Center, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Philippine Stock Exchange Centre"
+            },
+            {
+               "offset" : 34,
+               "value" : "Pearl Drive"
+            },
+            {
+               "offset" : 47,
+               "value" : "Ortigas Center"
+            },
+            {
+               "offset" : 63,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 70,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 84,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Philippine Stock Exchange Tower One, Ayala Avenue, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 25,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJlxRVs2TJlzMROSz30gegcro",
+         "reference" : "ChIJlxRVs2TJlzMROSz30gegcro",
+         "structured_formatting" : 
+         {
+            "main_text" : "Philippine Stock Exchange Tower One",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 25,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ayala Avenue, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Philippine Stock Exchange Tower One"
+            },
+            {
+               "offset" : 37,
+               "value" : "Ayala Avenue"
+            },
+            {
+               "offset" : 51,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "finance"
+         ]
+      },
+      {
+         "description" : "Philippine Stock Exchange Plaza, Ayala Avenue, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 25,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJrXH7kQXJlzMRvYb4yq9mva0",
+         "reference" : "ChIJrXH7kQXJlzMRvYb4yq9mva0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Philippine Stock Exchange Plaza",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 25,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ayala Avenue, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Philippine Stock Exchange Plaza"
+            },
+            {
+               "offset" : 33,
+               "value" : "Ayala Avenue"
+            },
+            {
+               "offset" : 47,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "The Philippine Stock Exchange, Inc., Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 25,
+               "offset" : 4
+            }
+         ],
+         "place_id" : "ChIJ30MIMxfIlzMRdBpqkq-fqGk",
+         "reference" : "ChIJ30MIMxfIlzMRdBpqkq-fqGk",
+         "structured_formatting" : 
+         {
+            "main_text" : "The Philippine Stock Exchange, Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 25,
+                  "offset" : 4
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "The Philippine Stock Exchange, Inc."
+            },
+            {
+               "offset" : 37,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 45,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "finance",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Philippine Stock Exchange Versatech Int. Kingston Distro, Pearl Drive, Ortigas Center, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 25,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9ZX1ERTIlzMRhM0yCtWzi78",
+         "reference" : "ChIJ9ZX1ERTIlzMRhM0yCtWzi78",
+         "structured_formatting" : 
+         {
+            "main_text" : "Philippine Stock Exchange Versatech Int. Kingston Distro",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 25,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pearl Drive, Ortigas Center, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Philippine Stock Exchange Versatech Int. Kingston Distro"
+            },
+            {
+               "offset" : 58,
+               "value" : "Pearl Drive"
+            },
+            {
+               "offset" : 71,
+               "value" : "Ortigas Center"
+            },
+            {
+               "offset" : 87,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 94,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 108,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

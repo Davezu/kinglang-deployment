@@ -1,0 +1,338 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Manila City Hall, Padre Burgos Avenue, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 16,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 47
+            }
+         ],
+         "place_id" : "ChIJVxSaAyLKlzMRcl0n6OEMiO8",
+         "reference" : "ChIJVxSaAyLKlzMRcl0n6OEMiO8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Padre Burgos Avenue, Ermita, Manila, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 29
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila City Hall"
+            },
+            {
+               "offset" : 18,
+               "value" : "Padre Burgos Avenue"
+            },
+            {
+               "offset" : 39,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 47,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "local_government_office",
+            "point_of_interest",
+            "tourist_attraction",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Manila city hall, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 16,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 18
+            }
+         ],
+         "place_id" : "ChIJs2rLUwC3lzMR8RihzKaK_4A",
+         "reference" : "ChIJs2rLUwC3lzMR8RihzKaK_4A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila city hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila city hall"
+            },
+            {
+               "offset" : 18,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 26,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Manila City Hall, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 16,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 26
+            }
+         ],
+         "place_id" : "ChIJzVn2HCLKlzMR6Ovyf_Y-vyU",
+         "reference" : "ChIJzVn2HCLKlzMR6Ovyf_Y-vyU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ermita, Manila, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 8
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila City Hall"
+            },
+            {
+               "offset" : 18,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 26,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 48,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      },
+      {
+         "description" : "Manila Clock Tower Museum, Manila City Hall, Padre Burgos Avenue, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 16,
+               "offset" : 27
+            }
+         ],
+         "place_id" : "ChIJO25ATUnLlzMRaxcaPuAYHdU",
+         "reference" : "ChIJO25ATUnLlzMRaxcaPuAYHdU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila Clock Tower Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila City Hall, Padre Burgos Avenue, Ermita, Manila, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila Clock Tower Museum"
+            },
+            {
+               "offset" : 27,
+               "value" : "Manila City Hall"
+            },
+            {
+               "offset" : 45,
+               "value" : "Padre Burgos Avenue"
+            },
+            {
+               "offset" : 66,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 74,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 82,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 96,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "museum"
+         ]
+      },
+      {
+         "description" : "Manila City Hall, Padre Burgos Avenue, 659 Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 16,
+               "offset" : 0
+            },
+            {
+               "length" : 6,
+               "offset" : 51
+            }
+         ],
+         "place_id" : "ChIJccBZqRjKlzMRgfM4iPljqBg",
+         "reference" : "ChIJccBZqRjKlzMRgfM4iPljqBg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Manila City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Padre Burgos Avenue, 659 Ermita, Manila, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 33
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Manila City Hall"
+            },
+            {
+               "offset" : 18,
+               "value" : "Padre Burgos Avenue"
+            },
+            {
+               "offset" : 39,
+               "value" : "659 Ermita"
+            },
+            {
+               "offset" : 51,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 59,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

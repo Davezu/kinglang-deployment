@@ -1,0 +1,246 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Tanay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJtZ5b0V-TlzMRni_YYTG5iIY",
+         "reference" : "ChIJtZ5b0V-TlzMRni_YYTG5iIY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanay"
+            },
+            {
+               "offset" : 7,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 14,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Tanay Highlands, Tanay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZR2mb52TlzMRBVcxfcdqRcw",
+         "reference" : "ChIJZR2mb52TlzMRBVcxfcdqRcw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanay Highlands",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tanay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanay Highlands"
+            },
+            {
+               "offset" : 17,
+               "value" : "Tanay"
+            },
+            {
+               "offset" : 24,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 31,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "campground",
+            "restaurant",
+            "lodging",
+            "point_of_interest",
+            "establishment",
+            "park"
+         ]
+      },
+      {
+         "description" : "Tanay Municipal Hall, Tanay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJy1byxhXqlzMRQZBR08SD-_o",
+         "reference" : "ChIJy1byxhXqlzMRQZBR08SD-_o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanay Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tanay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanay Municipal Hall"
+            },
+            {
+               "offset" : 22,
+               "value" : "Tanay"
+            },
+            {
+               "offset" : 29,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "local_government_office",
+            "establishment",
+            "point_of_interest",
+            "city_hall"
+         ]
+      },
+      {
+         "description" : "Tanay rizal, Binangonan, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJVUgcAADDlzMRMIjxmTorcFg",
+         "reference" : "ChIJVUgcAADDlzMRMIjxmTorcFg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanay rizal",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Binangonan, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanay rizal"
+            },
+            {
+               "offset" : 13,
+               "value" : "Binangonan"
+            },
+            {
+               "offset" : 25,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Tanay River, Tanay, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJn0lUr0fqlzMRR4VWLsTCopU",
+         "reference" : "ChIJn0lUr0fqlzMRR4VWLsTCopU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanay River",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tanay, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanay River"
+            },
+            {
+               "offset" : 13,
+               "value" : "Tanay"
+            },
+            {
+               "offset" : 20,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "natural_feature",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

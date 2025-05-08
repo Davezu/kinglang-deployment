@@ -21,6 +21,82 @@
         font-size: 0.75rem;
         padding: 0.35em 0.65em;
     }
+    
+    .notification-dropdown {
+        border-radius: 12px !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.15) !important;
+        min-width: 340px;
+        max-width: 100vw;
+        padding: 0 !important;
+        border: none;
+        overflow: hidden;
+    }
+    .notification-header, .notification-footer {
+        background: #f8f9fa;
+        padding: 12px 16px;
+        border-bottom: 1px solid #e9ecef;
+    }
+    .notification-footer {
+        border-top: 1px solid #e9ecef;
+        border-bottom: none;
+        text-align: center;
+    }
+    .notification-list {
+        max-height: 350px;
+        overflow-y: auto;
+        background: #fff;
+    }
+    .notification-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 14px 16px;
+        border-bottom: 1px solid #f1f1f1;
+        transition: background 0.15s;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+    }
+    .notification-item:last-child {
+        border-bottom: none;
+    }
+    .notification-item:hover, .notification-item.bg-light {
+        background: #e9f7ef !important;
+    }
+    .notification-icon {
+        flex-shrink: 0;
+        font-size: 1.5rem;
+        margin-top: 2px;
+    }
+    .notification-content {
+        flex: 1;
+        min-width: 0;
+    }
+    .notification-message {
+        font-weight: 500;
+        font-size: 0.97rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 220px;
+    }
+    .notification-time {
+        font-size: 0.8rem;
+        color: #adb5bd;
+    }
+    .notification-badge {
+        animation: pulse 1.2s infinite;
+    }
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(220,53,69,0.5);}
+        70% { box-shadow: 0 0 0 10px rgba(220,53,69,0);}
+        100% { box-shadow: 0 0 0 0 rgba(220,53,69,0);}
+    }
+    .no-notifications {
+        padding: 32px 0;
+        color: #adb5bd;
+        font-size: 0.95rem;
+    }
 </style>
 </head>
 
@@ -38,16 +114,16 @@
         </a>
         
         <!-- Notification Dropdown -->
-        <div class="dropdown-menu dropdown-menu-end p-0 notification-dropdown" style="width: 320px; max-height: none; overflow: visible;" id="notificationDropdownMenu">
-            <div class="p-2 border-bottom d-flex justify-content-between align-items-center">
+        <div class="dropdown-menu dropdown-menu-end notification-dropdown" id="notificationDropdownMenu">
+            <div class="notification-header d-flex justify-content-between align-items-center">
                 <h6 class="m-0">Notifications</h6>
                 <a href="javascript:void(0)" class="text-decoration-none small mark-all-read">Mark all as read</a>
             </div>
-            <div class="notification-list" style="max-height: 350px; overflow-y: auto; overflow-x: hidden;">
+            <div class="notification-list">
                 <!-- Notifications will be loaded here dynamically -->
-                <div class="p-3 text-center text-muted small no-notifications">No notifications</div>
+                <div class="no-notifications text-center">No notifications</div>
             </div>
-            <div class="p-2 border-top text-center">
+            <div class="notification-footer">
                 <a href="/client/notifications" class="text-decoration-none small">View all notifications</a>
             </div>
         </div>
@@ -156,6 +232,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                 ${!notification.is_read ? '<span class="badge bg-primary rounded-pill">New</span>' : ''}
                             </div>
                         `;
+                        
+                        notificationItem.querySelector('.notification-message').setAttribute('title', notification.message);
                         
                         notificationList.appendChild(notificationItem);
                     });

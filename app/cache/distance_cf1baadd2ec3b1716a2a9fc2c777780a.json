@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "Makati Ave, Makati, Metro Manila, Philippines",
+      "EDSA, corner Doña Julia Vargas Ave, Ortigas Center, Mandaluyong, 1555 Metro Manila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "EDSA, corner Doña Julia Vargas Ave, Ortigas Center, Mandaluyong, 1555 Metro Manila, Philippines",
+      "Makati Ave, Makati, Metro Manila, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "6.0 km",
+                  "value" : 5952
+               },
+               "duration" : 
+               {
+                  "text" : "17 mins",
+                  "value" : 1009
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "5.4 km",
+                  "value" : 5428
+               },
+               "duration" : 
+               {
+                  "text" : "13 mins",
+                  "value" : 789
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

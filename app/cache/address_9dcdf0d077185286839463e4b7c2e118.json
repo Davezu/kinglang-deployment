@@ -1,0 +1,260 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Terra Park 28th street, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJUZPxk-bJlzMRxdBD4RjPpmo",
+         "reference" : "ChIJUZPxk-bJlzMRxdBD4RjPpmo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Terra Park 28th street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Terra Park 28th street"
+            },
+            {
+               "offset" : 24,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 32,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "park"
+         ]
+      },
+      {
+         "description" : "Terra Verde Residences, Carmona, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_z8yB0TWlzMRlhVaXN-bptU",
+         "reference" : "ChIJ_z8yB0TWlzMRlhVaXN-bptU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Terra Verde Residences",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Carmona, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Terra Verde Residences"
+            },
+            {
+               "offset" : 24,
+               "value" : "Carmona"
+            },
+            {
+               "offset" : 33,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      },
+      {
+         "description" : "Terra 28th, 28th Street, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPwdS5fHIlzMRcxceFAuDLjM",
+         "reference" : "ChIJPwdS5fHIlzMRcxceFAuDLjM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Terra 28th",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "28th Street, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Terra 28th"
+            },
+            {
+               "offset" : 12,
+               "value" : "28th Street"
+            },
+            {
+               "offset" : 25,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 33,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "park",
+            "point_of_interest",
+            "premise"
+         ]
+      },
+      {
+         "description" : "TERRA SOLAR PHILIPPINES INC. - GAPAN, 1, Gapan City, Nueva Ecija, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJIZ2wPVUhlzMR00pMJK6_J9c",
+         "reference" : "ChIJIZ2wPVUhlzMR00pMJK6_J9c",
+         "structured_formatting" : 
+         {
+            "main_text" : "TERRA SOLAR PHILIPPINES INC. - GAPAN",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "1, Gapan City, Nueva Ecija, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "TERRA SOLAR PHILIPPINES INC. - GAPAN"
+            },
+            {
+               "offset" : 38,
+               "value" : "1"
+            },
+            {
+               "offset" : 41,
+               "value" : "Gapan City"
+            },
+            {
+               "offset" : 53,
+               "value" : "Nueva Ecija"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Terra Sancta, El Nido, Palawan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJS4vX6a9VtjMRh8liuvRygFU",
+         "reference" : "ChIJS4vX6a9VtjMRh8liuvRygFU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Terra Sancta",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "El Nido, Palawan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Terra Sancta"
+            },
+            {
+               "offset" : 14,
+               "value" : "El Nido"
+            },
+            {
+               "offset" : 23,
+               "value" : "Palawan"
+            },
+            {
+               "offset" : 32,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "spa",
+            "lodging",
+            "point_of_interest",
+            "health"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

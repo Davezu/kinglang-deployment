@@ -226,14 +226,12 @@ if (!isset($_SESSION["user_id"])) {
                                 <li><strong>No penalty</strong> for <strong>force majeure</strong> (e.g., typhoon).</li>
                             </ul>
                         </li>
+                        <li><strong>Auto-Cancellation:</strong> Bookings with unpaid deposits after <strong>48 hours</strong> from reservation request will be <strong>automatically canceled</strong> without prior notice.</li>
                         <li><strong>Changes to Booking:</strong> Any changes to your booking must be made in <strong>writing</strong> and are subject to <strong>availability</strong> and additional charges.</li>
                         <li><strong>Liability:</strong> KingLang Booking is not liable for any <strong>loss</strong>, <strong>damage</strong>, <strong>delay</strong>, <strong>inconvenience</strong>, or <strong>direct or consequential loss</strong>, however caused, unless due to our employees' <strong>negligence</strong>.</li>
                         <li><strong>Insurance:</strong> We recommend that all passengers have <strong>travel insurance</strong> to cover incidents such as <strong>cancellation</strong>, <strong>personal effects</strong>, and any <strong>additional costs</strong>.</li>
                         <li><strong>Data Collection:</strong> When you agree to these terms, we will collect your <strong>IP address</strong> and <strong>timestamp</strong> for verification purposes.</li>
                     </ol>
-
-                    
-                    <p>These terms and conditions are governed by the laws of the Philippines.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

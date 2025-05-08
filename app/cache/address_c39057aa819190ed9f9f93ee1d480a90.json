@@ -1,0 +1,262 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Greenhills, San Juan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJywHxE9i3lzMR50uvHGvUcYg",
+         "reference" : "ChIJywHxE9i3lzMR50uvHGvUcYg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Greenhills",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Juan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Greenhills"
+            },
+            {
+               "offset" : 12,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 22,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality",
+            "political",
+            "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Greenhills Shopping Center, San Juan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "Ej9HcmVlbmhpbGxzIFNob3BwaW5nIENlbnRlciwgU2FuIEp1YW4sIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgk3oQo437eXMxHYqoXUq1YO7RIUChIJcRVe-CnIlzMRNPQOOXNw7ek",
+         "reference" : "Ej9HcmVlbmhpbGxzIFNob3BwaW5nIENlbnRlciwgU2FuIEp1YW4sIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgk3oQo437eXMxHYqoXUq1YO7RIUChIJcRVe-CnIlzMRNPQOOXNw7ek",
+         "structured_formatting" : 
+         {
+            "main_text" : "Greenhills Shopping Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Juan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Greenhills Shopping Center"
+            },
+            {
+               "offset" : 28,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 38,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Greenhills Shopping Center, Lifestyle Center, San Juan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJv6Fntti3lzMRlDDvj7NVpTQ",
+         "reference" : "ChIJv6Fntti3lzMRlDDvj7NVpTQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Greenhills Shopping Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lifestyle Center, San Juan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Greenhills Shopping Center"
+            },
+            {
+               "offset" : 28,
+               "value" : "Lifestyle Center"
+            },
+            {
+               "offset" : 46,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 56,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Greenhills West Club House, Roosevelt, San Juan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ7VKYBSnIlzMRxOSwO2O448M",
+         "reference" : "ChIJ7VKYBSnIlzMRxOSwO2O448M",
+         "structured_formatting" : 
+         {
+            "main_text" : "Greenhills West Club House",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Roosevelt, San Juan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Greenhills West Club House"
+            },
+            {
+               "offset" : 28,
+               "value" : "Roosevelt"
+            },
+            {
+               "offset" : 39,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 49,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Greenhills Elan Hotel Modern, Annapolis, San Juan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ59H9rivIlzMRGOkMX9io4Rw",
+         "reference" : "ChIJ59H9rivIlzMRGOkMX9io4Rw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Greenhills Elan Hotel Modern",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Annapolis, San Juan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Greenhills Elan Hotel Modern"
+            },
+            {
+               "offset" : 30,
+               "value" : "Annapolis"
+            },
+            {
+               "offset" : 41,
+               "value" : "San Juan"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

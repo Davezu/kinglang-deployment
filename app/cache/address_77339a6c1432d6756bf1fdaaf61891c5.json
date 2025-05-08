@@ -1,0 +1,268 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Trinoma, North Avenue, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJRTAUOza3lzMRTn6_aKRIVc0",
+         "reference" : "ChIJRTAUOza3lzMRTn6_aKRIVc0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Trinoma",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "North Avenue, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Trinoma"
+            },
+            {
+               "offset" : 9,
+               "value" : "North Avenue"
+            },
+            {
+               "offset" : 23,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 36,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 50,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "shopping_mall"
+         ]
+      },
+      {
+         "description" : "Trinoma Parking, Mindanao Avenue Extension, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_yl66wK3lzMRcEpZYZ0Ttpo",
+         "reference" : "ChIJ_yl66wK3lzMRcEpZYZ0Ttpo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Trinoma Parking",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mindanao Avenue Extension, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Trinoma Parking"
+            },
+            {
+               "offset" : 17,
+               "value" : "Mindanao Avenue Extension"
+            },
+            {
+               "offset" : 44,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Trinoma P2P Bus Terminal, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJGeyFGwC3lzMRAoi1x3q8Wjw",
+         "reference" : "ChIJGeyFGwC3lzMRAoi1x3q8Wjw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Trinoma P2P Bus Terminal",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Trinoma P2P Bus Terminal"
+            },
+            {
+               "offset" : 26,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 39,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Trinoma-Ayala Malls Footbridge, Mindanao Avenue Extension, Diliman, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJreYJ7N63lzMRfEYzUZcn44s",
+         "reference" : "ChIJreYJ7N63lzMRfEYzUZcn44s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Trinoma-Ayala Malls Footbridge",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Mindanao Avenue Extension, Diliman, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Trinoma-Ayala Malls Footbridge"
+            },
+            {
+               "offset" : 32,
+               "value" : "Mindanao Avenue Extension"
+            },
+            {
+               "offset" : 59,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 68,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 81,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 95,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "local_government_office"
+         ]
+      },
+      {
+         "description" : "Trinoma Public Transport Terminal, North Avenue Cor. Mindanao Avenue, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJr4HgMf22lzMRXkVXtUXRxjg",
+         "reference" : "ChIJr4HgMf22lzMRXkVXtUXRxjg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Trinoma Public Transport Terminal",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "North Avenue Cor. Mindanao Avenue, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Trinoma Public Transport Terminal"
+            },
+            {
+               "offset" : 35,
+               "value" : "North Avenue Cor. Mindanao Avenue"
+            },
+            {
+               "offset" : 70,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 83,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 97,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

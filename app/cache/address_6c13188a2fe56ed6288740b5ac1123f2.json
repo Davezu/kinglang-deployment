@@ -1,0 +1,274 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Philippine Science High School - Main Campus, Agham, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 30,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJr7SoZgS3lzMRm2qXTRQ03IA",
+         "reference" : "ChIJr7SoZgS3lzMRm2qXTRQ03IA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Philippine Science High School - Main Campus",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 30,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Agham, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Philippine Science High School - Main Campus"
+            },
+            {
+               "offset" : 46,
+               "value" : "Agham"
+            },
+            {
+               "offset" : 53,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 66,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 80,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "point_of_interest",
+            "secondary_school",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Philippine Science High School CALABARZON Region Campus, Batangas, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 30,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJeUc6vLoavTMR4H47BjBaR90",
+         "reference" : "ChIJeUc6vLoavTMR4H47BjBaR90",
+         "structured_formatting" : 
+         {
+            "main_text" : "Philippine Science High School CALABARZON Region Campus",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 30,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Batangas, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Philippine Science High School CALABARZON Region Campus"
+            },
+            {
+               "offset" : 57,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "school",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Philippine Science High School Central Luzon Campus, Lily Hill, Clark Freeport, Zone, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 30,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJc4IB1KaSljMRK4sM7YtJGDc",
+         "reference" : "ChIJc4IB1KaSljMRK4sM7YtJGDc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Philippine Science High School Central Luzon Campus",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 30,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lily Hill, Clark Freeport, Zone, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Philippine Science High School Central Luzon Campus"
+            },
+            {
+               "offset" : 53,
+               "value" : "Lily Hill"
+            },
+            {
+               "offset" : 64,
+               "value" : "Clark Freeport"
+            },
+            {
+               "offset" : 80,
+               "value" : "Zone"
+            },
+            {
+               "offset" : 86,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 96,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Philippine Science High School Western Visayas Campus, Metropolis Ave, Barangay Bito-on, Jaro, Iloilo City, Iloilo, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 30,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJb0v2qHzkrjMR81UEvT9cAfs",
+         "reference" : "ChIJb0v2qHzkrjMR81UEvT9cAfs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Philippine Science High School Western Visayas Campus",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 30,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Metropolis Ave, Barangay Bito-on, Jaro, Iloilo City, Iloilo, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Philippine Science High School Western Visayas Campus"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metropolis Ave"
+            },
+            {
+               "offset" : 71,
+               "value" : "Barangay Bito-on, Jaro"
+            },
+            {
+               "offset" : 95,
+               "value" : "Iloilo City"
+            },
+            {
+               "offset" : 108,
+               "value" : "Iloilo"
+            },
+            {
+               "offset" : 116,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "school",
+            "establishment",
+            "secondary_school"
+         ]
+      },
+      {
+         "description" : "Philippine Science High School Cordillera Administrative Region Campus, Naguilian Road, Baguio, Benguet, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 30,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9Tn_fpChkTMRUqxfp6w18KI",
+         "reference" : "ChIJ9Tn_fpChkTMRUqxfp6w18KI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Philippine Science High School Cordillera Administrative Region Campus",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 30,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Naguilian Road, Baguio, Benguet, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Philippine Science High School Cordillera Administrative Region Campus"
+            },
+            {
+               "offset" : 72,
+               "value" : "Naguilian Road"
+            },
+            {
+               "offset" : 88,
+               "value" : "Baguio"
+            },
+            {
+               "offset" : 96,
+               "value" : "Benguet"
+            },
+            {
+               "offset" : 105,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "school",
+            "point_of_interest",
+            "secondary_school",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

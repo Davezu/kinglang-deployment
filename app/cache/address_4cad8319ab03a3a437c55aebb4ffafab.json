@@ -97,10 +97,10 @@
          ],
          "types" : 
          [
-            "park",
+            "point_of_interest",
             "establishment",
-            "tourist_attraction",
-            "point_of_interest"
+            "park",
+            "tourist_attraction"
          ]
       },
       {

@@ -337,11 +337,11 @@ function initializeQuickFilters() {
                     filterDate = this.dataset.date;
                     
                     // For "upcoming" we only want confirmed bookings
-                    // For "past" we want all non-canceled/rejected bookings
+                    // For "past" we want all non-canceled/rejected bookings (completed, confirmed, processing)
                     if (filterDate === "upcoming") {
                         filterStatus = "confirmed"; // Only show confirmed bookings for upcoming
                     } else {
-                        filterStatus = "all"; // For past, we'll filter at the server side
+                        filterStatus = "all"; // For past, we'll show completed, confirmed and processing bookings via server-side filter
                     }
                     
                     filterBalance = null;
@@ -642,6 +642,15 @@ async function refreshBookings() {
         filterDate, 
         filterBalance
     );
+    
+    // Show loading message for past trips filter which might take longer
+    if (filterDate === "past" && result.bookings.length === 0) {
+        // Show a temporary loading message
+        const tableBody = document.getElementById("tableBody");
+        if (tableBody) {
+            tableBody.innerHTML = `<tr><td colspan="9" class="text-center py-4"><div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div> Searching for past trips...</td></tr>`;
+        }
+    }
     
     // Update the views
     renderBookings(result.bookings);

@@ -1,0 +1,249 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Caohagan Island, Lapu-Lapu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJmSdi0tSPqTMRaEHWEo69mNU",
+         "reference" : "ChIJmSdi0tSPqTMRaEHWEo69mNU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caohagan Island",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lapu-Lapu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caohagan Island"
+            },
+            {
+               "offset" : 17,
+               "value" : "Lapu-Lapu City"
+            },
+            {
+               "offset" : 33,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "natural_feature"
+         ]
+      },
+      {
+         "description" : "Caoayan, Ilocos Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwb5vmnNvjjMRbI-hfW0B5B4",
+         "reference" : "ChIJwb5vmnNvjjMRbI-hfW0B5B4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caoayan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ilocos Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caoayan"
+            },
+            {
+               "offset" : 9,
+               "value" : "Ilocos Sur"
+            },
+            {
+               "offset" : 21,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Caoayan-kiling, San Carlos City, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJUec1tRFQkTMRmoVBxp9dznY",
+         "reference" : "ChIJUec1tRFQkTMRmoVBxp9dznY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caoayan-kiling",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Carlos City, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caoayan-kiling"
+            },
+            {
+               "offset" : 16,
+               "value" : "San Carlos City"
+            },
+            {
+               "offset" : 33,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality_level_2",
+            "geocode",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Caoayan, Sual, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJU0dlkE_nkzMRi843r2cxkXY",
+         "reference" : "ChIJU0dlkE_nkzMRi843r2cxkXY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caoayan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sual, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caoayan"
+            },
+            {
+               "offset" : 9,
+               "value" : "Sual"
+            },
+            {
+               "offset" : 15,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "political",
+            "geocode",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Caorasan, Bula, Camarines Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJC-13_XeDoTMRVak7w_kasY0",
+         "reference" : "ChIJC-13_XeDoTMRVak7w_kasY0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caorasan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bula, Camarines Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caorasan"
+            },
+            {
+               "offset" : 10,
+               "value" : "Bula"
+            },
+            {
+               "offset" : 16,
+               "value" : "Camarines Sur"
+            },
+            {
+               "offset" : 31,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "sublocality",
+            "sublocality_level_2",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

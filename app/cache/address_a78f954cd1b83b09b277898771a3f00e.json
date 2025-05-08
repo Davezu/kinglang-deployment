@@ -1,0 +1,271 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Villa Aleta Apartelle, Gen. Luna Street, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 21,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZWmr0kfJlzMR_kNHn7T0KFk",
+         "reference" : "ChIJZWmr0kfJlzMR_kNHn7T0KFk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Aleta Apartelle",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 21,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gen. Luna Street, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Aleta Apartelle"
+            },
+            {
+               "offset" : 23,
+               "value" : "Gen. Luna Street"
+            },
+            {
+               "offset" : 41,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 49,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Villa Arva Resort, Gatiawin, Arayat, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 17,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJvyl0lUnlljMRGHgLPjSoIxE",
+         "reference" : "ChIJvyl0lUnlljMRGHgLPjSoIxE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Arva Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 17,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Gatiawin, Arayat, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Arva Resort"
+            },
+            {
+               "offset" : 19,
+               "value" : "Gatiawin"
+            },
+            {
+               "offset" : 29,
+               "value" : "Arayat"
+            },
+            {
+               "offset" : 37,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "AARON VILL, F delos Santos Street, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJa_nkPQCxlzMRnTGaDBRksrA",
+         "reference" : "ChIJa_nkPQCxlzMRnTGaDBRksrA",
+         "structured_formatting" : 
+         {
+            "main_text" : "AARON VILL",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "F delos Santos Street, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "AARON VILL"
+            },
+            {
+               "offset" : 12,
+               "value" : "F delos Santos Street"
+            },
+            {
+               "offset" : 35,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 47,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 60,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 74,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "park",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "CAFE VILL ARQ, Tondo, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 5
+            }
+         ],
+         "place_id" : "ChIJvxbm--61lzMRqlgxgX1dVG4",
+         "reference" : "ChIJvxbm--61lzMRqlgxgX1dVG4",
+         "structured_formatting" : 
+         {
+            "main_text" : "CAFE VILL ARQ",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 5
+               }
+            ],
+            "secondary_text" : "Tondo, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "CAFE VILL ARQ"
+            },
+            {
+               "offset" : 15,
+               "value" : "Tondo"
+            },
+            {
+               "offset" : 22,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 30,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "cafe",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Villa Acceliana Farm Resort and Hotel, Sariaya, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 37,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJyRuFcwBJvTMR-PLq3QSMnx0",
+         "reference" : "ChIJyRuFcwBJvTMR-PLq3QSMnx0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Acceliana Farm Resort and Hotel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 37,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sariaya, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Acceliana Farm Resort and Hotel"
+            },
+            {
+               "offset" : 39,
+               "value" : "Sariaya"
+            },
+            {
+               "offset" : 48,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,113 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Camp Benjamin, Alfonso-Maragondon Road, Alfonso, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJIQAA9CCDvTMR_A4hthOB7IE",
+         "reference" : "ChIJIQAA9CCDvTMR_A4hthOB7IE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Camp Benjamin",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Alfonso-Maragondon Road, Alfonso, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Camp Benjamin"
+            },
+            {
+               "offset" : 15,
+               "value" : "Alfonso-Maragondon Road"
+            },
+            {
+               "offset" : 40,
+               "value" : "Alfonso"
+            },
+            {
+               "offset" : 49,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "health",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Weddings at Camp Benjamin, Barangay, Alfonso, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 12
+            }
+         ],
+         "place_id" : "ChIJjQlKTmWDvTMRdRKyRB6RPD0",
+         "reference" : "ChIJjQlKTmWDvTMRdRKyRB6RPD0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Weddings at Camp Benjamin",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 12
+               }
+            ],
+            "secondary_text" : "Barangay, Alfonso, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Weddings at Camp Benjamin"
+            },
+            {
+               "offset" : 27,
+               "value" : "Barangay"
+            },
+            {
+               "offset" : 37,
+               "value" : "Alfonso"
+            },
+            {
+               "offset" : 46,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

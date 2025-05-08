@@ -1,0 +1,318 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Marikina Shoe Museum, J. P. Rizal Street, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJP8dmLW65lzMRBr-ETM65sd8",
+         "reference" : "ChIJP8dmLW65lzMRBr-ETM65sd8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marikina Shoe Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "J. P. Rizal Street, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marikina Shoe Museum"
+            },
+            {
+               "offset" : 22,
+               "value" : "J. P. Rizal Street"
+            },
+            {
+               "offset" : 42,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 52,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 66,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "museum",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Marikina River Park, Shoe Avenue, Sto. Nino, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 1,
+               "offset" : 0
+            },
+            {
+               "length" : 4,
+               "offset" : 21
+            },
+            {
+               "length" : 8,
+               "offset" : 45
+            }
+         ],
+         "place_id" : "ChIJ02y3KTO4lzMRlDe0hIwaN5o",
+         "reference" : "ChIJ02y3KTO4lzMRlDe0hIwaN5o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marikina River Park",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 1,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Shoe Avenue, Sto. Nino, Marikina, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               },
+               {
+                  "length" : 8,
+                  "offset" : 24
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marikina River Park"
+            },
+            {
+               "offset" : 21,
+               "value" : "Shoe Avenue"
+            },
+            {
+               "offset" : 34,
+               "value" : "Sto. Nino"
+            },
+            {
+               "offset" : 45,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "tourist_attraction",
+            "establishment",
+            "park"
+         ]
+      },
+      {
+         "description" : "Shoe Avenue, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 13
+            },
+            {
+               "length" : 1,
+               "offset" : 23
+            }
+         ],
+         "place_id" : "EjBTaG9lIEF2ZW51ZSwgTWFyaWtpbmEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkHL_dBNLiXMxHrrxCrwn1dPRIUChIJ-QB6d6K5lzMRxi-hKfTINm0",
+         "reference" : "EjBTaG9lIEF2ZW51ZSwgTWFyaWtpbmEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkHL_dBNLiXMxHrrxCrwn1dPRIUChIJ-QB6d6K5lzMRxi-hKfTINm0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Shoe Avenue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marikina, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               },
+               {
+                  "length" : 1,
+                  "offset" : 10
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Shoe Avenue"
+            },
+            {
+               "offset" : 13,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 23,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Shoe Mac Trading, P. dela Paz Street, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 38
+            }
+         ],
+         "place_id" : "ChIJsTTUqTS4lzMRVM4YtUDbX8w",
+         "reference" : "ChIJsTTUqTS4lzMRVM4YtUDbX8w",
+         "structured_formatting" : 
+         {
+            "main_text" : "Shoe Mac Trading",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "P. dela Paz Street, Marikina, Metro Manila, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 20
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Shoe Mac Trading"
+            },
+            {
+               "offset" : 18,
+               "value" : "P. dela Paz Street"
+            },
+            {
+               "offset" : 38,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "shoe_store",
+            "store"
+         ]
+      },
+      {
+         "description" : "Marikina Shoe Manship, Urdaneta, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJo-1Cgqw_kTMRvUSAvy5sVSg",
+         "reference" : "ChIJo-1Cgqw_kTMRvUSAvy5sVSg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marikina Shoe Manship",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Urdaneta, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marikina Shoe Manship"
+            },
+            {
+               "offset" : 23,
+               "value" : "Urdaneta"
+            },
+            {
+               "offset" : 33,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "store",
+            "shoe_store",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

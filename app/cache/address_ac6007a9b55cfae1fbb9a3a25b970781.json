@@ -1,0 +1,250 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Pagsanjan, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZ7alIun8lzMRJys8uClOBEA",
+         "reference" : "ChIJZ7alIun8lzMRJys8uClOBEA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pagsanjan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pagsanjan"
+            },
+            {
+               "offset" : 11,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 19,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Pagsanjan Falls Lodge and Summer Resort, Pagsanjan, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJc_576MP8lzMR4dcBebGPnvM",
+         "reference" : "ChIJc_576MP8lzMR4dcBebGPnvM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pagsanjan Falls Lodge and Summer Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pagsanjan, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pagsanjan Falls Lodge and Summer Resort"
+            },
+            {
+               "offset" : 41,
+               "value" : "Pagsanjan"
+            },
+            {
+               "offset" : 52,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Pagsanjan Falls, Cavinti Bridge I, Cavinti, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwWA_9Vz8lzMRZQndZBK7G2k",
+         "reference" : "ChIJwWA_9Vz8lzMRZQndZBK7G2k",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pagsanjan Falls",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavinti Bridge I, Cavinti, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pagsanjan Falls"
+            },
+            {
+               "offset" : 17,
+               "value" : "Cavinti Bridge I"
+            },
+            {
+               "offset" : 35,
+               "value" : "Cavinti"
+            },
+            {
+               "offset" : 44,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "park",
+            "establishment",
+            "tourist_attraction",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Pagsanjan Town Plaza, Pagsanjan, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJf7j6H8j8lzMR_yh4_ohjXAM",
+         "reference" : "ChIJf7j6H8j8lzMR_yh4_ohjXAM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pagsanjan Town Plaza",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pagsanjan, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pagsanjan Town Plaza"
+            },
+            {
+               "offset" : 22,
+               "value" : "Pagsanjan"
+            },
+            {
+               "offset" : 33,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "town_square",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Pagsanjan Arch, Pagsanjan, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 9,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJASoSdMr8lzMR_Qw0NTrSi3Q",
+         "reference" : "ChIJASoSdMr8lzMR_Qw0NTrSi3Q",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pagsanjan Arch",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 9,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pagsanjan, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pagsanjan Arch"
+            },
+            {
+               "offset" : 16,
+               "value" : "Pagsanjan"
+            },
+            {
+               "offset" : 27,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

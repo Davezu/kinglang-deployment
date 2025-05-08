@@ -1,0 +1,261 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Villa Escudero Plantations and Resort, Tiaong, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJaZoWmKxGvTMR5JqAuPNC_YE",
+         "reference" : "ChIJaZoWmKxGvTMR5JqAuPNC_YE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Escudero Plantations and Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tiaong, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Escudero Plantations and Resort"
+            },
+            {
+               "offset" : 39,
+               "value" : "Tiaong"
+            },
+            {
+               "offset" : 47,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Villa Escudero Waterfalls Restaurant, Dolores Road, Tiaong, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJz9Gir_FDvTMRyaQYPl6Q3iY",
+         "reference" : "ChIJz9Gir_FDvTMRyaQYPl6Q3iY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Escudero Waterfalls Restaurant",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dolores Road, Tiaong, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Escudero Waterfalls Restaurant"
+            },
+            {
+               "offset" : 38,
+               "value" : "Dolores Road"
+            },
+            {
+               "offset" : 52,
+               "value" : "Tiaong"
+            },
+            {
+               "offset" : 60,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Villa Escudero River Cottages, Tiaong, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_bziZvFDvTMRoPGPcbWwQRU",
+         "reference" : "ChIJ_bziZvFDvTMRoPGPcbWwQRU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Escudero River Cottages",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tiaong, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Escudero River Cottages"
+            },
+            {
+               "offset" : 31,
+               "value" : "Tiaong"
+            },
+            {
+               "offset" : 39,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Villa Escudero Museum, Asian Highway 26, Tiaong, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJT9yND-5DvTMRKUGoTVJD9Vg",
+         "reference" : "ChIJT9yND-5DvTMRKUGoTVJD9Vg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Escudero Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Asian Highway 26, Tiaong, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Escudero Museum"
+            },
+            {
+               "offset" : 23,
+               "value" : "Asian Highway 26"
+            },
+            {
+               "offset" : 41,
+               "value" : "Tiaong"
+            },
+            {
+               "offset" : 49,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 57,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment",
+            "museum"
+         ]
+      },
+      {
+         "description" : "Villa Escudero Recreation Field, Tiaong, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJtSzOvMpDvTMRIXr2E7KMfpM",
+         "reference" : "ChIJtSzOvMpDvTMRIXr2E7KMfpM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Escudero Recreation Field",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tiaong, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Escudero Recreation Field"
+            },
+            {
+               "offset" : 33,
+               "value" : "Tiaong"
+            },
+            {
+               "offset" : 41,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

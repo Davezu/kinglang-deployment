@@ -50,9 +50,9 @@
          "types" : 
          [
             "point_of_interest",
-            "amusement_park",
             "establishment",
-            "tourist_attraction"
+            "tourist_attraction",
+            "amusement_park"
          ]
       },
       {
@@ -104,8 +104,8 @@
          "types" : 
          [
             "point_of_interest",
-            "establishment",
-            "amusement_park"
+            "amusement_park",
+            "establishment"
          ]
       },
       {
@@ -208,8 +208,8 @@
          ],
          "types" : 
          [
-            "route",
-            "geocode"
+            "geocode",
+            "route"
          ]
       },
       {
@@ -264,9 +264,9 @@
          ],
          "types" : 
          [
-            "lodging",
+            "point_of_interest",
             "establishment",
-            "point_of_interest"
+            "lodging"
          ]
       }
    ],

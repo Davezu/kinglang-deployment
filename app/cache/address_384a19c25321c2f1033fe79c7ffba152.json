@@ -53,9 +53,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "establishment",
             "university",
-            "establishment"
+            "point_of_interest"
          ]
       },
       {
@@ -106,9 +106,9 @@
          ],
          "types" : 
          [
-            "university",
+            "establishment",
             "point_of_interest",
-            "establishment"
+            "university"
          ]
       },
       {
@@ -155,9 +155,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "establishment",
             "university",
-            "establishment"
+            "point_of_interest"
          ]
       },
       {
@@ -204,9 +204,9 @@
          ],
          "types" : 
          [
-            "school",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "school"
          ]
       },
       {
@@ -253,9 +253,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "establishment",
             "school",
-            "establishment"
+            "point_of_interest"
          ]
       }
    ],

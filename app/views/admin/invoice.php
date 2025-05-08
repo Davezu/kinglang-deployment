@@ -363,7 +363,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                 height: 100%;
                 overflow: hidden;
                 background: #fff;
-                font-size: 11pt;
+                font-size: 12pt;
             }
             
             head, header, footer {
@@ -584,14 +584,14 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
         </div> -->
     </div>
     
-    <div class="print-btn no-print">
+    <!-- <div class="print-btn no-print">
         <button class="btn btn-success" onclick="window.print()">
             <i class="bi bi-printer me-1"></i> Print Invoice
         </button>
         <a href="/admin/booking-requests" class="btn btn-secondary">
             <i class="bi bi-arrow-left me-1"></i> Back to Bookings
         </a>
-    </div>
+    </div> -->
     
     <script>
         // Auto-print when page loads

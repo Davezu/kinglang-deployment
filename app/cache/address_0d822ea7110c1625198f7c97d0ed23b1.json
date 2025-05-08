@@ -46,8 +46,8 @@
          "types" : 
          [
             "point_of_interest",
-            "shopping_mall",
-            "establishment"
+            "establishment",
+            "shopping_mall"
          ]
       },
       {
@@ -94,10 +94,58 @@
          ],
          "types" : 
          [
-            "political",
+            "sublocality_level_2",
             "geocode",
             "sublocality",
-            "sublocality_level_2"
+            "political"
+         ]
+      },
+      {
+         "description" : "BGC 3D LED SCREEN, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-2f36CnJlzMRlDM94yNEask",
+         "reference" : "ChIJ-2f36CnJlzMRlDM94yNEask",
+         "structured_formatting" : 
+         {
+            "main_text" : "BGC 3D LED SCREEN",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "BGC 3D LED SCREEN"
+            },
+            {
+               "offset" : 19,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 27,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -148,56 +196,8 @@
          ],
          "types" : 
          [
-            "geocode",
-            "premise"
-         ]
-      },
-      {
-         "description" : "BGC 3D LED SCREEN, Taguig, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 3,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJ-2f36CnJlzMRlDM94yNEask",
-         "reference" : "ChIJ-2f36CnJlzMRlDM94yNEask",
-         "structured_formatting" : 
-         {
-            "main_text" : "BGC 3D LED SCREEN",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 3,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Taguig, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "BGC 3D LED SCREEN"
-            },
-            {
-               "offset" : 19,
-               "value" : "Taguig"
-            },
-            {
-               "offset" : 27,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 41,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "point_of_interest",
-            "establishment"
+            "premise",
+            "geocode"
          ]
       },
       {
@@ -248,8 +248,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       }
    ],

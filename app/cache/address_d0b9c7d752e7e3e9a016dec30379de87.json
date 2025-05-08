@@ -1,0 +1,264 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Villa Excellance Beach And Wave Pool Resort, Sahud-Ulan, Tanza, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJvf5UKvQrljMRtNPWbOFG7tU",
+         "reference" : "ChIJvf5UKvQrljMRtNPWbOFG7tU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Excellance Beach And Wave Pool Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sahud-Ulan, Tanza, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Excellance Beach And Wave Pool Resort"
+            },
+            {
+               "offset" : 45,
+               "value" : "Sahud-Ulan"
+            },
+            {
+               "offset" : 57,
+               "value" : "Tanza"
+            },
+            {
+               "offset" : 64,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 72,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "amusement_park",
+            "establishment",
+            "point_of_interest",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Villa Alfredos' Resort, Barangay, San Fernando, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJW8DLj2bxljMRv2wIhg1Nssg",
+         "reference" : "ChIJW8DLj2bxljMRv2wIhg1Nssg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Alfredos' Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Barangay, San Fernando, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Alfredos' Resort"
+            },
+            {
+               "offset" : 24,
+               "value" : "Barangay"
+            },
+            {
+               "offset" : 34,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 48,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 58,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "lodging",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Villa Colmenar Natural Spring Resort, Alfonso - Indang Road, Indang, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJlRqpV_iCvTMR6gMVyewUDKQ",
+         "reference" : "ChIJlRqpV_iCvTMR6gMVyewUDKQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Colmenar Natural Spring Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Alfonso - Indang Road, Indang, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Colmenar Natural Spring Resort"
+            },
+            {
+               "offset" : 38,
+               "value" : "Alfonso - Indang Road"
+            },
+            {
+               "offset" : 61,
+               "value" : "Indang"
+            },
+            {
+               "offset" : 69,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 77,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Villa Escudero Plantations and Resort, Tiaong, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJaZoWmKxGvTMR5JqAuPNC_YE",
+         "reference" : "ChIJaZoWmKxGvTMR5JqAuPNC_YE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Escudero Plantations and Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tiaong, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Escudero Plantations and Resort"
+            },
+            {
+               "offset" : 39,
+               "value" : "Tiaong"
+            },
+            {
+               "offset" : 47,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Villa Del Prado Pool and Beach Resort, Sariaya, Quezon, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJT0i0HrI3vTMR88SasU9XDkY",
+         "reference" : "ChIJT0i0HrI3vTMR88SasU9XDkY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Villa Del Prado Pool and Beach Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sariaya, Quezon, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Villa Del Prado Pool and Beach Resort"
+            },
+            {
+               "offset" : 39,
+               "value" : "Sariaya"
+            },
+            {
+               "offset" : 48,
+               "value" : "Quezon"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

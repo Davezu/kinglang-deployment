@@ -1,0 +1,167 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "The Mind Museum, 3rd Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5zMXhvDIlzMRgzbB_NGTYPA",
+         "reference" : "ChIJ5zMXhvDIlzMRgzbB_NGTYPA",
+         "structured_formatting" : 
+         {
+            "main_text" : "The Mind Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "3rd Avenue, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "The Mind Museum"
+            },
+            {
+               "offset" : 17,
+               "value" : "3rd Avenue"
+            },
+            {
+               "offset" : 29,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 37,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "museum",
+            "tourist_attraction",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "The Mind Museum Loading Dock, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBW4UQgDJlzMRHwTkBZVzgGc",
+         "reference" : "ChIJBW4UQgDJlzMRHwTkBZVzgGc",
+         "structured_formatting" : 
+         {
+            "main_text" : "The Mind Museum Loading Dock",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "The Mind Museum Loading Dock"
+            },
+            {
+               "offset" : 30,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 38,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Jollibee The Mind Museum, J.Y. Campus Park, 32nd Street, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 12,
+               "offset" : 9
+            }
+         ],
+         "place_id" : "ChIJ4bjG6v3JlzMRtpvz5NPfD1M",
+         "reference" : "ChIJ4bjG6v3JlzMRtpvz5NPfD1M",
+         "structured_formatting" : 
+         {
+            "main_text" : "Jollibee The Mind Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 12,
+                  "offset" : 9
+               }
+            ],
+            "secondary_text" : "J.Y. Campus Park, 32nd Street, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Jollibee The Mind Museum"
+            },
+            {
+               "offset" : 26,
+               "value" : "J.Y. Campus Park"
+            },
+            {
+               "offset" : 44,
+               "value" : "32nd Street"
+            },
+            {
+               "offset" : 57,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 65,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 79,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "meal_takeaway",
+            "restaurant",
+            "point_of_interest",
+            "food"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

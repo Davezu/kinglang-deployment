@@ -1,0 +1,262 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "ADVenture Campsite, Orion, Bataan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJCf9TQwAXljMRgX5LAzeNEWc",
+         "reference" : "ChIJCf9TQwAXljMRgX5LAzeNEWc",
+         "structured_formatting" : 
+         {
+            "main_text" : "ADVenture Campsite",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Orion, Bataan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "ADVenture Campsite"
+            },
+            {
+               "offset" : 20,
+               "value" : "Orion"
+            },
+            {
+               "offset" : 27,
+               "value" : "Bataan"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "lodging",
+            "park",
+            "campground"
+         ]
+      },
+      {
+         "description" : "Paradise Adventure Camp 4, San Jose del Monte City, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 9
+            }
+         ],
+         "place_id" : "ChIJt9Tvn1-llzMRdIN8RBoQu9g",
+         "reference" : "ChIJt9Tvn1-llzMRdIN8RBoQu9g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Paradise Adventure Camp 4",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 9
+               }
+            ],
+            "secondary_text" : "San Jose del Monte City, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Paradise Adventure Camp 4"
+            },
+            {
+               "offset" : 27,
+               "value" : "San Jose del Monte City"
+            },
+            {
+               "offset" : 52,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "campground",
+            "park",
+            "point_of_interest",
+            "establishment",
+            "lodging"
+         ]
+      },
+      {
+         "description" : "Tanay Adventure Camp, Tanay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 6
+            }
+         ],
+         "place_id" : "ChIJR4zYqkiTlzMRC98T_E1GW0o",
+         "reference" : "ChIJR4zYqkiTlzMRC98T_E1GW0o",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tanay Adventure Camp",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 6
+               }
+            ],
+            "secondary_text" : "Tanay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tanay Adventure Camp"
+            },
+            {
+               "offset" : 22,
+               "value" : "Tanay"
+            },
+            {
+               "offset" : 29,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "health",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Apols Adventure Camp, Silang, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 6
+            }
+         ],
+         "place_id" : "ChIJFYEwmYR7vTMRT1eO8YTsYSo",
+         "reference" : "ChIJFYEwmYR7vTMRT1eO8YTsYSo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Apols Adventure Camp",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 6
+               }
+            ],
+            "secondary_text" : "Silang, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Apols Adventure Camp"
+            },
+            {
+               "offset" : 22,
+               "value" : "Silang"
+            },
+            {
+               "offset" : 30,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Sablayan Adventure Camp Dive Shop, Punta, Sablayan, Occidental Mindoro, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 9
+            }
+         ],
+         "place_id" : "ChIJH4Y4JdeEuzMRN-Y4flE8C44",
+         "reference" : "ChIJH4Y4JdeEuzMRN-Y4flE8C44",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sablayan Adventure Camp Dive Shop",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 9
+               }
+            ],
+            "secondary_text" : "Punta, Sablayan, Occidental Mindoro, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sablayan Adventure Camp Dive Shop"
+            },
+            {
+               "offset" : 35,
+               "value" : "Punta"
+            },
+            {
+               "offset" : 42,
+               "value" : "Sablayan"
+            },
+            {
+               "offset" : 52,
+               "value" : "Occidental Mindoro"
+            },
+            {
+               "offset" : 72,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "restaurant",
+            "store",
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

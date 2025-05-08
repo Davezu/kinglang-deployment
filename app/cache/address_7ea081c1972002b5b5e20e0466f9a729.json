@@ -1,0 +1,271 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Ridge Park Kainan sa Kubo, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 27
+            }
+         ],
+         "place_id" : "ChIJYVpsxnR3vTMRiRap6Obo69c",
+         "reference" : "ChIJYVpsxnR3vTMRiRap6Obo69c",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ridge Park Kainan sa Kubo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagaytay, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ridge Park Kainan sa Kubo"
+            },
+            {
+               "offset" : 27,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 37,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "food",
+            "point_of_interest",
+            "restaurant"
+         ]
+      },
+      {
+         "description" : "Tagaytay Ridge, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJlbzPubh3vTMR2s5PnGsfkk0",
+         "reference" : "ChIJlbzPubh3vTMR2s5PnGsfkk0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagaytay Ridge",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagaytay, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagaytay Ridge"
+            },
+            {
+               "offset" : 16,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 26,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "natural_feature",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Ridge View Villas, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            },
+            {
+               "length" : 8,
+               "offset" : 19
+            }
+         ],
+         "place_id" : "ChIJP3KCzZZ3vTMRzna69JkJHl0",
+         "reference" : "ChIJP3KCzZZ3vTMRzna69JkJHl0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Ridge View Villas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagaytay, Cavite, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Ridge View Villas"
+            },
+            {
+               "offset" : 19,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 29,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 37,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "lodging",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Tagaytay Ridge Landing Historical Marker, Tagaytay, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwcGkBMh3vTMRqkwiDRumpNU",
+         "reference" : "ChIJwcGkBMh3vTMRqkwiDRumpNU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagaytay Ridge Landing Historical Marker",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tagaytay, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagaytay Ridge Landing Historical Marker"
+            },
+            {
+               "offset" : 42,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 52,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Tagaytay, Bacoor, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EiVUYWdheXRheSwgQmFjb29yLCBDYXZpdGUsIFBoaWxpcHBpbmVzIi4qLAoUChIJhw6rQGXSlzMRdttQn4xOL4ISFAoSCT9DBHtA0pczEUwtPWvNVJF3",
+         "reference" : "EiVUYWdheXRheSwgQmFjb29yLCBDYXZpdGUsIFBoaWxpcHBpbmVzIi4qLAoUChIJhw6rQGXSlzMRdttQn4xOL4ISFAoSCT9DBHtA0pczEUwtPWvNVJF3",
+         "structured_formatting" : 
+         {
+            "main_text" : "Tagaytay",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bacoor, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Tagaytay"
+            },
+            {
+               "offset" : 10,
+               "value" : "Bacoor"
+            },
+            {
+               "offset" : 18,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 26,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -739,6 +739,18 @@ class BookingController {
             return;
         }
         
+        // Validate proof of payment for payment methods that require it
+        $requiresProof = in_array($payment_method, ["Bank Transfer", "Online Payment", "GCash", "Maya"]);
+        $hasProofFile = isset($_FILES["proof_of_payment"]) && $_FILES["proof_of_payment"]["error"] === UPLOAD_ERR_OK;
+        
+        if ($requiresProof && !$hasProofFile) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Proof of payment is required for {$payment_method}."
+            ]);
+            return;
+        }
+        
         // Handle proof of payment upload
         $proof_of_payment = null;
         if (isset($_FILES["proof_of_payment"]) && $_FILES["proof_of_payment"]["error"] === UPLOAD_ERR_OK) {

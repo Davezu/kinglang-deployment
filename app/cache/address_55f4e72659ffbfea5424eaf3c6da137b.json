@@ -1,0 +1,258 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Congressional Avenue, Project 8, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EkdDb25ncmVzc2lvbmFsIEF2ZW51ZSwgUHJvamVjdCA4LCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCQuXRvcgt5czEfm5NAsOsL-4EhQKEgnpbv6M3raXMxEaE0NuFcBwNA",
+         "reference" : "EkdDb25ncmVzc2lvbmFsIEF2ZW51ZSwgUHJvamVjdCA4LCBRdWV6b24gQ2l0eSwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCQuXRvcgt5czEfm5NAsOsL-4EhQKEgnpbv6M3raXMxEaE0NuFcBwNA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Congressional Avenue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Project 8, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Congressional Avenue"
+            },
+            {
+               "offset" : 22,
+               "value" : "Project 8"
+            },
+            {
+               "offset" : 33,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 46,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Congressional Town Center, Congressional Avenue, Brgy, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJF8_-2t-2lzMRFEBCt4cSRrM",
+         "reference" : "ChIJF8_-2t-2lzMRFEBCt4cSRrM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Congressional Town Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Congressional Avenue, Brgy, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Congressional Town Center"
+            },
+            {
+               "offset" : 27,
+               "value" : "Congressional Avenue"
+            },
+            {
+               "offset" : 49,
+               "value" : "Brgy"
+            },
+            {
+               "offset" : 55,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 68,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 82,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Congressional Road, Dasmariñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjRDb25ncmVzc2lvbmFsIFJvYWQsIERhc21hcmnDsWFzLCBDYXZpdGUsIFBoaWxpcHBpbmVzIi4qLAoUChIJQ0LsUFLUlzMRujpdokXEJi8SFAoSCSUeEXy41ZczER8yQPiYtoyr",
+         "reference" : "EjRDb25ncmVzc2lvbmFsIFJvYWQsIERhc21hcmnDsWFzLCBDYXZpdGUsIFBoaWxpcHBpbmVzIi4qLAoUChIJQ0LsUFLUlzMRujpdokXEJi8SFAoSCSUeEXy41ZczER8yQPiYtoyr",
+         "structured_formatting" : 
+         {
+            "main_text" : "Congressional Road",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmariñas, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Congressional Road"
+            },
+            {
+               "offset" : 20,
+               "value" : "Dasmariñas"
+            },
+            {
+               "offset" : 32,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Congressional Road Extension, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EkFDb25ncmVzc2lvbmFsIFJvYWQgRXh0ZW5zaW9uLCBDYWxvb2NhbiwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCc-Q-1_MsZczEW0I8rN74_EAEhQKEglfG4QZtbGXMxEaLQQl4nDnBQ",
+         "reference" : "EkFDb25ncmVzc2lvbmFsIFJvYWQgRXh0ZW5zaW9uLCBDYWxvb2NhbiwgTWV0cm8gTWFuaWxhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCc-Q-1_MsZczEW0I8rN74_EAEhQKEglfG4QZtbGXMxEaLQQl4nDnBQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Congressional Road Extension",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Congressional Road Extension"
+            },
+            {
+               "offset" : 30,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 40,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Congressional Avenue Extension, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EkZDb25ncmVzc2lvbmFsIEF2ZW51ZSBFeHRlbnNpb24sIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJS51UIVC3lzMRjfnGZwrA2_sSFAoSCXVz70IJupczEUA9CP7ZMppK",
+         "reference" : "EkZDb25ncmVzc2lvbmFsIEF2ZW51ZSBFeHRlbnNpb24sIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJS51UIVC3lzMRjfnGZwrA2_sSFAoSCXVz70IJupczEUA9CP7ZMppK",
+         "structured_formatting" : 
+         {
+            "main_text" : "Congressional Avenue Extension",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Congressional Avenue Extension"
+            },
+            {
+               "offset" : 32,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 45,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

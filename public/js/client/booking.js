@@ -282,7 +282,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.log("Stops detail: ", data.distances);
 
     document.getElementById("bookingHeader").textContent = "Rebook a Trip";
-    document.getElementById("submitBooking").textContent = "Request Rebooking";
+    const buttonText = (booking.status === "Confirmed") ? "Request Rebooking" : "Rebook";
+    document.getElementById("submitBooking").textContent = buttonText;
 
     if (stops.length > 0) {
         for (let i = 0; i < stops.length; i++) 
@@ -921,7 +922,7 @@ async function renderTotalCost() {
     // Add region info if available
     if (costBreakdown.region) {
         costHTML += `<div class="small text-muted mt-2">
-            <div>Rate region: ${costBreakdown.region} (highest rate used)</div>
+            <div>Rate region: ${costBreakdown.region}</div>
             <div>Base rate: ${costBreakdown.baseRate?.toLocaleString("en-US", { style: "currency", currency: "PHP" })} per bus</div>
             <div>Base cost: ${costBreakdown.baseCost?.toLocaleString("en-US", { style: "currency", currency: "PHP" })}</div>
             <div>Diesel cost: ${costBreakdown.dieselCost?.toLocaleString("en-US", { style: "currency", currency: "PHP" })}</div>

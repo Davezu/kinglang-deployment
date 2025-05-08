@@ -1,0 +1,257 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Maasin City, Southern Leyte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJyZD4BZFHBzMRb4RWpZDoFNc",
+         "reference" : "ChIJyZD4BZFHBzMRb4RWpZDoFNc",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maasin City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Southern Leyte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maasin City"
+            },
+            {
+               "offset" : 13,
+               "value" : "Southern Leyte"
+            },
+            {
+               "offset" : 29,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "political",
+            "geocode",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Maasim, Sarangani, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ3X8_tCix9zIRvM5pEkUa6VM",
+         "reference" : "ChIJ3X8_tCix9zIRvM5pEkUa6VM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maasim",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sarangani, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maasim"
+            },
+            {
+               "offset" : 8,
+               "value" : "Sarangani"
+            },
+            {
+               "offset" : 19,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Maasin, Iloilo, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ07fW05QArzMRV96EjCDZVwU",
+         "reference" : "ChIJ07fW05QArzMRV96EjCDZVwU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maasin",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Iloilo, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maasin"
+            },
+            {
+               "offset" : 8,
+               "value" : "Iloilo"
+            },
+            {
+               "offset" : 16,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "locality"
+         ]
+      },
+      {
+         "description" : "Maasin River Bridge, Siargao Circumferential Road, Dapa, Surigao del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJr_qOUOYHBDMRGEGzasHCoYM",
+         "reference" : "ChIJr_qOUOYHBDMRGEGzasHCoYM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maasin River Bridge",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Siargao Circumferential Road, Dapa, Surigao del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maasin River Bridge"
+            },
+            {
+               "offset" : 21,
+               "value" : "Siargao Circumferential Road"
+            },
+            {
+               "offset" : 51,
+               "value" : "Dapa"
+            },
+            {
+               "offset" : 57,
+               "value" : "Surigao del Norte"
+            },
+            {
+               "offset" : 76,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "tourist_attraction",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Maayo Hotel, Plaridel Street, Alang-Alang, Mandaue City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ31-S8zeYqTMRhmCV0T1CRH8",
+         "reference" : "ChIJ31-S8zeYqTMRhmCV0T1CRH8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maayo Hotel",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Plaridel Street, Alang-Alang, Mandaue City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maayo Hotel"
+            },
+            {
+               "offset" : 13,
+               "value" : "Plaridel Street"
+            },
+            {
+               "offset" : 30,
+               "value" : "Alang-Alang"
+            },
+            {
+               "offset" : 43,
+               "value" : "Mandaue City"
+            },
+            {
+               "offset" : 57,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "spa",
+            "cafe",
+            "establishment",
+            "lodging",
+            "store",
+            "bakery",
+            "restaurant",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

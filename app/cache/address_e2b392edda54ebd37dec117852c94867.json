@@ -1,0 +1,167 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Forest Club Eco Resort, F.T. San Luis Avenue, Bay, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJcSD-7uJdvTMRLlN5QSWwd5I",
+         "reference" : "ChIJcSD-7uJdvTMRLlN5QSWwd5I",
+         "structured_formatting" : 
+         {
+            "main_text" : "Forest Club Eco Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "F.T. San Luis Avenue, Bay, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Forest Club Eco Resort"
+            },
+            {
+               "offset" : 24,
+               "value" : "F.T. San Luis Avenue"
+            },
+            {
+               "offset" : 46,
+               "value" : "Bay"
+            },
+            {
+               "offset" : 51,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "THE FOREST CLUB, F.T. San Luis Avenue, Bay, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 4
+            }
+         ],
+         "place_id" : "ChIJr-rQRHdnvTMRLyR5GgEOusM",
+         "reference" : "ChIJr-rQRHdnvTMRLyR5GgEOusM",
+         "structured_formatting" : 
+         {
+            "main_text" : "THE FOREST CLUB",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 4
+               }
+            ],
+            "secondary_text" : "F.T. San Luis Avenue, Bay, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "THE FOREST CLUB"
+            },
+            {
+               "offset" : 17,
+               "value" : "F.T. San Luis Avenue"
+            },
+            {
+               "offset" : 39,
+               "value" : "Bay"
+            },
+            {
+               "offset" : 44,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Table Tennis Club Catalunan Pequeneo, forest, Talomo, Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 13
+            }
+         ],
+         "place_id" : "ChIJh2bZCJIT-TIR-yJZWUECIkU",
+         "reference" : "ChIJh2bZCJIT-TIR-yJZWUECIkU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Table Tennis Club Catalunan Pequeneo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 13
+               }
+            ],
+            "secondary_text" : "forest, Talomo, Davao City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Table Tennis Club Catalunan Pequeneo"
+            },
+            {
+               "offset" : 38,
+               "value" : "forest"
+            },
+            {
+               "offset" : 46,
+               "value" : "Talomo"
+            },
+            {
+               "offset" : 54,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 66,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 81,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

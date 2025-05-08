@@ -505,14 +505,14 @@ require_client_auth(); // Use helper function
         </div>
     </div>
     
-    <div class="print-btn no-print">
+    <!-- <div class="print-btn no-print">
         <button class="btn btn-success" onclick="window.print()">
             <i class="bi bi-printer me-1"></i> Print Invoice
         </button>
         <a href="/home/booking-requests" class="btn btn-secondary">
             <i class="bi bi-arrow-left me-1"></i> Back to Bookings
         </a>
-    </div>
+    </div> -->
     
     <script>
         // Auto-print when page loads

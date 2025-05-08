@@ -1,0 +1,267 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Bonifacio Global City, Forbestown Road, Bonifacio Global City, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 16,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZag2EQvJlzMRee-Bi2AKlBI",
+         "reference" : "ChIJZag2EQvJlzMRee-Bi2AKlBI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bonifacio Global City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Forbestown Road, Bonifacio Global City, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bonifacio Global City"
+            },
+            {
+               "offset" : 23,
+               "value" : "Forbestown Road"
+            },
+            {
+               "offset" : 40,
+               "value" : "Bonifacio Global City"
+            },
+            {
+               "offset" : 63,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 71,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 85,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Fort Bonifacio, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJr5Qp-vPIlzMRCuRgR6-IyYk",
+         "reference" : "ChIJr5Qp-vPIlzMRCuRgR6-IyYk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Fort Bonifacio",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Fort Bonifacio"
+            },
+            {
+               "offset" : 16,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "sublocality",
+            "political",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Bonifacio Global City, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 16,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJvWVJCe7IlzMRSdv-JlB4LvQ",
+         "reference" : "ChIJvWVJCe7IlzMRSdv-JlB4LvQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bonifacio Global City",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bonifacio Global City"
+            },
+            {
+               "offset" : 23,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 31,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 45,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_1",
+            "geocode",
+            "political",
+            "sublocality"
+         ]
+      },
+      {
+         "description" : "Bonifacio Global City Office, 31st Street, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 16,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJWYBeAvrIlzMRBmmBJNzlidw",
+         "reference" : "ChIJWYBeAvrIlzMRBmmBJNzlidw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bonifacio Global City Office",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "31st Street, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bonifacio Global City Office"
+            },
+            {
+               "offset" : 30,
+               "value" : "31st Street"
+            },
+            {
+               "offset" : 43,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bonifacio Global Notary, 2nd Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 16,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ94TZjy3JlzMRGK2Q1qM17Ac",
+         "reference" : "ChIJ94TZjy3JlzMRGK2Q1qM17Ac",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bonifacio Global Notary",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 16,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "2nd Avenue, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bonifacio Global Notary"
+            },
+            {
+               "offset" : 25,
+               "value" : "2nd Avenue"
+            },
+            {
+               "offset" : 37,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 45,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "finance"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

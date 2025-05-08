@@ -1,0 +1,161 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Terra 28th, 28th Street, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPwdS5fHIlzMRcxceFAuDLjM",
+         "reference" : "ChIJPwdS5fHIlzMRcxceFAuDLjM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Terra 28th",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "28th Street, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Terra 28th"
+            },
+            {
+               "offset" : 12,
+               "value" : "28th Street"
+            },
+            {
+               "offset" : 25,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 33,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "park",
+            "premise",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Terra 28th, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJUZPxk-bJlzMRxdBD4RjPpmo",
+         "reference" : "ChIJUZPxk-bJlzMRxdBD4RjPpmo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Terra 28th",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Terra 28th"
+            },
+            {
+               "offset" : 12,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "park",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "28 Terra Drive, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 3
+            }
+         ],
+         "place_id" : "EjYyOCBUZXJyYSBEcml2ZSwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkt-v5KAbeXMxEkZM5NGAAb7RIUChIJdXPvQgm6lzMRQD0I_tkymko",
+         "reference" : "EjYyOCBUZXJyYSBEcml2ZSwgUXVlem9uIENpdHksIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgkt-v5KAbeXMxEkZM5NGAAb7RIUChIJdXPvQgm6lzMRQD0I_tkymko",
+         "structured_formatting" : 
+         {
+            "main_text" : "28 Terra Drive",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 3
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "28"
+            },
+            {
+               "offset" : 3,
+               "value" : "Terra Drive"
+            },
+            {
+               "offset" : 16,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 29,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 43,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

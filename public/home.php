@@ -57,7 +57,7 @@ if (is_client_authenticated()) {
             <div class="accreditations animate-on-scroll">
                 <img src="public/images/permit-logos/LTFRB_Seal.svg.png" alt="LTFRB">
                 <img src="public/images/permit-logos/Land_Transportation_Office.svg.png" alt="LTO">
-                <img src="public/images/permit-logos/Department_of_Tourism_(DOT).svg.png" alt="DOT">
+                <!-- <img src="public/images/permit-logos/Department_of_Tourism_(DOT).svg.png" alt="DOT"> -->
                 <img src="public/images/permit-logos/Department_of_Transportation_(Philippines).svg.png" alt="DOTr">
             </div>
         </div>

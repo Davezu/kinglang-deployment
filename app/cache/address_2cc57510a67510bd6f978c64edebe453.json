@@ -1,0 +1,108 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Cavinti Underground River and Cave Complex, Cavinti, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJW8sCIQ8CmDMRBVhFhaZZBnA",
+         "reference" : "ChIJW8sCIQ8CmDMRBVhFhaZZBnA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavinti Underground River and Cave Complex",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavinti, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavinti Underground River and Cave Complex"
+            },
+            {
+               "offset" : 44,
+               "value" : "Cavinti"
+            },
+            {
+               "offset" : 53,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Cavinti underground fountain of youth, Cavinti underground river, Cavinti, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJHXYOZO_5lzMRPOHYoDblZac",
+         "reference" : "ChIJHXYOZO_5lzMRPOHYoDblZac",
+         "structured_formatting" : 
+         {
+            "main_text" : "Cavinti underground fountain of youth",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavinti underground river, Cavinti, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Cavinti underground fountain of youth"
+            },
+            {
+               "offset" : 39,
+               "value" : "Cavinti underground river"
+            },
+            {
+               "offset" : 66,
+               "value" : "Cavinti"
+            },
+            {
+               "offset" : 75,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 83,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "park"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

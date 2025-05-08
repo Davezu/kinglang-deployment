@@ -503,14 +503,14 @@ $company_name_client = $booking['company_name'] ?? '';
         </div>
     </div>
     
-    <div class="print-btn no-print">
+    <!-- <div class="print-btn no-print">
         <button class="btn btn-success" onclick="window.print()">
             <i class="bi bi-printer me-1"></i> Print Contract
         </button>
         <a href="/home/booking-requests" class="btn btn-secondary">
             <i class="bi bi-arrow-left me-1"></i> Back
         </a>
-    </div>
+    </div> -->
     
     <script>
         // Auto-print when page loads

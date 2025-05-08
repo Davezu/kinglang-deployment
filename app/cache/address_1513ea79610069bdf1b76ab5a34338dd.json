@@ -1,0 +1,267 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Japanese Garden, Lumban - Caliraya - Cavinti Road, Cavinti, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJnSiTuHX8lzMRhecm7hbSCjk",
+         "reference" : "ChIJnSiTuHX8lzMRhecm7hbSCjk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Japanese Garden",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lumban - Caliraya - Cavinti Road, Cavinti, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Japanese Garden"
+            },
+            {
+               "offset" : 17,
+               "value" : "Lumban - Caliraya - Cavinti Road"
+            },
+            {
+               "offset" : 51,
+               "value" : "Cavinti"
+            },
+            {
+               "offset" : 60,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "establishment",
+            "park",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Japanese Garden, Ma. Orosa Street, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5-pE9N3LlzMRU3mf52N9_vs",
+         "reference" : "ChIJ5-pE9N3LlzMRU3mf52N9_vs",
+         "structured_formatting" : 
+         {
+            "main_text" : "Japanese Garden",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ma. Orosa Street, Ermita, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Japanese Garden"
+            },
+            {
+               "offset" : 17,
+               "value" : "Ma. Orosa Street"
+            },
+            {
+               "offset" : 35,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 43,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 51,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "park"
+         ]
+      },
+      {
+         "description" : "Japanese Garden, Bonuan, Dagupan City, Pangasinan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJLXjoMIdokTMRdHOtIWGoUzA",
+         "reference" : "ChIJLXjoMIdokTMRdHOtIWGoUzA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Japanese Garden",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bonuan, Dagupan City, Pangasinan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Japanese Garden"
+            },
+            {
+               "offset" : 17,
+               "value" : "Bonuan"
+            },
+            {
+               "offset" : 25,
+               "value" : "Dagupan City"
+            },
+            {
+               "offset" : 39,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "tourist_attraction",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Japanese Garden Steps, Los Baños, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjZKYXBhbmVzZSBHYXJkZW4gU3RlcHMsIExvcyBCYcOxb3MsIExhZ3VuYSwgUGhpbGlwcGluZXMiLiosChQKEgkJBy15ymC9MxH9o-LNRyRf-BIUChIJd789yylnvTMRZveWWqI_74A",
+         "reference" : "EjZKYXBhbmVzZSBHYXJkZW4gU3RlcHMsIExvcyBCYcOxb3MsIExhZ3VuYSwgUGhpbGlwcGluZXMiLiosChQKEgkJBy15ymC9MxH9o-LNRyRf-BIUChIJd789yylnvTMRZveWWqI_74A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Japanese Garden Steps",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Los Baños, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Japanese Garden Steps"
+            },
+            {
+               "offset" : 23,
+               "value" : "Los Baños"
+            },
+            {
+               "offset" : 34,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 42,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Japanese Garden of Peace, Cavite City, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJYWzD4TwhljMRYJXdv7YqMdw",
+         "reference" : "ChIJYWzD4TwhljMRYJXdv7YqMdw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Japanese Garden of Peace",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cavite City, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Japanese Garden of Peace"
+            },
+            {
+               "offset" : 26,
+               "value" : "Cavite City"
+            },
+            {
+               "offset" : 39,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 47,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "tourist_attraction",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

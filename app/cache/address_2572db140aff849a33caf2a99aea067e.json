@@ -1,0 +1,268 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "The Mind Museum, 3rd Avenue, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ5zMXhvDIlzMRgzbB_NGTYPA",
+         "reference" : "ChIJ5zMXhvDIlzMRgzbB_NGTYPA",
+         "structured_formatting" : 
+         {
+            "main_text" : "The Mind Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "3rd Avenue, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "The Mind Museum"
+            },
+            {
+               "offset" : 17,
+               "value" : "3rd Avenue"
+            },
+            {
+               "offset" : 29,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 37,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "tourist_attraction",
+            "museum"
+         ]
+      },
+      {
+         "description" : "The Mindanao Basket Main Branch - Davao, Juna Avenue, Talomo, Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ92NT5B9z-TIRgZXGhYVB1AM",
+         "reference" : "ChIJ92NT5B9z-TIRgZXGhYVB1AM",
+         "structured_formatting" : 
+         {
+            "main_text" : "The Mindanao Basket Main Branch - Davao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Juna Avenue, Talomo, Davao City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "The Mindanao Basket Main Branch - Davao"
+            },
+            {
+               "offset" : 41,
+               "value" : "Juna Avenue"
+            },
+            {
+               "offset" : 54,
+               "value" : "Talomo"
+            },
+            {
+               "offset" : 62,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 74,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 89,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "food",
+            "store",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "The MIND PLANET LEARNING CENTER, Pacita Avenue, San Pedro, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJuf8zsk7XlzMRRCR5VDT9Kts",
+         "reference" : "ChIJuf8zsk7XlzMRRCR5VDT9Kts",
+         "structured_formatting" : 
+         {
+            "main_text" : "The MIND PLANET LEARNING CENTER",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Pacita Avenue, San Pedro, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "The MIND PLANET LEARNING CENTER"
+            },
+            {
+               "offset" : 33,
+               "value" : "Pacita Avenue"
+            },
+            {
+               "offset" : 48,
+               "value" : "San Pedro"
+            },
+            {
+               "offset" : 59,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "school",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "The Mind Museum Loading Dock, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBW4UQgDJlzMRHwTkBZVzgGc",
+         "reference" : "ChIJBW4UQgDJlzMRHwTkBZVzgGc",
+         "structured_formatting" : 
+         {
+            "main_text" : "The Mind Museum Loading Dock",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "The Mind Museum Loading Dock"
+            },
+            {
+               "offset" : 30,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 38,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "The Mindanao Basket-Cagayan de Oro, Cagayan de Oro, Misamis Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJM1xwyyaN_zIRRwXjBGu4xgY",
+         "reference" : "ChIJM1xwyyaN_zIRRwXjBGu4xgY",
+         "structured_formatting" : 
+         {
+            "main_text" : "The Mindanao Basket-Cagayan de Oro",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cagayan de Oro, Misamis Oriental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "The Mindanao Basket-Cagayan de Oro"
+            },
+            {
+               "offset" : 36,
+               "value" : "Cagayan de Oro"
+            },
+            {
+               "offset" : 52,
+               "value" : "Misamis Oriental"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "store",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,270 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Adfil Shipmanning Management and nbsp Manning Agency, Ermita, Ermita Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJRYfdxyXKlzMR7g31P3eSsDw",
+         "reference" : "ChIJRYfdxyXKlzMR7g31P3eSsDw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Adfil Shipmanning Management and nbsp Manning Agency",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ermita, Ermita Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Adfil Shipmanning Management and nbsp Manning Agency"
+            },
+            {
+               "offset" : 54,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 62,
+               "value" : "Ermita Manila"
+            },
+            {
+               "offset" : 77,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 91,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Adfil Corporation, Butuan City, Agusan Del Norte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJX9c7Pl7AATMRewAqR58bVoY",
+         "reference" : "ChIJX9c7Pl7AATMRewAqR58bVoY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Adfil Corporation",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Butuan City, Agusan Del Norte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Adfil Corporation"
+            },
+            {
+               "offset" : 19,
+               "value" : "Butuan City"
+            },
+            {
+               "offset" : 32,
+               "value" : "Agusan Del Norte"
+            },
+            {
+               "offset" : 50,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "store",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "ADF Party Venue, Sta Lucia, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-Ysos8rPlzMRi_sKHr90oq0",
+         "reference" : "ChIJ-Ysos8rPlzMRi_sKHr90oq0",
+         "structured_formatting" : 
+         {
+            "main_text" : "ADF Party Venue",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sta Lucia, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "ADF Party Venue"
+            },
+            {
+               "offset" : 17,
+               "value" : "Sta Lucia"
+            },
+            {
+               "offset" : 28,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 39,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "food",
+            "establishment",
+            "restaurant"
+         ]
+      },
+      {
+         "description" : "Adflix Grafix Printing Services, Sto Entierro St, Angeles, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJl9bPQkbyljMRTucF4XshKAo",
+         "reference" : "ChIJl9bPQkbyljMRTucF4XshKAo",
+         "structured_formatting" : 
+         {
+            "main_text" : "Adflix Grafix Printing Services",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sto Entierro St, Angeles, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Adflix Grafix Printing Services"
+            },
+            {
+               "offset" : 33,
+               "value" : "Sto Entierro St"
+            },
+            {
+               "offset" : 50,
+               "value" : "Angeles"
+            },
+            {
+               "offset" : 59,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "ADF AUTO CARE SERVICES, Ignacio Villamor Street, Poblacion District, Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbaS4DzBt-TIR9yc5SYPPWek",
+         "reference" : "ChIJbaS4DzBt-TIR9yc5SYPPWek",
+         "structured_formatting" : 
+         {
+            "main_text" : "ADF AUTO CARE SERVICES",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Ignacio Villamor Street, Poblacion District, Davao City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "ADF AUTO CARE SERVICES"
+            },
+            {
+               "offset" : 24,
+               "value" : "Ignacio Villamor Street"
+            },
+            {
+               "offset" : 49,
+               "value" : "Poblacion District"
+            },
+            {
+               "offset" : 69,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 81,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 96,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "car_repair",
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

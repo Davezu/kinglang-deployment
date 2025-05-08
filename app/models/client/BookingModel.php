@@ -250,8 +250,8 @@ class Booking {
         // Special handling for date_filter=past (only confirmed or completed)
         else if ($date_filter === "past") {
             if ($status === "all") {
-                // For past bookings, focus on completed bookings 
-                $status_condition = " AND b.status = 'Completed'";
+                // For past bookings, include completed, confirmed, and processing instead of only completed bookings
+                $status_condition = " AND (b.status = 'Completed' OR b.status = 'Confirmed' OR b.status = 'Processing')";
             } else {
                 // If a specific status is selected with past filter, use that status
                 $status_condition = " AND b.status = '".ucfirst($status)."'";
@@ -343,6 +343,7 @@ class Booking {
                 error_log("PAST FILTER QUERY: " . $sql);
                 error_log("Status condition: " . $status_condition);
                 error_log("Date condition: " . $date_condition);
+                error_log("Filter parameters: status=" . $status . ", date_filter=" . $date_filter . ", balance_filter=" . $balance_filter . ", search=" . $search);
             }
 
             $stmt = $this->conn->prepare($sql);

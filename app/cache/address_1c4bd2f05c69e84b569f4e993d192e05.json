@@ -86,8 +86,8 @@
          ],
          "types" : 
          [
-            "administrative_area_level_3",
             "political",
+            "administrative_area_level_3",
             "geocode"
          ]
       },
@@ -192,10 +192,10 @@
          ],
          "types" : 
          [
+            "tourist_attraction",
+            "church",
             "place_of_worship",
             "point_of_interest",
-            "church",
-            "tourist_attraction",
             "establishment"
          ]
       },
@@ -247,9 +247,9 @@
          ],
          "types" : 
          [
-            "point_of_interest",
+            "lodging",
             "establishment",
-            "lodging"
+            "point_of_interest"
          ]
       }
    ],
