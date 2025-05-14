@@ -1,7 +1,10 @@
 <?php
 require_once __DIR__ . "/../../models/admin/BookingManagementModel.php";
+require_once __DIR__ . "/../AuditTrailTrait.php";
 
 class BookingManagementController {
+    use AuditTrailTrait;
+    
     private $bookingModel;
 
     public function __construct() {
@@ -221,34 +224,153 @@ class BookingManagementController {
     }
 
     public function confirmBooking() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $data = json_decode(file_get_contents("php://input"), true);
-            $booking_id = $data["bookingId"];
-            $discount = isset($data["discount"]) ? (float)$data["discount"] : 0;
-        
-            $result = $this->bookingModel->confirmBooking($booking_id, $discount);
-        
-            header("Content-Type: application/json");
-            
-            if ($result === "success") {
-                echo json_encode(["success" => true, "message" => "Booking request confirmed successfully!"]);
-            } else {
-                echo json_encode(["success" => false, "message" => $result]);
-            }
+        if (!isset($_POST['id']) || empty($_POST['id'])) {
+            echo json_encode(['error' => 'Booking ID is required.']);
+            return;
         }
-    } 
+        
+        $bookingId = $_POST['id'];
+        
+        // Get booking data before update for audit trail
+        $oldBookingData = $this->getEntityBeforeUpdate('bookings', 'booking_id', $bookingId);
+        
+        try {
+            global $pdo;
+            $pdo->beginTransaction();
+            
+            // Update booking status to confirmed
+            $stmt = $pdo->prepare("
+                UPDATE bookings 
+                SET status = 'Confirmed', confirmed_at = NOW() 
+                WHERE booking_id = ?
+            ");
+            $stmt->execute([$bookingId]);
+            
+            // Set payment deadline (e.g., 3 days from now)
+            $stmt = $pdo->prepare("
+                UPDATE bookings 
+                SET payment_deadline = DATE_ADD(NOW(), INTERVAL 3 DAY) 
+                WHERE booking_id = ? AND payment_deadline IS NULL
+            ");
+            $stmt->execute([$bookingId]);
+            
+            // Get the updated booking data
+            $stmt = $pdo->prepare("SELECT * FROM bookings WHERE booking_id = ?");
+            $stmt->execute([$bookingId]);
+            $newBookingData = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            // Create notification for admin
+            $stmt = $pdo->prepare("
+                INSERT INTO admin_notifications (type, message, reference_id) 
+                VALUES ('booking_confirmed', 'Booking #" . $bookingId . " has been confirmed.', ?)
+            ");
+            $stmt->execute([$bookingId]);
+            
+            // Create notification for client
+            $stmt = $pdo->prepare("
+                INSERT INTO client_notifications (user_id, type, message, reference_id) 
+                VALUES (?, 'booking_confirmed', 'Your booking #" . $bookingId . " has been confirmed. Please complete the payment before the deadline.', ?)
+            ");
+            $stmt->execute([$newBookingData['user_id'], $bookingId]);
+            
+            $pdo->commit();
+            
+            // Log to audit trail
+            $this->logAudit(
+                'update', 
+                'booking', 
+                $bookingId, 
+                $oldBookingData, 
+                $newBookingData
+            );
+            
+            echo json_encode(['success' => 'Booking confirmed successfully.']);
+            
+        } catch (PDOException $e) {
+            $pdo->rollBack();
+            error_log("Error confirming booking: " . $e->getMessage());
+            echo json_encode(['error' => 'Failed to confirm booking. Please try again.']);
+        }
+    }
 
     public function rejectBooking() {
-        header("Content-Type: application/json");
-
-        $data = json_decode(file_get_contents("php://input"), true);
-        $reason = $data["reason"];
-        $booking_id = (int) $data["bookingId"];
-        $user_id = (int) $data["userId"];
-
-        $result = $this->bookingModel->rejectBooking($reason, $booking_id, $user_id);
-
-        echo json_encode(["success" => $result["success"], "message" => $result["message"]]);
+        if (!isset($_POST['id']) || empty($_POST['id']) || !isset($_POST['reason']) || empty($_POST['reason'])) {
+            echo json_encode(['error' => 'Booking ID and reason are required.']);
+            return;
+        }
+        
+        $bookingId = $_POST['id'];
+        $reason = $_POST['reason'];
+        
+        // Get booking data before update for audit trail
+        $oldBookingData = $this->getEntityBeforeUpdate('bookings', 'booking_id', $bookingId);
+        
+        try {
+            global $pdo;
+            $pdo->beginTransaction();
+            
+            // Update booking status to rejected
+            $stmt = $pdo->prepare("
+                UPDATE bookings 
+                SET status = 'Rejected' 
+                WHERE booking_id = ?
+            ");
+            $stmt->execute([$bookingId]);
+            
+            // Get user ID for notification
+            $stmt = $pdo->prepare("SELECT user_id FROM bookings WHERE booking_id = ?");
+            $stmt->execute([$bookingId]);
+            $booking = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if (!$booking) {
+                throw new PDOException("Booking not found.");
+            }
+            
+            // Record rejection reason
+            $stmt = $pdo->prepare("
+                INSERT INTO rejected_trips (reason, booking_id, user_id)
+                VALUES (?, ?, ?)
+            ");
+            $stmt->execute([$reason, $bookingId, $booking['user_id']]);
+            
+            // Get the updated booking data
+            $stmt = $pdo->prepare("SELECT * FROM bookings WHERE booking_id = ?");
+            $stmt->execute([$bookingId]);
+            $newBookingData = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            // Create notification for admin
+            $stmt = $pdo->prepare("
+                INSERT INTO admin_notifications (type, message, reference_id)
+                VALUES ('booking_rejected', 'Booking #" . $bookingId . " has been rejected.', ?)
+            ");
+            $stmt->execute([$bookingId]);
+            
+            // Create notification for client
+            $stmt = $pdo->prepare("
+                INSERT INTO client_notifications (user_id, type, message, reference_id)
+                VALUES (?, 'booking_rejected', 'Your booking #" . $bookingId . " has been rejected. Reason: " . $reason . "', ?)
+            ");
+            $stmt->execute([$booking['user_id'], $bookingId]);
+            
+            $pdo->commit();
+            
+            // Log to audit trail
+            $this->logAudit(
+                'update', 
+                'booking', 
+                $bookingId, 
+                $oldBookingData, 
+                $newBookingData, 
+                ['rejection_reason' => $reason]
+            );
+            
+            echo json_encode(['success' => 'Booking rejected successfully.']);
+            
+        } catch (PDOException $e) {
+            $pdo->rollBack();
+            error_log("Error rejecting booking: " . $e->getMessage());
+            echo json_encode(['error' => 'Failed to reject booking. Please try again.']);
+        }
     }
 
     public function showReschedRequestTable() {

@@ -243,7 +243,7 @@ require_client_auth(); // Use helper function
                         <button class="btn btn-sm btn-outline-secondary quick-filter" data-status="all">
                             <i class="bi bi-funnel"></i> All
                         </button>
-                        <button class="btn btn-sm btn-outline-warning quick-filter" data-status="pending">
+                        <button class="btn btn-sm btn-outline-warning text-dark-emphasis quick-filter" data-status="pending">
                             <i class="bi bi-hourglass-split"></i> Pending
                         </button>
                         <button class="btn btn-sm btn-outline-success quick-filter" data-status="confirmed">
@@ -389,8 +389,8 @@ require_client_auth(); // Use helper function
                                     <div class="mt-2">
                                         <p class="mb-1"><strong>Bank:</strong> <span id="bankName">BPI Cainta Ortigas Extension Branch</span></p>
                                         <p class="mb-1"><strong>Name:</strong> <span id="accountName">KINGLANG TOURS AND TRANSPORT SERVICES INC.</span></p>
-                                        <p class="mb-0"><strong>Number:</strong> <span id="accountNumber">4091-0050-05</span></p>
-                                        <p class="mb-0"><strong>Swift Code:</strong> <span id="accountNumber">BPOIPHMM</span></p>
+                                        <p class="mb-1"><strong>Number:</strong> <span id="accountNumber">4091-0050-05</span></p>
+                                        <p class="mb-0"><strong>Swift Code:</strong> <span id="swiftCode">BPOIPHMM</span></p>
                                     </div>
                                 </div>
                             </div>

@@ -12,10 +12,10 @@
     <?php include_once __DIR__ . "/../assets/sidebar.php"; ?>
 
     <div class="content collapsed" id="content">
-        <div class="container-fluid py-4 px-4 px-xl-5">
+        <div class="container-fluid py-3 px-3 px-xl-4">
             <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap p-0 m-0">
                 <div class="p-0">
-                    <h3>My Account</h3>
+                    <h3><i class="bi bi-person-check me-2 text-success"></i>My Account</h3>
                     <p class="text-muted">Manage your profile and account settings</p>
                 </div>
                 <?php include_once __DIR__ . "/../assets/user_profile.php"; ?>

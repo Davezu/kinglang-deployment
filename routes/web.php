@@ -14,6 +14,7 @@ $controllerClasses = [
         'UserManagementController' => __DIR__ . "/../app/controllers/admin/UserManagementController.php",
         'SettingsController' => __DIR__ . "/../app/controllers/admin/SettingsController.php",
         'NotificationsController' => __DIR__ . "/../app/controllers/admin/NotificationsController.php",
+        'AuditTrailController' => __DIR__ . "/../app/controllers/admin/AuditTrailController.php",
     ]
 ];
 
@@ -207,16 +208,20 @@ switch ($request) {
         $controller->getBookingStatistics();
         break;
         
-    case "/home/calendar-events":
-        require_once $controllerClasses['client']['BookingController'];
-        $controller = new BookingController();
-        $controller->getCalendarEvents();
-        break;
-        
     case "/home/get-booking-details":
         require_once $controllerClasses['client']['BookingController'];
         $controller = new BookingController();
         $controller->getBookingDetails();
+        break;
+    case "/home/get-payment-settings":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getPaymentSettings();
+        break;
+    case "/home/calendar-events":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getCalendarEvents();
         break;
         
     case "/home/export-bookings":
@@ -673,6 +678,33 @@ switch ($request) {
         require_once __DIR__ . "/../app/controllers/admin/BookingCompletionController.php";
         $controller = new BookingCompletionController();
         $controller->checkCompletions();
+        break;
+
+    // Audit Trail Management
+    case "/admin/audit-trail":
+        require_once $controllerClasses['admin']['AuditTrailController'];
+        $controller = new AuditTrailController();
+        $controller->index();
+        break;
+    case "/admin/get-audit-trails":
+        require_once $controllerClasses['admin']['AuditTrailController'];
+        $controller = new AuditTrailController();
+        $controller->getAuditTrails();
+        break;
+    case "/admin/get-audit-details":
+        require_once $controllerClasses['admin']['AuditTrailController'];
+        $controller = new AuditTrailController();
+        $controller->getAuditDetails();
+        break;
+    case "/admin/get-entity-history":
+        require_once $controllerClasses['admin']['AuditTrailController'];
+        $controller = new AuditTrailController();
+        $controller->getEntityHistory();
+        break;
+    case "/admin/export-audit-trails":
+        require_once $controllerClasses['admin']['AuditTrailController'];
+        $controller = new AuditTrailController();
+        $controller->exportAuditTrails();
         break;
 
     default:

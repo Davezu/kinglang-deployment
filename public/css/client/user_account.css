@@ -237,3 +237,9 @@
         margin-bottom: 15px;
     }
 } 
+
+@media (min-width: 1400px) {
+    .container-fluid {
+        max-width: 98%;
+    }
+}

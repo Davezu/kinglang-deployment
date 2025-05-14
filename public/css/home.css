@@ -273,6 +273,7 @@
         background-color: var(--white);
         overflow: hidden;
         position: relative;
+        height: 90vh;
     }
     
     .hero-content {
@@ -280,6 +281,7 @@
         align-items: center;
         gap: 2rem;
         position: relative;
+        margin-top: 100px;
         overflow: visible;
         min-height: 400px;
     }
@@ -321,7 +323,7 @@
         align-items: center;
         position: absolute;
         right: -370px;
-        top: -130px;
+        top: -280px;
         width: 70%;
         z-index: 1;
     }

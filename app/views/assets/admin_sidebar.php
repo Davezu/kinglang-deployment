@@ -217,7 +217,7 @@
         <!-- Sidebar Header -->
         <div class="sidebar-header border-bottom border-secondary">
             <img src="../../../../public/images/main-logo.png" alt="logo" height="35px">
-            <h5 class="brand-text menu-text">KingLang</h5>
+            <h5 class="ms-3 brand-text menu-text">KingLang</h5>
             <button class="toggle-btn" id="toggleBtn">
                 <i class="bi bi-chevron-left fs-4"></i>
             </button>
@@ -243,6 +243,10 @@
                         <i class="bi bi-people"></i>
                         <span class="menu-text">Users</span>
                     </a>
+                    <!-- <a href="/admin/audit-trail" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'audit-trail' ? 'active' : ''; ?>">
+                        <i class="bi bi-clock-history"></i>
+                        <span class="menu-text">Audit Trail</span>
+                    </a> -->
                 <?php endif; ?>
                 
                 <a href="/admin/payment-management" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'payment-management' ? 'active' : ''; ?>">

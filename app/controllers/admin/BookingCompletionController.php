@@ -25,6 +25,7 @@ class BookingCompletionController {
                 FROM bookings b
                 JOIN users u ON b.user_id = u.user_id
                 WHERE b.status = 'Confirmed' 
+                  AND b.payment_status IN ('Partially Paid', 'Fully Paid')
                   AND b.end_of_tour < CURDATE()
                   AND b.is_rebooking = 0
                   AND b.is_rebooked = 0
@@ -37,21 +38,30 @@ class BookingCompletionController {
             
             foreach ($completedBookings as $booking) {
                 // Update booking status to completed
-                $this->markBookingAsCompleted($booking);
-                $completedCount++;
+                $success = $this->markBookingAsCompleted($booking);
                 
-                // If partially paid, notify admin
-                if ($booking['payment_status'] === 'Partially Paid') {
-                    $this->notifyPartialPayment($booking);
-                    $partialPaymentCount++;
+                if ($success) {
+                    $completedCount++;
+                    
+                    // If partially paid, notify admin
+                    if ($booking['payment_status'] === 'Partially Paid') {
+                        $this->notifyPartialPayment($booking);
+                        $partialPaymentCount++;
+                    }
+                } else {
+                    error_log("Failed to mark booking ID {$booking['booking_id']} as completed");
                 }
             }
+            
+            // Log the results for debugging
+            error_log("Completed bookings process: Found " . count($completedBookings) . " bookings, successfully updated $completedCount");
             
             return [
                 'success' => true,
                 'message' => "Processed $completedCount completed bookings, found $partialPaymentCount with partial payments."
             ];
         } catch (PDOException $e) {
+            error_log("Exception in processCompletedBookings: " . $e->getMessage());
             return [
                 'success' => false,
                 'message' => "Error processing completed bookings: " . $e->getMessage()
@@ -70,7 +80,17 @@ class BookingCompletionController {
                     completed_at = NOW()
                 WHERE booking_id = :booking_id
             ");
-            $stmt->execute([':booking_id' => $booking['booking_id']]);
+            $result = $stmt->execute([':booking_id' => $booking['booking_id']]);
+            
+            if (!$result) {
+                error_log("Database update failed for booking ID {$booking['booking_id']}");
+                return false;
+            }
+            
+            if ($stmt->rowCount() === 0) {
+                error_log("No rows affected when updating booking ID {$booking['booking_id']} to Completed");
+                return false;
+            }
             
             return true;
         } catch (PDOException $e) {

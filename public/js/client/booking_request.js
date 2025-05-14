@@ -40,6 +40,35 @@ const bookingIDinput = document.getElementById("bookingID");
 const userIDinput = document.getElementById("userID");
 const amountInput = document.getElementById("amountInput");
 
+// Function to fetch payment settings from server
+async function fetchPaymentSettings() {
+    try {
+        const response = await fetch("/home/get-payment-settings", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success) {
+                // Update account info in the payment modal
+                document.getElementById("bankName").textContent = data.settings.bank_name || "BPI Cainta Ortigas Extension Branch";
+                document.getElementById("accountName").textContent = data.settings.bank_account_name || "KINGLANG TOURS AND TRANSPORT SERVICES INC.";
+                document.getElementById("accountNumber").textContent = data.settings.bank_account_number || "4091-0050-05";
+                document.getElementById("swiftCode").textContent = data.settings.bank_swift_code || "BPOIPHMM";
+                
+                // Update mobile payment details
+                document.getElementById("mobileName").textContent = data.settings.mobile_account_name || "Kinglang Bus";
+                document.getElementById("mobileNumber").textContent = data.settings.mobile_number || "09123456789";
+                
+                console.log("Payment settings loaded successfully");
+            }
+        }
+    } catch (error) {
+        console.error("Error fetching payment settings:", error);
+    }
+}
+
 // getting the actual value of the selected formatted currency and place it in the hidden input to insert in database
 const amountPaymentElements = document.querySelectorAll(".amount-payment");
 if (amountPaymentElements.length > 0) {
@@ -69,6 +98,9 @@ if (amountPaymentElements.length > 0) {
 
 // get all of booking records and initialize the page
 document.addEventListener("DOMContentLoaded", async function () {
+    // Fetch payment settings on page load
+    await fetchPaymentSettings();
+    
     // Get the initial limit value from the selector
     const limitSelect = document.getElementById("limitSelect");
     const statusSelect = document.getElementById("statusSelect");

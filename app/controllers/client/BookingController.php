@@ -799,6 +799,31 @@ class BookingController {
             ]);
         }
     }
+    
+    /**
+     * Get payment settings from the database for display in payment modal
+     */
+    public function getPaymentSettings() {
+        header("Content-Type: application/json");
+        
+        // Include the Settings model
+        require_once __DIR__ . "/../../models/admin/Settings.php";
+        $settingsModel = new Settings();
+        
+        // Get payment-related settings
+        $paymentSettings = $settingsModel->getSettingsByGroup('payment');
+        
+        // Format settings into associative array for easier access
+        $formattedSettings = [];
+        foreach ($paymentSettings as $setting) {
+            $formattedSettings[$setting['setting_key']] = $setting['setting_value'];
+        }
+        
+        echo json_encode([
+            "success" => true,
+            "settings" => $formattedSettings
+        ]);
+    }
         
     public function getBookingStatistics() {
         header("Content-Type: application/json");
