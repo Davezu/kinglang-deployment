@@ -1,0 +1,274 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Sauyo, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJpx1bBtCwlzMRLg76ZrmpsZI",
+         "reference" : "ChIJpx1bBtCwlzMRLg76ZrmpsZI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sauyo",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sauyo"
+            },
+            {
+               "offset" : 7,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality_level_2",
+            "political",
+            "sublocality",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Sauyo High School (Main Building), 2nd Laguna Street, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJrXmA_c6wlzMRbhiHcw7QSrw",
+         "reference" : "ChIJrXmA_c6wlzMRbhiHcw7QSrw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sauyo High School (Main Building)",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "2nd Laguna Street, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sauyo High School (Main Building)"
+            },
+            {
+               "offset" : 35,
+               "value" : "2nd Laguna Street"
+            },
+            {
+               "offset" : 54,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 67,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 81,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Sauyo Elementary School, Fuschia Street, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJnU5zitGwlzMRkJn-vovBqO4",
+         "reference" : "ChIJnU5zitGwlzMRkJn-vovBqO4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sauyo Elementary School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Fuschia Street, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sauyo Elementary School"
+            },
+            {
+               "offset" : 25,
+               "value" : "Fuschia Street"
+            },
+            {
+               "offset" : 41,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 53,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 66,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 80,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "school",
+            "primary_school"
+         ]
+      },
+      {
+         "description" : "Sauyo Dry and Wet Market, Don Julio Gregorio, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJE1VxbSmxlzMRQ9xitunXRvA",
+         "reference" : "ChIJE1VxbSmxlzMRQ9xitunXRvA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sauyo Dry and Wet Market",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Don Julio Gregorio, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sauyo Dry and Wet Market"
+            },
+            {
+               "offset" : 26,
+               "value" : "Don Julio Gregorio"
+            },
+            {
+               "offset" : 46,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 58,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 71,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 85,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Sauyo novaliches quezon city, calamansi st, Cabuyao, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJndCPNg5jvTMRR6pMHK_AvoI",
+         "reference" : "ChIJndCPNg5jvTMRR6pMHK_AvoI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Sauyo novaliches quezon city",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "calamansi st, Cabuyao, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Sauyo novaliches quezon city"
+            },
+            {
+               "offset" : 30,
+               "value" : "calamansi st"
+            },
+            {
+               "offset" : 44,
+               "value" : "Cabuyao"
+            },
+            {
+               "offset" : 53,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

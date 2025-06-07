@@ -1,0 +1,271 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "FSD Home Furnishings Davao, Bajada, Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJF7ug7vFt-TIR0lC0YwxhHMs",
+         "reference" : "ChIJF7ug7vFt-TIR0lC0YwxhHMs",
+         "structured_formatting" : 
+         {
+            "main_text" : "FSD Home Furnishings Davao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bajada, Davao City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FSD Home Furnishings Davao"
+            },
+            {
+               "offset" : 28,
+               "value" : "Bajada"
+            },
+            {
+               "offset" : 36,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 48,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "store",
+            "home_goods_store",
+            "establishment",
+            "furniture_store"
+         ]
+      },
+      {
+         "description" : "FSD AUTO INSURANCE SERVICES - PASIG BRANCH, Doctor Sixto Antonio Avenue, Pasig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ1UAfW_bHlzMRfr0QZ9fRc4U",
+         "reference" : "ChIJ1UAfW_bHlzMRfr0QZ9fRc4U",
+         "structured_formatting" : 
+         {
+            "main_text" : "FSD AUTO INSURANCE SERVICES - PASIG BRANCH",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Doctor Sixto Antonio Avenue, Pasig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FSD AUTO INSURANCE SERVICES - PASIG BRANCH"
+            },
+            {
+               "offset" : 44,
+               "value" : "Doctor Sixto Antonio Avenue"
+            },
+            {
+               "offset" : 73,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 80,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 94,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "insurance_agency",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "FSDG Building, Scout de Guia St, Diliman, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJiz-w1rO3lzMRCqPHAx0T1Og",
+         "reference" : "ChIJiz-w1rO3lzMRCqPHAx0T1Og",
+         "structured_formatting" : 
+         {
+            "main_text" : "FSDG Building",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Scout de Guia St, Diliman, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FSDG Building"
+            },
+            {
+               "offset" : 15,
+               "value" : "Scout de Guia St"
+            },
+            {
+               "offset" : 33,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 42,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 55,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 69,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "F.S.D. Security Agency & General Services, Inc., Bacolod, Negros Occidental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 47,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJSRv3cajRrjMRaZKaLRwdA7U",
+         "reference" : "ChIJSRv3cajRrjMRaZKaLRwdA7U",
+         "structured_formatting" : 
+         {
+            "main_text" : "F.S.D. Security Agency & General Services, Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 47,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bacolod, Negros Occidental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "F.S.D. Security Agency & General Services, Inc."
+            },
+            {
+               "offset" : 49,
+               "value" : "Bacolod"
+            },
+            {
+               "offset" : 58,
+               "value" : "Negros Occidental"
+            },
+            {
+               "offset" : 77,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "FSD CONSTRUCTION, Lomboy Street, Puerto Princesa, Palawan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbflvLABjtTMRRFwsT6yA1A0",
+         "reference" : "ChIJbflvLABjtTMRRFwsT6yA1A0",
+         "structured_formatting" : 
+         {
+            "main_text" : "FSD CONSTRUCTION",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Lomboy Street, Puerto Princesa, Palawan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "FSD CONSTRUCTION"
+            },
+            {
+               "offset" : 18,
+               "value" : "Lomboy Street"
+            },
+            {
+               "offset" : 33,
+               "value" : "Puerto Princesa"
+            },
+            {
+               "offset" : 50,
+               "value" : "Palawan"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "general_contractor",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

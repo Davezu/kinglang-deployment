@@ -53,6 +53,55 @@
          ],
          "types" : 
          [
+            "establishment",
+            "university",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Colegio De Sta. Lourdes of Leyte Foundation, Inc., Tabontabon, Leyte, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJzcgsXWXbBzMR3qZh0QsatS8",
+         "reference" : "ChIJzcgsXWXbBzMR3qZh0QsatS8",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio De Sta. Lourdes of Leyte Foundation, Inc.",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Tabontabon, Leyte, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio De Sta. Lourdes of Leyte Foundation, Inc."
+            },
+            {
+               "offset" : 51,
+               "value" : "Tabontabon"
+            },
+            {
+               "offset" : 63,
+               "value" : "Leyte"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
             "university",
             "establishment",
             "point_of_interest"
@@ -107,56 +156,7 @@
          "types" : 
          [
             "establishment",
-            "point_of_interest",
-            "university"
-         ]
-      },
-      {
-         "description" : "Colegio De Sta. Lourdes of Leyte Foundation, Inc., Tabontabon, Leyte, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 14,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJzcgsXWXbBzMR3qZh0QsatS8",
-         "reference" : "ChIJzcgsXWXbBzMR3qZh0QsatS8",
-         "structured_formatting" : 
-         {
-            "main_text" : "Colegio De Sta. Lourdes of Leyte Foundation, Inc.",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 14,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Tabontabon, Leyte, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Colegio De Sta. Lourdes of Leyte Foundation, Inc."
-            },
-            {
-               "offset" : 51,
-               "value" : "Tabontabon"
-            },
-            {
-               "offset" : 63,
-               "value" : "Leyte"
-            },
-            {
-               "offset" : 70,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
             "university",
-            "establishment",
             "point_of_interest"
          ]
       },
@@ -204,9 +204,9 @@
          ],
          "types" : 
          [
+            "school",
             "establishment",
-            "point_of_interest",
-            "school"
+            "point_of_interest"
          ]
       },
       {
@@ -253,8 +253,8 @@
          ],
          "types" : 
          [
-            "school",
             "establishment",
+            "school",
             "point_of_interest"
          ]
       }

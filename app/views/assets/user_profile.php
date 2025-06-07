@@ -2,16 +2,199 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 <style>
+    /* Booking details popup styling */
     .booking-details-popup {
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        transition: opacity 0.2s ease-in-out;
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border-radius: 0.75rem;
     }
     
-    .notification-item:hover {
-        background-color: rgba(25, 135, 84, 0.05);
+    /* Notification styling */
+    .notification-dropdown {
+        border-radius: 0.75rem !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+        min-width: 360px;
+        max-width: 100vw;
+        padding: 0 !important;
+        border: none;
+        overflow: hidden;
+        animation: dropdownFadeIn 0.3s ease-out forwards;
     }
     
+    @keyframes dropdownFadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .notification-header, .notification-footer {
+        background: #f8f9fa;
+        padding: 14px 18px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .notification-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .notification-header h6 {
+        font-weight: 600;
+        color: #198754;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .notification-header h6 i {
+        margin-right: 8px;
+    }
+    
+    .notification-footer {
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: none;
+        text-align: center;
+        padding: 12px;
+    }
+    
+    .notification-footer a {
+        color: #198754;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    
+    .notification-footer a:hover {
+        color: #0d6a3e;
+        text-decoration: none;
+    }
+    
+    .notification-list {
+        max-height: 400px;
+        overflow-y: auto;
+        background: #fff;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(25, 135, 84, 0.3) rgba(0, 0, 0, 0.05);
+    }
+    
+    .notification-list::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .notification-list::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05);
+    }
+    
+    .notification-list::-webkit-scrollbar-thumb {
+        background-color: rgba(25, 135, 84, 0.3);
+        border-radius: 10px;
+    }
+    
+    .notification-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px 18px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        animation: itemFadeIn 0.5s ease-out forwards;
+    }
+    
+    @keyframes itemFadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .notification-item:last-child {
+        border-bottom: none;
+    }
+    
+    .notification-item:hover, .notification-item.bg-light {
+        background: rgba(25, 135, 84, 0.05) !important;
+        transform: translateY(-2px);
+    }
+    
+    .notification-item.bg-light::after {
+        content: '';
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #198754;
+        /* Animation removed as requested */
+    }
+    
+    .notification-icon {
+        flex-shrink: 0;
+        font-size: 1.5rem;
+        margin-top: 2px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgba(25, 135, 84, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .notification-item:hover .notification-icon {
+        transform: scale(1.1);
+    }
+    
+    .notification-content {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .notification-message {
+        font-weight: 500;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 260px;
+        margin-bottom: 4px;
+        color: #333;
+    }
+    
+    .notification-time {
+        font-size: 0.8rem;
+        color: #6c757d;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    
+    .notification-time i {
+        font-size: 0.75rem;
+    }
+    
+    .notification-badge {
+        /* Animation removed as requested */
+    }
+    
+    .no-notifications {
+        padding: 40px 0;
+        color: #adb5bd;
+        font-size: 0.95rem;
+        text-align: center;
+    }
+    
+    .no-notifications i {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+    
+    /* Booking summary styling */
     .booking-summary small {
         color: #6c757d;
         font-size: 0.75rem;
@@ -20,82 +203,7 @@
     .booking-summary .badge {
         font-size: 0.75rem;
         padding: 0.35em 0.65em;
-    }
-    
-    .notification-dropdown {
-        border-radius: 12px !important;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.15) !important;
-        min-width: 340px;
-        max-width: 100vw;
-        padding: 0 !important;
-        border: none;
-        overflow: hidden;
-    }
-    .notification-header, .notification-footer {
-        background: #f8f9fa;
-        padding: 12px 16px;
-        border-bottom: 1px solid #e9ecef;
-    }
-    .notification-footer {
-        border-top: 1px solid #e9ecef;
-        border-bottom: none;
-        text-align: center;
-    }
-    .notification-list {
-        max-height: 350px;
-        overflow-y: auto;
-        background: #fff;
-    }
-    .notification-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        padding: 14px 16px;
-        border-bottom: 1px solid #f1f1f1;
-        transition: background 0.15s;
-        cursor: pointer;
-        text-decoration: none;
-        color: inherit;
-    }
-    .notification-item:last-child {
-        border-bottom: none;
-    }
-    .notification-item:hover, .notification-item.bg-light {
-        background: #e9f7ef !important;
-    }
-    .notification-icon {
-        flex-shrink: 0;
-        font-size: 1.5rem;
-        margin-top: 2px;
-    }
-    .notification-content {
-        flex: 1;
-        min-width: 0;
-    }
-    .notification-message {
         font-weight: 500;
-        font-size: 0.97rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 220px;
-    }
-    .notification-time {
-        font-size: 0.8rem;
-        color: #adb5bd;
-    }
-    .notification-badge {
-        animation: pulse 1.2s infinite;
-    }
-    @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(220,53,69,0.5);}
-        70% { box-shadow: 0 0 0 10px rgba(220,53,69,0);}
-        100% { box-shadow: 0 0 0 0 rgba(220,53,69,0);}
-    }
-    .no-notifications {
-        padding: 32px 0;
-        color: #adb5bd;
-        font-size: 0.95rem;
     }
 </style>
 </head>
@@ -107,7 +215,7 @@
     <div class="dropdown">
         <a href="#" class="position-relative text-success notification-toggle" id="notificationToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-bell-fill me-2 fs-5"></i>
-            <span class="position-absolute top-0 translate-middle badge rounded-pill bg-danger notification-badge" style="display: none; left: 1.3rem;">
+            <span class="position-absolute top-0 translate-middle badge rounded-pill bg-danger notification-badge" style="display: none; left: 1.2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 0.65rem; padding: 0.25rem 0.4rem;">
                 <span class="notification-count">0</span>
                 <span class="visually-hidden">unread notifications</span>
             </span>
@@ -115,8 +223,8 @@
         
         <!-- Notification Dropdown -->
         <div class="dropdown-menu dropdown-menu-end notification-dropdown" id="notificationDropdownMenu">
-            <div class="notification-header d-flex justify-content-between align-items-center">
-                <h6 class="m-0">Notifications</h6>
+            <div class="notification-header">
+                <h6><i class="bi bi-bell-fill"></i>Notifications</h6>
                 <a href="javascript:void(0)" class="text-decoration-none small mark-all-read">Mark all as read</a>
             </div>
             <div class="notification-list">
@@ -126,6 +234,24 @@
             <div class="notification-footer">
                 <a href="/client/notifications" class="text-decoration-none small">View all notifications</a>
             </div>
+        </div>
+    </div>
+    
+    <!-- Notification Details Popup -->
+    <div class="notification-details-popup position-fixed bg-white rounded-4 shadow-lg p-0" style="display: none; width: 350px; z-index: 1060; right: auto; left: auto;">
+        <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
+            <h6 class="m-0 fw-semibold d-flex align-items-center">
+                <i class="bi bi-bell-fill me-2 text-success"></i>Notification Details
+            </h6>
+            <button type="button" class="btn-close close-notification-details" aria-label="Close"></button>
+        </div>
+        <div class="notification-detail-content p-3">
+            <!-- Notification details will be loaded here -->
+        </div>
+        <div class="p-3 border-top d-flex justify-content-end">
+            <a href="#" class="btn btn-sm btn-success view-related-content" style="display: none;">
+                <i class="bi bi-arrow-right me-1"></i>View Details
+            </a>
         </div>
     </div>
     
@@ -164,10 +290,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const notificationList = document.querySelector('.notification-list');
     const noNotifications = document.querySelector('.no-notifications');
     const markAllReadBtn = document.querySelector('.mark-all-read');
-    const bookingDetailsPopup = document.querySelector('.booking-details-popup');
+    const notificationDetailsPopup = document.querySelector('.notification-details-popup');
     const bookingDetailsContent = document.querySelector('.booking-details-content');
-    const closeBookingDetailsBtn = document.querySelector('.close-booking-details');
-    const viewFullDetailsBtn = document.querySelector('.view-full-details');
+    const closeNotificationDetailsBtn = document.querySelector('.close-notification-details');
+    const viewRelatedContentBtn = document.querySelector('.view-related-content');
     let currentBookingId = null;
     
     // Function to load notifications
@@ -221,15 +347,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
                         
                         notificationItem.innerHTML = `
-                            <div class="d-flex align-items-start">
-                                <div class="me-2">
-                                    <i class="bi ${iconClass} fs-5"></i>
+                            <div class="notification-icon">
+                                <i class="bi ${iconClass}"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-message">${notification.message}</div>
+                                <div class="notification-time">
+                                    <i class="bi bi-clock"></i>${formattedDate}
+                                    ${!notification.is_read ? '<span class="badge bg-success rounded-pill ms-2" style="font-size: 0.7rem; padding: 0.25em 0.6em;">New</span>' : ''}
                                 </div>
-                                <div class="flex-grow-1" style="min-width: 0;">
-                                    <div class="small fw-semibold">${notification.message}</div>
-                                    <div class="text-muted small">${formattedDate}</div>
-                                </div>
-                                ${!notification.is_read ? '<span class="badge bg-primary rounded-pill">New</span>' : ''}
                             </div>
                         `;
                         
@@ -271,55 +397,151 @@ document.addEventListener('DOMContentLoaded', function() {
             const referenceId = notificationItem.getAttribute('data-reference-id');
             const notificationType = notificationItem.getAttribute('data-type');
             
-            // Only show booking details for booking-related notifications
-            if (notificationType && (
-                notificationType.includes('booking') || 
-                notificationType.includes('payment')
-            )) {
-                // Position the booking details popup relative to the notification item
-                const rect = notificationItem.getBoundingClientRect();
-                
-                bookingDetailsPopup.style.position = 'fixed';
-                bookingDetailsPopup.style.top = `${rect.top}px`;
-                bookingDetailsPopup.style.left = `${rect.right}px`;
-                bookingDetailsPopup.style.transform = 'translateX(10px)';
-                
-                // Get notification message and created time
-                const notificationMessage = notificationItem.querySelector('.small.fw-semibold').textContent;
-                const notificationTime = notificationItem.querySelector('.text-muted.small').textContent;
-                
-                // Set the current booking ID for the "View Full Details" button
-                currentBookingId = referenceId;
-                viewFullDetailsBtn.href = `/home/booking-details/${referenceId}`;
-                
-                // Get notification status from type
-                let status = 'pending';
-                if (notificationType.includes('confirmed')) {
-                    status = 'confirmed';
-                } else if (notificationType.includes('rejected')) {
-                    status = 'rejected';
-                } else if (notificationType.includes('canceled')) {
-                    status = 'canceled';
+            // Create a safe notification object with default values
+            const notification = {
+                notification_id: notificationId || '',
+                reference_id: referenceId || '',
+                type: notificationType || 'information',
+                message: '',
+                created_at: new Date().toISOString(),
+                is_read: false
+            };
+            
+            // Try to extract message and time from the notification item
+            try {
+                const messageElement = notificationItem.querySelector('.notification-message');
+                if (messageElement) {
+                    notification.message = messageElement.textContent;
                 }
                 
-                // Display notification content directly
-                bookingDetailsPopup.style.display = 'block';
-                bookingDetailsContent.innerHTML = `
-                    <div class="booking-summary">
+                const timeElement = notificationItem.querySelector('.notification-time');
+                if (timeElement) {
+                    // Extract only the date/time text, not including any child elements
+                    const timeText = Array.from(timeElement.childNodes)
+                        .filter(node => node.nodeType === Node.TEXT_NODE)
+                        .map(node => node.textContent.trim())
+                        .join('');
+                    
+                    if (timeText) {
+                        notification.created_at = timeText;
+                    }
+                }
+            } catch (error) {
+                console.error('Error extracting notification details:', error);
+            }
+            
+            // Only show notification details if we have a valid notification type
+            if (notification.type) {
+                // Function to show notification details popup
+                async function showNotificationDetails(notification, notificationItem) {
+                    if (!notification) return;
+                    
+                    // Position the popup next to the notification item
+                    const rect = notificationItem.getBoundingClientRect();
+                    
+                    // Calculate position to keep popup within viewport
+                    const viewportWidth = window.innerWidth;
+                    const viewportHeight = window.innerHeight;
+                    const popupWidth = 350; // Width of the popup
+                    
+                    // Check if there's enough space to the right
+                    let left;
+                    if (rect.right + popupWidth + 20 < viewportWidth) {
+                        // Position to the right of the notification
+                        left = rect.right + 10;
+                    } else {
+                        // Position to the left of the notification
+                        left = Math.max(10, rect.left - popupWidth - 10);
+                    }
+                    
+                    // Ensure the popup doesn't go below the viewport
+                    const top = Math.min(rect.top, viewportHeight - 400); // 400 is an estimated height
+                    
+                    // Apply the calculated position
+                    notificationDetailsPopup.style.top = `${top}px`;
+                    notificationDetailsPopup.style.left = `${left}px`;
+                    notificationDetailsPopup.style.display = 'block';
+                    
+                    // Determine icon class and background based on notification type
+                    let iconClass = 'bi-info-circle-fill text-primary';
+                    let iconBg = 'info';
+                    let statusClass = 'bg-primary';
+                    let statusText = 'Information';
+                    
+                    if (notification.type.includes('confirmed')) {
+                        iconClass = 'bi-check-circle-fill text-success';
+                        iconBg = 'success';
+                        statusClass = 'bg-success';
+                        statusText = 'Confirmed';
+                    } else if (notification.type.includes('rejected') || notification.type.includes('canceled')) {
+                        iconClass = 'bi-x-circle-fill text-danger';
+                        iconBg = 'danger';
+                        statusClass = 'bg-danger';
+                        statusText = notification.type.includes('rejected') ? 'Rejected' : 'Canceled';
+                    } else if (notification.type.includes('payment')) {
+                        iconClass = 'bi-credit-card-fill text-info';
+                        iconBg = 'info';
+                        statusClass = 'bg-info';
+                        statusText = 'Payment';
+                    }
+                    
+                    // Format date
+                    const date = new Date(notification.created_at);
+                    const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                    
+                    // Set the view related content link
+                    const viewRelatedBtn = document.querySelector('.view-related-content');
+                    if (notification.reference_id && ['booking_confirmed', 'booking_rejected', 'booking_canceled', 'payment_confirmed', 'payment_rejected'].includes(notification.type)) {
+                        viewRelatedBtn.href = `/home/booking-details/${notification.reference_id}`;
+                        viewRelatedBtn.style.display = 'block';
+                    } else {
+                        viewRelatedBtn.style.display = 'none';
+                    }
+                    
+                    // Load notification details
+                    const detailContent = notificationDetailsPopup.querySelector('.notification-detail-content');
+                    
+                    detailContent.innerHTML = `
+                        <div class="mb-3 d-flex align-items-center">
+                            <div class="notification-icon ${iconBg} me-3" style="width: 48px; height: 48px;">
+                                <i class="bi ${iconClass} fs-4"></i>
+                            </div>
+                            <div>
+                                <span class="badge ${statusClass} mb-2">${statusText}</span>
+                                <h6 class="fw-bold mb-0">${notification.type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h6>
+                            </div>
+                        </div>
+                        
                         <div class="mb-3">
-                            <div class="fw-semibold">${notificationMessage}</div>
-                            <small class="text-muted">${notificationTime}</small>
+                            <label class="form-label fw-medium">Message</label>
+                            <p class="mb-0">${notification.message}</p>
                         </div>
-                        <div class="mb-2">
-                            <small class="text-muted d-block">Status</small>
-                            <div class="badge ${getStatusBadgeClass(status)}">${status}</div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-medium">Date & Time</label>
+                            <p class="mb-0"><i class="bi bi-clock me-1"></i>${formattedDate}</p>
                         </div>
-                        <div class="mb-2">
-                            <small class="text-muted d-block">Booking ID</small>
-                            <div>${referenceId}</div>
+                        
+                        ${notification.reference_id ? `
+                        <div class="mb-3">
+                            <label class="form-label fw-medium">Reference ID</label>
+                            <p class="mb-0">${notification.reference_id}</p>
                         </div>
-                    </div>
-                `;
+                        ` : ''}
+                        
+                        <div class="mb-0">
+                            <label class="form-label fw-medium">Status</label>
+                            <p class="mb-0">
+                                <span class="badge ${notification.is_read ? 'bg-secondary' : 'bg-success'} rounded-pill">
+                                    ${notification.is_read ? 'Read' : 'Unread'}
+                                </span>
+                            </p>
+                        </div>
+                    `;
+                }
+                
+                // Show notification details popup
+                showNotificationDetails(notification, notificationItem);
             }
             
             try {
@@ -352,25 +574,25 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Close booking details popup when clicking outside or when notification dropdown is closed
-        if (!bookingDetailsPopup.contains(e.target) && 
+        // Close notification details popup when clicking outside or when notification dropdown is closed
+        if (!notificationDetailsPopup.contains(e.target) && 
             !e.target.closest('.notification-item') &&
-            bookingDetailsPopup.style.display === 'block') {
-            bookingDetailsPopup.style.display = 'none';
+            notificationDetailsPopup.style.display === 'block') {
+            notificationDetailsPopup.style.display = 'none';
         }
     });
     
-    // Close booking details popup when close button is clicked
-    if (closeBookingDetailsBtn) {
-        closeBookingDetailsBtn.addEventListener('click', function() {
-            bookingDetailsPopup.style.display = 'none';
+    // Close notification details popup when close button is clicked
+    if (closeNotificationDetailsBtn) {
+        closeNotificationDetailsBtn.addEventListener('click', function() {
+            notificationDetailsPopup.style.display = 'none';
         });
     }
     
-    // Handle bootstrap dropdown events to close booking details popup
+    // Handle bootstrap dropdown events to close notification details popup
     notificationToggle.addEventListener('hidden.bs.dropdown', function() {
-        if (bookingDetailsPopup.style.display === 'block') {
-            bookingDetailsPopup.style.display = 'none';
+        if (notificationDetailsPopup.style.display === 'block') {
+            notificationDetailsPopup.style.display = 'none';
         }
     });
     

@@ -49,63 +49,9 @@
          ],
          "types" : 
          [
+            "point_of_interest",
             "university",
-            "point_of_interest",
             "establishment"
-         ]
-      },
-      {
-         "description" : "Colegio de San Juan de Letran Calamba, Bucal Bypass Road, Calamba, Laguna, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 7,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
-         "reference" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
-         "structured_formatting" : 
-         {
-            "main_text" : "Colegio de San Juan de Letran Calamba",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 7,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Bucal Bypass Road, Calamba, Laguna, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Colegio de San Juan de Letran Calamba"
-            },
-            {
-               "offset" : 39,
-               "value" : "Bucal Bypass Road"
-            },
-            {
-               "offset" : 58,
-               "value" : "Calamba"
-            },
-            {
-               "offset" : 67,
-               "value" : "Laguna"
-            },
-            {
-               "offset" : 75,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "school",
-            "point_of_interest",
-            "establishment",
-            "university"
          ]
       },
       {
@@ -156,13 +102,13 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "university",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
-         "description" : "Colegio San Agustin Makati, Palm Avenue, Makati, Metro Manila, Philippines",
+         "description" : "Colegio San Agustin-Bulacan, San Jose del Monte City, Bulacan, Philippines",
          "matched_substrings" : 
          [
             {
@@ -170,11 +116,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJ5REboBjJlzMRMPNHyz42n4g",
-         "reference" : "ChIJ5REboBjJlzMRMPNHyz42n4g",
+         "place_id" : "ChIJbSFo2WGllzMR6uV71uFyR1s",
+         "reference" : "ChIJbSFo2WGllzMR6uV71uFyR1s",
          "structured_formatting" : 
          {
-            "main_text" : "Colegio San Agustin Makati",
+            "main_text" : "Colegio San Agustin-Bulacan",
             "main_text_matched_substrings" : 
             [
                {
@@ -182,25 +128,21 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Palm Avenue, Makati, Metro Manila, Philippines"
+            "secondary_text" : "San Jose del Monte City, Bulacan, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Colegio San Agustin Makati"
+               "value" : "Colegio San Agustin-Bulacan"
             },
             {
-               "offset" : 28,
-               "value" : "Palm Avenue"
+               "offset" : 29,
+               "value" : "San Jose del Monte City"
             },
             {
-               "offset" : 41,
-               "value" : "Makati"
-            },
-            {
-               "offset" : 49,
-               "value" : "Metro Manila"
+               "offset" : 54,
+               "value" : "Bulacan"
             },
             {
                "offset" : 63,
@@ -209,8 +151,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "school",
+            "point_of_interest",
             "establishment"
          ]
       },
@@ -262,8 +204,62 @@
          ],
          "types" : 
          [
-            "school",
             "point_of_interest",
+            "establishment",
+            "school",
+            "university"
+         ]
+      },
+      {
+         "description" : "Colegio de San Juan de Letran Calamba, Bucal Bypass Road, Calamba, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
+         "reference" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio de San Juan de Letran Calamba",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bucal Bypass Road, Calamba, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio de San Juan de Letran Calamba"
+            },
+            {
+               "offset" : 39,
+               "value" : "Bucal Bypass Road"
+            },
+            {
+               "offset" : 58,
+               "value" : "Calamba"
+            },
+            {
+               "offset" : 67,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 75,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "school",
             "university",
             "establishment"
          ]

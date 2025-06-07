@@ -1,0 +1,264 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "DMFB-SPD HQ, R. Papa, Taguig, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ1_BKdgDJlzMRE2jz3nU90mY",
+         "reference" : "ChIJ1_BKdgDJlzMRE2jz3nU90mY",
+         "structured_formatting" : 
+         {
+            "main_text" : "DMFB-SPD HQ",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "R. Papa, Taguig, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "DMFB-SPD HQ"
+            },
+            {
+               "offset" : 13,
+               "value" : "R. Papa"
+            },
+            {
+               "offset" : 22,
+               "value" : "Taguig"
+            },
+            {
+               "offset" : 30,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "DMFB CAMP KARINGAL, Diliman, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ9eF5yB-3lzMRH1LUS-_8o2U",
+         "reference" : "ChIJ9eF5yB-3lzMRH1LUS-_8o2U",
+         "structured_formatting" : 
+         {
+            "main_text" : "DMFB CAMP KARINGAL",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Diliman, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "DMFB CAMP KARINGAL"
+            },
+            {
+               "offset" : 20,
+               "value" : "Diliman"
+            },
+            {
+               "offset" : 29,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 42,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 56,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "DMF Island Resort, Governor Generoso, Davao Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJPdJpZhYj-jIR_Rpvq9GU0_0",
+         "reference" : "ChIJPdJpZhYj-jIR_Rpvq9GU0_0",
+         "structured_formatting" : 
+         {
+            "main_text" : "DMF Island Resort",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Governor Generoso, Davao Oriental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "DMF Island Resort"
+            },
+            {
+               "offset" : 19,
+               "value" : "Governor Generoso"
+            },
+            {
+               "offset" : 38,
+               "value" : "Davao Oriental"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "lodging",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "DMFB-SPD MUNTINLUPA Forward Base, Muntinlupa, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJj_FIQwDRlzMRxbuzZrBUQ-Y",
+         "reference" : "ChIJj_FIQwDRlzMRxbuzZrBUQ-Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "DMFB-SPD MUNTINLUPA Forward Base",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Muntinlupa, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "DMFB-SPD MUNTINLUPA Forward Base"
+            },
+            {
+               "offset" : 34,
+               "value" : "Muntinlupa"
+            },
+            {
+               "offset" : 46,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "DMF Drift Philippines, Col. Bonny Serrano Avenue, Project 4, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJIWUHs_O3lzMRmtiNJmMcDJQ",
+         "reference" : "ChIJIWUHs_O3lzMRmtiNJmMcDJQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "DMF Drift Philippines",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Col. Bonny Serrano Avenue, Project 4, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "DMF Drift Philippines"
+            },
+            {
+               "offset" : 23,
+               "value" : "Col. Bonny Serrano Avenue"
+            },
+            {
+               "offset" : 50,
+               "value" : "Project 4"
+            },
+            {
+               "offset" : 61,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 74,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 88,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "car_repair",
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

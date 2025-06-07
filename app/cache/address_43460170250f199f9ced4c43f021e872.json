@@ -2,60 +2,6 @@
    "predictions" : 
    [
       {
-         "description" : "Colegio de San Juan de Letran Calamba, Bucal Bypass Road, Calamba, Laguna, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 10,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
-         "reference" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
-         "structured_formatting" : 
-         {
-            "main_text" : "Colegio de San Juan de Letran Calamba",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 10,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Bucal Bypass Road, Calamba, Laguna, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Colegio de San Juan de Letran Calamba"
-            },
-            {
-               "offset" : 39,
-               "value" : "Bucal Bypass Road"
-            },
-            {
-               "offset" : 58,
-               "value" : "Calamba"
-            },
-            {
-               "offset" : 67,
-               "value" : "Laguna"
-            },
-            {
-               "offset" : 75,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "school",
-            "university",
-            "point_of_interest",
-            "establishment"
-         ]
-      },
-      {
          "description" : "Colegio de Muntinlupa, Mayor J.Posadas Avenue, Muntinlupa, Metro Manila, Philippines",
          "matched_substrings" : 
          [
@@ -98,6 +44,59 @@
             },
             {
                "offset" : 73,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "university",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Colegio De Sebastian Pampanga Incorporated, MacArthur Highway, San Fernando, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
+         "reference" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio De Sebastian Pampanga Incorporated",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "MacArthur Highway, San Fernando, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio De Sebastian Pampanga Incorporated"
+            },
+            {
+               "offset" : 44,
+               "value" : "MacArthur Highway"
+            },
+            {
+               "offset" : 63,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 77,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 87,
                "value" : "Philippines"
             }
          ],
@@ -156,14 +155,14 @@
          ],
          "types" : 
          [
-            "university",
-            "point_of_interest",
             "establishment",
-            "school"
+            "school",
+            "point_of_interest",
+            "university"
          ]
       },
       {
-         "description" : "Colegio De Sebastian Pampanga Incorporated, MacArthur Highway, San Fernando, Pampanga, Philippines",
+         "description" : "Colegio de San Juan de Letran Calamba, Bucal Bypass Road, Calamba, Laguna, Philippines",
          "matched_substrings" : 
          [
             {
@@ -171,11 +170,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
-         "reference" : "ChIJH4ld_tz2ljMRQeWXo9CrNbk",
+         "place_id" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
+         "reference" : "ChIJ2WIuKOFjvTMRTXhW8dkmZp0",
          "structured_formatting" : 
          {
-            "main_text" : "Colegio De Sebastian Pampanga Incorporated",
+            "main_text" : "Colegio de San Juan de Letran Calamba",
             "main_text_matched_substrings" : 
             [
                {
@@ -183,36 +182,37 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "MacArthur Highway, San Fernando, Pampanga, Philippines"
+            "secondary_text" : "Bucal Bypass Road, Calamba, Laguna, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Colegio De Sebastian Pampanga Incorporated"
+               "value" : "Colegio de San Juan de Letran Calamba"
             },
             {
-               "offset" : 44,
-               "value" : "MacArthur Highway"
+               "offset" : 39,
+               "value" : "Bucal Bypass Road"
             },
             {
-               "offset" : 63,
-               "value" : "San Fernando"
+               "offset" : 58,
+               "value" : "Calamba"
             },
             {
-               "offset" : 77,
-               "value" : "Pampanga"
+               "offset" : 67,
+               "value" : "Laguna"
             },
             {
-               "offset" : 87,
+               "offset" : 75,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "point_of_interest",
             "establishment",
-            "university"
+            "university",
+            "point_of_interest",
+            "school"
          ]
       },
       {
@@ -264,8 +264,8 @@
          "types" : 
          [
             "university",
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       }
    ],

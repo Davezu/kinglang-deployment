@@ -1,0 +1,290 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "National Museum, Padre Burgos Avenue, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJa5tW0CPKlzMRKuDqk7sMx88",
+         "reference" : "ChIJa5tW0CPKlzMRKuDqk7sMx88",
+         "structured_formatting" : 
+         {
+            "main_text" : "National Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Padre Burgos Avenue, Ermita, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "National Museum"
+            },
+            {
+               "offset" : 17,
+               "value" : "Padre Burgos Avenue"
+            },
+            {
+               "offset" : 38,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 46,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 54,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 68,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "tourist_attraction",
+            "museum",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "National Museum of Natural History, Teodoro F. Valencia Circle, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAZFEnybKlzMRzVWj2vJ_B7M",
+         "reference" : "ChIJAZFEnybKlzMRzVWj2vJ_B7M",
+         "structured_formatting" : 
+         {
+            "main_text" : "National Museum of Natural History",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Teodoro F. Valencia Circle, Ermita, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "National Museum of Natural History"
+            },
+            {
+               "offset" : 36,
+               "value" : "Teodoro F. Valencia Circle"
+            },
+            {
+               "offset" : 64,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 72,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 80,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 94,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "museum",
+            "establishment",
+            "tourist_attraction",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "National Museum of Anthropology, Teodoro F. Valencia Circle, Ermita, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJTW9nTG_JlzMReyKTDBcZvNA",
+         "reference" : "ChIJTW9nTG_JlzMReyKTDBcZvNA",
+         "structured_formatting" : 
+         {
+            "main_text" : "National Museum of Anthropology",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Teodoro F. Valencia Circle, Ermita, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "National Museum of Anthropology"
+            },
+            {
+               "offset" : 33,
+               "value" : "Teodoro F. Valencia Circle"
+            },
+            {
+               "offset" : 61,
+               "value" : "Ermita"
+            },
+            {
+               "offset" : 69,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 77,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 91,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "museum",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "National Museum of the Philippines - Cebu, A. Pigafetta Street, Cebu City, Cebu, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZW5_y-abqTMRO1ZYVTbD6mE",
+         "reference" : "ChIJZW5_y-abqTMRO1ZYVTbD6mE",
+         "structured_formatting" : 
+         {
+            "main_text" : "National Museum of the Philippines - Cebu",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "A. Pigafetta Street, Cebu City, Cebu, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "National Museum of the Philippines - Cebu"
+            },
+            {
+               "offset" : 43,
+               "value" : "A. Pigafetta Street"
+            },
+            {
+               "offset" : 64,
+               "value" : "Cebu City"
+            },
+            {
+               "offset" : 75,
+               "value" : "Cebu"
+            },
+            {
+               "offset" : 81,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "museum",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "National Museum of the Philippines - Davao, Palma Gil St, Poblacion District, Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 13,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJq5RWCQBt-TIROICJqqioetc",
+         "reference" : "ChIJq5RWCQBt-TIROICJqqioetc",
+         "structured_formatting" : 
+         {
+            "main_text" : "National Museum of the Philippines - Davao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 13,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Palma Gil St, Poblacion District, Davao City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "National Museum of the Philippines - Davao"
+            },
+            {
+               "offset" : 44,
+               "value" : "Palma Gil St"
+            },
+            {
+               "offset" : 58,
+               "value" : "Poblacion District"
+            },
+            {
+               "offset" : 78,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 90,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 105,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "museum",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

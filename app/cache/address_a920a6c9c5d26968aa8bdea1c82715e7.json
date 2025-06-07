@@ -1,0 +1,259 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Egypt Embassy of the Arab Republic of Egypt, Legazpi Street, Legazpi Village, Makati, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwYP_gg7JlzMR6LRUUYkAVH0",
+         "reference" : "ChIJwYP_gg7JlzMR6LRUUYkAVH0",
+         "structured_formatting" : 
+         {
+            "main_text" : "Egypt Embassy of the Arab Republic of Egypt",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Legazpi Street, Legazpi Village, Makati, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Egypt Embassy of the Arab Republic of Egypt"
+            },
+            {
+               "offset" : 45,
+               "value" : "Legazpi Street"
+            },
+            {
+               "offset" : 61,
+               "value" : "Legazpi Village"
+            },
+            {
+               "offset" : 78,
+               "value" : "Makati"
+            },
+            {
+               "offset" : 86,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 100,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "embassy"
+         ]
+      },
+      {
+         "description" : "Egypt Street, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjFFZ3lwdCBTdHJlZXQsIE1hcmlraW5hLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJh3EX_I25lzMRuXSERZv2idkSFAoSCfkAeneiuZczEcYvoSn0yDZt",
+         "reference" : "EjFFZ3lwdCBTdHJlZXQsIE1hcmlraW5hLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJh3EX_I25lzMRuXSERZv2idkSFAoSCfkAeneiuZczEcYvoSn0yDZt",
+         "structured_formatting" : 
+         {
+            "main_text" : "Egypt Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Egypt Street"
+            },
+            {
+               "offset" : 14,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 24,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Egypt, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EihFZ3lwdCwgTWFuaWxhLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJXUwxxAHPlzMRS_As8kCOzHgSFAoSCYvDHlcDypczER_BaRB11dFp",
+         "reference" : "EihFZ3lwdCwgTWFuaWxhLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJXUwxxAHPlzMRS_As8kCOzHgSFAoSCYvDHlcDypczER_BaRB11dFp",
+         "structured_formatting" : 
+         {
+            "main_text" : "Egypt",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Egypt"
+            },
+            {
+               "offset" : 7,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 15,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 29,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Egypt, Taytay, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EiFFZ3lwdCwgVGF5dGF5LCBSaXphbCwgUGhpbGlwcGluZXMiLiosChQKEgm9lAMQrceXMxHZ6WrXMrH6txIUChIJEyjIMBvHlzMRgMVlrgIj4PU",
+         "reference" : "EiFFZ3lwdCwgVGF5dGF5LCBSaXphbCwgUGhpbGlwcGluZXMiLiosChQKEgm9lAMQrceXMxHZ6WrXMrH6txIUChIJEyjIMBvHlzMRgMVlrgIj4PU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Egypt",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Taytay, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Egypt"
+            },
+            {
+               "offset" : 7,
+               "value" : "Taytay"
+            },
+            {
+               "offset" : 15,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 22,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Egypt Street, Doña Soledad Avenue, Parañaque, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJrxK1WADPlzMRgi_aF2zkATY",
+         "reference" : "ChIJrxK1WADPlzMRgi_aF2zkATY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Egypt Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Doña Soledad Avenue, Parañaque, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Egypt Street"
+            },
+            {
+               "offset" : 14,
+               "value" : "Doña Soledad Avenue"
+            },
+            {
+               "offset" : 35,
+               "value" : "Parañaque"
+            },
+            {
+               "offset" : 46,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 60,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

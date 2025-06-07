@@ -867,15 +867,15 @@ function showBookingDetails(bookingId) {
                         <button class="btn btn-sm btn-outline-danger cancel-booking-modal" data-booking-id="${booking.booking_id}" data-user-id="${booking.user_id}">
                             <i class="bi bi-x-circle"></i> Cancel Booking
                         </button>
+                        <button class="btn btn-sm btn-outline-success view-contract" data-booking-id="${booking.booking_id}">
+                            <i class="bi bi-file-earmark-text"></i> Contract
+                        </button>
                     ` : ''}
                     
                     <button class="btn btn-sm btn-outline-primary view-invoice" data-booking-id="${booking.booking_id}">
                         <i class="bi bi-file-earmark-text"></i> Invoice
                     </button>
                     
-                    <button class="btn btn-sm btn-outline-success view-contract" data-booking-id="${booking.booking_id}">
-                        <i class="bi bi-file-earmark-text"></i> Contract
-                    </button>
                 </div>
             </div>
         `;

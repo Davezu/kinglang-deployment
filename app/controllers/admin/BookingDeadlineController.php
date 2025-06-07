@@ -28,12 +28,14 @@ class BookingDeadlineController {
                 FROM bookings b
                 JOIN users u ON b.user_id = u.user_id
                 WHERE b.status = 'Confirmed' 
+                  AND b.is_rebooked = 0
+                  AND b.is_rebooking = 0
                   AND b.payment_status IN ('Unpaid')
                   AND b.payment_deadline < CURDATE()
                   AND NOT EXISTS (
                       SELECT 1 FROM canceled_trips ct 
                       WHERE ct.booking_id = b.booking_id
-                  )
+                  ) 
             ");
             $stmt->execute();
             $pastDueBookings = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -1,0 +1,78 @@
+{
+   "destination_addresses" : 
+   [
+      "Maligaya St, Quezon City, Metro Manila, Philippines",
+      "12 Fuschia St, Novaliches, Quezon City, Metro Manila, Philippines"
+   ],
+   "origin_addresses" : 
+   [
+      "12 Fuschia St, Novaliches, Quezon City, Metro Manila, Philippines",
+      "Maligaya St, Quezon City, Metro Manila, Philippines"
+   ],
+   "rows" : 
+   [
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "13.0 km",
+                  "value" : 12952
+               },
+               "duration" : 
+               {
+                  "text" : "43 mins",
+                  "value" : 2583
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            }
+         ]
+      },
+      {
+         "elements" : 
+         [
+            {
+               "distance" : 
+               {
+                  "text" : "1 m",
+                  "value" : 0
+               },
+               "duration" : 
+               {
+                  "text" : "1 min",
+                  "value" : 0
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : 
+               {
+                  "text" : "17.8 km",
+                  "value" : 17750
+               },
+               "duration" : 
+               {
+                  "text" : "43 mins",
+                  "value" : 2602
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

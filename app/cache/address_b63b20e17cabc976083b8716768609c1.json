@@ -1,0 +1,274 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Intramuros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ--F1Ez3KlzMRCLrAWKa_ngQ",
+         "reference" : "ChIJ--F1Ez3KlzMRCLrAWKa_ngQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Intramuros",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 12,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 20,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 34,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "sublocality",
+            "sublocality_level_1",
+            "political"
+         ]
+      },
+      {
+         "description" : "Intramuros, Intramuros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJBdFqWD3KlzMR1UOCEG4QzGU",
+         "reference" : "ChIJBdFqWD3KlzMR1UOCEG4QzGU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Intramuros",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Intramuros, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 12,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 24,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 32,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 46,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "Intramuros Walls, Intramuros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJq6qqVzvKlzMRezzgVjT7h7g",
+         "reference" : "ChIJq6qqVzvKlzMRezzgVjT7h7g",
+         "structured_formatting" : 
+         {
+            "main_text" : "Intramuros Walls",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Intramuros, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Intramuros Walls"
+            },
+            {
+               "offset" : 18,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 30,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 38,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 52,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Intramuros and Rizal’s Bagumbayan Light and Sound Museum, Victoria Street, Intramuros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJKQIAxzzKlzMRfYFMR_yMKs4",
+         "reference" : "ChIJKQIAxzzKlzMRfYFMR_yMKs4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Intramuros and Rizal’s Bagumbayan Light and Sound Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Victoria Street, Intramuros, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Intramuros and Rizal’s Bagumbayan Light and Sound Museum"
+            },
+            {
+               "offset" : 58,
+               "value" : "Victoria Street"
+            },
+            {
+               "offset" : 75,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 87,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 95,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 109,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "museum",
+            "establishment",
+            "tourist_attraction"
+         ]
+      },
+      {
+         "description" : "Intramuros Corporate Plaza, Magallanes Street, Intramuros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 10,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJZ_O05iLKlzMRJAejJiXKLok",
+         "reference" : "ChIJZ_O05iLKlzMRJAejJiXKLok",
+         "structured_formatting" : 
+         {
+            "main_text" : "Intramuros Corporate Plaza",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 10,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Magallanes Street, Intramuros, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Intramuros Corporate Plaza"
+            },
+            {
+               "offset" : 28,
+               "value" : "Magallanes Street"
+            },
+            {
+               "offset" : 47,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 59,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 67,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 81,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "premise",
+            "geocode"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

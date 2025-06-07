@@ -289,8 +289,8 @@ class BookingManagementModel {
             $stmt->execute([":booking_id" => $booking_id]);
 
             // Update the rebooking record to be a normal booking
-            $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooking = 0, status = 'Confirmed' WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $rebooking_id]);
+            $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooking = 0, status = 'Confirmed', payment_deadline =  :payment_deadline WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $rebooking_id, ":payment_deadline" => date('Y-m-d H:i:s', strtotime('+2 days'))]);
 
             // Update payments booking_id to the new booking_id based on the rebooking_id
             $stmt = $this->conn->prepare("UPDATE payments SET booking_id = :rebooking_id WHERE booking_id = :booking_id");
@@ -422,7 +422,7 @@ class BookingManagementModel {
     public function getBooking($booking_id) {
         try {
             $stmt = $this->conn->prepare("
-                SELECT b.*, u.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.email, u.contact_number, c.*
+                SELECT b.*, u.user_id, CONCAT(u.first_name, ' ', u.last_name) client_name, u.email, u.contact_number, c.*
                 FROM bookings b
                 JOIN users u ON b.user_id = u.user_id
                 JOIN booking_costs c ON b.booking_id = c.booking_id

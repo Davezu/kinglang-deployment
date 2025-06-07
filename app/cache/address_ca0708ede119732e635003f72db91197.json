@@ -47,8 +47,8 @@
          [
             "geocode",
             "sublocality",
-            "sublocality_level_1",
-            "political"
+            "political",
+            "sublocality_level_1"
          ]
       },
       {
@@ -99,60 +99,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
-         ]
-      },
-      {
-         "description" : "Intramuros Golf Club, Intramuros, Manila, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 5,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJK6yULT3KlzMRqLjdEP7VNLY",
-         "reference" : "ChIJK6yULT3KlzMRqLjdEP7VNLY",
-         "structured_formatting" : 
-         {
-            "main_text" : "Intramuros Golf Club",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 5,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Intramuros, Manila, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Intramuros Golf Club"
-            },
-            {
-               "offset" : 22,
-               "value" : "Intramuros"
-            },
-            {
-               "offset" : 34,
-               "value" : "Manila"
-            },
-            {
-               "offset" : 42,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 56,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -203,8 +151,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -259,7 +207,65 @@
          ],
          "types" : 
          [
-            "shopping_mall",
+            "point_of_interest",
+            "establishment",
+            "shopping_mall"
+         ]
+      },
+      {
+         "description" : "Intramuros and Rizal’s Bagumbayan Light and Sound Museum, Victoria Street, Intramuros, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJKQIAxzzKlzMRfYFMR_yMKs4",
+         "reference" : "ChIJKQIAxzzKlzMRfYFMR_yMKs4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Intramuros and Rizal’s Bagumbayan Light and Sound Museum",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Victoria Street, Intramuros, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Intramuros and Rizal’s Bagumbayan Light and Sound Museum"
+            },
+            {
+               "offset" : 58,
+               "value" : "Victoria Street"
+            },
+            {
+               "offset" : 75,
+               "value" : "Intramuros"
+            },
+            {
+               "offset" : 87,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 95,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 109,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "museum",
+            "tourist_attraction",
             "point_of_interest",
             "establishment"
          ]

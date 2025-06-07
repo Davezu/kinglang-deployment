@@ -42,8 +42,8 @@
          "types" : 
          [
             "geocode",
-            "political",
-            "locality"
+            "locality",
+            "political"
          ]
       },
       {
@@ -86,8 +86,8 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
+            "political",
             "locality"
          ]
       },
@@ -131,9 +131,9 @@
          ],
          "types" : 
          [
-            "political",
+            "geocode",
             "locality",
-            "geocode"
+            "political"
          ]
       },
       {
@@ -176,13 +176,13 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
+            "political",
             "locality"
          ]
       },
       {
-         "description" : "San Juan, Batangas, Philippines",
+         "description" : "Santo Tomas, Batangas, Philippines",
          "matched_substrings" : 
          [
             {
@@ -190,11 +190,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJp1auUQ87vTMR7nT-Ko_5AzU",
-         "reference" : "ChIJp1auUQ87vTMR7nT-Ko_5AzU",
+         "place_id" : "ChIJJXFRfrJovTMRjGJ0cjtbPb8",
+         "reference" : "ChIJJXFRfrJovTMRjGJ0cjtbPb8",
          "structured_formatting" : 
          {
-            "main_text" : "San Juan",
+            "main_text" : "Santo Tomas",
             "main_text_matched_substrings" : 
             [
                {
@@ -208,22 +208,22 @@
          [
             {
                "offset" : 0,
-               "value" : "San Juan"
+               "value" : "Santo Tomas"
             },
             {
-               "offset" : 10,
+               "offset" : 13,
                "value" : "Batangas"
             },
             {
-               "offset" : 20,
+               "offset" : 23,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
             "geocode",
-            "political",
-            "locality"
+            "locality",
+            "political"
          ]
       }
    ],

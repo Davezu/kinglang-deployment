@@ -15,15 +15,17 @@ require_client_auth(); // Use helper function
         /* Notification styling */
         .list-group {
             background-color: #fff;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
         
         .list-group-item {
-            transition: all 0.2s ease;
-            margin-bottom: 0.75rem;
-            border-radius: 0.375rem !important;
-            border: 1px solid rgba(0, 0, 0, 0.075);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            margin-bottom: 0.85rem;
+            border-radius: 0.5rem !important;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
         }
         
         .list-group-item:last-child {
@@ -31,14 +33,15 @@ require_client_auth(); // Use helper function
         }
         
         .list-group-item:hover {
-            background-color: rgba(25, 135, 84, 0.05);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            background-color: rgba(25, 135, 84, 0.03);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
         }
         
         .notification-item {
             border-left: 4px solid transparent;
-            padding: 1rem;
+            padding: 1.15rem;
+            position: relative;
         }
         
         .notification-item.unread {
@@ -46,32 +49,62 @@ require_client_auth(); // Use helper function
             background-color: rgba(25, 135, 84, 0.05);
         }
         
+        .notification-item.unread::after {
+            content: '';
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #198754;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 6px rgba(25, 135, 84, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(25, 135, 84, 0);
+            }
+        }
+        
         /* Icon colors and styling by notification type */
         .notification-icon {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             background-color: rgba(25, 135, 84, 0.1);
-            margin-right: 1rem;
+            margin-right: 1.25rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .list-group-item:hover .notification-icon {
+            transform: scale(1.05);
         }
         
         .notification-icon.success {
-            background-color: rgba(25, 135, 84, 0.1);
+            background-color: rgba(25, 135, 84, 0.15);
         }
         
         .notification-icon.danger {
-            background-color: rgba(220, 53, 69, 0.1);
+            background-color: rgba(220, 53, 69, 0.15);
         }
         
         .notification-icon.info {
-            background-color: rgba(13, 110, 253, 0.1);
+            background-color: rgba(13, 110, 253, 0.15);
         }
         
         .notification-icon.secondary {
-            background-color: rgba(108, 117, 125, 0.1);
+            background-color: rgba(108, 117, 125, 0.15);
         }
         
         .bi-check-circle-fill {
@@ -92,104 +125,160 @@ require_client_auth(); // Use helper function
         
         /* Clean notification styles */
         #notifications-list {
-            max-height: 600px;
+            max-height: 650px;
             overflow-y: auto;
-            padding: 0.5rem;
+            padding: 0.75rem;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(25, 135, 84, 0.3) rgba(0, 0, 0, 0.05);
+        }
+        
+        #notifications-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        #notifications-list::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+        }
+        
+        #notifications-list::-webkit-scrollbar-thumb {
+            background-color: rgba(25, 135, 84, 0.3);
+            border-radius: 10px;
         }
         
         .notification-time {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #6c757d;
+            display: flex;
+            align-items: center;
+        }
+        
+        .notification-badge {
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
         }
         
         /* Card styling */
         .card {
             border: none;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            height: 20vh;
+            height: auto;
+            min-height: 20vh;
+            transition: all 0.3s ease;
         }
         
         .card-header {
             background-color: #fff;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 1rem 1.25rem;
+            padding: 1.25rem 1.5rem;
         }
         
         .card-title {
             margin-bottom: 0;
             color: #198754;
-            font-weight: 600;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 0.5rem;
+            font-size: 1.25rem;
         }
 
         .card-footer {
             background-color: #fff;
             z-index: 1000;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 1rem 1.5rem;
         }
         
         .btn-outline-success {
             border-color: #198754;
             color: #198754;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
         
         .btn-outline-success:hover {
             background-color: #198754;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(25, 135, 84, 0.2);
         }
         
-        .btn-outline-primary {
-            border-color: #0d6efd;
-            color: #0d6efd;
+        .pagination {
+            gap: 0.25rem;
         }
         
-        .btn-outline-primary:hover {
-            background-color: #0d6efd;
-            color: white;
-        }
-        
-        /* Empty state styling */
-        #no-notifications-message {
-            padding: 3rem 1rem;
-        }
-        
-        #no-notifications-message i {
-            font-size: 3rem;
-            color: #d1d1d1;
-            margin-bottom: 1rem;
-        }
-        
-        #no-notifications-message p {
-            color: #6c757d;
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-        
-        /* Pagination styling */
-        .pagination .page-link {
-            color: #198754;
-            border-color: #e9ecef;
-        }
-        
-        .pagination .active .page-link {
+        .pagination .page-item.active .page-link {
             background-color: #198754;
             border-color: #198754;
+            box-shadow: 0 2px 5px rgba(25, 135, 84, 0.2);
+        }
+        
+        .pagination .page-link {
+            color: #198754;
+            border-radius: 0.375rem;
+            padding: 0.5rem 0.75rem;
+            transition: all 0.2s ease;
         }
         
         .pagination .page-link:hover {
             background-color: rgba(25, 135, 84, 0.1);
+            transform: translateY(-1px);
         }
         
         /* View details button styling */
         .view-details-btn {
             border-color: #198754;
             color: #198754;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            border-radius: 0.5rem;
+            padding: 0.375rem 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
         }
         
         .view-details-btn:hover {
             background-color: #198754;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(25, 135, 84, 0.2);
+        }
+        
+        /* Empty state styling */
+        .empty-state {
+            text-align: center;
+            padding: 2.5rem;
+            color: #6c757d;
+        }
+        
+        .empty-state-icon {
+            font-size: 3rem;
+            color: #adb5bd;
+            margin-bottom: 1rem;
+        }
+        
+        /* Animation for new notifications */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .notification-item {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        #no-notifications-message p {
+            color: #6c757d;
+            font-weight: 500;
         }
     </style>
     <title>Notifications</title>
@@ -211,10 +300,9 @@ require_client_auth(); // Use helper function
             <div class="card mt-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title">
-                        <i class="bi bi-bell-fill me-2"></i>All Notifications
+                        <i class="bi bi-bell-fill"></i>All Notifications
                     </h5>
                     <div>
-                        
                         <button id="markAllReadBtn" class="btn btn-sm btn-outline-success">
                             <i class="bi bi-check-all me-1"></i>Mark All Read
                         </button>
@@ -227,21 +315,21 @@ require_client_auth(); // Use helper function
                         <div id="notifications-list" class="list-group mb-3">
                             <!-- Notifications will be loaded here -->
                             <!-- Loading state -->
-                            <div class="list-group-item notification-item d-flex align-items-center justify-content-center p-4">
-                                <div class="text-center">
-                                    <div class="spinner-border text-success mb-3" role="status">
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div>
-                                    <p class="mb-0 fw-medium">Loading your notifications...</p>
+                            <div class="d-flex justify-content-center p-4">
+                                <div class="spinner-border text-success" role="status">
+                                    <span class="visually-hidden">Loading...</span>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- No notifications message -->
-                        <div id="no-notifications-message" class="text-center p-4" style="display: none;">
-                            <i class="bi bi-bell-slash fs-1 text-muted mb-3 d-block"></i>
-                            <p>You don't have any notifications yet</p>
-                            <button class="btn btn-outline-primary btn-sm mt-2" onclick="loadNotifications(1)">
+                        <div id="no-notifications-message" class="empty-state" style="display: none;">
+                            <div class="empty-state-icon">
+                                <i class="bi bi-bell-slash"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">No notifications yet</h5>
+                            <p class="mb-3">You don't have any notifications at the moment.</p>
+                            <button class="btn btn-sm btn-outline-success" onclick="loadNotifications()">
                                 <i class="bi bi-arrow-clockwise me-1"></i>Refresh
                             </button>
                         </div>
@@ -339,8 +427,10 @@ require_client_auth(); // Use helper function
                                             <div style="min-width: 0; word-wrap: break-word; overflow-wrap: break-word;">
                                                 <p class="mb-1 fw-semibold">${notification.message}</p>
                                                 <div class="d-flex align-items-center">
-                                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>${formattedDate}</small>
-                                                    <span class="ms-2 badge ${notification.is_read ? 'bg-secondary' : 'bg-success'} rounded-pill">
+                                                    <div class="notification-time">
+                                                        <i class="bi bi-clock me-1"></i>${formattedDate}
+                                                    </div>
+                                                    <span class="ms-2 badge notification-badge ${notification.is_read ? 'bg-secondary' : 'bg-success'} rounded-pill">
                                                         ${notification.is_read ? 'Read' : 'New'}
                                                     </span>
                                                 </div>
@@ -396,9 +486,9 @@ require_client_auth(); // Use helper function
                                     <i class="bi bi-exclamation-triangle text-danger fs-4"></i>
                                 </div>
                                 <div>
-                                    <h5 class="mb-1">Error loading notifications</h5>
-                                    <p class="mb-2">${error.message || 'An unexpected error occurred'}</p>
-                                    <button class="btn btn-sm btn-outline-primary" onclick="loadNotifications(${currentPage})">
+                                    <h5 class="mb-1 fw-bold">Error loading notifications</h5>
+                                    <p class="mb-3">${error.message || 'An unexpected error occurred'}</p>
+                                    <button class="btn btn-sm btn-outline-success" onclick="loadNotifications(${currentPage})">
                                         <i class="bi bi-arrow-clockwise me-1"></i>Try Again
                                     </button>
                                 </div>

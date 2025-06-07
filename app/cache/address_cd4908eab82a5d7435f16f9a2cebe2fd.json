@@ -1,0 +1,263 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Amdfi-Feffwap (Iv-A) Multi-Purpose Cooperative, National Road, Montalban, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ36rzHDyjlzMRrKeVL5zXNqY",
+         "reference" : "ChIJ36rzHDyjlzMRrKeVL5zXNqY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Amdfi-Feffwap (Iv-A) Multi-Purpose Cooperative",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "National Road, Montalban, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Amdfi-Feffwap (Iv-A) Multi-Purpose Cooperative"
+            },
+            {
+               "offset" : 48,
+               "value" : "National Road"
+            },
+            {
+               "offset" : 63,
+               "value" : "Montalban"
+            },
+            {
+               "offset" : 74,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 81,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "finance",
+            "point_of_interest",
+            "establishment",
+            "bank"
+         ]
+      },
+      {
+         "description" : "Amfana Street, Cagayan de Oro, Misamis Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjxBbWZhbmEgU3RyZWV0LCBDYWdheWFuIGRlIE9ybywgTWlzYW1pcyBPcmllbnRhbCwgUGhpbGlwcGluZXMiLiosChQKEgmVnK6B0oz_MhGMqYK_NI6uXRIUChIJgZ4Ogdny_zIRouJtSrjV3C4",
+         "reference" : "EjxBbWZhbmEgU3RyZWV0LCBDYWdheWFuIGRlIE9ybywgTWlzYW1pcyBPcmllbnRhbCwgUGhpbGlwcGluZXMiLiosChQKEgmVnK6B0oz_MhGMqYK_NI6uXRIUChIJgZ4Ogdny_zIRouJtSrjV3C4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Amfana Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Cagayan de Oro, Misamis Oriental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Amfana Street"
+            },
+            {
+               "offset" : 15,
+               "value" : "Cagayan de Oro"
+            },
+            {
+               "offset" : 31,
+               "value" : "Misamis Oriental"
+            },
+            {
+               "offset" : 49,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "AMF-Puyat Q Plaza, Marcos Highway Corner Imelda Avenue, Pasig, Rizal, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ-7ZWpji4lzMR7eVFfoL03Sc",
+         "reference" : "ChIJ-7ZWpji4lzMR7eVFfoL03Sc",
+         "structured_formatting" : 
+         {
+            "main_text" : "AMF-Puyat Q Plaza",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marcos Highway Corner Imelda Avenue, Pasig, Rizal, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "AMF-Puyat Q Plaza"
+            },
+            {
+               "offset" : 19,
+               "value" : "Marcos Highway Corner Imelda Avenue"
+            },
+            {
+               "offset" : 56,
+               "value" : "Pasig"
+            },
+            {
+               "offset" : 63,
+               "value" : "Rizal"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "bowling_alley",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Amful motorcycle parts, 16th Avenue, Marikina, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ34oaRgC5lzMR0g81vqZQM8Y",
+         "reference" : "ChIJ34oaRgC5lzMR0g81vqZQM8Y",
+         "structured_formatting" : 
+         {
+            "main_text" : "Amful motorcycle parts",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "16th Avenue, Marikina, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Amful motorcycle parts"
+            },
+            {
+               "offset" : 24,
+               "value" : "16th Avenue"
+            },
+            {
+               "offset" : 37,
+               "value" : "Marikina"
+            },
+            {
+               "offset" : 47,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 61,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "car_repair",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "AMF-Puyat Commonwealth, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJn_Z4V_-5lzMRSOaDE8xO94s",
+         "reference" : "ChIJn_Z4V_-5lzMRSOaDE8xO94s",
+         "structured_formatting" : 
+         {
+            "main_text" : "AMF-Puyat Commonwealth",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "AMF-Puyat Commonwealth"
+            },
+            {
+               "offset" : 24,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 37,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment",
+            "bowling_alley"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

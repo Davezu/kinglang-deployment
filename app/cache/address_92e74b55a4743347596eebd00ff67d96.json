@@ -45,10 +45,10 @@
          ],
          "types" : 
          [
-            "establishment",
+            "point_of_interest",
             "museum",
-            "tourist_attraction",
-            "point_of_interest"
+            "establishment",
+            "tourist_attraction"
          ]
       }
    ],
