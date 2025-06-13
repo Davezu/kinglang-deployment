@@ -156,8 +156,8 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
         
         /* Lighter modal backdrop */
         .modal-backdrop {
-            opacity: 0.1 !important;
-            background-color: rgba(0, 0, 0, 0.2);
+            opacity: 0.2 !important;
+            background-color: rgba(0, 0, 0, 0.3);
         }
         .modal-content {
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
@@ -215,12 +215,12 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                     <div class="mb-3">
                         <label for="role" class="form-label">Role</label>
                         <select class="form-select" id="role" name="role" required>
-                            <option value="Client">Client</option>
+                            <!-- <option value="Client">Client</option> -->
                             <option value="Admin">Admin</option>
                             <option value="Super Admin">Super Admin</option>
                         </select>
                     </div>
-                </div>
+                </div>  
 
                 <div class="modal-footer">
                     <div class="d-flex gap-2 w-100">

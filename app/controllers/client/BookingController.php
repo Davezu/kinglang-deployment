@@ -594,24 +594,6 @@ class BookingController {
         return filter_var($ip, FILTER_VALIDATE_IP) ?: '0.0.0.0';
     }
 
-    // public function findAvailableBuses() { // if the system will let the client select their prefered bus
-    //     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    //         $data = json_decode(file_get_contents("php://input"), true);
-    //         $date_of_tour = $data["date_of_tour"];
-    //         $number_of_days = $data["number_of_days"];     
-
-    //         $buses = $this->bookingModel->findAvailableBuses($date_of_tour, $number_of_days);
-
-    //         header("Content-Type: application/json");
-
-    //         if (!empty($buses)) {
-    //             echo json_encode(['success' => true, 'buses' => $buses]);
-    //         } else {
-    //             echo json_encode(['success' => false]);
-    //         }
-    //     }
-    // }
-
     public function getAllBookings() {
         $data = json_decode(file_get_contents("php://input"), true);
         $status = $data["status"];

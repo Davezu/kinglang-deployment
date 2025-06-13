@@ -1,0 +1,235 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJGWN3jYT0ljMR-Cbat4B4pVU",
+         "reference" : "ChIJGWN3jYT0ljMR-Cbat4B4pVU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pampanga",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 10,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_2",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Pampanga, City Of Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjNQYW1wYW5nYSwgQ2l0eSBPZiBNYW5pbGEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgmjjs-KyciXMxGA7INFpWgOqBIUChIJi8MeVwPKlzMRH8FpEHXV0Wk",
+         "reference" : "EjNQYW1wYW5nYSwgQ2l0eSBPZiBNYW5pbGEsIE1ldHJvIE1hbmlsYSwgUGhpbGlwcGluZXMiLiosChQKEgmjjs-KyciXMxGA7INFpWgOqBIUChIJi8MeVwPKlzMRH8FpEHXV0Wk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pampanga",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "City Of Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 10,
+               "value" : "City Of Manila"
+            },
+            {
+               "offset" : 26,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "route",
+            "geocode"
+         ]
+      },
+      {
+         "description" : "Pamplona, Camarines Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJrdBF13aKoTMR-BOy5aJO-40",
+         "reference" : "ChIJrdBF13aKoTMR-BOy5aJO-40",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pamplona",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Camarines Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pamplona"
+            },
+            {
+               "offset" : 10,
+               "value" : "Camarines Sur"
+            },
+            {
+               "offset" : 25,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "locality",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Pampang, Angeles City, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJLVwu1_TyljMRfu8ke_sCwZA",
+         "reference" : "ChIJLVwu1_TyljMRfu8ke_sCwZA",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pampang",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Angeles City, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pampang"
+            },
+            {
+               "offset" : 9,
+               "value" : "Angeles City"
+            },
+            {
+               "offset" : 23,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 33,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "sublocality",
+            "sublocality_level_2",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Pamplona, Negros Oriental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJWfT3R_SCrDMRARLJCeHA7HM",
+         "reference" : "ChIJWfT3R_SCrDMRARLJCeHA7HM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Pamplona",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Negros Oriental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Pamplona"
+            },
+            {
+               "offset" : 10,
+               "value" : "Negros Oriental"
+            },
+            {
+               "offset" : 27,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

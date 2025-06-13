@@ -15,6 +15,7 @@ $controllerClasses = [
         'SettingsController' => __DIR__ . "/../app/controllers/admin/SettingsController.php",
         'NotificationsController' => __DIR__ . "/../app/controllers/admin/NotificationsController.php",
         'AuditTrailController' => __DIR__ . "/../app/controllers/admin/AuditTrailController.php",
+        'BusManagementController' => __DIR__ . "/../app/controllers/admin/BusManagementController.php",
     ]
 ];
 
@@ -597,6 +598,46 @@ switch ($request) {
         require_once $controllerClasses['admin']['ReportController'];
         $controller = new ReportController();
         $controller->getDetailedBookingList();
+        break;
+    case "/admin/bus-management":
+        require_once $controllerClasses['admin']['BusManagementController'];
+        $controller = new BusManagementController();
+        $controller->showBusManagement();
+        break;
+    case "/admin/get-all-buses":
+        require_once $controllerClasses['admin']['BusManagementController'];
+        $controller = new BusManagementController();
+        $controller->getAllBuses();
+        break;
+    case "/admin/add-bus":
+        require_once $controllerClasses['admin']['BusManagementController'];
+        $controller = new BusManagementController();
+        $controller->addBus();
+        break;
+    case "/admin/update-bus":
+        require_once $controllerClasses['admin']['BusManagementController'];
+        $controller = new BusManagementController();
+        $controller->updateBus();
+        break;
+    case "/admin/delete-bus":
+        require_once $controllerClasses['admin']['BusManagementController'];
+        $controller = new BusManagementController();
+        $controller->deleteBus();
+        break;
+    case "/admin/get-bus-availability":
+        require_once $controllerClasses['admin']['BusManagementController'];
+        $controller = new BusManagementController();
+        $controller->getBusAvailability();
+        break;
+    case "/admin/get-bus-schedule":
+        require_once $controllerClasses['admin']['BusManagementController'];
+        $controller = new BusManagementController();
+        $controller->getBusSchedule();
+        break;
+    case "/admin/get-bus-stats":
+        require_once $controllerClasses['admin']['BusManagementController'];
+        $controller = new BusManagementController();
+        $controller->getBusStats();
         break;
 
     case "/admin/settings":

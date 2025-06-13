@@ -169,6 +169,31 @@ class UserManagementController {
             return;
         }
         
+        // Enhanced password validation
+        if (!preg_match('/[A-Z]/', $password)) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 'Password must contain at least one uppercase letter']);
+            return;
+        }
+        
+        if (!preg_match('/[a-z]/', $password)) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 'Password must contain at least one lowercase letter']);
+            return;
+        }
+        
+        if (!preg_match('/[0-9]/', $password)) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 'Password must contain at least one number']);
+            return;
+        }
+        
+        if (!preg_match('/[!@#$%^&*()_+\-=\[\]{};\':"\\|,.<>\/?]/', $password)) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 'Password must contain at least one special character']);
+            return;
+        }
+        
         // Validate role
         $validRoles = ['Client', 'Admin', 'Super Admin'];
         if (!in_array($role, $validRoles)) {
@@ -244,6 +269,33 @@ class UserManagementController {
             header('Content-Type: application/json');
             echo json_encode(['error' => 'Password must be at least 8 characters']);
             return;
+        }
+        
+        // Enhanced password validation (if password is provided)
+        if ($password !== null && !empty($password)) {
+            if (!preg_match('/[A-Z]/', $password)) {
+                header('Content-Type: application/json');
+                echo json_encode(['error' => 'Password must contain at least one uppercase letter']);
+                return;
+            }
+            
+            if (!preg_match('/[a-z]/', $password)) {
+                header('Content-Type: application/json');
+                echo json_encode(['error' => 'Password must contain at least one lowercase letter']);
+                return;
+            }
+            
+            if (!preg_match('/[0-9]/', $password)) {
+                header('Content-Type: application/json');
+                echo json_encode(['error' => 'Password must contain at least one number']);
+                return;
+            }
+            
+            if (!preg_match('/[!@#$%^&*()_+\-=\[\]{};\':"\\|,.<>\/?]/', $password)) {
+                header('Content-Type: application/json');
+                echo json_encode(['error' => 'Password must contain at least one special character']);
+                return;
+            }
         }
         
         // Validate role

@@ -257,6 +257,10 @@
                     <i class="bi bi-clipboard-data"></i>
                     <span class="menu-text">Reports</span>  
                 </a>
+                <a href="/admin/bus-management" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'bus-management' ? 'active' : ''; ?>">
+                    <i class="bi bi-bus-front"></i>
+                    <span class="menu-text">Buses</span>  
+                </a>
                 <a href="/admin/settings" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'settings' ? 'active' : ''; ?>">
                     <i class="bi bi-gear"></i>
                     <span class="menu-text">Settings</span>

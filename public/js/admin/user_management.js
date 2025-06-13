@@ -601,7 +601,25 @@ document.getElementById("addUserForm").addEventListener("submit", async function
         }
     }
     
-    // Password validation is handled separately
+    // Password validation check
+    const passwordInput = this.querySelector('input[name="password"]');
+    let passwordValid = true;
+    
+    if (passwordInput) {
+        const requirementsContainer = document.getElementById('passwordRequirements');
+        if (requirementsContainer) {
+            passwordValid = validatePassword(passwordInput, requirementsContainer, false);
+            if (!passwordValid) {
+                console.log('Password validation failed');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Password Error',
+                    text: 'Password does not meet the requirements. Please check all criteria.',
+                });
+                return;
+            }
+        }
+    }
     
     // Stop if validation failed
     if (!phoneValid) {
@@ -715,7 +733,25 @@ document.getElementById("editUserForm").addEventListener("submit", async functio
         }
     }
     
-    // Password validation is handled separately
+    // Password validation check - only if password field has a value (since it's optional in edit form)
+    const passwordInput = this.querySelector('input[name="password"]');
+    let passwordValid = true;
+    
+    if (passwordInput && passwordInput.value.trim() !== '') {
+        const requirementsContainer = document.getElementById('editPasswordRequirements');
+        if (requirementsContainer) {
+            passwordValid = validatePassword(passwordInput, requirementsContainer, true);
+            if (!passwordValid) {
+                console.log('Password validation failed');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Password Error',
+                    text: 'Password does not meet the requirements. Please check all criteria.',
+                });
+                return;
+            }
+        }
+    }
     
     // Stop if validation failed
     if (!phoneValid) {
