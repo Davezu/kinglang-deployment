@@ -33,14 +33,8 @@ class BookingController {
 
         // Check if we have a cached result
         $cacheFile = __DIR__ . "/../../cache/address_" . md5($address) . ".json";
-        $cacheExpiry = 60 * 60 * 24; // 24 hours in seconds
+        $cacheExpiry = 60 * 60 * 24 * 7; // 7 days in seconds (extended for fallback purposes)
         
-        if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheExpiry)) {
-            // Return cached result
-            echo file_get_contents($cacheFile);
-            return;
-        }
-
         // Modified URL to include more location types and session token for better results
         // Removed the types=address restriction to get all possible location types
         // Added sessiontoken parameter for better results
@@ -53,15 +47,36 @@ class BookingController {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 5); // 5 second timeout
         $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $curlError = curl_errno($ch);
         curl_close($ch);
-
-        // Cache the result
-        if (!is_dir(__DIR__ . "/../../cache")) {
-            mkdir(__DIR__ . "/../../cache", 0755, true);
+        
+        // Check if API call failed or returned an error
+        $apiCallFailed = $curlError || $httpCode >= 400 || empty($response);
+        $responseData = json_decode($response, true);
+        $apiReturnedError = !$apiCallFailed && isset($responseData['status']) && $responseData['status'] != 'OK';
+        
+        // If API call failed and we have a cached result, use that instead
+        if (($apiCallFailed || $apiReturnedError) && file_exists($cacheFile)) {
+            $cachedResponse = file_get_contents($cacheFile);
+            echo $cachedResponse;
+            return;
         }
-        file_put_contents($cacheFile, $response);
-
-        echo $response;
+        
+        // If API call was successful, cache the result
+        if (!$apiCallFailed && !$apiReturnedError) {
+            if (!is_dir(__DIR__ . "/../../cache")) {
+                mkdir(__DIR__ . "/../../cache", 0755, true);
+            }
+            file_put_contents($cacheFile, $response);
+            echo $response;
+        } else {
+            // API failed and no cache available
+            echo json_encode([
+                "status" => "FALLBACK_FAILED", 
+                "error_message" => "Unable to retrieve address data and no cached data available"
+            ]);
+        }
     }
 
     public function getDistance() {
@@ -93,13 +108,7 @@ class BookingController {
         // Check if we have a cached result
         $cacheKey = md5($originStr . $destinationStr);
         $cacheFile = __DIR__ . "/../../cache/distance_" . $cacheKey . ".json";
-        $cacheExpiry = 60 * 60 * 24; // 24 hours in seconds
-        
-        if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheExpiry)) {
-            // Return cached result
-            echo file_get_contents($cacheFile);
-            return;
-        }
+        $cacheExpiry = 60 * 60 * 24 * 7; // 7 days in seconds (extended for fallback purposes)
     
         $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=$originStr&destinations=$destinationStr&key=$apiKey";
     
@@ -109,27 +118,51 @@ class BookingController {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 5); // 5 second timeout
         $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $curlError = curl_errno($ch);
         curl_close($ch);
         
-        // Cache the result
-        if (!is_dir(__DIR__ . "/../../cache")) {
-            mkdir(__DIR__ . "/../../cache", 0755, true);
-        }
-        file_put_contents($cacheFile, $response);
+        // Check if API call failed or returned an error
+        $apiCallFailed = $curlError || $httpCode >= 400 || empty($response);
+        $responseData = json_decode($response, true);
+        $apiReturnedError = !$apiCallFailed && isset($responseData['status']) && $responseData['status'] != 'OK';
         
-        echo $response;
+        // If API call failed and we have a cached result, use that instead
+        if (($apiCallFailed || $apiReturnedError) && file_exists($cacheFile)) {
+            $cachedResponse = file_get_contents($cacheFile);
+            echo $cachedResponse;
+            return;
+        }
+        
+        // If API call was successful, cache the result
+        if (!$apiCallFailed && !$apiReturnedError) {
+            if (!is_dir(__DIR__ . "/../../cache")) {
+                mkdir(__DIR__ . "/../../cache", 0755, true);
+            }
+            file_put_contents($cacheFile, $response);
+            echo $response;
+        } else {
+            // API failed and no cache available
+            echo json_encode([
+                "status" => "FALLBACK_FAILED", 
+                "error_message" => "Unable to retrieve distance data and no cached data available"
+            ]);
+        }
     }
 
     public function getCoordinates($address, $apiKey) {
         // Check if we have a cached result
         $cacheKey = md5($address);
         $cacheFile = __DIR__ . "/../../cache/coordinates_" . $cacheKey . ".json";
-        $cacheExpiry = 60 * 60 * 24; // 24 hours in seconds
+        $cacheExpiry = 60 * 60 * 24 * 7; // 7 days in seconds (extended for fallback purposes)
         
-        if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheExpiry)) {
-            // Return cached result
+        if (file_exists($cacheFile)) {
+            // Return cached result if available (regardless of expiry when used as fallback)
             $cachedData = json_decode(file_get_contents($cacheFile), true);
-            return $cachedData;
+            // If we're not checking API first, return cached data immediately
+            if (time() - filemtime($cacheFile) < $cacheExpiry) {
+                return $cachedData;
+            }
         }
         
         $address = urlencode($address);
@@ -141,11 +174,22 @@ class BookingController {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 5); // 5 second timeout
         $geoResponse = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $curlError = curl_errno($ch);
         curl_close($ch);
+        
+        // Check if API call failed
+        $apiCallFailed = $curlError || $httpCode >= 400 || empty($geoResponse);
+        
+        // If API call failed and we have cached data, use that instead
+        if ($apiCallFailed && file_exists($cacheFile)) {
+            return json_decode(file_get_contents($cacheFile), true);
+        }
         
         $geoData = json_decode($geoResponse, true);
 
-        if ($geoData["status"] === "OK") {
+        // Check if geocoding was successful
+        if (!$apiCallFailed && isset($geoData["status"]) && $geoData["status"] === "OK") {
             $latitude = $geoData["results"][0]["geometry"]["location"]["lat"];
             $longitude = $geoData["results"][0]["geometry"]["location"]["lng"];
             $result = ["lat" => $latitude, "lng" => $longitude];
@@ -157,7 +201,11 @@ class BookingController {
             file_put_contents($cacheFile, json_encode($result));
             
             return $result;
-        } 
+        } else if (file_exists($cacheFile)) {
+            // If API returned error but we have cached data, use that
+            return json_decode(file_get_contents($cacheFile), true);
+        }
+        
         return null;
     }
 
@@ -177,7 +225,7 @@ class BookingController {
         // Check if we have a cached result for the entire route
         $cacheKey = md5($input["pickupPoint"] . $input["destination"] . json_encode($input["stops"] ?? []));
         $cacheFile = __DIR__ . "/../../cache/route_" . $cacheKey . ".json";
-        $cacheExpiry = 60 * 60 * 24; // 24 hours in seconds
+        $cacheExpiry = 60 * 60 * 24 * 7; // 7 days in seconds (extended for fallback purposes)
         
         if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheExpiry)) {
             // Return cached result
@@ -215,8 +263,15 @@ class BookingController {
 
         // If there are any invalid stops, return an error
         if (!empty($invalidStops)) {
+            // Check if we have a cached version we can use as fallback
+            if (file_exists($cacheFile)) {
+                echo file_get_contents($cacheFile);
+                return;
+            }
+            
             echo json_encode([
-                "error" => "Could not find coordinates for the following stops: " . implode(", ", $invalidStops)
+                "error" => "Could not find coordinates for the following stops: " . implode(", ", $invalidStops),
+                "status" => "FALLBACK_FAILED"
             ]);
             return;
         }
@@ -232,7 +287,16 @@ class BookingController {
             
             echo json_encode($result);
         } else {
-            echo json_encode(["error" => "Unable to get coordinates for the specified locations"]);
+            // Check if we have a cached version we can use as fallback
+            if (file_exists($cacheFile)) {
+                echo file_get_contents($cacheFile);
+                return;
+            }
+            
+            echo json_encode([
+                "error" => "Unable to get coordinates for the specified locations",
+                "status" => "FALLBACK_FAILED"
+            ]);
         }
     }
 
