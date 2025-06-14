@@ -36,9 +36,13 @@ class BusManagementModel {
      * @param string $name Bus name
      * @param string $capacity Bus capacity
      * @param string $status Bus status
+     * @param string $licensePlate Bus license plate
+     * @param string $model Bus model
+     * @param int $year Bus year
+     * @param string $lastMaintenance Last maintenance date (YYYY-MM-DD)
      * @return bool|string True on success or error message
      */
-    public function addBus($name, $capacity, $status) {
+    public function addBus($name, $capacity, $status, $licensePlate = null, $model = null, $year = null, $lastMaintenance = null) {
         try {
             // Check if bus with same name already exists
             $stmt = $this->conn->prepare("SELECT COUNT(*) FROM buses WHERE name = :name");
@@ -49,10 +53,15 @@ class BusManagementModel {
                 return "A bus with this name already exists.";
             }
             
-            $stmt = $this->conn->prepare("INSERT INTO buses (name, capacity, status) VALUES (:name, :capacity, :status)");
+            $stmt = $this->conn->prepare("INSERT INTO buses (name, capacity, status, license_plate, model, year, last_maintenance) 
+                                         VALUES (:name, :capacity, :status, :license_plate, :model, :year, :last_maintenance)");
             $stmt->bindParam(":name", $name);
             $stmt->bindParam(":capacity", $capacity);
             $stmt->bindParam(":status", $status);
+            $stmt->bindParam(":license_plate", $licensePlate);
+            $stmt->bindParam(":model", $model);
+            $stmt->bindParam(":year", $year, PDO::PARAM_INT);
+            $stmt->bindParam(":last_maintenance", $lastMaintenance);
             $result = $stmt->execute();
             
             if ($result) {
@@ -71,9 +80,13 @@ class BusManagementModel {
      * @param string $name Bus name
      * @param string $capacity Bus capacity
      * @param string $status Bus status
+     * @param string $licensePlate Bus license plate
+     * @param string $model Bus model
+     * @param int $year Bus year
+     * @param string $lastMaintenance Last maintenance date (YYYY-MM-DD)
      * @return bool|string True on success or error message
      */
-    public function updateBus($busId, $name, $capacity, $status) {
+    public function updateBus($busId, $name, $capacity, $status, $licensePlate = null, $model = null, $year = null, $lastMaintenance = null) {
         try {
             // Check if another bus with the same name exists (excluding this one)
             $stmt = $this->conn->prepare("SELECT COUNT(*) FROM buses WHERE name = :name AND bus_id != :bus_id");
@@ -85,11 +98,23 @@ class BusManagementModel {
                 return "Another bus with this name already exists.";
             }
             
-            $stmt = $this->conn->prepare("UPDATE buses SET name = :name, capacity = :capacity, status = :status WHERE bus_id = :bus_id");
+            $stmt = $this->conn->prepare("UPDATE buses SET 
+                                         name = :name, 
+                                         capacity = :capacity, 
+                                         status = :status,
+                                         license_plate = :license_plate,
+                                         model = :model,
+                                         year = :year,
+                                         last_maintenance = :last_maintenance
+                                         WHERE bus_id = :bus_id");
             $stmt->bindParam(":bus_id", $busId, PDO::PARAM_INT);
             $stmt->bindParam(":name", $name);
             $stmt->bindParam(":capacity", $capacity);
             $stmt->bindParam(":status", $status);
+            $stmt->bindParam(":license_plate", $licensePlate);
+            $stmt->bindParam(":model", $model);
+            $stmt->bindParam(":year", $year, PDO::PARAM_INT);
+            $stmt->bindParam(":last_maintenance", $lastMaintenance);
             $result = $stmt->execute();
             
             if ($result) {

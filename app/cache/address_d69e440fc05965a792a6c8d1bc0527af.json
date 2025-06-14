@@ -97,8 +97,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "university",
+            "point_of_interest",
             "establishment"
          ]
       },
@@ -146,10 +146,10 @@
          ],
          "types" : 
          [
-            "sublocality_level_2",
-            "geocode",
             "political",
-            "sublocality"
+            "geocode",
+            "sublocality",
+            "sublocality_level_2"
          ]
       },
       {
@@ -202,7 +202,7 @@
          ]
       },
       {
-         "description" : "Maligaya, Echague, Isabela, Philippines",
+         "description" : "Maligcong Rice Terraces, Bontoc, Mountain Province, Philippines",
          "matched_substrings" : 
          [
             {
@@ -210,11 +210,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJ9UQvsUGomjMRVZQdU43wJrs",
-         "reference" : "ChIJ9UQvsUGomjMRVZQdU43wJrs",
+         "place_id" : "ChIJzTVicuTNjzMRFkk8Knd9mWQ",
+         "reference" : "ChIJzTVicuTNjzMRFkk8Knd9mWQ",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya",
+            "main_text" : "Maligcong Rice Terraces",
             "main_text_matched_substrings" : 
             [
                {
@@ -222,33 +222,31 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Echague, Isabela, Philippines"
+            "secondary_text" : "Bontoc, Mountain Province, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligaya"
+               "value" : "Maligcong Rice Terraces"
             },
             {
-               "offset" : 10,
-               "value" : "Echague"
+               "offset" : 25,
+               "value" : "Bontoc"
             },
             {
-               "offset" : 19,
-               "value" : "Isabela"
+               "offset" : 33,
+               "value" : "Mountain Province"
             },
             {
-               "offset" : 28,
+               "offset" : 52,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "geocode",
-            "political",
-            "sublocality_level_2",
-            "sublocality"
+            "establishment",
+            "natural_feature"
          ]
       }
    ],

@@ -65,6 +65,10 @@ class BusManagementController {
         $name = trim($_POST['name'] ?? '');
         $capacity = trim($_POST['capacity'] ?? '49');
         $status = trim($_POST['status'] ?? 'Active');
+        $licensePlate = trim($_POST['license_plate'] ?? '');
+        $model = trim($_POST['model'] ?? '');
+        $year = !empty($_POST['year']) ? intval($_POST['year']) : null;
+        $lastMaintenance = trim($_POST['last_maintenance'] ?? '');
         
         // Validate input
         if (empty($name)) {
@@ -84,8 +88,20 @@ class BusManagementController {
             return;
         }
         
+        // Validate year if provided
+        if ($year !== null && ($year < 1900 || $year > date('Y') + 1)) {
+            echo json_encode(['success' => false, 'message' => 'Invalid year']);
+            return;
+        }
+        
+        // Validate last maintenance date if provided
+        if (!empty($lastMaintenance) && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $lastMaintenance)) {
+            echo json_encode(['success' => false, 'message' => 'Invalid maintenance date format. Use YYYY-MM-DD']);
+            return;
+        }
+        
         // Add bus
-        $result = $this->busModel->addBus($name, $capacity, $status);
+        $result = $this->busModel->addBus($name, $capacity, $status, $licensePlate, $model, $year, $lastMaintenance);
         
         if ($result === true) {
             // Log the action for audit trail
@@ -112,6 +128,10 @@ class BusManagementController {
         $name = trim($_POST['name'] ?? '');
         $capacity = trim($_POST['capacity'] ?? '49');
         $status = trim($_POST['status'] ?? 'Active');
+        $licensePlate = trim($_POST['license_plate'] ?? '');
+        $model = trim($_POST['model'] ?? '');
+        $year = !empty($_POST['year']) ? intval($_POST['year']) : null;
+        $lastMaintenance = trim($_POST['last_maintenance'] ?? '');
         
         // Validate input
         if ($busId <= 0) {
@@ -136,6 +156,18 @@ class BusManagementController {
             return;
         }
         
+        // Validate year if provided
+        if ($year !== null && ($year < 1900 || $year > date('Y') + 1)) {
+            echo json_encode(['success' => false, 'message' => 'Invalid year']);
+            return;
+        }
+        
+        // Validate last maintenance date if provided
+        if (!empty($lastMaintenance) && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $lastMaintenance)) {
+            echo json_encode(['success' => false, 'message' => 'Invalid maintenance date format. Use YYYY-MM-DD']);
+            return;
+        }
+        
         // Get original bus data for audit trail
         $originalBus = $this->busModel->getBusById($busId);
         if (!$originalBus) {
@@ -144,7 +176,7 @@ class BusManagementController {
         }
         
         // Update bus
-        $result = $this->busModel->updateBus($busId, $name, $capacity, $status);
+        $result = $this->busModel->updateBus($busId, $name, $capacity, $status, $licensePlate, $model, $year, $lastMaintenance);
         
         if ($result === true) {
             // Log the action for audit trail
@@ -152,6 +184,10 @@ class BusManagementController {
             if ($originalBus['name'] != $name) $changes[] = "name from '{$originalBus['name']}' to '{$name}'";
             if ($originalBus['capacity'] != $capacity) $changes[] = "capacity from '{$originalBus['capacity']}' to '{$capacity}'";
             if ($originalBus['status'] != $status) $changes[] = "status from '{$originalBus['status']}' to '{$status}'";
+            if ($originalBus['license_plate'] != $licensePlate) $changes[] = "license plate from '{$originalBus['license_plate']}' to '{$licensePlate}'";
+            if ($originalBus['model'] != $model) $changes[] = "model from '{$originalBus['model']}' to '{$model}'";
+            if ($originalBus['year'] != $year) $changes[] = "year from '{$originalBus['year']}' to '{$year}'";
+            if ($originalBus['last_maintenance'] != $lastMaintenance) $changes[] = "last maintenance from '{$originalBus['last_maintenance']}' to '{$lastMaintenance}'";
             
             $this->logAction('update', 'Updated bus #' . $busId . ': ' . implode(', ', $changes));
             

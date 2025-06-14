@@ -73,6 +73,7 @@ require_once __DIR__ . "/../../controllers/admin/BusManagementController.php";
                 </div>
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
+            <hr>
             
             <!-- Stats Dashboard Cards -->
             <div class="row stats-dashboard g-2 mt-3">
@@ -126,7 +127,7 @@ require_once __DIR__ . "/../../controllers/admin/BusManagementController.php";
             <!-- Main Content -->
             <div class="row mt-3">
                 <!-- Bus List -->
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div class="card border-0 shadow-sm">
                         <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
                             <h5 class="mb-0"><i class="bi bi-list-ul text-success me-2"></i>Bus Fleet</h5>
@@ -146,14 +147,18 @@ require_once __DIR__ . "/../../controllers/admin/BusManagementController.php";
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
+                                            <th>License Plate</th>
+                                            <th>Model</th>
+                                            <th>Year</th>
                                             <th>Capacity</th>
+                                            <th>Last Maintenance</th>
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody id="busTableBody">
                                         <tr>
-                                            <td colspan="5" class="text-center py-3">Loading buses...</td>
+                                            <td colspan="9" class="text-center py-3">Loading buses...</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -163,7 +168,7 @@ require_once __DIR__ . "/../../controllers/admin/BusManagementController.php";
                 </div>
                 
                 <!-- Bus Statistics -->
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="card border-0 shadow-sm mb-3">
                         <div class="card-header bg-white py-3">
                             <h5 class="mb-0"><i class="bi bi-graph-up text-success me-2"></i>Most Used Buses</h5>
@@ -242,6 +247,22 @@ require_once __DIR__ . "/../../controllers/admin/BusManagementController.php";
                             <input type="number" class="form-control" id="busCapacity" name="capacity" min="1" max="99" value="49" required>
                         </div>
                         <div class="mb-3">
+                            <label for="busLicensePlate" class="form-label">License Plate</label>
+                            <input type="text" class="form-control" id="busLicensePlate" name="license_plate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="busModel" class="form-label">Model</label>
+                            <input type="text" class="form-control" id="busModel" name="model">
+                        </div>
+                        <div class="mb-3">
+                            <label for="busYear" class="form-label">Year</label>
+                            <input type="number" class="form-control" id="busYear" name="year" min="1900" max="2100">
+                        </div>
+                        <div class="mb-3">
+                            <label for="busLastMaintenance" class="form-label">Last Maintenance Date</label>
+                            <input type="date" class="form-control" id="busLastMaintenance" name="last_maintenance">
+                        </div>
+                        <div class="mb-3">
                             <label for="busStatus" class="form-label">Status</label>
                             <select class="form-select" id="busStatus" name="status" required>
                                 <option value="Active">Active</option>
@@ -276,6 +297,22 @@ require_once __DIR__ . "/../../controllers/admin/BusManagementController.php";
                         <div class="mb-3">
                             <label for="editBusCapacity" class="form-label">Capacity</label>
                             <input type="number" class="form-control" id="editBusCapacity" name="capacity" min="1" max="99" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editBusLicensePlate" class="form-label">License Plate</label>
+                            <input type="text" class="form-control" id="editBusLicensePlate" name="license_plate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editBusModel" class="form-label">Model</label>
+                            <input type="text" class="form-control" id="editBusModel" name="model">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editBusYear" class="form-label">Year</label>
+                            <input type="number" class="form-control" id="editBusYear" name="year" min="1900" max="2100">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editBusLastMaintenance" class="form-label">Last Maintenance Date</label>
+                            <input type="date" class="form-control" id="editBusLastMaintenance" name="last_maintenance">
                         </div>
                         <div class="mb-3">
                             <label for="editBusStatus" class="form-label">Status</label>

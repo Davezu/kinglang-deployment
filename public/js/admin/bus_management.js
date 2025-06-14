@@ -61,7 +61,7 @@ function renderBusTable(buses) {
     if (buses.length === 0) {
         tableBody.innerHTML = `
             <tr>
-                <td colspan="5" class="text-center">No buses found</td>
+                <td colspan="9" class="text-center">No buses found</td>
             </tr>
         `;
         return;
@@ -69,20 +69,32 @@ function renderBusTable(buses) {
     
     buses.forEach(bus => {
         const statusClass = bus.status === 'Active' ? 'bg-success' : 'bg-warning';
+        const formattedMaintenance = bus.last_maintenance ? formatDate(bus.last_maintenance) : '-';
         
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${bus.bus_id}</td>
             <td>${bus.name}</td>
+            <td>${bus.license_plate || '-'}</td>
+            <td>${bus.model || '-'}</td>
+            <td>${bus.year || '-'}</td>
             <td>${bus.capacity}</td>
+            <td>${formattedMaintenance}</td>
             <td><span class="badge ${statusClass}">${bus.status}</span></td>
             <td>
                 <div class="actions-compact">
                     <button class="btn btn-sm btn-outline-primary view-schedule-btn" data-bus-id="${bus.bus_id}" data-bus-name="${bus.name}">
                         <i class="bi bi-calendar3"></i> Schedule
                     </button>
-                    <button class="btn btn-sm btn-outline-success edit-bus-btn" data-bus-id="${bus.bus_id}" data-bus-name="${bus.name}" 
-                        data-capacity="${bus.capacity}" data-status="${bus.status}">
+                    <button class="btn btn-sm btn-outline-success edit-bus-btn" 
+                        data-bus-id="${bus.bus_id}" 
+                        data-bus-name="${bus.name}" 
+                        data-capacity="${bus.capacity}" 
+                        data-status="${bus.status}"
+                        data-license-plate="${bus.license_plate || ''}"
+                        data-model="${bus.model || ''}"
+                        data-year="${bus.year || ''}"
+                        data-last-maintenance="${bus.last_maintenance || ''}">
                         <i class="bi bi-pencil"></i> Edit
                     </button>
                     <button class="btn btn-sm btn-outline-danger delete-bus-btn" data-bus-id="${bus.bus_id}" data-bus-name="${bus.name}">
@@ -119,8 +131,12 @@ function addBusTableEventListeners() {
             const busName = this.getAttribute('data-bus-name');
             const capacity = this.getAttribute('data-capacity');
             const status = this.getAttribute('data-status');
+            const licensePlate = this.getAttribute('data-license-plate');
+            const model = this.getAttribute('data-model');
+            const year = this.getAttribute('data-year');
+            const lastMaintenance = this.getAttribute('data-last-maintenance');
             
-            openEditBusModal(busId, busName, capacity, status);
+            openEditBusModal(busId, busName, capacity, status, licensePlate, model, year, lastMaintenance);
         });
     });
     
@@ -275,23 +291,29 @@ function openAddBusModal() {
 
 /**
  * Open the edit bus modal
- * @param {number} busId Bus ID
+ * @param {string} busId Bus ID
  * @param {string} busName Bus name
  * @param {string} capacity Bus capacity
  * @param {string} status Bus status
+ * @param {string} licensePlate Bus license plate
+ * @param {string} model Bus model
+ * @param {string} year Bus year
+ * @param {string} lastMaintenance Last maintenance date
  */
-function openEditBusModal(busId, busName, capacity, status) {
-    const modal = document.getElementById('editBusModal');
-    
+function openEditBusModal(busId, busName, capacity, status, licensePlate = '', model = '', year = '', lastMaintenance = '') {
     // Set form values
-    modal.querySelector('#editBusId').value = busId;
-    modal.querySelector('#editBusName').value = busName;
-    modal.querySelector('#editBusCapacity').value = capacity;
-    modal.querySelector('#editBusStatus').value = status;
+    document.getElementById('editBusId').value = busId;
+    document.getElementById('editBusName').value = busName;
+    document.getElementById('editBusCapacity').value = capacity;
+    document.getElementById('editBusStatus').value = status;
+    document.getElementById('editBusLicensePlate').value = licensePlate;
+    document.getElementById('editBusModel').value = model;
+    document.getElementById('editBusYear').value = year;
+    document.getElementById('editBusLastMaintenance').value = lastMaintenance;
     
-    // Show modal
-    const bsModal = new bootstrap.Modal(modal);
-    bsModal.show();
+    // Open modal
+    const modal = new bootstrap.Modal(document.getElementById('editBusModal'));
+    modal.show();
 }
 
 /**
@@ -517,8 +539,11 @@ function renderBusAvailability(availability) {
  */
 function submitAddBusForm() {
     const form = document.getElementById('addBusForm');
+    if (!form) return;
+    
     const formData = new FormData(form);
     
+    // Send AJAX request
     fetch('/admin/add-bus', {
         method: 'POST',
         body: formData
@@ -527,17 +552,18 @@ function submitAddBusForm() {
     .then(data => {
         if (data.success) {
             // Close modal
-            bootstrap.Modal.getInstance(document.getElementById('addBusModal')).hide();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addBusModal'));
+            modal.hide();
             
             // Reset form
             form.reset();
             
-            // Show success message
-            showAlert('success', 'Success', data.message);
-            
             // Reload buses
             loadBuses();
             loadBusStats();
+            
+            // Show success message
+            showAlert('success', 'Success', data.message);
         } else {
             showAlert('error', 'Error', data.message);
         }
@@ -553,8 +579,11 @@ function submitAddBusForm() {
  */
 function submitEditBusForm() {
     const form = document.getElementById('editBusForm');
+    if (!form) return;
+    
     const formData = new FormData(form);
     
+    // Send AJAX request
     fetch('/admin/update-bus', {
         method: 'POST',
         body: formData
@@ -563,14 +592,15 @@ function submitEditBusForm() {
     .then(data => {
         if (data.success) {
             // Close modal
-            bootstrap.Modal.getInstance(document.getElementById('editBusModal')).hide();
-            
-            // Show success message
-            showAlert('success', 'Success', data.message);
+            const modal = bootstrap.Modal.getInstance(document.getElementById('editBusModal'));
+            modal.hide();
             
             // Reload buses
             loadBuses();
             loadBusStats();
+            
+            // Show success message
+            showAlert('success', 'Success', data.message);
         } else {
             showAlert('error', 'Error', data.message);
         }

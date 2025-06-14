@@ -139,8 +139,8 @@
          "types" : 
          [
             "point_of_interest",
-            "local_government_office",
-            "establishment"
+            "establishment",
+            "local_government_office"
          ]
       },
       {
@@ -187,8 +187,8 @@
          ],
          "types" : 
          [
-            "establishment",
             "point_of_interest",
+            "establishment",
             "university"
          ]
       },
@@ -236,10 +236,10 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "secondary_school",
             "school",
-            "establishment"
+            "secondary_school",
+            "establishment",
+            "point_of_interest"
          ]
       }
    ],

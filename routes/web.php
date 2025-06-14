@@ -16,6 +16,7 @@ $controllerClasses = [
         'NotificationsController' => __DIR__ . "/../app/controllers/admin/NotificationsController.php",
         'AuditTrailController' => __DIR__ . "/../app/controllers/admin/AuditTrailController.php",
         'BusManagementController' => __DIR__ . "/../app/controllers/admin/BusManagementController.php",
+        'DriverManagementController' => __DIR__ . "/../app/controllers/admin/DriverManagementController.php",
     ]
 ];
 
@@ -24,10 +25,12 @@ $controllers = [];
 
 // Get current request
 $request = $_SERVER["REQUEST_URI"];
-$segments = explode("/", trim($request, "/"));
+
+// Remove query string for route matching
+$requestPath = parse_url($request, PHP_URL_PATH);
 
 // Special case for reset password
-if (preg_match("/reset-password\/([a-zA-Z0-9]+)/", $request, $matches)) {
+if (preg_match("/reset-password\/([a-zA-Z0-9]+)/", $requestPath, $matches)) {
     $token = $matches[1];
     require_once $controllerClasses['client']['AuthController'];
     $clientAuthController = new ClientAuthController();
@@ -39,14 +42,14 @@ if (preg_match("/reset-password\/([a-zA-Z0-9]+)/", $request, $matches)) {
 $controllerType = null;
 $controllerName = null;
 
-if (strpos($request, '/admin') === 0) {
+if (strpos($requestPath, '/admin') === 0) {
     $controllerType = 'admin';
 } else {
     $controllerType = 'client';
 }
 
 // Now handle the route
-switch ($request) {
+switch ($requestPath) {
     // user
     case "/":
     case "/home":
@@ -232,14 +235,14 @@ switch ($request) {
         break;
         
     case "/home/print-invoice":
-    case preg_match('|^/home/print-invoice/([0-9]+)$|', $request, $matches) ? $request : "":
+    case preg_match('|^/home/print-invoice/([0-9]+)$|', $requestPath, $matches) ? $requestPath : "":
         require_once $controllerClasses['client']['BookingController'];
         $controller = new BookingController();
         $controller->printInvoice($matches[1] ?? null);
         break;
 
     case "/home/print-contract":
-    case preg_match('|^/home/print-contract/([0-9]+)$|', $request, $matches) ? $request : "":
+    case preg_match('|^/home/print-contract/([0-9]+)$|', $requestPath, $matches) ? $requestPath : "":
         require_once $controllerClasses['client']['BookingController'];
         $controller = new BookingController();
         $controller->printContract($matches[1] ?? null);
@@ -373,14 +376,14 @@ switch ($request) {
         $controller->getBookingDetails();
         break;
     case "/admin/print-invoice":
-    case preg_match('|^/admin/print-invoice/([0-9]+)$|', $request, $matches) ? $request : "":
+    case preg_match('|^/admin/print-invoice/([0-9]+)$|', $requestPath, $matches) ? $requestPath : "":
         require_once $controllerClasses['admin']['BookingManagementController'];
         $controller = new BookingManagementController();
         $controller->printInvoice($matches[1] ?? null);
         break;
 
     case "/admin/print-contract":
-    case preg_match('|^/admin/print-contract/([0-9]+)$|', $request, $matches) ? $request : "":
+    case preg_match('|^/admin/print-contract/([0-9]+)$|', $requestPath, $matches) ? $requestPath : "":
         require_once $controllerClasses['admin']['BookingManagementController'];
         $controller = new BookingManagementController();
         $controller->printContract($matches[1] ?? null);
@@ -638,6 +641,52 @@ switch ($request) {
         require_once $controllerClasses['admin']['BusManagementController'];
         $controller = new BusManagementController();
         $controller->getBusStats();
+        break;
+
+    case "/admin/driver-management":
+        require_once $controllerClasses['admin']['DriverManagementController'];
+        $controller = new DriverManagementController();
+        $controller->showDriverManagement();
+        break;
+    case "/admin/api/drivers/all":
+        require_once $controllerClasses['admin']['DriverManagementController'];
+        $controller = new DriverManagementController();
+        $controller->getAllDrivers();
+        break;
+    case "/admin/api/drivers/get":
+        require_once $controllerClasses['admin']['DriverManagementController'];
+        $controller = new DriverManagementController();
+        $controller->getDriverById();
+        break;
+    case "/admin/api/drivers/add":
+        require_once $controllerClasses['admin']['DriverManagementController'];
+        $controller = new DriverManagementController();
+        $controller->addDriver();
+        break;
+    case "/admin/api/drivers/update":
+        require_once $controllerClasses['admin']['DriverManagementController'];
+        $controller = new DriverManagementController();
+        $controller->updateDriver();
+        break;
+    case "/admin/api/drivers/delete":
+        require_once $controllerClasses['admin']['DriverManagementController'];
+        $controller = new DriverManagementController();
+        $controller->deleteDriver();
+        break;
+    case "/admin/api/drivers/statistics":
+        require_once $controllerClasses['admin']['DriverManagementController'];
+        $controller = new DriverManagementController();
+        $controller->getDriverStatistics();
+        break;
+    case "/admin/api/drivers/most-active":
+        require_once $controllerClasses['admin']['DriverManagementController'];
+        $controller = new DriverManagementController();
+        $controller->getMostActiveDrivers();
+        break;
+    case "/admin/api/drivers/expiring-licenses":
+        require_once $controllerClasses['admin']['DriverManagementController'];
+        $controller = new DriverManagementController();
+        $controller->getDriversWithExpiringLicenses();
         break;
 
     case "/admin/settings":

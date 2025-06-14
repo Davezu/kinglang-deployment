@@ -261,6 +261,10 @@
                     <i class="bi bi-bus-front"></i>
                     <span class="menu-text">Buses</span>  
                 </a>
+                <a href="/admin/driver-management" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'driver-management' ? 'active' : ''; ?>">
+                    <i class="bi bi-person-badge"></i>
+                    <span class="menu-text">Drivers</span>
+                </a>
                 <a href="/admin/settings" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'settings' ? 'active' : ''; ?>">
                     <i class="bi bi-gear"></i>
                     <span class="menu-text">Settings</span>
