@@ -89,48 +89,80 @@ document.addEventListener("DOMContentLoaded", async function () {
             
             // Check if we already have cached data
             const cacheKey = getBusAvailabilityCacheKey(startFormatted, endFormatted);
+            const driverCacheKey = getDriverAvailabilityCacheKey(startFormatted, endFormatted);
+            
+            let busData = null;
+            let driverData = null;
+            
+            // Check for cached bus data
             if (busAvailabilityCache.has(cacheKey)) {
-                console.log("Using cached data for calendar view");
-                const data = {
+                console.log("Using cached bus data for calendar view");
+                busData = {
                     success: true,
                     availability: busAvailabilityCache.get(cacheKey)
                 };
-                renderAvailabilityCalendar(data.availability, startDate);
+            }
+            
+            // Check for cached driver data
+            if (driverAvailabilityCache.has(driverCacheKey)) {
+                console.log("Using cached driver data for calendar view");
+                driverData = {
+                    success: true,
+                    availability: driverAvailabilityCache.get(driverCacheKey)
+                };
+            }
+            
+            // If we have both cached data, render the calendar
+            if (busData && driverData) {
+                renderAvailabilityCalendar(busData.availability, driverData.availability, startDate);
                 return;
             }
             
-            // Fetch bus availability data
-            const response = await fetch('/get-bus-availability', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    start_date: startFormatted,
-                    end_date: endFormatted
+            // Otherwise fetch data from server
+            const [busResponse, driverResponse] = await Promise.all([
+                fetch('/get-bus-availability', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        start_date: startFormatted,
+                        end_date: endFormatted
+                    })
+                }),
+                fetch('/get-driver-availability', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        start_date: startFormatted,
+                        end_date: endFormatted
+                    })
                 })
-            });
+            ]);
             
-            const data = await response.json();
+            busData = await busResponse.json();
+            driverData = await driverResponse.json();
             
-            if (data.success) {
+            if (busData.success && driverData.success) {
                 // Cache the data
-                busAvailabilityCache.set(cacheKey, data.availability);
+                busAvailabilityCache.set(cacheKey, busData.availability);
+                driverAvailabilityCache.set(driverCacheKey, driverData.availability);
                 
                 // Set cache expiration (10 minutes)
                 setTimeout(() => {
                     busAvailabilityCache.delete(cacheKey);
+                    driverAvailabilityCache.delete(driverCacheKey);
                 }, 10 * 60 * 1000);
                 
-                renderAvailabilityCalendar(data.availability, startDate);
+                renderAvailabilityCalendar(busData.availability, driverData.availability, startDate);
             } else {
-                availabilityContainer.innerHTML = `<div class="alert alert-danger">Error: ${data.message || 'Could not load bus availability'}</div>`;
+                availabilityContainer.innerHTML = `<div class="alert alert-danger">Error: ${busData.message || driverData.message || 'Could not load availability'}</div>`;
             }
         } catch (error) {
-            availabilityContainer.innerHTML = '<div class="alert alert-danger">Error: Could not load bus availability</div>';
-            console.error('Error loading bus availability:', error);
+            availabilityContainer.innerHTML = '<div class="alert alert-danger">Error: Could not load availability</div>';
+            console.error('Error loading availability:', error);
         }
     }
     
-    function renderAvailabilityCalendar(availability, startDate) {
+    function renderAvailabilityCalendar(busAvailability, driverAvailability, startDate) {
         // Clear container
         availabilityContainer.innerHTML = '';
         
@@ -170,10 +202,15 @@ document.addEventListener("DOMContentLoaded", async function () {
             datesGrid.appendChild(emptyCell);
         }
         
-        // Convert availability array to a map for easier lookup
-        const availabilityMap = {};
-        availability.forEach(item => {
-            availabilityMap[item.date] = item;
+        // Convert availability arrays to maps for easier lookup
+        const busAvailabilityMap = {};
+        busAvailability.forEach(item => {
+            busAvailabilityMap[item.date] = item;
+        });
+        
+        const driverAvailabilityMap = {};
+        driverAvailability.forEach(item => {
+            driverAvailabilityMap[item.date] = item;
         });
         
         // Add cells for each day of the month
@@ -194,43 +231,69 @@ document.addEventListener("DOMContentLoaded", async function () {
             dateCell.appendChild(dateNumber);
             
             // Add availability info if available
-            if (availabilityMap[dateStr]) {
-                const availableCount = availabilityMap[dateStr].available;
-                const totalCount = availabilityMap[dateStr].total;
+            if (busAvailabilityMap[dateStr] && driverAvailabilityMap[dateStr]) {
+                const busAvailableCount = busAvailabilityMap[dateStr].available;
+                const busTotalCount = busAvailabilityMap[dateStr].total;
+                const driverAvailableCount = driverAvailabilityMap[dateStr].available;
+                const driverTotalCount = driverAvailabilityMap[dateStr].total;
                 
-                // Add availability indicator
-                const availabilityIndicator = document.createElement('div');
-                availabilityIndicator.className = 'availability-indicator';
+                // Add bus availability indicator
+                const busIndicator = document.createElement('div');
+                busIndicator.className = 'availability-indicator';
                 
                 // Set color based on availability percentage
-                const availabilityPercent = (availableCount / totalCount) * 100;
+                const busAvailabilityPercent = (busAvailableCount / busTotalCount) * 100;
                 
-                if (availabilityPercent === 0) {
-                    availabilityIndicator.classList.add('no-availability');
-                } else if (availabilityPercent < 30) {
-                    availabilityIndicator.classList.add('low-availability');
-                } else if (availabilityPercent < 70) {
-                    availabilityIndicator.classList.add('medium-availability');
+                if (busAvailabilityPercent === 0) {
+                    busIndicator.classList.add('no-availability');
+                } else if (busAvailabilityPercent < 30) {
+                    busIndicator.classList.add('low-availability');
+                } else if (busAvailabilityPercent < 70) {
+                    busIndicator.classList.add('medium-availability');
                 } else {
-                    availabilityIndicator.classList.add('high-availability');
+                    busIndicator.classList.add('high-availability');
                 }
                 
-                // Add availability text with better formatting
-                availabilityIndicator.textContent = `${availableCount}/${totalCount}`;
-                dateCell.appendChild(availabilityIndicator);
+                // Add bus availability text
+                busIndicator.innerHTML = `<span title="Buses">🚌 ${busAvailableCount}/${busTotalCount}</span>`;
+                dateCell.appendChild(busIndicator);
                 
-                // Make the cell clickable to set the date_of_tour value
-                dateCell.style.cursor = 'pointer';
-                dateCell.addEventListener('click', function() {
-                    if (availableCount > 0) {
+                // Add driver availability indicator
+                const driverIndicator = document.createElement('div');
+                driverIndicator.className = 'availability-indicator';
+                
+                // Set color based on availability percentage
+                const driverAvailabilityPercent = (driverAvailableCount / driverTotalCount) * 100;
+                
+                if (driverAvailabilityPercent === 0) {
+                    driverIndicator.classList.add('no-availability');
+                } else if (driverAvailabilityPercent < 30) {
+                    driverIndicator.classList.add('low-availability');
+                } else if (driverAvailabilityPercent < 70) {
+                    driverIndicator.classList.add('medium-availability');
+                } else {
+                    driverIndicator.classList.add('high-availability');
+                }
+                
+                // Add driver availability text
+                driverIndicator.innerHTML = `<span title="Drivers">👨‍✈️ ${driverAvailableCount}/${driverTotalCount}</span>`;
+                dateCell.appendChild(driverIndicator);
+                
+                // Calculate the minimum available between buses and drivers
+                const minAvailable = Math.min(busAvailableCount, driverAvailableCount);
+                
+                // Make the cell clickable to set the date_of_tour value if any are available
+                if (minAvailable > 0) {
+                    dateCell.style.cursor = 'pointer';
+                    dateCell.addEventListener('click', function() {
                         // Set the date in the date picker
                         picker.setDate(dateStr);
                         
                         // Hide the calendar
                         availabilityContainer.classList.add('d-none');
                         viewBusesBtn.textContent = 'View Available Buses';
-                    }
-                });
+                    });
+                }
             } else {
                 // Date not in range or no data
                 dateCell.classList.add('unavailable');
@@ -240,34 +303,37 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
         
         // Add legend
-        // const legend = document.createElement('div');
-        // legend.className = 'availability-legend mt-2';
-        // legend.innerHTML = `
-        //     <div class="legend-title">Bus Availability Legend</div>
-        //     <div class="legend-item">
-        //         <span class="legend-color high-availability"></span>
-        //         <span>High availability</span>
-        //     </div>
-        //     <div class="legend-item">
-        //         <span class="legend-color medium-availability"></span>
-        //         <span>Medium availability</span>
-        //     </div>
-        //     <div class="legend-item">
-        //         <span class="legend-color low-availability"></span>
-        //         <span>Low availability</span>
-        //     </div>
-        //     <div class="legend-item">
-        //         <span class="legend-color no-availability"></span>
-        //         <span>No buses available</span>
-        //     </div>
-        // `;
+        const legend = document.createElement('div');
+        legend.className = 'availability-legend mt-2';
+        legend.innerHTML = `
+            <div class="legend-title">Availability Legend</div>
+            <div class="d-flex justify-content-between">
+                <div class="legend-item">
+                    <span class="legend-color high-availability"></span>
+                    <span>High</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color medium-availability"></span>
+                    <span>Medium</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color low-availability"></span>
+                    <span>Low</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color no-availability"></span>
+                    <span>None</span>
+                </div>
+            </div>
+            <div class="mt-1 small text-muted">🚌 = Buses, 👨‍✈️ = Drivers</div>
+        `;
         
         // Assemble calendar
         calendarContainer.appendChild(calendarHeader);
         calendarContainer.appendChild(daysHeader);
         calendarContainer.appendChild(datesGrid);
         availabilityContainer.appendChild(calendarContainer);
-        // availabilityContainer.appendChild(legend);
+        availabilityContainer.appendChild(legend);
     }
 
     if (!isRebooking) return;
@@ -518,7 +584,7 @@ document.getElementById("back").addEventListener("click", function () {
 // submit booking 
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Pre-validate bus availability when all necessary values are set
+    // Pre-validate bus and driver availability when all necessary values are set
     function checkAndPrevalidateAvailability() {
         const dateOfTour = document.getElementById("date_of_tour").value;
         const numberOfDays = parseInt(document.getElementById("number_of_days").textContent);
@@ -528,25 +594,36 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("Pre-validating availability for faster form submission");
             
             // Don't show loading indicator for pre-validation
-            checkBusAvailabilityForDateRange(dateOfTour, numberOfDays, numberOfBuses)
-                .then(available => {
-                    // Store result in a data attribute on the form for quick access during submission
-                    document.getElementById("bookingForm").dataset.busesPrevalidated = available ? "true" : "false";
-                    console.log("Pre-validation complete, buses available:", available);
-                    
-                    // Show warning if not available
-                    if (!available) {
-                        Swal.fire({
-                            icon: 'warning',
-                            title: 'Bus Availability Issue',
-                            html: `There are not enough buses available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please adjust your selection before submitting the form.`,
-                            confirmButtonText: 'OK'
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error("Error in pre-validation:", error);
-                });
+            Promise.all([
+                checkBusAvailabilityForDateRange(dateOfTour, numberOfDays, numberOfBuses),
+                checkDriverAvailabilityForDateRange(dateOfTour, numberOfDays, numberOfBuses)
+            ])
+            .then(([busesAvailable, driversAvailable]) => {
+                // Store results in data attributes on the form for quick access during submission
+                document.getElementById("bookingForm").dataset.busesPrevalidated = busesAvailable ? "true" : "false";
+                document.getElementById("bookingForm").dataset.driversPrevalidated = driversAvailable ? "true" : "false";
+                console.log("Pre-validation complete - Buses available:", busesAvailable, "Drivers available:", driversAvailable);
+                
+                // Show warning if not available
+                if (!busesAvailable) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Bus Availability Issue',
+                        html: `There are not enough buses available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please adjust your selection before submitting the form.`,
+                        confirmButtonText: 'OK'
+                    });
+                } else if (!driversAvailable) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Driver Availability Issue',
+                        html: `There are not enough drivers available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please adjust your selection before submitting the form.`,
+                        confirmButtonText: 'OK'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Error in pre-validation:", error);
+            });
         }
     }
     
@@ -639,17 +716,22 @@ document.getElementById("bookingForm").addEventListener("submit", async function
         return;
     }
     
-    // Skip bus availability check if this is a rebooking
+    // Skip availability check if this is a rebooking
     let busesAvailable = false;
+    let driversAvailable = false;
     
     if (isRebooking) {
         // For rebooking, we'll let the server handle availability check
         console.log("Rebooking: Skipping frontend availability check");
         busesAvailable = true;
+        driversAvailable = true;
     } else {
-        // Check if we have a pre-validated result
-        const prevalidated = this.dataset.busesPrevalidated;
-        if (prevalidated === "false") {
+        // Check if we have pre-validated results
+        const busesPrevalidated = this.dataset.busesPrevalidated;
+        const driversPrevalidated = this.dataset.driversPrevalidated;
+        
+        // Check bus availability first
+        if (busesPrevalidated === "false") {
             console.log("Using pre-validated result: buses not available");
             Swal.fire({
                 icon: 'error',
@@ -660,15 +742,27 @@ document.getElementById("bookingForm").addEventListener("submit", async function
             return;
         }
         
+        // Then check driver availability
+        if (driversPrevalidated === "false") {
+            console.log("Using pre-validated result: drivers not available");
+            Swal.fire({
+                icon: 'error',
+                title: 'No Drivers Available',
+                html: `There are not enough drivers available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please choose a different date, reduce the number of days, or reduce the number of buses.`,
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+        
         // Only check availability if not already pre-validated and not rebooking
-        if (prevalidated !== "true") {
+        if (busesPrevalidated !== "true" || driversPrevalidated !== "true") {
             try {
-                console.log("No pre-validation result, checking bus availability...");
+                console.log("No pre-validation result, checking availability...");
                 
                 // Show loading indicator
                 await Swal.fire({
-                    title: 'Checking bus availability...',
-                    text: 'Please wait while we verify bus availability.',
+                    title: 'Checking availability...',
+                    text: 'Please wait while we verify bus and driver availability.',
                     allowOutsideClick: false,
                     allowEscapeKey: false,
                     showConfirmButton: false,
@@ -678,9 +772,15 @@ document.getElementById("bookingForm").addEventListener("submit", async function
                 });
                 
                 // Check availability for the entire date range
-                console.log(`Checking availability for ${numberOfBuses} buses for ${numberOfDays} days starting ${dateOfTour}`);
-                busesAvailable = await checkBusAvailabilityForDateRange(dateOfTour, numberOfDays, numberOfBuses);
-                console.log("Buses available:", busesAvailable);
+                console.log(`Checking availability for ${numberOfBuses} buses/drivers for ${numberOfDays} days starting ${dateOfTour}`);
+                
+                // Check both bus and driver availability in parallel
+                [busesAvailable, driversAvailable] = await Promise.all([
+                    checkBusAvailabilityForDateRange(dateOfTour, numberOfDays, numberOfBuses),
+                    checkDriverAvailabilityForDateRange(dateOfTour, numberOfDays, numberOfBuses)
+                ]);
+                
+                console.log("Buses available:", busesAvailable, "Drivers available:", driversAvailable);
                 
                 // Close the loading indicator
                 Swal.close();
@@ -695,12 +795,23 @@ document.getElementById("bookingForm").addEventListener("submit", async function
                     });
                     return; // Prevent form submission
                 }
+                
+                if (!driversAvailable) {
+                    console.log("No drivers available, showing error");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'No Drivers Available',
+                        html: `Sorry, there are not enough drivers available for a ${numberOfDays}-day trip starting on the selected date.<br><br>Please choose a different date, reduce the number of days, or reduce the number of buses.`,
+                        confirmButtonText: 'OK'
+                    });
+                    return; // Prevent form submission
+                }
             } catch (error) {
-                console.error("Error checking bus availability:", error);
+                console.error("Error checking availability:", error);
                 Swal.fire({
                     icon: 'error',
                     title: 'Verification Error',
-                    text: 'Unable to verify bus availability. Please try again later.',
+                    text: 'Unable to verify bus and driver availability. Please try again later.',
                     timer: 3000,
                     timerProgressBar: true
                 });
@@ -708,6 +819,7 @@ document.getElementById("bookingForm").addEventListener("submit", async function
             }
         } else {
             busesAvailable = true;
+            driversAvailable = true;
         }
     }
     
@@ -1514,6 +1626,7 @@ document.querySelectorAll(".address").forEach(input => {
 
 // Add a global cache for bus availability results
 const busAvailabilityCache = new Map();
+const driverAvailabilityCache = new Map();
 
 /**
  * Cache key generator for bus availability
@@ -1523,6 +1636,113 @@ const busAvailabilityCache = new Map();
  */
 function getBusAvailabilityCacheKey(startDate, endDate) {
     return `${startDate}_to_${endDate}`;
+}
+
+/**
+ * Cache key generator for driver availability
+ * @param {string} startDate - Start date in YYYY-MM-DD format
+ * @param {string} endDate - End date in YYYY-MM-DD format
+ * @returns {string} - Cache key
+ */
+function getDriverAvailabilityCacheKey(startDate, endDate) {
+    return `driver_${startDate}_to_${endDate}`;
+}
+
+/**
+ * Check driver availability for a date range
+ * @param {string} startDate - Start date in YYYY-MM-DD format
+ * @param {number} numberOfDays - The number of days for the booking
+ * @param {number} requestedDrivers - The number of drivers requested (typically same as buses)
+ * @returns {Promise<boolean>} - Whether the requested drivers are available for the entire period
+ */
+async function checkDriverAvailabilityForDateRange(startDate, numberOfDays, requestedDrivers) {
+    if (!startDate || numberOfDays <= 0 || requestedDrivers <= 0) {
+        console.error("Invalid parameters for driver availability check:", { startDate, numberOfDays, requestedDrivers });
+        return false;
+    }
+    
+    try {
+        console.log(`Checking availability for ${requestedDrivers} drivers for ${numberOfDays} days starting ${startDate}`);
+        
+        // Calculate end date based on start date and number of days
+        const start = new Date(startDate);
+        const end = new Date(startDate);
+        end.setDate(end.getDate() + (numberOfDays - 1)); // -1 because the start day counts as day 1
+        
+        // Use our safe formatter to get the end date string
+        const endDateStr = formatDateYYYYMMDD(end);
+        console.log(`Date range for drivers: ${startDate} to ${endDateStr}`);
+        
+        // Check if we have cached data for this date range
+        const cacheKey = getDriverAvailabilityCacheKey(startDate, endDateStr);
+        if (driverAvailabilityCache.has(cacheKey)) {
+            console.log("Using cached driver availability data");
+            const cachedData = driverAvailabilityCache.get(cacheKey);
+            
+            // Check if all days have enough drivers available
+            const hasEnoughDrivers = cachedData.every(day => day.available >= requestedDrivers);
+            console.log("Drivers available from cache:", hasEnoughDrivers);
+            return hasEnoughDrivers;
+        }
+        
+        // No cached data, send request to server
+        console.log("Fetching driver availability data...");
+        const response = await fetch('/get-driver-availability', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                start_date: startDate,
+                end_date: endDateStr
+            })
+        });
+        
+        const data = await response.json();
+        console.log("Received driver availability data:", data);
+        
+        if (!data.success) {
+            console.error("API returned error:", data.message);
+            return false;
+        }
+        
+        if (!data.availability || data.availability.length === 0) {
+            console.error("No driver availability data returned");
+            return false;
+        }
+        
+        // Cache the availability data
+        driverAvailabilityCache.set(cacheKey, data.availability);
+        
+        // Set cache expiration (10 minutes)
+        setTimeout(() => {
+            driverAvailabilityCache.delete(cacheKey);
+        }, 10 * 60 * 1000);
+        
+        // Log the availability for each day
+        data.availability.forEach(day => {
+            console.log(`Date: ${day.date}, Available Drivers: ${day.available}/${day.total}, Requested: ${requestedDrivers}`);
+        });
+        
+        // Check if there are any days with insufficient drivers
+        const insufficientDays = data.availability.filter(day => day.available < requestedDrivers);
+        if (insufficientDays.length > 0) {
+            console.warn("Insufficient drivers available for some days:", insufficientDays);
+            return false;
+        }
+        
+        // Make sure we got data for all days in the range
+        const expectedDays = daysBetween(new Date(startDate), new Date(endDateStr)) + 1; // +1 to include end date
+        if (data.availability.length < expectedDays) {
+            console.error(`Expected data for ${expectedDays} days, but got ${data.availability.length} days`);
+            return false;
+        }
+        
+        // If we reach here, drivers are available for all days
+        console.log("Drivers are available for all days in the requested period");
+        return true;
+    } catch (error) {
+        console.error("Error checking driver availability for date range:", error);
+        return false;
+    }
 }
 
 

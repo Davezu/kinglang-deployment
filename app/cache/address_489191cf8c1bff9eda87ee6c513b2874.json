@@ -49,9 +49,9 @@
          ],
          "types" : 
          [
-            "shopping_mall",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "shopping_mall"
          ]
       },
       {
@@ -106,13 +106,13 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "shopping_mall",
+            "point_of_interest",
             "establishment"
          ]
       },
       {
-         "description" : "SM Mall of Asia, Seaside Boulevard, Pasay, Metro Manila, Philippines",
+         "description" : "SM Mall of Asia, Seaside Boulevard, Pasay City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -132,7 +132,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Seaside Boulevard, Pasay, Metro Manila, Philippines"
+            "secondary_text" : "Seaside Boulevard, Pasay City, Metro Manila, Philippines"
          },
          "terms" : 
          [
@@ -146,26 +146,26 @@
             },
             {
                "offset" : 36,
-               "value" : "Pasay"
+               "value" : "Pasay City"
             },
             {
-               "offset" : 43,
+               "offset" : 48,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 57,
+               "offset" : 62,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "shopping_mall",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "shopping_mall"
          ]
       },
       {
-         "description" : "SM Megamall, Doña Julia Vargas Avenue, Ortigas Center, Mandaluyong, Metro Manila, Philippines",
+         "description" : "SM Megamall, Doña Julia Vargas Avenue, Ortigas Center, Mandaluyong City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -185,7 +185,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Doña Julia Vargas Avenue, Ortigas Center, Mandaluyong, Metro Manila, Philippines"
+            "secondary_text" : "Doña Julia Vargas Avenue, Ortigas Center, Mandaluyong City, Metro Manila, Philippines"
          },
          "terms" : 
          [
@@ -203,26 +203,26 @@
             },
             {
                "offset" : 55,
-               "value" : "Mandaluyong"
+               "value" : "Mandaluyong City"
             },
             {
-               "offset" : 68,
+               "offset" : 73,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 82,
+               "offset" : 87,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
             "shopping_mall",
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
-         "description" : "SM City Manila, San Marcelino Street, Ermita, Manila, Metro Manila, Philippines",
+         "description" : "SM Baguio, Luneta Hill Drive, 231, Baguio City, Benguet, Philippines",
          "matched_substrings" : 
          [
             {
@@ -230,11 +230,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJEap5lCDLlzMRZ7Mbe0i0LYc",
-         "reference" : "ChIJEap5lCDLlzMRZ7Mbe0i0LYc",
+         "place_id" : "ChIJd5wuUEKhkTMR2M1ll8O2f1U",
+         "reference" : "ChIJd5wuUEKhkTMR2M1ll8O2f1U",
          "structured_formatting" : 
          {
-            "main_text" : "SM City Manila",
+            "main_text" : "SM Baguio",
             "main_text_matched_substrings" : 
             [
                {
@@ -242,40 +242,40 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "San Marcelino Street, Ermita, Manila, Metro Manila, Philippines"
+            "secondary_text" : "Luneta Hill Drive, 231, Baguio City, Benguet, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "SM City Manila"
+               "value" : "SM Baguio"
             },
             {
-               "offset" : 16,
-               "value" : "San Marcelino Street"
+               "offset" : 11,
+               "value" : "Luneta Hill Drive"
             },
             {
-               "offset" : 38,
-               "value" : "Ermita"
+               "offset" : 30,
+               "value" : "231"
             },
             {
-               "offset" : 46,
-               "value" : "Manila"
+               "offset" : 35,
+               "value" : "Baguio City"
             },
             {
-               "offset" : 54,
-               "value" : "Metro Manila"
+               "offset" : 48,
+               "value" : "Benguet"
             },
             {
-               "offset" : 68,
+               "offset" : 57,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "shopping_mall",
             "point_of_interest",
-            "establishment"
+            "establishment",
+            "shopping_mall"
          ]
       }
    ],

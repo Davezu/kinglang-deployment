@@ -2,7 +2,7 @@
    "predictions" : 
    [
       {
-         "description" : "Batangas, Philippines",
+         "description" : "Batangas City, Batangas, Philippines",
          "matched_substrings" : 
          [
             {
@@ -14,7 +14,7 @@
          "reference" : "ChIJE9AcTB0bvTMRdxFBDoIqWeQ",
          "structured_formatting" : 
          {
-            "main_text" : "Batangas",
+            "main_text" : "Batangas City",
             "main_text_matched_substrings" : 
             [
                {
@@ -22,28 +22,32 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Philippines"
+            "secondary_text" : "Batangas, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
+               "value" : "Batangas City"
+            },
+            {
+               "offset" : 15,
                "value" : "Batangas"
             },
             {
-               "offset" : 10,
+               "offset" : 25,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
+            "political",
             "locality",
-            "geocode",
-            "political"
+            "geocode"
          ]
       },
       {
-         "description" : "Batangas Port, Port Access Road, Batangas, Philippines",
+         "description" : "Batangas Port, Port Access Road, Batangas City, Batangas, Philippines",
          "matched_substrings" : 
          [
             {
@@ -63,7 +67,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Port Access Road, Batangas, Philippines"
+            "secondary_text" : "Port Access Road, Batangas City, Batangas, Philippines"
          },
          "terms" : 
          [
@@ -77,10 +81,14 @@
             },
             {
                "offset" : 33,
+               "value" : "Batangas City"
+            },
+            {
+               "offset" : 48,
                "value" : "Batangas"
             },
             {
-               "offset" : 43,
+               "offset" : 58,
                "value" : "Philippines"
             }
          ],
@@ -131,12 +139,12 @@
          "types" : 
          [
             "establishment",
-            "point_of_interest",
-            "lodging"
+            "lodging",
+            "point_of_interest"
          ]
       },
       {
-         "description" : "Batangas, Manila, Metro Manila, Philippines",
+         "description" : "Batangas City Grand Terminal, Batangas City, Batangas, Philippines",
          "matched_substrings" : 
          [
             {
@@ -144,11 +152,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "EitCYXRhbmdhcywgTWFuaWxhLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJ2ZTHvm3JlzMRnYLAACwEDcASFAoSCYvDHlcDypczER_BaRB11dFp",
-         "reference" : "EitCYXRhbmdhcywgTWFuaWxhLCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJ2ZTHvm3JlzMRnYLAACwEDcASFAoSCYvDHlcDypczER_BaRB11dFp",
+         "place_id" : "ChIJ-YyZNNgPvTMR6-rSGxMoe7c",
+         "reference" : "ChIJ-YyZNNgPvTMR6-rSGxMoe7c",
          "structured_formatting" : 
          {
-            "main_text" : "Batangas",
+            "main_text" : "Batangas City Grand Terminal",
             "main_text_matched_substrings" : 
             [
                {
@@ -156,35 +164,35 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Manila, Metro Manila, Philippines"
+            "secondary_text" : "Batangas City, Batangas, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
+               "value" : "Batangas City Grand Terminal"
+            },
+            {
+               "offset" : 30,
+               "value" : "Batangas City"
+            },
+            {
+               "offset" : 45,
                "value" : "Batangas"
             },
             {
-               "offset" : 10,
-               "value" : "Manila"
-            },
-            {
-               "offset" : 18,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 32,
+               "offset" : 55,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "route",
-            "geocode"
+            "point_of_interest",
+            "establishment"
          ]
       },
       {
-         "description" : "Batangas State University Pablo Borbon Main 1, Rizal Avenue, Poblacion, Batangas, Philippines",
+         "description" : "Batangas State University-Alangilan Campus, Batangas City, Batangas, Philippines",
          "matched_substrings" : 
          [
             {
@@ -192,11 +200,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJT-mKLmsFvTMRGgpwX-eldyQ",
-         "reference" : "ChIJT-mKLmsFvTMRGgpwX-eldyQ",
+         "place_id" : "ChIJAQAAAPEPvTMRHyGfViw8VW4",
+         "reference" : "ChIJAQAAAPEPvTMRHyGfViw8VW4",
          "structured_formatting" : 
          {
-            "main_text" : "Batangas State University Pablo Borbon Main 1",
+            "main_text" : "Batangas State University-Alangilan Campus",
             "main_text_matched_substrings" : 
             [
                {
@@ -204,36 +212,32 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Rizal Avenue, Poblacion, Batangas, Philippines"
+            "secondary_text" : "Batangas City, Batangas, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Batangas State University Pablo Borbon Main 1"
+               "value" : "Batangas State University-Alangilan Campus"
             },
             {
-               "offset" : 47,
-               "value" : "Rizal Avenue"
+               "offset" : 44,
+               "value" : "Batangas City"
             },
             {
-               "offset" : 61,
-               "value" : "Poblacion"
-            },
-            {
-               "offset" : 72,
+               "offset" : 59,
                "value" : "Batangas"
             },
             {
-               "offset" : 82,
+               "offset" : 69,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
             "establishment",
-            "point_of_interest",
-            "university"
+            "university",
+            "point_of_interest"
          ]
       }
    ],

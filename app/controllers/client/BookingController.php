@@ -1050,6 +1050,110 @@ class BookingController {
         }
     }
     
+    /**
+     * Get driver availability for a date range
+     */
+    public function getDriverAvailability() {
+        header("Content-Type: application/json");
+        
+        $data = json_decode(file_get_contents("php://input"), true);
+        $start_date = isset($data["start_date"]) ? $data["start_date"] : null;
+        $end_date = isset($data["end_date"]) ? $data["end_date"] : null;
+        
+        if (!$start_date || !$end_date) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Start and end dates are required"
+            ]);
+            return;
+        }
+        
+        // Validate date formats
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $start_date) || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $end_date)) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Invalid date format. Use YYYY-MM-DD."
+            ]);
+            return;
+        }
+        
+        try {
+            // Get total number of active drivers
+            $stmt = $this->bookingModel->conn->prepare("SELECT COUNT(*) FROM drivers WHERE status = 'Active' AND availability = 'Available'");
+            $stmt->execute();
+            $total_drivers = (int) $stmt->fetchColumn();
+            
+            if ($total_drivers <= 0) {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "No active drivers found in the system."
+                ]);
+                return;
+            }
+            
+            // Create an array for each date in the range
+            $start = new DateTime($start_date);
+            $end = new DateTime($end_date);
+            
+            // Validate that end date is not before start date
+            if ($end < $start) {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "End date cannot be before start date."
+                ]);
+                return;
+            }
+            
+            $interval = DateInterval::createFromDateString('1 day');
+            $period = new DatePeriod($start, $interval, $end->modify('+1 day'));
+            
+            $availability = [];
+            
+            foreach ($period as $dt) {
+                $current_date = $dt->format("Y-m-d");
+                
+                // For each date, find how many drivers are already assigned
+                $stmt = $this->bookingModel->conn->prepare("
+                    SELECT COUNT(DISTINCT bd.driver_id) 
+                    FROM booking_driver bd
+                    JOIN bookings bo ON bd.booking_id = bo.booking_id
+                    WHERE 
+                        -- Only consider bookings with active statuses
+                        (bo.status = 'Confirmed' OR bo.status = 'Processing')
+                        AND (bo.is_rebooked = 0)
+                        -- Date range check
+                        AND (bo.date_of_tour <= :current_date AND bo.end_of_tour >= :current_date)
+                ");
+                $stmt->bindParam(":current_date", $current_date);
+                $stmt->execute();
+                $assigned_drivers = (int) $stmt->fetchColumn();
+                
+                // Calculate available drivers
+                $available_drivers = $total_drivers - $assigned_drivers;
+                if ($available_drivers < 0) $available_drivers = 0;
+                
+                $availability[] = [
+                    "date" => $current_date,
+                    "available" => $available_drivers,
+                    "total" => $total_drivers,
+                    "assigned" => $assigned_drivers
+                ];
+            }
+            
+            echo json_encode([
+                "success" => true,
+                "availability" => $availability
+            ]);
+            
+        } catch (Exception $e) {
+            error_log("Error in getDriverAvailability: " . $e->getMessage());
+            echo json_encode([
+                "success" => false,
+                "message" => "Error retrieving driver availability: " . $e->getMessage()
+            ]);
+        }
+    }
+    
     public function getBookingDetails() {
         header("Content-Type: application/json");
         

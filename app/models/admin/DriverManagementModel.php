@@ -175,5 +175,61 @@ class DriverManagementModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    /**
+     * Get driver schedule
+     */
+    public function getDriverSchedule($driverId, $startDate = null, $endDate = null) {
+        if (!$startDate) {
+            $startDate = date('Y-m-d');
+        }
+        
+        if (!$endDate) {
+            $endDate = date('Y-m-d', strtotime('+30 days'));
+        }
+        
+        $query = "
+            SELECT 
+                b.booking_id,
+                b.destination,
+                b.pickup_point,
+                b.date_of_tour,
+                b.end_of_tour,
+                b.pickup_time,
+                b.number_of_days,
+                b.status,
+                d.driver_id,
+                d.full_name AS driver_name,
+                u.first_name,
+                u.last_name,
+                u.company_name
+            FROM 
+                bookings b
+            JOIN 
+                booking_driver bd ON b.booking_id = bd.booking_id
+            JOIN 
+                drivers d ON bd.driver_id = d.driver_id
+            JOIN 
+                users u ON b.user_id = u.user_id
+            WHERE 
+                d.driver_id = :driver_id
+                AND (
+                    (b.date_of_tour BETWEEN :start_date AND :end_date)
+                    OR (b.end_of_tour BETWEEN :start_date AND :end_date)
+                    OR (b.date_of_tour <= :start_date AND b.end_of_tour >= :end_date)
+                )
+                AND b.status IN ('Confirmed', 'Processing')
+            ORDER BY 
+                b.date_of_tour ASC
+        ";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':driver_id', $driverId, PDO::PARAM_INT);
+        $stmt->bindParam(':start_date', $startDate, PDO::PARAM_STR);
+        $stmt->bindParam(':end_date', $endDate, PDO::PARAM_STR);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?> 

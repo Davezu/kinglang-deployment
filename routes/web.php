@@ -163,6 +163,11 @@ switch ($requestPath) {
         $controller = new BookingController();
         $controller->getAvailableBuses();
         break;
+    case "/get-driver-availability":
+        require_once $controllerClasses['client']['BookingController'];
+        $controller = new BookingController();
+        $controller->getDriverAvailability();
+        break;
     case "/get-total-cost":
         require_once $controllerClasses['client']['BookingController'];
         $controller = new BookingController();
@@ -687,6 +692,11 @@ switch ($requestPath) {
         require_once $controllerClasses['admin']['DriverManagementController'];
         $controller = new DriverManagementController();
         $controller->getDriversWithExpiringLicenses();
+        break;
+    case "/admin/api/drivers/schedule":
+        require_once $controllerClasses['admin']['DriverManagementController'];
+        $controller = new DriverManagementController();
+        $controller->getDriverSchedule();
         break;
 
     case "/admin/settings":

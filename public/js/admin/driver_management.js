@@ -2,12 +2,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize modals
     const driverModal = new bootstrap.Modal(document.getElementById('driverModal'));
     const deleteModal = new bootstrap.Modal(document.getElementById('deleteDriverModal'));
+    const scheduleModal = new bootstrap.Modal(document.getElementById('driverScheduleModal'));
     
     // Make functions globally accessible
     window.driverModal = driverModal;
     window.deleteModal = deleteModal;
+    window.scheduleModal = scheduleModal;
     window.editDriver = editDriver;
     window.confirmDelete = confirmDelete;
+    window.viewSchedule = viewSchedule;
     
     // Load initial data
     loadDrivers();
@@ -20,6 +23,22 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('addDriverBtn').addEventListener('click', showAddDriverModal);
     document.getElementById('saveDriverBtn').addEventListener('click', saveDriver);
     document.getElementById('confirmDeleteBtn').addEventListener('click', deleteDriver);
+    
+    // Date range picker for schedule modal
+    if (document.getElementById('scheduleStartDate') && document.getElementById('scheduleEndDate')) {
+        document.getElementById('scheduleStartDate').valueAsDate = new Date();
+        
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 30);
+        document.getElementById('scheduleEndDate').valueAsDate = endDate;
+        
+        document.getElementById('filterScheduleBtn').addEventListener('click', function() {
+            const driverId = document.getElementById('schedule_driver_id').value;
+            const startDate = document.getElementById('scheduleStartDate').value;
+            const endDate = document.getElementById('scheduleEndDate').value;
+            loadDriverSchedule(driverId, startDate, endDate);
+        });
+    }
     
     // Photo preview
     document.getElementById('profile_photo').addEventListener('change', function() {
@@ -193,6 +212,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             <button type="button" class="btn btn-sm btn-outline-primary" onclick="editDriver(${driver.driver_id})">
                                 <i class="bi bi-pencil"></i>
                             </button>
+                            <button type="button" class="btn btn-sm btn-outline-info" onclick="viewSchedule(${driver.driver_id}, '${driver.full_name}')">
+                                <i class="bi bi-calendar-week"></i>
+                            </button>
                             <button type="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete(${driver.driver_id})">
                                 <i class="bi bi-trash"></i>
                             </button>
@@ -288,6 +310,102 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('date_hired').value = new Date().toISOString().split('T')[0];
         
         driverModal.show();
+    }
+    
+    /**
+     * View driver schedule
+     */
+    function viewSchedule(driverId, driverName) {
+        document.getElementById('schedule_driver_id').value = driverId;
+        document.getElementById('scheduleModalLabel').textContent = `Schedule for ${driverName}`;
+        
+        // Set default date range (current month)
+        const startDate = document.getElementById('scheduleStartDate').value;
+        const endDate = document.getElementById('scheduleEndDate').value;
+        
+        // Load schedule data
+        loadDriverSchedule(driverId, startDate, endDate);
+        
+        scheduleModal.show();
+    }
+    
+    /**
+     * Load driver schedule
+     */
+    function loadDriverSchedule(driverId, startDate, endDate) {
+        const tableBody = document.getElementById('scheduleTableBody');
+        tableBody.innerHTML = '<tr><td colspan="6" class="text-center py-3">Loading schedule...</td></tr>';
+        
+        fetch(`/admin/api/drivers/schedule?id=${driverId}&start_date=${startDate}&end_date=${endDate}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(response => {
+                if (response.success) {
+                    renderScheduleTable(response.data);
+                } else {
+                    tableBody.innerHTML = '<tr><td colspan="6" class="text-center py-3">Failed to load schedule</td></tr>';
+                    showAlert('error', 'Error', response.message || 'Failed to load driver schedule');
+                }
+            })
+            .catch((error) => {
+                console.error('Error loading driver schedule:', error);
+                tableBody.innerHTML = '<tr><td colspan="6" class="text-center py-3">Failed to load schedule</td></tr>';
+                showAlert('error', 'Error', 'Failed to connect to the server');
+            });
+    }
+    
+    /**
+     * Render schedule table
+     */
+    function renderScheduleTable(schedules) {
+        const tableBody = document.getElementById('scheduleTableBody');
+        
+        if (!schedules || schedules.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="6" class="text-center py-3">No scheduled trips found</td></tr>';
+            return;
+        }
+        
+        let html = '';
+        schedules.forEach(schedule => {
+            // Format dates
+            const startDate = new Date(schedule.date_of_tour).toLocaleDateString();
+            const endDate = new Date(schedule.end_of_tour).toLocaleDateString();
+            
+            // Format pickup time
+            let pickupTime = 'N/A';
+            if (schedule.pickup_time) {
+                const time = new Date(`1970-01-01T${schedule.pickup_time}`);
+                pickupTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            }
+            
+            // Status badge class
+            let statusClass = '';
+            switch (schedule.status) {
+                case 'Confirmed':
+                    statusClass = 'bg-success';
+                    break;
+                case 'Processing':
+                    statusClass = 'bg-warning';
+                    break;
+            }
+            
+            html += `
+                <tr>
+                    <td>${schedule.booking_id}</td>
+                    <td>${schedule.company_name || `${schedule.first_name} ${schedule.last_name}`}</td>
+                    <td>${schedule.destination}</td>
+                    <td>${startDate} - ${endDate}</td>
+                    <td>${pickupTime}</td>
+                    <td><span class="badge ${statusClass}">${schedule.status}</span></td>
+                </tr>
+            `;
+        });
+        
+        tableBody.innerHTML = html;
     }
     
     /**

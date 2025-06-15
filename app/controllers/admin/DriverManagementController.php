@@ -271,6 +271,29 @@ class DriverManagementController {
         $drivers = $this->driverModel->getDriversWithExpiringLicenses($days);
         echo json_encode(['success' => true, 'data' => $drivers]);
     }
+        
+    /**
+     * API: Get driver schedule
+     */
+    public function getDriverSchedule() {
+        header('Content-Type: application/json');
+        
+        if (!isset($_GET['id'])) {
+            echo json_encode(['success' => false, 'message' => 'Driver ID is required']);
+            return;
+        }
+        
+        $driverId = $_GET['id'];
+        $startDate = $_GET['start_date'] ?? null;
+        $endDate = $_GET['end_date'] ?? null;
+        
+        try {
+            $schedules = $this->driverModel->getDriverSchedule($driverId, $startDate, $endDate);
+            echo json_encode(['success' => true, 'data' => $schedules]);
+        } catch (PDOException $e) {
+            echo json_encode(['success' => false, 'message' => 'Failed to get driver schedule: ' . $e->getMessage()]);
+        }
+    }
     
     /**
      * Helper method to handle photo upload

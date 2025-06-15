@@ -40,6 +40,13 @@ class Booking {
             if (!$available_buses) {
                 return ["success" => false, "message" => "Not enough buses available."];
             }
+            
+            // Check for driver availability - we need one driver per bus
+            $available_drivers = $this->findAvailableDrivers($date_of_tour, $end_of_tour, $number_of_buses);
+            
+            if (!$available_drivers || count($available_drivers) < $number_of_buses) {
+                return ["success" => false, "message" => "Not enough drivers available for the selected dates."];
+            }
 
             if ($is_rebooking && $this->bookingIsNotConfirmed($rebooking_id)) {
                 $this->updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $base_cost, $diesel_cost, $base_rate, $diesel_price, $total_distance, $pickup_time);
@@ -80,6 +87,13 @@ class Booking {
             foreach ($available_buses as $bus_id) {
                 $stmt = $this->conn->prepare("INSERT INTO booking_buses (booking_id, bus_id) VALUES (:booking_id, :bus_id)");
                 $stmt->execute([":booking_id" => $booking_id, ":bus_id" => $bus_id]);
+            }
+            
+            // Assign drivers to the booking
+            foreach ($available_drivers as $index => $driver_id) {
+                if ($index >= $number_of_buses) break; // Only assign as many drivers as buses
+                $stmt = $this->conn->prepare("INSERT INTO booking_driver (booking_id, driver_id) VALUES (:booking_id, :driver_id)");
+                $stmt->execute([":booking_id" => $booking_id, ":driver_id" => $driver_id]);
             }
 
             // insert stops into booking_stops
@@ -222,6 +236,50 @@ class Booking {
             $stmt->bindParam(":date_of_tour", $date_of_tour);
             $stmt->bindParam(":end_of_tour", $end_of_tour);
             $stmt->bindParam(":number_of_buses", $number_of_buses, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_COLUMN);       
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
+
+    /**
+     * Find available drivers for a given date range
+     * 
+     * @param string $date_of_tour Start date of the tour
+     * @param string $end_of_tour End date of the tour
+     * @param int $number_of_drivers Number of drivers needed (typically same as number of buses)
+     * @return array|string Array of driver IDs or error message
+     */
+    public function findAvailableDrivers($date_of_tour, $end_of_tour, $number_of_drivers) {
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT driver_id
+                FROM drivers
+                WHERE status = 'Active'
+                AND availability = 'Available'
+                AND driver_id NOT IN (
+                    SELECT bd.driver_id
+                    FROM booking_driver bd
+                    JOIN bookings bo ON bd.booking_id = bo.booking_id
+                    WHERE 
+                        -- Only consider active bookings that need drivers
+                        (bo.status = 'Confirmed' OR bo.status = 'Processing')
+                        -- Date range check
+                        AND (
+                            (bo.date_of_tour <= :date_of_tour AND bo.end_of_tour >= :date_of_tour)
+                            OR
+                            (bo.date_of_tour <= :end_of_tour AND bo.end_of_tour >= :end_of_tour)
+                            OR
+                            (bo.date_of_tour >= :date_of_tour AND bo.end_of_tour <= :end_of_tour)
+                        )
+                )
+                LIMIT :number_of_drivers;
+            ");
+            $stmt->bindParam(":date_of_tour", $date_of_tour);
+            $stmt->bindParam(":end_of_tour", $end_of_tour);
+            $stmt->bindParam(":number_of_drivers", $number_of_drivers, PDO::PARAM_INT);
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_COLUMN);       
@@ -574,6 +632,13 @@ class Booking {
             if (!$available_buses) {
                 return "Not enough buses available.";
             }
+            
+            // Check for driver availability
+            $available_drivers = $this->findAvailableDrivers($date_of_tour, $end_of_tour, $number_of_buses);
+            
+            if (!$available_drivers || count($available_drivers) < $number_of_buses) {
+                return "Not enough drivers available for the selected dates.";
+            }
 
             // Update the booking
             $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, end_of_tour = :end_of_tour, destination = :destination, pickup_point = :pickup_point, pickup_time = :pickup_time, number_of_days = :number_of_days, number_of_buses = :number_of_buses, balance = :balance WHERE booking_id = :booking_id AND user_id = :user_id");
@@ -643,6 +708,17 @@ class Booking {
             foreach ($available_buses as $bus_id) {
                 $stmt = $this->conn->prepare("INSERT INTO booking_buses (booking_id, bus_id) VALUES (:booking_id, :bus_id)");
                 $stmt->execute([":booking_id" => $rebooking_id, ":bus_id" => $bus_id]);
+            }
+            
+            // Delete existing driver assignments
+            $stmt = $this->conn->prepare("DELETE FROM booking_driver WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $rebooking_id]);
+            
+            // Assign new drivers
+            foreach ($available_drivers as $index => $driver_id) {
+                if ($index >= $number_of_buses) break; // Only assign as many drivers as buses
+                $stmt = $this->conn->prepare("INSERT INTO booking_driver (booking_id, driver_id) VALUES (:booking_id, :driver_id)");
+                $stmt->execute([":booking_id" => $rebooking_id, ":driver_id" => $driver_id]);
             }
 
             return "success";

@@ -2,7 +2,7 @@
    "predictions" : 
    [
       {
-         "description" : "KingLang Tours and Transport Services Inc., M. L. Quezon Avenue, Lower Bicutan, Taguig, Metro Manila, Philippines",
+         "description" : "KingLang Tours and Transport Services Inc., M. L. Quezon Avenue, Lower Bicutan, Taguig City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -22,7 +22,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "M. L. Quezon Avenue, Lower Bicutan, Taguig, Metro Manila, Philippines"
+            "secondary_text" : "M. L. Quezon Avenue, Lower Bicutan, Taguig City, Metro Manila, Philippines"
          },
          "terms" : 
          [
@@ -40,25 +40,25 @@
             },
             {
                "offset" : 80,
-               "value" : "Taguig"
+               "value" : "Taguig City"
             },
             {
-               "offset" : 88,
+               "offset" : 93,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 102,
+               "offset" : 107,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
-         "description" : "Kingland Hopia, Mampang - Arena Blanco Road, Zamboanga, Zamboanga del Sur, Philippines",
+         "description" : "Kingland Hopia, Mampang - Arena Blanco Road, Zamboanga City, Zamboanga del Sur, Philippines",
          "matched_substrings" : 
          [
             {
@@ -78,7 +78,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Mampang - Arena Blanco Road, Zamboanga, Zamboanga del Sur, Philippines"
+            "secondary_text" : "Mampang - Arena Blanco Road, Zamboanga City, Zamboanga del Sur, Philippines"
          },
          "terms" : 
          [
@@ -92,21 +92,173 @@
             },
             {
                "offset" : 45,
-               "value" : "Zamboanga"
+               "value" : "Zamboanga City"
             },
             {
-               "offset" : 56,
+               "offset" : 61,
                "value" : "Zamboanga del Sur"
             },
             {
-               "offset" : 75,
+               "offset" : 80,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
             "establishment",
+            "point_of_interest",
+            "food"
+         ]
+      },
+      {
+         "description" : "Dairy Kings & Ice Creme Deluxe, City of San Pedro, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 6
+            }
+         ],
+         "place_id" : "ChIJb57iQe7WlzMRD4v5dFlWtvI",
+         "reference" : "ChIJb57iQe7WlzMRD4v5dFlWtvI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Dairy Kings & Ice Creme Deluxe",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 6
+               }
+            ],
+            "secondary_text" : "City of San Pedro, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Dairy Kings & Ice Creme Deluxe"
+            },
+            {
+               "offset" : 32,
+               "value" : "City of San Pedro"
+            },
+            {
+               "offset" : 51,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 59,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "store",
             "food",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "King's Coffee Green Breeze, Langkaan 2, Dasmarinas City, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 26,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJN4XlVl3VlzMRQDWIdLyjLFo",
+         "reference" : "ChIJN4XlVl3VlzMRQDWIdLyjLFo",
+         "structured_formatting" : 
+         {
+            "main_text" : "King's Coffee Green Breeze",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 26,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Langkaan 2, Dasmarinas City, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "King's Coffee Green Breeze"
+            },
+            {
+               "offset" : 28,
+               "value" : "Langkaan 2"
+            },
+            {
+               "offset" : 40,
+               "value" : "Dasmarinas City"
+            },
+            {
+               "offset" : 57,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 65,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+         ]
+      },
+      {
+         "description" : "king's Apartments Dasmariñas, Dasmanriñas, Cavite, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 28,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ3S1hkiLVlzMRoYfEIvWowh8",
+         "reference" : "ChIJ3S1hkiLVlzMRoYfEIvWowh8",
+         "structured_formatting" : 
+         {
+            "main_text" : "king's Apartments Dasmariñas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 28,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Dasmanriñas, Cavite, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "king's Apartments Dasmariñas"
+            },
+            {
+               "offset" : 30,
+               "value" : "Dasmanriñas"
+            },
+            {
+               "offset" : 43,
+               "value" : "Cavite"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
             "point_of_interest"
          ]
       }

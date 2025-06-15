@@ -18,12 +18,12 @@
                "distance" : 
                {
                   "text" : "106 km",
-                  "value" : 105756
+                  "value" : 105758
                },
                "duration" : 
                {
-                  "text" : "2 hours 5 mins",
-                  "value" : 7471
+                  "text" : "2 hours 4 mins",
+                  "value" : 7414
                },
                "status" : "OK"
             },
@@ -62,12 +62,12 @@
                "distance" : 
                {
                   "text" : "105 km",
-                  "value" : 104879
+                  "value" : 104880
                },
                "duration" : 
                {
-                  "text" : "2 hours 2 mins",
-                  "value" : 7307
+                  "text" : "2 hours 1 min",
+                  "value" : 7255
                },
                "status" : "OK"
             }

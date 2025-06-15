@@ -110,6 +110,22 @@ require_once __DIR__ . "/../../controllers/admin/DriverManagementController.php"
                 max-width: 98%;
             }
         }
+        
+        /* Schedule modal styles */
+        .schedule-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        #scheduleTableBody tr:hover {
+            background-color: rgba(40, 167, 69, 0.05);
+        }
+        #driverScheduleModal .table thead th {
+            background-color: #d1f7c4;
+            font-weight: 600;
+            padding: 12px 8px;
+        }
     </style>
 </head>
 <body>
@@ -395,6 +411,60 @@ require_once __DIR__ . "/../../controllers/admin/DriverManagementController.php"
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Driver Schedule Modal -->
+    <div class="modal fade" id="driverScheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scheduleModalLabel">Driver Schedule</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="schedule_driver_id">
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="scheduleStartDate" class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="scheduleStartDate">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="scheduleEndDate" class="form-label">End Date</label>
+                            <input type="date" class="form-control" id="scheduleEndDate">
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button type="button" class="btn btn-primary w-100" id="filterScheduleBtn">
+                                <i class="bi bi-filter"></i> Filter
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Client</th>
+                                    <th>Destination</th>
+                                    <th>Trip Dates</th>
+                                    <th>Pickup Time</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scheduleTableBody">
+                                <tr>
+                                    <td colspan="6" class="text-center py-3">No schedule data available</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

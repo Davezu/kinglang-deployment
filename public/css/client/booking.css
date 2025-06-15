@@ -305,19 +305,29 @@ input {
 }
 
 .availability-indicator {
-    font-size: 0.75rem;
-    font-weight: 600;
-    border-radius: 12px;
-    padding: 1px 4px;
-    margin-top: 3px;
-    color: white;
-    white-space: nowrap;
-    overflow: visible;
-    text-overflow: clip;
-    max-width: none;
-    min-width: auto;
-    width: auto;
     display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 4px;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+/* Add margin between multiple indicators */
+.availability-indicator + .availability-indicator {
+    margin-top: 3px;
+}
+
+/* Add emoji styling */
+.availability-indicator span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 }
 
 .high-availability {
@@ -326,7 +336,7 @@ input {
 
 .medium-availability {
     background-color: #ffc107;
-    color: #333 !important;
+    color: #212529;
 }
 
 .low-availability {
