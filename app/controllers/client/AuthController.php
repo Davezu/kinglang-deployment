@@ -94,6 +94,56 @@ class ClientAuthController {
         }
     }
 
+    public function googleLogin() {
+        header("Content-Type: application/json");
+        
+        $data = json_decode(file_get_contents("php://input"), true);
+        
+        if (empty($data["credential"])) {
+            echo json_encode(["success" => false, "message" => "Invalid Google credentials"]);
+            return;
+        }
+        
+        $credential = $data["credential"];
+        
+        // Decode the JWT token from Google
+        $parts = explode('.', $credential);
+        if (count($parts) !== 3) {
+            echo json_encode(["success" => false, "message" => "Invalid token format"]);
+            return;
+        }
+        
+        // Get the payload part (second part of the JWT)
+        $payload = json_decode(base64_decode(strtr($parts[1], '-_', '+/')), true);
+        
+        if (!$payload || !isset($payload['email']) || !isset($payload['name'])) {
+            echo json_encode(["success" => false, "message" => "Invalid token payload"]);
+            return;
+        }
+        
+        $email = $payload['email'];
+        $name = $payload['name'];
+        $given_name = $payload['given_name'] ?? '';
+        $family_name = $payload['family_name'] ?? '';
+        $picture = $payload['picture'] ?? '';
+        
+        // If first and last names are not provided, split the full name
+        if (empty($given_name) || empty($family_name)) {
+            $nameParts = explode(' ', $name);
+            $given_name = $nameParts[0];
+            $family_name = count($nameParts) > 1 ? end($nameParts) : '';
+        }
+        
+        // Check if the user exists, if not, create a new account
+        $result = $this->authModel->googleLogin($email, $given_name, $family_name, $picture);
+        
+        if ($result === "success") {
+            echo json_encode(["success" => true, "redirect" => "/home/booking-requests"]);
+        } else {
+            echo json_encode(["success" => false, "message" => $result]);
+        }
+    }
+
     public function getClientInformation() {
         $client = $this->authModel->getClientInformation();
 

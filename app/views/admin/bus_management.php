@@ -153,7 +153,7 @@ require_once __DIR__ . "/../../controllers/admin/BusManagementController.php";
                                             <th>Capacity</th>
                                             <th>Last Maintenance</th>
                                             <th>Status</th>
-                                            <th>Actions</th>
+                                            <th class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody id="busTableBody">
@@ -231,48 +231,75 @@ require_once __DIR__ . "/../../controllers/admin/BusManagementController.php";
     <!-- Add Bus Modal -->
     <div class="modal fade" id="addBusModal" tabindex="-1" aria-labelledby="addBusModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addBusModalLabel">Add New Bus</h5>
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title" id="addBusModalLabel"><i class="bi bi-bus-front text-success me-2"></i>Add New Bus</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="addBusForm">
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="busName" class="form-label">Bus Name</label>
-                            <input type="text" class="form-control" id="busName" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="busCapacity" class="form-label">Capacity</label>
-                            <input type="number" class="form-control" id="busCapacity" name="capacity" min="1" max="99" value="49" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="busLicensePlate" class="form-label">License Plate</label>
-                            <input type="text" class="form-control" id="busLicensePlate" name="license_plate">
-                        </div>
-                        <div class="mb-3">
-                            <label for="busModel" class="form-label">Model</label>
-                            <input type="text" class="form-control" id="busModel" name="model">
-                        </div>
-                        <div class="mb-3">
-                            <label for="busYear" class="form-label">Year</label>
-                            <input type="number" class="form-control" id="busYear" name="year" min="1900" max="2100">
-                        </div>
-                        <div class="mb-3">
-                            <label for="busLastMaintenance" class="form-label">Last Maintenance Date</label>
-                            <input type="date" class="form-control" id="busLastMaintenance" name="last_maintenance">
-                        </div>
-                        <div class="mb-3">
-                            <label for="busStatus" class="form-label">Status</label>
-                            <select class="form-select" id="busStatus" name="status" required>
-                                <option value="Active">Active</option>
-                                <option value="Maintenance">Maintenance</option>
-                            </select>
+                    <div class="modal-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="busName" class="form-label small fw-bold">Bus Name*</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-tag"></i></span>
+                                    <input type="text" class="form-control" id="busName" name="name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="busCapacity" class="form-label small fw-bold">Capacity*</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-people"></i></span>
+                                    <input type="number" class="form-control" id="busCapacity" name="capacity" min="1" max="99" value="49" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="busLicensePlate" class="form-label small fw-bold">License Plate</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-card-text"></i></span>
+                                    <input type="text" class="form-control" id="busLicensePlate" name="license_plate">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="busModel" class="form-label small fw-bold">Model</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-truck"></i></span>
+                                    <input type="text" class="form-control" id="busModel" name="model">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="busYear" class="form-label small fw-bold">Year</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-calendar-date"></i></span>
+                                    <input type="number" class="form-control" id="busYear" name="year" min="1900" max="2100">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="busLastMaintenance" class="form-label small fw-bold">Last Maintenance</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-tools"></i></span>
+                                    <input type="date" class="form-control" id="busLastMaintenance" name="last_maintenance">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="busStatus" class="form-label small fw-bold">Status*</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-toggle-on"></i></span>
+                                    <select class="form-select" id="busStatus" name="status" required>
+                                        <option value="Active">Active</option>
+                                        <option value="Maintenance">Maintenance</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Add Bus</button>
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-1"></i>Cancel
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-plus-circle me-1"></i>Add Bus
+                        </button>
                     </div>
                 </form>
             </div>
@@ -282,49 +309,76 @@ require_once __DIR__ . "/../../controllers/admin/BusManagementController.php";
     <!-- Edit Bus Modal -->
     <div class="modal fade" id="editBusModal" tabindex="-1" aria-labelledby="editBusModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editBusModalLabel">Edit Bus</h5>
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title" id="editBusModalLabel"><i class="bi bi-pencil-square text-success me-2"></i>Edit Bus</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="editBusForm">
-                    <div class="modal-body">
+                    <div class="modal-body p-4">
                         <input type="hidden" id="editBusId" name="bus_id">
-                        <div class="mb-3">
-                            <label for="editBusName" class="form-label">Bus Name</label>
-                            <input type="text" class="form-control" id="editBusName" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editBusCapacity" class="form-label">Capacity</label>
-                            <input type="number" class="form-control" id="editBusCapacity" name="capacity" min="1" max="99" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editBusLicensePlate" class="form-label">License Plate</label>
-                            <input type="text" class="form-control" id="editBusLicensePlate" name="license_plate">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editBusModel" class="form-label">Model</label>
-                            <input type="text" class="form-control" id="editBusModel" name="model">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editBusYear" class="form-label">Year</label>
-                            <input type="number" class="form-control" id="editBusYear" name="year" min="1900" max="2100">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editBusLastMaintenance" class="form-label">Last Maintenance Date</label>
-                            <input type="date" class="form-control" id="editBusLastMaintenance" name="last_maintenance">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editBusStatus" class="form-label">Status</label>
-                            <select class="form-select" id="editBusStatus" name="status" required>
-                                <option value="Active">Active</option>
-                                <option value="Maintenance">Maintenance</option>
-                            </select>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="editBusName" class="form-label small fw-bold">Bus Name*</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-tag"></i></span>
+                                    <input type="text" class="form-control" id="editBusName" name="name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editBusCapacity" class="form-label small fw-bold">Capacity*</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-people"></i></span>
+                                    <input type="number" class="form-control" id="editBusCapacity" name="capacity" min="1" max="99" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editBusLicensePlate" class="form-label small fw-bold">License Plate</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-card-text"></i></span>
+                                    <input type="text" class="form-control" id="editBusLicensePlate" name="license_plate">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editBusModel" class="form-label small fw-bold">Model</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-truck"></i></span>
+                                    <input type="text" class="form-control" id="editBusModel" name="model">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editBusYear" class="form-label small fw-bold">Year</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-calendar-date"></i></span>
+                                    <input type="number" class="form-control" id="editBusYear" name="year" min="1900" max="2100">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editBusLastMaintenance" class="form-label small fw-bold">Last Maintenance</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-tools"></i></span>
+                                    <input type="date" class="form-control" id="editBusLastMaintenance" name="last_maintenance">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="editBusStatus" class="form-label small fw-bold">Status*</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-toggle-on"></i></span>
+                                    <select class="form-select" id="editBusStatus" name="status" required>
+                                        <option value="Active">Active</option>
+                                        <option value="Maintenance">Maintenance</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Update Bus</button>
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-1"></i>Cancel
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-save me-1"></i>Update Bus
+                        </button>
                     </div>
                 </form>
             </div>
@@ -334,36 +388,44 @@ require_once __DIR__ . "/../../controllers/admin/BusManagementController.php";
     <!-- Bus Schedule Modal -->
     <div class="modal fade" id="busScheduleModal" tabindex="-1" aria-labelledby="busScheduleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="busScheduleModalLabel">Bus Schedule</h5>
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title" id="busScheduleModalLabel"><i class="bi bi-calendar-week text-success me-2"></i>Bus Schedule</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body p-4">
                     <input type="hidden" id="scheduleBusId">
-                    <div class="row mb-3">
+                    <div class="row g-3 mb-3">
                         <div class="col-md-5">
-                            <label for="scheduleStartDate" class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="scheduleStartDate">
+                            <label for="scheduleStartDate" class="form-label small fw-bold">Start Date</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-calendar-date"></i></span>
+                                <input type="date" class="form-control" id="scheduleStartDate">
+                            </div>
                         </div>
                         <div class="col-md-5">
-                            <label for="scheduleEndDate" class="form-label">End Date</label>
-                            <input type="date" class="form-control" id="scheduleEndDate">
+                            <label for="scheduleEndDate" class="form-label small fw-bold">End Date</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-calendar-date"></i></span>
+                                <input type="date" class="form-control" id="scheduleEndDate">
+                            </div>
                         </div>
                         <div class="col-md-2 d-flex align-items-end">
                             <button id="loadScheduleBtn" class="btn btn-success w-100" onclick="loadBusSchedule(document.getElementById('scheduleBusId').value)">
-                                <i class="bi bi-search"></i> Load
+                                <i class="bi bi-search me-1"></i>Load
                             </button>
                         </div>
                     </div>
-                    <div id="busScheduleContainer">
+                    <div id="busScheduleContainer" class="mt-2">
                         <div class="alert alert-info">
-                            Select a date range and click "Load" to see the bus schedule.
+                            <i class="bi bi-info-circle me-2"></i>Select a date range and click "Load" to see the bus schedule.
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Close
+                    </button>
                 </div>
             </div>
         </div>

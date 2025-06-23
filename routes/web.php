@@ -70,6 +70,11 @@ switch ($requestPath) {
         $controller = new ClientAuthController();
         $controller->login();
         break;
+    case "/client/google-login":
+        require_once $controllerClasses['client']['AuthController'];
+        $controller = new ClientAuthController();
+        $controller->googleLogin();
+        break;
     case "/client/signup":
         require_once $controllerClasses['client']['AuthController'];
         $controller = new ClientAuthController();

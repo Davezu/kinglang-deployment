@@ -7,18 +7,23 @@ if (is_client_authenticated()) {
     header("Location: /home/booking-requests");
     exit();
 }
+
+// Include Google OAuth configuration
+require_once __DIR__ . '/../../../config/google_auth.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../public/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../../public/css/login-signup.css">
     <link rel="stylesheet" href="../../../public/css/slideshow.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
     <title>Log In</title>
     <style>
         /* More compact form styling */
@@ -45,6 +50,43 @@ if (is_client_authenticated()) {
             transform: translateY(-50%);
             cursor: pointer;
             z-index: 10;
+        }
+        /* Google Sign-In button styling */
+        .google-btn-wrapper {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .g_id_signin {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+        }
+        .g_id_signin > div,
+        .g_id_signin iframe {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        /* Force English language for Google button */
+        .g_id_signin * {
+            font-family: 'Roboto', sans-serif !important;
+        }
+        .or-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 15px 0 10px;
+        }
+        .or-divider::before, .or-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+        .or-divider::before {
+            margin-right: .5em;
+        }
+        .or-divider::after {
+            margin-left: .5em;
         }
     </style>
 </head>
@@ -133,7 +175,32 @@ if (is_client_authenticated()) {
                     <a href="/fogot-password" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover small">Forgot password?</a>
                 </div>
                 <div class="login-button mb-3 d-flex gap-2 flex-column">
-                    <button type="submit" name="login" class="btn btn-success w-100 text-white fw-bold rounded-pill p-2">Log In</button>
+                    <button type="submit" name="login" class="btn btn-success w-100 text-white fw-bold rounded p-2">Log In</button>
+                    
+                    <div class="or-divider">or</div>
+                    
+                    <div id="g_id_onload"
+                         data-client_id="<?php echo GOOGLE_CLIENT_ID; ?>"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="handleGoogleSignIn"
+                         data-auto_prompt="false"
+                         data-locale="en">
+                    </div>
+
+                    <div class="google-btn-wrapper rounded-pill">
+                        <div class="g_id_signin"
+                             data-type="standard"
+                             data-shape="rectangular"
+                             data-theme="outline"
+                             data-text="signin_with"
+                             data-size="large"
+                             data-logo_alignment="left"
+                             data-width="100%"
+                             lang="en">
+                        </div>
+                    </div>
+                    
                     <p class="small mb-0">Need an account? <a href="/home/signup" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Create one</a></p>
                 </div>
             </form>
@@ -145,6 +212,19 @@ if (is_client_authenticated()) {
     <script src="../../../public/js/page-transition.js"></script>
     <script src="../../../public/js/client/login.js"></script>
     <script>
+        // Set Google button language to English
+        document.documentElement.lang = 'en';
+        
+        // Initialize Google Sign-In
+        window.onload = function() {
+            // Force English language
+            document.querySelectorAll('.g_id_signin iframe').forEach(function(iframe) {
+                if (iframe.contentWindow && iframe.contentWindow.document) {
+                    iframe.contentWindow.document.documentElement.lang = 'en';
+                }
+            });
+        };
+        
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');
             const toggleIcon = document.getElementById('togglePassword');
@@ -158,6 +238,50 @@ if (is_client_authenticated()) {
                 toggleIcon.classList.remove('bi-eye-slash');
                 toggleIcon.classList.add('bi-eye');
             }
+        }
+        
+        function handleGoogleSignIn(response) {
+            // Send the ID token to the server
+            const credential = response.credential;
+            
+            fetch('/client/google-login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    credential: credential
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.body.style.transition = 'opacity 0.5s ease';
+                    document.body.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        window.location.href = data.redirect || '/home/booking-requests';
+                    }, 300);
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Login Failed',
+                        text: data.message || 'Google authentication failed. Please try again.',
+                        timer: 1500,
+                        timerProgressBar: true,
+                        confirmButtonColor: '#28a745'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Something went wrong',
+                    text: 'Please try again later.',
+                    confirmButtonColor: '#28a745'
+                });
+            });
         }
     </script>
 </body>

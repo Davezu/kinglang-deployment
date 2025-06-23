@@ -97,9 +97,9 @@
          ],
          "types" : 
          [
-            "establishment",
             "point_of_interest",
-            "university"
+            "university",
+            "establishment"
          ]
       },
       {
@@ -147,9 +147,9 @@
          "types" : 
          [
             "sublocality_level_2",
-            "political",
             "geocode",
-            "sublocality"
+            "sublocality",
+            "political"
          ]
       },
       {
@@ -196,13 +196,13 @@
          ],
          "types" : 
          [
-            "establishment",
             "point_of_interest",
+            "establishment",
             "school"
          ]
       },
       {
-         "description" : "Maligaya, Cabiao, Nueva Ecija, Philippines",
+         "description" : "Maligaya, Rizal, Nueva Ecija, Philippines",
          "matched_substrings" : 
          [
             {
@@ -210,8 +210,8 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJI1fjh7XhljMR4915PEX1lcg",
-         "reference" : "ChIJI1fjh7XhljMR4915PEX1lcg",
+         "place_id" : "ChIJuUPa_1vSkDMRSMAke8EHy44",
+         "reference" : "ChIJuUPa_1vSkDMRSMAke8EHy44",
          "structured_formatting" : 
          {
             "main_text" : "Maligaya",
@@ -222,7 +222,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Cabiao, Nueva Ecija, Philippines"
+            "secondary_text" : "Rizal, Nueva Ecija, Philippines"
          },
          "terms" : 
          [
@@ -232,23 +232,23 @@
             },
             {
                "offset" : 10,
-               "value" : "Cabiao"
+               "value" : "Rizal"
             },
             {
-               "offset" : 18,
+               "offset" : 17,
                "value" : "Nueva Ecija"
             },
             {
-               "offset" : 31,
+               "offset" : 30,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "political",
-            "sublocality_level_2",
+            "geocode",
             "sublocality",
-            "geocode"
+            "political",
+            "sublocality_level_2"
          ]
       }
    ],

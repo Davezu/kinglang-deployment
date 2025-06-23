@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize modals
     const driverModal = new bootstrap.Modal(document.getElementById('driverModal'));
-    const deleteModal = new bootstrap.Modal(document.getElementById('deleteDriverModal'));
     const scheduleModal = new bootstrap.Modal(document.getElementById('driverScheduleModal'));
     
     // Make functions globally accessible
     window.driverModal = driverModal;
-    window.deleteModal = deleteModal;
     window.scheduleModal = scheduleModal;
     window.editDriver = editDriver;
     window.confirmDelete = confirmDelete;
@@ -22,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('refreshDriversBtn').addEventListener('click', loadDrivers);
     document.getElementById('addDriverBtn').addEventListener('click', showAddDriverModal);
     document.getElementById('saveDriverBtn').addEventListener('click', saveDriver);
-    document.getElementById('confirmDeleteBtn').addEventListener('click', deleteDriver);
     
     // Date range picker for schedule modal
     if (document.getElementById('scheduleStartDate') && document.getElementById('scheduleEndDate')) {
@@ -50,6 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             reader.readAsDataURL(file);
         }
+    });
+    
+    // Add click handler for the camera icon button
+    document.querySelector('label[for="profile_photo"]').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('profile_photo').click();
     });
     
     /**
@@ -172,13 +175,13 @@ document.addEventListener('DOMContentLoaded', function() {
             let statusClass = '';
             switch (driver.status) {
                 case 'Active':
-                    statusClass = 'status-active';
+                    statusClass = 'text-bg-success';
                     break;
                 case 'Inactive':
-                    statusClass = 'status-inactive';
+                    statusClass = 'text-bg-secondary';
                     break;
                 case 'On Leave':
-                    statusClass = 'status-on-leave';
+                    statusClass = 'text-bg-warning';
                     break;
             }
             
@@ -186,10 +189,10 @@ document.addEventListener('DOMContentLoaded', function() {
             let availabilityClass = '';
             switch (driver.availability) {
                 case 'Available':
-                    availabilityClass = 'availability-available';
+                    availabilityClass = 'text-bg-primary';
                     break;
                 case 'Assigned':
-                    availabilityClass = 'availability-assigned';
+                    availabilityClass = 'text-bg-success';
                     break;
             }
             
@@ -205,18 +208,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>${driver.license_number}</td>
                     <td>${driver.contact_number || 'N/A'}</td>
                     <td class="${isExpiringSoon ? 'license-expiring' : ''}">${expiryFormatted}</td>
-                    <td><span class="status-badge ${statusClass}">${driver.status}</span></td>
-                    <td><span class="availability-badge ${availabilityClass}">${driver.availability}</span></td>
+                    <td><span class="status-badge badge ${statusClass}">${driver.status}</span></td>
+                    <td><span class="availability-badge badge ${availabilityClass}">${driver.availability}</span></td>
                     <td>
                         <div class="actions-compact">
-                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="editDriver(${driver.driver_id})">
-                                <i class="bi bi-pencil"></i>
+                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="viewSchedule(${driver.driver_id}, '${driver.full_name}')">
+                                <i class="bi bi-calendar-week"></i> Schedule
                             </button>
-                            <button type="button" class="btn btn-sm btn-outline-info" onclick="viewSchedule(${driver.driver_id}, '${driver.full_name}')">
-                                <i class="bi bi-calendar-week"></i>
+                            <button type="button" class="btn btn-sm btn-outline-success" onclick="editDriver(${driver.driver_id})">
+                                <i class="bi bi-pencil"></i> Edit
                             </button>
                             <button type="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete(${driver.driver_id})">
-                                <i class="bi bi-trash"></i>
+                                <i class="bi bi-trash"></i> Delete
                             </button>
                         </div>
                     </td>
@@ -494,6 +497,26 @@ document.addEventListener('DOMContentLoaded', function() {
         const isNewDriver = !driverId;
         const formData = new FormData(document.getElementById('driverForm'));
         
+        // Show confirmation dialog
+        Swal.fire({
+            title: isNewDriver ? 'Add New Driver?' : 'Update Driver?',
+            text: isNewDriver ? 'Are you sure you want to add this driver?' : 'Are you sure you want to save these changes?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: isNewDriver ? 'Yes, add it!' : 'Yes, update it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Proceed with save
+                saveDriverData(formData, isNewDriver);
+            }
+        });
+    }
+    
+    /**
+     * Save driver data to server
+     */
+    function saveDriverData(formData, isNewDriver) {
         fetch(isNewDriver ? '/admin/api/drivers/add' : '/admin/api/drivers/update', {
             method: 'POST',
             body: formData
@@ -526,15 +549,24 @@ document.addEventListener('DOMContentLoaded', function() {
      * Confirm delete driver
      */
     function confirmDelete(driverId) {
-        document.getElementById('delete_driver_id').value = driverId;
-        deleteModal.show();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this driver!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteDriver(driverId);
+            }
+        });
     }
     
     /**
      * Delete driver
      */
-    function deleteDriver() {
-        const driverId = document.getElementById('delete_driver_id').value;
+    function deleteDriver(driverId) {
         const formData = new FormData();
         formData.append('driver_id', driverId);
         
@@ -549,8 +581,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.json();
             })
             .then(response => {
-                deleteModal.hide();
-                
                 if (response.success) {
                     showAlert('success', 'Success', 'Driver deleted successfully');
                     loadDrivers();
@@ -563,7 +593,6 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch((error) => {
                 console.error('Error deleting driver:', error);
-                deleteModal.hide();
                 showAlert('error', 'Error', 'Failed to connect to the server');
             });
     }

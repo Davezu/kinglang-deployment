@@ -75,10 +75,10 @@ function renderBusTable(buses) {
         row.innerHTML = `
             <td>${bus.bus_id}</td>
             <td>${bus.name}</td>
-            <td>${bus.license_plate || '-'}</td>
+            <td class="text-center">${bus.license_plate || '-'}</td>
             <td>${bus.model || '-'}</td>
             <td>${bus.year || '-'}</td>
-            <td>${bus.capacity}</td>
+            <td class="text-center">${bus.capacity}</td>
             <td>${formattedMaintenance}</td>
             <td><span class="badge ${statusClass}">${bus.status}</span></td>
             <td>
@@ -538,39 +538,44 @@ function renderBusAvailability(availability) {
  * Submit the add bus form
  */
 function submitAddBusForm() {
-    const form = document.getElementById('addBusForm');
-    if (!form) return;
+    const formData = new FormData(document.getElementById('addBusForm'));
     
-    const formData = new FormData(form);
-    
-    // Send AJAX request
-    fetch('/admin/add-bus', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Close modal
-            const modal = bootstrap.Modal.getInstance(document.getElementById('addBusModal'));
-            modal.hide();
-            
-            // Reset form
-            form.reset();
-            
-            // Reload buses
-            loadBuses();
-            loadBusStats();
-            
-            // Show success message
-            showAlert('success', 'Success', data.message);
-        } else {
-            showAlert('error', 'Error', data.message);
+    // Show confirmation dialog
+    Swal.fire({
+        title: 'Add New Bus?',
+        text: 'Are you sure you want to add this bus?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, add it!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Proceed with save
+            fetch('/admin/add-bus', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Close modal and show success message
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('addBusModal'));
+                    modal.hide();
+                    
+                    showAlert('success', 'Success', 'Bus added successfully');
+                    
+                    // Refresh the bus list
+                    loadBuses();
+                    loadBusStats();
+                } else {
+                    showAlert('error', 'Error', 'Failed to add bus: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error adding bus:', error);
+                showAlert('error', 'Error', 'Failed to add bus. Please try again.');
+            });
         }
-    })
-    .catch(error => {
-        console.error('Error adding bus:', error);
-        showAlert('error', 'Error', 'Failed to add bus. Please try again.');
     });
 }
 
@@ -578,54 +583,61 @@ function submitAddBusForm() {
  * Submit the edit bus form
  */
 function submitEditBusForm() {
-    const form = document.getElementById('editBusForm');
-    if (!form) return;
+    const formData = new FormData(document.getElementById('editBusForm'));
     
-    const formData = new FormData(form);
-    
-    // Send AJAX request
-    fetch('/admin/update-bus', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Close modal
-            const modal = bootstrap.Modal.getInstance(document.getElementById('editBusModal'));
-            modal.hide();
-            
-            // Reload buses
-            loadBuses();
-            loadBusStats();
-            
-            // Show success message
-            showAlert('success', 'Success', data.message);
-        } else {
-            showAlert('error', 'Error', data.message);
+    // Show confirmation dialog
+    Swal.fire({
+        title: 'Update Bus?',
+        text: 'Are you sure you want to save these changes?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, update it!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Proceed with update
+            fetch('/admin/update-bus', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Close modal and show success message
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('editBusModal'));
+                    modal.hide();
+                    
+                    showAlert('success', 'Success', 'Bus updated successfully');
+                    
+                    // Refresh the bus list
+                    loadBuses();
+                    loadBusStats();
+                } else {
+                    showAlert('error', 'Error', 'Failed to update bus: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error updating bus:', error);
+                showAlert('error', 'Error', 'Failed to update bus. Please try again.');
+            });
         }
-    })
-    .catch(error => {
-        console.error('Error updating bus:', error);
-        showAlert('error', 'Error', 'Failed to update bus. Please try again.');
     });
 }
 
 /**
  * Confirm deletion of a bus
- * @param {number} busId Bus ID
- * @param {string} busName Bus name
+ * @param {number} busId The ID of the bus to delete
+ * @param {string} busName The name of the bus to delete
  */
 function confirmDeleteBus(busId, busName) {
     Swal.fire({
         title: 'Delete Bus?',
-        html: `Are you sure you want to delete bus <strong>${busName}</strong>?<br>This action cannot be undone.`,
+        text: `Are you sure you want to delete "${busName}"? This action cannot be undone.`,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#dc3545',
-        cancelButtonColor: '#6c757d',
         confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'Cancel'
+        cancelButtonText: 'Cancel',
+        confirmButtonColor: '#dc3545'
     }).then((result) => {
         if (result.isConfirmed) {
             deleteBus(busId);
@@ -635,24 +647,26 @@ function confirmDeleteBus(busId, busName) {
 
 /**
  * Delete a bus
- * @param {number} busId Bus ID
+ * @param {number} busId The ID of the bus to delete
  */
 function deleteBus(busId) {
-    const formData = new FormData();
-    formData.append('bus_id', busId);
-    
     fetch('/admin/delete-bus', {
         method: 'POST',
-        body: formData
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ bus_id: busId })
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            showAlert('success', 'Success', data.message);
+            showAlert('success', 'Success', 'Bus deleted successfully');
+            
+            // Refresh the bus list
             loadBuses();
             loadBusStats();
         } else {
-            showAlert('error', 'Error', data.message);
+            showAlert('error', 'Error', 'Failed to delete bus: ' + data.message);
         }
     })
     .catch(error => {

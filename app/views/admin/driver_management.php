@@ -265,7 +265,7 @@ require_once __DIR__ . "/../../controllers/admin/DriverManagementController.php"
                                             <th>License Expiry</th>
                                             <th>Status</th>
                                             <th>Availability</th>
-                                            <th>Actions</th>
+                                            <th class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody id="driverTableBody">
@@ -310,87 +310,125 @@ require_once __DIR__ . "/../../controllers/admin/DriverManagementController.php"
     <!-- Add/Edit Driver Modal -->
     <div class="modal fade" id="driverModal" tabindex="-1" aria-labelledby="driverModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="driverModalLabel">Add New Driver</h5>
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title" id="driverModalLabel"><i class="bi bi-person-plus-fill text-success me-2"></i>Add New Driver</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body p-4">
                     <form id="driverForm" enctype="multipart/form-data">
                         <input type="hidden" id="driver_id" name="driver_id">
                         
-                        <div class="row mb-3">
-                            <div class="col-md-8">
+                        <div class="row g-3">
+                            <!-- Left column with photo -->
+                            <div class="col-md-4 text-center border-end">
                                 <div class="mb-3">
-                                    <label for="full_name" class="form-label">Full Name*</label>
-                                    <input type="text" class="form-control" id="full_name" name="full_name" required>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="license_number" class="form-label">License Number*</label>
-                                        <input type="text" class="form-control" id="license_number" name="license_number" required>
+                                    <div class="position-relative mb-3">
+                                        <img id="photoPreview" src="/public/images/icons/user-placeholder.png" alt="Profile Preview" 
+                                            class="img-thumbnail rounded-circle shadow-sm" 
+                                            style="width: 150px; height: 150px; object-fit: cover;">
+                                        <label for="profile_photo" class="btn btn-sm btn-success position-absolute bottom-0 end-0 rounded-circle">
+                                            <i class="bi bi-camera-fill"></i>
+                                        </label>
+                                        <input type="file" class="form-control d-none" id="profile_photo" name="profile_photo" accept="image/*">
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="license_expiry" class="form-label">License Expiry Date</label>
-                                        <input type="date" class="form-control" id="license_expiry" name="license_expiry">
-                                    </div>
+                                    <small class="text-muted">Click the camera icon to upload photo</small>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="mb-3 text-center">
-                                    <label for="profile_photo" class="form-label">Profile Photo</label>
-                                    <div class="mb-2">
-                                        <img id="photoPreview" src="/public/images/icons/user-placeholder.png" alt="Profile Preview" class="img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;">
+                            
+                            <!-- Right column with form fields -->
+                            <div class="col-md-8">
+                                <div class="row g-2">
+                                    <div class="col-12 mb-2">
+                                        <label for="full_name" class="form-label small fw-bold">Full Name*</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
+                                            <input type="text" class="form-control" id="full_name" name="full_name" required>
+                                        </div>
                                     </div>
-                                    <input type="file" class="form-control" id="profile_photo" name="profile_photo" accept="image/*">
+                                    
+                                    <div class="col-md-6 mb-2">
+                                        <label for="license_number" class="form-label small fw-bold">License Number*</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="bi bi-card-text"></i></span>
+                                            <input type="text" class="form-control" id="license_number" name="license_number" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-2">
+                                        <label for="license_expiry" class="form-label small fw-bold">License Expiry</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="bi bi-calendar-event"></i></span>
+                                            <input type="date" class="form-control" id="license_expiry" name="license_expiry">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-2">
+                                        <label for="contact_number" class="form-label small fw-bold">Contact Number*</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="bi bi-telephone"></i></span>
+                                            <input type="text" class="form-control" id="contact_number" name="contact_number" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-2">
+                                        <label for="date_hired" class="form-label small fw-bold">Date Hired</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i class="bi bi-calendar-check"></i></span>
+                                            <input type="date" class="form-control" id="date_hired" name="date_hired">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="contact_number" class="form-label">Contact Number*</label>
-                                <input type="text" class="form-control" id="contact_number" name="contact_number" required>
+                            
+                            <div class="col-12">
+                                <label for="address" class="form-label small fw-bold">Address</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text bg-light"><i class="bi bi-geo-alt"></i></span>
+                                    <textarea class="form-control" id="address" name="address" rows="2"></textarea>
+                                </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="date_hired" class="form-label">Date Hired</label>
-                                <input type="date" class="form-control" id="date_hired" name="date_hired">
+                            
+                            <div class="col-md-6">
+                                <label for="status" class="form-label small fw-bold">Status</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text bg-light"><i class="bi bi-toggle-on"></i></span>
+                                    <select class="form-select" id="status" name="status">
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                        <option value="On Leave">On Leave</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="address" class="form-label">Address</label>
-                            <textarea class="form-control" id="address" name="address" rows="2"></textarea>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="status" class="form-label">Status</label>
-                                <select class="form-select" id="status" name="status">
-                                    <option value="Active">Active</option>
-                                    <option value="Inactive">Inactive</option>
-                                    <option value="On Leave">On Leave</option>
-                                </select>
+                            
+                            <div class="col-md-6">
+                                <label for="availability" class="form-label small fw-bold">Availability</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text bg-light"><i class="bi bi-calendar2-check"></i></span>
+                                    <select class="form-select" id="availability" name="availability">
+                                        <option value="Available">Available</option>
+                                        <option value="Assigned">Assigned</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="availability" class="form-label">Availability</label>
-                                <select class="form-select" id="availability" name="availability">
-                                    <option value="Available">Available</option>
-                                    <option value="Assigned">Assigned</option>
-                                </select>
+                            
+                            <div class="col-12">
+                                <label for="notes" class="form-label small fw-bold">Notes</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-sticky"></i></span>
+                                    <textarea class="form-control" id="notes" name="notes" rows="2"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="notes" class="form-label">Notes</label>
-                            <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success" id="saveDriverBtn">Save Driver</button>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Cancel
+                    </button>
+                    <button type="button" class="btn btn-success" id="saveDriverBtn">
+                        <i class="bi bi-save me-1"></i>Save Driver
+                    </button>
                 </div>
             </div>
         </div>

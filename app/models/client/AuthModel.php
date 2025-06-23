@@ -111,6 +111,65 @@ class ClientAuthModel {
         }
     }
 
+    public function googleLogin($email, $first_name, $last_name, $picture = null) {
+        try {
+            // Check if the user already exists
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
+            $stmt->execute([":email" => $email]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if ($user) {
+                // User exists, update their Google profile info if needed
+                $stmt = $this->conn->prepare("UPDATE users SET google_id = :google_id, profile_picture = :picture WHERE email = :email");
+                $stmt->execute([
+                    ":google_id" => "google_" . md5($email),
+                    ":picture" => $picture,
+                    ":email" => $email
+                ]);
+                
+                // Set session variables
+                $_SESSION["email"] = $user["email"];
+                $_SESSION["user_id"] = $user["user_id"];
+                $_SESSION["client_name"] = $user["first_name"] . " " . $user["last_name"];
+                
+                return "success";
+            } else {
+                // User doesn't exist, create a new account
+                // Generate a random secure password for the Google account
+                $random_password = bin2hex(random_bytes(8));
+                $hashed_password = password_hash($random_password, PASSWORD_BCRYPT);
+                
+                // Insert the new user
+                $stmt = $this->conn->prepare("INSERT INTO users (first_name, last_name, email, password, google_id, profile_picture, role) 
+                                            VALUES (:first_name, :last_name, :email, :password, :google_id, :picture, 'client')");
+                $result = $stmt->execute([
+                    ":first_name" => $first_name,
+                    ":last_name" => $last_name,
+                    ":email" => $email,
+                    ":password" => $hashed_password,
+                    ":google_id" => "google_" . md5($email),
+                    ":picture" => $picture
+                ]);
+                
+                if ($result) {
+                    // Get the newly created user ID
+                    $user_id = $this->conn->lastInsertId();
+                    
+                    // Set session variables
+                    $_SESSION["email"] = $email;
+                    $_SESSION["user_id"] = $user_id;
+                    $_SESSION["client_name"] = $first_name . " " . $last_name;
+                    
+                    return "success";
+                } else {
+                    return "Failed to create user account.";
+                }
+            }
+        } catch (PDOException $e) {
+            return "Database error: " . $e->getMessage();
+        }
+    }
+
     public function getClientID($user_id) {
         try {
             $stmt = $this->conn->prepare("SELECT client_id FROM users WHERE user_id = :user_id");
