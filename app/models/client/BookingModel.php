@@ -755,6 +755,50 @@ class Booking {
             return false;
         }
     }
+
+    /**
+     * Get assigned drivers for a booking
+     * 
+     * @param int $booking_id The booking ID
+     * @return array List of drivers assigned to the booking
+     */
+    public function getAssignedDrivers($booking_id) {
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT d.*, bd.booking_id
+                FROM drivers d
+                JOIN booking_driver bd ON d.driver_id = bd.driver_id
+                WHERE bd.booking_id = :booking_id
+            ");
+            $stmt->execute([":booking_id" => $booking_id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error in getAssignedDrivers: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    /**
+     * Get assigned buses for a booking
+     * 
+     * @param int $booking_id The booking ID
+     * @return array List of buses assigned to the booking
+     */
+    public function getAssignedBuses($booking_id) {
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT b.*, bb.booking_id
+                FROM buses b
+                JOIN booking_buses bb ON b.bus_id = bb.bus_id
+                WHERE bb.booking_id = :booking_id
+            ");
+            $stmt->execute([":booking_id" => $booking_id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error in getAssignedBuses: " . $e->getMessage());
+            return [];
+        }
+    }
 }
 
 

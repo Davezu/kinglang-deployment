@@ -520,6 +520,10 @@ class BookingManagementController {
         // Get booking stops
         $stops = $this->bookingModel->getBookingStops($booking_id);
         
+        // Get assigned drivers and buses
+        $drivers = $this->bookingModel->getAssignedDrivers($booking_id);
+        $buses = $this->bookingModel->getAssignedBuses($booking_id);
+        
         // Load the contract template view
         require_once __DIR__ . "/../../views/admin/contract.php";
     }

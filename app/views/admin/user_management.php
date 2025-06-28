@@ -187,7 +187,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                             <input type="text" class="form-control" id="lastName" name="lastName" required>
                         </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 d-none">
                         <label for="companyName" class="form-label">Company Name (Optional)</label>
                         <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Company or organization name">
                     </div>

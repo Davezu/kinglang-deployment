@@ -391,6 +391,56 @@ $company_name_client = $booking['company_name'] ?? '';
             <p class="mb-0"><strong><i class="bi bi-signpost-split me-1 text-success"></i>Destination:</strong> <?php echo $destinations; ?></p>
         </div>
 
+        <!-- Driver and Bus Information Section -->
+        <div class="section-title"><i class="bi bi-people-fill"></i>ASSIGNED RESOURCES</div>
+        <div class="row">
+            <!-- Driver Information -->
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        <strong><i class="bi bi-person-badge me-1 text-success"></i>Driver Information</strong>
+                    </div>
+                    <div class="card-body p-2">
+                        <?php if (!empty($drivers)): ?>
+                            <?php foreach($drivers as $index => $driver): ?>
+                                <div class="mb-2 <?php echo $index > 0 ? 'mt-3 pt-3 border-top' : ''; ?>">
+                                    <p class="mb-1"><strong>Driver <?php echo $index + 1; ?>:</strong> <?php echo $driver['full_name'] ?? 'N/A'; ?></p>
+                                    <p class="mb-1"><small><i class="bi bi-telephone me-1 text-success"></i><?php echo $driver['contact_number'] ?? 'N/A'; ?></small></p>
+                                    <p class="mb-1"><small><i class="bi bi-card-text me-1 text-success"></i>License: <?php echo $driver['license_number'] ?? 'N/A'; ?></small></p>
+                                    <!-- <p class="mb-0"><small><i class="bi bi-calendar-check me-1 text-success"></i>Experience: <?php echo $driver['years_experience'] ?? 'N/A'; ?> years</small></p> -->
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p class="mb-0 text-muted">Driver assignment pending</p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bus Information -->
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        <strong><i class="bi bi-bus-front me-1 text-success"></i>Bus Information</strong>
+                    </div>
+                    <div class="card-body p-2">
+                        <?php if (!empty($buses)): ?>
+                            <?php foreach($buses as $index => $bus): ?>
+                                <div class="mb-2 <?php echo $index > 0 ? 'mt-3 pt-3 border-top' : ''; ?>">
+                                    <p class="mb-1"><strong>Bus <?php echo $index + 1; ?>:</strong> <?php echo $bus['name'] ?? 'N/A'; ?></p>
+                                    <p class="mb-1"><small><i class="bi bi-tag me-1 text-success"></i>Plate #: <?php echo $bus['license_plate'] ?? 'N/A'; ?></small></p>
+                                    <p class="mb-1"><small><i class="bi bi-people me-1 text-success"></i>Capacity: <?php echo $bus['capacity'] ?? 'N/A'; ?> seats</small></p>
+                                    <!-- <p class="mb-0"><small><i class="bi bi-info-circle me-1 text-success"></i>Type: <?php echo $bus['type'] ?? 'N/A'; ?></small></p> -->
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p class="mb-0 text-muted">Bus assignment pending</p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="section-title"><i class="bi bi-tag-fill"></i>RATES</div>
         <table>
             <tr>

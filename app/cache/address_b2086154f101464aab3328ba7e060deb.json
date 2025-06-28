@@ -2,7 +2,7 @@
    "predictions" : 
    [
       {
-         "description" : "Kingsford Hotel Manila, J.W. Diokno Boulevard, Parañaque, Metro Manila, Philippines",
+         "description" : "Kingsford Hotel Manila, J.W. Diokno Boulevard, Paranaque City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -22,7 +22,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "J.W. Diokno Boulevard, Parañaque, Metro Manila, Philippines"
+            "secondary_text" : "J.W. Diokno Boulevard, Paranaque City, Metro Manila, Philippines"
          },
          "terms" : 
          [
@@ -36,14 +36,14 @@
             },
             {
                "offset" : 47,
-               "value" : "Parañaque"
+               "value" : "Paranaque City"
             },
             {
-               "offset" : 58,
+               "offset" : 63,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 72,
+               "offset" : 77,
                "value" : "Philippines"
             }
          ],
@@ -146,14 +146,14 @@
          ],
          "types" : 
          [
-            "sublocality",
-            "sublocality_level_2",
             "geocode",
-            "political"
+            "sublocality_level_2",
+            "political",
+            "sublocality"
          ]
       },
       {
-         "description" : "Kingsville Executive Village Basketball Court, Napoleon Street, Antipolo, Rizal, Philippines",
+         "description" : "Kingsville Executive Village Basketball Court, Napoleon Street, Antipolo City, Rizal, Philippines",
          "matched_substrings" : 
          [
             {
@@ -173,7 +173,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Napoleon Street, Antipolo, Rizal, Philippines"
+            "secondary_text" : "Napoleon Street, Antipolo City, Rizal, Philippines"
          },
          "terms" : 
          [
@@ -187,26 +187,26 @@
             },
             {
                "offset" : 64,
-               "value" : "Antipolo"
+               "value" : "Antipolo City"
             },
             {
-               "offset" : 74,
+               "offset" : 79,
                "value" : "Rizal"
             },
             {
-               "offset" : 81,
+               "offset" : 86,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "establishment",
             "premise",
+            "establishment",
             "point_of_interest"
          ]
       },
       {
-         "description" : "King's College of the Philippines (KCP), Pico Road, La Trinidad, Benguet, Philippines",
+         "description" : "Kingsborough International Convention Center, Jose Abad Santos Avenue, San Fernando City, Pampanga, Philippines",
          "matched_substrings" : 
          [
             {
@@ -214,11 +214,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJH43wxMCjkTMRNYHZmaMkYPc",
-         "reference" : "ChIJH43wxMCjkTMRNYHZmaMkYPc",
+         "place_id" : "ChIJ_cRDJkL3ljMRp6N3bP9uzzs",
+         "reference" : "ChIJ_cRDJkL3ljMRp6N3bP9uzzs",
          "structured_formatting" : 
          {
-            "main_text" : "King's College of the Philippines (KCP)",
+            "main_text" : "Kingsborough International Convention Center",
             "main_text_matched_substrings" : 
             [
                {
@@ -226,37 +226,35 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Pico Road, La Trinidad, Benguet, Philippines"
+            "secondary_text" : "Jose Abad Santos Avenue, San Fernando City, Pampanga, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "King's College of the Philippines (KCP)"
+               "value" : "Kingsborough International Convention Center"
             },
             {
-               "offset" : 41,
-               "value" : "Pico Road"
+               "offset" : 46,
+               "value" : "Jose Abad Santos Avenue"
             },
             {
-               "offset" : 52,
-               "value" : "La Trinidad"
+               "offset" : 71,
+               "value" : "San Fernando City"
             },
             {
-               "offset" : 65,
-               "value" : "Benguet"
+               "offset" : 90,
+               "value" : "Pampanga"
             },
             {
-               "offset" : 74,
+               "offset" : 100,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "point_of_interest",
             "establishment",
-            "school",
-            "university"
+            "point_of_interest"
          ]
       }
    ],

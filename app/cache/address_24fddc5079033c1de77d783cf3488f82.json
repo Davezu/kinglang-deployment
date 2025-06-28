@@ -53,8 +53,8 @@
          ],
          "types" : 
          [
-            "establishment",
             "point_of_interest",
+            "establishment",
             "shopping_mall"
          ]
       },
@@ -110,8 +110,8 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "establishment"
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -171,6 +171,62 @@
          ]
       },
       {
+         "description" : "SM fairview Jeep Terminal & Taxi, Regalado Highway, Novaliches, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 11,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ16fJLwCxlzMRVg6m_3PkR2M",
+         "reference" : "ChIJ16fJLwCxlzMRVg6m_3PkR2M",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM fairview Jeep Terminal & Taxi",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 11,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Regalado Highway, Novaliches, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM fairview Jeep Terminal & Taxi"
+            },
+            {
+               "offset" : 34,
+               "value" : "Regalado Highway"
+            },
+            {
+               "offset" : 52,
+               "value" : "Novaliches"
+            },
+            {
+               "offset" : 64,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 77,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 91,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "point_of_interest",
+            "establishment"
+         ]
+      },
+      {
          "description" : "SM Fairview, Quezon City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
@@ -217,58 +273,6 @@
             "point_of_interest",
             "establishment",
             "transit_station"
-         ]
-      },
-      {
-         "description" : "Sm fairview, Super Nova, Caloocan, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 11,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJPxsLIwCxlzMRn2ONTsYxFnY",
-         "reference" : "ChIJPxsLIwCxlzMRn2ONTsYxFnY",
-         "structured_formatting" : 
-         {
-            "main_text" : "Sm fairview",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 11,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Super Nova, Caloocan, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Sm fairview"
-            },
-            {
-               "offset" : 13,
-               "value" : "Super Nova"
-            },
-            {
-               "offset" : 25,
-               "value" : "Caloocan"
-            },
-            {
-               "offset" : 35,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 49,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "establishment",
-            "point_of_interest"
          ]
       }
    ],
