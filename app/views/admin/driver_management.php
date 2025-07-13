@@ -10,6 +10,8 @@ require_once __DIR__ . "/../../controllers/admin/DriverManagementController.php"
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/../../../public/css/bootstrap/bootstrap.min.css">  
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Load Bootstrap JS early -->
+    <script src="/../../../public/js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Driver Management</title>
     <style>
@@ -490,7 +492,7 @@ require_once __DIR__ . "/../../controllers/admin/DriverManagementController.php"
                                     <th>Destination</th>
                                     <th>Trip Dates</th>
                                     <th>Pickup Time</th>
-                                    <th>Status</th>
+                                    <th class="d-none">Status</th>
                                 </tr>
                             </thead>
                             <tbody id="scheduleTableBody">
@@ -508,7 +510,7 @@ require_once __DIR__ . "/../../controllers/admin/DriverManagementController.php"
         </div>
     </div>
     
-    <script src="/../../../public/js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="/../../../public/js/admin/driver_management.js"></script>
+    <script src="../../../public/js/assets/sidebar.js"></script>
 </body>
 </html> 

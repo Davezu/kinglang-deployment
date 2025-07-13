@@ -88,7 +88,7 @@ class BookingCompletionController {
             }
             
             if ($stmt->rowCount() === 0) {
-                error_log("No rows affected when updating booking ID {$booking['booking_id']} to Completed");
+                // error_log("No rows affected when updating booking ID {$booking['booking_id']} to Completed");
                 return false;
             }
             

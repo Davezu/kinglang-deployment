@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all Bootstrap components
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+    
+    const dropdownTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="dropdown"]'));
+    dropdownTriggerList.map(function (dropdownTriggerEl) {
+        return new bootstrap.Dropdown(dropdownTriggerEl);
+    });
+    
     // Initialize modals
     const driverModal = new bootstrap.Modal(document.getElementById('driverModal'));
     const scheduleModal = new bootstrap.Modal(document.getElementById('driverScheduleModal'));
@@ -403,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>${schedule.destination}</td>
                     <td>${startDate} - ${endDate}</td>
                     <td>${pickupTime}</td>
-                    <td><span class="badge ${statusClass}">${schedule.status}</span></td>
+                    <td class="d-none"><span class="badge ${statusClass}">${schedule.status}</span></td>
                 </tr>
             `;
         });

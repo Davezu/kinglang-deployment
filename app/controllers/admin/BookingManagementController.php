@@ -232,7 +232,7 @@ class BookingManagementController {
         $totalPages = max(1, ceil((int)$total / (int)$limit));
         
         // Debug info
-        error_log("Debug - Total records: $total, Limit: $limit, Total Pages Calculated: $totalPages");
+        // error_log("Debug - Total records: $total, Limit: $limit, Total Pages Calculated: $totalPages");
         
         $response = [
             "success" => true, 
@@ -245,7 +245,7 @@ class BookingManagementController {
             ]
         ];
         
-        error_log("Response: " . json_encode($response));
+        // error_log("Response: " . json_encode($response));
 
         header("Content-Type: application/json");
 
@@ -389,7 +389,7 @@ class BookingManagementController {
 
             $result = $this->bookingModel->confirmRebookingRequest($rebooking_id, $discount, $discountType);
             header("Content-Type: application/json");
-
+            
             echo json_encode([
                 "success" => $result["success"],
                 "message" => $result["success"] 

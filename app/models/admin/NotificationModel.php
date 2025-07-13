@@ -98,4 +98,30 @@ class NotificationModel {
             return [];
         }
     }
+    
+    public function getTotalNotificationCount() {
+        try {
+            $stmt = $this->conn->prepare("SELECT COUNT(*) FROM admin_notifications");
+            $stmt->execute();
+            return $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            error_log("Error getting total notification count: " . $e->getMessage());
+            return 0;
+        }
+    }
+    
+    public function getAllNotificationsWithPagination($limit = 20, $offset = 0) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM admin_notifications 
+                                          ORDER BY created_at DESC 
+                                          LIMIT :limit OFFSET :offset");
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error getting paginated notifications: " . $e->getMessage());
+            return [];
+        }
+    }
 } 

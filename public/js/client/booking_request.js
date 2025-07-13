@@ -1138,6 +1138,13 @@ function renderBookings(bookings) {
             const row = document.createElement("tr");
             row.className = "align-middle";
             row.dataset.bookingId = booking.booking_id;
+
+            // ID
+            const idCell = document.createElement("td");
+            idCell.className = "destination-cell";
+            idCell.innerHTML = `${booking.booking_id}`;
+            idCell.title = booking.booking_id; // Add tooltip for full text on hover
+            row.appendChild(idCell);
             
             // Destination
             const destinationCell = document.createElement("td");

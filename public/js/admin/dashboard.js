@@ -1,6 +1,7 @@
 $(renderSummaryMetrics);
 $(document).ready(function() {
     renderCharts();
+    checkUrgentReviewBookings();
 });
 
 async function renderCharts() {
@@ -13,6 +14,158 @@ async function renderCharts() {
         await renderRevenueTrendsChart();
     } catch (error) {
         console.error("Error rendering charts:", error);
+    }
+}
+
+// Check for bookings that need urgent review
+async function checkUrgentReviewBookings() {
+    try {
+        const response = await $.ajax({
+            url: "/admin/urgent-review-bookings",
+            type: "GET",
+            dataType: "json"    
+        }); 
+
+        if (response.success && response.count > 0) {
+            showUrgentReviewAlert(response.bookings);
+        }
+    } catch (error) {
+        console.error("Error checking urgent review bookings:", error);
+    }
+}
+
+// Display an alert for urgent booking reviews
+function showUrgentReviewAlert(bookings) {
+    // Create the alert container
+    const alertContainer = $('<div class="alert alert-warning alert-dismissible fade show" role="alert">');
+    
+    // Create the alert content
+    const alertTitle = $('<h4 class="alert-heading">').text('Urgent Booking Reviews Needed!');
+    const alertText = $('<p>').text(`You have ${bookings.length} booking request(s) that need urgent review. These bookings will be automatically cancelled if not reviewed by their tour date.`);
+    
+    // Create the booking list
+    const bookingList = $('<ul class="list-group mt-3 mb-3">');
+    
+    bookings.forEach(booking => {
+        const daysText = booking.days_remaining == 0 ? 
+            'TODAY' : 
+            (booking.days_remaining == 1 ? 'TOMORROW' : `in ${booking.days_remaining} days`);
+            
+        const urgencyClass = booking.days_remaining == 0 ? 
+            'list-group-item-danger' : 
+            (booking.days_remaining == 1 ? 'list-group-item-warning' : 'list-group-item-info');
+            
+        const bookingItem = $(`
+            <li class="list-group-item ${urgencyClass} d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>ID #${booking.booking_id}:</strong> ${booking.client_name} - ${booking.destination}
+                    <br><small>Tour date: ${booking.formatted_date} (${daysText})</small>
+                </div>
+                <a href="print-invoice/${booking.booking_id}" target="blank" class="btn btn-sm btn-primary">Review</a>
+            </li>
+        `);
+        
+        bookingList.append(bookingItem);
+    });
+    
+    // Check if there are any bookings with days_remaining <= 0 (overdue)
+    const hasOverdueBookings = bookings.some(booking => booking.days_remaining <= 0);
+    
+    // If there are overdue bookings, add an auto-cancel button
+    let autoCancelButton = '';
+    if (hasOverdueBookings) {
+        autoCancelButton = $(`
+            <div class="d-flex justify-content-end mt-3">
+                <button id="autoCancelOverdueBtn" class="btn btn-danger">
+                    <i class="bi bi-x-circle"></i> Auto-Cancel Overdue Bookings
+                </button>
+            </div>
+        `);
+    }
+    
+    // Create the dismiss button
+    const dismissButton = $('<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">');
+    
+    // Assemble the alert
+    alertContainer.append(alertTitle, alertText, bookingList);
+    if (hasOverdueBookings) {
+        alertContainer.append(autoCancelButton);
+    }
+    alertContainer.append(dismissButton);
+    
+    // Add the alert to the page
+    alertContainer.insertAfter('hr:first');
+    
+    // Add event listener for auto-cancel button
+    $('#autoCancelOverdueBtn').on('click', function() {
+        if (confirm('Are you sure you want to automatically cancel all overdue booking requests? This action cannot be undone.')) {
+            triggerAutoCancellation();
+        }
+    });
+}
+
+// Function to trigger auto-cancellation
+async function triggerAutoCancellation() {
+    try {
+        // Show loading state
+        $('#autoCancelOverdueBtn').prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...');
+        
+        const response = await $.ajax({
+            url: "/admin/manual-auto-cancellation",
+            type: "GET",
+            dataType: "json"
+        });
+        
+        if (response.success) {
+            // Create success alert
+            const successAlert = $(`
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <h4 class="alert-heading">Auto-Cancellation Complete</h4>
+                    <p>${response.message}</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            `);
+            
+            // If there were cancelled bookings, show details
+            if (response.cancelled_bookings && response.cancelled_bookings.length > 0) {
+                const cancelledList = $('<ul class="list-group mt-3 mb-3">');
+                
+                response.cancelled_bookings.forEach(booking => {
+                    const formattedDate = new Date(booking.date_of_tour).toLocaleDateString('en-US', {
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric'
+                    });
+                    
+                    const bookingItem = $(`
+                        <li class="list-group-item list-group-item-danger">
+                            <strong>ID #${booking.booking_id}:</strong> ${booking.client_name} - ${booking.destination}
+                            <br><small>Tour date: ${formattedDate}</small>
+                        </li>
+                    `);
+                    
+                    cancelledList.append(bookingItem);
+                });
+                
+                successAlert.append(cancelledList);
+            }
+            
+            // Add to page and remove original alert
+            successAlert.insertAfter('hr:first');
+            $('.alert-warning').alert('close');
+            
+            // Refresh metrics after a short delay
+            setTimeout(() => {
+                renderSummaryMetrics();
+            }, 1000);
+        } else {
+            alert('Error: ' + response.message);
+            $('#autoCancelOverdueBtn').prop('disabled', false).html('<i class="bi bi-x-circle"></i> Auto-Cancel Overdue Bookings');
+        }
+    } catch (error) {
+        console.error("Error triggering auto-cancellation:", error);
+        alert('An error occurred while processing auto-cancellations. Please try again.');
+        $('#autoCancelOverdueBtn').prop('disabled', false).html('<i class="bi bi-x-circle"></i> Auto-Cancel Overdue Bookings');
     }
 }
 

@@ -294,6 +294,7 @@ require_client_auth(); // Use helper function
                         <table class="table table-hover overflow-hidden rounded shadow-sm text-secondary">
                             <thead>
                                 <tr>
+                                    <th class="sort" data-order="asc" data-column="booking_id" style="white-space: nowrap;">ID</th>
                                     <th class="sort" data-order="asc" data-column="destination" style="white-space: nowrap;">Destination</th>
                                     <th class="sort" data-order="asc" data-column="date_of_tour" style="white-space: nowrap;">Date of Tour</th>
                                     <th class="sort" data-order="asc" data-column="end_of_tour" style="white-space: nowrap;">End of Tour</th>

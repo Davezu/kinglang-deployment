@@ -1474,13 +1474,13 @@ async function calculateRoute() {
         if (data.error) {
             console.error(data.error);
             // Show error notification
-            Swal.fire({
-                icon: 'error',
-                title: 'Route Calculation Error',
-                text: 'Unable to calculate the route. Please check your locations and try again.',
-                timer: 2000,
-                timerProgressBar: true
-            });
+            // Swal.fire({
+            //     icon: 'error',
+            //     title: 'Route Calculation Error',
+            //     text: 'Unable to calculate the route. Please check your locations and try again.',
+            //     timer: 2000,
+            //     timerProgressBar: true
+            // });
         }
 
         const waypoints = data.stops.map(stop => ({ location: stop, stopover: true }));
@@ -1526,13 +1526,13 @@ async function calculateRoute() {
                         errorMessage += "Please check your locations and try again.";
                 }
                 
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Route Calculation Failed',
-                    text: errorMessage,
-                    timer: 2000,
-                    timerProgressBar: true
-                });
+                // Swal.fire({
+                //     icon: 'error',
+                //     title: 'Route Calculation Failed',
+                //     text: errorMessage,
+                //     timer: 2000,
+                //     timerProgressBar: true
+                // });
             }
         });
     } catch (error) {

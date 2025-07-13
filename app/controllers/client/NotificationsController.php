@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/../../models/client/NotificationModel.php";
 
-class ClientNotificationsController {
+class NotificationsController {
     private $notificationModel;
     
     public function __construct() {
@@ -31,19 +31,13 @@ class ClientNotificationsController {
     }
     
     public function getNotifications() {
-        // Debug information
-        // error_log("getNotifications called with method: " . $_SERVER['REQUEST_METHOD']);
-        // error_log("Request URI: " . $_SERVER['REQUEST_URI']);
-        
         if (!isset($_SESSION["user_id"])) {
-            error_log("User not authenticated - no user_id in session");
             header('Content-Type: application/json');
             echo json_encode(['success' => false, 'message' => 'Not authenticated']);
             exit;
         }
         
         $user_id = $_SESSION["user_id"];
-        // error_log("User ID from session: $user_id");
         $page = 1;
         $limit = 20;
         
@@ -51,12 +45,10 @@ class ClientNotificationsController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Check content type for JSON
             $contentType = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
-            error_log("Content-Type: $contentType");
             
             if (strpos($contentType, 'application/json') !== false) {
                 // Handle JSON request
                 $json = file_get_contents('php://input');
-                error_log("Raw input: $json");
                 $data = json_decode($json, true);
                 
                 if (isset($data['page'])) {
@@ -81,11 +73,6 @@ class ClientNotificationsController {
         $unreadCount = $this->notificationModel->getNotificationCount($user_id);
         $total = $this->notificationModel->getTotalNotificationCount($user_id);
         $total_pages = ceil($total / $limit);
-        
-        // Debug information
-        // error_log("User ID: $user_id, Total notifications: $total");
-        // error_log("Page: $page, Limit: $limit, Offset: $offset");
-        // error_log("Notifications: " . json_encode($notifications));
         
         header('Content-Type: application/json');
         echo json_encode([

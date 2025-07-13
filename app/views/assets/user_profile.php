@@ -225,31 +225,31 @@
         <div class="dropdown-menu dropdown-menu-end notification-dropdown" id="notificationDropdownMenu">
             <div class="notification-header">
                 <h6><i class="bi bi-bell-fill"></i>Notifications</h6>
-                <a href="javascript:void(0)" class="text-decoration-none small mark-all-read">Mark all as read</a>
+                <a href="javascript:void(0)" class="text-decoration-none small mark-all-read d-none">Mark all as read</a>
             </div>
             <div class="notification-list">
                 <!-- Notifications will be loaded here dynamically -->
                 <div class="no-notifications text-center">No notifications</div>
             </div>
-            <div class="notification-footer">
-                <a href="/client/notifications" class="text-decoration-none small">View all notifications</a>
+            <div class="notification-footer">   
+                <a href="/client/notifications" class="text-decoration-none small d-none">View all notifications</a>
             </div>
         </div>
     </div>
     
     <!-- Notification Details Popup -->
-    <div class="notification-details-popup position-fixed bg-white rounded-4 shadow-lg p-0" style="display: none; width: 350px; z-index: 1060; right: auto; left: auto;">
+    <div class="notification-details-popup position-fixed bg-white rounded-4 shadow-lg p-0" style="display: none; width: 350px; z-index: 99999; right: auto; left: auto;">
         <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
             <h6 class="m-0 fw-semibold d-flex align-items-center">
                 <i class="bi bi-bell-fill me-2 text-success"></i>Notification Details
             </h6>
             <button type="button" class="btn-close close-notification-details" aria-label="Close"></button>
         </div>
-        <div class="notification-detail-content p-3">
+        <div class="notification-detail-content p-3 m-0">
             <!-- Notification details will be loaded here -->
         </div>
-        <div class="p-3 border-top d-flex justify-content-end">
-            <a href="#" class="btn btn-sm btn-success view-related-content" style="display: none;">
+        <div class="p-3 border-top d-flex justify-content-end d-none">
+            <a href="#" class="btn btn-sm btn-success view-related-content d-none" style="display: none;">
                 <i class="bi bi-arrow-right me-1"></i>View Details
             </a>
         </div>
@@ -268,7 +268,7 @@
                 </div>
             </div>
         </div>
-        <div class="mt-2 text-center">
+        <div class="mt-2 text-center d-none">
             <a href="#" class="btn btn-sm btn-success view-full-details">View Full Details</a>
         </div>
     </div>
@@ -446,16 +446,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Check if there's enough space to the right
                     let left;
-                    if (rect.right + popupWidth + 20 < viewportWidth) {
+                    if (rect.right + popupWidth + 60 < viewportWidth) {
                         // Position to the right of the notification
-                        left = rect.right + 10;
+                        left = rect.right + 600;
                     } else {
                         // Position to the left of the notification
-                        left = Math.max(10, rect.left - popupWidth - 10);
+                        left = Math.max(20, rect.left - popupWidth - 20);
                     }
-                    
-                    // Ensure the popup doesn't go below the viewport
-                    const top = Math.min(rect.top, viewportHeight - 400); // 400 is an estimated height
+
+                    // Add 20px extra space from the top
+                    const top = Math.min(rect.top + 80, viewportHeight - 400);
                     
                     // Apply the calculated position
                     notificationDetailsPopup.style.top = `${top}px`;
@@ -529,7 +529,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         ` : ''}
                         
-                        <div class="mb-0">
+                        <div class="mb-0 d-none">
                             <label class="form-label fw-medium">Status</label>
                             <p class="mb-0">
                                 <span class="badge ${notification.is_read ? 'bg-secondary' : 'bg-success'} rounded-pill">

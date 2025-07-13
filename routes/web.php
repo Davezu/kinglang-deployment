@@ -17,6 +17,7 @@ $controllerClasses = [
         'AuditTrailController' => __DIR__ . "/../app/controllers/admin/AuditTrailController.php",
         'BusManagementController' => __DIR__ . "/../app/controllers/admin/BusManagementController.php",
         'DriverManagementController' => __DIR__ . "/../app/controllers/admin/DriverManagementController.php",
+        'BookingReviewReminderController' => __DIR__ . "/../app/controllers/admin/BookingReviewReminderController.php",
     ]
 ];
 
@@ -750,30 +751,35 @@ switch ($requestPath) {
         $controller = new NotificationsController();
         $controller->markAllAsRead();
         break;
+    case "/admin/notifications/get":
+        require_once $controllerClasses['admin']['NotificationsController'];
+        $controller = new NotificationsController();
+        $controller->getNotifications();
+        break;
         
     case "/client/notifications":
         require_once $controllerClasses['client']['NotificationsController'];
-        $controller = new ClientNotificationsController();
+        $controller = new NotificationsController();
         $controller->index();
         break;
     case "/client/notifications/get":
         require_once $controllerClasses['client']['NotificationsController'];
-        $controller = new ClientNotificationsController();
+        $controller = new NotificationsController();
         $controller->getNotifications();
         break;
     case "/client/notifications/mark-read":
         require_once $controllerClasses['client']['NotificationsController'];
-        $controller = new ClientNotificationsController();
+        $controller = new NotificationsController();
         $controller->markAsRead();
         break;
     case "/client/notifications/mark-all-read":
         require_once $controllerClasses['client']['NotificationsController'];
-        $controller = new ClientNotificationsController();
+        $controller = new NotificationsController();
         $controller->markAllAsRead();
         break;
     case "/client/notifications/add-test":
         require_once $controllerClasses['client']['NotificationsController'];
-        $controller = new ClientNotificationsController();
+        $controller = new NotificationsController();
         $controller->addTestNotification();
         break;
         
@@ -816,6 +822,20 @@ switch ($requestPath) {
         require_once $controllerClasses['admin']['AuditTrailController'];
         $controller = new AuditTrailController();
         $controller->exportAuditTrails();
+        break;
+
+    // Urgent Review Reminder
+    case "/admin/urgent-review-bookings":
+        require_once $controllerClasses['admin']['BookingReviewReminderController'];
+        $controller = new BookingReviewReminderController();
+        $controller->showUrgentReviewBookings();
+        break;
+        
+    // Manual Auto-Cancellation
+    case "/admin/manual-auto-cancellation":
+        require_once $controllerClasses['admin']['BookingReviewReminderController'];
+        $controller = new BookingReviewReminderController();
+        $controller->manualAutoCancellation();
         break;
 
     default:

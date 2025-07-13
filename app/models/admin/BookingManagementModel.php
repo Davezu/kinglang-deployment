@@ -82,13 +82,13 @@ class BookingManagementModel {
                 $status
             ";
             
-            error_log("Query for counting: " . $query);
+            // error_log("Query for counting: " . $query);
             
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            error_log("Count result: " . print_r($result, true));
+            // error_log("Count result: " . print_r($result, true));
             return $result['total'];
         } catch (PDOException $e) {
             error_log("Error in getTotalBookings: " . $e->getMessage());
@@ -177,9 +177,9 @@ class BookingManagementModel {
             // $message = "New booking confirmed for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
             // $this->notificationModel->addNotification("booking_confirmed", $message, $booking_id);
             
-            // // Add client notification
-            // $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been confirmed.";
-            // $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "booking_confirmed", $clientMessage, $booking_id);
+            // Add client notification
+            $clientMessage = "Your booking to " . $bookingInfo['destination'] . " has been confirmed.";
+            $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "booking_confirmed", $clientMessage, $booking_id);
             
             return "success";
         } catch (PDOException $e) {

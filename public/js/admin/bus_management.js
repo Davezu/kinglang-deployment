@@ -401,7 +401,7 @@ function renderBusSchedule(schedule) {
                         <th>Pickup Point</th>
                         <th>Start Date</th>
                         <th>End Date</th>
-                        <th>Status</th>
+                        <th class="d-none">Status</th>
                         <th>Client</th>
                     </tr>
                 </thead>
@@ -418,7 +418,7 @@ function renderBusSchedule(schedule) {
                 <td>${booking.pickup_point}</td>
                 <td>${formatDate(booking.date_of_tour)}</td>
                 <td>${formatDate(booking.end_of_tour)}</td>
-                <td><span class="badge ${statusClass}">${booking.status}</span></td>
+                <td class="d-none"><span class="badge ${statusClass}">${booking.status}</span></td>
                 <td>${booking.first_name} ${booking.last_name}</td>
             </tr>
         `;
