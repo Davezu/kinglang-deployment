@@ -427,8 +427,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
     if (!isRebooking) {
         // Always set to zero for new bookings
-        daysElement.textContent = "0";
-        busesElement.textContent = "0";
+        daysElement.textContent = "1";
+        busesElement.textContent = "1";
         
         // Clear any previous values in localStorage
         localStorage.removeItem("days");
@@ -485,7 +485,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     document.getElementById("decreaseDays").addEventListener("click", function() {
         const currentDays = parseInt(daysElement.textContent);
-        if (currentDays > 0) {
+        if (currentDays > 1) {
             const newDays = currentDays - 1;
             daysElement.textContent = newDays;
             localStorage.setItem("days", newDays);
@@ -543,7 +543,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     document.getElementById("decreaseBuses").addEventListener("click", function() {
         const currentBuses = parseInt(busesElement.textContent);
-        if (currentBuses > 0) {
+        if (currentBuses > 1) {
             const newBuses = currentBuses - 1;
             busesElement.textContent = newBuses;
             localStorage.setItem("buses", newBuses);
@@ -570,7 +570,11 @@ document.getElementById("nextButton").addEventListener("click", function () {
         });
         return;
     }
-    
+
+    if (allInputsFilled()) {
+        renderTotalCost();
+    }
+
     // If all addresses are filled, proceed to next step
     document.getElementById("firstInfo").classList.add("d-none");
     document.getElementById("nextInfo").classList.remove("d-none");
@@ -903,8 +907,8 @@ document.getElementById("bookingForm").addEventListener("submit", async function
             // Clear form data
             this.reset(); 
             document.getElementById("totalCost").textContent = "";
-            document.getElementById("number_of_days").textContent = "0";
-            document.getElementById("number_of_buses").textContent = "0";
+            document.getElementById("number_of_days").textContent = "1";
+            document.getElementById("number_of_buses").textContent = "1";
             
             // Redirect to My Bookings page after a short delay
             setTimeout(() => {
