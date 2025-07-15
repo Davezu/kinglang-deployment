@@ -156,11 +156,21 @@ class UserManagementController {
         }
         
         // Validate contact number (if provided)
-        if (!empty($contactNumber) && !preg_match('/^[0-9]{4}-[0-9]{3}-[0-9]{4}$/', $contactNumber) && !preg_match('/^[0-9]{11}$/', $contactNumber)) {
+        if (
+            !empty($contactNumber) &&
+            !preg_match('/^09\d{2}-\d{3}-\d{4}$/', $contactNumber) &&     // 09XX-XXX-XXXX
+            !preg_match('/^09\d{9}$/', $contactNumber) &&                 // 09123456789
+            !preg_match('/^639\d{9}$/', $contactNumber) &&                // 639123456789
+            !preg_match('/^\+63 \d{3} \d{3} \d{4}$/', $contactNumber)     // +63 938 438 4943
+        ) {
             header('Content-Type: application/json');
-            echo json_encode(['error' => 'Contact number must be in format 09XX-XXX-XXXX or 11 digits']);
+            echo json_encode([
+                'error' => 'Contact number must be in one of the following formats: 09XX-XXX-XXXX, 09123456789, 639XXXXXXXXX, or +63 XXX XXX XXXX'
+            ]);
             return;
         }
+        
+        
         
         // Validate password (minimum 6 characters)
         if (strlen($password) < 8) {
@@ -258,11 +268,21 @@ class UserManagementController {
         }
         
         // Validate contact number (if provided)
-        if (!empty($contactNumber) && !preg_match('/^[0-9]{4}-[0-9]{3}-[0-9]{4}$/', $contactNumber) && !preg_match('/^[0-9]{11}$/', $contactNumber)) {
+        if (
+            !empty($contactNumber) &&
+            !preg_match('/^09\d{2}-\d{3}-\d{4}$/', $contactNumber) &&     // 09XX-XXX-XXXX
+            !preg_match('/^09\d{9}$/', $contactNumber) &&                 // 09123456789
+            !preg_match('/^639\d{9}$/', $contactNumber) &&                // 639123456789
+            !preg_match('/^\+63 \d{3} \d{3} \d{4}$/', $contactNumber)     // +63 938 438 4943
+        ) {
             header('Content-Type: application/json');
-            echo json_encode(['error' => 'Contact number must be in format 09XX-XXX-XXXX or 11 digits']);
+            echo json_encode([
+                'error' => 'Contact number must be in one of the following formats: 09XX-XXX-XXXX, 09123456789, 639XXXXXXXXX, or +63 XXX XXX XXXX'
+            ]);
             return;
         }
+        
+        
         
         // Validate password (if provided)
         if ($password !== null && strlen($password) < 8) {

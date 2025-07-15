@@ -372,31 +372,6 @@ function initializeQuickFilters() {
                     }
                 }
                 
-                // Update the UI to show the current filter state
-                // const filterDescription = document.getElementById("currentFilter");
-                // if (filterDescription) {
-                //     let filterText = "";
-                    
-                //     if (this.dataset.status === "canceled") {
-                //         filterText = "Showing all canceled bookings";
-                //     } else if (this.dataset.date === "past") {
-                //         filterText = "Showing completed bookings";
-                //     } else if (this.dataset.date === "upcoming") {
-                //         filterText = "Showing upcoming bookings";
-                //     } else if (this.dataset.balance === "unpaid") {
-                //         filterText = "Showing bookings with outstanding balances";
-                //     } else if (this.dataset.status) {
-                //         filterText = `Showing ${this.dataset.status} bookings`;
-                //     }
-                    
-                //     if (filterText) {
-                //         filterDescription.textContent = filterText;
-                //         filterDescription.style.display = "block";
-                //     } else {
-                //         filterDescription.style.display = "none";
-                //     }
-                // }
-                
                 refreshBookings();
             });
         });
@@ -460,7 +435,7 @@ if (sortButtons.length > 0) {
 
 // Initialize export buttons
 function initializeExportButtons() {
-    // Export to PDF
+    // Export to PDF    
     document.getElementById("exportPDF")?.addEventListener("click", async function() {
         // Show loading indicator
         Swal.fire({

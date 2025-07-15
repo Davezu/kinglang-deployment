@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     loadUserStats();
     
     // Initialize phone number formatting and validation
-    setupPhoneNumberValidation("contactNumber");
-    setupPhoneNumberValidation("editContactNumber");
+    // setupPhoneNumberValidation("contactNumber");
+    // setupPhoneNumberValidation("editContactNumber");
     
     // Initialize password validation
     setupPasswordValidation("password");
@@ -30,18 +30,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 // Function to format phone numbers consistently
 function formatPhoneNumber(value) {
-    // Remove all non-digits from the value
+    if (!value || (value = value.trim()) === '') return '';
+
     const digits = value.replace(/\D/g, '');
-    
-    // Format based on number of digits
-    if (digits.length <= 4) {
-        return digits;
-    } else if (digits.length <= 7) {
-        return `${digits.substring(0, 4)}-${digits.substring(4)}`;
-    } else {
-        return `${digits.substring(0, 4)}-${digits.substring(4, 7)}-${digits.substring(7, 11)}`;
+
+    // If already in 639 format
+    if (digits.length >= 12 && digits.startsWith('639')) {
+        return `+63 ${digits.substring(2, 5)} ${digits.substring(5, 8)} ${digits.substring(8, 12)}`;
     }
+
+    // If local 09 format
+    if (digits.length >= 11 && digits.startsWith('09')) {
+        return `+63 ${digits.substring(1, 4)} ${digits.substring(4, 7)} ${digits.substring(7, 11)}`;
+    }
+
+    // Otherwise, show raw digits (or handle as needed)
+    return digits;
 }
+
 
 // Function to setup phone number validation and formatting
 function setupPhoneNumberValidation(inputId) {
@@ -105,7 +111,7 @@ function validatePhoneNumber(inputElement) {
         rawValue: rawValue,
         digitsOnly: digitsOnly,
         length: digitsOnly.length,
-        startsWith09: digitsOnly.substring(0, 2) === '09',
+        startsWith09: digitsOnly.substring(0, 2) === '09' || (digitsOnly.length >= 3 && digitsOnly.substring(0, 3) === '639'),
         validationMsgFound: !!validationMsg,
     });
     
@@ -122,15 +128,16 @@ function validatePhoneNumber(inputElement) {
     let isValid = true;
     let errorMessage = '';
     
-    // Check if it starts with 09
-    if (digitsOnly.substring(0, 2) !== '09') {
+    // Check if it starts with 09 or 639 (for +63 9)
+    if (!(digitsOnly.substring(0, 2) === '09' || (digitsOnly.length >= 3 && digitsOnly.substring(0, 3) === '639'))) {
         isValid = false;
-        errorMessage = 'Phone number must start with 09';
+        errorMessage = 'Phone number must start with 09 or +63 9';
     }
-    // Check if it has 11 digits
-    else if (digitsOnly.length !== 11) {
+    // Check if it has 11 digits for 09 format or 12 digits for +63 format
+    else if ((digitsOnly.substring(0, 2) === '09' && digitsOnly.length !== 11) || 
+             (digitsOnly.substring(0, 3) === '639' && digitsOnly.length !== 12)) {
         isValid = false;
-        errorMessage = `Phone number must be 11 digits (currently: ${digitsOnly.length})`;
+        errorMessage = `Phone number must be ${digitsOnly.substring(0, 2) === '09' ? '11' : '12'} digits (currently: ${digitsOnly.length})`;
     }
     
     // Update the validation message
@@ -584,17 +591,24 @@ document.getElementById("addUserForm").addEventListener("submit", async function
         });
         
         // Simple validation - must be 11 digits starting with 09
-        if (digitsOnly.length !== 11 || digitsOnly.substring(0, 2) !== '09') {
+        if (
+            !(
+                // 11-digit local format starting with 09
+                (digitsOnly.length === 11 && digitsOnly.startsWith('09')) ||
+                // 12-digit international format starting with 639
+                (digitsOnly.length === 12 && digitsOnly.startsWith('639'))
+            )
+        ) {
             phoneValid = false;
             console.log('Phone validation failed');
-            
+        
             // Update validation message
             const validationMsg = phoneInput.nextElementSibling;
             if (validationMsg) {
-                if (digitsOnly.substring(0, 2) !== '09') {
-                    validationMsg.textContent = 'Phone number must start with 09';
+                if (!(digitsOnly.startsWith('09') || digitsOnly.startsWith('639'))) {
+                    validationMsg.textContent = 'Phone number must start with 09 or 639';
                 } else {
-                    validationMsg.textContent = `Phone number must be 11 digits (currently: ${digitsOnly.length})`;
+                    validationMsg.textContent = `Phone number must be ${digitsOnly.startsWith('639') ? '12' : '11'} digits (currently: ${digitsOnly.length})`;
                 }
                 validationMsg.className = 'form-text phone-validation text-danger';
             }
@@ -716,21 +730,30 @@ document.getElementById("editUserForm").addEventListener("submit", async functio
         });
         
         // Simple validation - must be 11 digits starting with 09
-        if (digitsOnly.length !== 11 || digitsOnly.substring(0, 2) !== '09') {
+        if (
+            !(
+                // Accept 11-digit local numbers starting with '09'
+                (digitsOnly.length === 11 && digitsOnly.startsWith('09')) ||
+                // Accept 12-digit international numbers starting with '639'
+                (digitsOnly.length === 12 && digitsOnly.startsWith('639'))
+            )
+        ) {
             phoneValid = false;
             console.log('Edit phone validation failed');
-            
+        
             // Update validation message
             const validationMsg = phoneInput.nextElementSibling;
             if (validationMsg) {
-                if (digitsOnly.substring(0, 2) !== '09') {
-                    validationMsg.textContent = 'Phone number must start with 09';
+                if (!(digitsOnly.startsWith('09') || digitsOnly.startsWith('639'))) {
+                    validationMsg.textContent = 'Phone number must start with 09 or 639';
                 } else {
-                    validationMsg.textContent = `Phone number must be 11 digits (currently: ${digitsOnly.length})`;
+                    const expectedLength = digitsOnly.startsWith('639') ? 12 : 11;
+                    validationMsg.textContent = `Phone number must be ${expectedLength} digits (currently: ${digitsOnly.length})`;
                 }
                 validationMsg.className = 'form-text phone-validation text-danger';
             }
         }
+        
     }
     
     // Password validation check - only if password field has a value (since it's optional in edit form)
@@ -880,18 +903,21 @@ async function deleteUser(userId) {
 
 // Helper function to format phone number for database storage
 function formatPhoneNumberForDB(value) {
-    if (!value || value.trim() === '') return '';
-    
-    // Remove all non-digits from the value
+    if (!value || (value = value.trim()) === '') return '';
+
+    // Remove all non-digit characters
     const digits = value.replace(/\D/g, '');
-    
-    // If it doesn't have 11 digits or doesn't start with 09, return as is
-    if (digits.length !== 11 || digits.substring(0, 2) !== '09') {
-        return digits;
+
+    if (digits.length === 12 && digits.startsWith('639')) {
+        return `+63 ${digits.substring(2, 5)} ${digits.substring(5, 8)} ${digits.substring(8)}`;
     }
-    
-    // Format as 09XX-XXX-XXXX
-    return `${digits.substring(0, 4)}-${digits.substring(4, 7)}-${digits.substring(7, 11)}`;
+
+    if (digits.length === 11 && digits.startsWith('09')) {
+        return `+63 ${digits.substring(1, 4)} ${digits.substring(4, 7)} ${digits.substring(7)}`;
+    }
+
+    // Not a valid mobile number format
+    return '';
 }
 
 function formatDate(date) {

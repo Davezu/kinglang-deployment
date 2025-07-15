@@ -46,11 +46,19 @@ class ClientAuthController {
         
         // Validate phone number (11 digits starting with 09)
         // Check both formats: with hyphens (09XX-XXX-XXXX) or without (09XXXXXXXX)
-        $phone_digits = str_replace('-', '', $contact_number);
-        if (strlen($phone_digits) !== 11 || substr($phone_digits, 0, 2) !== '09') {
-            echo json_encode(["success" => false, "message" => "Contact number must be 11 digits and start with 09."]);
+        $phone_digits = preg_replace('/\D/', '', $contact_number); // remove all non-digit characters
+
+        if (
+            !(strlen($phone_digits) === 11 && substr($phone_digits, 0, 2) === '09') &&
+            !(strlen($phone_digits) === 12 && substr($phone_digits, 0, 3) === '639')
+        ) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Contact number must be in the format 09XXXXXXXXX, 639XXXXXXXXX, or +63 XXX XXX XXXX."
+            ]);
             return;
         }
+
     
         if ($password !== $confirm_password) {
             echo json_encode(["success" => false, "message" => "Password did not match."]);
@@ -170,13 +178,25 @@ class ClientAuthController {
             // Validate phone number (11 digits starting with 09)
             // Check both formats: with hyphens (09XX-XXX-XXXX) or without (09XXXXXXXX)
             if (!empty($contact_number)) {
-                $phone_digits = str_replace('-', '', $contact_number);
-                if (strlen($phone_digits) !== 11 || substr($phone_digits, 0, 2) !== '09') {
+
+                $isValid = (
+                    preg_match('/^09\d{9}$/', $contact_number) ||                       // 09123456789
+                    preg_match('/^639\d{9}$/', $contact_number) ||                     // 639123456789
+                    preg_match('/^09\d{2}-\d{3}-\d{4}$/', $contact_number) ||          // 09XX-XXX-XXXX
+                    preg_match('/^\+63 \d{3} \d{3} \d{4}$/', $contact_number)          // +63 917 123 4567
+                );
+
+                if (!$isValid) {
                     header("Content-Type: application/json");
-                    echo json_encode(["success" => false, "message" => "Contact number must be 11 digits and start with 09."]);
+                    echo json_encode([
+                        "success" => false,
+                        "message" => "Contact number must be in the format 09XXXXXXXXX, 639XXXXXXXXX, 09XX-XXX-XXXX, or +63 XXX XXX XXXX."
+                    ]);
                     return;
                 }
             }
+
+
 
             $result = $this->authModel->updateClientInformation($first_name, $last_name, $company_name, $contact_number, $email_address, $address);
 

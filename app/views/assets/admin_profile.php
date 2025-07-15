@@ -630,17 +630,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load notifications when the page loads
     loadNotifications();
     
-    // Initialize the dropdown explicitly
-    if (notificationToggle) {
-        const dropdownInstance = new bootstrap.Dropdown(notificationToggle);
-        
-        // Add click handler to ensure dropdown opens
-        notificationToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            dropdownInstance.toggle();
-        });
-    }
-    
     // Refresh notifications every 30 seconds
     // setInterval(loadNotifications, 30000);
 });

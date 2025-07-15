@@ -105,8 +105,8 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="contactNumber" class="form-label">Phone Number</label>
-                                                <input type="text" id="contactNumber" class="form-control" placeholder="09XX-XXX-XXXX" maxlength="13" required>
-                                                <small class="form-text text-muted">Format: 09XX-XXX-XXXX</small>
+                                                <input type="text" id="contactNumber" class="form-control" placeholder="+63 9XX XXX XXXX" maxlength="16" required>
+                                                <small class="form-text text-muted">Format: +63 9XX XXX XXXX</small>
                                             </div>
                                         </div>
                                         
@@ -286,27 +286,37 @@
     <script src="../../../public/js/assets/sidebar.js"></script>
     <script>
         // Format phone number as user types
-        document.addEventListener('DOMContentLoaded', function() {
+       document.addEventListener('DOMContentLoaded', function () {
             const contactNumberInput = document.getElementById('contactNumber');
-            
-            contactNumberInput.addEventListener('input', function(e) {
+
+            contactNumberInput.addEventListener('input', function (e) {
                 // Remove all non-digit characters
                 let value = this.value.replace(/\D/g, '');
-                
-                // Format the number as it's being typed
-                if (value.length > 0) {
-                    // Add the first part (09XX)
-                    if (value.length <= 4) {
-                        this.value = value;
-                    } 
-                    // Add hyphen after 4 digits (09XX-XXX)
-                    else if (value.length <= 7) {
-                        this.value = value.substring(0, 4) + '-' + value.substring(4);
-                    } 
-                    // Add hyphen after 7 digits (09XX-XXX-XXXX)
-                    else {
-                        this.value = value.substring(0, 4) + '-' + value.substring(4, 7) + '-' + value.substring(7, 11);
-                    }
+
+                // Convert starting '09' to '639'
+                if (value.startsWith('09')) {
+                    value = '63' + value.substring(1);
+                }
+
+                // Convert starting '9' (if no prefix) to '639'
+                if (value.length >= 10 && value.startsWith('9')) {
+                    value = '639' + value;
+                }
+
+                // Only format if it starts with 639 and has enough digits
+                if (value.startsWith('639')) {
+                    const part1 = value.substring(2, 5); // 917
+                    const part2 = value.substring(5, 8); // 123
+                    const part3 = value.substring(8, 12); // 4567
+
+                    let formatted = '+63';
+                    if (part1) formatted += ' ' + part1;
+                    if (part2) formatted += ' ' + part2;
+                    if (part3) formatted += ' ' + part3;
+
+                    this.value = formatted.trim();
+                } else {
+                    this.value = value; // fallback (e.g., still typing)
                 }
             });
         });

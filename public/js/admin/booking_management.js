@@ -3,43 +3,104 @@ const messageModal = new bootstrap.Modal(document.getElementById("messageModal")
 const messageTitle = document.getElementById("messageTitle");
 const messageBody = document.getElementById("messageBody");
 
+// Add pagination variables
+let currentPage = 1;
+let limit = 10; // Number of records per page
+let currentSort = {
+    column: 'booking_id',
+    order: 'desc'
+};
+let currentFilter = 'Pending';
+let searchQuery = '';
+let bookings = [];
+
+// Helper function for formatting dates
+function formatDate(date) {
+    if (!date) return 'N/A';
+    
+    return new Date(date).toLocaleDateString("en-US", {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+}
+
 document.addEventListener("DOMContentLoaded", async function () {
-    const limit = document.getElementById("limitSelect").value;
+    // Get initial limit from the select
+    limit = parseInt(document.getElementById("limitSelect").value);
     
     // Initialize stats counters
     await updateBookingStats();
     
-    // Check the counts for Pending status
-    const pendingBookings = await getAllBookings("Pending", "desc", "booking_id", 1, limit);
+    // Add initial sort indicator to the default sorted column
+    updateSortIcons();
     
-    // First check if there are any pending records
-    if (pendingBookings && pendingBookings.pagination && pendingBookings.pagination.total > 0) {
-        // If there are pending records, keep default as Pending
-        document.getElementById("statusSelect").value = "Pending";
-        renderBookings(pendingBookings);
-        renderPagination(pendingBookings.pagination);
-        document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
-        document.querySelector('.quick-filter[data-status="Pending"]').classList.add('active');
-    } else {
-        // If no pending records, check for confirmed records
-        const confirmedBookings = await getAllBookings("Confirmed", "desc", "booking_id", 1, limit);
+    // Check the counts for Pending status
+    try {
+        const pendingResponse = await fetch("/admin/bookings", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                status: "Pending", 
+                order: currentSort.order, 
+                column: currentSort.column, 
+                page: 1, 
+                limit: limit 
+            })
+        });
         
-        if (confirmedBookings && confirmedBookings.pagination && confirmedBookings.pagination.total > 0) {
-            // If there are confirmed records, set default to Confirmed
-            document.getElementById("statusSelect").value = "Confirmed";
-            renderBookings(confirmedBookings);
-            renderPagination(confirmedBookings.pagination);
-            document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
-            document.querySelector('.quick-filter[data-status="Confirmed"]').classList.add('active');
-        } else {
-            // If no pending and no confirmed records, set to All
-            document.getElementById("statusSelect").value = "All";
-            const allBookings = await getAllBookings("All", "asc", "booking_id", 1, limit);
-            renderBookings(allBookings);
-            renderPagination(allBookings.pagination);
-            document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
-            document.querySelector('.quick-filter[data-status="All"]').classList.add('active');
+        if (pendingResponse.ok) {
+            const pendingData = await pendingResponse.json();
+            
+            // First check if there are any pending records
+            if (pendingData.success && pendingData.pagination && pendingData.pagination.total > 0) {
+                // If there are pending records, keep default as Pending
+                currentFilter = "Pending";
+                document.getElementById("statusSelect").value = "Pending";
+                bookings = pendingData.bookings;
+                renderBookings();
+                renderPagination(pendingData.pagination.total, pendingData.pagination.totalPages);
+                document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+                document.querySelector('.quick-filter[data-status="Pending"]').classList.add('active');
+            } else {
+                // If no pending records, check for confirmed records
+                const confirmedResponse = await fetch("/admin/bookings", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ 
+                        status: "Confirmed", 
+                        order: currentSort.order, 
+                        column: currentSort.column, 
+                        page: 1, 
+                        limit: limit 
+                    })
+                });
+                
+                if (confirmedResponse.ok) {
+                    const confirmedData = await confirmedResponse.json();
+                    
+                    if (confirmedData.success && confirmedData.pagination && confirmedData.pagination.total > 0) {
+                        // If there are confirmed records, set default to Confirmed
+                        currentFilter = "Confirmed";
+                        document.getElementById("statusSelect").value = "Confirmed";
+                        bookings = confirmedData.bookings;
+                        renderBookings();
+                        renderPagination(confirmedData.pagination.total, confirmedData.pagination.totalPages);
+                        document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+                        document.querySelector('.quick-filter[data-status="Confirmed"]').classList.add('active');
+                    } else {
+                        // If no pending and no confirmed records, set to All
+                        currentFilter = "All";
+                        document.getElementById("statusSelect").value = "All";
+                        loadBookings();
+                    }
+                }
+            }
         }
+    } catch (error) {
+        console.error("Error during initial status check:", error);
+        // If any error occurs, fall back to loading all bookings
+        loadBookings();
     }
     
     // Set up view switchers
@@ -53,6 +114,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     // Set up export buttons
     setupExportButtons();
+    
+    // Set up sorting
+    setupSorting();
 });
 
 // Function to update the booking stats dashboard
@@ -207,12 +271,18 @@ function setupSearch() {
     const searchBtn = document.getElementById("searchBtn");
     
     // Search on button click
-    searchBtn.addEventListener("click", performSearch);
+    searchBtn.addEventListener("click", function() {
+        searchQuery = searchInput.value.trim();
+        currentPage = 1;
+        loadBookings();
+    });
     
     // Search on Enter key
     searchInput.addEventListener("keyup", function(event) {
         if (event.key === "Enter") {
-            performSearch();
+            searchQuery = searchInput.value.trim();
+            currentPage = 1;
+            loadBookings();
         }
     });
     
@@ -226,50 +296,15 @@ function setupSearch() {
         
         // Reset form inputs
         searchInput.value = "";
+        searchQuery = "";
         document.getElementById("statusSelect").value = "Pending";
+        currentFilter = "Pending";
         document.getElementById("limitSelect").value = "10";
-        refreshBookings();
-    });
-}
-
-// Function to perform search
-async function performSearch() {
-    const searchTerm = document.getElementById("searchBookings").value.trim();
-    const status = document.getElementById("statusSelect").value;
-    const limit = document.getElementById("limitSelect").value;
-    
-    try {
-        const response = await fetch("/admin/search-bookings", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ 
-                searchTerm, 
-                status,
-                limit,
-                page: 1 
-            })
-        });
+        limit = 10;
+        currentPage = 1;
         
-        if (response.ok) {
-            const data = await response.json();
-            
-            if (data.success) {
-                renderBookings(data);
-                renderPagination(data.pagination);
-                
-                // Show/hide no results message
-                document.getElementById("noResultsFound").style.display = 
-                    (!data.bookings || data.bookings.length === 0) ? "block" : "none";
-                
-                // Update active view
-                if (document.getElementById("cardView").checked) {
-                    renderCardView();
-                }
-            }
-        }
-    } catch (error) {
-        console.error("Error searching bookings:", error);
-    }
+        loadBookings();
+    });
 }
 
 // Function to set up quick filters
@@ -290,19 +325,39 @@ function setupQuickFilters() {
             const status = this.getAttribute("data-status");
             const payment = this.getAttribute("data-payment");
             
+            // Reset to first page when filtering
+            currentPage = 1;
+            
             if (status) {
+                currentFilter = status;
                 document.getElementById("statusSelect").value = status;
-                const event = new Event("change");
-                document.getElementById("statusSelect").dispatchEvent(event);
-            } else if (payment) {
-                // Handle payment filter (Unpaid or Partially Paid)
-                if (payment === "Unpaid") {
-                    filterUnpaidBookings();
-                } else if (payment === "Partially Paid") {
-                    filterPartiallyPaidBookings();
-                }
             }
+            
+            // Load bookings with the new filter
+            loadBookings();
         });
+    });
+    
+    // Status select change
+    document.getElementById("statusSelect").addEventListener("change", function() {
+        currentFilter = this.value;
+        currentPage = 1;
+        
+        // Update active state on quick filters
+        document.querySelectorAll(".quick-filter").forEach(btn => btn.classList.remove("active"));
+        const matchingBtn = document.querySelector(`.quick-filter[data-status="${currentFilter}"]`);
+        if (matchingBtn) {
+            matchingBtn.classList.add("active");
+        }
+        
+        loadBookings();
+    });
+    
+    // Limit select change
+    document.getElementById("limitSelect").addEventListener("change", function() {
+        limit = parseInt(this.value);
+        currentPage = 1;
+        loadBookings();
     });
 }
 
@@ -334,8 +389,11 @@ async function filterUnpaidBookings() {
             const data = await response.json();
             
             if (data.success) {
+                // Update sort headers to reflect current sort state
+                updateSortHeaders(column, order);
+                
                 renderBookings(data);
-                renderPagination(data.pagination);
+                renderPagination(data.pagination.total, data.pagination.totalPages);
                 
                 // Show/hide no results message
                 document.getElementById("noResultsFound").style.display = 
@@ -380,8 +438,11 @@ async function filterPartiallyPaidBookings() {
             const data = await response.json();
             
             if (data.success) {
+                // Update sort headers to reflect current sort state
+                updateSortHeaders(column, order);
+                
                 renderBookings(data);
-                renderPagination(data.pagination);
+                renderPagination(data.pagination.total, data.pagination.totalPages);
                 
                 // Show/hide no results message
                 document.getElementById("noResultsFound").style.display = 
@@ -415,7 +476,7 @@ function setupExportButtons() {
     // Refresh bookings
     document.getElementById("refreshBookings")?.addEventListener("click", function(e) {
         e.preventDefault();
-        refreshBookings();
+        refreshBookings(); // Use refreshBookings to reset pagination and sort
     });
 }
 
@@ -445,317 +506,6 @@ async function exportBookings(format) {
         console.error("Error exporting bookings:", error);
         showMessage("Export Failed", "Could not export bookings. Please try again.");
     }
-}
-
-// Function to refresh bookings
-async function refreshBookings() {
-    // Hide no results message initially while loading
-    document.getElementById("noResultsFound").style.display = "none";
-    
-    const status = document.getElementById("statusSelect").value;
-    const limit = document.getElementById("limitSelect").value;
-    const column = document.querySelector(".sort.active") ? 
-        document.querySelector(".sort.active").getAttribute("data-column") : "booking_id";
-    const order = document.querySelector(".sort.active") ? 
-        document.querySelector(".sort.active").getAttribute("data-order") : "desc";
-    
-    // Update stats
-    await updateBookingStats();
-    
-    // Fetch bookings
-    const bookings = await getAllBookings(status, order, column, 1, limit);
-    renderBookings(bookings);
-    renderPagination(bookings.pagination);
-    
-    // Show/hide no results message
-    document.getElementById("noResultsFound").style.display = 
-        (!bookings.bookings || bookings.bookings.length === 0) ? "block" : "none";
-    
-    // Update active view
-    if (document.getElementById("cardView").checked) {
-        renderCardView();
-    } else if (document.getElementById("calendarView").checked) {
-        if (document.getElementById("bookingCalendar")._calendar) {
-            document.getElementById("bookingCalendar")._calendar.refetchEvents();
-        }
-    }
-}
-
-// Function to render the card view
-function renderCardView() {
-    const cardContainer = document.getElementById("cardViewContainer");
-    cardContainer.innerHTML = "";
-    
-    // Get all bookings data from the current API response
-    getCurrentBookings().then(bookings => {
-        if (!bookings || bookings.length === 0) {
-            // Show the centralized no results message instead of duplicating it
-            document.getElementById("noResultsFound").style.display = "block";
-            return;
-        }
-        
-        // Make sure the no results message is hidden if we have bookings
-        document.getElementById("noResultsFound").style.display = "none";
-        
-        bookings.forEach(booking => {
-            const card = document.createElement("div");
-            card.className = "col-xl-4 col-md-6";
-            
-            const statusColors = {
-                'Pending': 'warning',
-                'Confirmed': 'success',
-                'Canceled': 'danger',
-                'Rejected': 'secondary',
-                'Completed': 'info'
-            };
-            
-            const statusColor = statusColors[booking.status] || 'secondary';
-            
-            card.innerHTML = `
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-header bg-${statusColor}-subtle border-0 py-2">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h6 class="mb-0 fw-bold text-${statusColor}">
-                                <i class="bi bi-bookmark me-1"></i> ${booking.status}
-                            </h6>
-                            <span class="badge bg-${statusColor}">ID: ${booking.booking_id}</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold mb-1">${booking.client_name}</h5>
-                        <p class="text-muted small mb-2">
-                            <i class="bi bi-telephone me-1"></i> ${booking.contact_number}
-                        </p>
-                        <div class="row mb-2">
-                            <div class="col-12">
-                                <p class="mb-1">
-                                    <i class="bi bi-geo-alt text-success me-1"></i> 
-                                    <strong>Destination:</strong> ${booking.destination}
-                                </p>
-                                <p class="mb-1">
-                                    <i class="bi bi-calendar3 text-primary me-1"></i>
-                                    <strong>Date:</strong> ${formatDate(booking.date_of_tour)}
-                                </p>
-                                <p class="mb-1">
-                                    <i class="bi bi-hourglass text-warning me-1"></i>
-                                    <strong>Days:</strong> ${booking.number_of_days}
-                                </p>
-                                <p class="mb-1">
-                                    <i class="bi bi-bus-front text-danger me-1"></i>
-                                    <strong>Buses:</strong> ${booking.number_of_buses}
-                                </p>
-                                <p class="mb-0">
-                                    <i class="bi bi-cash-coin text-success me-1"></i>
-                                    <strong>Total Cost:</strong> ${booking.total_cost}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer bg-light border-0 py-2">
-                        <div class="d-flex gap-2 justify-content-start">
-                            <button class="btn btn-sm btn-outline-primary view-booking-btn" data-booking-id="${booking.booking_id}">
-                                <i class="bi bi-info-circle"></i> Details
-                            </button>
-                            <div class="d-flex gap-1">
-                                ${booking.status === 'Pending' ? `
-                                    <button class="btn btn-sm btn-outline-success confirm-btn" data-booking-id="${booking.booking_id}">
-                                        <i class="bi bi-check-circle"></i> Confirm
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-danger reject-btn" data-booking-id="${booking.booking_id}">
-                                        <i class="bi bi-x-circle"></i> Reject
-                                    </button>
-                                ` : ''}
-                                ${booking.status === 'Confirmed' ? `
-                                    <button class="btn btn-sm btn-outline-danger cancel-btn" data-booking-id="${booking.booking_id}">
-                                        <i class="bi bi-x-circle"></i> Cancel
-                                    </button>
-                                ` : ''}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            cardContainer.appendChild(card);
-        });
-        
-        // Attach event listeners to the card buttons
-        attachCardEventListeners();
-    });
-}
-
-// Function to attach event listeners to card buttons
-function attachCardEventListeners() {
-    // View booking
-    document.querySelectorAll('.view-booking-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const bookingId = this.getAttribute('data-booking-id');
-            showBookingDetails(bookingId);
-        });
-    });
-    
-    // Confirm booking
-    document.querySelectorAll('.confirm-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const bookingId = this.getAttribute('data-booking-id');
-            
-            Swal.fire({
-                title: 'Apply Discount?',
-                icon: 'question',
-                html: `
-                    <p>Would you like to apply a discount to this booking?</p>
-                    <div class="form-check mb-3">
-                        <input type="radio" class="form-check-input" id="noDiscount" name="discountOption" value="none" checked>
-                        <label class="form-check-label" for="noDiscount">No discount</label>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input type="radio" class="form-check-input" id="percentageDiscount" name="discountOption" value="percentage">
-                        <label class="form-check-label" for="percentageDiscount">Percentage discount</label>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input type="radio" class="form-check-input" id="flatDiscount" name="discountOption" value="flat">
-                        <label class="form-check-label" for="flatDiscount">Flat amount discount</label>
-                    </div>
-                    <div id="discountInputContainer" style="display: none; margin-top: 15px;">
-                        <div id="percentageInput" style="display: none;">
-                            <label for="percentageValue" style="margin-bottom: 15px;">Discount percentage (0-100)</label>
-                            <div class="input-group">
-                                <input type="number" id="percentageValue" class="form-control" min="0" max="100" step="0.01" value="0">
-                                <span class="input-group-text">%</span>
-                            </div>
-                        </div>
-                        <div id="flatInput" style="display: none;">
-                            <label for="flatValue" style="margin-bottom: 15px;">Discount amount (PHP)</label>
-                            <div class="input-group mt-2">
-                                <span class="input-group-text">₱</span>
-                                <input type="number" id="flatValue" class="form-control" min="0" step="0.01" value="0">
-                            </div>
-                        </div>
-                    </div>
-                `,
-                showCancelButton: true,
-                confirmButtonText: 'Confirm Booking',
-                cancelButtonText: 'Cancel',
-                confirmButtonColor: '#28a745',
-                cancelButtonColor: '#6c757d',
-                didOpen: () => {
-                    // Show/hide discount inputs based on selection
-                    const discountOptions = document.getElementsByName('discountOption');
-                    const discountInputContainer = document.getElementById('discountInputContainer');
-                    const percentageInput = document.getElementById('percentageInput');
-                    const flatInput = document.getElementById('flatInput');
-                    
-                    discountOptions.forEach(option => {
-                        option.addEventListener('change', function() {
-                            if (this.value === 'none') {
-                                discountInputContainer.style.display = 'none';
-                            } else {
-                                discountInputContainer.style.display = 'block';
-                                if (this.value === 'percentage') {
-                                    percentageInput.style.display = 'block';
-                                    flatInput.style.display = 'none';
-                                } else if (this.value === 'flat') {
-                                    percentageInput.style.display = 'none';
-                                    flatInput.style.display = 'block';
-                                }
-                            }
-                        });
-                    });
-                },
-                preConfirm: () => {
-                    const selectedOption = document.querySelector('input[name="discountOption"]:checked').value;
-                    
-                    if (selectedOption === 'none') {
-                        return { discountValue: null, discountType: null };
-                    } else if (selectedOption === 'percentage') {
-                        const percentageValue = document.getElementById('percentageValue').value;
-                        const numValue = parseFloat(percentageValue);
-                        
-                        if (isNaN(numValue) || numValue < 0 || numValue > 100) {
-                            Swal.showValidationMessage('Percentage must be between 0 and 100');
-                            return false;
-                        }
-                        
-                        return { discountValue: numValue, discountType: 'percentage' };
-                    } else if (selectedOption === 'flat') {
-                        const flatValue = document.getElementById('flatValue').value;
-                        const numValue = parseFloat(flatValue);
-                        
-                        if (isNaN(numValue) || numValue < 0) {
-                            Swal.showValidationMessage('Flat amount must be greater than or equal to 0');
-                            return false;
-                        }
-                        
-                        return { discountValue: numValue, discountType: 'flat' };
-                    }
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    confirmBooking(bookingId, result.value.discountValue, result.value.discountType);
-                }
-            });
-        });
-    });
-    
-    // Reject booking
-    document.querySelectorAll('.reject-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const bookingId = this.getAttribute('data-booking-id');
-            // We'll need to prompt for a reason
-            Swal.fire({
-                title: 'Reject Booking',
-                text: 'Please provide a reason for rejecting this booking',
-                input: 'text',
-                inputAttributes: {
-                    required: true
-                },
-                showCancelButton: true,
-                confirmButtonText: 'Reject',
-                confirmButtonColor: '#dc3545',
-                cancelButtonText: 'Cancel',
-                preConfirm: (reason) => {
-                    if (!reason || reason.trim() === '') {
-                        Swal.showValidationMessage('Please provide a reason');
-                    }
-                    return reason;
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    rejectBooking(bookingId, null, result.value);
-                }
-            });
-        });
-    });
-    
-    // Cancel booking
-    document.querySelectorAll('.cancel-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const bookingId = this.getAttribute('data-booking-id');
-            // We'll need to prompt for a reason
-            Swal.fire({
-                title: 'Cancel Booking',
-                text: 'Please provide a reason for canceling this booking',
-                input: 'text',
-                inputAttributes: {
-                    required: true
-                },
-                showCancelButton: true,
-                confirmButtonText: 'Cancel Booking',
-                confirmButtonColor: '#dc3545',
-                cancelButtonText: 'Back',
-                preConfirm: (reason) => {
-                    if (!reason || reason.trim() === '') {
-                        Swal.showValidationMessage('Please provide a reason');
-                    }
-                    return reason;
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    cancelBooking(bookingId, null, result.value);
-                }
-            });
-        });
-    });
 }
 
 // Function to show booking details in a modal
@@ -1182,7 +932,7 @@ document.getElementById("statusSelect").addEventListener("change", async functio
     console.log(status);    
     const bookings = await getAllBookings(status, "asc", "client_name", 1, limit);
     renderBookings(bookings);
-    renderPagination(bookings.pagination);
+    renderPagination(bookings.pagination.total, bookings.pagination.totalPages);
     
     // Show/hide no results message
     document.getElementById("noResultsFound").style.display = 
@@ -1204,89 +954,117 @@ document.getElementById("limitSelect").addEventListener("change", async function
     
     const bookings = await getAllBookings(status, order, column, 1, limit);
     renderBookings(bookings);
-    renderPagination(bookings.pagination);
+    renderPagination(bookings.pagination.total, bookings.pagination.totalPages);
 });
 
-document.querySelectorAll(".sort").forEach(button => {
-    button.addEventListener("click", async function () {
-        // Clear active class from all headers
-        document.querySelectorAll(".sort").forEach(header => {
-            header.classList.remove("active");
-            
-            // Reset sort icons
-            const icon = header.querySelector(".sort-icon");
-            if (icon) {
-                icon.textContent = "↑";
-            }
-        });
-        
-        // Add active class to the clicked header
-        this.classList.add("active");
-        
-        const status = document.getElementById("statusSelect").value;
-        const column = this.getAttribute("data-column");
-        const order = this.getAttribute("data-order");
-        const limit = document.getElementById("limitSelect").value;
-        const currentPage = document.querySelector(".pagination .active") ? 
-            parseInt(document.querySelector(".pagination .active").textContent) : 1;
+// Function to set up sorting
+function setupSorting() {
+    document.querySelectorAll(".sort").forEach(header => {
+        header.addEventListener("click", () => handleSort(header));
+    });
+}
 
-        // Update sort icon
-        const sortIcon = this.querySelector(".sort-icon");
-        if (sortIcon) {
-            sortIcon.textContent = order === "asc" ? "↑" : "↓";
+// Function to handle sort
+function handleSort(header) {
+    const column = header.getAttribute('data-column');
+    let order = header.getAttribute('data-order');
+    
+    // Toggle sorting direction
+    order = order === 'asc' ? 'desc' : 'asc';
+    
+    // Update current sort
+    currentSort = {
+        column: column,
+        order: order
+    };
+
+    // Update all headers
+    document.querySelectorAll('.sort').forEach(h => {
+        h.setAttribute('data-order', h === header ? order : 'asc');
+    });
+    
+    // Update sort icons
+    updateSortIcons();
+    
+    // Reset to first page when sorting
+    currentPage = 1;
+    
+    // Reload bookings with new sort
+    loadBookings();
+}
+
+// Function to update sort icons
+function updateSortIcons() {
+    document.querySelectorAll('.sort').forEach(header => {
+        const column = header.getAttribute('data-column');
+        const order = header.getAttribute('data-order');
+        const sortIconSpan = header.querySelector('.sort-icon');
+        
+        if (column === currentSort.column) {
+            if (sortIconSpan) {
+                sortIconSpan.innerHTML = order === 'asc' ? '↑' : '↓';
+            }
+        } else {
+            if (sortIconSpan) {
+                sortIconSpan.innerHTML = '↑';
+            }
+        }
+    });
+}
+
+// Function to load bookings
+async function loadBookings() {
+    try {
+        const tableBody = document.getElementById("tableBody");
+        
+        // Don't show loading state when just changing pages or sorting
+        // Only show loading state if the table is empty
+        if (!bookings.length) {
+            tableBody.innerHTML = '<tr><td colspan="10" class="text-center"><div class="spinner-border text-success" role="status"><span class="visually-hidden">Loading...</span></div></td></tr>';
         }
 
-        // Check if we're in a filtered view
+        // Hide no results message initially while loading
+        document.getElementById("noResultsFound").style.display = "none";
+        
+        // Check if we're in a filtered view for payment status
         const activeFilterBtn = document.querySelector(".quick-filter.active");
+        let endpoint = "/admin/bookings";
+        let requestBody = {
+            page: currentPage,
+            limit: limit,
+            order: currentSort.order,
+            column: currentSort.column,
+            status: currentFilter
+        };
+        
+        if (searchQuery) {
+            requestBody.searchTerm = searchQuery;
+            endpoint = "/admin/search-bookings";
+        }
+        
         if (activeFilterBtn && activeFilterBtn.getAttribute("data-payment")) {
             const paymentFilter = activeFilterBtn.getAttribute("data-payment");
             
             if (paymentFilter === "Unpaid") {
-                // Handle sorting within unpaid filter
-                await handleSortedUnpaidBookings(order, column, currentPage, limit);
+                endpoint = "/admin/unpaid-bookings";
             } else if (paymentFilter === "Partially Paid") {
-                // Handle sorting within partially paid filter
-                await handleSortedPartiallyPaidBookings(order, column, currentPage, limit);
+                endpoint = "/admin/partially-paid-bookings";
             }
-        } else {
-            // Regular bookings sorting
-            const bookings = await getAllBookings(status, order, column, currentPage, limit);
-            renderBookings(bookings);
-            renderPagination(bookings.pagination);
         }
         
-        // Toggle sort order for next click
-        this.setAttribute("data-order", order === "asc" ? "desc" : "asc");
-    });
-});
-
-// Function to handle sorting within unpaid filter
-async function handleSortedUnpaidBookings(order, column, page, limit) {
-    try {
-        // Hide no results message initially while loading
-        document.getElementById("noResultsFound").style.display = "none";
-        
-        const response = await fetch("/admin/unpaid-bookings", {
+        const response = await fetch(endpoint, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ 
-                limit,
-                page,
-                order,
-                column
-            })
+            body: JSON.stringify(requestBody)
         });
         
         if (response.ok) {
             const data = await response.json();
             
             if (data.success) {
-                renderBookings(data);
-                renderPagination(data.pagination);
-                
-                // Show/hide no results message
-                document.getElementById("noResultsFound").style.display = 
-                    (!data.bookings || data.bookings.length === 0) ? "block" : "none";
+                bookings = data.bookings;
+                renderBookings();
+                renderPagination(data.pagination.total, data.pagination.totalPages);
                 
                 // Update active view
                 if (document.getElementById("cardView").checked) {
@@ -1295,90 +1073,30 @@ async function handleSortedUnpaidBookings(order, column, page, limit) {
             }
         }
     } catch (error) {
-        console.error("Error fetching sorted unpaid bookings:", error);
+        console.error("Error loading bookings:", error);
     }
 }
 
-// Function to handle sorting within partially paid filter
-async function handleSortedPartiallyPaidBookings(order, column, page, limit) {
-    try {
-        // Hide no results message initially while loading
-        document.getElementById("noResultsFound").style.display = "none";
-        
-        const response = await fetch("/admin/partially-paid-bookings", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ 
-                limit,
-                page,
-                order,
-                column
-            })
-        });
-        
-        if (response.ok) {
-            const data = await response.json();
-            
-            if (data.success) {
-                renderBookings(data);
-                renderPagination(data.pagination);
-                
-                // Show/hide no results message
-                document.getElementById("noResultsFound").style.display = 
-                    (!data.bookings || data.bookings.length === 0) ? "block" : "none";
-                
-                // Update active view
-                if (document.getElementById("cardView").checked) {
-                    renderCardView();
-                }
-            }
-        }
-    } catch (error) {
-        console.error("Error fetching sorted partially paid bookings:", error);
-    }
+// Function to change page
+function changePage(page) {
+    currentPage = page;
+    loadBookings();
 }
 
-function formatDate(date) {
-    return new Date(date).toLocaleDateString("en-US", {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-    });
-}
-
-async function getAllBookings(status, order, column, page = 1, limit = 10) {
-    try {
-        const response = await fetch("/admin/bookings", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ status, order, column, page, limit })
-        });
-
-        const data = await response.json();
-        console.log("API Response:", data);
-        console.log("Pagination details - Total:", data.pagination.total, "TotalPages:", data.pagination.totalPages, "Limit:", data.pagination.limit);
-
-        if (data.success) {
-            return data;
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-async function renderBookings(data) {
-    const bookings = data.bookings;
-    const tbody = document.getElementById("tableBody");
-    console.log("Booking table: ", bookings);
-    tbody.innerHTML = "";
-
+// Function to render bookings
+function renderBookings() {
+    const tableBody = document.getElementById("tableBody");
+    
     // Show/hide no results message
     document.getElementById("noResultsFound").style.display = 
         (!bookings || bookings.length === 0) ? "block" : "none";
 
     if (!bookings || bookings.length === 0) {
+        tableBody.innerHTML = "";
         return;
     }
+
+    tableBody.innerHTML = "";
 
     bookings.forEach(booking => {
         const row = document.createElement("tr");
@@ -1449,310 +1167,102 @@ async function renderBookings(data) {
 
         // Add the booking ID as the first column
         row.append(bookingIdCell, clientNameCell, contactNumberCell, destinationCell, pickupPointCell, dateOfTourCell, numberOfDaysCell, numberOfBusesCell, paymentStatusCell, actionButton(booking));
-        tbody.appendChild(row);
+        tableBody.appendChild(row);
     });
 }
 
-function actionButton(booking) {
-    const actionCell = document.createElement("td");
-    const buttonSection = document.createElement("div");
-    buttonSection.className = 'actions-compact d-flex gap-2 justify-content-start';
-
-    // View Details Button
-    buttonSection.appendChild(
-        createActionButton(
-            'btn btn-sm btn-outline-primary',
-            'bi bi-info-circle',
-            'Details',
-            function() {
-                showBookingDetails(booking.booking_id);
-            }
-        )
-    );
-
-    // Confirm Button - only for Pending bookings
-    if (booking.status === "Pending") {
-        buttonSection.appendChild(
-            createActionButton(
-                'btn btn-sm btn-outline-success',
-                'bi bi-check-circle',
-                'Confirm',
-                function() {
-                    const bookingId = booking.booking_id;
-        
-                    Swal.fire({
-                        title: 'Apply Discount?',
-                        icon: 'question',
-                        html: `
-                            <p>Would you like to apply a discount to this booking?</p>
-                            <div class="form-check mb-3">
-                                <input type="radio" class="form-check-input" id="noDiscount" name="discountOption" value="none" checked>
-                                <label class="form-check-label" for="noDiscount">No discount</label>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input type="radio" class="form-check-input" id="percentageDiscount" name="discountOption" value="percentage">
-                                <label class="form-check-label" for="percentageDiscount">Percentage discount</label>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input type="radio" class="form-check-input" id="flatDiscount" name="discountOption" value="flat">
-                                <label class="form-check-label" for="flatDiscount">Flat amount discount</label>
-                            </div>
-                            <div id="discountInputContainer" style="display: none; margin-top: 15px;">
-                                <div id="percentageInput" style="display: none;">
-                                    <label for="percentageValue">Discount percentage (0-100)</label>
-                                    <div class="input-group">
-                                        <input type="number" id="percentageValue" class="form-control" min="0" max="100" step="0.01" value="0">
-                                        <span class="input-group-text">%</span>
-                                    </div>
-                                </div>
-                                <div id="flatInput" style="display: none;">
-                                    <label for="flatValue">Discount amount (PHP)</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">₱</span>
-                                        <input type="number" id="flatValue" class="form-control" min="0" step="0.01" value="0">
-                                    </div>
-                                </div>
-                            </div>
-                        `,
-                        showCancelButton: true,
-                        confirmButtonText: 'Confirm Booking',
-                        cancelButtonText: 'Cancel',
-                        confirmButtonColor: '#28a745',
-                        cancelButtonColor: '#6c757d',
-                        didOpen: () => {
-                            // Show/hide discount inputs based on selection
-                            const discountOptions = document.getElementsByName('discountOption');
-                            const discountInputContainer = document.getElementById('discountInputContainer');
-                            const percentageInput = document.getElementById('percentageInput');
-                            const flatInput = document.getElementById('flatInput');
-                            
-                            discountOptions.forEach(option => {
-                                option.addEventListener('change', function() {
-                                    if (this.value === 'none') {
-                                        discountInputContainer.style.display = 'none';
-                                    } else {
-                                        discountInputContainer.style.display = 'block';
-                                        if (this.value === 'percentage') {
-                                            percentageInput.style.display = 'block';
-                                            flatInput.style.display = 'none';
-                                        } else if (this.value === 'flat') {
-                                            percentageInput.style.display = 'none';
-                                            flatInput.style.display = 'block';
-                                        }
-                                    }
-                                });
-                            });
-                        },
-                        preConfirm: () => {
-                            const selectedOption = document.querySelector('input[name="discountOption"]:checked').value;
-                            
-                            if (selectedOption === 'none') {
-                                return { discountValue: null, discountType: null };
-                            } else if (selectedOption === 'percentage') {
-                                const percentageValue = document.getElementById('percentageValue').value;
-                                const numValue = parseFloat(percentageValue);
-                                
-                                if (isNaN(numValue) || numValue < 0 || numValue > 100) {
-                                    Swal.showValidationMessage('Percentage must be between 0 and 100');
-                                    return false;
-                                }
-                                
-                                return { discountValue: numValue, discountType: 'percentage' };
-                            } else if (selectedOption === 'flat') {
-                                const flatValue = document.getElementById('flatValue').value;
-                                const numValue = parseFloat(flatValue);
-                                
-                                if (isNaN(numValue) || numValue < 0) {
-                                    Swal.showValidationMessage('Flat amount must be greater than or equal to 0');
-                                    return false;
-                                }
-                                
-                                return { discountValue: numValue, discountType: 'flat' };
-                            }
-                        }
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            confirmBooking(bookingId, result.value.discountValue, result.value.discountType);
-                        }
-                    });
-                }
-            )
-        );
-    }
-
-    // Reject Button - only for Pending bookings
-    if (booking.status === "Pending") {
-        buttonSection.appendChild(
-            createActionButton(
-                'btn btn-sm btn-outline-danger',
-                'bi bi-x-circle',
-                'Reject',
-                function() {
-                    const bookingId = booking.booking_id;
-                    const userId = booking.user_id;
-        
-        Swal.fire({
-            title: 'Reject Booking?',
-            html: '<p>Are you sure you want to reject this booking request?</p>',
-            input: 'textarea',
-            inputPlaceholder: 'Kindly provide the reason here.',
-            inputAttributes: {
-                'aria-label': 'Rejection reason'
-            },
-            footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
-            showCancelButton: true,
-            cancelButtonText: 'Cancel',
-            confirmButtonText: 'Reject',
-            confirmButtonColor: '#dc3545',
-            cancelButtonColor: '#6c757d',
-            showCloseButton: true,
-            focusConfirm: false,
-            allowOutsideClick: false,
-            width: '32em',
-            padding: '1em',
-            didOpen: () => {
-                // Fix textarea styling
-                const textarea = Swal.getInput();
-                textarea.style.height = '120px';
-                textarea.style.marginTop = '10px';
-                textarea.style.marginBottom = '10px';
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const reason = result.value;
-                rejectBooking(bookingId, userId, reason);
-            }
-        });
-                }
-            )
-        );
-    }
-
-    // Cancel Button - only for Confirmed bookings
-    if (booking.status === "Confirmed") {
-        buttonSection.appendChild(
-            createActionButton(
-                'btn btn-sm btn-outline-danger',
-                'bi bi-x-circle',
-                'Cancel',
-                function() {
-                    const bookingId = booking.booking_id;
-                    const userId = booking.user_id;
-        
-        Swal.fire({
-            title: 'Cancel Booking?',
-            html: '<p>Are you sure you want to cancel this booking?</p>',
-            input: 'textarea',
-            inputPlaceholder: 'Kindly provide the reason here.',
-            inputAttributes: {
-                'aria-label': 'Cancellation reason'
-            },
-            footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
-            showCancelButton: true,
-            cancelButtonText: 'Cancel',
-            confirmButtonText: 'Confirm',
-            confirmButtonColor: '#28a745',
-            cancelButtonColor: '#6c757d',
-            showCloseButton: true,
-            focusConfirm: false,
-            allowOutsideClick: false,
-            width: '32em',
-            padding: '1em',
-            didOpen: () => {
-                // Fix textarea styling
-                const textarea = Swal.getInput();
-                textarea.style.height = '120px';
-                textarea.style.marginTop = '10px';
-                textarea.style.marginBottom = '10px';
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const reason = result.value;
-                cancelBooking(bookingId, userId, reason);
-            }
-        });
-                }
-            )
-        );
-    }
-
-    actionCell.appendChild(buttonSection);
-    return actionCell;
-}
-
-// Helper function to create action buttons
-function createActionButton(className, iconClass, text, clickHandler) {
-    const button = document.createElement('button');
-    button.className = className + ' d-inline-flex align-items-center justify-content-center';
-    button.title = text;
+// Function to render pagination
+function renderPagination(total, totalPages) {
+    const paginationContainer = document.getElementById("paginationContainer");
     
-    // Create icon element
-    const icon = document.createElement('i');
-    icon.className = iconClass + ' me-1';
-    button.appendChild(icon);
-    
-    // Add text as span
-    const textSpan = document.createElement('span');
-    textSpan.textContent = text;
-    button.appendChild(textSpan);
-    
-    button.addEventListener('click', clickHandler);
-    return button;
-}
-
-function renderPagination(pagination) {
-    if (!pagination) {
-        console.log("No pagination data provided");
-        return;
-    }
-    
-    // Make sure totalPages and currentPage are treated as numbers
-    const totalPages = parseInt(pagination.totalPages, 10);
-    const currentPage = parseInt(pagination.currentPage, 10);
-    
+    // Skip rendering if only one page
     if (totalPages <= 1) {
-        // Clear the pagination container if no pagination is needed
-        const paginationContainer = document.getElementById("paginationContainer");
-        if (paginationContainer) {
-            paginationContainer.innerHTML = "";
-        }
+        paginationContainer.innerHTML = '';
         return;
     }
     
-    // Use the centralized pagination utility
-    createPagination({
-        containerId: "paginationContainer",
-        totalPages: totalPages,
-        currentPage: currentPage,
-        paginationType: 'advanced',
-        onPageChange: async (page) => {
-            const status = document.getElementById("statusSelect").value;
-            const column = document.querySelector(".sort.active") ? 
-                document.querySelector(".sort.active").getAttribute("data-column") : "client_name";
-            const order = document.querySelector(".sort.active") ? 
-                document.querySelector(".sort.active").getAttribute("data-order") : "asc";
-            const limit = document.getElementById("limitSelect").value;
-            
-            // Check if we're in a filtered view
-            const activeFilterBtn = document.querySelector(".quick-filter.active");
-            if (activeFilterBtn && activeFilterBtn.getAttribute("data-payment")) {
-                const paymentFilter = activeFilterBtn.getAttribute("data-payment");
-                
-                if (paymentFilter === "Unpaid") {
-                    // Handle pagination within unpaid filter
-                    await handleSortedUnpaidBookings(order, column, page, limit);
-                } else if (paymentFilter === "Partially Paid") {
-                    // Handle pagination within partially paid filter
-                    await handleSortedPartiallyPaidBookings(order, column, page, limit);
-                }
-            } else {
-                // Regular pagination
-                const bookings = await getAllBookings(status, order, column, page, limit);
-                renderBookings(bookings);
-                renderPagination(bookings.pagination);
-            }
+    // Build pagination HTML
+    let html = '<nav aria-label="Booking navigation"><ul class="pagination justify-content-center">';
+    
+    // Previous button
+    const prevDisabled = currentPage === 1 ? 'disabled' : '';
+    html += `
+        <li class="page-item ${prevDisabled}">
+            <a class="page-link" href="#" aria-label="Previous" ${currentPage === 1 ? '' : `onclick="changePage(${currentPage - 1}); return false;"`}>
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+    `;
+    
+    // Calculate visible page range
+    const maxPagesToShow = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+    let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+    
+    // Adjust if at the end
+    if (endPage - startPage + 1 < maxPagesToShow) {
+        startPage = Math.max(1, endPage - maxPagesToShow + 1);
+    }
+    
+    // First page and ellipsis
+    if (startPage > 1) {
+        html += `<li class="page-item"><a class="page-link" href="#" onclick="changePage(1); return false;">1</a></li>`;
+        if (startPage > 2) {
+            html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+        }
+    }
+    
+    // Page numbers
+    for (let i = startPage; i <= endPage; i++) {
+        const active = i === currentPage ? 'active' : '';
+        html += `<li class="page-item ${active}"><a class="page-link" href="#" onclick="changePage(${i}); return false;">${i}</a></li>`;
+    }
+    
+    // Last page and ellipsis
+    if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+            html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+        }
+        html += `<li class="page-item"><a class="page-link" href="#" onclick="changePage(${totalPages}); return false;">${totalPages}</a></li>`;
+    }
+    
+    // Next button
+    const nextDisabled = currentPage === totalPages ? 'disabled' : '';
+    html += `
+        <li class="page-item ${nextDisabled}">
+            <a class="page-link" href="#" aria-label="Next" ${currentPage === totalPages ? '' : `onclick="changePage(${currentPage + 1}); return false;"`}>
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    `;
+    
+    html += '</ul></nav>';
+    
+    paginationContainer.innerHTML = html;
+}
+
+// Helper function to update sort headers to reflect current sort state
+function updateSortHeaders(column, order) {
+    // First, remove active class and reset sort icons on all headers
+    document.querySelectorAll(".sort").forEach(header => {
+        header.classList.remove("active");
+        const icon = header.querySelector(".sort-icon");
+        if (icon) {
+            icon.textContent = "↑";
         }
     });
+    
+    // Then, set the active class and correct icon on the current sort header
+    const activeHeader = document.querySelector(`.sort[data-column="${column}"]`);
+    if (activeHeader) {
+        activeHeader.classList.add("active");
+        activeHeader.setAttribute("data-order", order);
+        
+        const icon = activeHeader.querySelector(".sort-icon");
+        if (icon) {
+            icon.textContent = order === "asc" ? "↑" : "↓";
+        }
+    }
 }
 
 // Function to handle confirm booking API call
@@ -1784,11 +1294,8 @@ async function confirmBooking(bookingId, discount = null, discountType = null) {
             });
         }
         
-        const status = document.getElementById("statusSelect").value;
-        const limit = document.getElementById("limitSelect").value;
-        const bookings = await getAllBookings(status, "asc", "booking_id", 1, limit);
-        renderBookings(bookings);
-        renderPagination(bookings.pagination);
+        // Refresh bookings
+        loadBookings();
     } catch (error) {
         console.error(error);
         Swal.fire({
@@ -1830,11 +1337,8 @@ async function rejectBooking(bookingId, userId, reason) {
             });
         }
         
-        const status = document.getElementById("statusSelect").value;
-        const limit = document.getElementById("limitSelect").value;
-        const bookings = await getAllBookings(status, "asc", "booking_id", 1, limit);
-        renderBookings(bookings);
-        renderPagination(bookings.pagination);
+        // Refresh bookings
+        loadBookings();
     } catch (error) {
         console.error(error);
         Swal.fire({
@@ -1876,11 +1380,8 @@ async function cancelBooking(bookingId, userId, reason) {
             });
         }
         
-        const status = document.getElementById("statusSelect").value;
-        const limit = document.getElementById("limitSelect").value;
-        const bookings = await getAllBookings(status, "booking_id", "asc", 1, limit);
-        renderBookings(bookings);
-        renderPagination(bookings.pagination);
+        // Refresh bookings
+        loadBookings();
     } catch (error) {
         console.error(error);
         Swal.fire({
@@ -1940,3 +1441,368 @@ fetch('/admin/check-booking-completions')
     // Optionally handle the result
     console.log(data);
   });
+
+// Function to refresh bookings
+async function refreshBookings() {
+    // Reset to first page
+    currentPage = 1;
+    
+    // Update stats
+    await updateBookingStats();
+    
+    // Load bookings with current settings
+    loadBookings();
+}
+
+// Make sure changePage function is in global scope
+window.changePage = function(page) {
+    currentPage = page;
+    loadBookings();
+};
+
+// Function to render the card view
+function renderCardView() {
+    const cardContainer = document.getElementById("cardViewContainer");
+    cardContainer.innerHTML = "";
+    
+    if (!bookings || bookings.length === 0) {
+        // Show the centralized no results message instead of duplicating it
+        document.getElementById("noResultsFound").style.display = "block";
+        return;
+    }
+    
+    // Make sure the no results message is hidden if we have bookings
+    document.getElementById("noResultsFound").style.display = "none";
+    
+    bookings.forEach(booking => {
+        const card = document.createElement("div");
+        card.className = "col-xl-4 col-md-6";
+        
+        const statusColors = {
+            'Pending': 'warning',
+            'Confirmed': 'success',
+            'Canceled': 'danger',
+            'Rejected': 'secondary',
+            'Completed': 'info'
+        };
+        
+        const statusColor = statusColors[booking.status] || 'secondary';
+        
+        card.innerHTML = `
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-${statusColor}-subtle border-0 py-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0 fw-bold text-${statusColor}">
+                            <i class="bi bi-bookmark me-1"></i> ${booking.status}
+                        </h6>
+                        <span class="badge bg-${statusColor}">ID: ${booking.booking_id}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mb-1">${booking.client_name}</h5>
+                    <p class="text-muted small mb-2">
+                        <i class="bi bi-telephone me-1"></i> ${booking.contact_number}
+                    </p>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <p class="mb-1">
+                                <i class="bi bi-geo-alt text-success me-1"></i> 
+                                <strong>Destination:</strong> ${booking.destination}
+                            </p>
+                            <p class="mb-1">
+                                <i class="bi bi-calendar3 text-primary me-1"></i>
+                                <strong>Date:</strong> ${formatDate(booking.date_of_tour)}
+                            </p>
+                            <p class="mb-1">
+                                <i class="bi bi-hourglass text-warning me-1"></i>
+                                <strong>Days:</strong> ${booking.number_of_days}
+                            </p>
+                            <p class="mb-1">
+                                <i class="bi bi-bus-front text-danger me-1"></i>
+                                <strong>Buses:</strong> ${booking.number_of_buses}
+                            </p>
+                            <p class="mb-0">
+                                <i class="bi bi-cash-coin text-success me-1"></i>
+                                <strong>Total Cost:</strong> ${booking.total_cost}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-light border-0 py-2">
+                    <div class="d-flex gap-2 justify-content-start">
+                        <button class="btn btn-sm btn-outline-primary view-booking-btn" data-booking-id="${booking.booking_id}">
+                            <i class="bi bi-info-circle"></i> Details
+                        </button>
+                        <div class="d-flex gap-1">
+                            ${booking.status === 'Pending' ? `
+                                <button class="btn btn-sm btn-outline-success confirm-btn" data-booking-id="${booking.booking_id}">
+                                    <i class="bi bi-check-circle"></i> Confirm
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger reject-btn" data-booking-id="${booking.booking_id}">
+                                    <i class="bi bi-x-circle"></i> Reject
+                                </button>
+                            ` : ''}
+                            ${booking.status === 'Confirmed' ? `
+                                <button class="btn btn-sm btn-outline-danger cancel-btn" data-booking-id="${booking.booking_id}">
+                                    <i class="bi bi-x-circle"></i> Cancel
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        cardContainer.appendChild(card);
+    });
+    
+    // Attach event listeners to the card buttons
+    attachCardEventListeners();
+}
+
+// Function to attach event listeners to card view buttons
+function attachCardEventListeners() {
+    document.querySelectorAll(".view-booking-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            const bookingId = this.getAttribute("data-booking-id");
+            showBookingDetails(bookingId);
+        });
+    });
+
+    document.querySelectorAll(".confirm-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            const bookingId = this.getAttribute("data-booking-id");
+            confirmBooking(bookingId);
+        });
+    });
+
+    document.querySelectorAll(".reject-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            const bookingId = this.getAttribute("data-booking-id");
+            const userId = this.closest(".card-footer").querySelector(".reject-booking-modal").getAttribute("data-user-id");
+            Swal.fire({
+                title: 'Reject Booking?',
+                html: '<p>Are you sure you want to reject this booking request?</p>',
+                input: 'textarea',
+                inputPlaceholder: 'Kindly provide the reason here.',
+                inputAttributes: {
+                    'aria-label': 'Rejection reason'
+                },
+                footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Reject',
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                showCloseButton: true,
+                focusConfirm: false,
+                allowOutsideClick: false,
+                width: '32em',
+                padding: '1em',
+                didOpen: () => {
+                    // Fix textarea styling
+                    const textarea = Swal.getInput();
+                    textarea.style.height = '120px';
+                    textarea.style.marginTop = '10px';
+                    textarea.style.marginBottom = '10px';
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const reason = result.value;
+                    rejectBooking(bookingId, userId, reason);
+                }
+            });
+        });
+    });
+
+    document.querySelectorAll(".cancel-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            const bookingId = this.getAttribute("data-booking-id");
+            const userId = this.closest(".card-footer").querySelector(".cancel-booking-modal").getAttribute("data-user-id");
+            Swal.fire({
+                title: 'Cancel Booking?',
+                html: '<p>Are you sure you want to cancel this booking?</p>',
+                input: 'textarea',
+                inputPlaceholder: 'Kindly provide the reason here.',
+                inputAttributes: {
+                    'aria-label': 'Cancellation reason'
+                },
+                footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Confirm',
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#6c757d',
+                showCloseButton: true,
+                focusConfirm: false,
+                allowOutsideClick: false,
+                width: '32em',
+                padding: '1em',
+                didOpen: () => {
+                    // Fix textarea styling
+                    const textarea = Swal.getInput();
+                    textarea.style.height = '120px';
+                    textarea.style.marginTop = '10px';
+                    textarea.style.marginBottom = '10px';
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const reason = result.value;
+                    cancelBooking(bookingId, userId, reason);
+                }
+            });
+        });
+    });
+}
+
+// Function to create action buttons for a booking
+function actionButton(booking) {
+    const actionCell = document.createElement("td");
+    const buttonSection = document.createElement("div");
+    buttonSection.className = 'actions-compact d-flex gap-2 justify-content-start';
+
+    // View Details Button
+    const viewDetailsBtn = document.createElement('button');
+    viewDetailsBtn.className = 'btn btn-sm btn-outline-primary d-inline-flex align-items-center justify-content-center';
+    viewDetailsBtn.title = 'Details';
+    
+    const viewIcon = document.createElement('i');
+    viewIcon.className = 'bi bi-info-circle me-1';
+    viewDetailsBtn.appendChild(viewIcon);
+    
+    const viewText = document.createElement('span');
+    viewText.textContent = 'Details';
+    viewDetailsBtn.appendChild(viewText);
+    
+    viewDetailsBtn.addEventListener('click', function() {
+        showBookingDetails(booking.booking_id);
+    });
+    
+    buttonSection.appendChild(viewDetailsBtn);
+
+    // Confirm Button - only for Pending bookings
+    if (booking.status === "Pending") {
+        const confirmBtn = document.createElement('button');
+        confirmBtn.className = 'btn btn-sm btn-outline-success d-inline-flex align-items-center justify-content-center';
+        confirmBtn.title = 'Confirm';
+        
+        const confirmIcon = document.createElement('i');
+        confirmIcon.className = 'bi bi-check-circle me-1';
+        confirmBtn.appendChild(confirmIcon);
+        
+        const confirmText = document.createElement('span');
+        confirmText.textContent = 'Confirm';
+        confirmBtn.appendChild(confirmText);
+        
+        confirmBtn.addEventListener('click', function() {
+            confirmBooking(booking.booking_id);
+        });
+        
+        buttonSection.appendChild(confirmBtn);
+        
+        // Reject Button
+        const rejectBtn = document.createElement('button');
+        rejectBtn.className = 'btn btn-sm btn-outline-danger d-inline-flex align-items-center justify-content-center';
+        rejectBtn.title = 'Reject';
+        
+        const rejectIcon = document.createElement('i');
+        rejectIcon.className = 'bi bi-x-circle me-1';
+        rejectBtn.appendChild(rejectIcon);
+        
+        const rejectText = document.createElement('span');
+        rejectText.textContent = 'Reject';
+        rejectBtn.appendChild(rejectText);
+        
+        rejectBtn.addEventListener('click', function() {
+            Swal.fire({
+                title: 'Reject Booking?',
+                html: '<p>Are you sure you want to reject this booking request?</p>',
+                input: 'textarea',
+                inputPlaceholder: 'Kindly provide the reason here.',
+                inputAttributes: {
+                    'aria-label': 'Rejection reason'
+                },
+                footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Reject',
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                showCloseButton: true,
+                focusConfirm: false,
+                allowOutsideClick: false,
+                width: '32em',
+                padding: '1em',
+                didOpen: () => {
+                    // Fix textarea styling
+                    const textarea = Swal.getInput();
+                    textarea.style.height = '120px';
+                    textarea.style.marginTop = '10px';
+                    textarea.style.marginBottom = '10px';
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const reason = result.value;
+                    rejectBooking(booking.booking_id, null, reason);
+                }
+            });
+        });
+        
+        buttonSection.appendChild(rejectBtn);
+    }
+    
+    // Cancel Button - only for Confirmed bookings
+    if (booking.status === "Confirmed") {
+        const cancelBtn = document.createElement('button');
+        cancelBtn.className = 'btn btn-sm btn-outline-danger d-inline-flex align-items-center justify-content-center';
+        cancelBtn.title = 'Cancel';
+        
+        const cancelIcon = document.createElement('i');
+        cancelIcon.className = 'bi bi-x-circle me-1';
+        cancelBtn.appendChild(cancelIcon);
+        
+        const cancelText = document.createElement('span');
+        cancelText.textContent = 'Cancel';
+        cancelBtn.appendChild(cancelText);
+        
+        cancelBtn.addEventListener('click', function() {
+            Swal.fire({
+                title: 'Cancel Booking?',
+                html: '<p>Are you sure you want to cancel this booking?</p>',
+                input: 'textarea',
+                inputPlaceholder: 'Kindly provide the reason here.',
+                inputAttributes: {
+                    'aria-label': 'Cancellation reason'
+                },
+                footer: '<p class="text-secondary mb-0">Note: This action cannot be undone.</p>',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Confirm',
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#6c757d',
+                showCloseButton: true,
+                focusConfirm: false,
+                allowOutsideClick: false,
+                width: '32em',
+                padding: '1em',
+                didOpen: () => {
+                    // Fix textarea styling
+                    const textarea = Swal.getInput();
+                    textarea.style.height = '120px';
+                    textarea.style.marginTop = '10px';
+                    textarea.style.marginBottom = '10px';
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const reason = result.value;
+                    cancelBooking(booking.booking_id, null, reason);
+                }
+            });
+        });
+        
+        buttonSection.appendChild(cancelBtn);
+    }
+
+    actionCell.appendChild(buttonSection);
+    return actionCell;
+}
