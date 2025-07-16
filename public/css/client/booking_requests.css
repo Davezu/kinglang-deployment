@@ -118,15 +118,15 @@ body {
   background-color: rgba(40, 167, 69, 0.2);
 }
 
-.sort::after {
+/* .sort::after {
   content: "↕";
   position: absolute;
   right: 8px;
   color: rgba(0, 0, 0, 0.3);
   font-size: 0.8rem;
-}
+} */
 
-.sort[data-order="asc"]::after {
+/* .sort[data-order="asc"]::after {
   content: "↑";
   color: var(--primary-green);
 }
@@ -134,7 +134,7 @@ body {
 .sort[data-order="desc"]::after {
   content: "↓";
   color: var(--primary-green);
-}
+} */
 
 /* Card View */
 .booking-card {

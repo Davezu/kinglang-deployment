@@ -287,6 +287,7 @@ function initDatePickers() {
 function openAddBusModal() {
     const modal = new bootstrap.Modal(document.getElementById('addBusModal'));
     modal.show();
+    document.getElementById('addBusForm').reset();
 }
 
 /**
@@ -540,42 +541,29 @@ function renderBusAvailability(availability) {
 function submitAddBusForm() {
     const formData = new FormData(document.getElementById('addBusForm'));
     
-    // Show confirmation dialog
-    Swal.fire({
-        title: 'Add New Bus?',
-        text: 'Are you sure you want to add this bus?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, add it!',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Proceed with save
-            fetch('/admin/add-bus', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Close modal and show success message
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('addBusModal'));
-                    modal.hide();
-                    
-                    showAlert('success', 'Success', 'Bus added successfully');
-                    
-                    // Refresh the bus list
-                    loadBuses();
-                    loadBusStats();
-                } else {
-                    showAlert('error', 'Error', 'Failed to add bus: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error adding bus:', error);
-                showAlert('error', 'Error', 'Failed to add bus. Please try again.');
-            });
+    fetch('/admin/add-bus', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Close modal and show success message
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addBusModal'));
+            modal.hide();
+            
+            showAlert('success', 'Success', 'Bus added successfully');
+            
+            // Refresh the bus list
+            loadBuses();
+            loadBusStats();
+        } else {
+            showAlert('error', 'Error', 'Failed to add bus: ' + data.message);
         }
+    })
+    .catch(error => {
+        console.error('Error adding bus:', error);
+        showAlert('error', 'Error', 'Failed to add bus. Please try again.');
     });
 }
 
@@ -585,42 +573,30 @@ function submitAddBusForm() {
 function submitEditBusForm() {
     const formData = new FormData(document.getElementById('editBusForm'));
     
-    // Show confirmation dialog
-    Swal.fire({
-        title: 'Update Bus?',
-        text: 'Are you sure you want to save these changes?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, update it!',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Proceed with update
-            fetch('/admin/update-bus', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Close modal and show success message
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('editBusModal'));
-                    modal.hide();
-                    
-                    showAlert('success', 'Success', 'Bus updated successfully');
-                    
-                    // Refresh the bus list
-                    loadBuses();
-                    loadBusStats();
-                } else {
-                    showAlert('error', 'Error', 'Failed to update bus: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error updating bus:', error);
-                showAlert('error', 'Error', 'Failed to update bus. Please try again.');
-            });
+     // Proceed with update
+    fetch('/admin/update-bus', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Close modal and show success message
+            const modal = bootstrap.Modal.getInstance(document.getElementById('editBusModal'));
+            modal.hide();
+            
+            showAlert('success', 'Success', 'Bus updated successfully');
+            
+            // Refresh the bus list
+            loadBuses();
+            loadBusStats();
+        } else {
+            showAlert('error', 'Error', 'Failed to update bus: ' + data.message);
         }
+    })
+    .catch(error => {
+        console.error('Error updating bus:', error);
+        showAlert('error', 'Error', 'Failed to update bus. Please try again.');
     });
 }
 

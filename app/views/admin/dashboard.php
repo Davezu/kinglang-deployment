@@ -10,8 +10,10 @@ require_admin_auth(); // Use helper function
     <link rel="stylesheet" href="../../../public/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../../public/icons/bootstrap-icons.css">
     <link rel="stylesheet" href="../../../public/css/admin/dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <style>
         :root {
             --primary-green: #198754;
@@ -23,6 +25,51 @@ require_admin_auth(); // Use helper function
             .container-fluid {
                 max-width: 98%;
             }
+        }
+        .filters {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        /* Flatpickr custom styles */
+        .date-input-wrapper {
+            position: relative;
+        }
+        .date-input-wrapper i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #198754;
+        }
+        /* Customizing Flatpickr */
+        .flatpickr-day.selected, 
+        .flatpickr-day.startRange, 
+        .flatpickr-day.endRange, 
+        .flatpickr-day.selected.inRange, 
+        .flatpickr-day.startRange.inRange, 
+        .flatpickr-day.endRange.inRange, 
+        .flatpickr-day.selected:focus, 
+        .flatpickr-day.startRange:focus, 
+        .flatpickr-day.endRange:focus,
+        .flatpickr-day.selected:hover, 
+        .flatpickr-day.startRange:hover, 
+        .flatpickr-day.endRange:hover {
+            background: #198754;
+            border-color: #198754;
+        }
+        /* Quick filter buttons */
+        .quick-filter {
+            transition: all 0.2s ease;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .quick-filter.active {
+            background-color: var(--primary-green) !important;
+            color: white !important;
+            border-color: var(--primary-green) !important;
         }
     </style>
 </head>
@@ -39,6 +86,47 @@ require_admin_auth(); // Use helper function
                 <?php include_once __DIR__ . "/../assets/admin_profile.php"; ?>
             </div>
             <hr>
+
+            <!-- Date Range Filters -->
+            <div class="filters mt-0">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label for="startDate" class="form-label">Start Date</label>
+                        <div class="date-input-wrapper">
+                            <input type="text" class="form-control" id="startDate" placeholder="Select start date">
+                            <i class="bi bi-calendar-date"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="endDate" class="form-label">End Date</label>
+                        <div class="date-input-wrapper">
+                            <input type="text" class="form-control" id="endDate" placeholder="Select end date">
+                            <i class="bi bi-calendar-date"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end gap-2">
+                        <button id="applyFilters" class="btn btn-success flex-grow-1">Apply</button>
+                        <button id="resetFilters" class="btn btn-outline-secondary" title="Reset to default date range">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="today">Today</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="yesterday">Yesterday</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="this-week">This Week</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="last-week">Last Week</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="this-month">This Month</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="last-month">Last Month</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="this-year">This Year</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="last-year">Last Year</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary quick-filter" data-range="all-time">All Time</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="row mt-3">
                 <div class="col-md-6 col-lg-4 col-xl mb-4">

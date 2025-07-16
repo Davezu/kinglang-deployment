@@ -782,7 +782,7 @@ document.getElementById("editUserForm").addEventListener("submit", async functio
         Swal.fire({
             icon: 'error',
             title: 'Phone Number Error',
-            text: 'Please enter a valid phone number in the format 09XX XXX XXXX.',
+            text: 'Please enter a valid phone number in the format +63  9XX XXX XXXX.',
         });
         return;
     }

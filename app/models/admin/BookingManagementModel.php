@@ -551,29 +551,78 @@ class BookingManagementModel {
 
 
 
-    public function summaryMetrics() {
+    public function summaryMetrics($startDate = null, $endDate = null) {
         try {
-            $stmt = $this->conn->prepare("SELECT COUNT(*) total_bookings FROM bookings WHERE is_rebooking = 0 AND is_rebooked = 0");
+            $dateFilter = "";
+            $params = [];
+            
+            if ($startDate && $endDate) {
+                $dateFilter = "AND date_of_tour BETWEEN :start_date AND :end_date";
+                $params[':start_date'] = $startDate;
+                $params[':end_date'] = $endDate;
+            }
+            
+            $stmt = $this->conn->prepare("SELECT COUNT(*) total_bookings FROM bookings WHERE is_rebooking = 0 AND is_rebooked = 0 $dateFilter");
+            if (!empty($params)) {
+                foreach ($params as $key => $value) {
+                    $stmt->bindValue($key, $value);
+                }
+            }
             $stmt->execute();
             $total_bookings = $stmt->fetchColumn();
 
-            $stmt = $this->conn->prepare("SELECT SUM(amount) as total_revenue FROM payments WHERE is_canceled = 0 AND status = 'Confirmed'");
+            // For revenue, we need to join with bookings to apply date filter
+            $revenueQuery = "SELECT SUM(p.amount) as total_revenue 
+                            FROM payments p
+                            JOIN bookings b ON p.booking_id = b.booking_id
+                            WHERE p.is_canceled = 0 AND p.status = 'Confirmed'";
+            
+            if ($startDate && $endDate) {
+                $revenueQuery .= " AND b.date_of_tour BETWEEN :start_date AND :end_date";
+            }
+            
+            $stmt = $this->conn->prepare($revenueQuery);
+            if (!empty($params)) {
+                foreach ($params as $key => $value) {
+                    $stmt->bindValue($key, $value);
+                }
+            }
             $stmt->execute();
             $total_revenue = $stmt->fetchColumn() ?? 0;
 
-            $stmt = $this->conn->prepare("SELECT COUNT(*) as upcoming_trips FROM bookings WHERE status = 'Confirmed' AND date_of_tour > CURDATE() AND is_rebooking = 0 AND is_rebooked = 0 AND payment_status IN ('Paid', 'Partially Paid')");
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as upcoming_trips FROM bookings WHERE status = 'Confirmed' AND date_of_tour > CURDATE() AND is_rebooking = 0 AND is_rebooked = 0 AND payment_status IN ('Paid', 'Partially Paid') $dateFilter");
+            if (!empty($params)) {
+                foreach ($params as $key => $value) {
+                    $stmt->bindValue($key, $value);
+                }
+            }
             $stmt->execute();
             $upcoming_trips = $stmt->fetchColumn();
 
-            $stmt = $this->conn->prepare("SELECT COUNT(*) as pending_bookings FROM bookings WHERE status = 'Pending' AND is_rebooking = 0 AND is_rebooked = 0");
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as pending_bookings FROM bookings WHERE status = 'Pending' AND is_rebooking = 0 AND is_rebooked = 0 $dateFilter");
+            if (!empty($params)) {
+                foreach ($params as $key => $value) {
+                    $stmt->bindValue($key, $value);
+                }
+            }
             $stmt->execute();
             $pending_bookings = $stmt->fetchColumn();
 
-            $stmt = $this->conn->prepare("SELECT COUNT(*) as processing_payments FROM bookings WHERE status = 'Processing' AND payment_status IN ('Unpaid', 'Partially Paid') AND is_rebooking = 0 AND is_rebooked = 0");
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as processing_payments FROM bookings WHERE status = 'Processing' AND payment_status IN ('Unpaid', 'Partially Paid') AND is_rebooking = 0 AND is_rebooked = 0 $dateFilter");
+            if (!empty($params)) {
+                foreach ($params as $key => $value) {
+                    $stmt->bindValue($key, $value);
+                }
+            }
             $stmt->execute();
             $processing_payments = $stmt->fetchColumn();
 
-            $stmt = $this->conn->prepare("SELECT COUNT(*) as flagged_bookings FROM bookings WHERE status = 'Confirmed' AND payment_status IN ('Unpaid', 'Partially Paid') AND is_rebooking = 0 AND is_rebooked = 0 AND date_of_tour < CURDATE()");
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as flagged_bookings FROM bookings WHERE status = 'Confirmed' AND payment_status IN ('Unpaid', 'Partially Paid') AND is_rebooking = 0 AND is_rebooked = 0 AND date_of_tour < CURDATE() $dateFilter");
+            if (!empty($params)) {
+                foreach ($params as $key => $value) {
+                    $stmt->bindValue($key, $value);
+                }
+            }
             $stmt->execute();
             $flagged_bookings = $stmt->fetchColumn();
 
@@ -591,125 +640,156 @@ class BookingManagementModel {
         }
     }
 
-    public function getMonthlyBookingTrends() {
+    public function getMonthlyBookingTrends($startDate = null, $endDate = null) {
         try {
             // Get current year
             $year = date('Y');
+            $dateFilter = "";
+            $params = [':year' => $year];
+            
+            if ($startDate && $endDate) {
+                $dateFilter = "AND date_of_tour BETWEEN :start_date AND :end_date";
+                $params[':start_date'] = $startDate;
+                $params[':end_date'] = $endDate;
+                // Remove year filter if we have specific date range
+                unset($params[':year']);
+            }
             
             // Get booking counts
-            $stmt = $this->conn->prepare("
+            $bookingQuery = "
                 SELECT 
                     MONTH(date_of_tour) as month,
                     COUNT(booking_id) as booking_count
                 FROM bookings
-                WHERE YEAR(date_of_tour) = :year
-                AND is_rebooking = 0
+                WHERE is_rebooking = 0 
                 AND is_rebooked = 0
-                GROUP BY MONTH(date_of_tour)
-                ORDER BY month
-            ");
-            $stmt->bindValue(':year', $year);
+            ";
+            
+            if ($startDate && $endDate) {
+                $bookingQuery .= " $dateFilter";
+            } else {
+                $bookingQuery .= " AND YEAR(date_of_tour) = :year";
+            }
+            
+            $bookingQuery .= " GROUP BY MONTH(date_of_tour) ORDER BY month";
+            
+            $stmt = $this->conn->prepare($bookingQuery);
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value);
+            }
             $stmt->execute();
             $bookingResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             // Get revenue data
-            $stmt = $this->conn->prepare("
+            $revenueQuery = "
                 SELECT 
                     MONTH(b.date_of_tour) as month,
                     SUM(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) as total_revenue
                 FROM bookings b
                 LEFT JOIN payments p ON b.booking_id = p.booking_id
-                WHERE YEAR(b.date_of_tour) = :year
-                AND b.is_rebooking = 0
+                WHERE b.is_rebooking = 0 
                 AND b.is_rebooked = 0
-                GROUP BY MONTH(b.date_of_tour)
-                ORDER BY month
-            ");
-            $stmt->bindValue(':year', $year);
+            ";
+            
+            if ($startDate && $endDate) {
+                $revenueQuery .= " $dateFilter";
+            } else {
+                $revenueQuery .= " AND YEAR(b.date_of_tour) = :year";
+            }
+            
+            $revenueQuery .= " GROUP BY MONTH(b.date_of_tour) ORDER BY month";
+            
+            $stmt = $this->conn->prepare($revenueQuery);
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value);
+            }
             $stmt->execute();
             $revenueResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
             // Initialize data for all months
-            $monthlyData = [];
-            for ($i = 1; $i <= 12; $i++) {
-                $monthlyData[$i] = [
-                    'month' => $i,
-                    'booking_count' => 0,
-                    'total_revenue' => 0
-                ];
+            $months = [
+                1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 
+                5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 
+                9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'
+            ];
+            
+            $bookingData = [];
+            $revenueData = [];
+            
+            foreach ($months as $monthNum => $monthName) {
+                $bookingData[$monthNum] = 0;
+                $revenueData[$monthNum] = 0;
             }
             
-            // Fill in booking counts
-            foreach ($bookingResults as $row) {
-                $monthlyData[$row['month']]['booking_count'] = (int)$row['booking_count'];
-            }
-
-            // Fill in revenue data  
-            foreach ($revenueResults as $row) {
-                $monthlyData[$row['month']]['total_revenue'] = (float)$row['total_revenue'];
+            // Fill in actual data
+            foreach ($bookingResults as $result) {
+                $bookingData[$result['month']] = (int)$result['booking_count'];
             }
             
-            // Format for chart
-            $months = [];
-            $counts = [];
-            $revenues = [];
-            
-            foreach ($monthlyData as $monthData) {
-                $months[] = date('F', mktime(0, 0, 0, $monthData['month'], 1));
-                $counts[] = $monthData['booking_count'];
-                $revenues[] = $monthData['total_revenue'];
+            foreach ($revenueResults as $result) {
+                $revenueData[$result['month']] = (float)$result['total_revenue'];
             }
+            
+            // Format for chart.js
+            $labels = array_values($months);
+            $bookingCounts = array_values($bookingData);
+            $revenueCounts = array_values($revenueData);
             
             return [
-                'year' => $year,
-                'labels' => $months,
-                'counts' => $counts,
-                'revenues' => $revenues
+                'labels' => $labels,
+                'counts' => $bookingCounts,
+                'revenues' => $revenueCounts,
+                'year' => $year
             ];
         } catch (PDOException $e) {
             error_log("Error in getMonthlyBookingTrends: " . $e->getMessage());
-            return "Database error: $e";
+            return "Database error: " . $e->getMessage();
         }
     }
     
-    public function getTopDestinations() {
+    public function getTopDestinations($startDate = null, $endDate = null) {
         try {
-            $stmt = $this->conn->prepare("
+            $dateFilter = "";
+            $params = [];
+            
+            if ($startDate && $endDate) {
+                $dateFilter = "AND date_of_tour BETWEEN :start_date AND :end_date";
+                $params[':start_date'] = $startDate;
+                $params[':end_date'] = $endDate;
+            }
+            
+            $query = "
                 SELECT 
-                    b.destination,
-                    COUNT(b.booking_id) as trip_count,
-                    SUM(CASE WHEN b.payment_status IN ('Paid', 'Partially Paid') AND b.status IN ('Confirmed', 'Completed') THEN c.total_cost ELSE 0 END) as total_revenue
+                    b.destination as destination,
+                    COUNT(b.booking_id) as booking_count,
+                    SUM(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) as total_revenue
                 FROM bookings b
-                JOIN booking_costs c ON b.booking_id = c.booking_id
-                WHERE b.status IN ('Confirmed', 'Completed')
-                AND b.is_rebooked = 0
-                GROUP BY b.destination
-                ORDER BY trip_count DESC
-                LIMIT 5
-            ");
+                LEFT JOIN payments p ON b.booking_id = p.booking_id
+                WHERE b.is_rebooking = 0 AND b.is_rebooked = 0 
+                AND b.status IN ('Confirmed', 'Completed') 
+                AND b.payment_status IN ('Paid', 'Partially Paid') 
+                $dateFilter     
+                GROUP BY destination
+                ORDER BY booking_count DESC
+                LIMIT 10
+            ";
+            
+            $stmt = $this->conn->prepare($query);
+            if (!empty($params)) {
+                foreach ($params as $key => $value) {
+                    $stmt->bindValue($key, $value);
+                }
+            }
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-            // Check if we have results
-            if (empty($results)) {
-                return [
-                    'labels' => ['No Data Available'],
-                    'counts' => [0],
-                    'revenues' => [0]
-                ];
-            }
             
             $destinations = [];
             $counts = [];
             $revenues = [];
             
             foreach ($results as $row) {
-                // Trim long destination names for better display
-                $destinationName = strlen($row['destination']) > 20 
-                    ? substr($row['destination'], 0, 18) . '...' 
-                    : $row['destination'];
-                $destinations[] = $destinationName;
-                $counts[] = (int)$row['trip_count'];
+                $destinations[] = $row['destination'];
+                $counts[] = (int)$row['booking_count'];
                 $revenues[] = (float)$row['total_revenue'];
             }
             
@@ -720,208 +800,233 @@ class BookingManagementModel {
             ];
         } catch (PDOException $e) {
             error_log("Error in getTopDestinations: " . $e->getMessage());
-            return "Database error: $e";
+            return "Database error: " . $e->getMessage();
         }
     }
     
-    public function getBookingStatusDistribution() {
+    public function getBookingStatusDistribution($startDate = null, $endDate = null) {
         try {
-            $stmt = $this->conn->prepare("
+            $dateFilter = "";
+            $params = [];
+            
+            if ($startDate && $endDate) {
+                $dateFilter = "AND date_of_tour BETWEEN :start_date AND :end_date";
+                $params[':start_date'] = $startDate;
+                $params[':end_date'] = $endDate;
+            }
+            
+            $query = "
                 SELECT 
-                    b.status,
+                    b.status as status,
                     COUNT(b.booking_id) as count,
-                    SUM(c.total_cost) as total_value
+                    SUM(CASE WHEN b.payment_status IN ('Paid', 'Partially Paid') AND b.status IN ('Confirmed', 'Completed') THEN c.total_cost ELSE 0 END) as total_revenue
                 FROM bookings b
                 JOIN booking_costs c ON b.booking_id = c.booking_id
-                WHERE b.is_rebooked = 0
-                AND b.is_rebooking = 0
-                GROUP BY b.status
-                ORDER BY count DESC
-            ");
+                WHERE is_rebooking = 0 AND is_rebooked = 0
+                $dateFilter
+                GROUP BY status
+            ";
+            
+            $stmt = $this->conn->prepare($query);
+            if (!empty($params)) {
+                foreach ($params as $key => $value) {
+                    $stmt->bindValue($key, $value);
+                }
+            }
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
-            if (empty($results)) {
-                return [
-                    'labels' => [],
-                    'counts' => [],
-                    'values' => []
-                ];
-            }
+            // Define all possible statuses and their colors
+            $statusColors = [
+                'Pending' => '#ffc107',
+                'Confirmed' => '#198754',
+                'Canceled' => '#dc3545',
+                'Rejected' => '#6c757d',
+                'Completed' => '#0d6efd',
+                'Processing' => '#fd7e14'
+            ];
             
-            // Define the order of statuses to ensure consistent colors
-            $statusOrder = ['Confirmed', 'Pending', 'Completed', 'Canceled', 'Rejected'];
-            $orderedData = [];
-            
-            // Initialize all statuses with 0 to ensure they all appear even if empty
-            foreach ($statusOrder as $status) {
-                $orderedData[$status] = [
-                    'count' => 0,
-                    'value' => 0
-                ];
-            }
+            // Initialize data structure
+            $labels = [];
+            $data = [];
+            $values = [];
             
             // Fill in actual data
             foreach ($results as $row) {
-                if (isset($orderedData[$row['status']])) {
-                    $orderedData[$row['status']] = [
-                        'count' => (int)$row['count'],
-                        'value' => (float)$row['total_value']
-                    ];
-                }
-            }
-            
-            // Format for chart
-            $labels = [];
-            $counts = [];
-            $values = [];
-            
-            foreach ($orderedData as $status => $data) {
-                if ($data['count'] > 0) {
-                    $labels[] = $status;
-                    $counts[] = $data['count'];
-                    $values[] = $data['value'];
-                }
+                $labels[] = $row['status'];
+                $data[] = (int)$row['count'];
+                $values[] = (float)$row['total_revenue']; // Default color if status not found
             }
             
             return [
                 'labels' => $labels,
-                'counts' => $counts,
+                'counts' => $data,
                 'values' => $values
             ];
         } catch (PDOException $e) {
             error_log("Error in getBookingStatusDistribution: " . $e->getMessage());
-            return "Database error: $e";
+            return "Database error: " . $e->getMessage();
         }
     }
     
-    public function getRevenueTrends() {
+    public function paymentMethodChart($startDate = null, $endDate = null) {
+        try {
+            $dateFilter = "";
+            $params = [];
+            
+            if ($startDate && $endDate) {
+                $dateFilter = "AND b.date_of_tour BETWEEN :start_date AND :end_date";
+                $params[':start_date'] = $startDate;
+                $params[':end_date'] = $endDate;
+            }
+            
+            $query = "
+                SELECT 
+                    p.payment_method,
+                    COUNT(*) as count,
+                    SUM(p.amount) as amount
+                FROM payments p
+                JOIN bookings b ON p.booking_id = b.booking_id
+                WHERE p.status = 'Confirmed' AND p.is_canceled = 0
+                $dateFilter
+                GROUP BY p.payment_method
+            ";
+            
+            $stmt = $this->conn->prepare($query);
+            if (!empty($params)) {
+                foreach ($params as $key => $value) {
+                    $stmt->bindValue($key, $value);
+                }
+            }
+            $stmt->execute();
+            
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $labels = [];
+            $data = [];
+            $amounts = [];
+            
+            foreach ($results as $row) {
+                $labels[] = $row['payment_method'];
+                $data[] = (int)$row['count'];
+                $amounts[] = (float)$row['amount'];
+            }
+            
+            return [
+                'labels' => $labels,
+                'counts' => $data,
+                'amounts' => $amounts
+            ];
+        } catch (PDOException $e) {
+            error_log("Error in paymentMethodChart: " . $e->getMessage());
+            return "Database error: " . $e->getMessage();
+        }
+    }
+    
+    public function getRevenueTrends($startDate = null, $endDate = null) {
         try {
             // Get current year
             $year = date('Y');
+            $dateFilter = "";
+            $params = [':year' => $year];
+            
+            if ($startDate && $endDate) {
+                $dateFilter = "AND date_of_tour BETWEEN :start_date AND :end_date";
+                $params[':start_date'] = $startDate;
+                $params[':end_date'] = $endDate;
+                // Remove year filter if we have specific date range
+                unset($params[':year']);
+            }
             
             // Get booking counts
-            $stmt = $this->conn->prepare("
+            $bookingQuery = "
                 SELECT 
                     MONTH(date_of_tour) as month,
                     COUNT(booking_id) as booking_count
                 FROM bookings
-                WHERE YEAR(date_of_tour) = :year
-                AND is_rebooking = 0
+                WHERE is_rebooking = 0
                 AND is_rebooked = 0
-                GROUP BY MONTH(date_of_tour)
-                ORDER BY month
-            ");
-            $stmt->bindValue(':year', $year);
+            ";
+            
+            if ($startDate && $endDate) {
+                $bookingQuery .= " $dateFilter";
+            } else {
+                $bookingQuery .= " AND YEAR(date_of_tour) = :year";
+            }
+            
+            $bookingQuery .= " GROUP BY MONTH(date_of_tour) ORDER BY month";
+            
+            $stmt = $this->conn->prepare($bookingQuery);
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value);
+            }
             $stmt->execute();
             $bookingResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             // Get revenue data
-            $stmt = $this->conn->prepare("
+            $revenueQuery = "
                 SELECT 
                     MONTH(b.date_of_tour) as month,
                     SUM(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) as total_revenue
                 FROM bookings b
                 LEFT JOIN payments p ON b.booking_id = p.booking_id
-                WHERE YEAR(b.date_of_tour) = :year
-                AND b.is_rebooking = 0
+                WHERE b.is_rebooking = 0
                 AND b.is_rebooked = 0
-                GROUP BY MONTH(b.date_of_tour)
-                ORDER BY month
-            ");
-            $stmt->bindValue(':year', $year);
+            ";
+            
+            if ($startDate && $endDate) {
+                $revenueQuery .= " $dateFilter";
+            } else {
+                $revenueQuery .= " AND YEAR(b.date_of_tour) = :year";
+            }
+            
+            $revenueQuery .= " GROUP BY MONTH(b.date_of_tour) ORDER BY month";
+            
+            $stmt = $this->conn->prepare($revenueQuery);
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value);
+            }
             $stmt->execute();
             $revenueResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
             // Initialize data for all months
-            $monthlyData = [];
-            for ($i = 1; $i <= 12; $i++) {
-                $monthlyData[$i] = [
-                    'month' => $i,
-                    'booking_count' => 0,
-                    'total_revenue' => 0
-                ];
-            }
-            
-            // Fill in booking counts
-            foreach ($bookingResults as $row) {
-                $monthlyData[$row['month']]['booking_count'] = (int)$row['booking_count'];
-            }
-
-            // Fill in revenue data  
-            foreach ($revenueResults as $row) {
-                $monthlyData[$row['month']]['total_revenue'] = (float)$row['total_revenue'];
-            }
-            
-            // Format for chart
-            $months = [];
-            $counts = [];
-            $revenues = [];
-            
-            foreach ($monthlyData as $monthData) {
-                $months[] = date('F', mktime(0, 0, 0, $monthData['month'], 1));
-                $counts[] = $monthData['booking_count'];
-                $revenues[] = $monthData['total_revenue'];
-            }
-            
-            return [
-                'year' => $year,
-                'labels' => $months,
-                'counts' => $counts,
-                'revenues' => $revenues
+            $months = [
+                1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 
+                5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 
+                9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'
             ];
-        } catch (PDOException $e) {
-            error_log("Error in getRevenueTrends: " . $e->getMessage());
-            return "Database error: $e";
-        }
-    }
-
-    public function paymentMethodChart() {
-        try {
-            $sql = "SELECT 
-                p.payment_method,
-                COUNT(*) as payment_count,
-                SUM(p.amount) as total_amount
-            FROM payments p
-            WHERE p.status = 'Confirmed'
-            AND p.is_canceled = 0
-            GROUP BY p.payment_method
-            ORDER BY payment_count DESC";
             
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
+            $bookingData = [];
+            $revenueData = [];
             
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-            // Check if there's any data
-            if (empty($results)) {
-                // Return default data with zero counts
-                return [
-                    'labels' => ['Cash', 'Bank Transfer'],
-                    'counts' => [0, 0],
-                    'amounts' => [0, 0]
-                ];
+            foreach ($months as $monthNum => $monthName) {
+                $bookingData[$monthNum] = 0;
+                $revenueData[$monthNum] = 0;
             }
             
-            // Process the results into chart-friendly format
-            $labels = [];
-            $counts = [];
-            $amounts = [];
-            
-            foreach ($results as $row) {
-                $labels[] = $row['payment_method'];
-                $counts[] = (int)$row['payment_count'];
-                $amounts[] = (float)$row['total_amount'];
+            // Fill in actual data
+            foreach ($bookingResults as $result) {
+                $bookingData[$result['month']] = (int)$result['booking_count'];
             }
+            
+            foreach ($revenueResults as $result) {
+                $revenueData[$result['month']] = (float)$result['total_revenue'];
+            }
+            
+            // Format for chart.js
+            $labels = array_values($months);
+            $bookingCounts = array_values($bookingData);
+            $revenueCounts = array_values($revenueData);
             
             return [
                 'labels' => $labels,
-                'counts' => $counts,
-                'amounts' => $amounts
+                'counts' => $bookingCounts,
+                'revenues' => $revenueCounts,
+                'year' => $year
             ];
         } catch (PDOException $e) {
-            error_log("Error in paymentMethodChart: " . $e->getMessage());
-            return "Database error: $e";    
+            error_log("Error in getRevenueTrends: " . $e->getMessage());
+            return "Database error: " . $e->getMessage();
         }
     }
 

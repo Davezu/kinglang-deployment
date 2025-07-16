@@ -243,7 +243,7 @@ require_client_auth(); // Use helper function
                         <button class="btn btn-sm btn-outline-secondary quick-filter" data-status="all">
                             <i class="bi bi-funnel"></i> All
                         </button>
-                        <button class="btn btn-sm btn-outline-warning text-dark-emphasis quick-filter active" data-status="pending">
+                        <button class="btn btn-sm btn-outline-warning quick-filter active" data-status="pending">
                             <i class="bi bi-hourglass-split"></i> Pending
                         </button>
                         <button class="btn btn-sm btn-outline-success quick-filter" data-status="confirmed">

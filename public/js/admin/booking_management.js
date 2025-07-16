@@ -297,8 +297,12 @@ function setupSearch() {
         // Reset form inputs
         searchInput.value = "";
         searchQuery = "";
-        document.getElementById("statusSelect").value = "Pending";
-        currentFilter = "Pending";
+        document.getElementById("statusSelect").value = "All";
+        currentFilter = "All";
+
+        const matchingBtn = document.querySelector(`.quick-filter[data-status="${currentFilter}"]`);
+        if (matchingBtn) matchingBtn.classList.add("active");
+        
         document.getElementById("limitSelect").value = "10";
         limit = 10;
         currentPage = 1;
@@ -651,7 +655,7 @@ function showBookingDetails(bookingId) {
         if (confirmBtn) {
             confirmBtn.addEventListener('click', function() {
                 const bookingId = this.getAttribute('data-booking-id');
-                
+                     
                 // Close the modal before showing SweetAlert
                 bootstrap.Modal.getInstance(document.getElementById('bookingDetailsModal')).hide();
                 
@@ -1695,7 +1699,103 @@ function actionButton(booking) {
         confirmBtn.appendChild(confirmText);
         
         confirmBtn.addEventListener('click', function() {
-            confirmBooking(booking.booking_id);
+            const bookingId = booking.booking_id;
+
+             Swal.fire({
+                title: 'Apply Discount?',
+                icon: 'question',
+                html: `
+                    <p>Would you like to apply a discount to this booking?</p>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" id="noDiscount" name="discountOption" value="none" checked>
+                        <label class="form-check-label" for="noDiscount">No discount</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" id="percentageDiscount" name="discountOption" value="percentage">
+                        <label class="form-check-label" for="percentageDiscount">Percentage discount</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="radio" class="form-check-input" id="flatDiscount" name="discountOption" value="flat">
+                        <label class="form-check-label" for="flatDiscount">Flat amount discount</label>
+                    </div>
+                    <div id="discountInputContainer" style="display: none; margin-top: 15px;">
+                        <div id="percentageInput" style="display: none;">
+                            <label for="percentageValue">Discount percentage (0-100)</label>
+                            <div class="input-group">
+                                <input type="number" id="percentageValue" class="form-control" min="0" max="100" step="0.01" value="0">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                        <div id="flatInput" style="display: none;">
+                            <label for="flatValue">Discount amount (PHP)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₱</span>
+                                <input type="number" id="flatValue" class="form-control" min="0" step="0.01" value="0">
+                            </div>
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Confirm Booking',
+                cancelButtonText: 'Cancel',
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#6c757d',
+                didOpen: () => {
+                    // Show/hide discount inputs based on selection
+                    const discountOptions = document.getElementsByName('discountOption');
+                    const discountInputContainer = document.getElementById('discountInputContainer');
+                    const percentageInput = document.getElementById('percentageInput');
+                    const flatInput = document.getElementById('flatInput');
+                    
+                    discountOptions.forEach(option => {
+                        option.addEventListener('change', function() {
+                            if (this.value === 'none') {
+                                discountInputContainer.style.display = 'none';
+                            } else {
+                                discountInputContainer.style.display = 'block';
+                                if (this.value === 'percentage') {
+                                    percentageInput.style.display = 'block';
+                                    flatInput.style.display = 'none';
+                                } else if (this.value === 'flat') {
+                                    percentageInput.style.display = 'none';
+                                    flatInput.style.display = 'block';
+                                }
+                            }
+                        });
+                    });
+                },
+                preConfirm: () => {
+                    const selectedOption = document.querySelector('input[name="discountOption"]:checked').value;
+                    
+                    if (selectedOption === 'none') {
+                        return { discountValue: null, discountType: null };
+                    } else if (selectedOption === 'percentage') {
+                        const percentageValue = document.getElementById('percentageValue').value;
+                        const numValue = parseFloat(percentageValue);
+                        
+                        if (isNaN(numValue) || numValue < 0 || numValue > 100) {
+                            Swal.showValidationMessage('Percentage must be between 0 and 100');
+                            return false;
+                        }
+                        
+                        return { discountValue: numValue, discountType: 'percentage' };
+                    } else if (selectedOption === 'flat') {
+                        const flatValue = document.getElementById('flatValue').value;
+                        const numValue = parseFloat(flatValue);
+                        
+                        if (isNaN(numValue) || numValue < 0) {
+                            Swal.showValidationMessage('Flat amount must be greater than or equal to 0');
+                            return false;
+                        }
+                        
+                        return { discountValue: numValue, discountType: 'flat' };
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    confirmBooking(bookingId, result.value.discountValue, result.value.discountType);
+                }
+            });
         });
         
         buttonSection.appendChild(confirmBtn);

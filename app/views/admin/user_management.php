@@ -148,6 +148,16 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
             justify-content: center;
             font-size: 1.5rem;
         }
+        .pagination .page-link {
+            color: #198754;
+            border-radius: 5px;
+            margin: 0 2px;
+            padding: 0.375rem 0.75rem;
+        }
+        .pagination .page-item.active .page-link {
+            background-color: #198754;
+            border-color: #198754;
+        }
         @media (min-width: 1400px) {
             .container-fluid {
                 max-width: 98%;
@@ -157,7 +167,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
         /* Lighter modal backdrop */
         .modal-backdrop {
             opacity: 0.2 !important;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.5);
         }
         .modal-content {
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
@@ -506,7 +516,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
 
                     // Convert starting '9' (if no prefix) to '639'
                     if (value.length >= 10 && value.startsWith('9')) {
-                        value = '639' + value;
+                        value = '63' + value;
                     }
 
                     // Only format if it starts with '639' and has at least 10 digits

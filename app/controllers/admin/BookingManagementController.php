@@ -559,7 +559,14 @@ class BookingManagementController {
     public function summaryMetrics() {
         header("Content-Type: application/json");
 
-        $summary_metrics = $this->bookingModel->summaryMetrics();
+        // Get data from POST request
+        $jsonData = file_get_contents('php://input');
+        $data = json_decode($jsonData, true);
+        
+        $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+        $endDate = isset($data['end_date']) ? $data['end_date'] : null;
+
+        $summary_metrics = $this->bookingModel->summaryMetrics($startDate, $endDate);
 
         echo json_encode($summary_metrics);
     }
@@ -568,7 +575,14 @@ class BookingManagementController {
         header("Content-Type: application/json");
 
         try {
-            $payment_methods = $this->bookingModel->paymentMethodChart();
+            // Get data from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
+            
+            $payment_methods = $this->bookingModel->paymentMethodChart($startDate, $endDate);
             
             // Check if we received an error message instead of the expected data
             if (is_string($payment_methods) && strpos($payment_methods, "Database error") !== false) {
@@ -585,33 +599,73 @@ class BookingManagementController {
     public function monthlyBookingTrends() {
         header("Content-Type: application/json");
         
-        $trends = $this->bookingModel->getMonthlyBookingTrends();
-        
+        try {
+            // Get data from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
+            
+            $trends = $this->bookingModel->getMonthlyBookingTrends($startDate, $endDate);
         echo json_encode($trends);
+        } catch (Exception $e) {
+            echo json_encode(["error" => "Failed to retrieve monthly booking trends: " . $e->getMessage()]);
+        }
     }
     
     public function topDestinations() {
         header("Content-Type: application/json");
         
-        $destinations = $this->bookingModel->getTopDestinations();
-        
+        try {
+            // Get data from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
+            
+            $destinations = $this->bookingModel->getTopDestinations($startDate, $endDate);
         echo json_encode($destinations);
+        } catch (Exception $e) {
+            echo json_encode(["error" => "Failed to retrieve top destinations: " . $e->getMessage()]);
+        }
     }
     
     public function bookingStatusDistribution() {
         header("Content-Type: application/json");
         
-        $statuses = $this->bookingModel->getBookingStatusDistribution();
-        
-        echo json_encode($statuses);
+        try {
+            // Get data from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
+            
+            $statusDistribution = $this->bookingModel->getBookingStatusDistribution($startDate, $endDate);
+            echo json_encode($statusDistribution);
+        } catch (Exception $e) {
+            echo json_encode(["error" => "Failed to retrieve booking status distribution: " . $e->getMessage()]);
+        }
     }
     
     public function revenueTrends() {
         header("Content-Type: application/json");
         
-        $revenue = $this->bookingModel->getRevenueTrends();
-        
-        echo json_encode($revenue);
+        try {
+            // Get data from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
+            
+            $trends = $this->bookingModel->getRevenueTrends($startDate, $endDate);
+            echo json_encode($trends);
+        } catch (Exception $e) {
+            echo json_encode(["error" => "Failed to retrieve revenue trends: " . $e->getMessage()]);
+        }
     }
     
     // New method for showing the create booking form

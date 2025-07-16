@@ -1,12 +1,195 @@
-$(renderSummaryMetrics);
+// Global filters state
+const filters = {
+    startDate: null,
+    endDate: null
+};
+
+// Initialize date pickers
+let startDatePicker = null;
+let endDatePicker = null;
+
 $(document).ready(function() {
+    initializeDatePickers();
+    renderSummaryMetrics();
     renderCharts();
     checkUrgentReviewBookings();
+    
+    // Event listener for apply filters button
+    $('#applyFilters').on('click', applyFilters);
+    
+    // Event listener for quick filter buttons
+    $('.quick-filter').on('click', function() {
+        const range = $(this).data('range');
+        applyQuickFilter(range);
+    });
+    
+    // Event listener for reset button
+    $('#resetFilters').on('click', resetFilters);
 });
+
+// Function to reset filters to default (This Year)
+function resetFilters() {
+    // Reset to default date range (This Year)
+    applyQuickFilter('this-year');
+}
+
+function initializeDatePickers() {
+    // Initialize date inputs with Flatpickr
+    const today = new Date();
+    const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+    
+    // Flatpickr configuration
+    const dateConfig = {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+        allowInput: false,
+        theme: "light"
+    };
+    
+    // Initialize start date picker
+    startDatePicker = flatpickr("#startDate", {
+        ...dateConfig,
+        defaultDate: firstDayOfYear,
+        allowInput: false,
+        maxDate: today,
+        onChange: function(selectedDates, dateStr) {
+            if (selectedDates[0]) {
+                endDatePicker.set("minDate", selectedDates[0]);
+                // Clear active state from all quick filter buttons
+                $('.quick-filter').removeClass('active').addClass('btn-outline-success');
+            }
+        }
+    });
+    
+    // Initialize end date picker
+    endDatePicker = flatpickr("#endDate", {
+        ...dateConfig,
+        defaultDate: today,
+        maxDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+        minDate: firstDayOfYear,
+        onChange: function(selectedDates, dateStr) {
+            if (selectedDates[0]) {
+                startDatePicker.set("maxDate", selectedDates[0]);
+                // Clear active state from all quick filter buttons
+                $('.quick-filter').removeClass('active').addClass('btn-outline-success');
+            }
+        }
+    });
+    
+    filters.startDate = formatDate(firstDayOfYear);
+    filters.endDate = formatDate(today);
+    
+    // Highlight the "This Year" button by default
+    $('.quick-filter[data-range="this-year"]').addClass('active').removeClass('btn-outline-success');
+}
+
+// Helper function to format date
+function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+function applyFilters() {
+    filters.startDate = startDatePicker.input.value;
+    filters.endDate = endDatePicker.input.value;
+    
+    // Clear active state from all quick filter buttons when manually applying filters
+    $('.quick-filter').removeClass('active').addClass('btn-outline-success');
+    
+    renderSummaryMetrics();
+    renderCharts();
+}
+
+// Function to apply quick filter based on predefined date ranges
+function applyQuickFilter(range) {
+    const today = new Date();
+    let startDate, endDate;
+    
+    // Highlight the selected button
+    $('.quick-filter').removeClass('active').addClass('btn-outline-success');
+    $(`.quick-filter[data-range="${range}"]`).removeClass('btn-outline-success').addClass('active');
+    
+    switch (range) {
+        case 'today':
+            startDate = new Date(today);
+            endDate = new Date(today);
+            break;
+            
+        case 'yesterday':
+            startDate = new Date(today);
+            startDate.setDate(startDate.getDate() - 1);
+            endDate = new Date(startDate);
+            break;
+            
+        case 'this-week':
+            startDate = new Date(today);
+            startDate.setDate(startDate.getDate() - startDate.getDay()); // Start of week (Sunday)
+            endDate = new Date(today);
+            break;
+            
+        case 'last-week':
+            startDate = new Date(today);
+            startDate.setDate(startDate.getDate() - startDate.getDay() - 7); // Start of last week
+            endDate = new Date(startDate);
+            endDate.setDate(endDate.getDate() + 6); // End of last week (Saturday)
+            break;
+            
+        case 'this-month':
+            startDate = new Date(today.getFullYear(), today.getMonth(), 1);
+            endDate = new Date(today);
+            break;
+            
+        case 'last-month':
+            startDate = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+            endDate = new Date(today.getFullYear(), today.getMonth(), 0);
+            break;
+            
+        case 'this-year':
+            startDate = new Date(today.getFullYear(), 0, 1);
+            endDate = new Date(today);
+            break;
+            
+        case 'last-year':
+            startDate = new Date(today.getFullYear() - 1, 0, 1);
+            endDate = new Date(today.getFullYear() - 1, 11, 31);
+            break;
+            
+        case 'all-time':
+            startDate = new Date(2000, 0, 1); // Far past date
+            endDate = new Date(today);
+            $('.quick-filter').removeClass('active').addClass('btn-outline-success');
+            $(`.quick-filter[data-range="all-time"]`).removeClass('btn-outline-success').addClass('btn-outline-secondary active');
+            break;
+            
+        default:
+            return;
+    }
+    
+    // Update the date pickers
+    startDatePicker.setDate(startDate);
+    endDatePicker.setDate(endDate);
+    
+    // Update the filters
+    filters.startDate = formatDate(startDate);
+    filters.endDate = formatDate(endDate);
+    
+    // Apply the filters
+    renderSummaryMetrics();
+    renderCharts();
+}
+
+// Global variable to hold chart instances
+let monthlyTrendsChartInstance = null;
+let paymentMethodChartInstance = null;  
+let destinationsChartInstance = null;
+let bookingStatusChartInstance = null;
+let revenueTrendsChartInstance = null;
 
 async function renderCharts() {
     try {
-        await renderSummaryMetrics();
         await renderPaymentMethodChart();
         await renderMonthlyTrendsChart();
         await renderTopDestinationsChart();
@@ -187,8 +370,13 @@ async function getSummaryMetrics() {
     try {
         const response = await $.ajax({
             url: "/admin/summary-metrics",
-            type: "GET",
-            dataType: "json"
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+                start_date: filters.startDate,
+                end_date: filters.endDate
+            })
         });
     
         return response;
@@ -230,8 +418,13 @@ async function getPaymentMethodData() {
     try {
         const response = await $.ajax({
             url: "/admin/payment-method-data",
-            type: "GET",
-            dataType: "json"
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+                start_date: filters.startDate,
+                end_date: filters.endDate
+            })
         });
 
         console.log("Payment Method Data:", response);
@@ -262,14 +455,18 @@ async function renderPaymentMethodChart() {
         }
         
         // If there's no data, show a message
-        if (paymentMethodData.labels.length === 0 || paymentMethodData.counts.every(count => count === 0)) {
-            displayChartError("paymentMethodChart", "No payment data available yet.");
-            return;
-        }
+        // if (paymentMethodData.labels.length === 0 || paymentMethodData.counts.every(count => count === 0)) {
+        //     displayChartError("paymentMethodChart", "No payment data available yet.");
+        //     return;
+        // }
 
         const ctx = $("#paymentMethodChart")[0].getContext("2d");
 
-        new Chart(ctx, {
+        if (paymentMethodChartInstance) {
+            paymentMethodChartInstance.destroy();
+        }
+
+        paymentMethodChartInstance = new Chart(ctx, {
             type: "doughnut",
             data: {
                 labels: paymentMethodData.labels,
@@ -316,14 +513,20 @@ async function getMonthlyTrendsData() {
     try {
         const response = await $.ajax({
             url: "/admin/monthly-booking-trends",
-            type: "GET",
-            dataType: "json"
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+                start_date: filters.startDate,
+                end_date: filters.endDate
+            })
         });
 
         console.log("Monthly Trends Data:", response);
         return response;
     } catch (error) {
         console.error("Error fetching monthly trends data: ", error);
+        return null;
     }
 }
 
@@ -340,8 +543,12 @@ async function renderMonthlyTrendsChart() {
         }
         
         const ctx = $("#monthlyTrendsChart")[0].getContext("2d");
-        
-        new Chart(ctx, {
+
+        if (monthlyTrendsChartInstance) {
+            monthlyTrendsChartInstance.destroy();
+        }
+
+        monthlyTrendsChartInstance = new Chart(ctx, {
             type: "line",
             data: {
                 labels: trendsData.labels,
@@ -430,25 +637,33 @@ async function renderMonthlyTrendsChart() {
                 }
             }
         });
+
     } catch (error) {
         console.error("Error rendering monthly trends chart:", error);
         displayChartError("monthlyTrendsChart", "Error rendering chart. Please try again.");
     }
 }
 
+
 // Top Destinations Chart
 async function getTopDestinationsData() {
     try {
         const response = await $.ajax({
             url: "/admin/top-destinations",
-            type: "GET",
-            dataType: "json"
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+                start_date: filters.startDate,
+                end_date: filters.endDate
+            })
         });
 
         console.log("Top Destinations Data:", response);
         return response;
     } catch (error) {
         console.error("Error fetching top destinations data: ", error);
+        return null;
     }
 }
 
@@ -456,7 +671,7 @@ async function renderTopDestinationsChart() {
     try {
         const destinationsData = await getTopDestinationsData();
         
-        console.log("Top Destinations Data:", destinationsData);
+        // console.log("Top Destinations Data:", destinationsData);
         
         if (!destinationsData || !destinationsData.labels || !destinationsData.counts) {
             console.error("Invalid destination data received:", destinationsData);
@@ -465,16 +680,20 @@ async function renderTopDestinationsChart() {
         }
         
         // Check if there's real data
-        if (destinationsData.labels.length === 0 || destinationsData.labels[0] === 'No Data Available') {
-            displayChartError("destinationsChart", "No destination data available yet.");
-            return;
-        }
-        
+        // if (destinationsData.labels.length === 0 || destinationsData.labels[0] === 'No Data Available') {
+        //     displayChartError("destinationsChart", "No destination datas available yet.");
+        //     return;
+        // }
+
         const ctx = $("#destinationsChart")[0].getContext("2d");
-        
-        new Chart(ctx, {
+
+        if (destinationsChartInstance) {
+            destinationsChartInstance.destroy();
+        }
+
+        destinationsChartInstance = new Chart(ctx, {
             type: "polarArea",
-            data: {
+            data: { 
                 labels: destinationsData.labels,
                 datasets: [{
                     data: destinationsData.counts,
@@ -567,14 +786,20 @@ async function getBookingStatusData() {
     try {
         const response = await $.ajax({
             url: "/admin/booking-status-distribution",
-            type: "GET",
-            dataType: "json"
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+                start_date: filters.startDate,
+                end_date: filters.endDate
+            })
         });
 
         console.log("Booking Status Data:", response);
         return response;
     } catch (error) {
         console.error("Error fetching booking status data: ", error);
+        return null;
     }
 }
 
@@ -590,14 +815,18 @@ async function renderBookingStatusChart() {
             return;
         }
         
-        if (statusData.labels.length === 0) {
-            displayChartError("bookingStatusChart", "No booking status data available yet.");
-            return;
-        }
+        // if (statusData.labels.length === 0) {
+        //     displayChartError("bookingStatusChart", "No booking status data available yet.");
+        //     return;
+        // }
         
         const ctx = $("#bookingStatusChart")[0].getContext("2d");
-        
-        new Chart(ctx, {
+
+        if (bookingStatusChartInstance) {
+            bookingStatusChartInstance.destroy();
+        }
+
+        bookingStatusChartInstance = new Chart(ctx, {
             type: "pie",
             data: {
                 labels: statusData.labels,
@@ -664,14 +893,20 @@ async function getRevenueTrendsData() {
     try {
         const response = await $.ajax({
             url: "/admin/revenue-trends",
-            type: "GET",
-            dataType: "json"
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+                start_date: filters.startDate,
+                end_date: filters.endDate
+            })
         });
 
         console.log("Revenue Trends Data:", response);
         return response;
     } catch (error) {
         console.error("Error fetching revenue trends data: ", error);
+        return null;
     }
 }
 
@@ -687,14 +922,18 @@ async function renderRevenueTrendsChart() {
             return;
         }
         
-        if (revenueData.labels.length === 0) {
-            displayChartError("revenueTrendsChart", "No revenue data available yet.");
-            return;
-        }
+        // if (revenueData.labels.length === 0) {
+        //     displayChartError("revenueTrendsChart", "No revenue data available yet.");
+        //     return;
+        // }
         
         const ctx = $("#revenueTrendsChart")[0].getContext("2d");
-        
-        new Chart(ctx, {
+
+        if (revenueTrendsChartInstance) {
+            revenueTrendsChartInstance.destroy();
+        }
+
+        revenueTrendsChartInstance = new Chart(ctx, {
             type: "bar",
             data: {
                 labels: revenueData.labels,

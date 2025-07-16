@@ -92,6 +92,16 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
         .table td:nth-child(9) {
             white-space: nowrap;
         }
+        .pagination .page-link {
+            color: #198754;
+            border-radius: 5px;
+            margin: 0 2px;
+            padding: 0.375rem 0.75rem;
+        }
+        .pagination .page-item.active .page-link {
+            background-color: #198754   ;
+            border-color: #198754   ;
+        }
         @media (min-width: 1400px) {
             .container-fluid {
                 max-width: 98%;
@@ -408,11 +418,11 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                 </div>
             </div>
 
-            <!-- CARD VIEW -->
+            <!-- CARD  VIEW -->
             <div id="cardViewContainer" class="row g-3" style="display:none;"></div>
 
             <!-- CALENDAR VIEW -->
-            <div id="calendarViewContainer" class="card border-0 shadow-sm" style="display:none;">
+            <div id="calendarViewContainer" class="card border  -0 shadow-sm" style="display:none;">
                 <div class="card-body p-2">
                     <div id="bookingCalendar"></div>
                 </div>

@@ -96,6 +96,30 @@ if (amountPaymentElements.length > 0) {
     });
 }
 
+// Initialize sorting functionality
+function setupSorting() {
+    // Set up sorting headers
+    document.querySelectorAll(".sort").forEach(header => {
+        header.addEventListener("click", function() {
+            // Get current sort column and order
+            const column = this.getAttribute("data-column");
+            const order = this.getAttribute("data-order") === "asc" ? "desc" : "asc";
+            
+            // Update sort state for all headers
+            updateSortHeaders(column, order);
+            
+            // Reset to first page when sorting
+            currentPage = 1;
+            
+            // Refresh bookings with new sort
+            refreshBookings();
+        });
+    });
+    
+    // Set default sort indicator
+    updateSortHeaders("booking_id", "desc");
+}
+
 // get all of booking records and initialize the page
 document.addEventListener("DOMContentLoaded", async function () {
     // Fetch payment settings on page load
@@ -133,6 +157,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                     filterStatus = "all";
                     statusSelect.value = filterStatus;
                     result = await getAllBookings(filterStatus, "booking_id", "desc", currentPage, limit, searchTerm);
+                    
+                    document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+                    document.querySelector('.quick-filter[data-status="all"]').classList.add('active');
                 }
             }
         }
@@ -195,6 +222,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     // Initialize export buttons
     initializeExportButtons();
+    
+    // Initialize sorting functionality
+    setupSorting();
     
     // Initialize refresh button
     document.getElementById("refreshBookings")?.addEventListener("click", refreshBookings);
@@ -285,19 +315,19 @@ function initializeSearch() {
     const searchInput = document.getElementById("searchBookings");
     const searchBtn = document.getElementById("searchBtn");
     
-    if (searchInput && searchBtn) {
-        // Search when the search button is clicked
+    if (searchBtn && searchInput) {
+        // Search button click
         searchBtn.addEventListener("click", function() {
             searchTerm = searchInput.value.trim();
-            currentPage = 1; // Reset to first page for new search
+            currentPage = 1; // Reset to first page when searching
             refreshBookings();
         });
         
-        // Search when Enter key is pressed in the search input
-        searchInput.addEventListener("keypress", function(e) {
-            if (e.key === "Enter") {
-                searchTerm = searchInput.value.trim();
-                currentPage = 1; // Reset to first page for new search
+        // Enter key in search box
+        searchInput.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                searchTerm = this.value.trim();
+                currentPage = 1; // Reset to first page when searching
                 refreshBookings();
             }
         });
@@ -306,110 +336,84 @@ function initializeSearch() {
 
 // Initialize quick filters
 function initializeQuickFilters() {
-    const quickFilterBtns = document.querySelectorAll(".quick-filter");
-    
-    if (quickFilterBtns.length > 0) {
-        quickFilterBtns.forEach(btn => {
-            btn.addEventListener("click", function() {
-                // Remove active class from all filter buttons
-                quickFilterBtns.forEach(b => b.classList.remove("active"));
+    // Set up quick filter buttons
+    document.querySelectorAll(".quick-filter").forEach(btn => {
+        btn.addEventListener("click", function() {
+            // Remove active class from all buttons
+            document.querySelectorAll(".quick-filter").forEach(b => b.classList.remove("active"));
+            // Add active class to clicked button
+            this.classList.add("active");
+            
+            // Reset page to first page
+            currentPage = 1;
+            
+            // Reset other filters
+            if (this.getAttribute("data-status")) {
+                filterStatus = this.getAttribute("data-status");
+                filterDate = null;
+                filterBalance = null;
                 
-                // Add active class to clicked button
-                this.classList.add("active");
-                
-                // Reset to first page
-                currentPage = 1;
-                
-                // Reset all filters first
-                if (this.dataset.status) {
-                    // Status filter clicked - clear other filters
-                    filterStatus = this.dataset.status;
-                    filterDate = null;
-                    filterBalance = null;
-                    
-                    // Update the status select dropdown to match
-                    const statusSelect = document.getElementById("statusSelect");
-                    if (statusSelect) {
-                        statusSelect.value = filterStatus;
-                    }
-                } else if (this.dataset.date) {
-                    // Date filter clicked - we'll use "all" for status but specifically filter confirmed/completed bookings
-                    filterDate = this.dataset.date;
-                    
-                    // For "upcoming" we only want confirmed bookings
-                    // For "past" we want all non-canceled/rejected bookings (completed, confirmed, processing)
-                    if (filterDate === "upcoming") {
-                        filterStatus = "confirmed"; // Only show confirmed bookings for upcoming
-                    } else {
-                        filterStatus = "all"; // For past, we'll show completed, confirmed and processing bookings via server-side filter
-                    }
-                    
-                    filterBalance = null;
-                    
-                    // Update the status select dropdown
-                    const statusSelect = document.getElementById("statusSelect");
-                    if (statusSelect) {
-                        statusSelect.value = filterStatus;
-                    }
-                } else if (this.dataset.balance) {
-                    // Balance filter clicked - set to confirmed or processing status only
-                    filterBalance = this.dataset.balance;
-                    
-                    // For unpaid filter, we only want confirmed or processing bookings
-                    // not pending, canceled, or rejected
-                    if (filterBalance === "unpaid") {
-                        filterStatus = "confirmed"; // Default to confirmed, but we'll include processing in the API call
-                    } else {
-                        filterStatus = "all";
-                    }
-                    
-                    filterDate = null;
-                    
-                    // Update the status select dropdown
-                    const statusSelect = document.getElementById("statusSelect");
-                    if (statusSelect) {
-                        statusSelect.value = filterStatus;
-                    }
+                // Update status select if it exists
+                const statusSelect = document.getElementById("statusSelect");
+                if (statusSelect) {
+                    statusSelect.value = filterStatus;
                 }
+            } else if (this.getAttribute("data-date")) {
+                filterDate = this.getAttribute("data-date");
+                filterStatus = "all";
+                filterBalance = null;
                 
-                refreshBookings();
-            });
+                // Update status select if it exists
+                const statusSelect = document.getElementById("statusSelect");
+                if (statusSelect) {
+                    statusSelect.value = "all";
+                }
+            } else if (this.getAttribute("data-balance")) {
+                filterBalance = this.getAttribute("data-balance");
+                filterStatus = "all";
+                filterDate = null;
+                
+                // Update status select if it exists
+                const statusSelect = document.getElementById("statusSelect");
+                if (statusSelect) {
+                    statusSelect.value = "all";
+                }
+            }
+            
+            // Refresh bookings with new filters
+            refreshBookings();
+        });
+    });
+    
+    // Status filter select
+    const statusSelect = document.getElementById("statusSelect");
+    if (statusSelect) {
+        statusSelect.addEventListener("change", function() {
+            filterStatus = this.value;
+            filterDate = null;
+            filterBalance = null;
+            currentPage = 1; // Reset to first page when changing filters
+            
+            // Update active quick filter button
+            document.querySelectorAll(".quick-filter").forEach(btn => btn.classList.remove("active"));
+            const matchingBtn = document.querySelector(`.quick-filter[data-status="${filterStatus}"]`);
+            if (matchingBtn) {
+                matchingBtn.classList.add("active");
+            }
+            
+            refreshBookings();
         });
     }
-}
-
-// filter booking record by status
-const statusSelectElement = document.getElementById("statusSelect");
-if (statusSelectElement) {
-    statusSelectElement.addEventListener("change", async function () {
-        filterStatus = this.value;
-        currentPage = 1; // Reset to first page when filter changes
-        
-        // Clear other filters when status filter is used
-        filterDate = null;
-        filterBalance = null;
-        
-        // Remove active class from all quick filter buttons
-        document.querySelectorAll(".quick-filter").forEach(btn => btn.classList.remove("active"));
-        
-        // Highlight the corresponding quick filter button if exists
-        const matchingQuickFilter = document.querySelector(`.quick-filter[data-status="${filterStatus}"]`);
-        if (matchingQuickFilter) {
-            matchingQuickFilter.classList.add("active");
-        }
-        
-        refreshBookings();
-    });
-}
-
-// Handle limit selector change
-const limitSelectElement = document.getElementById("limitSelect");
-if (limitSelectElement) {
-    limitSelectElement.addEventListener("change", async function() {
-        limit = parseInt(this.value);
-        currentPage = 1; // Reset to first page when limit changes
-        refreshBookings();
-    });
+    
+    // Records per page selector
+    const limitSelect = document.getElementById("limitSelect");
+    if (limitSelect) {
+        limitSelect.addEventListener("change", function() {
+            limit = parseInt(this.value);
+            currentPage = 1; // Reset to first page when changing page size
+            refreshBookings();
+        });
+    }
 }
 
 // sort booking record by column
@@ -594,10 +598,93 @@ function checkForUpcomingTours(bookings) {
     }
 }
 
+// Add pagination rendering function
+function renderPagination(pagination) {
+    const paginationContainer = document.getElementById("paginationContainer");
+    if (!paginationContainer) return;
+    
+    // If no pagination data, return
+    if (!pagination) return;
+    
+    const totalPages = pagination.total_pages;
+    const currentPage = pagination.current_page;
+    
+    // If no pagination needed, clear container and return
+    if (pagination.total_records < limit || totalPages <= 1) {
+        paginationContainer.innerHTML = "";
+        return;
+    }
+    
+    // Build pagination HTML
+    let html = '<nav aria-label="Booking navigation"><ul class="pagination justify-content-center">';
+    
+    // Previous button
+    const prevDisabled = currentPage === 1 ? 'disabled' : '';
+    html += `
+        <li class="page-item ${prevDisabled}">
+            <a class="page-link" href="#" aria-label="Previous" ${currentPage === 1 ? '' : `onclick="changePage(${currentPage - 1}); return false;"`}>
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+    `;
+    
+    // Calculate visible page range
+    const maxPagesToShow = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+    let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+    
+    // Adjust if at the end
+    if (endPage - startPage + 1 < maxPagesToShow) {
+        startPage = Math.max(1, endPage - maxPagesToShow + 1);
+    }
+    
+    // First page and ellipsis
+    if (startPage > 1) {
+        html += `<li class="page-item"><a class="page-link" href="#" onclick="changePage(1); return false;">1</a></li>`;
+        if (startPage > 2) {
+            html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+        }
+    }
+    
+    // Page numbers
+    for (let i = startPage; i <= endPage; i++) {
+        const active = i === currentPage ? 'active' : '';
+        html += `<li class="page-item ${active}"><a class="page-link" href="#" onclick="changePage(${i}); return false;">${i}</a></li>`;
+    }
+    
+    // Last page and ellipsis
+    if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+            html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+        }
+        html += `<li class="page-item"><a class="page-link" href="#" onclick="changePage(${totalPages}); return false;">${totalPages}</a></li>`;
+    }
+    
+    // Next button
+    const nextDisabled = currentPage === totalPages ? 'disabled' : '';
+    html += `
+        <li class="page-item ${nextDisabled}">
+            <a class="page-link" href="#" aria-label="Next" ${currentPage === totalPages ? '' : `onclick="changePage(${currentPage + 1}); return false;"`}>
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    `;
+    
+    html += '</ul></nav>';
+    
+    paginationContainer.innerHTML = html;
+}
+
+// Global changePage function that will be accessible from HTML
+window.changePage = function(page) {
+    currentPage = page;
+    refreshBookings();
+};
+
 // Refresh bookings based on current filters
 async function refreshBookings() {
     // Get the current sort column and order
-    const activeSort = document.querySelector(".sort[data-order]");
+    const activeSort = document.querySelector(".sort.active");
     let column = "booking_id";
     let order = "desc";
     
@@ -605,6 +692,9 @@ async function refreshBookings() {
         column = activeSort.getAttribute("data-column");
         order = activeSort.getAttribute("data-order");
     }
+    
+    // Update the current filter description
+    updateFilterDescription();
     
     // Fetch the bookings with the current filters
     const result = await getAllBookings(
@@ -618,12 +708,15 @@ async function refreshBookings() {
         filterBalance
     );
     
+    // Update the sort headers to match current sort state
+    updateSortHeaders(column, order);
+    
     // Show loading message for past trips filter which might take longer
     if (filterDate === "past" && result.bookings.length === 0) {
         // Show a temporary loading message
         const tableBody = document.getElementById("tableBody");
         if (tableBody) {
-            tableBody.innerHTML = `<tr><td colspan="9" class="text-center py-4"><div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div> Searching for past trips...</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="10" class="text-center py-4"><div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div> Searching for past trips...</td></tr>`;
         }
     }
     
@@ -637,6 +730,70 @@ async function refreshBookings() {
     } else if (currentViewMode === "calendar") {
         if (calendar) {
             calendar.refetchEvents();
+        }
+    }
+}
+
+// Function to update filter description
+function updateFilterDescription() {
+    const filterDescriptionEl = document.getElementById("currentFilter");
+    if (!filterDescriptionEl) return;
+    
+    let description = "";
+    
+    if (filterStatus && filterStatus !== "all") {
+        description += `<span class="badge bg-secondary me-2">Status: ${filterStatus.charAt(0).toUpperCase() + filterStatus.slice(1)}</span>`;
+    }
+    
+    if (filterDate) {
+        description += `<span class="badge bg-info me-2">Date: ${filterDate.charAt(0).toUpperCase() + filterDate.slice(1)}</span>`;
+    }
+    
+    if (filterBalance) {
+        description += `<span class="badge bg-danger me-2">Balance: ${filterBalance.charAt(0).toUpperCase() + filterBalance.slice(1)}</span>`;
+    }
+    
+    if (searchTerm) {
+        description += `<span class="badge bg-primary me-2">Search: "${searchTerm}"</span>`;
+    }
+    
+    // if (description) {
+    //     filterDescriptionEl.innerHTML = `<i class="bi bi-funnel me-2"></i>Active Filters: ${description}`;
+    //     filterDescriptionEl.style.display = "block";
+    // } else {
+    //     filterDescriptionEl.style.display = "none";
+    // }
+}
+
+// Function to update sort headers
+function updateSortHeaders(column, order) {
+    // Reset all headers
+    document.querySelectorAll(".sort").forEach(header => {
+        header.classList.remove("active");
+        
+        // Reset sort icon
+        const icon = header.querySelector(".sort-icon");
+        if (icon) {
+            icon.innerHTML = "↑";
+        } else {
+            // Create icon if it doesn't exist
+            const newIcon = document.createElement("span");
+            newIcon.className = "sort-icon ms-1";
+            newIcon.innerHTML = "↑";
+            header.appendChild(newIcon);
+        }
+    });
+    
+    // Update the active header
+    const activeHeader = document.querySelector(`.sort[data-column="${column}"]`);
+    if (activeHeader) {
+        activeHeader.classList.add("active");
+        activeHeader.setAttribute("data-order", order);
+        
+        // Update icon
+        const icon = activeHeader.querySelector(".sort-icon");
+        if (icon) {
+            icon.innerHTML = order === "asc" ? "↑" : "↓";
         }
     }
 }
@@ -950,51 +1107,6 @@ if (paymentForm) {
         // Reset the form
         this.reset();
     });
-}
-
-// Add pagination rendering function
-function renderPagination(pagination) {
-    const paginationContainer = document.getElementById("paginationContainer");
-    if (!paginationContainer) {
-        // If there's no pagination container in the page, return
-        const tableResponsive = document.querySelector(".table-responsive-xl");
-        if (!tableResponsive) {
-            return;
-        }
-        
-        // Create pagination container if it doesn't exist
-        const container = document.createElement("div");
-        container.id = "paginationContainer";
-        container.className = "d-flex justify-content-center mt-4";
-        tableResponsive.after(container);
-    }
-    
-    // If no pagination data, return
-    if (!pagination) return;
-    
-    const { total_pages, current_page, total_records } = pagination;
-    
-    // If no pagination needed, clear container and return
-    if (!total_records || total_records < 10 || total_pages <= 1) {
-        if (paginationContainer) {
-            paginationContainer.innerHTML = "";
-        }
-        return;
-    }
-    
-    // Use the centralized pagination utility if available
-    if (typeof createPagination === 'function') {
-        createPagination({
-            containerId: "paginationContainer",
-            totalPages: total_pages,
-            currentPage: current_page,
-            paginationType: 'advanced',
-            onPageChange: async (page) => {
-                currentPage = page;
-                refreshBookings();
-            }
-        });
-    }
 }
 
 // Enhanced getAllBookings to support all filtering options

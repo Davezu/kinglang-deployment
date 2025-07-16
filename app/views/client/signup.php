@@ -114,8 +114,8 @@ if (is_client_authenticated()) {
                 </div>
                 <div class="mb-3">
                     <label for="contactNumber" class="form-label text-secondary">Contact Number</label>
-                    <input type="text" name="contactNumber" id="contactNumber" class="form-control" placeholder="0939-494-4394" maxlength="13">
-                    <small id="contactNumberHelp" class="form-text text-muted">Format: 09XX-XXX-XXXX</small>
+                    <input type="text" name="contactNumber" id="contactNumber" class="form-control" placeholder="+63 912 345 6789   " maxlength="16">
+                    <small id="contactNumberHelp" class="form-text text-muted">Format: +63 XXX XXX XXXX</small>
                 </div>
                 <div class="mb-3">
                     <label for="new_password" class="form-label text-secondary">Create password</label>
@@ -220,56 +220,76 @@ if (is_client_authenticated()) {
         }
 
         // Phone number formatting and validation
-        document.addEventListener('DOMContentLoaded', function() {
-            const contactNumberInput = document.getElementById('contactNumber');
-            const contactNumberHelp = document.getElementById('contactNumberHelp');
-            
-            contactNumberInput.addEventListener('input', function(e) {
-                // Remove all non-digit characters
-                let value = this.value.replace(/\D/g, '');
-                
-                // Check if it starts with anything other than 09
-                if (value.length >= 2 && value.substring(0, 2) !== '09') {
-                    contactNumberHelp.classList.remove('text-muted');
-                    contactNumberHelp.classList.add('text-danger');
-                    contactNumberHelp.textContent = 'Phone number must start with 09';
-                } else {
-                    contactNumberHelp.classList.remove('text-danger');
-                    contactNumberHelp.classList.add('text-muted');
-                    contactNumberHelp.textContent = 'Format: 09XX-XXX-XXXX';
-                }
-                
-                // Format the number as it's being typed
-                if (value.length > 0) {
-                    // Add the first part (09XX)
-                    if (value.length <= 4) {
-                        this.value = value;
-                    } 
-                    // Add hyphen after 4 digits (09XX-XXX)
-                    else if (value.length <= 7) {
-                        this.value = value.substring(0, 4) + '-' + value.substring(4);
-                    } 
-                    // Add hyphen after 7 digits (09XX-XXX-XXXX)
-                    else {
-                        this.value = value.substring(0, 4) + '-' + value.substring(4, 7) + '-' + value.substring(7, 11);
+            document.addEventListener('DOMContentLoaded', function() {
+                const contactNumberInput = document.getElementById('contactNumber');
+                const contactNumberHelp = document.getElementById('contactNumberHelp');
+
+                contactNumberInput.addEventListener('input', function () {
+                    let value = this.value.replace(/\D/g, ''); // remove non-digits
+
+                    // Convert "09" to "639"
+                    if (value.startsWith('09')) {
+                        value = '63' + value.substring(1);
                     }
-                }
-            });
+
+                    // If it starts with 9 and has enough digits, assume mobile
+                    if (value.length >= 10 && value.startsWith('9')) {
+                        value = '63' + value;
+                    }
+
+                    // Validation: must start with 639
+                    if (value.length >= 3 && !value.startsWith('639')) {
+                        contactNumberHelp.classList.remove('text-muted');
+                        contactNumberHelp.classList.add('text-danger');
+                        contactNumberHelp.textContent = 'Phone number must start with 09 or 639';
+                    } else {
+                        contactNumberHelp.classList.remove('text-danger');
+                        contactNumberHelp.classList.add('text-muted');
+                        contactNumberHelp.textContent = 'Format: +63 917 123 4567';
+                    }
+
+                    // Format display: +63 XXX XXX XXXX
+                    if (value.startsWith('639')) {
+                        const part1 = value.substring(2, 5);
+                        const part2 = value.substring(5, 8);
+                        const part3 = value.substring(8, 12);
+
+                        let formatted = '+63';
+                        if (part1) formatted += ' ' + part1;
+                        if (part2) formatted += ' ' + part2;
+                        if (part3) formatted += ' ' + part3;
+
+                        this.value = formatted.trim();
+                    } else {
+                        this.value = value;
+                    }
+                });
             
             // Validate on form submission
             const signupForm = document.getElementById('signupForm');
-            signupForm.addEventListener('submit', function(e) {
-                const phoneValue = contactNumberInput.value.replace(/\D/g, '');
-                
-                // Validate phone number format and length
-                if (phoneValue.length > 0) {
-                    if (phoneValue.substring(0, 2) !== '09' || phoneValue.length !== 11) {
-                        e.preventDefault();
-                        contactNumberHelp.classList.remove('text-muted');
-                        contactNumberHelp.classList.add('text-danger');
-                        contactNumberHelp.textContent = 'Invalid phone number. Must be 11 digits starting with 09';
-                        return false;
-                    }
+            signupForm.addEventListener('submit', function (e) {
+                const rawValue = contactNumberInput.value;
+                const digitsOnly = rawValue.replace(/\D/g, '');
+
+                let isValid = false;
+
+                // Accept either:
+                // - 11 digits starting with '09'
+                // - 12 digits starting with '639'
+                if (
+                    (digitsOnly.length === 11 && digitsOnly.startsWith('09')) ||
+                    (digitsOnly.length === 12 && digitsOnly.startsWith('639'))
+                ) {
+                    isValid = true;
+                }
+
+                if (!isValid && digitsOnly.length > 0) {
+                    e.preventDefault();
+                    contactNumberHelp.classList.remove('text-muted');
+                    contactNumberHelp.classList.add('text-danger');
+                    contactNumberHelp.textContent =
+                        'Invalid phone number. Must be 11 digits starting with 09, or 12 digits starting with 639';
+                    return false;
                 }
             });
         });

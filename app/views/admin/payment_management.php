@@ -149,6 +149,17 @@ require_once __DIR__ . "/../../controllers/admin/PaymentManagementController.php
             background-color: #f8d7da;
             color: #842029;
         }
+
+        .pagination .page-link {
+            color: #198754;
+            border-radius: 5px;
+            margin: 0 2px;
+            padding: 0.375rem 0.75rem;
+        }
+        .pagination .page-item.active .page-link {
+            background-color: #198754   ;
+            border-color: #198754   ;
+        }
         
         @media (min-width: 1400px) {
             .container-fluid {
@@ -443,7 +454,7 @@ require_once __DIR__ . "/../../controllers/admin/PaymentManagementController.php
                             </div>
                         </div>
                         
-                        <div class="col-lg-3 col-md-4">
+                        <div class="col-lg-3 col-md-4 d-none">
                             <div class="input-group">
                                 <span class="input-group-text bg-light">
                                     <i class="bi bi-filter"></i>

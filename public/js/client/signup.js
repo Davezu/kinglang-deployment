@@ -58,14 +58,14 @@ $("#signupForm").submit(function (e) {
 function formatPhoneNumberForDB(value) {
     if (!value || value.trim() === '') return '';
     
-    // Remove all non-digits from the value
+    // Remove all non-digits
     const digits = value.replace(/\D/g, '');
-    
-    // If it doesn't have 11 digits or doesn't start with 09, return as is
-    if (digits.length !== 11 || digits.substring(0, 2) !== '09') {
-        return digits;
-    }
-    
-    // Format as 09XX-XXX-XXXX
-    return `${digits.substring(0, 4)}-${digits.substring(4, 7)}-${digits.substring(7, 11)}`;
+
+    // Expecting a Philippine mobile number starting with 09 and 11 digits total
+    // if (digits.length !== 11 || !digits.startsWith('09')) {
+    //     return digits;
+    // }
+
+    // Convert 09XX to +63 9XX and format as +63 917 123 4567
+    return `+63 ${digits.substring(1, 4)} ${digits.substring(4, 7)} ${digits.substring(7, 11)}`;
 }

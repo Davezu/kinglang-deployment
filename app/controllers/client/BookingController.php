@@ -835,16 +835,18 @@ class BookingController {
     
         $result = $this->bookingModel->addPayment($booking_id, $client_id, $amount, $payment_method, $proof_of_payment);
     
-        if ($result === true) {
+        if ($result["success"]) {
             // Create notification for admin about new payment
             // Get booking details to include in notification
             $booking = $this->bookingModel->getBooking($booking_id, $client_id);
             if ($booking) {
-                $clientName = $_SESSION["user_first_name"] . " " . $_SESSION["user_last_name"];
+                $clientName = $_SESSION["client_name"];
                 $formattedAmount = number_format($amount, 2);
                 $message = "New payment of PHP {$formattedAmount} submitted by {$clientName} for booking #{$booking_id}";
                 $this->notificationModel->addNotification("payment_submitted", $message, $booking_id);
             }
+
+            error_log("Payment submitted successfully fsor booking ID: {$booking_id} by user ID: {$client_id}");
             
             echo json_encode([
                 "success" => true,

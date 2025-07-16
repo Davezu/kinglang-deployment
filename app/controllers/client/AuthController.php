@@ -44,19 +44,16 @@ class ClientAuthController {
             return;
         }
         
-        // Validate phone number (11 digits starting with 09)
-        // Check both formats: with hyphens (09XX-XXX-XXXX) or without (09XXXXXXXX)
-        $phone_digits = preg_replace('/\D/', '', $contact_number); // remove all non-digit characters
-
-        if (
-            !(strlen($phone_digits) === 11 && substr($phone_digits, 0, 2) === '09') &&
-            !(strlen($phone_digits) === 12 && substr($phone_digits, 0, 3) === '639')
-        ) {
-            echo json_encode([
-                "success" => false,
-                "message" => "Contact number must be in the format 09XXXXXXXXX, 639XXXXXXXXX, or +63 XXX XXX XXXX."
-            ]);
-            return;
+        if (!empty($contact_number)) {
+            $isValid = (preg_match('/^\+63 \d{3} \d{3} \d{4}$/', $contact_number));        // +63 917 123 4567
+            
+            if (!$isValid) {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "Contact number must be in the format 09XXXXXXXXX, 09XX-XXX-XXXX, 639XXXXXXXXX, or +63 XXX XXX XXXX."
+                ]);
+                return;
+            }
         }
 
     

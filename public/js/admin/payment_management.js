@@ -103,6 +103,11 @@ if (resetFiltersBtn) {
         
         // Remove active state from quick filters
         document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+        document.getElementById("statusSelect").value = "all";
+        currentFilter = "all";
+
+        const matchingBtn = document.querySelector(`.quick-filter[data-status="${currentFilter}"]`);
+        if (matchingBtn) matchingBtn.classList.add("active");
         
         loadPayments();
     });

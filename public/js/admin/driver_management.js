@@ -497,20 +497,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const isNewDriver = !driverId;
         const formData = new FormData(document.getElementById('driverForm'));
         
-        // Show confirmation dialog
-        Swal.fire({
-            title: isNewDriver ? 'Add New Driver?' : 'Update Driver?',
-            text: isNewDriver ? 'Are you sure you want to add this driver?' : 'Are you sure you want to save these changes?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: isNewDriver ? 'Yes, add it!' : 'Yes, update it!',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Proceed with save
-                saveDriverData(formData, isNewDriver);
-            }
-        });
+
+        saveDriverData(formData, isNewDriver);
     }
     
     /**
