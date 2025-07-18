@@ -327,7 +327,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
 
             <!-- Quick Filter Pills & Export Tools Row -->
             <div class="row g-3 mb-3">
-                <div class="col-xl-8">
+                <div class="col-xl-10">
                     <div class="d-flex gap-2 flex-wrap">
                         <button class="btn btn-sm btn-outline-secondary quick-filter" data-status="All">
                             <i class="bi bi-funnel"></i> All
@@ -337,6 +337,12 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                         </button>
                         <button class="btn btn-sm btn-outline-success quick-filter" data-status="Confirmed">
                             <i class="bi bi-check-circle"></i> Confirmed
+                        </button>
+                        <button class="btn btn-sm btn-outline-info quick-filter" data-status="Processing">
+                            <i class="bi bi-arrow-repeat"></i> Processing
+                        </button>
+                        <button class="btn btn-sm btn-outline-primary quick-filter" data-status="Upcoming">
+                            <i class="bi bi-calendar-check"></i> Upcoming
                         </button>
                         <button class="btn btn-sm btn-outline-danger quick-filter" data-status="Canceled">
                             <i class="bi bi-x-circle"></i> Canceled
@@ -355,7 +361,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                         </button>
                     </div>
                 </div>
-                <div class="col-xl-4">
+                <div class="col-xl-2">
                     <div class="d-flex gap-2 justify-content-end">
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

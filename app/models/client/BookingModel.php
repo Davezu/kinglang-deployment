@@ -325,6 +325,10 @@ class Booking {
             // Always show canceled bookings when canceled filter is selected
             $status_condition = " AND b.status = 'Canceled'";
         }
+        // Special handling for confirmed filter
+        else if ($status === "confirmed") {
+            $status_condition = " AND b.status IN ('Confirmed', 'Processing')";
+        }
         // Default status handling
         else if ($status !== "all") {
             // Simple status filter if no special cases apply

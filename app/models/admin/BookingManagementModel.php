@@ -17,10 +17,14 @@ class BookingManagementModel {
 
     public function getAllBookings($status, $column, $order, $page = 1, $limit = 10) {
 
-        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
+        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "Processing", "Upcoming", "All"];
         $status = in_array($status, $allowed_status) ? $status : "";
-        $status == "All" ? $status = "" : $status = " AND b.status = '$status'";
-
+        $status = ($status == "All") ? "" :
+          (($status == "Confirmed") ? " AND b.status IN ('Confirmed', 'Processing')" :
+          (($status == "Processing") ? " AND b.status = 'Processing'" :
+          (($status == "Upcoming") ? " AND b.status = 'Confirmed' AND payment_status IN ('Paid', 'Partially Paid') AND date_of_tour > CURDATE()" :
+          " AND b.status = '$status'")));
+        
         $allowed_columns = ["booking_id", "client_name", "contact_number", "destination", "pickup_point", "date_of_tour", "end_of_tour", "number_of_days", "number_of_buses", "status", "payment_status", "total_cost"];
         $column = in_array($column, $allowed_columns) ? $column : "client_name";
         $order = $order === "asc" ? "ASC" : "DESC";

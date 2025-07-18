@@ -589,7 +589,7 @@ function showBookingDetails(bookingId) {
                     <div class="row">
                         <div class="col-md-6">
                             <p class="mb-2"><strong>Total Cost:</strong> ₱${parseFloat(booking.total_cost).toLocaleString('en-PH')}</p>
-                            <p class="mb-2"><strong>Amount Paid:</strong> ₱${parseFloat(booking.amount_paid || 0).toLocaleString('en-PH')}</p>
+                            <p class="mb-2"><strong>Amount Paid:</strong> ₱${parseFloat(booking.total_cost - booking.balance || 0).toLocaleString('en-PH')}</p>
                             <p class="mb-2"><strong>Balance:</strong> ₱${parseFloat(booking.balance).toLocaleString('en-PH')}</p>
                         </div>
                         <div class="col-md-6">
