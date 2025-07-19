@@ -15,52 +15,66 @@ class ReportModel {
     public function getBookingSummary($startDate = null, $endDate = null) {
         try {
             $params = [];
-            $whereClause = "WHERE is_rebooking = 0 AND is_rebooked = 0";
+            $whereClause = "WHERE b.is_rebooking = 0 AND b.is_rebooked = 0";
             
             if ($startDate) {
                 $whereClause .= " AND date_of_tour >= :start_date";
                 $params[':start_date'] = $startDate;
-            }
+            }   
             
             if ($endDate) {
                 $whereClause .= " AND date_of_tour <= :end_date";
                 $params[':end_date'] = $endDate;
-
-                $whereClause .= " AND is_rebooked = :is_rebooked";
-                $params[':is_rebooked'] = 0;
             }
-            
-            $sql = "SELECT 
+
+            // First Query: Revenue-related data
+            $sql1 = "SELECT 
+                SUM(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) AS total_revenue,
+                SUM(CASE WHEN b.payment_status = 'Paid' THEN 
+                        (CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) 
+                        ELSE 0 END) AS collected_revenue,
+                AVG(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE NULL END) AS average_booking_value
+            FROM bookings b
+            JOIN payments p ON b.booking_id = p.booking_id
+            $whereClause";
+
+            $stmt1 = $this->conn->prepare($sql1);
+            foreach ($params as $key => $value) {
+                $stmt1->bindValue($key, $value);
+            }
+            $stmt1->execute();
+            $revenueData = $stmt1->fetch(PDO::FETCH_ASSOC);
+
+            // Second Query: Booking-related data
+            $sql2 = "SELECT 
                 COUNT(*) AS total_bookings,
                 SUM(CASE WHEN b.status = 'Confirmed' THEN 1 ELSE 0 END) AS confirmed_bookings,
                 SUM(CASE WHEN b.status = 'Pending' THEN 1 ELSE 0 END) AS pending_bookings,
                 SUM(CASE WHEN b.status = 'Canceled' THEN 1 ELSE 0 END) AS canceled_bookings,
                 SUM(CASE WHEN b.status = 'Rejected' THEN 1 ELSE 0 END) AS rejected_bookings,
                 SUM(CASE WHEN b.status = 'Completed' THEN 1 ELSE 0 END) AS completed_bookings,
-                SUM(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) AS total_revenue,
-                SUM(CASE WHEN b.payment_status = 'Paid' THEN (CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE 0 END) ELSE 0 END) AS collected_revenue,
                 SUM(CASE WHEN b.payment_status = 'Partially Paid' THEN b.balance ELSE 0 END) AS outstanding_balance,
-                AVG(CASE WHEN p.status = 'Confirmed' AND p.is_canceled = 0 THEN p.amount ELSE NULL END) AS average_booking_value,
                 SUM(b.number_of_buses) AS total_buses_booked,
                 SUM(b.number_of_days) AS total_days_booked
             FROM bookings b
-            LEFT JOIN payments p ON b.booking_id = p.booking_id
             $whereClause";
-            
-            $stmt = $this->conn->prepare($sql);
-            
+
+            $stmt2 = $this->conn->prepare($sql2);
             foreach ($params as $key => $value) {
-                $stmt->bindValue($key, $value);
+                $stmt2->bindValue($key, $value);
             }
-            
-            $stmt->execute();
-            
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt2->execute();
+            $bookingData = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+            // Merge both results
+            return array_merge($revenueData, $bookingData);
+
         } catch (PDOException $e) {
             error_log("Error in getBookingSummary: " . $e->getMessage());
             throw new Exception("Failed to generate booking summary: " . $e->getMessage());
         }
     }
+
     
     /**
      * Get monthly booking trend
@@ -78,8 +92,6 @@ class ReportModel {
             if ($endDate) {
                 $whereClause .= " AND date_of_tour <= :end_date";
                 $params[':end_date'] = $endDate;
-                $whereClause .= " AND is_rebooked = :is_rebooked";
-                $params[':is_rebooked'] = 0;
             }
 
             // Query 1: total bookings per month
@@ -232,19 +244,16 @@ class ReportModel {
     public function getCancellationReport($startDate = null, $endDate = null) {
         try {
             $params = [];
-            $whereClause = "WHERE 1=1";
+            $whereClause = "WHERE b.is_rebooked = 0  AND b.is_rebooking = 0";
             
             if ($startDate) {
-                $whereClause .= " AND c.created_at >= :start_date";
+                $whereClause .= " AND c.canceled_at >= :start_date";
                 $params[':start_date'] = $startDate;
             }
             
             if ($endDate) {
-                $whereClause .= " AND c.created_at <= :end_date";
+                $whereClause .= " AND c.canceled_at <= :end_date";
                 $params[':end_date'] = $endDate;
-
-                $whereClause .= " AND b.is_rebooked = :is_rebooked";
-                $params[':is_rebooked'] = 0;
             }
             
             $sql = "SELECT 
@@ -278,8 +287,21 @@ class ReportModel {
     /**
      * Get client booking history
      */
-    public function getClientBookingHistory($userId) {
+    public function getClientBookingHistory($userId, $startDate = null, $endDate = null) {
         try {
+            $params = [':user_id' => $userId];
+            $whereClause = "WHERE b.user_id = :user_id AND b.is_rebooked = 0 AND b.is_rebooking = 0";
+
+            if ($startDate) {
+                $whereClause .= " AND b.date_of_tour >= :start_date";
+                $params[':start_date'] = $startDate;
+            }
+
+            if ($endDate) {
+                $whereClause .= " AND b.date_of_tour <= :end_date";
+                $params[':end_date'] = $endDate;
+            }
+
             $sql = "SELECT 
                 b.booking_id,
                 b.destination,
@@ -294,11 +316,15 @@ class ReportModel {
                 b.balance
             FROM bookings b
             JOIN booking_costs c ON b.booking_id = c.booking_id
-            WHERE b.user_id = :user_id
+            $whereClause
             ORDER BY b.date_of_tour DESC";
             
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
+            
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value); 
+            }
+
             $stmt->execute();
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -410,19 +436,19 @@ class ReportModel {
     /**
      * Get financial summary report
      */
-    public function getFinancialSummary($year = null, $month = null) {
+    public function getFinancialSummary($startDate = null, $endDate = null) {
         try {
-            $currentYear = date('Y');
-            $year = $year ?: $currentYear;
-            $whereClause = "WHERE YEAR(date_of_tour) = :year";
-            $params = [':year' => $year];
+            $whereClause = "WHERE is_rebooking = 0 AND is_rebooked = 0";
+            $params = [];
             
-            if ($month) {
-                $whereClause .= " AND MONTH(date_of_tour) = :month";
-                $params[':month'] = $month;
+            if ($startDate) {
+                $whereClause .= " AND b.date_of_tour >= :start_date";
+                $params[':start_date'] = $startDate;
+            }
 
-                $whereClause .= " AND is_rebooked = :is_rebooked";
-                $params[':is_rebooked'] = 0;
+            if ($endDate) {
+                $whereClause .= " AND b.date_of_tour <= :end_date";
+                $params[':end_date'] = $endDate;
             }
             
             $sql = "SELECT 
@@ -442,7 +468,7 @@ class ReportModel {
             }
             
             $stmt->execute();
-            
+
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             error_log("Error in getFinancialSummary: " . $e->getMessage());

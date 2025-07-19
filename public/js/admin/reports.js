@@ -47,6 +47,8 @@ $(document).ready(function() {
         onChange: function(selectedDates, dateStr) {
             if (selectedDates[0]) {
                 endDatePicker.set("minDate", selectedDates[0]);
+                // Clear active state from all quick filter buttons
+                $('.quick-filter').removeClass('active').addClass('btn-outline-success');
             }
         }
     });
@@ -60,6 +62,8 @@ $(document).ready(function() {
         onChange: function(selectedDates, dateStr) {
             if (selectedDates[0]) {
                 startDatePicker.set("maxDate", selectedDates[0]);
+                // Clear active state from all quick filter buttons
+                $('.quick-filter').removeClass('active').addClass('btn-outline-success');
             }
         }
     });
@@ -76,6 +80,18 @@ $(document).ready(function() {
     });
     $('#exportCsv').on('click', exportBookingReportToCsv);
     
+    // Event listener for quick filter buttons
+    $('.quick-filter').on('click', function() {
+        const range = $(this).data('range');
+        applyQuickFilter(range);
+    });
+    
+    // Event listener for reset button
+    $('#resetFilters').on('click', resetFilters);
+    
+    // Highlight the "This Year" button by default
+    $('.quick-filter[data-range="this-year"]').addClass('active').removeClass('btn-outline-success');
+    
     // Initial data load
     loadAllReports();
 });
@@ -85,6 +101,93 @@ function applyFilters() {
     filters.endDate = endDatePicker.input.value;
     filters.page = 1;
     
+    // Clear active state from all quick filter buttons when manually applying filters
+    $('.quick-filter').removeClass('active').addClass('btn-outline-success');
+    
+    loadAllReports();
+}
+
+// Function to reset filters to default (This Year)
+function resetFilters() {
+    // Reset to default date range (This Year)
+    applyQuickFilter('this-year');
+}
+
+// Function to apply quick filter based on predefined date ranges
+function applyQuickFilter(range) {
+    const today = new Date();
+    let startDate, endDate;
+    
+    // Highlight the selected button
+    $('.quick-filter').removeClass('active').addClass('btn-outline-success');
+    $(`.quick-filter[data-range="${range}"]`).removeClass('btn-outline-success').addClass('active');
+    
+    switch (range) {
+        case 'today':
+            startDate = new Date(today);
+            endDate = new Date(today);
+            break;
+            
+        case 'yesterday':
+            startDate = new Date(today);
+            startDate.setDate(startDate.getDate() - 1);
+            endDate = new Date(startDate);
+            break;
+            
+        case 'this-week':
+            startDate = new Date(today);
+            startDate.setDate(startDate.getDate() - startDate.getDay()); // Start of week (Sunday)
+            endDate = new Date(today);
+            break;
+            
+        case 'last-week':
+            startDate = new Date(today);
+            startDate.setDate(startDate.getDate() - startDate.getDay() - 7); // Start of last week
+            endDate = new Date(startDate);
+            endDate.setDate(endDate.getDate() + 6); // End of last week (Saturday)
+            break;
+            
+        case 'this-month':
+            startDate = new Date(today.getFullYear(), today.getMonth(), 1);
+            endDate = new Date(today);
+            break;
+            
+        case 'last-month':
+            startDate = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+            endDate = new Date(today.getFullYear(), today.getMonth(), 0);
+            break;
+            
+        case 'this-year':
+            startDate = new Date(today.getFullYear(), 0, 1);
+            endDate = new Date(today);
+            break;
+            
+        case 'last-year':
+            startDate = new Date(today.getFullYear() - 1, 0, 1);
+            endDate = new Date(today.getFullYear() - 1, 11, 31);
+            break;
+            
+        case 'all-time':
+            startDate = new Date(2000, 0, 1); // Far past date
+            endDate = new Date(today);
+            $('.quick-filter').removeClass('active').addClass('btn-outline-success');
+            $(`.quick-filter[data-range="all-time"]`).removeClass('btn-outline-success').addClass('btn-outline-secondary active');
+            break;
+            
+        default:
+            return;
+    }
+    
+    // Update the date pickers
+    startDatePicker.setDate(startDate);
+    endDatePicker.setDate(endDate);
+    
+    // Update the filters
+    filters.startDate = formatDate(startDate);
+    filters.endDate = formatDate(endDate);
+    filters.page = 1;
+    
+    // Apply the filters
     loadAllReports();
 }
 
@@ -94,6 +197,9 @@ function loadAllReports() {
     fetchTopDestinations();
     fetchPaymentMethodDistribution();
     fetchDetailedBookingList();
+    fetchCancellationReport();
+    fetchFinancialSummary();
+    loadClientList();
 }
 
 async function fetchBookingSummary() {
@@ -728,6 +834,215 @@ function hexToRgb(hex) {
     const b = parseInt(hex.substring(4, 6), 16);
     
     return { r, g, b };
+}
+
+// Fetch and display cancellation report
+async function fetchCancellationReport() {
+    try {
+        const response = await fetch('/admin/reports/cancellations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                start_date: filters.startDate,
+                end_date: filters.endDate
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        displayCancellationReport(data);
+    } catch (error) {
+        console.error('Error fetching cancellation report:', error);
+        $('#cancellationReportTableBody').html('<tr><td colspan="5" class="text-center">Error loading cancellation data</td></tr>');
+    }
+}
+
+function displayCancellationReport(data) {
+    const tbody = $('#cancellationReportTableBody');
+    tbody.empty();
+    
+    if (!data || data.length === 0) {
+        tbody.html('<tr><td colspan="5" class="text-center">No cancellation data found</td></tr>');
+        return;
+    }
+    
+    data.forEach(item => {
+        const row = `
+            <tr>
+                <td>${item.reason || 'N/A'}</td>
+                <td>${item.canceled_by || 'N/A'}</td>
+                <td>${item.cancellation_count || 0}</td>
+                <td>${formatCurrency(item.total_value || 0)}</td>
+                <td>${formatCurrency(item.total_refunded || 0)}</td>
+            </tr>
+        `;
+        tbody.append(row);
+    });
+}
+
+// Fetch and display financial summary
+async function fetchFinancialSummary() {
+    try {
+        const response = await fetch('/admin/reports/financial-summary', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                start_date: filters.startDate,
+                end_date: filters.endDate
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        displayFinancialSummary(data);
+    } catch (error) {
+        console.error('Error fetching financial summary:', error);
+    }
+}
+
+function displayFinancialSummary(data) {
+    $('#financialTotalRevenue').text(formatCurrency(data.total_revenue || 0));
+    $('#financialCollectedRevenue').text(formatCurrency(data.collected_revenue || 0));
+    $('#financialOutstandingBalance').text(formatCurrency(data.outstanding_balance || 0));
+    $('#financialUniqueClients').text(data.unique_clients || 0);
+}
+
+// Load client list for booking history dropdown
+async function loadClientList() {
+    try {
+        // We'll need to create an endpoint to get all clients
+        // For now, we'll use a simple approach - get clients from detailed bookings
+        const response = await fetch('/admin/reports/detailed-bookings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                page: 1,
+                limit: 1000
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        populateClientDropdown(data.bookings);
+    } catch (error) {
+        console.error('Error loading client list:', error);
+    }
+}
+
+function populateClientDropdown(bookings) {
+    const clientSelect = $('#clientSelect');
+    clientSelect.html('<option value="">Select a client...</option>');
+    
+    // Extract unique clients
+    const clients = {};
+    bookings.forEach(booking => {
+        if (!clients[booking.user_id]) {
+            clients[booking.user_id] = booking.client_name;
+        }
+    });
+    
+    // Populate dropdown
+    Object.keys(clients).sort((a, b) => clients[a].localeCompare(clients[b])).forEach(userId => {
+        clientSelect.append(`<option value="${userId}">${clients[userId]}</option>`);
+    });
+    
+    // Add event listener for client booking history
+    $('#loadClientHistory').off('click').on('click', fetchClientBookingHistory);
+}
+
+// Fetch and display client booking history
+async function fetchClientBookingHistory() {
+    const userId = $('#clientSelect').val();
+    
+    if (!userId) {
+        alert('Please select a client first.');
+        return;
+    }
+    
+    try {
+        const response = await fetch('/admin/reports/client-booking-history', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                start_date: filters.startDate,
+                end_date: filters.endDate,
+                user_id: parseInt(userId)
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Client booking history data:', data);
+        displayClientBookingHistory(data);
+    } catch (error) {
+        console.error('Error fetching client booking history:', error);
+        $('#clientHistoryTableBody').html('<tr><td colspan="7" class="text-center">Error loading client history</td></tr>');
+    }
+}
+
+function displayClientBookingHistory(data) {
+    const tbody = $('#clientHistoryTableBody');
+    tbody.empty();
+    
+    if (!data || data.length === 0) {
+        tbody.html('<tr><td colspan="7" class="text-center">No booking history found for this client</td></tr>');
+        return;
+    }
+    
+    data.forEach(booking => {
+        const row = `
+            <tr>
+                <td>${booking.booking_id}</td>
+                <td>${booking.destination || 'N/A'}</td>
+                <td>${formatDate(booking.date_of_tour)}</td>
+                <td>${formatCurrency(booking.total_cost || 0)}</td>
+                <td><span class="badge bg-${getStatusBadgeClass(booking.status)} badge-status">${booking.status || 'N/A'}</span></td>
+                <td><span class="badge bg-${getPaymentStatusBadgeClass(booking.payment_status)} badge-status">${booking.payment_status || 'N/A'}</span></td>
+                <td>${formatCurrency(booking.balance || 0)}</td>
+            </tr>
+        `;
+        tbody.append(row);
+    });
+}
+
+function getStatusBadgeClass(status) {
+    switch (status?.toLowerCase()) {
+        case 'confirmed': return 'success';
+        case 'pending': return 'warning';
+        case 'completed': return 'info';
+        case 'canceled': return 'danger';
+        case 'rejected': return 'secondary';
+        default: return 'dark';
+    }
+}
+
+function getPaymentStatusBadgeClass(status) {
+    switch (status?.toLowerCase()) {
+        case 'paid': return 'success';
+        case 'partially paid': return 'warning';
+        case 'unpaid': return 'danger';
+        default: return 'secondary';
+    }
 }
 
 // Test direct fetch without jQuery

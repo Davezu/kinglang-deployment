@@ -56,6 +56,17 @@
             background: #198754;
             border-color: #198754;
         }
+        /* Quick filter buttons */
+        .quick-filter {
+            transition: all 0.2s ease;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .quick-filter.active {
+            background-color: var(--primary-green) !important;
+            color: white !important;
+            border-color: var(--primary-green) !important;
+        }
         .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)), 
         .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)), 
         .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
@@ -167,7 +178,7 @@
             </div>
             <hr>
             <!-- Date Range Filters -->
-            <div class="filters mt-0">
+            <!-- <div class="filters mt-0">
                 <div class="row">
                     <div class="col-md-5">
                         <label for="startDate" class="form-label">Start Date</label>
@@ -185,6 +196,45 @@
                     </div>
                     <div class="col-md-2 d-flex align-items-end">
                         <button id="applyFilters" class="btn btn-success w-100">Apply Filters</button>
+                    </div>
+                </div>
+            </div> -->
+            <div class="filters mt-0">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label for="startDate" class="form-label">Start Date</label>
+                        <div class="date-input-wrapper">
+                            <input type="text" class="form-control" id="startDate" placeholder="Select start date">
+                            <i class="bi bi-calendar-date"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="endDate" class="form-label">End Date</label>
+                        <div class="date-input-wrapper">
+                            <input type="text" class="form-control" id="endDate" placeholder="Select end date">
+                            <i class="bi bi-calendar-date"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end gap-2">
+                        <button id="applyFilters" class="btn btn-success flex-grow-1">Apply</button>
+                        <button id="resetFilters" class="btn btn-outline-secondary" title="Reset to default date range">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="today">Today</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="yesterday">Yesterday</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="this-week">This Week</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="last-week">Last Week</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="this-month">This Month</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="last-month">Last Month</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="this-year">This Year</button>
+                            <button type="button" class="btn btn-sm btn-outline-success quick-filter" data-range="last-year">Last Year</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary quick-filter" data-range="all-time">All Time</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -276,6 +326,107 @@
                         <h4>Top Destinations</h4>
                         <div class="chart-container">
                             <canvas id="topDestinationsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cancellation Report -->
+            <div class="row mt-4">
+                <div class="col-12 mb-4">
+                    <div class="summary-metrics-card p-4">
+                        <h4>Cancellation Report</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover text-secondary">
+                                <thead>
+                                    <tr>
+                                        <th>Reason</th>
+                                        <th>Canceled By</th>
+                                        <th>Count</th>
+                                        <th>Total Value</th>
+                                        <th>Amount Refunded</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cancellationReportTableBody">
+                                    <!-- Data will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Summary -->
+            <div class="row mt-4">
+                <div class="col-12 mb-4">
+                    <div class="summary-metrics-card p-4">
+                        <h4>Financial Summary</h4>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <h5 id="financialTotalRevenue" class="text-success fw-bold">-</h5>
+                                    <p class="text-muted">Total Revenue</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <h5 id="financialCollectedRevenue" class="text-info fw-bold">-</h5>
+                                    <p class="text-muted">Collected Revenue</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <h5 id="financialOutstandingBalance" class="text-warning fw-bold">-</h5>
+                                    <p class="text-muted">Outstanding Balance</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <h5 id="financialUniqueClients" class="text-primary fw-bold">-</h5>
+                                    <p class="text-muted">Unique Clients</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Client Booking History Search -->
+            <div class="row mt-4">
+                <div class="col-12 mb-4">
+                    <div class="summary-metrics-card p-4">
+                        <h4>Client Booking History</h4>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="clientSelect" class="form-label">Select Client</label>
+                                <select id="clientSelect" class="form-select">
+                                    <option value="">Select a client...</option>
+                                    <!-- Options will be populated dynamically -->
+                                </select>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-end">
+                                <button id="loadClientHistory" class="btn btn-success">Load History</button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover text-secondary">
+                                <thead>
+                                    <tr>
+                                        <th>Booking ID</th>
+                                        <th>Destination</th>
+                                        <th>Date of Tour</th>
+                                        <th>Total Cost</th>
+                                        <th>Status</th>
+                                        <th>Payment Status</th>
+                                        <th>Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="clientHistoryTableBody">
+                                    <tr>
+                                        <td colspan="7" class="text-center">Select a client to view booking history</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -608,6 +608,11 @@ switch ($requestPath) {
         $controller = new ReportController();
         $controller->getFinancialSummary();
         break;
+    case "/admin/reports/client-booking-history":
+        require_once $controllerClasses['admin']['ReportController'];
+        $controller = new ReportController();
+        $controller->getClientBookingHistory();
+        break;
     case "/admin/reports/export-bookings":
         require_once $controllerClasses['admin']['ReportController'];
         $controller = new ReportController();

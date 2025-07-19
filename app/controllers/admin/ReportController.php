@@ -144,6 +144,34 @@ class ReportController {
     }
     
     /**
+     * Generate client booking history report
+     */
+    public function getClientBookingHistory() {
+        try {
+            // Read JSON input from POST request
+            $jsonData = file_get_contents('php://input');
+            $data = json_decode($jsonData, true);
+            
+            $userId = isset($data['user_id']) ? intval($data['user_id']) : null;
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
+            
+            if (!$userId) {
+                throw new Exception("User ID is required");
+            }
+            
+            $result = $this->reportModel->getClientBookingHistory($userId, $startDate, $endDate);
+            
+            header('Content-Type: application/json');
+            echo json_encode($result);
+        } catch (Exception $e) {
+            header('Content-Type: application/json');
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+    
+    /**
      * Generate detailed booking list
      */
     public function getDetailedBookingList() {
@@ -183,10 +211,10 @@ class ReportController {
             $jsonData = file_get_contents('php://input');
             $data = json_decode($jsonData, true);
             
-            $year = isset($data['year']) ? intval($data['year']) : null;
-            $month = isset($data['month']) ? intval($data['month']) : null;
+            $startDate = isset($data['start_date']) ? $data['start_date'] : null;
+            $endDate = isset($data['end_date']) ? $data['end_date'] : null;
             
-            $result = $this->reportModel->getFinancialSummary($year, $month);
+            $result = $this->reportModel->getFinancialSummary($startDate, $endDate);
             
             header('Content-Type: application/json');
             echo json_encode($result);
