@@ -7,6 +7,28 @@ class AuditTrailModel {
         $this->pdo = $pdo;
     }
 
+    public function getUsernameById($userId) {
+        try {
+            $statement = $this->pdo->prepare("SELECT CONCAT(first_name, ' ', last_name) as username FROM users WHERE user_id = :user_id");
+            $statement->execute([':user_id' => $userId]);
+            return $statement->fetchColumn();
+        } catch (PDOException $e) {
+            error_log("Error fetching username: " . $e->getMessage());
+            return null;
+        }
+    }
+
+    public function getUserRoleById($userId) {
+        try {
+            $statement = $this->pdo->prepare("SELECT role FROM users WHERE user_id = :user_id");
+            $statement->execute([':user_id' => $userId]);
+            return $statement->fetchColumn();
+        } catch (PDOException $e) {
+            error_log("Error fetching user role: " . $e->getMessage());
+            return null;
+        }
+    }
+
     /**
      * Log an action to the audit trail
      *
@@ -17,12 +39,14 @@ class AuditTrailModel {
      * @param array|null $newValues The new values after the change (can be null for delete actions)
      * @return bool Success or failure
      */
-    public function logAction($action, $entityType, $entityId, $oldValues = null, $newValues = null) {
+    public function logAction($action, $entityType, $entityId, $oldValues = null, $newValues = null, $userId = null) {
         try {
             // Get current user information
-            $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-            $username = isset($_SESSION['username']) ? $_SESSION['username'] : null;
-            $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : null;
+            // $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+            $username = $this->getUsernameById($userId);
+            $userRole = $this->getUserRoleById($userId);
+
+            error_log("user ID: $userId");
             
             // Get client information
             $ipAddress = $this->getClientIP();

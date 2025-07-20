@@ -101,7 +101,7 @@ class SettingsController {
                     'setting_value' => $settingData['setting_value'],
                     'setting_group' => $settingData['setting_group'] ?? $oldData['setting_group'] ?? 'general'
                 ];
-                $this->logAudit('update', 'setting', $settingData['setting_key'], $oldData, $newData);
+                $this->logAudit('update', 'setting', $settingData['setting_key'], $oldData, $newData, $_SESSION['admin_id']);
             }
             echo json_encode(['success' => true, 'message' => 'Settings updated successfully']);
         } else {

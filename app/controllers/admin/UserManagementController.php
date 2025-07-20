@@ -226,7 +226,7 @@ class UserManagementController {
                 'contact_number' => $contactNumber,
                 'role' => $role
             ];
-            $this->logAudit('create', 'user', $result['user_id'], null, $newUserData);
+            $this->logAudit('create', 'user', $result['user_id'], null, $newUserData, $_SESSION['admin_id']);
         }
         
         header('Content-Type: application/json');
@@ -359,7 +359,7 @@ class UserManagementController {
             if ($password !== null) {
                 $newUserData['password_changed'] = true;
             }
-            $this->logAudit('update', 'user', $userId, $oldUserData, $newUserData);
+            $this->logAudit('update', 'user', $userId, $oldUserData, $newUserData, $_SESSION['admin_id']);
         }
         
         header('Content-Type: application/json');
@@ -400,7 +400,7 @@ class UserManagementController {
         
         // Log to audit trail if successful
         if ($result['success']) {
-            $this->logAudit('delete', 'user', $userId, $oldUserData, null);
+            $this->logAudit('delete', 'user', $userId, $oldUserData, null, $_SESSION['admin_id']);
         }
         
         header('Content-Type: application/json');

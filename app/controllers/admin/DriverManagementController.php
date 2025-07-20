@@ -145,7 +145,7 @@ class DriverManagementController {
             }
             
             // Log to audit trail
-            $this->logAudit('create', 'driver', $driverId, null, $data);
+            $this->logAudit('create', 'driver', $driverId, null, $data, $_SESSION['admin_id']);
             
             echo json_encode([
                 'success' => true, 
@@ -204,7 +204,7 @@ class DriverManagementController {
             }
             
             // Log to audit trail
-            $this->logAudit('update', 'driver', $driverId, $oldDriverData, $data);
+            $this->logAudit('update', 'driver', $driverId, $oldDriverData, $data, $_SESSION['admin_id']);
             
             echo json_encode([
                 'success' => true, 
@@ -240,7 +240,7 @@ class DriverManagementController {
             
             if ($result) {
                 // Log to audit trail
-                $this->logAudit('delete', 'driver', $driverId, $oldDriverData, null);
+                $this->logAudit('delete', 'driver', $driverId, $oldDriverData, null, $_SESSION['admin_id']);
                 
                 echo json_encode([
                     'success' => true, 

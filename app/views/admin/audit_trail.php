@@ -390,14 +390,14 @@ $pageTitle = "Audit Trail Management";
                                 <h6>Audit Information</h6>
                                 <p><strong>Audit ID:</strong> <span id="auditDetailId">-</span></p>
                                 <p><strong>Date/Time:</strong> <span id="auditDetailDateTime">-</span></p>
-                                <p><strong>Action:</strong> <span id="auditDetailAction" class="badge bg-primary">-</span></p>
+                                <p><strong>Action:</strong>     <span id="auditDetailAction">-</span></p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="audit-detail-section">
                                 <h6>User Information</h6>
                                 <p><strong>User:</strong> <span id="auditDetailUser">-</span></p>
-                                <p><strong>Role:</strong> <span id="auditDetailRole" class="badge bg-secondary">-</span></p>
+                                <p><strong>Role:</strong> <span id="auditDetailRole">-</span></p>
                                 <p><strong>IP Address:</strong> <span id="auditDetailIP">-</span></p>
                             </div>
                         </div>

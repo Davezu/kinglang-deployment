@@ -99,7 +99,7 @@ class PaymentManagementController {
             
             // Log to audit trail
             $newPaymentData = array_merge($oldPaymentData ?: [], ['status' => 'Approved']);
-            $this->logAudit('update', 'payment', $paymentId, $oldPaymentData, $newPaymentData);
+            $this->logAudit('update', 'payment', $paymentId, $oldPaymentData, $newPaymentData, $_SESSION['admin_id']);
 
             echo json_encode([
                 'success' => true,
@@ -134,7 +134,7 @@ class PaymentManagementController {
             
             // Log to audit trail
             $newPaymentData = array_merge($oldPaymentData ?: [], ['status' => 'Rejected', 'rejection_reason' => $reason]);
-            $this->logAudit('update', 'payment', $paymentId, $oldPaymentData, $newPaymentData);
+            $this->logAudit('update', 'payment', $paymentId, $oldPaymentData, $newPaymentData, $_SESSION['admin_id']);
 
             echo json_encode([
                 'success' => true,

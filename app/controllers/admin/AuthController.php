@@ -46,7 +46,7 @@ class AuthController {
                 'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? null,
                 'ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
             ];
-            $this->logAudit('login', 'user', $_SESSION['user_id'] ?? null, null, $loginData);
+            $this->logAudit('login', 'user', $_SESSION['admin_id'] ?? null, null, $loginData, $_SESSION['admin_id'] ?? null);
             
             echo json_encode(["success" => true, "redirect" => "/admin/dashboard"]);
         } else {
@@ -58,7 +58,7 @@ class AuthController {
                 'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? null,
                 'ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
             ];
-            $this->logAudit('login_failed', 'user', null, null, $failedLoginData);
+            $this->logAudit('login_failed', 'user', null, null, $failedLoginData, $_SESSION['admin_id'] ?? null);
             
             echo json_encode(["success" => false, "message" => $message]);
         }      
@@ -66,18 +66,19 @@ class AuthController {
 
     public function logout() {
         // Log logout to audit trail before clearing session
-        if (isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['admin_id'])) {
             $logoutData = [
                 'logout_time' => date('Y-m-d H:i:s'),
                 'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? null,
                 'ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
             ];
-            $this->logAudit('logout', 'user', $_SESSION['user_id'], null, $logoutData);
+            $this->logAudit('logout', 'user', $_SESSION['admin_id'], null, $logoutData, $_SESSION['admin_id'] ?? null);
         }
         
         // Only unset admin-specific session variables
         unset($_SESSION["role"]);
         unset($_SESSION["admin_name"]);
+        unset($_SESSION["admin_id"]);
         // Don't destroy the entire session as it affects client login
         // $_SESSION = array();
         // session_destroy();

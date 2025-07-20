@@ -120,7 +120,7 @@ class BusManagementController {
                 'year' => $year,
                 'last_maintenance' => $lastMaintenance
             ];
-            $this->logAudit('create', 'bus', $newBus['bus_id'] ?? null, null, $newBusData);
+            $this->logAudit('create', 'bus', $newBus['bus_id'] ?? null, null, $newBusData, $_SESSION['admin_id']);
             
             echo json_encode(['success' => true, 'message' => 'Bus added successfully']);
         } else {
@@ -204,7 +204,7 @@ class BusManagementController {
                 'year' => $year,
                 'last_maintenance' => $lastMaintenance
             ];
-            $this->logAudit('update', 'bus', $busId, $originalBus, $newBusData);
+            $this->logAudit('update', 'bus', $busId, $originalBus, $newBusData, $_SESSION['admin_id']);
             
             echo json_encode(['success' => true, 'message' => 'Bus updated successfully']);
         } else {
@@ -243,7 +243,7 @@ class BusManagementController {
         
         if ($result === true) {
             // Log to audit trail
-            $this->logAudit('delete', 'bus', $busId, $bus, null);
+            $this->logAudit('delete', 'bus', $busId, $bus, null, $_SESSION['admin_id']);
             
             echo json_encode(['success' => true, 'message' => 'Bus deleted successfully']);
         } else {

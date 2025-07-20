@@ -10,10 +10,10 @@ trait AuditTrailTrait {
      * @param array|null $newValues The new values after the change (can be null for delete actions)
      * @return bool Success or failure
      */
-    protected function logAudit($action, $entityType, $entityId, $oldValues = null, $newValues = null) {
+    protected function logAudit($action, $entityType, $entityId, $oldValues = null, $newValues = null, $userId = null) {
         require_once __DIR__ . '/../models/admin/AuditTrailModel.php';
         $auditTrailModel = new AuditTrailModel();
-        return $auditTrailModel->logAction($action, $entityType, $entityId, $oldValues, $newValues);
+        return $auditTrailModel->logAction($action, $entityType, $entityId, $oldValues, $newValues, $userId);
     }
     
     /**
