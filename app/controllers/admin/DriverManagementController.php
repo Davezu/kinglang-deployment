@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . "/../../models/admin/DriverManagementModel.php";
+require_once __DIR__ . "/../AuditTrailTrait.php";
 
 class DriverManagementController {
+    use AuditTrailTrait;
     private $driverModel;
     
     public function __construct() {
@@ -142,6 +144,9 @@ class DriverManagementController {
                 $this->handlePhotoUpload($driverId);
             }
             
+            // Log to audit trail
+            $this->logAudit('create', 'driver', $driverId, null, $data);
+            
             echo json_encode([
                 'success' => true, 
                 'message' => 'Driver added successfully', 
@@ -188,12 +193,18 @@ class DriverManagementController {
         ];
         
         try {
+            // Get old driver data for audit trail
+            $oldDriverData = $this->getEntityBeforeUpdate('drivers', 'driver_id', $driverId);
+            
             $this->driverModel->updateDriver($driverId, $data);
             
             // Handle profile photo upload if exists
             if (isset($_FILES['profile_photo']) && $_FILES['profile_photo']['error'] === UPLOAD_ERR_OK) {
                 $this->handlePhotoUpload($driverId);
             }
+            
+            // Log to audit trail
+            $this->logAudit('update', 'driver', $driverId, $oldDriverData, $data);
             
             echo json_encode([
                 'success' => true, 
@@ -222,9 +233,15 @@ class DriverManagementController {
         }
         
         try {
+            // Get driver data before deletion for audit trail
+            $oldDriverData = $this->getEntityBeforeUpdate('drivers', 'driver_id', $driverId);
+            
             $result = $this->driverModel->deleteDriver($driverId);
             
             if ($result) {
+                // Log to audit trail
+                $this->logAudit('delete', 'driver', $driverId, $oldDriverData, null);
+                
                 echo json_encode([
                     'success' => true, 
                     'message' => 'Driver deleted successfully'

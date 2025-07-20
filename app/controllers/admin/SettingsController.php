@@ -2,8 +2,10 @@
 declare(strict_types=1);
 
 require_once __DIR__ . "/../../models/admin/Settings.php";
+require_once __DIR__ . "/../AuditTrailTrait.php";
 
 class SettingsController {
+    use AuditTrailTrait;
     private $settings;
 
     public function __construct() {
@@ -78,10 +80,29 @@ class SettingsController {
             return;
         }
         
+        // Get old settings for audit trail
+        $oldSettings = [];
+        foreach ($postData['settings'] as $settingData) {
+            $oldSetting = $this->getEntityBeforeUpdate('settings', 'setting_key', $settingData['setting_key']);
+            if ($oldSetting) {
+                $oldSettings[$settingData['setting_key']] = $oldSetting;
+            }
+        }
+        
         // Update the settings
         $success = $this->settings->bulkUpdateSettings($postData['settings']);
         
         if ($success) {
+            // Log each setting change to audit trail
+            foreach ($postData['settings'] as $settingData) {
+                $oldData = $oldSettings[$settingData['setting_key']] ?? null;
+                $newData = [
+                    'setting_key' => $settingData['setting_key'],
+                    'setting_value' => $settingData['setting_value'],
+                    'setting_group' => $settingData['setting_group'] ?? $oldData['setting_group'] ?? 'general'
+                ];
+                $this->logAudit('update', 'setting', $settingData['setting_key'], $oldData, $newData);
+            }
             echo json_encode(['success' => true, 'message' => 'Settings updated successfully']);
         } else {
             echo json_encode(['success' => false, 'message' => 'Failed to update settings']);

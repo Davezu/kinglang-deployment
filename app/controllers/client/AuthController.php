@@ -1,8 +1,10 @@
 <?php
 require_once __DIR__ . '/../../../config/database.php';
 require_once __DIR__ . '/../../models/client/AuthModel.php';
+require_once __DIR__ . "/../AuditTrailTrait.php";
 
 class ClientAuthController {
+    use AuditTrailTrait;
     private $authModel;
 
     public function __construct() {
@@ -93,8 +95,27 @@ class ClientAuthController {
         $result = $this->authModel->login($email, $password);
 
         if ($result === "success") {
+            // Log successful client login to audit trail
+            $loginData = [
+                'email' => $email,
+                'login_time' => date('Y-m-d H:i:s'),
+                'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? null,
+                'ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
+            ];
+            $this->logAudit('login', 'user', $_SESSION['user_id'] ?? null, null, $loginData);
+            
             echo json_encode(["success" => true, "redirect" => "/home/booking-requests"]);
         } else {
+            // Log failed client login attempt
+            $failedLoginData = [
+                'email' => $email,
+                'attempt_time' => date('Y-m-d H:i:s'),
+                'failure_reason' => $result,
+                'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? null,
+                'ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
+            ];
+            $this->logAudit('login_failed', 'user', null, null, $failedLoginData);
+            
             echo json_encode(["success" => false, "message" => $result]);
         }
     }

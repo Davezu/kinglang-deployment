@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . "/../../models/admin/PaymentManagementModel.php";
+require_once __DIR__ . "/../AuditTrailTrait.php";
 
 class PaymentManagementController {
+    use AuditTrailTrait;
     private $paymentModel;
     
     public function __construct() {
@@ -89,7 +91,15 @@ class PaymentManagementController {
             }
 
             $paymentId = (int)$data['payment_id'];
+            
+            // Get old payment data for audit trail
+            $oldPaymentData = $this->getEntityBeforeUpdate('payments', 'payment_id', $paymentId);
+            
             $this->paymentModel->confirmPayment($paymentId);
+            
+            // Log to audit trail
+            $newPaymentData = array_merge($oldPaymentData ?: [], ['status' => 'Approved']);
+            $this->logAudit('update', 'payment', $paymentId, $oldPaymentData, $newPaymentData);
 
             echo json_encode([
                 'success' => true,
@@ -116,7 +126,15 @@ class PaymentManagementController {
 
             $paymentId = (int)$data['payment_id'];
             $reason = $data['reason'];
+            
+            // Get old payment data for audit trail
+            $oldPaymentData = $this->getEntityBeforeUpdate('payments', 'payment_id', $paymentId);
+            
             $this->paymentModel->rejectPayment($paymentId, $reason);
+            
+            // Log to audit trail
+            $newPaymentData = array_merge($oldPaymentData ?: [], ['status' => 'Rejected', 'rejection_reason' => $reason]);
+            $this->logAudit('update', 'payment', $paymentId, $oldPaymentData, $newPaymentData);
 
             echo json_encode([
                 'success' => true,

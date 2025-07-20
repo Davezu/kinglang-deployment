@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . "/../../models/admin/UserManagementModel.php";
+require_once __DIR__ . "/../AuditTrailTrait.php";
 
 class UserManagementController {
+    use AuditTrailTrait;
     private $userModel;
     
     public function __construct() {
@@ -215,6 +217,18 @@ class UserManagementController {
         // Create user
         $result = $this->userModel->createUser($firstName, $lastName, $email, $contactNumber, $password, $role);
         
+        // Log to audit trail if successful
+        if ($result['success'] && isset($result['user_id'])) {
+            $newUserData = [
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'email' => $email,
+                'contact_number' => $contactNumber,
+                'role' => $role
+            ];
+            $this->logAudit('create', 'user', $result['user_id'], null, $newUserData);
+        }
+        
         header('Content-Type: application/json');
         echo json_encode($result);
     }
@@ -326,8 +340,27 @@ class UserManagementController {
             return;
         }
         
+        // Get old user data for audit trail
+        $oldUserData = $this->getEntityBeforeUpdate('users', 'user_id', $userId);
+        
         // Update user
         $result = $this->userModel->updateUser($userId, $firstName, $lastName, $email, $contactNumber, $role, $companyName, $password);
+        
+        // Log to audit trail if successful
+        if ($result['success']) {
+            $newUserData = [
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'email' => $email,
+                'contact_number' => $contactNumber,
+                'role' => $role,
+                'company_name' => $companyName
+            ];
+            if ($password !== null) {
+                $newUserData['password_changed'] = true;
+            }
+            $this->logAudit('update', 'user', $userId, $oldUserData, $newUserData);
+        }
         
         header('Content-Type: application/json');
         echo json_encode($result);
@@ -359,8 +392,16 @@ class UserManagementController {
             return;
         }
         
+        // Get user data before deletion for audit trail
+        $oldUserData = $this->getEntityBeforeUpdate('users', 'user_id', $userId);
+        
         // Delete user
         $result = $this->userModel->deleteUser($userId);
+        
+        // Log to audit trail if successful
+        if ($result['success']) {
+            $this->logAudit('delete', 'user', $userId, $oldUserData, null);
+        }
         
         header('Content-Type: application/json');
         echo json_encode($result);

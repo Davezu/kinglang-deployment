@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . "/../../models/admin/BusManagementModel.php";
+require_once __DIR__ . "/../AuditTrailTrait.php";
 
 class BusManagementController {
+    use AuditTrailTrait;
     private $busModel;
     
     public function __construct() {
@@ -104,8 +106,21 @@ class BusManagementController {
         $result = $this->busModel->addBus($name, $capacity, $status, $licensePlate, $model, $year, $lastMaintenance);
         
         if ($result === true) {
-            // Log the action for audit trail
-            $this->logAction('add', 'Added new bus: ' . $name);
+            // Get the newly created bus ID (assuming the model returns it or we can get it)
+            $buses = $this->busModel->getAllBuses();
+            $newBus = end($buses); // Get the last added bus
+            
+            // Log to audit trail
+            $newBusData = [
+                'name' => $name,
+                'capacity' => $capacity,
+                'status' => $status,
+                'license_plate' => $licensePlate,
+                'model' => $model,
+                'year' => $year,
+                'last_maintenance' => $lastMaintenance
+            ];
+            $this->logAudit('create', 'bus', $newBus['bus_id'] ?? null, null, $newBusData);
             
             echo json_encode(['success' => true, 'message' => 'Bus added successfully']);
         } else {
@@ -179,17 +194,17 @@ class BusManagementController {
         $result = $this->busModel->updateBus($busId, $name, $capacity, $status, $licensePlate, $model, $year, $lastMaintenance);
         
         if ($result === true) {
-            // Log the action for audit trail
-            $changes = [];
-            if ($originalBus['name'] != $name) $changes[] = "name from '{$originalBus['name']}' to '{$name}'";
-            if ($originalBus['capacity'] != $capacity) $changes[] = "capacity from '{$originalBus['capacity']}' to '{$capacity}'";
-            if ($originalBus['status'] != $status) $changes[] = "status from '{$originalBus['status']}' to '{$status}'";
-            if ($originalBus['license_plate'] != $licensePlate) $changes[] = "license plate from '{$originalBus['license_plate']}' to '{$licensePlate}'";
-            if ($originalBus['model'] != $model) $changes[] = "model from '{$originalBus['model']}' to '{$model}'";
-            if ($originalBus['year'] != $year) $changes[] = "year from '{$originalBus['year']}' to '{$year}'";
-            if ($originalBus['last_maintenance'] != $lastMaintenance) $changes[] = "last maintenance from '{$originalBus['last_maintenance']}' to '{$lastMaintenance}'";
-            
-            $this->logAction('update', 'Updated bus #' . $busId . ': ' . implode(', ', $changes));
+            // Log to audit trail
+            $newBusData = [
+                'name' => $name,
+                'capacity' => $capacity,
+                'status' => $status,
+                'license_plate' => $licensePlate,
+                'model' => $model,
+                'year' => $year,
+                'last_maintenance' => $lastMaintenance
+            ];
+            $this->logAudit('update', 'bus', $busId, $originalBus, $newBusData);
             
             echo json_encode(['success' => true, 'message' => 'Bus updated successfully']);
         } else {
@@ -227,8 +242,8 @@ class BusManagementController {
         $result = $this->busModel->deleteBus($busId);
         
         if ($result === true) {
-            // Log the action for audit trail
-            $this->logAction('delete', 'Deleted bus #' . $busId . ': ' . $bus['name']);
+            // Log to audit trail
+            $this->logAudit('delete', 'bus', $busId, $bus, null);
             
             echo json_encode(['success' => true, 'message' => 'Bus deleted successfully']);
         } else {
@@ -318,19 +333,6 @@ class BusManagementController {
         echo json_encode(['success' => true, 'stats' => $stats]);
     }
     
-    /**
-     * Log an action for audit trail
-     * @param string $action The action performed
-     * @param string $details Details of the action
-     */
-    private function logAction($action, $details) {
-        if (!isset($_SESSION['user_id'])) return;
-        
-        $userId = $_SESSION['user_id'];
-        $userRole = $_SESSION['role'];
-        
-        // Use the model's method instead of accessing conn directly
-        $this->busModel->logAuditTrail($userId, $userRole, $action, $details);
-    }
+
 }
 ?> 

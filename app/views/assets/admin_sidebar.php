@@ -243,10 +243,10 @@
                         <i class="bi bi-people"></i>
                         <span class="menu-text">Users</span>
                     </a>
-                    <!-- <a href="/admin/audit-trail" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'audit-trail' ? 'active' : ''; ?>">
+                    <a href="/admin/audit-trail" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'audit-trail' ? 'active' : ''; ?>">
                         <i class="bi bi-clock-history"></i>
                         <span class="menu-text">Audit Trail</span>
-                    </a> -->
+                    </a>
                 <?php endif; ?>
                 
                 <a href="/admin/payment-management" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'payment-management' ? 'active' : ''; ?>">

@@ -240,9 +240,9 @@
             </div>
 
             <!-- Summary Cards -->
-            <div class="row mt-3">
+           <div class="row mt-3">
                 <div class="col-md-6 col-lg-4 col-xl mb-4">
-                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
+                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4">
                         <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
                             <i class="bi bi-calendar-check fs-4 text-success"></i>
                         </div>
@@ -253,18 +253,18 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 col-xl mb-4">
-                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
+                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4">
                         <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
                             <i class="bi bi-cash-stack fs-4 text-success"></i>
                         </div>
                         <div>
-                            <h4 id="totalRevenue" class="fw-bolder">-</h4>
+                            <h4 id="totalRevenue" class="fw-bold fs-4">-</h4>
                             <p class="text-secondary">Total Revenue</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 col-xl mb-4">
-                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
+                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4">
                         <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
                             <i class="bi bi-wallet2 fs-4 text-success"></i>
                         </div>
@@ -275,7 +275,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 col-xl mb-4">
-                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4 h-100">
+                    <div class="summary-metrics-card d-flex gap-4 align-items-center p-4">
                         <div class="icon bg-warning-subtle rounded-circle px-3 py-2">
                             <i class="bi bi-bar-chart-line fs-4 text-success"></i>
                         </div>
@@ -286,6 +286,7 @@
                     </div>
                 </div>
             </div>
+
 
             <!-- Booking Status -->
             <div class="row mt-4">

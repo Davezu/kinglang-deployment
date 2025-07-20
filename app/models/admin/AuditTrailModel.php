@@ -206,7 +206,7 @@ class AuditTrailModel {
      * @return string The client's IP address
      */
     private function getClientIP() {
-        $ip = $_SERVER['REMOTE_ADDR'];
+        $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
         
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $ip = $_SERVER['HTTP_CLIENT_IP'];

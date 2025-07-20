@@ -14,7 +14,7 @@ class AuditTrailController {
      * Display the audit trail management page
      */
     public function index() {
-        require_once __DIR__ . '/../../views/admin/audit-trail/index.php';
+        require_once __DIR__ . '/../../views/admin/audit_trail.php';
     }
     
     /**
