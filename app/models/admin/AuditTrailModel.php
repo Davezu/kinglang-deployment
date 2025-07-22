@@ -7,7 +7,7 @@ class AuditTrailModel {
         $this->pdo = $pdo;
     }
 
-    public function getUsernameById($userId) {
+    private function getUsernameById($userId) {
         try {
             $statement = $this->pdo->prepare("SELECT CONCAT(first_name, ' ', last_name) as username FROM users WHERE user_id = :user_id");
             $statement->execute([':user_id' => $userId]);
@@ -18,7 +18,7 @@ class AuditTrailModel {
         }
     }
 
-    public function getUserRoleById($userId) {
+    private function getUserRoleById($userId) {
         try {
             $statement = $this->pdo->prepare("SELECT role FROM users WHERE user_id = :user_id");
             $statement->execute([':user_id' => $userId]);
@@ -230,14 +230,17 @@ class AuditTrailModel {
      * @return string The client's IP address
      */
     private function getClientIP() {
-        $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
-        
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            $ip = $_SERVER['HTTP_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            return $_SERVER['HTTP_CLIENT_IP'];
         }
-        
-        return $ip;
+
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            // May contain multiple IPs, take the first one
+            $ipList = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+            return trim($ipList[0]);
+        }
+
+        return $_SERVER['REMOTE_ADDR'] ?? 'unknown';
     }
+
 } 

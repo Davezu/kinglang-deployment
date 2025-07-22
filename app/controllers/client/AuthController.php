@@ -102,7 +102,7 @@ class ClientAuthController {
                 'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? null,
                 'ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
             ];
-            $this->logAudit('login', 'user', $_SESSION['user_id'] ?? null, null, $loginData);
+            $this->logAudit('login', 'user', $_SESSION['user_id'] ?? null, null, $loginData, $_SESSION['user_id']);
             
             echo json_encode(["success" => true, "redirect" => "/home/booking-requests"]);
         } else {
@@ -114,7 +114,7 @@ class ClientAuthController {
                 'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? null,
                 'ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
             ];
-            $this->logAudit('login_failed', 'user', null, null, $failedLoginData);
+            $this->logAudit('login_failed', 'user', null, null, $failedLoginData, $_SESSION['user_id']);
             
             echo json_encode(["success" => false, "message" => $result]);
         }
@@ -164,6 +164,15 @@ class ClientAuthController {
         $result = $this->authModel->googleLogin($email, $given_name, $family_name, $picture);
         
         if ($result === "success") {
+            // Log successful client login to audit trail
+            $loginData = [
+                'email' => $email,
+                'login_time' => date('Y-m-d H:i:s'),
+                'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? null,
+                'ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
+            ];
+            $this->logAudit('login', 'user', $_SESSION['user_id'] ?? null, null, $loginData, $_SESSION['user_id']);    
+            
             echo json_encode(["success" => true, "redirect" => "/home/booking-requests"]);
         } else {
             echo json_encode(["success" => false, "message" => $result]);
@@ -229,6 +238,15 @@ class ClientAuthController {
     }
 
     public function logout() {
+        if (isset($_SESSION['user_id'])) {
+            $logoutData = [
+                'logout_time' => date('Y-m-d H:i:s'),
+                'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? null,
+                'ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
+            ];
+            $this->logAudit('logout', 'user', $_SESSION['user_id'], null, $logoutData, $_SESSION['user_id'] ?? null);
+        }
+
         // Only unset client-specific session variables
         unset($_SESSION["user_id"]);
         unset($_SESSION["email"]);
