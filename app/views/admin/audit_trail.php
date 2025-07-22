@@ -381,7 +381,7 @@ $pageTitle = "Audit Trail Management";
                     <h5 class="modal-title" id="auditDetailsModalLabel">
                         <i class="bi bi-info-circle me-2 text-success"></i>Audit Record Details
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -428,9 +428,9 @@ $pageTitle = "Audit Trail Management";
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle me-1"></i>Close
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </div>
@@ -489,12 +489,10 @@ $pageTitle = "Audit Trail Management";
         loadStats();
         
         // Search functionality
-        $("#searchBtn, #searchAudit").on("click keypress", function(e) {
-            if (e.type === "click" || e.which === 13) {
-                e.preventDefault();
-                currentPage = 1;
-                loadAuditTrails();
-            }
+        $("#searchAudit").on("input", function(e) {
+            e.preventDefault();
+            currentPage = 1;
+            loadAuditTrails();
         });
         
         // Per page selector
@@ -613,7 +611,7 @@ $pageTitle = "Audit Trail Management";
                     totalPages = Math.ceil(response.total / response.per_page);
                     updatePagination(response.page, totalPages, response.total, response.per_page);
                     
-                    // Show/hide no results message
+                    // Show/hide no re  sults message
                     if (response.records.length === 0) {
                         $("#noResultsFound").show();
                         $("#paginationContainer").hide();
@@ -675,7 +673,7 @@ $pageTitle = "Audit Trail Management";
             tbody.empty();
             
             if (records.length === 0) {
-                tbody.html('<tr><td colspan="9" class="text-center">No records found</td></tr>');
+                // tbody.html('<tr><td colspan="9" class="text-center">No records found</td></tr>');
                 return;
             }
             
@@ -702,15 +700,15 @@ $pageTitle = "Audit Trail Management";
                 const actionsCell = $("<td class='text-center'>");
                 
                 // View details button
-                const viewBtn = $(`<button class="btn btn-outline-info btn-sm me-1 view-audit-details" data-id="${record.audit_id}" title="View Details">
-                    <i class="bi bi-eye"></i>
+                const viewBtn = $(`<button class="btn btn-outline-primary btn-sm me-1 view-audit-details" data-id="${record.audit_id}" title="View Details">
+                    <i class="bi bi-info-circle"></i> Details
                 </button>`);
                 
                 // Entity history button
                 const historyBtn = $(`<button class="btn btn-outline-secondary btn-sm view-entity-history" 
                     data-entity-type="${record.entity_type}" 
                     data-entity-id="${record.entity_id}" title="View History">
-                    <i class="bi bi-clock-history"></i>
+                    <i class="bi bi-clock-history"></i> History
                 </button>`);
                 
                 actionsCell.append(viewBtn);
@@ -766,7 +764,7 @@ $pageTitle = "Audit Trail Management";
             
             // Previous button
             const prevLi = $('<li class="page-item">');
-            const prevLink = $('<a class="page-link" href="#" data-page="prev">Previous</a>');
+            const prevLink = $('<a class="page-link" href="#" data-page="prev">&raquo;</a>');
             if (currentPage === 1) {
                 prevLi.addClass('disabled');
             }
@@ -794,7 +792,7 @@ $pageTitle = "Audit Trail Management";
             
             // Next button
             const nextLi = $('<li class="page-item">');
-            const nextLink = $('<a class="page-link" href="#" data-page="next">Next</a>');
+            const nextLink = $('<a class="page-link" href="#" data-page="next">&raquo;</a>');
             if (currentPage === totalPages) {
                 nextLi.addClass('disabled');
             }

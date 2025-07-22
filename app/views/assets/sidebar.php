@@ -256,11 +256,11 @@
                     <span class="menu-text">Book a Trip</span>
                 </a>
                 <a href="/my-account" class="sidebar-link <?= basename($_SERVER['PHP_SELF']) == 'my-account' ? 'active' : '' ?>">
-                    <i class="bi bi-person-fill fs-5"></i>
+                    <i class="bi bi-person fs-5"></i>
                     <span class="menu-text">My Account</span>
                 </a>
                 <a href="#" class="sidebar-link <?= basename($_SERVER['PHP_SELF']) == '#' ? 'active' : '' ?>">
-                    <i class="bi bi-chat-square-quote-fill icon fs-5"></i>
+                    <i class="bi bi-chat-square-quote icon fs-5"></i>
                     <span class="menu-text">Feedback & Support</span>
                 </a>
             </div>

@@ -257,7 +257,7 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                                             <i class="bi bi-search"></i>
                                         </span>
                                         <input type="text" id="searchBookings" class="form-control border-start-0" placeholder="Search destinations or clients...">
-                                        <button id="searchBtn" class="btn btn-success">Search</button>
+                                        <!-- <button id="searchBtn" class="btn btn-success">Search</button> -->
                                     </div>
                                 </div>
                                 

@@ -279,6 +279,8 @@ class BusManagementModel {
                 OR (b.end_of_tour BETWEEN :start_date AND :end_date)
                 OR (b.date_of_tour <= :start_date AND b.end_of_tour >= :end_date))
             AND (b.status = 'Confirmed' OR b.status = 'Processing')
+            AND b.is_rebooking = 0
+            AND b.is_rebooked = 0
             ORDER BY b.date_of_tour ASC
         ");
         $stmt->bindParam(":bus_id", $busId, PDO::PARAM_INT);

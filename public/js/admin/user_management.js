@@ -975,12 +975,30 @@ function setupTableSorting() {
     });
 }
 
-// Update search functions to include the role filter
-document.getElementById("searchBtn").addEventListener("click", function() {
-    const searchTerm = document.getElementById("searchUser").value;
+// Utility Functions
+function debounce(func, wait) {
+    let timeout;
+    
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+const debouncedSearch = debounce(function() {
+    const searchQuery = document.getElementById("searchUser").value.trim();
     const limit = document.getElementById("limitSelect").value;
-    loadUsers(1, searchTerm, limit, currentSortColumn, currentSortDirection, currentRoleFilter);
-});
+    loadUsers(1, searchQuery, limit, currentSortColumn, currentSortDirection, currentRoleFilter);
+    
+}, 500);
+
+// Update search functions to include the role filter
+document.getElementById("searchUser").addEventListener("input", debouncedSearch);
 
 document.getElementById("searchUser").addEventListener("keyup", function(event) {
     if (event.key === "Enter") {

@@ -265,26 +265,33 @@ async function fetchCalendarEvents(info, successCallback, failureCallback) {
     }
 }
 
+// Utility Functions
+function debounce(func, wait) {
+    let timeout;
+    
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
 // Function to setup search
 function setupSearch() {
     const searchInput = document.getElementById("searchBookings");
-    const searchBtn = document.getElementById("searchBtn");
-    
-    // Search on button click
-    searchBtn.addEventListener("click", function() {
+
+    const debouncedSearch = debounce(function() {
         searchQuery = searchInput.value.trim();
         currentPage = 1;
         loadBookings();
-    });
-    
-    // Search on Enter key
-    searchInput.addEventListener("keyup", function(event) {
-        if (event.key === "Enter") {
-            searchQuery = searchInput.value.trim();
-            currentPage = 1;
-            loadBookings();
-        }
-    });
+    }, 500);
+
+    // Search on input change
+    searchInput.addEventListener("input", debouncedSearch);
     
     // Reset filters button
     document.getElementById("resetFilters")?.addEventListener("click", function() {

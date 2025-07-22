@@ -391,7 +391,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                         <i class="bi bi-search"></i>
                     </span>
                     <input type="text" class="form-control" id="searchUser" placeholder="Search by name, email or contact">
-                    <button class="btn btn-success" type="button" id="searchBtn">Search</button>
+                    <!-- <button class="btn btn-success" type="button" id="searchBtn">Search</button> -->
                 </div>
                 <div class="input-group" style="max-width: 200px;">
                     <span class="input-group-text bg-light">
