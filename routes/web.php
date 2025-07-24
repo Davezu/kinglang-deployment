@@ -365,6 +365,11 @@ switch ($requestPath) {
         $controller = new BookingManagementController();
         $controller->getRebookingRequests();
         break;
+    case "/admin/get-booking-audit-details":
+        require_once $controllerClasses['admin']['BookingManagementController'];
+        $controller = new BookingManagementController();
+        $controller->getBookingAuditDetails();
+        break;
     case "/admin/confirm-rebooking-request":
         require_once $controllerClasses['admin']['BookingManagementController'];
         $controller = new BookingManagementController();

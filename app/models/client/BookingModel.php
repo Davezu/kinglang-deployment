@@ -30,7 +30,12 @@ class Booking {
         }
     }
 
-    public function requestBooking($date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $is_rebooking, $rebooking_id, $base_cost = null, $diesel_cost = null, $base_rate = null, $diesel_price = null, $total_distance = null, $pickup_time = null) {
+    public function requestBooking(
+        $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, 
+        $base_cost = null, $diesel_cost = null, $base_rate = null, $diesel_price = null, $total_distance = null, $pickup_time = null
+    ) {
+        // if ($is_rebooking) return;
+        
         $days = $number_of_days - 1;
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $days days"));
 
@@ -48,12 +53,12 @@ class Booking {
                 return ["success" => false, "message" => "Not enough drivers available for the selected dates."];
             }
 
-            if ($is_rebooking && $this->bookingIsNotConfirmed($rebooking_id)) {
-                $this->updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $base_cost, $diesel_cost, $base_rate, $diesel_price, $total_distance, $pickup_time);
-                return ["success" => true, "message" => "Booking updated successfully!", "booking_id" => $rebooking_id];
-            }
+            // if ($is_rebooking && $this->bookingIsNotConfirmed($rebooking_id)) {
+            //     $this->updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $base_cost, $diesel_cost, $base_rate, $diesel_price, $total_distance, $pickup_time);
+            //     return ["success" => true, "message" => "Booking updated successfully!", "booking_id" => $rebooking_id];
+            // }
 
-            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, pickup_time, number_of_days, number_of_buses, user_id, balance, is_rebooking) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :pickup_time, :number_of_days, :number_of_buses, :user_id, :balance, :is_rebooking)");
+            $stmt = $this->conn->prepare("INSERT INTO bookings (date_of_tour, end_of_tour, destination, pickup_point, pickup_time, number_of_days, number_of_buses, user_id, balance) VALUES (:date_of_tour, :end_of_tour, :destination, :pickup_point, :pickup_time, :number_of_days, :number_of_buses, :user_id, :balance)");
             $stmt->execute([
                 ":date_of_tour" => $date_of_tour,
                 ":end_of_tour" => $end_of_tour,
@@ -63,15 +68,14 @@ class Booking {
                 ":number_of_days" => $number_of_days,       
                 ":number_of_buses" => $number_of_buses,
                 ":user_id" => $user_id,
-                ":balance" => $balance,
-                ":is_rebooking" => $is_rebooking,
+                ":balance" => $balance
             ]);
 
             $booking_id = $this->conn->lastInsertID(); // get the added booking id to insert it in booking buses table
 
-            if ($is_rebooking) {
-                $this->requestRebooking($rebooking_id, $booking_id, $_SESSION["user_id"]);
-            }
+            // if ($is_rebooking) {
+            //     $this->requestRebooking($rebooking_id, $booking_id, $_SESSION["user_id"]);
+            // }
 
             $stmt = $this->conn->prepare("INSERT INTO booking_costs (booking_id, base_rate, base_cost, diesel_price, diesel_cost, total_cost, total_distance) VALUES (:booking_id, :base_rate, :base_cost, :diesel_price, :diesel_cost, :total_cost, :total_distance)");
             $stmt->execute([
@@ -173,26 +177,26 @@ class Booking {
         try {
             $stmt = $this->conn->prepare("INSERT INTO rebooking_request (booking_id, rebooking_id, user_id) VALUES (:booking_id, :rebooking_id, :user_id)");
             $stmt->execute([":booking_id" => $booking_id, ":rebooking_id" => $rebooking_id, ":user_id" => $user_id]);
-            return true;
+            return ["success" => true, "message" => "Rebooking request submitted successfully."];
         } catch (PDOException $e) {
             return "Databse error";
         }   
     }
 
-    public function bookingExistsInReschedRequests($booking_id) {
-        try {
-            $stmt = $this->conn->prepare("SELECT * FROM reschedule_requests WHERE booking_id = :booking_id AND status != 'Confirmed' ORDER BY booking_id DESC");
-            $stmt->execute([":booking_id" => $booking_id]);
-            $resched_request = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($resched_request) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            return "Database error: $e";
-        }
-    }
+    // public function bookingExistsInReschedRequests($booking_id) {
+    //     try {
+    //         $stmt = $this->conn->prepare("SELECT * FROM reschedule_requests WHERE booking_id = :booking_id AND status != 'Confirmed' ORDER BY booking_id DESC");
+    //         $stmt->execute([":booking_id" => $booking_id]);
+    //         $resched_request = $stmt->fetch(PDO::FETCH_ASSOC);
+    //         if ($resched_request) {
+    //             return true;
+    //         } else {
+    //             return false;
+    //         }
+    //     } catch (PDOException $e) {
+    //         return "Database error: $e";
+    //     }
+    // }
 
     public function bookingIsNotConfirmed($booking_id) { 
         try {
@@ -626,7 +630,10 @@ class Booking {
         }
     }
 
-    public function updateBooking($rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, $base_cost = null, $diesel_cost = null, $base_rate = null, $diesel_price = null, $total_distance = null, $pickup_time = null) {
+    public function updateBooking(
+        $rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, 
+        $base_cost = null, $diesel_cost = null, $base_rate = null, $diesel_price = null, $total_distance = null, $pickup_time = null
+    ) {
         $days = $number_of_days - 1;
         $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $days days"));
 

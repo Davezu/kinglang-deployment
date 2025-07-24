@@ -855,9 +855,30 @@ $pageTitle = "Audit Trail Management";
                         }
                     }
                     // For update actions, compare old and new values
-                    else if (response.action === 'update' && response.old_values && response.new_values) {
+                    else if (response.action === 'update' && response.entity_type === 'bookings' && response.old_values && response.new_values) {
+                        console.log("Old values: ", response.old_values);
+                        console.log("New values: ", response.new_values);   
                         for (const key in response.new_values) {
-                            if (JSON.stringify(response.old_values[key]) === JSON.stringify(response.new_values[key])) {
+                            if (JSON.stringify(response.old_values[key]) == JSON.stringify(response.new_values[key])) {
+                                continue; // Skip unchanged values
+                            }
+                            
+                            if (key === 'booking_costs' || key === 'trip_distances' || key === 'addresses') continue;
+                            
+                            const row = $("<tr>");
+                            row.append(`<td class="fw-bold">${formatFieldName(key)}</td>`);
+                            row.append(`<td><span class="text-danger">${formatValue(response.old_values[key])}</span></td>`);
+                            row.append(`<td><span class="text-success">${formatValue(response.new_values[key])}</span></td>`);
+                            changesTable.append(row);
+                            hasChanges = true;
+                        }
+                    }
+
+                    else if (response.action === 'update' && response.entity_type !== 'bookings' && response.old_values && response.new_values) {
+                        console.log("Old values: ", response.old_values);
+                        console.log("New values: ", response.new_values);   
+                        for (const key in response.new_values) {
+                            if (JSON.stringify(response.old_values[key]) == JSON.stringify(response.new_values[key])) {
                                 continue; // Skip unchanged values
                             }
                             

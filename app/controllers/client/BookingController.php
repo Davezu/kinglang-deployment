@@ -1,8 +1,10 @@
 <?php
 require_once __DIR__ . '/../../models/client/BookingModel.php';
 require_once __DIR__ . '/../../models/admin/NotificationModel.php';
+require_once __DIR__ . "/../AuditTrailTrait.php";
 
 class BookingController {
+    use AuditTrailTrait;
     private $bookingModel;
     private $notificationModel;
 
@@ -587,27 +589,20 @@ class BookingController {
         $base_rate = $input["baseRate"] ?? null;
         $diesel_price = $input["dieselPrice"] ?? null;
         $total_distance = $input["totalDistance"] ?? null;
+
+        // Check if the user is rebooking
+        if ($is_rebooking) {
+            $result = $this->requestRebooking(
+                $rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $_SESSION["user_id"], $stops, $total_cost, 
+                $balance, $trip_distances, $addresses, $base_cost, $diesel_cost, $base_rate, $diesel_price, $total_distance, $pickup_time
+            );
+            echo json_encode(["success" => true, "message" => $result["message"]]);
+            return;
+        }
         
         $booking_result = $this->bookingModel->requestBooking(
-            $date_of_tour,
-            $destination,
-            $pickup_point,
-            $number_of_days,
-            $number_of_buses,
-            $_SESSION["user_id"],
-            $stops,
-            $total_cost,
-            $balance,
-            $trip_distances,
-            $addresses,
-            $is_rebooking,
-            $rebooking_id,
-            $base_cost,
-            $diesel_cost,
-            $base_rate,
-            $diesel_price,
-            $total_distance,
-            $pickup_time
+            $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $_SESSION["user_id"], $stops, $total_cost,
+            $balance, $trip_distances, $addresses, $base_cost, $diesel_cost, $base_rate, $diesel_price, $total_distance, $pickup_time
         );
 
         if ($booking_result["success"]) {
@@ -632,6 +627,96 @@ class BookingController {
         }
 
         echo json_encode($booking_result);
+    }
+
+    public function requestRebooking(
+        $bookingId, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost,
+        $balance, $trip_distances, $addresses, $base_cost, $diesel_cost, $base_rate, $diesel_price, $total_distance, $pickup_time
+    ) {
+        $oldBookingData = $this->getEntityBeforeUpdate('bookings', 'booking_id', $bookingId);
+        $oldBookingData["trip_distances"] = $this->getEntityBeforeUpdate('trip_distances', 'booking_id', $bookingId);
+        $oldBookingData["booking_costs"] = $this->getEntityBeforeUpdate('booking_costs', 'booking_id', $bookingId);
+        $oldBookingData["stops"] = $this->getEntityBeforeUpdate('booking_stops', 'booking_id', $bookingId) ?? [];
+
+        $new_stops = [];
+        if (!empty($stops)) {
+            foreach ($stops as $index => $stop) { 
+                $stops = [
+                    "boking_id" => $bookingId,
+                    "location" => $stop,
+                    "stop_order" => $index + 1
+                ];
+                $new_stops[] = $stops;
+            }
+        }
+        $new_stops = (empty($new_stops)) ? false : $new_stops;
+
+        $new_trip_distances = [];
+        foreach ($trip_distances["rows"] as $i => $row) {
+            $distance_value = number_format($row["elements"][$i]["distance"]["value"] ?? 0, 2, ".", ""); // in km
+            $origin = $addresses[$i];
+            $destinations = $addresses[$i + 1] ?? $addresses[0]; // round trip fallback
+
+            $trip_distance = [
+                "id" => $oldBookingData["trip_distances"][$i]["id"] ?? null,
+                "origin" => $origin,
+                "destination" => $destinations,
+                "distance" =>  $distance_value,
+                "booking_id" => (int)$bookingId
+            ];
+
+            $new_trip_distances[] = $trip_distance;
+        }
+
+        $newBookingData = [ 
+            "date_of_tour" => $date_of_tour,
+            "pickup_point" => $pickup_point,
+            "destination" => $destination,
+            "number_of_buses" => $number_of_buses,
+            "number_of_days" => $number_of_days,
+            "user_id" => $user_id,
+            "stops" => $new_stops,
+            "booking_costs" => [
+                "id" => $oldBookingData["booking_costs"]["id"] ?? null,
+                "total_cost" => round($total_cost, 2),
+                "base_rate" => round($base_rate, 2),
+                "total_distance" => round($total_distance, 2),
+                "booking_id" => $bookingId,
+                "diesel_price" => round($diesel_price, 2),
+                "diesel_cost" => round($diesel_cost, 2),
+                "base_cost" => round($base_cost, 2),
+                "discount" => $oldBookingData["booking_costs"]["discount"] ?? null,
+                "discount_type" => $oldBookingData["booking_costs"]["discount_type"] ?? null,
+                "discount_amount" => $oldBookingData["booking_costs"]["discount_amount"] ?? null,
+                "gross_price" => $oldBookingData["booking_costs"]["gross_price"] ?? null
+            ],
+            "balance" => $balance,
+            "trip_distances" => $trip_distances,
+            "pickup_time" => $pickup_time,
+            "addresses" => $addresses
+        ];
+
+        // Check if the booking is pending, then update it directly without rebooking
+        if ($oldBookingData["status"] === "Pending") {
+            $this->bookingModel->updateBooking(
+                $bookingId, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, 
+                $stops, $total_cost, $balance, $trip_distances, $addresses, $base_cost, $diesel_cost, 
+                $base_rate, $diesel_price, $total_distance, $pickup_time
+            );
+
+            $this->logAudit('update', 'bookings', $bookingId, $oldBookingData, $newBookingData, $_SESSION["user_id"]);
+            return ["success" => true, "message" => "Booking updated successfully."];
+        }
+
+        $result = $this->bookingModel->requestRebooking($bookingId, $bookingId, $_SESSION["user_id"]);
+        $this->logAudit('update', 'bookings', $bookingId, $oldBookingData, $newBookingData, $_SESSION["user_id"]);
+
+        return [
+            "success" => $result["success"],
+            "message" => $result["success"] 
+                ? $result["message"]
+                : "Failed to update booking: " . $result["message"]
+        ];
     }
 
     /**

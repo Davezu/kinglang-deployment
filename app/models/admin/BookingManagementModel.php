@@ -266,7 +266,18 @@ class BookingManagementModel {
         }
     }
 
-    public function confirmRebookingRequest($rebooking_id, $discount = null, $discountType = null) {
+    public function getAuditTrailByBookingId($bookingId) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM audit_trails WHERE entity_id = :entity_id AND entity_type = 'bookings' ORDER BY created_at DESC");
+            $stmt->execute([':entity_id' => $bookingId]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Audit trail error: " . $e->getMessage());
+            return null;
+        }
+    }
+
+    public function confirmRebookingRequest($rebooking_id, $discount = null, $discountType = null, $newBookingData = []) {
         try {
             // First, let's verify the rebooking request exists
             $stmt = $this->conn->prepare("SELECT * FROM rebooking_request WHERE rebooking_id = :rebooking_id");
@@ -288,17 +299,42 @@ class BookingManagementModel {
             $stmt = $this->conn->prepare("UPDATE rebooking_request SET status = 'Confirmed' WHERE rebooking_id = :rebooking_id");
             $stmt->execute([":rebooking_id" => $rebooking_id]);
 
-            // Mark original booking as rebooked
-            $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooked = 1 WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $booking_id]);
+            $result = $this->updateBooking(
+                $rebooking_id, 
+                $newBookingData['date_of_tour'], 
+                $newBookingData['destination'], 
+                $newBookingData['pickup_point'], 
+                $newBookingData['number_of_days'], 
+                $newBookingData['number_of_buses'], 
+                $newBookingData['user_id'], 
+                $newBookingData['stops'], 
+                $newBookingData['booking_costs']['total_cost'], 
+                $newBookingData['balance'], 
+                $newBookingData['trip_distances'], 
+                $newBookingData['addresses'],
+                $newBookingData['booking_costs']['base_cost'] ?? null,
+                $newBookingData['booking_costs']['diesel_cost'] ?? null,
+                $newBookingData['booking_costs']['base_rate'] ?? null,
+                $newBookingData['booking_costs']['diesel_price'] ?? null,
+                $newBookingData['booking_costs']['total_distance'] ?? null,
+                $newBookingData['pickup_time'] ?? null
+            );
 
-            // Update the rebooking record to be a normal booking
-            $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooking = 0, status = 'Confirmed', payment_deadline =  :payment_deadline WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $rebooking_id, ":payment_deadline" => date('Y-m-d H:i:s', strtotime('+2 days'))]);
+            if (!$result["success"]) {
+                return; // Return error if update failed
+            }
 
-            // Update payments booking_id to the new booking_id based on the rebooking_id
-            $stmt = $this->conn->prepare("UPDATE payments SET booking_id = :rebooking_id WHERE booking_id = :booking_id");
-            $stmt->execute([":rebooking_id" => $rebooking_id, ":booking_id" => $booking_id]);
+            // // Mark original booking as rebooked
+            // $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooked = 1 WHERE booking_id = :booking_id");
+            // $stmt->execute([":booking_id" => $booking_id]);
+
+            // // Update the rebooking record to be a normal booking
+            // $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooking = 0, status = 'Confirmed', payment_deadline =  :payment_deadline WHERE booking_id = :booking_id");
+            // $stmt->execute([":booking_id" => $rebooking_id, ":payment_deadline" => date('Y-m-d H:i:s', strtotime('+2 days'))]);
+
+            // // Update payments booking_id to the new booking_id based on the rebooking_id
+            // $stmt = $this->conn->prepare("UPDATE payments SET booking_id = :rebooking_id WHERE booking_id = :booking_id");
+            // $stmt->execute([":rebooking_id" => $rebooking_id, ":booking_id" => $booking_id]);
 
             // Apply discount if provided
             if ($discount !== null && $discount > 0) {
@@ -384,6 +420,186 @@ class BookingManagementModel {
             return ["success" => true, "message" => "Rebooking request confirmed successfully."];
         } catch (PDOException $e) {
             return ["success" => false, "message" =>  "Database error: " . $e->getMessage()];
+        }
+    }
+
+    public function findAvailableBuses($date_of_tour, $end_of_tour, $number_of_buses) {
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT bus_id
+                FROM buses
+                WHERE status = 'active'
+                AND bus_id NOT IN (
+                    SELECT bb.bus_id
+                    FROM booking_buses bb
+                    JOIN bookings bo ON bb.booking_id = bo.booking_id
+                    WHERE 
+                        -- Only consider active bookings that need buses
+                        (bo.status = 'Confirmed' OR bo.status = 'Processing')
+                        -- Date range check
+                        AND (
+                            (bo.date_of_tour <= :date_of_tour AND bo.end_of_tour >= :date_of_tour)
+                            OR
+                            (bo.date_of_tour <= :end_of_tour AND bo.end_of_tour >= :end_of_tour)
+                            OR
+                            (bo.date_of_tour >= :date_of_tour AND bo.end_of_tour <= :end_of_tour)
+                        )
+                )
+                LIMIT :number_of_buses;
+            ");
+            $stmt->bindParam(":date_of_tour", $date_of_tour);
+            $stmt->bindParam(":end_of_tour", $end_of_tour);
+            $stmt->bindParam(":number_of_buses", $number_of_buses, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_COLUMN);       
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
+
+    public function findAvailableDrivers($date_of_tour, $end_of_tour, $number_of_drivers) {
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT driver_id
+                FROM drivers
+                WHERE status = 'Active'
+                AND availability = 'Available'
+                AND driver_id NOT IN (
+                    SELECT bd.driver_id
+                    FROM booking_driver bd
+                    JOIN bookings bo ON bd.booking_id = bo.booking_id
+                    WHERE 
+                        -- Only consider active bookings that need drivers
+                        (bo.status = 'Confirmed' OR bo.status = 'Processing')
+                        -- Date range check
+                        AND (
+                            (bo.date_of_tour <= :date_of_tour AND bo.end_of_tour >= :date_of_tour)
+                            OR
+                            (bo.date_of_tour <= :end_of_tour AND bo.end_of_tour >= :end_of_tour)
+                            OR
+                            (bo.date_of_tour >= :date_of_tour AND bo.end_of_tour <= :end_of_tour)
+                        )
+                )
+                LIMIT :number_of_drivers;
+            ");
+            $stmt->bindParam(":date_of_tour", $date_of_tour);
+            $stmt->bindParam(":end_of_tour", $end_of_tour);
+            $stmt->bindParam(":number_of_drivers", $number_of_drivers, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_COLUMN);       
+        } catch (PDOException $e) {
+            return "Database error: $e";
+        }
+    }
+
+    public function updateBooking(
+        $rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, 
+        $base_cost = null, $diesel_cost = null, $base_rate = null, $diesel_price = null, $total_distance = null, $pickup_time = null
+    ) {
+        $days = $number_of_days - 1;
+        $end_of_tour = date("Y-m-d", strtotime($date_of_tour . " + $days days"));
+
+        try {
+            $available_buses = $this->findAvailableBuses($date_of_tour, $end_of_tour, $number_of_buses);
+
+            if (!$available_buses) {
+                return "Not enough buses available.";
+            }
+            
+            // Check for driver availability
+            $available_drivers = $this->findAvailableDrivers($date_of_tour, $end_of_tour, $number_of_buses);
+            
+            if (!$available_drivers || count($available_drivers) < $number_of_buses) {
+                return "Not enough drivers available for the selected dates.";
+            }
+
+            // Update the booking
+            $stmt = $this->conn->prepare("UPDATE bookings SET date_of_tour = :date_of_tour, end_of_tour = :end_of_tour, destination = :destination, pickup_point = :pickup_point, pickup_time = :pickup_time, number_of_days = :number_of_days, number_of_buses = :number_of_buses, balance = :balance WHERE booking_id = :booking_id AND user_id = :user_id");
+            $stmt->execute([
+                ":date_of_tour" => $date_of_tour,
+                ":end_of_tour" => $end_of_tour,
+                ":destination" => $destination,
+                ":pickup_point" => $pickup_point,
+                ":pickup_time" => $pickup_time,
+                ":number_of_days" => $number_of_days,       
+                ":number_of_buses" => $number_of_buses,
+                ":balance" => $balance,
+                ":booking_id" => $rebooking_id,
+                ":user_id" => $user_id
+            ]);
+
+            // Update the booking costs
+            $stmt = $this->conn->prepare("UPDATE booking_costs SET base_rate = :base_rate, base_cost = :base_cost, diesel_price = :diesel_price, diesel_cost = :diesel_cost, total_cost = :total_cost, total_distance = :total_distance WHERE booking_id = :booking_id");
+            $stmt->execute([
+                ":base_rate" => $base_rate,
+                ":base_cost" => $base_cost,
+                ":diesel_price" => $diesel_price,
+                ":diesel_cost" => $diesel_cost,
+                ":total_cost" => $total_cost,
+                ":total_distance" => $total_distance,
+                ":booking_id" => $rebooking_id
+            ]);
+
+            // Delete existing stops
+            $stmt = $this->conn->prepare("DELETE FROM booking_stops WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $rebooking_id]);
+
+            // Insert new stops
+            $stops = is_array($stops) ? $stops : [];
+            foreach ($stops as $index => $stop) {            
+                $stmt = $this->conn->prepare("INSERT INTO booking_stops (booking_id, location, stop_order) VALUES (:booking_id, :location, :stop_order)");
+                $stmt->execute([
+                    ":booking_id" => $rebooking_id,
+                    ":location" => $stop,
+                    ":stop_order" => $index + 1
+                ]);
+            }
+
+            // Delete existing trip distances
+            $stmt = $this->conn->prepare("DELETE FROM trip_distances WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $rebooking_id]);
+
+            // Insert new trip distances
+            foreach ($trip_distances["rows"] as $i => $row) {
+                $distance_value = $row["elements"][$i]["distance"]["value"] ?? 0; // in km
+                $origin = $addresses[$i];
+                $destination = $addresses[$i + 1] ?? $addresses[0]; // round trip fallback
+
+                $stmt = $this->conn->prepare("INSERT INTO trip_distances (origin, destination, distance, booking_id) VALUES (:origin, :destination, :distance, :booking_id)");
+                $stmt->execute([
+                    ":origin" => $origin, 
+                    ":destination" => $destination, 
+                    ":distance" => $distance_value,     
+                    ":booking_id" => $rebooking_id
+                ]);
+            }
+
+            // Delete existing booking buses
+            $stmt = $this->conn->prepare("DELETE FROM booking_buses WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $rebooking_id]);
+
+            // Insert new booking buses
+            foreach ($available_buses as $bus_id) {
+                $stmt = $this->conn->prepare("INSERT INTO booking_buses (booking_id, bus_id) VALUES (:booking_id, :bus_id)");
+                $stmt->execute([":booking_id" => $rebooking_id, ":bus_id" => $bus_id]);
+            }
+            
+            // Delete existing driver assignments
+            $stmt = $this->conn->prepare("DELETE FROM booking_driver WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $rebooking_id]);
+            
+            // Assign new drivers
+            foreach ($available_drivers as $index => $driver_id) {
+                if ($index >= $number_of_buses) break; // Only assign as many drivers as buses
+                $stmt = $this->conn->prepare("INSERT INTO booking_driver (booking_id, driver_id) VALUES (:booking_id, :driver_id)");
+                $stmt->execute([":booking_id" => $rebooking_id, ":driver_id" => $driver_id]);
+            }
+
+            return ["success" => true, "message" => "Booking updated successfully."];
+        } catch (PDOException $e) {
+            return ["success" => false, "message" => "Database error: " . $e->getMessage()];
         }
     }
 

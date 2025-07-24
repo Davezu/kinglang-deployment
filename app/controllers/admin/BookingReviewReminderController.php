@@ -183,6 +183,8 @@ class BookingReviewReminderController {
                 WHERE b.status = 'Pending' 
                   AND b.date_of_tour <= DATE_ADD(CURDATE(), INTERVAL 3 DAY)
                   AND b.date_of_tour >= CURDATE()
+                  AND b.is_rebooking = 0
+                  AND b.is_rebooked = 0
                 ORDER BY b.date_of_tour ASC
             ");
             $stmt->execute();

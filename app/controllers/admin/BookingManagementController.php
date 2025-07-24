@@ -380,6 +380,36 @@ class BookingManagementController {
         }
     }
 
+     public function getBookingAuditDetails() {
+        $data = json_decode(file_get_contents("php://input"), true);
+        $bookingId = isset($data["bookingId"]) ? $data["bookingId"] : null;
+        
+        if ($bookingId <= 0) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 'Invalid booking ID']);
+            return;
+        }
+        
+        $auditDetails = $this->bookingModel->getAuditTrailByBookingId($bookingId);
+        
+        if ($auditDetails) {
+            // Convert JSON strings to arrays for display
+            if (!empty($auditDetails['old_values'])) {
+                $auditDetails['old_values'] = json_decode($auditDetails['old_values'], true);
+            }
+            if (!empty($auditDetails['new_values'])) {
+                $auditDetails['new_values'] = json_decode($auditDetails['new_values'], true);
+            }
+            
+            // Format date
+            $auditDetails['created_at_formatted'] = date('Y-m-d H:i:s', strtotime($auditDetails['created_at']));
+        }
+        
+        // Return as JSON
+        header('Content-Type: application/json');
+        echo json_encode($auditDetails ? ['success' => true, 'auditDetails' => $auditDetails] : ['success' => false, 'message' => 'Audit trail not found']);
+    }
+
     public function confirmRebookingRequest() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $data = json_decode(file_get_contents("php://input"), true);
@@ -387,7 +417,8 @@ class BookingManagementController {
             $discount = isset($data["discount"]) ? (float)$data["discount"] : null;
             $discountType = isset($data["discountType"]) ? $data["discountType"] : null;
 
-            $result = $this->bookingModel->confirmRebookingRequest($rebooking_id, $discount, $discountType);
+            $newBookingData = $this->bookingModel->getAuditTrailByBookingId($rebooking_id);
+            $result = $this->bookingModel->confirmRebookingRequest($rebooking_id, $discount, $discountType, json_decode($newBookingData['new_values'], true));
             header("Content-Type: application/json");
             
             echo json_encode([

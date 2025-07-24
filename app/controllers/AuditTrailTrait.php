@@ -29,7 +29,9 @@ trait AuditTrailTrait {
         try {
             $statement = $pdo->prepare("SELECT * FROM {$table} WHERE {$idColumn} = :id");
             $statement->execute([':id' => $id]);
-            return $statement->fetch(PDO::FETCH_ASSOC);
+            return ($table == 'trip_distances') 
+                ? $statement->fetchAll(PDO::FETCH_ASSOC) 
+                : $statement->fetch(PDO::FETCH_ASSOC) ?? [];
         } catch (PDOException $e) {
             error_log("Error getting entity data: " . $e->getMessage());
             return null;
