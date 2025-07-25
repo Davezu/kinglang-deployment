@@ -863,7 +863,24 @@ $pageTitle = "Audit Trail Management";
                                 continue; // Skip unchanged values
                             }
                             
-                            if (key === 'booking_costs' || key === 'trip_distances' || key === 'addresses') continue;
+                            if (key === 'booking_costs' || key === 'trip_distances' || key === 'addresses' || key === 'balance') continue;
+                            
+                            if (key === 'stops') {
+                                for (const stop of response.new_values[key]) {
+                                    const oldStop = response.old_values[key].find(s => s.booking_stops_id === stop.booking_stops_id);
+                                    if (oldStop && JSON.stringify(oldStop.location) == JSON.stringify(stop.location)) {
+                                        continue; // Skip unchanged stops
+                                    }
+                                    
+                                    const row = $("<tr>");
+                                    row.append(`<td class="fw-bold">${formatFieldName(key)} (Stop ID: ${stop.booking_stops_id})</td>`);
+                                    row.append(`<td><span class="text-danger">${formatValue(oldStop.location || 'N/A')}</span></td>`);
+                                    row.append(`<td><span class="text-success">${formatValue(stop.location)}</span></td>`);
+                                    changesTable.append(row);
+                                    hasChanges = true;
+                                }
+                                continue;
+                            }
                             
                             const row = $("<tr>");
                             row.append(`<td class="fw-bold">${formatFieldName(key)}</td>`);

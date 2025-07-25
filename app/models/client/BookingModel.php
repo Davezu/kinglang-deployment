@@ -687,7 +687,7 @@ class Booking {
                 $stmt = $this->conn->prepare("INSERT INTO booking_stops (booking_id, location, stop_order) VALUES (:booking_id, :location, :stop_order)");
                 $stmt->execute([
                     ":booking_id" => $rebooking_id,
-                    ":location" => $stop,
+                    ":location" => $stop["location"],
                     ":stop_order" => $index + 1
                 ]);
             }

@@ -224,7 +224,7 @@ class BookingManagementModel {
     }
 
     public function getRebookingRequests($status, $column, $order) {
-        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
+        $allowed_status = ["Pending", "Confirmed", "Rejected", "All"];
         $status = in_array($status, $allowed_status) ? $status : "";
         $status == "All" ? $status = "" : $status = " WHERE r.status = '$status'";
 
@@ -234,7 +234,7 @@ class BookingManagementModel {
 
         try {
             $stmt = $this->conn->prepare("
-                SELECT b.booking_id, r.request_id, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, u.email, b.destination, b.pickup_point, b.number_of_days, b.number_of_buses, r.status, b.payment_status, c.total_cost, b.balance, b.date_of_tour, b.end_of_tour
+                SELECT b.booking_id, r.request_id, r.status as rebooking_status, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, u.email, b.destination, b.pickup_point, b.number_of_days, b.number_of_buses, r.status, b.payment_status, c.total_cost, b.balance, b.date_of_tour, b.end_of_tour
                 FROM rebooking_request r
                 JOIN users u ON r.user_id = u.user_id
                 JOIN bookings b ON r.rebooking_id = b.booking_id
@@ -552,7 +552,7 @@ class BookingManagementModel {
                 $stmt = $this->conn->prepare("INSERT INTO booking_stops (booking_id, location, stop_order) VALUES (:booking_id, :location, :stop_order)");
                 $stmt->execute([
                     ":booking_id" => $rebooking_id,
-                    ":location" => $stop,
+                    ":location" => $stop["location"],
                     ":stop_order" => $index + 1
                 ]);
             }

@@ -640,11 +640,12 @@ class BookingController {
 
         $new_stops = [];
         if (!empty($stops)) {
-            foreach ($stops as $index => $stop) { 
+            foreach ($stops as $index => $stop) {
                 $stops = [
-                    "boking_id" => $bookingId,
+                    "booking_stops_id" => $oldBookingData["stops"][$index]["booking_stops_id"] ?? null,
+                    "stop_order" => $index + 1,
                     "location" => $stop,
-                    "stop_order" => $index + 1
+                    "boking_id" => $bookingId
                 ];
                 $new_stops[] = $stops;
             }
@@ -700,7 +701,7 @@ class BookingController {
         if ($oldBookingData["status"] === "Pending") {
             $this->bookingModel->updateBooking(
                 $bookingId, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, 
-                $stops, $total_cost, $balance, $trip_distances, $addresses, $base_cost, $diesel_cost, 
+                $new_stops, $total_cost, $balance, $trip_distances, $addresses, $base_cost, $diesel_cost, 
                 $base_rate, $diesel_price, $total_distance, $pickup_time
             );
 
@@ -710,6 +711,14 @@ class BookingController {
 
         $result = $this->bookingModel->requestRebooking($bookingId, $bookingId, $_SESSION["user_id"]);
         $this->logAudit('update', 'bookings', $bookingId, $oldBookingData, $newBookingData, $_SESSION["user_id"]);
+
+        if ($result["success"]) {
+            // Create notification for admin about rebooking
+            $user = $this->getUserInfo($_SESSION["user_id"]);
+            $user_name = $user["first_name"] . " " . $user["last_name"];
+            $notification_message = "Rebooking request from " . $user_name . " for booking #" . $bookingId;
+            $this->notificationModel->addNotification("rebooking_request", $notification_message, $bookingId);
+        }
 
         return [
             "success" => $result["success"],

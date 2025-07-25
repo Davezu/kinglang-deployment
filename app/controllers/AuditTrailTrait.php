@@ -29,7 +29,7 @@ trait AuditTrailTrait {
         try {
             $statement = $pdo->prepare("SELECT * FROM {$table} WHERE {$idColumn} = :id");
             $statement->execute([':id' => $id]);
-            return ($table == 'trip_distances') 
+            return ($table == 'trip_distances' | $table == 'booking_stops') 
                 ? $statement->fetchAll(PDO::FETCH_ASSOC) 
                 : $statement->fetch(PDO::FETCH_ASSOC) ?? [];
         } catch (PDOException $e) {

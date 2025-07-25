@@ -281,7 +281,7 @@ async function getRebookingRequests(status, order, column) {
         });
 
         const data = await response.json();
-        console.log(data);
+        console.log('Rebooking requests data:', data);
         if (data.success) {
             return data.requests;
         }
@@ -668,12 +668,39 @@ async function showBookingDetails(bookingId) {
     const changesTable = bookingDetailsContent.querySelector('#changesTable');
 
     for (const key in auditDetails.new_values) {
-        if (JSON.stringify(auditDetails.old_values[key]) == JSON.stringify(auditDetails.new_values[key])) {
-            continue; // Skip unchanged values
+        if (JSON.stringify(auditDetails.old_values[key]) == JSON.stringify(auditDetails.new_values[key])) continue; // Skip unchanged values
+        
+        if (key === 'booking_costs' || key === 'trip_distances' || key === 'addresses' || key === 'balance') continue; // Skip further processing for booking costs 
+        
+        if (key === 'date_of_tour' || key === 'end_of_tour') {
+            // Format date fields
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="fw-bold">${formatFieldName(key)}</td>
+                <td><span class="text-danger">${formatDate(auditDetails.old_values[key])}</span></td>
+                <td><span class="text-success">${formatDate(auditDetails.new_values[key])}</span></td>
+            `; 
+            changesTable.append(row);
+            continue;
         }
-        
-        if (key === 'booking_costs' || key === 'trip_distances' || key === 'addresses') continue; // Skip further processing for booking costs 
-        
+
+        if (key === 'stops') {
+            for (const stop of auditDetails.new_values[key]) {
+                const oldStop = auditDetails.old_values[key].find(s => s.booking_stops_id === stop.booking_stops_id);
+                if (oldStop && JSON.stringify(oldStop.location) == JSON.stringify(stop.location)) {
+                    continue; // Skip unchanged stops
+                }
+                
+                const row = $("<tr>");
+                row.append(`<td class="fw-bold">${formatFieldName(key)} (Stop ID: ${stop.booking_stops_id})</td>`);
+                row.append(`<td><span class="text-danger">${formatValue(oldStop.location || 'N/A')}</span></td>`);
+                row.append(`<td><span class="text-success">${formatValue(stop.location)}</span></td>`);
+                changesTable.append(row);
+                hasChanges = true;
+            }
+            continue;
+        }
+
         const row = document.createElement('tr');
         row.innerHTML = `
             <td class="fw-bold">${formatFieldName(key)}</td>
