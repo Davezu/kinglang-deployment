@@ -1677,19 +1677,19 @@ function openBookingDetailsModal(bookingId) {
                             </button>
                         ` : ''}
 
-                        ${["Pending", "Confirmed", "Processing"].includes(booking.status) ? `
+                        ${["Pending", "Confirmed"].includes(booking.status) ? `
                             <button class="btn btn-sm btn-outline-secondary edit-booking" data-booking-id="${booking.booking_id}">
                                 <i class="bi bi-pencil"></i> Edit Booking
                             </button>
                         ` : ''}
                         
-                        ${["Pending", "Confirmed", "Processing"].includes(booking.status) ? `
+                        ${["Pending", "Confirmed", "Processing", "Rebooking"].includes(booking.status) ? `
                             <button class="btn btn-sm btn-outline-danger cancel-booking" data-booking-id="${booking.booking_id}">
                                 <i class="bi bi-x-circle"></i> Cancel Booking
                             </button>
                         ` : ''}
 
-                        ${["Confirmed", "Processing", "Completed", "Canceled"].includes(booking.status) ? `
+                        ${["Confirmed", "Processing", "Completed", "Canceled", "Rebooking"].includes(booking.status) ? `
                             <button class="btn btn-sm btn-outline-success print-invoice" data-booking-id="${booking.booking_id}">
                                 <i class="bi bi-printer"></i> Print Invoice
                             </button>

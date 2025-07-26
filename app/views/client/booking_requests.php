@@ -252,6 +252,9 @@ require_client_auth(); // Use helper function
                         <button class="btn btn-sm btn-outline-info quick-filter" data-status="processing">
                             <i class="bi bi-arrow-repeat"></i> Processing
                         </button>
+                        <button class="btn btn-sm btn-outline-info quick-filter" data-status="rebooking">
+                            <i class="bi bi-arrow-repeat"></i> Rebooking
+                        </button>
                         <button class="btn btn-sm btn-outline-primary quick-filter" data-date="upcoming">
                             <i class="bi bi-calendar-check"></i> Upcoming
                         </button>

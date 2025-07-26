@@ -73,10 +73,6 @@ class Booking {
 
             $booking_id = $this->conn->lastInsertID(); // get the added booking id to insert it in booking buses table
 
-            // if ($is_rebooking) {
-            //     $this->requestRebooking($rebooking_id, $booking_id, $_SESSION["user_id"]);
-            // }
-
             $stmt = $this->conn->prepare("INSERT INTO booking_costs (booking_id, base_rate, base_cost, diesel_price, diesel_cost, total_cost, total_distance) VALUES (:booking_id, :base_rate, :base_cost, :diesel_price, :diesel_cost, :total_cost, :total_distance)");
             $stmt->execute([
                 ":booking_id" => $booking_id,
@@ -175,6 +171,9 @@ class Booking {
 
     public function requestRebooking($booking_id, $rebooking_id, $user_id) {
         try {
+            $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Rebooking' WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
+            
             $stmt = $this->conn->prepare("INSERT INTO rebooking_request (booking_id, rebooking_id, user_id) VALUES (:booking_id, :rebooking_id, :user_id)");
             $stmt->execute([":booking_id" => $booking_id, ":rebooking_id" => $rebooking_id, ":user_id" => $user_id]);
             return ["success" => true, "message" => "Rebooking request submitted successfully."];
@@ -293,7 +292,7 @@ class Booking {
     }
 
     public function getAllBookings($user_id, $status, $column, $order, $page = 1, $limit = 10, $search = "", $date_filter = null, $balance_filter = null) {
-        $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "processing", "all"];
+        $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "processing", "rebooking", "all"];
         $status = in_array($status, $allowed_status) ? $status : "all";
         
         // Build the status condition based on filter combinations
@@ -448,7 +447,7 @@ class Booking {
     }
     
     public function getBookingsCount($user_id, $status = "all") {
-        $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "processing", "all"];
+        $allowed_status = ["pending", "confirmed", "canceled", "rejected", "completed", "processing", "rebooking", "all"];
         $status = in_array($status, $allowed_status) ? $status : "all";
         $status_condition = $status === "all" ? "" : " AND status = '".ucfirst($status)."'";
         

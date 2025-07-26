@@ -341,6 +341,9 @@ require_once __DIR__ . "/../../controllers/admin/BookingManagementController.php
                         <button class="btn btn-sm btn-outline-info quick-filter" data-status="Processing">
                             <i class="bi bi-arrow-repeat"></i> Processing
                         </button>
+                        <button class="btn btn-sm btn-outline-info quick-filter" data-status="Rebooking">
+                            <i class="bi bi-arrow-repeat"></i> Rebooking
+                        </button>
                         <button class="btn btn-sm btn-outline-primary quick-filter" data-status="Upcoming">
                             <i class="bi bi-calendar-check"></i> Upcoming
                         </button>

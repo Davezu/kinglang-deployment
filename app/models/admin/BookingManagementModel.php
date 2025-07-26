@@ -17,7 +17,7 @@ class BookingManagementModel {
 
     public function getAllBookings($status, $column, $order, $page = 1, $limit = 10) {
 
-        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "Processing", "Upcoming", "All"];
+        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "Processing", "Upcoming", "Rebooking", "All"];
         $status = in_array($status, $allowed_status) ? $status : "";
         $status = ($status == "All") ? "" :
           (($status == "Confirmed") ? " AND b.status IN ('Confirmed', 'Processing')" :
@@ -74,7 +74,7 @@ class BookingManagementModel {
     }
 
     public function getTotalBookings($status) {
-        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
+        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "Rebooking", "All"];
         $status = in_array($status, $allowed_status) ? $status : "";
         $status == "All" ? $status = "" : $status = " AND b.status = '$status'";
 
@@ -1332,7 +1332,7 @@ class BookingManagementModel {
     
     // New method for searching bookings
     public function searchBookings($searchTerm, $status, $page = 1, $limit = 10) {
-        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "All"];
+        $allowed_status = ["Pending", "Confirmed", "Canceled", "Rejected", "Completed", "Rebooking", "All"];
         $status = in_array($status, $allowed_status) ? $status : "";
         $status_condition = ($status == "All") ? "" : " AND b.status = :status";
         
