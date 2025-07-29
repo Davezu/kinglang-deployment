@@ -169,13 +169,13 @@ class Booking {
         }
     }
 
-    public function requestRebooking($booking_id, $rebooking_id, $user_id) {
+    public function requestRebooking($booking_id, $user_id) {
         try {
             $stmt = $this->conn->prepare("UPDATE bookings SET status = 'Rebooking' WHERE booking_id = :booking_id");
             $stmt->execute([":booking_id" => $booking_id]);
             
-            $stmt = $this->conn->prepare("INSERT INTO rebooking_request (booking_id, rebooking_id, user_id) VALUES (:booking_id, :rebooking_id, :user_id)");
-            $stmt->execute([":booking_id" => $booking_id, ":rebooking_id" => $rebooking_id, ":user_id" => $user_id]);
+            $stmt = $this->conn->prepare("INSERT INTO rebooking_request (booking_id, user_id) VALUES (:booking_id, :user_id)");
+            $stmt->execute([":booking_id" => $booking_id, ":user_id" => $user_id]);
             return ["success" => true, "message" => "Rebooking request submitted successfully."];
         } catch (PDOException $e) {
             return "Databse error";
@@ -682,6 +682,7 @@ class Booking {
             $stmt->execute([":booking_id" => $rebooking_id]);
 
             // Insert new stops
+            $stops = is_array($stops) ? $stops : [];
             foreach ($stops as $index => $stop) {            
                 $stmt = $this->conn->prepare("INSERT INTO booking_stops (booking_id, location, stop_order) VALUES (:booking_id, :location, :stop_order)");
                 $stmt->execute([

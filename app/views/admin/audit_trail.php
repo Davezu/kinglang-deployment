@@ -866,6 +866,8 @@ $pageTitle = "Audit Trail Management";
                             if (key === 'booking_costs' || key === 'trip_distances' || key === 'addresses' || key === 'balance') continue;
                             
                             if (key === 'stops') {
+                                if (!Array.isArray(response.new_values[key]) || !Array.isArray(response.old_values[key])) continue; // Skip if stops are not arrays
+                                
                                 for (const stop of response.new_values[key]) {
                                     const oldStop = response.old_values[key].find(s => s.booking_stops_id === stop.booking_stops_id);
                                     if (oldStop && JSON.stringify(oldStop.location) == JSON.stringify(stop.location)) {
@@ -892,8 +894,8 @@ $pageTitle = "Audit Trail Management";
                     }
 
                     else if (response.action === 'update' && response.entity_type !== 'bookings' && response.old_values && response.new_values) {
-                        console.log("Old values: ", response.old_values);
-                        console.log("New values: ", response.new_values);   
+                        // console.log("Old values: ", response.old_values);
+                        // console.log("New values: ", response.new_values);   
                         for (const key in response.new_values) {
                             if (JSON.stringify(response.old_values[key]) == JSON.stringify(response.new_values[key])) {
                                 continue; // Skip unchanged values

@@ -237,7 +237,7 @@ class BookingManagementModel {
                 SELECT b.booking_id, r.request_id, r.status as rebooking_status, b.user_id, CONCAT(u.first_name, ' ', u.last_name) AS client_name, u.contact_number, u.email, b.destination, b.pickup_point, b.number_of_days, b.number_of_buses, r.status, b.payment_status, c.total_cost, b.balance, b.date_of_tour, b.end_of_tour
                 FROM rebooking_request r
                 JOIN users u ON r.user_id = u.user_id
-                JOIN bookings b ON r.rebooking_id = b.booking_id
+                JOIN bookings b ON r.booking_id = b.booking_id
                 JOIN booking_costs c ON r.booking_id = c.booking_id
                 $status
                 ORDER BY $column $order
@@ -250,10 +250,10 @@ class BookingManagementModel {
         }
     }
 
-    public function getBookingIdFromRebookingRequest($rebooking_id) {
+    public function getBookingIdFromRebookingRequest($booking_id) {
         try {
-            $stmt = $this->conn->prepare("SELECT booking_id FROM rebooking_request WHERE rebooking_id = :rebooking_id");
-            $stmt->execute([ ":rebooking_id" => $rebooking_id ]);
+            $stmt = $this->conn->prepare("SELECT booking_id FROM rebooking_request WHERE booking_id = :booking_id");
+            $stmt->execute([ ":booking_id" => $booking_id ]);
             $result = $stmt->fetchColumn();
             
             if ($result === false) {
@@ -277,11 +277,11 @@ class BookingManagementModel {
         }
     }
 
-    public function confirmRebookingRequest($rebooking_id, $discount = null, $discountType = null, $newBookingData = []) {
+    public function confirmRebookingRequest($booking_id, $discount = null, $discountType = null, $newBookingData = []) {
         try {
             // First, let's verify the rebooking request exists
-            $stmt = $this->conn->prepare("SELECT * FROM rebooking_request WHERE rebooking_id = :rebooking_id");
-            $stmt->execute([":rebooking_id" => $rebooking_id]);
+            $stmt = $this->conn->prepare("SELECT * FROM rebooking_request WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
             $request = $stmt->fetch(PDO::FETCH_ASSOC);
             
             if (!$request) {
@@ -296,11 +296,11 @@ class BookingManagementModel {
             }
             
             // Update rebooking request status
-            $stmt = $this->conn->prepare("UPDATE rebooking_request SET status = 'Confirmed' WHERE rebooking_id = :rebooking_id");
-            $stmt->execute([":rebooking_id" => $rebooking_id]);
+            $stmt = $this->conn->prepare("UPDATE rebooking_request SET status = 'Confirmed' WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
 
             $result = $this->updateBooking(
-                $rebooking_id, 
+                $booking_id, 
                 $newBookingData['date_of_tour'], 
                 $newBookingData['destination'], 
                 $newBookingData['pickup_point'], 
@@ -324,23 +324,11 @@ class BookingManagementModel {
                 return; // Return error if update failed
             }
 
-            // // Mark original booking as rebooked
-            // $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooked = 1 WHERE booking_id = :booking_id");
-            // $stmt->execute([":booking_id" => $booking_id]);
-
-            // // Update the rebooking record to be a normal booking
-            // $stmt = $this->conn->prepare("UPDATE bookings SET is_rebooking = 0, status = 'Confirmed', payment_deadline =  :payment_deadline WHERE booking_id = :booking_id");
-            // $stmt->execute([":booking_id" => $rebooking_id, ":payment_deadline" => date('Y-m-d H:i:s', strtotime('+2 days'))]);
-
-            // // Update payments booking_id to the new booking_id based on the rebooking_id
-            // $stmt = $this->conn->prepare("UPDATE payments SET booking_id = :rebooking_id WHERE booking_id = :booking_id");
-            // $stmt->execute([":rebooking_id" => $rebooking_id, ":booking_id" => $booking_id]);
-
             // Apply discount if provided
             if ($discount !== null && $discount > 0) {
                 // Get current booking cost
                 $stmt = $this->conn->prepare("SELECT total_cost FROM booking_costs WHERE booking_id = :booking_id");
-                $stmt->execute([":booking_id" => $rebooking_id]);
+                $stmt->execute([":booking_id" => $booking_id]);
                 $originalCost = (float)$stmt->fetchColumn();
                 
                 // Calculate new discounted cost based on discount type
@@ -366,7 +354,7 @@ class BookingManagementModel {
                     ":discount" => $discountValue,
                     ":discount_type" => $discountType,
                     ":discount_amount" => ($discountType === 'flat') ? $discount : null,
-                    ":booking_id" => $rebooking_id
+                    ":booking_id" => $booking_id
                 ]);
                 
                 // Use discounted cost for further calculations
@@ -374,13 +362,13 @@ class BookingManagementModel {
             } else {
                 // Get total cost for the new booking
                 $stmt = $this->conn->prepare("SELECT c.total_cost FROM booking_costs c WHERE c.booking_id = :booking_id");
-                $stmt->execute([":booking_id" => $rebooking_id]); 
+                $stmt->execute([":booking_id" => $booking_id]); 
                 $total_cost = (float)$stmt->fetchColumn();
             }
 
             // Get total paid amount from payments from the new booking
             $stmt = $this->conn->prepare("SELECT SUM(amount) AS total_paid FROM payments WHERE booking_id = :booking_id AND status = 'Confirmed'");
-            $stmt->execute([":booking_id" => $rebooking_id]);
+            $stmt->execute([":booking_id" => $booking_id]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $total_paid = isset($result["total_paid"]) ? $result["total_paid"] : 0;
 
@@ -402,20 +390,20 @@ class BookingManagementModel {
             $stmt = $this->conn->prepare("UPDATE bookings SET payment_status = :payment_status, status = 'Confirmed', balance = :balance, confirmed_at = NOW() WHERE booking_id = :booking_id");
             $stmt->execute([
                 ":payment_status" => $new_status,
-                ":booking_id" => $rebooking_id,
+                ":booking_id" => $booking_id,
                 ":balance" => $balance
             ]);
 
             // Get booking information
-            $bookingInfo = $this->getBooking($rebooking_id);
+            $bookingInfo = $this->getBooking($booking_id);
             
             // Add admin notification
             $message = "Rebooking confirmed for " . $bookingInfo['client_name'] . " to " . $bookingInfo['destination'];
-            $this->notificationModel->addNotification("rebooking_confirmed", $message, $rebooking_id);
+            $this->notificationModel->addNotification("rebooking_confirmed", $message, $booking_id);
             
             // Add client notification
             $clientMessage = "Your rebooking request for the trip to " . $bookingInfo['destination'] . " has been confirmed.";
-            $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "rebooking_confirmed", $clientMessage, $rebooking_id);
+            $this->clientNotificationModel->addNotification($bookingInfo['user_id'], "rebooking_confirmed", $clientMessage, $booking_id);
 
             return ["success" => true, "message" => "Rebooking request confirmed successfully."];
         } catch (PDOException $e) {
@@ -495,7 +483,7 @@ class BookingManagementModel {
     }
 
     public function updateBooking(
-        $rebooking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, 
+        $booking_id, $date_of_tour, $destination, $pickup_point, $number_of_days, $number_of_buses, $user_id, $stops, $total_cost, $balance, $trip_distances, $addresses, 
         $base_cost = null, $diesel_cost = null, $base_rate = null, $diesel_price = null, $total_distance = null, $pickup_time = null
     ) {
         $days = $number_of_days - 1;
@@ -526,7 +514,7 @@ class BookingManagementModel {
                 ":number_of_days" => $number_of_days,       
                 ":number_of_buses" => $number_of_buses,
                 ":balance" => $balance,
-                ":booking_id" => $rebooking_id,
+                ":booking_id" => $booking_id,
                 ":user_id" => $user_id
             ]);
 
@@ -539,19 +527,19 @@ class BookingManagementModel {
                 ":diesel_cost" => $diesel_cost,
                 ":total_cost" => $total_cost,
                 ":total_distance" => $total_distance,
-                ":booking_id" => $rebooking_id
+                ":booking_id" => $booking_id
             ]);
 
             // Delete existing stops
             $stmt = $this->conn->prepare("DELETE FROM booking_stops WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $rebooking_id]);
+            $stmt->execute([":booking_id" => $booking_id]);
 
             // Insert new stops
             $stops = is_array($stops) ? $stops : [];
             foreach ($stops as $index => $stop) {            
                 $stmt = $this->conn->prepare("INSERT INTO booking_stops (booking_id, location, stop_order) VALUES (:booking_id, :location, :stop_order)");
                 $stmt->execute([
-                    ":booking_id" => $rebooking_id,
+                    ":booking_id" => $booking_id,
                     ":location" => $stop["location"],
                     ":stop_order" => $index + 1
                 ]);
@@ -559,7 +547,7 @@ class BookingManagementModel {
 
             // Delete existing trip distances
             $stmt = $this->conn->prepare("DELETE FROM trip_distances WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $rebooking_id]);
+            $stmt->execute([":booking_id" => $booking_id]);
 
             // Insert new trip distances
             foreach ($trip_distances["rows"] as $i => $row) {
@@ -572,29 +560,29 @@ class BookingManagementModel {
                     ":origin" => $origin, 
                     ":destination" => $destination, 
                     ":distance" => $distance_value,     
-                    ":booking_id" => $rebooking_id
+                    ":booking_id" => $booking_id
                 ]);
             }
 
             // Delete existing booking buses
             $stmt = $this->conn->prepare("DELETE FROM booking_buses WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $rebooking_id]);
+            $stmt->execute([":booking_id" => $booking_id]);
 
             // Insert new booking buses
             foreach ($available_buses as $bus_id) {
                 $stmt = $this->conn->prepare("INSERT INTO booking_buses (booking_id, bus_id) VALUES (:booking_id, :bus_id)");
-                $stmt->execute([":booking_id" => $rebooking_id, ":bus_id" => $bus_id]);
+                $stmt->execute([":booking_id" => $booking_id, ":bus_id" => $bus_id]);
             }
             
             // Delete existing driver assignments
             $stmt = $this->conn->prepare("DELETE FROM booking_driver WHERE booking_id = :booking_id");
-            $stmt->execute([":booking_id" => $rebooking_id]);
+            $stmt->execute([":booking_id" => $booking_id]);
             
             // Assign new drivers
             foreach ($available_drivers as $index => $driver_id) {
                 if ($index >= $number_of_buses) break; // Only assign as many drivers as buses
                 $stmt = $this->conn->prepare("INSERT INTO booking_driver (booking_id, driver_id) VALUES (:booking_id, :driver_id)");
-                $stmt->execute([":booking_id" => $rebooking_id, ":driver_id" => $driver_id]);
+                $stmt->execute([":booking_id" => $booking_id, ":driver_id" => $driver_id]);
             }
 
             return ["success" => true, "message" => "Booking updated successfully."];
@@ -607,8 +595,8 @@ class BookingManagementModel {
         $type = "Rebooking";
         
         try {
-            $stmt = $this->conn->prepare("UPDATE rebooking_request SET status = 'Rejected' WHERE rebooking_id = :rebooking_id");
-            $stmt->execute([":rebooking_id" => $booking_id]);
+            $stmt = $this->conn->prepare("UPDATE rebooking_request SET status = 'Rejected' WHERE booking_id = :booking_id");
+            $stmt->execute([":booking_id" => $booking_id]);
 
             $stmt = $this->conn->prepare("INSERT INTO rejected_trips (reason, type, booking_id, user_id) VALUES (:reason, :type, :booking_id, :user_id)");
             $stmt->execute([

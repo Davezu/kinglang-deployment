@@ -709,7 +709,7 @@ class BookingController {
             return ["success" => true, "message" => "Booking updated successfully."];
         }
 
-        $result = $this->bookingModel->requestRebooking($bookingId, $bookingId, $_SESSION["user_id"]);
+        $result = $this->bookingModel->requestRebooking($bookingId, $_SESSION["user_id"]);
         $this->logAudit('update', 'bookings', $bookingId, $oldBookingData, $newBookingData, $_SESSION["user_id"]);
 
         if ($result["success"]) {

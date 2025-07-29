@@ -685,6 +685,8 @@ async function showBookingDetails(bookingId) {
         }
 
         if (key === 'stops') {
+            if (!Array.isArray(auditDetails.new_values[key]) || !Array.isArray(auditDetails.old_values[key])) continue; // Skip if stops are not arrays
+        
             for (const stop of auditDetails.new_values[key]) {
                 const oldStop = auditDetails.old_values[key].find(s => s.booking_stops_id === stop.booking_stops_id);
                 if (oldStop && JSON.stringify(oldStop.location) == JSON.stringify(stop.location)) {
