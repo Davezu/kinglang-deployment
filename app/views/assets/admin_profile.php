@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.success) {
                 if (data.unreadCount > 0) {
                     notificationBadge.style.display = 'block';
-                    notificationCount.textContent = data.unreadCount;
+                    notificationCount.textContent = (data.unreadCount > 9) ? '9+' : data.unreadCount;
                 } else {
                     notificationBadge.style.display = 'none';
                 }

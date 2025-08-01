@@ -266,8 +266,21 @@ class BookingManagementController {
             $booking_id = $data["bookingId"];
             $discount = isset($data["discount"]) ? (float)$data["discount"] : null;
             $discountType = isset($data["discountType"]) ? $data["discountType"] : null;
+            
+            $oldBookingData = $this->getEntityBeforeUpdate('bookings', 'booking_id', $booking_id);
+            $oldBookingCostData = $this->getEntityBeforeUpdate('booking_costs', 'booking_id', $booking_id);
+
+            foreach ($oldBookingCostData as $key => $value) {
+                if ($key === 'discount' || $key === 'discount_type') $oldBookingData[$key] = $value;
+                continue;
+            }
 
             $result = $this->bookingModel->confirmBooking($booking_id, $discount, $discountType);
+
+            $newBookingData = array_merge($oldBookingData ?: [], ['status' => 'Confirmed', 'discount' => $discount, 'discount_type' => $discountType]);
+            // Log the confirmation in the audit trail
+            $this->logAudit('update', 'bookings', $booking_id, $oldBookingData, $newBookingData, $_SESSION['admin_id']);
+
             header("Content-Type: application/json");
 
             echo json_encode([
@@ -280,16 +293,18 @@ class BookingManagementController {
     }
 
     public function rejectBooking() {
-        if (!isset($_POST['id']) || empty($_POST['id']) || !isset($_POST['reason']) || empty($_POST['reason'])) {
-            echo json_encode(['error' => 'Booking ID and reason are required.']);
+        $data = json_decode(file_get_contents("php://input"), true);
+        if (!$data || !isset($data['bookingId']) || !isset($data['reason'])) {
+            echo json_encode(['message' => 'Invalid request data.']);
             return;
         }
-        
-        $bookingId = $_POST['id'];
-        $reason = $_POST['reason'];
+
+        $bookingId = $data['bookingId'];
+        $reason = $data['reason'];
         
         // Get booking data before update for audit trail
         $oldBookingData = $this->getEntityBeforeUpdate('bookings', 'booking_id', $bookingId);
+        $oldBookingData['rejection_reason'] = "";
         
         try {
             global $pdo;
@@ -320,9 +335,7 @@ class BookingManagementController {
             $stmt->execute([$reason, $bookingId, $booking['user_id']]);
             
             // Get the updated booking data
-            $stmt = $pdo->prepare("SELECT * FROM bookings WHERE booking_id = ?");
-            $stmt->execute([$bookingId]);
-            $newBookingData = $stmt->fetch(PDO::FETCH_ASSOC);
+            $newBookingData = array_merge($oldBookingData ?: [], ['status' => 'Rejected', 'rejection_reason' => $reason]);
             
             // Create notification for admin
             $stmt = $pdo->prepare("
@@ -347,15 +360,15 @@ class BookingManagementController {
                 $bookingId, 
                 $oldBookingData, 
                 $newBookingData, 
-                ['rejection_reason' => $reason]
+                $_SESSION['admin_id']
             );
             
-            echo json_encode(['success' => 'Booking rejected successfully.']);
+            echo json_encode(['success' => true, 'message' => 'Booking rejected successfully.']);
             
         } catch (PDOException $e) {
             $pdo->rollBack();
             error_log("Error rejecting booking: " . $e->getMessage());
-            echo json_encode(['error' => 'Failed to reject booking. Please try again.']);
+            echo json_encode(['message' => 'Failed to reject booking. Please try again.']);
         }
     }
 

@@ -1321,6 +1321,7 @@ async function confirmBooking(bookingId, discount = null, discountType = null) {
 
 // New function to handle reject booking API call
 async function rejectBooking(bookingId, userId, reason) {
+    console.log("Rejecting booking:", bookingId, userId, reason);
     try {
         const response = await fetch("/admin/reject-booking", {
             method: "POST",
