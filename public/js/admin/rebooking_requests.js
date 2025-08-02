@@ -307,12 +307,14 @@ async function renderRebookingRequests(requests) {
     requests.forEach(request => {
         const row = document.createElement('tr');
         
+        const  bookingIdCell = document.createElement('td');
         const clientNameCell = document.createElement('td');
         const clientContactCell = document.createElement('td');
         const clientEmailCell = document.createElement("td");
         const dateOfTourCell = document.createElement('td');
         const statusCell = document.createElement('td');
 
+        bookingIdCell.textContent = request.booking_id;
         clientNameCell.textContent = request.client_name;
         clientNameCell.style.maxWidth = "120px";
         clientNameCell.style.overflow = "hidden";
@@ -344,7 +346,7 @@ async function renderRebookingRequests(requests) {
         };
         statusCell.className = statusClasses[request.status] || '';
 
-        row.append(clientNameCell, clientContactCell, clientEmailCell, dateOfTourCell, statusCell, createActionButtons(request));
+        row.append(bookingIdCell, clientNameCell, clientContactCell, clientEmailCell, dateOfTourCell, statusCell, createActionButtons(request));
         tbody.appendChild(row);
     });
 }

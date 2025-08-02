@@ -259,6 +259,10 @@
                     <i class="bi bi-person fs-5"></i>
                     <span class="menu-text">My Account</span>
                 </a>
+                <a href="/home/testimonials" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'testimonials' || basename($_SERVER["PHP_SELF"]) == 'testimonial' ? 'active' : ''; ?>">
+                    <i class="bi bi-star"></i>
+                    <span class="menu-text">Testimonials</span>  
+                </a>
                 <a href="#" class="sidebar-link <?= basename($_SERVER['PHP_SELF']) == '#' ? 'active' : '' ?>">
                     <i class="bi bi-chat-square-quote icon fs-5"></i>
                     <span class="menu-text">Feedback & Support</span>

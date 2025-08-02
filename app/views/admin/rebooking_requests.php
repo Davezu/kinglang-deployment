@@ -283,6 +283,9 @@
                 <table class="table table-hover border overflow-hidden rounded shadow-sm">
                     <thead>
                         <tr>
+                            <th class="sort" data-order="asc" data-column="booking_id">
+                                ID <span class="sort-icon">↑</span>
+                            </th>
                             <th class="sort" data-order="asc" data-column="client_name">
                                 Client Name <span class="sort-icon">↑</span>
                             </th>

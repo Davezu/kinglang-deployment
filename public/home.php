@@ -67,80 +67,11 @@ if (is_client_authenticated()) {
     <section class="testimonials">
         <div class="container">
             <h2 class="animate-on-scroll">Our service, their words.</h2>
-            <div class="testimonial-slider">
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>KingLang makes travel easy</h3>
-                    <p>KingLang makes the whole process very smooth and I trust the timeliness and updates on schedules.</p>
-                    <div class="testimonial-author">
-                        <p>Amanda Kaszuba, <span>2 hours ago</span></p>
-                    </div>
-                </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>KingLang bus perfect decisi</h3>
-                    <p>The seats, comfortability, WiFi, charging facility cleanliness and the driver was so professional!</p>
-                    <div class="testimonial-author">
-                        <p>Robert, <span>5 hours ago</span></p>
-                    </div>
-                </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                    <h3>Overall great experience</h3>
-                    <p>The code was not great & i would suggest they adding a help number ( not the call center) otherwise a good experience.</p>
-                    <div class="testimonial-author">
-                        <p>Kunal, <span>7 hours ago</span></p>
-                    </div>
-                </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>On time and efficient</h3>
-                    <p>On time and efficient! KingLang worked for me. Great price. I have used it in Quezon and would use it again.</p>
-                    <div class="testimonial-author">
-                        <p>Dylan Hynes, <span>7 hours ago</span></p>
-                    </div>
-                </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>In the first</h3>
-                    <p>Relaxing and no hassle driving experience with KingLang.</p>
-                    <div class="testimonial-author">
-                        <p>Hugh, <span>10 hours ago</span></p>
-                    </div>
-                </div>
+            <div class="testimonial-slider" id="testimonialSlider">
+                <!-- Dynamic testimonials will be loaded here -->
             </div>
             <div class="testimonial-summary animate-on-scroll">
-                <p>Rated <strong>4.4</strong> / 5 based on <strong>9,088</strong> reviews. Showing our 4 & 5 star reviews.</p>
+                <p id="testimonialSummary">Loading reviews...</p>
                 <div class="testimonial-controls">
                     <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
                     <button class="next-btn"><i class="fas fa-chevron-right"></i></button>

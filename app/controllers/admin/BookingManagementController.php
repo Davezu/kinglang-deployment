@@ -356,7 +356,7 @@ class BookingManagementController {
             // Log to audit trail
             $this->logAudit(
                 'update', 
-                'booking', 
+                'bookings', 
                 $bookingId, 
                 $oldBookingData, 
                 $newBookingData, 

@@ -5,6 +5,7 @@ $controllerClasses = [
         'AuthController' => __DIR__ . "/../app/controllers/client/AuthController.php",
         'BookingController' => __DIR__ . "/../app/controllers/client/BookingController.php",
         'NotificationsController' => __DIR__ . "/../app/controllers/client/NotificationsController.php",
+        'TestimonialController' => __DIR__ . "/../app/controllers/client/TestimonialController.php",
     ],
     'admin' => [
         'BookingManagementController' => __DIR__ . "/../app/controllers/admin/BookingManagementController.php",
@@ -18,6 +19,7 @@ $controllerClasses = [
         'BusManagementController' => __DIR__ . "/../app/controllers/admin/BusManagementController.php",
         'DriverManagementController' => __DIR__ . "/../app/controllers/admin/DriverManagementController.php",
         'BookingReviewReminderController' => __DIR__ . "/../app/controllers/admin/BookingReviewReminderController.php",
+        'TestimonialManagementController' => __DIR__ . "/../app/controllers/admin/TestimonialManagementController.php",
     ]
 ];
 
@@ -108,6 +110,33 @@ switch ($requestPath) {
         require_once $controllerClasses['client']['AuthController'];
         $controller = new ClientAuthController();
         $controller->updateClientPassword();
+        break;
+
+    // testimonials
+    case "/home/testimonials":
+        require_once $controllerClasses['client']['TestimonialController'];
+        $controller = new TestimonialController();
+        $controller->testimonialForm();
+        break;
+    case "/home/testimonials/submit":
+        require_once $controllerClasses['client']['TestimonialController'];
+        $controller = new TestimonialController();
+        $controller->submitTestimonial();
+        break;
+    case "/home/testimonials/eligible-bookings":
+        require_once $controllerClasses['client']['TestimonialController'];
+        $controller = new TestimonialController();
+        $controller->getEligibleBookings();
+        break;
+    case "/home/testimonials/my-reviews":
+        require_once $controllerClasses['client']['TestimonialController'];
+        $controller = new TestimonialController();
+        $controller->getUserTestimonials();
+        break;
+    case "/home/testimonials/public":
+        require_once $controllerClasses['client']['TestimonialController'];
+        $controller = new TestimonialController();
+        $controller->getApprovedTestimonials();
         break;
 
     // forgot password
@@ -822,6 +851,53 @@ switch ($requestPath) {
         require_once $controllerClasses['admin']['AuditTrailController'];
         $controller = new AuditTrailController();
         $controller->getAuditDetails();
+        break;
+
+    // Testimonial Management
+    case "/admin/testimonials":
+        require_once $controllerClasses['admin']['TestimonialManagementController'];
+        $controller = new TestimonialManagementController();
+        $controller->testimonialManagement();
+        break;
+    case "/admin/testimonials/list":
+        require_once $controllerClasses['admin']['TestimonialManagementController'];
+        $controller = new TestimonialManagementController();
+        $controller->getTestimonials();
+        break;
+    case "/admin/testimonials/stats":
+        require_once $controllerClasses['admin']['TestimonialManagementController'];
+        $controller = new TestimonialManagementController();
+        $controller->getStats();
+        break;
+    case "/admin/testimonials/approve":
+        require_once $controllerClasses['admin']['TestimonialManagementController'];
+        $controller = new TestimonialManagementController();
+        $controller->approveTestimonial();
+        break;
+    case "/admin/testimonials/reject":
+        require_once $controllerClasses['admin']['TestimonialManagementController'];
+        $controller = new TestimonialManagementController();
+        $controller->rejectTestimonial();
+        break;
+    case "/admin/testimonials/toggle-featured":
+        require_once $controllerClasses['admin']['TestimonialManagementController'];
+        $controller = new TestimonialManagementController();
+        $controller->toggleFeatured();
+        break;
+    case "/admin/testimonials/delete":
+        require_once $controllerClasses['admin']['TestimonialManagementController'];
+        $controller = new TestimonialManagementController();
+        $controller->deleteTestimonial();
+        break;
+    case "/admin/testimonials/bulk-action":
+        require_once $controllerClasses['admin']['TestimonialManagementController'];
+        $controller = new TestimonialManagementController();
+        $controller->bulkAction();
+        break;
+    case "/admin/testimonials/details":
+        require_once $controllerClasses['admin']['TestimonialManagementController'];
+        $controller = new TestimonialManagementController();
+        $controller->getTestimonialDetails();
         break;
     case "/admin/get-entity-history":
         require_once $controllerClasses['admin']['AuditTrailController'];
