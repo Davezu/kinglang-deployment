@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </td>
                     <td>
-                        <div>
+                        <div class="testimonial-preview">
                             <strong>${escapeHtml(testimonial.destination)}</strong><br>
                             <small class="text-muted">${formatDate(testimonial.date_of_tour)}</small>
                         </div>
@@ -185,8 +185,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </td>
                     <td>
                         <div class="actions-compact">
-                            <button class="btn btn-outline-info btn-sm" onclick="viewTestimonial(${testimonial.testimonial_id})" title="View Details">
-                                <i class="bi bi-eye"></i>
+                            <button class="btn btn-outline-primary btn-sm" onclick="viewTestimonial(${testimonial.testimonial_id})" title="View Details">
+                                <i class="bi bi-info-circle"></i>
                             </button>
                             ${!testimonial.is_approved ? `
                                 <button class="btn btn-outline-success btn-sm" onclick="approveTestimonial(${testimonial.testimonial_id})" title="Approve">
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <i class="bi bi-x-circle"></i>
                                 </button>` : ''}
                             ${testimonial.is_approved ? `
-                                <button class="btn btn-outline-primary btn-sm" onclick="toggleFeatured(${testimonial.testimonial_id})" title="${testimonial.is_featured ? 'Remove from Featured' : 'Make Featured'}">
+                                <button class="btn btn-outline-info btn-sm" onclick="toggleFeatured(${testimonial.testimonial_id})" title="${testimonial.is_featured ? 'Remove from Featured' : 'Make Featured'}">
                                     <i class="bi bi-star${testimonial.is_featured ? '-fill' : ''}"></i>
                                 </button>` : ''}
                             <button class="btn btn-outline-danger btn-sm" onclick="deleteTestimonial(${testimonial.testimonial_id})" title="Delete">
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getStatusBadge(testimonial) {
         if (testimonial.is_featured) {
-            return '<span class="badge featured-badge"><i class="bi bi-star-fill"></i> Featured</span>';
+            return '<span class="badge bg-info">Featured</span>';
         } else if (testimonial.is_approved) {
             return '<span class="badge bg-success">Approved</span>';
         } else {

@@ -193,10 +193,46 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                 </div>
             </div>
 
+            <div class="row g-3 mb-3">
+                <div class="col-xl-10">
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button class="btn btn-sm btn-outline-secondary quick-filter" data-status="all">
+                            <i class="bi bi-funnel"></i> All
+                        </button>
+                        <button class="btn btn-sm btn-outline-warning quick-filter" data-status="pending">
+                            <i class="bi bi-hourglass-split"></i> Pending
+                        </button>
+                        <button class="btn btn-sm btn-outline-success quick-filter" data-status="approved">
+                            <i class="bi bi-check-circle"></i> Approved
+                        </button>
+                        <button class="btn btn-sm btn-outline-info quick-filter" data-status="featured">
+                            <i class="bi bi-star"></i> Featured
+                        </button>
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="d-flex gap-2 justify-content-end">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-download"></i> Export
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" id="exportPDF"><i class="bi bi-file-pdf text-danger"></i> Export as PDF</a></li>
+                                <li><a class="dropdown-item" href="#" id="exportCSV"><i class="bi bi-file-spreadsheet text-success"></i> Export as CSV</a></li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-sm btn-outline-success" id="refreshBookings">
+                            <i class="bi bi-arrow-clockwise"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Filter Tabs -->
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
-                    <ul class="nav nav-tabs filter-tabs" id="statusTabs">
+                    
+                    <!-- <ul class="nav nav-tabs filter-tabs" id="statusTabs">
                         <li class="nav-item">
                             <a class="nav-link active" href="#" data-status="all">All Testimonials</a>
                         </li>
@@ -209,7 +245,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-status="featured">Featured</a>
                         </li>
-                    </ul>
+                    </ul> -->
 
                     <!-- Bulk Actions -->
                     <div class="bulk-actions" id="bulkActions">
