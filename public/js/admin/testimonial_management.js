@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadStats();
     loadTestimonials();
     setupEventListeners();
+    setupQuickFilters();    
 
     function setupEventListeners() {
         // Status filter tabs
@@ -65,6 +66,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
+    }
+
+    function setupQuickFilters() {
+        const quickFilterBtns = document.querySelectorAll(".quick-filter");
+
+        quickFilterBtns.forEach(button => {
+            button.addEventListener("click", function() {
+                // Remove active class from all buttons
+                quickFilterBtns.forEach(btn => btn.classList.remove("active"));
+
+                // Add active class to the clicked button
+                this.classList.add("active");   
+
+                // Hide no results message initially when switching filters
+                document.getElementById("noResultsFound").style.display = "none";
+
+                const status = this.getAttribute("data-status");
+                
+                if (status) {
+                    currentFilter = status;
+                    document.getElementById("statusSelect").value = status;
+                }
+                
+                // Load bookings with the new filter
+                loadBookings();
+            });
+        });
+    
     }
 
     async function loadStats() {
@@ -230,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             return '<span class="badge bg-warning text-dark">Pending</span>';
         }
-    }
+    }   
 
     function getRatingStars(rating) {
         let stars = '';
@@ -285,7 +314,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Global functions for button actions
     window.approveTestimonial = async function(testimonialId) {
-        if (!confirm('Are you sure you want to approve this testimonial?')) return;
+        // if (!confirm('Are you sure you want to approve this testimonial?')) return;
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: 'This testimonial will be approved!',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Yes, approve it!'
+        });
+
+        if (!result.isConfirmed) return;
 
         try {
             const response = await fetch('/admin/testimonials/approve', {
@@ -310,7 +350,18 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     window.rejectTestimonial = async function(testimonialId) {
-        if (!confirm('Are you sure you want to reject this testimonial?')) return;
+        // if (!confirm('Are you sure you want to reject this testimonial?')) return;
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: 'This testimonial will be rejected!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, reject it!'
+        });
+
+        if (!result.isConfirmed) return;
 
         try {
             const response = await fetch('/admin/testimonials/reject', {

@@ -257,7 +257,7 @@ class TestimonialManagementController {
                 'testimonial_ids' => implode(',', $testimonial_ids),
                 'action_time' => date('Y-m-d H:i:s')
             ];
-            $this->logAudit($auditAction, 'testimonial', null, null, $auditData, $_SESSION['user_id']);
+            $this->logAudit($auditAction, 'testimonial', null, null, $auditData, $_SESSION['admin_id']);
         }
 
         echo json_encode(['success' => $result, 'message' => $message]);

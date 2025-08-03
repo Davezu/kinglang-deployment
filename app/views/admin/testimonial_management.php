@@ -196,7 +196,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
             <div class="row g-3 mb-3">
                 <div class="col-xl-10">
                     <div class="d-flex gap-2 flex-wrap">
-                        <button class="btn btn-sm btn-outline-secondary quick-filter" data-status="all">
+                        <button class="btn btn-sm btn-outline-secondary quick-filter active" data-status="all">
                             <i class="bi bi-funnel"></i> All
                         </button>
                         <button class="btn btn-sm btn-outline-warning quick-filter" data-status="pending">
@@ -229,24 +229,8 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
             </div>
 
             <!-- Filter Tabs -->
-            <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                    
-                    <!-- <ul class="nav nav-tabs filter-tabs" id="statusTabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#" data-status="all">All Testimonials</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-status="pending">Pending</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-status="approved">Approved</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-status="featured">Featured</a>
-                        </li>
-                    </ul> -->
-
+            <div class="card border-0 shadow-sm p-0">
+                <div class="card-body p-0">
                     <!-- Bulk Actions -->
                     <div class="bulk-actions" id="bulkActions">
                         <div class="d-flex align-items-center justify-content-between">
@@ -266,7 +250,7 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
                     </div>
 
                     <!-- Testimonials Table -->
-                    <div class="table-responsive">
+                    <div class="table-responsive rounded">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -326,6 +310,10 @@ if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "Super Admin" && $_SESSI
 
     <script src="../../../public/js/assets/sidebar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
     <script src="/../../../public/js/admin/testimonial_management.js"></script>
+    <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
