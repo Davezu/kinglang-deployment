@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
-            "political",
+            "geocode",
             "locality",
-            "geocode"
+            "political"
          ]
       },
       {
@@ -87,52 +87,8 @@
          "types" : 
          [
             "geocode",
-            "political",
-            "locality"
-         ]
-      },
-      {
-         "description" : "Malapascua Island, Daanbantayan, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 3,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJL4V2qmDepzMRYzMNVDZ4I-k",
-         "reference" : "ChIJL4V2qmDepzMRYzMNVDZ4I-k",
-         "structured_formatting" : 
-         {
-            "main_text" : "Malapascua Island",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 3,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Daanbantayan, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Malapascua Island"
-            },
-            {
-               "offset" : 19,
-               "value" : "Daanbantayan"
-            },
-            {
-               "offset" : 33,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "establishment",
-            "natural_feature"
+            "locality",
+            "political"
          ]
       },
       {
@@ -179,10 +135,63 @@
          ],
          "types" : 
          [
-            "sublocality_level_1",
-            "political",
             "geocode",
-            "sublocality"
+            "political",
+            "sublocality",
+            "sublocality_level_1"
+         ]
+      },
+      {
+         "description" : "SM Mall of Asia, Seaside Boulevard, Pasay City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 3,
+               "offset" : 3
+            }
+         ],
+         "place_id" : "ChIJ144ohPzLlzMRmx9wLn0FQug",
+         "reference" : "ChIJ144ohPzLlzMRmx9wLn0FQug",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM Mall of Asia",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 3,
+                  "offset" : 3
+               }
+            ],
+            "secondary_text" : "Seaside Boulevard, Pasay City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM Mall of Asia"
+            },
+            {
+               "offset" : 17,
+               "value" : "Seaside Boulevard"
+            },
+            {
+               "offset" : 36,
+               "value" : "Pasay City"
+            },
+            {
+               "offset" : 48,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 62,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "shopping_mall"
          ]
       },
       {
@@ -230,9 +239,9 @@
          "types" : 
          [
             "geocode",
-            "sublocality_level_2",
+            "political",
             "sublocality",
-            "political"
+            "sublocality_level_2"
          ]
       }
    ],

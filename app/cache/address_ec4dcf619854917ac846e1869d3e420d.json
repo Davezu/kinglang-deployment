@@ -2,89 +2,41 @@
    "predictions" : 
    [
       {
-         "description" : "Maligaya Street, Quezon City, Metro Manila, Philippines",
+         "description" : "Bagumbong, Caloocan, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
-               "length" : 8,
+               "length" : 5,
                "offset" : 0
             }
          ],
-         "place_id" : "EjdNYWxpZ2F5YSBTdHJlZXQsIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJH4rYqGmwlzMR0a0YPRADHeESFAoSCXVz70IJupczEUA9CP7ZMppK",
-         "reference" : "EjdNYWxpZ2F5YSBTdHJlZXQsIFF1ZXpvbiBDaXR5LCBNZXRybyBNYW5pbGEsIFBoaWxpcHBpbmVzIi4qLAoUChIJH4rYqGmwlzMR0a0YPRADHeESFAoSCXVz70IJupczEUA9CP7ZMppK",
+         "place_id" : "ChIJ2Wa1asSxlzMRL1QQFgjeUdg",
+         "reference" : "ChIJ2Wa1asSxlzMRL1QQFgjeUdg",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya Street",
+            "main_text" : "Bagumbong",
             "main_text_matched_substrings" : 
             [
                {
-                  "length" : 8,
+                  "length" : 5,
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+            "secondary_text" : "Caloocan, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligaya Street"
+               "value" : "Bagumbong"
             },
             {
-               "offset" : 17,
-               "value" : "Quezon City"
+               "offset" : 11,
+               "value" : "Caloocan"
             },
             {
-               "offset" : 30,
+               "offset" : 21,
                "value" : "Metro Manila"
-            },
-            {
-               "offset" : 44,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "geocode",
-            "route"
-         ]
-      },
-      {
-         "description" : "Maligaya, Floridablanca, Pampanga, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 8,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJayQuR3dgljMR47dqXm20h94",
-         "reference" : "ChIJayQuR3dgljMR47dqXm20h94",
-         "structured_formatting" : 
-         {
-            "main_text" : "Maligaya",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 8,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Floridablanca, Pampanga, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Maligaya"
-            },
-            {
-               "offset" : 10,
-               "value" : "Floridablanca"
-            },
-            {
-               "offset" : 25,
-               "value" : "Pampanga"
             },
             {
                "offset" : 35,
@@ -100,76 +52,73 @@
          ]
       },
       {
-         "description" : "Maligaya Park, Novaliches, Quezon City, Metro Manila, Philippines",
+         "description" : "Bagumbayan, Taguig, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
-               "length" : 8,
+               "length" : 5,
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJqadJ8XixlzMRx007ulxb-vE",
-         "reference" : "ChIJqadJ8XixlzMRx007ulxb-vE",
+         "place_id" : "ChIJG_TYr6TPlzMRzLUEwj0YjtQ",
+         "reference" : "ChIJG_TYr6TPlzMRzLUEwj0YjtQ",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya Park",
+            "main_text" : "Bagumbayan",
             "main_text_matched_substrings" : 
             [
                {
-                  "length" : 8,
+                  "length" : 5,
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Novaliches, Quezon City, Metro Manila, Philippines"
+            "secondary_text" : "Taguig, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligaya Park"
+               "value" : "Bagumbayan"
             },
             {
-               "offset" : 15,
-               "value" : "Novaliches"
+               "offset" : 12,
+               "value" : "Taguig"
             },
             {
-               "offset" : 27,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 40,
+               "offset" : 20,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 54,
+               "offset" : 34,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest",
-            "university"
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
          ]
       },
       {
-         "description" : "Maligaya Elementary School, Quezon City, Metro Manila, Philippines",
+         "description" : "Bagumbayan, Quezon City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
-               "length" : 8,
+               "length" : 5,
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJLwgAQGmwlzMRcEuu63QHI6A",
-         "reference" : "ChIJLwgAQGmwlzMRcEuu63QHI6A",
+         "place_id" : "ChIJEWRA3By4lzMRjjjvC0asrrg",
+         "reference" : "ChIJEWRA3By4lzMRjjjvC0asrrg",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya Elementary School",
+            "main_text" : "Bagumbayan",
             "main_text_matched_substrings" : 
             [
                {
-                  "length" : 8,
+                  "length" : 5,
                   "offset" : 0
                }
             ],
@@ -179,67 +128,113 @@
          [
             {
                "offset" : 0,
-               "value" : "Maligaya Elementary School"
+               "value" : "Bagumbayan"
             },
             {
-               "offset" : 28,
+               "offset" : 12,
                "value" : "Quezon City"
             },
             {
-               "offset" : 41,
+               "offset" : 25,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 55,
+               "offset" : 39,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "establishment",
-            "point_of_interest",
-            "school"
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
          ]
       },
       {
-         "description" : "Maligaya, Tarlac City, Tarlac, Philippines",
+         "description" : "Bagumbayan, Sultan Kudarat, Philippines",
          "matched_substrings" : 
          [
             {
-               "length" : 8,
+               "length" : 5,
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
-         "reference" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
+         "place_id" : "ChIJw88_rCj-VzIRZYrCOsU17N4",
+         "reference" : "ChIJw88_rCj-VzIRZYrCOsU17N4",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya",
+            "main_text" : "Bagumbayan",
             "main_text_matched_substrings" : 
             [
                {
-                  "length" : 8,
+                  "length" : 5,
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Tarlac City, Tarlac, Philippines"
+            "secondary_text" : "Sultan Kudarat, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligaya"
+               "value" : "Bagumbayan"
             },
             {
-               "offset" : 10,
-               "value" : "Tarlac City"
+               "offset" : 12,
+               "value" : "Sultan Kudarat"
             },
             {
-               "offset" : 23,
-               "value" : "Tarlac"
+               "offset" : 28,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Bagumbayan, Santa Cruz, Laguna, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJLTyPyqbjlzMRrTakCI4-EZM",
+         "reference" : "ChIJLTyPyqbjlzMRrTakCI4-EZM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bagumbayan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Cruz, Laguna, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bagumbayan"
             },
             {
-               "offset" : 31,
+               "offset" : 12,
+               "value" : "Santa Cruz"
+            },
+            {
+               "offset" : 24,
+               "value" : "Laguna"
+            },
+            {
+               "offset" : 32,
                "value" : "Philippines"
             }
          ],

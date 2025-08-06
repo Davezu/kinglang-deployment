@@ -45,8 +45,58 @@
          ],
          "types" : 
          [
-            "route",
-            "geocode"
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Maligaya, Floridablanca, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJayQuR3dgljMR47dqXm20h94",
+         "reference" : "ChIJayQuR3dgljMR47dqXm20h94",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Floridablanca, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya"
+            },
+            {
+               "offset" : 10,
+               "value" : "Floridablanca"
+            },
+            {
+               "offset" : 25,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
          ]
       },
       {
@@ -97,59 +147,9 @@
          ],
          "types" : 
          [
-            "university",
             "establishment",
-            "point_of_interest"
-         ]
-      },
-      {
-         "description" : "Maligaya, Tarlac City, Tarlac, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 6,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
-         "reference" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
-         "structured_formatting" : 
-         {
-            "main_text" : "Maligaya",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 6,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Tarlac City, Tarlac, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Maligaya"
-            },
-            {
-               "offset" : 10,
-               "value" : "Tarlac City"
-            },
-            {
-               "offset" : 23,
-               "value" : "Tarlac"
-            },
-            {
-               "offset" : 31,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "sublocality_level_2",
-            "sublocality",
-            "political",
-            "geocode"
+            "point_of_interest",
+            "university"
          ]
       },
       {
@@ -197,12 +197,12 @@
          "types" : 
          [
             "establishment",
-            "school",
-            "point_of_interest"
+            "point_of_interest",
+            "school"
          ]
       },
       {
-         "description" : "Maligaya High School, Ilang-ilang, Novaliches, Quezon City, Metro Manila, Philippines",
+         "description" : "Maligaya, Tarlac City, Tarlac, Philippines",
          "matched_substrings" : 
          [
             {
@@ -210,11 +210,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJs3bpG22wlzMRl3S7WrZuvOI",
-         "reference" : "ChIJs3bpG22wlzMRl3S7WrZuvOI",
+         "place_id" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
+         "reference" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya High School",
+            "main_text" : "Maligaya",
             "main_text_matched_substrings" : 
             [
                {
@@ -222,41 +222,33 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Ilang-ilang, Novaliches, Quezon City, Metro Manila, Philippines"
+            "secondary_text" : "Tarlac City, Tarlac, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligaya High School"
+               "value" : "Maligaya"
             },
             {
-               "offset" : 22,
-               "value" : "Ilang-ilang"
+               "offset" : 10,
+               "value" : "Tarlac City"
             },
             {
-               "offset" : 35,
-               "value" : "Novaliches"
+               "offset" : 23,
+               "value" : "Tarlac"
             },
             {
-               "offset" : 47,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 60,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 74,
+               "offset" : 31,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "establishment",
-            "secondary_school",
-            "school",
-            "point_of_interest"
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
          ]
       }
    ],

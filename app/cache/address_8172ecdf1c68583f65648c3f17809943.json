@@ -6,7 +6,7 @@
          "matched_substrings" : 
          [
             {
-               "length" : 8,
+               "length" : 14,
                "offset" : 0
             }
          ],
@@ -18,7 +18,7 @@
             "main_text_matched_substrings" : 
             [
                {
-                  "length" : 8,
+                  "length" : 14,
                   "offset" : 0
                }
             ],
@@ -50,205 +50,195 @@
          ]
       },
       {
-         "description" : "Maligaya, Floridablanca, Pampanga, Philippines",
+         "description" : "Maligaya Street, Angeles, Pampanga, Philippines",
          "matched_substrings" : 
          [
             {
-               "length" : 8,
+               "length" : 14,
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJayQuR3dgljMR47dqXm20h94",
-         "reference" : "ChIJayQuR3dgljMR47dqXm20h94",
+         "place_id" : "Ei9NYWxpZ2F5YSBTdHJlZXQsIEFuZ2VsZXMsIFBhbXBhbmdhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCSG8zYFU8pYzEWh6d7D5Clv2EhQKEgkf5tLuhvKWMxE2tNmKJILtPQ",
+         "reference" : "Ei9NYWxpZ2F5YSBTdHJlZXQsIEFuZ2VsZXMsIFBhbXBhbmdhLCBQaGlsaXBwaW5lcyIuKiwKFAoSCSG8zYFU8pYzEWh6d7D5Clv2EhQKEgkf5tLuhvKWMxE2tNmKJILtPQ",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya",
+            "main_text" : "Maligaya Street",
             "main_text_matched_substrings" : 
             [
                {
-                  "length" : 8,
+                  "length" : 14,
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Floridablanca, Pampanga, Philippines"
+            "secondary_text" : "Angeles, Pampanga, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligaya"
+               "value" : "Maligaya Street"
             },
             {
-               "offset" : 10,
-               "value" : "Floridablanca"
+               "offset" : 17,
+               "value" : "Angeles"
             },
             {
-               "offset" : 25,
+               "offset" : 26,
                "value" : "Pampanga"
             },
             {
-               "offset" : 35,
+               "offset" : 36,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
             "geocode",
-            "political",
-            "sublocality",
-            "sublocality_level_2"
+            "route"
          ]
       },
       {
-         "description" : "Maligaya Park, Novaliches, Quezon City, Metro Manila, Philippines",
+         "description" : "Maligaya Street, Dagupan City, Pangasinan, Philippines",
          "matched_substrings" : 
          [
             {
-               "length" : 8,
+               "length" : 14,
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJqadJ8XixlzMRx007ulxb-vE",
-         "reference" : "ChIJqadJ8XixlzMRx007ulxb-vE",
+         "place_id" : "EjZNYWxpZ2F5YSBTdHJlZXQsIERhZ3VwYW4gQ2l0eSwgUGFuZ2FzaW5hbiwgUGhpbGlwcGluZXMiLiosChQKEgmTUflVfGiRMxGT-eVS-3PeghIUChIJBbMyrVZdkTMRSgX1YBlBdBs",
+         "reference" : "EjZNYWxpZ2F5YSBTdHJlZXQsIERhZ3VwYW4gQ2l0eSwgUGFuZ2FzaW5hbiwgUGhpbGlwcGluZXMiLiosChQKEgmTUflVfGiRMxGT-eVS-3PeghIUChIJBbMyrVZdkTMRSgX1YBlBdBs",
          "structured_formatting" : 
          {
-            "main_text" : "Maligaya Park",
+            "main_text" : "Maligaya Street",
             "main_text_matched_substrings" : 
             [
                {
-                  "length" : 8,
+                  "length" : 14,
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Novaliches, Quezon City, Metro Manila, Philippines"
+            "secondary_text" : "Dagupan City, Pangasinan, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligaya Park"
+               "value" : "Maligaya Street"
             },
             {
-               "offset" : 15,
-               "value" : "Novaliches"
-            },
-            {
-               "offset" : 27,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 40,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 54,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "establishment",
-            "point_of_interest",
-            "university"
-         ]
-      },
-      {
-         "description" : "Maligaya Elementary School, Quezon City, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 8,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJLwgAQGmwlzMRcEuu63QHI6A",
-         "reference" : "ChIJLwgAQGmwlzMRcEuu63QHI6A",
-         "structured_formatting" : 
-         {
-            "main_text" : "Maligaya Elementary School",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 8,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Quezon City, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Maligaya Elementary School"
-            },
-            {
-               "offset" : 28,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 41,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 55,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "establishment",
-            "point_of_interest",
-            "school"
-         ]
-      },
-      {
-         "description" : "Maligaya, Tarlac City, Tarlac, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 8,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
-         "reference" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
-         "structured_formatting" : 
-         {
-            "main_text" : "Maligaya",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 8,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Tarlac City, Tarlac, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Maligaya"
-            },
-            {
-               "offset" : 10,
-               "value" : "Tarlac City"
-            },
-            {
-               "offset" : 23,
-               "value" : "Tarlac"
+               "offset" : 17,
+               "value" : "Dagupan City"
             },
             {
                "offset" : 31,
+               "value" : "Pangasinan"
+            },
+            {
+               "offset" : 43,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
             "geocode",
-            "political",
-            "sublocality",
-            "sublocality_level_2"
+            "route"
+         ]
+      },
+      {
+         "description" : "Maligaya Street, San Fernando, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjRNYWxpZ2F5YSBTdHJlZXQsIFNhbiBGZXJuYW5kbywgUGFtcGFuZ2EsIFBoaWxpcHBpbmVzIi4qLAoUChIJHdIeEy7xljMRzPOgOALgmBASFAoSCduqqEef95YzESqSgdvd4Uss",
+         "reference" : "EjRNYWxpZ2F5YSBTdHJlZXQsIFNhbiBGZXJuYW5kbywgUGFtcGFuZ2EsIFBoaWxpcHBpbmVzIi4qLAoUChIJHdIeEy7xljMRzPOgOALgmBASFAoSCduqqEef95YzESqSgdvd4Uss",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "San Fernando, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya Street"
+            },
+            {
+               "offset" : 17,
+               "value" : "San Fernando"
+            },
+            {
+               "offset" : 31,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Maligaya Street, Santa Maria, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "EjJNYWxpZ2F5YSBTdHJlZXQsIFNhbnRhIE1hcmlhLCBCdWxhY2FuLCBQaGlsaXBwaW5lcyIuKiwKFAoSCRWVR8JQqZczEfo-ME9CZeWNEhQKEglfpSesIqyXMxHQDVw8ZBGGSg",
+         "reference" : "EjJNYWxpZ2F5YSBTdHJlZXQsIFNhbnRhIE1hcmlhLCBCdWxhY2FuLCBQaGlsaXBwaW5lcyIuKiwKFAoSCRWVR8JQqZczEfo-ME9CZeWNEhQKEglfpSesIqyXMxHQDVw8ZBGGSg",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya Street",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Santa Maria, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya Street"
+            },
+            {
+               "offset" : 17,
+               "value" : "Santa Maria"
+            },
+            {
+               "offset" : 30,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 39,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "route"
          ]
       }
    ],

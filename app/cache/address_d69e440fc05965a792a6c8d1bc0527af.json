@@ -97,13 +97,13 @@
          ],
          "types" : 
          [
-            "university",
+            "establishment",
             "point_of_interest",
-            "establishment"
+            "university"
          ]
       },
       {
-         "description" : "Maligaya, Tarlac City, Tarlac, Philippines",
+         "description" : "Maligaya, Floridablanca, Pampanga, Philippines",
          "matched_substrings" : 
          [
             {
@@ -111,8 +111,8 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
-         "reference" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
+         "place_id" : "ChIJayQuR3dgljMR47dqXm20h94",
+         "reference" : "ChIJayQuR3dgljMR47dqXm20h94",
          "structured_formatting" : 
          {
             "main_text" : "Maligaya",
@@ -123,7 +123,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Tarlac City, Tarlac, Philippines"
+            "secondary_text" : "Floridablanca, Pampanga, Philippines"
          },
          "terms" : 
          [
@@ -133,21 +133,21 @@
             },
             {
                "offset" : 10,
-               "value" : "Tarlac City"
+               "value" : "Floridablanca"
             },
             {
-               "offset" : 23,
-               "value" : "Tarlac"
+               "offset" : 25,
+               "value" : "Pampanga"
             },
             {
-               "offset" : 31,
+               "offset" : 35,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "political",
             "geocode",
+            "political",
             "sublocality",
             "sublocality_level_2"
          ]
@@ -196,13 +196,13 @@
          ],
          "types" : 
          [
-            "school",
+            "establishment",
             "point_of_interest",
-            "establishment"
+            "school"
          ]
       },
       {
-         "description" : "Maligcong Rice Terraces, Bontoc, Mountain Province, Philippines",
+         "description" : "Maligaya, Tarlac City, Tarlac, Philippines",
          "matched_substrings" : 
          [
             {
@@ -210,11 +210,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJzTVicuTNjzMRFkk8Knd9mWQ",
-         "reference" : "ChIJzTVicuTNjzMRFkk8Knd9mWQ",
+         "place_id" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
+         "reference" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
          "structured_formatting" : 
          {
-            "main_text" : "Maligcong Rice Terraces",
+            "main_text" : "Maligaya",
             "main_text_matched_substrings" : 
             [
                {
@@ -222,31 +222,33 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Bontoc, Mountain Province, Philippines"
+            "secondary_text" : "Tarlac City, Tarlac, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Maligcong Rice Terraces"
+               "value" : "Maligaya"
             },
             {
-               "offset" : 25,
-               "value" : "Bontoc"
+               "offset" : 10,
+               "value" : "Tarlac City"
             },
             {
-               "offset" : 33,
-               "value" : "Mountain Province"
+               "offset" : 23,
+               "value" : "Tarlac"
             },
             {
-               "offset" : 52,
+               "offset" : 31,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "establishment",
-            "natural_feature"
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
          ]
       }
    ],

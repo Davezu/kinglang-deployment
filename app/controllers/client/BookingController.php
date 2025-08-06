@@ -21,7 +21,7 @@ class BookingController {
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json");
 
-        $apiKey = "AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs";
+        $apiKey = "AIzaSyABxRtbMl6Yo1T3na9GbH3bW6GobHmZ_1Q";
 
         $input = json_decode(file_get_contents("php://input"), true);
 
@@ -85,7 +85,7 @@ class BookingController {
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json");
     
-        $apiKey = "AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs";
+        $apiKey = "AIzaSyABxRtbMl6Yo1T3na9GbH3bW6GobHmZ_1Q";
     
         $input = json_decode(file_get_contents("php://input"), true);
         $stops = $input["stops"] ?? [];
@@ -215,7 +215,7 @@ class BookingController {
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json");
 
-        $apiKey = "AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs";
+        $apiKey = "AIzaSyABxRtbMl6Yo1T3na9GbH3bW6GobHmZ_1Q";
 
         $input = json_decode(file_get_contents("php://input"), true);
 
