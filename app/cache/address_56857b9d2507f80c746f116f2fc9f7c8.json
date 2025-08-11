@@ -1,0 +1,266 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            },
+            {
+               "length" : 7,
+               "offset" : 9
+            }
+         ],
+         "place_id" : "ChIJQ3ee3IqylzMRNLO6UhTLb88",
+         "reference" : "ChIJQ3ee3IqylzMRNLO6UhTLb88",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marilao",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Bulacan, Philippines",
+            "secondary_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ]
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 9,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 18,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Marilao bulacan, Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJewduPQCzlzMR6QCVAq4tpEY",
+         "reference" : "ChIJewduPQCzlzMR6QCVAq4tpEY",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marilao bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marilao, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marilao bulacan"
+            },
+            {
+               "offset" : 17,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 26,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "cafe",
+            "establishment",
+            "food",
+            "point_of_interest",
+            "store"
+         ]
+      },
+      {
+         "description" : "Marilao Bulacan Fire Station, MacArthur Highway, Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJxWrXVkOylzMRYb982bZhxys",
+         "reference" : "ChIJxWrXVkOylzMRYb982bZhxys",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marilao Bulacan Fire Station",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "MacArthur Highway, Marilao, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marilao Bulacan Fire Station"
+            },
+            {
+               "offset" : 30,
+               "value" : "MacArthur Highway"
+            },
+            {
+               "offset" : 49,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 58,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 67,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "fire_station",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "LTO - Marilao Bulacan, Batongbakal, Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 6
+            }
+         ],
+         "place_id" : "ChIJ16__WQCzlzMRfAKjdEJ1SfY",
+         "reference" : "ChIJ16__WQCzlzMRfAKjdEJ1SfY",
+         "structured_formatting" : 
+         {
+            "main_text" : "LTO - Marilao Bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 6
+               }
+            ],
+            "secondary_text" : "Batongbakal, Marilao, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "LTO - Marilao Bulacan"
+            },
+            {
+               "offset" : 23,
+               "value" : "Batongbakal"
+            },
+            {
+               "offset" : 36,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 45,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 54,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Lambakin marilao bulacan, Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 15,
+               "offset" : 9
+            }
+         ],
+         "place_id" : "ChIJR1TCglKtlzMR7Y3XYUctuS4",
+         "reference" : "ChIJR1TCglKtlzMR7Y3XYUctuS4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Lambakin marilao bulacan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 15,
+                  "offset" : 9
+               }
+            ],
+            "secondary_text" : "Marilao, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Lambakin marilao bulacan"
+            },
+            {
+               "offset" : 26,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 35,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

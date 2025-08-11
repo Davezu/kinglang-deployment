@@ -1,13 +1,13 @@
 {
    "destination_addresses" : 
    [
-      "295-B, Purok 4, M. L. Quezon Ave, Lower Bicutan, Taguig, 1632 Metro Manila, Philippines",
+      "Malipaka Street, Quezon City, Metro Manila, Philippines",
       "Quirino Hwy, Philippines"
    ],
    "origin_addresses" : 
    [
       "Quirino Hwy, Philippines",
-      "295-B, Purok 4, M. L. Quezon Ave, Lower Bicutan, Taguig, 1632 Metro Manila, Philippines"
+      "Malipaka Street, Quezon City, Metro Manila, Philippines"
    ],
    "rows" : 
    [
@@ -17,13 +17,13 @@
             {
                "distance" : 
                {
-                  "text" : "55.9 km",
-                  "value" : 55869
+                  "text" : "10.9 km",
+                  "value" : 10944
                },
                "duration" : 
                {
-                  "text" : "1 hour 39 mins",
-                  "value" : 5911
+                  "text" : "30 mins",
+                  "value" : 1811
                },
                "status" : "OK"
             },
@@ -61,13 +61,13 @@
             {
                "distance" : 
                {
-                  "text" : "46.5 km",
-                  "value" : 46451
+                  "text" : "9.1 km",
+                  "value" : 9143
                },
                "duration" : 
                {
-                  "text" : "1 hour 37 mins",
-                  "value" : 5790
+                  "text" : "27 mins",
+                  "value" : 1643
                },
                "status" : "OK"
             }

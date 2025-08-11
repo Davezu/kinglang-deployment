@@ -50,6 +50,56 @@
          ]
       },
       {
+         "description" : "Maligaya, Floridablanca, Pampanga, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJayQuR3dgljMR47dqXm20h94",
+         "reference" : "ChIJayQuR3dgljMR47dqXm20h94",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Floridablanca, Pampanga, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya"
+            },
+            {
+               "offset" : 10,
+               "value" : "Floridablanca"
+            },
+            {
+               "offset" : 25,
+               "value" : "Pampanga"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
+         ]
+      },
+      {
          "description" : "Maligaya Park, Novaliches, Quezon City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
@@ -103,56 +153,6 @@
          ]
       },
       {
-         "description" : "Maligaya, Tarlac City, Tarlac, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 8,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
-         "reference" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
-         "structured_formatting" : 
-         {
-            "main_text" : "Maligaya",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 8,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Tarlac City, Tarlac, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Maligaya"
-            },
-            {
-               "offset" : 10,
-               "value" : "Tarlac City"
-            },
-            {
-               "offset" : 23,
-               "value" : "Tarlac"
-            },
-            {
-               "offset" : 31,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "sublocality",
-            "geocode",
-            "sublocality_level_2",
-            "political"
-         ]
-      },
-      {
          "description" : "Maligaya Elementary School, Quezon City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
@@ -196,13 +196,13 @@
          ],
          "types" : 
          [
-            "school",
+            "establishment",
             "point_of_interest",
-            "establishment"
+            "school"
          ]
       },
       {
-         "description" : "Maligaya, Rizal, Nueva Ecija, Philippines",
+         "description" : "Maligaya, Tarlac City, Tarlac, Philippines",
          "matched_substrings" : 
          [
             {
@@ -210,8 +210,8 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJuUPa_1vSkDMRSMAke8EHy44",
-         "reference" : "ChIJuUPa_1vSkDMRSMAke8EHy44",
+         "place_id" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
+         "reference" : "ChIJhY2iZCjEljMRlZRKqSwLlGA",
          "structured_formatting" : 
          {
             "main_text" : "Maligaya",
@@ -222,7 +222,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Rizal, Nueva Ecija, Philippines"
+            "secondary_text" : "Tarlac City, Tarlac, Philippines"
          },
          "terms" : 
          [
@@ -232,23 +232,23 @@
             },
             {
                "offset" : 10,
-               "value" : "Rizal"
+               "value" : "Tarlac City"
             },
             {
-               "offset" : 17,
-               "value" : "Nueva Ecija"
+               "offset" : 23,
+               "value" : "Tarlac"
             },
             {
-               "offset" : 30,
+               "offset" : 31,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "sublocality",
             "geocode",
-            "sublocality_level_2",
-            "political"
+            "political",
+            "sublocality",
+            "sublocality_level_2"
          ]
       }
    ],

@@ -194,7 +194,7 @@ if (!isset($_SESSION["user_id"])) {
     <script src="../../../public/js/jquery/jquery-3.6.4.min.js"></script>
     <script src="../../../public/js/client/booking.js"></script>
     <script src="../../../public/js/assets/sidebar.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASHotkPROmUL_mheV_L9zXarFIuRAIMRs&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABxRtbMl6Yo1T3na9GbH3bW6GobHmZ_1Q&callback=initMap" async defer></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 

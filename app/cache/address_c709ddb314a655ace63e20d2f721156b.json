@@ -2,7 +2,7 @@
    "predictions" : 
    [
       {
-         "description" : "KingLang Tours and Transport Services Inc., M. L. Quezon Avenue, Lower Bicutan, Taguig City, Metro Manila, Philippines",
+         "description" : "KingLang Tours and Transport Services Inc., M. L. Quezon Avenue, Lower Bicutan, Taguig, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -22,7 +22,7 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "M. L. Quezon Avenue, Lower Bicutan, Taguig City, Metro Manila, Philippines"
+            "secondary_text" : "M. L. Quezon Avenue, Lower Bicutan, Taguig, Metro Manila, Philippines"
          },
          "terms" : 
          [
@@ -40,14 +40,14 @@
             },
             {
                "offset" : 80,
-               "value" : "Taguig City"
+               "value" : "Taguig"
             },
             {
-               "offset" : 93,
+               "offset" : 88,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 107,
+               "offset" : 102,
                "value" : "Philippines"
             }
          ],
@@ -106,12 +106,12 @@
          "types" : 
          [
             "establishment",
-            "point_of_interest",
-            "food"
+            "food",
+            "point_of_interest"
          ]
       },
       {
-         "description" : "Dairy Kings & Ice Creme Deluxe, San Pedro, Laguna, Philippines",
+         "description" : "Three Kings Safari Purifies Drinking Water, Candon City, Ilocos Sur, Philippines",
          "matched_substrings" : 
          [
             {
@@ -119,11 +119,11 @@
                "offset" : 6
             }
          ],
-         "place_id" : "ChIJb57iQe7WlzMRD4v5dFlWtvI",
-         "reference" : "ChIJb57iQe7WlzMRD4v5dFlWtvI",
+         "place_id" : "ChIJBdYvxkAXjjMRj5WrjrSkmxI",
+         "reference" : "ChIJBdYvxkAXjjMRj5WrjrSkmxI",
          "structured_formatting" : 
          {
-            "main_text" : "Dairy Kings & Ice Creme Deluxe",
+            "main_text" : "Three Kings Safari Purifies Drinking Water",
             "main_text_matched_substrings" : 
             [
                {
@@ -131,33 +131,32 @@
                   "offset" : 6
                }
             ],
-            "secondary_text" : "San Pedro, Laguna, Philippines"
+            "secondary_text" : "Candon City, Ilocos Sur, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Dairy Kings & Ice Creme Deluxe"
+               "value" : "Three Kings Safari Purifies Drinking Water"
             },
             {
-               "offset" : 32,
-               "value" : "San Pedro"
+               "offset" : 44,
+               "value" : "Candon City"
             },
             {
-               "offset" : 43,
-               "value" : "Laguna"
+               "offset" : 57,
+               "value" : "Ilocos Sur"
             },
             {
-               "offset" : 51,
+               "offset" : 69,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "food",
             "establishment",
-            "point_of_interest",
-            "store"
+            "food",
+            "point_of_interest"
          ]
       },
       {
@@ -208,10 +207,10 @@
          ],
          "types" : 
          [
-            "point_of_interest",
-            "restaurant",
             "establishment",
-            "food"
+            "food",
+            "point_of_interest",
+            "restaurant"
          ]
       },
       {

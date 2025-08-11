@@ -1,13 +1,13 @@
 {
    "destination_addresses" : 
    [
-      "295-B, Purok 4, M. L. Quezon Ave, Lower Bicutan, Taguig, 1632 Metro Manila, Philippines",
-      "Quirino Hwy, Philippines"
+      "Marilao, Bulacan, Philippines",
+      "2 Quirino Hwy, Novaliches, Quezon City, Metro Manila, Philippines"
    ],
    "origin_addresses" : 
    [
-      "Quirino Hwy, Philippines",
-      "295-B, Purok 4, M. L. Quezon Ave, Lower Bicutan, Taguig, 1632 Metro Manila, Philippines"
+      "2 Quirino Hwy, Novaliches, Quezon City, Metro Manila, Philippines",
+      "Marilao, Bulacan, Philippines"
    ],
    "rows" : 
    [
@@ -17,13 +17,13 @@
             {
                "distance" : 
                {
-                  "text" : "55.9 km",
-                  "value" : 55869
+                  "text" : "18.1 km",
+                  "value" : 18061
                },
                "duration" : 
                {
-                  "text" : "1 hour 39 mins",
-                  "value" : 5911
+                  "text" : "42 mins",
+                  "value" : 2519
                },
                "status" : "OK"
             },
@@ -61,13 +61,13 @@
             {
                "distance" : 
                {
-                  "text" : "46.5 km",
-                  "value" : 46451
+                  "text" : "19.0 km",
+                  "value" : 18992
                },
                "duration" : 
                {
-                  "text" : "1 hour 37 mins",
-                  "value" : 5790
+                  "text" : "45 mins",
+                  "value" : 2673
                },
                "status" : "OK"
             }

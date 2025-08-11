@@ -53,62 +53,9 @@
          ],
          "types" : 
          [
-            "university",
             "establishment",
-            "point_of_interest"
-         ]
-      },
-      {
-         "description" : "Colegio De Sta. Ana De Victorias, Osmeña Avenue, Victorias City, Negros Occidental, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 14,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJAQCQlSstrzMRYz0PsZqoKSM",
-         "reference" : "ChIJAQCQlSstrzMRYz0PsZqoKSM",
-         "structured_formatting" : 
-         {
-            "main_text" : "Colegio De Sta. Ana De Victorias",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 14,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Osmeña Avenue, Victorias City, Negros Occidental, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Colegio De Sta. Ana De Victorias"
-            },
-            {
-               "offset" : 34,
-               "value" : "Osmeña Avenue"
-            },
-            {
-               "offset" : 49,
-               "value" : "Victorias City"
-            },
-            {
-               "offset" : 65,
-               "value" : "Negros Occidental"
-            },
-            {
-               "offset" : 84,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "university",
             "point_of_interest",
-            "establishment"
+            "university"
          ]
       },
       {
@@ -155,9 +102,62 @@
          ],
          "types" : 
          [
-            "university",
             "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "university"
+         ]
+      },
+      {
+         "description" : "Colegio De Sta. Ana De Victorias, Osmeña Avenue, Victorias, Negros Occidental, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 14,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJAQCQlSstrzMRYz0PsZqoKSM",
+         "reference" : "ChIJAQCQlSstrzMRYz0PsZqoKSM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Colegio De Sta. Ana De Victorias",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 14,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Osmeña Avenue, Victorias, Negros Occidental, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Colegio De Sta. Ana De Victorias"
+            },
+            {
+               "offset" : 34,
+               "value" : "Osmeña Avenue"
+            },
+            {
+               "offset" : 49,
+               "value" : "Victorias"
+            },
+            {
+               "offset" : 60,
+               "value" : "Negros Occidental"
+            },
+            {
+               "offset" : 79,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "university"
          ]
       },
       {
@@ -204,9 +204,9 @@
          ],
          "types" : 
          [
-            "school",
+            "establishment",
             "point_of_interest",
-            "establishment"
+            "school"
          ]
       },
       {
@@ -253,9 +253,9 @@
          ],
          "types" : 
          [
+            "establishment",
             "point_of_interest",
-            "school",
-            "establishment"
+            "school"
          ]
       }
    ],

@@ -49,8 +49,61 @@
          ],
          "types" : 
          [
-            "point_of_interest",
             "establishment",
+            "point_of_interest",
+            "shopping_mall"
+         ]
+      },
+      {
+         "description" : "SM MOA, Seaside Boulevard, Pasay City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 2,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ144ohPzLlzMRmx9wLn0FQug",
+         "reference" : "ChIJ144ohPzLlzMRmx9wLn0FQug",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM MOA",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 2,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Seaside Boulevard, Pasay City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM MOA"
+            },
+            {
+               "offset" : 8,
+               "value" : "Seaside Boulevard"
+            },
+            {
+               "offset" : 27,
+               "value" : "Pasay City"
+            },
+            {
+               "offset" : 39,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 53,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
             "shopping_mall"
          ]
       },
@@ -106,61 +159,8 @@
          ],
          "types" : 
          [
-            "shopping_mall",
-            "point_of_interest",
-            "establishment"
-         ]
-      },
-      {
-         "description" : "SM Mall of Asia, Seaside Boulevard, Pasay City, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 2,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJ144ohPzLlzMRmx9wLn0FQug",
-         "reference" : "ChIJ144ohPzLlzMRmx9wLn0FQug",
-         "structured_formatting" : 
-         {
-            "main_text" : "SM Mall of Asia",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 2,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Seaside Boulevard, Pasay City, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "SM Mall of Asia"
-            },
-            {
-               "offset" : 17,
-               "value" : "Seaside Boulevard"
-            },
-            {
-               "offset" : 36,
-               "value" : "Pasay City"
-            },
-            {
-               "offset" : 48,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 62,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "point_of_interest",
             "establishment",
+            "point_of_interest",
             "shopping_mall"
          ]
       },
@@ -216,13 +216,13 @@
          ],
          "types" : 
          [
-            "shopping_mall",
             "establishment",
-            "point_of_interest"
+            "point_of_interest",
+            "shopping_mall"
          ]
       },
       {
-         "description" : "SM Baguio, Luneta Hill Drive, 231, Baguio City, Benguet, Philippines",
+         "description" : "SM City Lipa, President Jose P. Laurel Highway, Lipa City, Batangas, Philippines",
          "matched_substrings" : 
          [
             {
@@ -230,11 +230,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJd5wuUEKhkTMR2M1ll8O2f1U",
-         "reference" : "ChIJd5wuUEKhkTMR2M1ll8O2f1U",
+         "place_id" : "ChIJbZnzs4RsvTMRRq9KLaDIyj0",
+         "reference" : "ChIJbZnzs4RsvTMRRq9KLaDIyj0",
          "structured_formatting" : 
          {
-            "main_text" : "SM Baguio",
+            "main_text" : "SM City Lipa",
             "main_text_matched_substrings" : 
             [
                {
@@ -242,39 +242,35 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Luneta Hill Drive, 231, Baguio City, Benguet, Philippines"
+            "secondary_text" : "President Jose P. Laurel Highway, Lipa City, Batangas, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "SM Baguio"
+               "value" : "SM City Lipa"
             },
             {
-               "offset" : 11,
-               "value" : "Luneta Hill Drive"
-            },
-            {
-               "offset" : 30,
-               "value" : "231"
-            },
-            {
-               "offset" : 35,
-               "value" : "Baguio City"
+               "offset" : 14,
+               "value" : "President Jose P. Laurel Highway"
             },
             {
                "offset" : 48,
-               "value" : "Benguet"
+               "value" : "Lipa City"
             },
             {
-               "offset" : 57,
+               "offset" : 59,
+               "value" : "Batangas"
+            },
+            {
+               "offset" : 69,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "point_of_interest",
             "establishment",
+            "point_of_interest",
             "shopping_mall"
          ]
       }

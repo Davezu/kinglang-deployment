@@ -45,8 +45,60 @@
          ],
          "types" : 
          [
-            "route",
-            "geocode"
+            "geocode",
+            "route"
+         ]
+      },
+      {
+         "description" : "Malipaka Dulo Half Court, Malipaka Street, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJbWQKUgCxlzMRpvg9PS2el-s",
+         "reference" : "ChIJbWQKUgCxlzMRpvg9PS2el-s",
+         "structured_formatting" : 
+         {
+            "main_text" : "Malipaka Dulo Half Court",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Malipaka Street, Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Malipaka Dulo Half Court"
+            },
+            {
+               "offset" : 26,
+               "value" : "Malipaka Street"
+            },
+            {
+               "offset" : 43,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 56,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 70,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
          ]
       },
       {
@@ -149,60 +201,8 @@
          ],
          "types" : 
          [
+            "establishment",
             "food",
-            "establishment",
-            "point_of_interest"
-         ]
-      },
-      {
-         "description" : "Malipaka Dulo Half Court, Malipaka Street, Quezon City, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 8,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJbWQKUgCxlzMRpvg9PS2el-s",
-         "reference" : "ChIJbWQKUgCxlzMRpvg9PS2el-s",
-         "structured_formatting" : 
-         {
-            "main_text" : "Malipaka Dulo Half Court",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 8,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Malipaka Street, Quezon City, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Malipaka Dulo Half Court"
-            },
-            {
-               "offset" : 26,
-               "value" : "Malipaka Street"
-            },
-            {
-               "offset" : 43,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 56,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 70,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "establishment",
             "point_of_interest"
          ]
       }
