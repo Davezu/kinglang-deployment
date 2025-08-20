@@ -1,0 +1,16 @@
+[2025-08-11 23:54:24] Checkout Session Created: cs_2Fv7jMNLBvFfHGrqbij9so46 - Amount: 29695.98
+[2025-08-11 23:57:12] Checkout Session Created: cs_RJY3rJyGWzCKThoe9SA8xc7T - Amount: 29695.98
+[2025-08-11 23:59:21] Checkout Session Created: cs_wCNV5Dtstzt3SPQHus6isruH - Amount: 29695.98
+[2025-08-12 00:00:25] Checkout Session Created: cs_8iid4jwZ3omwCVkYw9J847Sg - Amount: 29695.98
+[2025-08-12 00:02:46] Checkout Session Created: cs_epFYFFKEgYKQNMEww6HGT6Me - Amount: 29695.98
+[2025-08-12 00:05:13] Checkout Session Created: cs_D68dcVsAKMJ1iDAJccWY718W - Amount: 29695.98
+[2025-08-12 00:12:56] Checkout Session Created: cs_YogCp14a8vdabJB5xgyJ35Q4 - Amount: 29695.98
+[2025-08-12 00:14:58] Checkout Session Created: cs_UZ1SkGCRgVBzLzZ7AiLRYjej - Amount: 29695.98
+[2025-08-12 00:27:14] Checkout Session Created: cs_ksEvaNKUiKW5TH8WDXgfGt5t - Amount: 16756.57
+[2025-08-12 10:14:10] Failed to create checkout session: API Error (HTTP 400): line_items.0.amount should be an integer. - Amount: 16756.56
+[2025-08-12 10:14:56] Failed to create checkout session: API Error (HTTP 400): line_items.0.amount should be an integer. - Amount: 16756.56
+[2025-08-12 10:16:00] Failed to create checkout session: API Error (HTTP 400): line_items.0.amount should be an integer. - Amount: 16756.56
+[2025-08-12 10:17:17] Checkout Session Created: cs_n2DDr7GCVRKzzC96LpYovJWt - Amount: 17919.37
+[2025-08-12 10:18:06] Failed to create checkout session: API Error (HTTP 400): line_items.0.amount should be an integer. - Amount: 16756.56
+[2025-08-12 10:31:44] Checkout Session Created: cs_cvHepQzcqEEcWCcRaqYkfCC9 - Amount: 8959.69
+[2025-08-12 10:37:48] Checkout Session Created: cs_qhC6nQYiJ9xMyuv3uxqA6BcH - Amount: 16756.56

@@ -41,9 +41,9 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
-            "locality"
+            "locality",
+            "political"
          ]
       },
       {
@@ -94,8 +94,8 @@
          ],
          "types" : 
          [
-            "establishment",
             "airport",
+            "establishment",
             "point_of_interest"
          ]
       },
@@ -136,8 +136,8 @@
          "types" : 
          [
             "administrative_area_level_2",
-            "political",
-            "geocode"
+            "geocode",
+            "political"
          ]
       },
       {
@@ -176,13 +176,13 @@
          ],
          "types" : 
          [
-            "political",
+            "administrative_area_level_2",
             "geocode",
-            "administrative_area_level_2"
+            "political"
          ]
       },
       {
-         "description" : "Davao del Norte, Philippines",
+         "description" : "Davao de Oro, Philippines",
          "matched_substrings" : 
          [
             {
@@ -190,11 +190,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJHSqPedBL-TIRi2ija0Q5qj0",
-         "reference" : "ChIJHSqPedBL-TIRi2ija0Q5qj0",
+         "place_id" : "ChIJ86_JgwsE_DIRSUqB14K5-VU",
+         "reference" : "ChIJ86_JgwsE_DIRSUqB14K5-VU",
          "structured_formatting" : 
          {
-            "main_text" : "Davao del Norte",
+            "main_text" : "Davao de Oro",
             "main_text_matched_substrings" : 
             [
                {
@@ -208,18 +208,18 @@
          [
             {
                "offset" : 0,
-               "value" : "Davao del Norte"
+               "value" : "Davao de Oro"
             },
             {
-               "offset" : 17,
+               "offset" : 14,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
             "administrative_area_level_2",
-            "political",
-            "geocode"
+            "geocode",
+            "political"
          ]
       }
    ],

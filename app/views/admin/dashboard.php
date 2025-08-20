@@ -189,7 +189,7 @@ require_admin_auth(); // Use helper function
             <div class="row mt-4">
                 <div class="col-md-6 mb-4">
                     <div class="rounded p-4 summary-metrics-card">
-                        <h4>Monthly Booking Trends</h4>
+                        <h4>Booking Trends</h4>
                         <canvas id="monthlyTrendsChart" height="300"></canvas>
                     </div>
                 </div>

@@ -6,6 +6,8 @@ $controllerClasses = [
         'BookingController' => __DIR__ . "/../app/controllers/client/BookingController.php",
         'NotificationsController' => __DIR__ . "/../app/controllers/client/NotificationsController.php",
         'TestimonialController' => __DIR__ . "/../app/controllers/client/TestimonialController.php",
+        'PayMongoController' => __DIR__ . "/../app/controllers/client/PayMongoController.php",
+        'ChatController' => __DIR__ . "/../app/controllers/client/ChatController.php",
     ],
     'admin' => [
         'BookingManagementController' => __DIR__ . "/../app/controllers/admin/BookingManagementController.php",
@@ -20,6 +22,7 @@ $controllerClasses = [
         'DriverManagementController' => __DIR__ . "/../app/controllers/admin/DriverManagementController.php",
         'BookingReviewReminderController' => __DIR__ . "/../app/controllers/admin/BookingReviewReminderController.php",
         'TestimonialManagementController' => __DIR__ . "/../app/controllers/admin/TestimonialManagementController.php",
+        'AdminChatController' => __DIR__ . "/../app/controllers/admin/AdminChatController.php",
     ]
 ];
 
@@ -292,6 +295,33 @@ switch ($requestPath) {
         require_once $controllerClasses['client']['BookingController'];
         $controller = new BookingController();
         $controller->addPayment();
+        break;
+
+    // PayMongo routes
+    case "/paymongo/webhook":
+        require_once $controllerClasses['client']['PayMongoController'];
+        $controller = new PayMongoController();
+        $controller->handleWebhook();
+        break;
+    case "/paymongo/success":
+        require_once $controllerClasses['client']['PayMongoController'];
+        $controller = new PayMongoController();
+        $controller->handleSuccess();
+        break;
+    case "/paymongo/cancel":
+        require_once $controllerClasses['client']['PayMongoController'];
+        $controller = new PayMongoController();
+        $controller->handleCancel();
+        break;
+    case "/paymongo/success-page":
+        require_once $controllerClasses['client']['PayMongoController'];
+        $controller = new PayMongoController();
+        $controller->showSuccessPage();
+        break;
+    case "/paymongo/status":
+        require_once $controllerClasses['client']['PayMongoController'];
+        $controller = new PayMongoController();
+        $controller->getPaymentStatus();
         break;
 
     // admin routes
@@ -922,6 +952,138 @@ switch ($requestPath) {
         require_once $controllerClasses['admin']['BookingReviewReminderController'];
         $controller = new BookingReviewReminderController();
         $controller->manualAutoCancellation();
+        break;
+
+    // Chat API Routes - Client
+    case "/api/chat/conversation":
+        require_once $controllerClasses['client']['ChatController'];
+        $controller = new ChatController();
+        $controller->getOrCreateConversation();
+        break;
+    case preg_match('|^/api/chat/messages/([0-9]+)$|', $requestPath, $matches) ? $requestPath : "":
+        require_once $controllerClasses['client']['ChatController'];
+        $controller = new ChatController();
+        $controller->getMessages($matches[1]);
+        break;
+    case "/api/chat/send":
+        require_once $controllerClasses['client']['ChatController'];
+        $controller = new ChatController();
+        $controller->sendMessage();
+        break;
+    case "/api/chat/request-human":
+        require_once $controllerClasses['client']['ChatController'];
+        $controller = new ChatController();
+        $controller->requestHumanAssistance();
+        break;
+    case "/api/chat/end":
+        require_once $controllerClasses['client']['ChatController'];
+        $controller = new ChatController();
+        $controller->endConversation();
+        break;
+    case preg_match('|^/api/chat/status/([0-9]+)$|', $requestPath, $matches) ? $requestPath : "":
+        require_once $controllerClasses['client']['ChatController'];
+        $controller = new ChatController();
+        $controller->getConversationStatus($matches[1]);
+        break;
+
+    // Chat API Routes - Admin
+    case "/admin/chat":
+        require_once __DIR__ . "/../app/views/admin/chats.php";
+        break;
+    case "/api/admin/chat/dashboard":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->getDashboard();
+        break;
+    case "/api/admin/chat/pending":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->getPendingConversations();
+        break;
+    case "/api/admin/chat/active":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->getActiveConversations();
+        break;
+    case "/api/admin/chat/ended":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->getEndedConversations();
+        break;
+    case "/api/admin/chat/assign":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->assignConversation();
+        break;
+    case "/api/admin/chat/send":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->sendMessage();
+        break;
+    case preg_match('|^/api/admin/chat/messages/([0-9]+)$|', $requestPath, $matches) ? $requestPath : "":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->getConversationMessages($matches[1]);
+        break;
+    case "/api/admin/chat/end":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->endConversation();
+        break;
+    case "/api/admin/chat/bot-responses":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->getBotResponses();
+        break;
+    case "/api/admin/chat/bot-responses/save":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->saveBotResponse();
+        break;
+    case preg_match('|^/api/admin/chat/bot-responses/([0-9]+)/delete$|', $requestPath, $matches) ? $requestPath : "":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->deleteBotResponse($matches[1]);
+        break;
+    case "/api/admin/chat/stats":
+        require_once $controllerClasses['admin']['AdminChatController'];
+        $controller = new AdminChatController();
+        $controller->getStats();
+        break;
+
+    // Test route for chat debugging
+    case "/test-chat":
+        require_once __DIR__ . "/../test_chat.php";
+        break;
+        
+    // Test route for chat statistics
+    case "/test-chat-stats":
+        require_once __DIR__ . "/../test_chat_stats.php";
+        break;
+        
+
+        
+    // Debug route for chat API
+    case "/debug-chat":
+        require_once __DIR__ . "/../debug_chat_api.php";
+        break;
+        
+    // Test route for admin JS debugging
+    case "/test-admin-js":
+        echo '<!DOCTYPE html><html><head><title>Test Admin JS</title></head><body>';
+        echo '<h1>Testing Admin JavaScript</h1>';
+        echo '<div id="test-output">Loading...</div>';
+        echo '<div id="auth-status">Checking authentication...</div>';
+        echo '<script>console.log("Basic JS working"); document.getElementById("test-output").innerHTML = "Basic JavaScript works!";</script>';
+        echo '<script>';
+        echo 'fetch("/api/admin/chat/pending").then(r => r.text()).then(text => {';
+        echo 'console.log("API Response:", text);';
+        echo 'document.getElementById("auth-status").innerHTML = "API Response: " + text.substring(0, 200) + "...";';
+        echo '}).catch(e => console.error("API Error:", e));';
+        echo '</script>';
+        echo '<script src="/public/js/admin-chat-complete.js?v=' . time() . '"></script>';
+        echo '<script>setTimeout(() => { if (window.AdminChatManager) { document.getElementById("test-output").innerHTML += "<br>✅ AdminChatManager loaded successfully!"; } else { document.getElementById("test-output").innerHTML += "<br>❌ AdminChatManager failed to load"; } }, 500);</script>';
+        echo '</body></html>';
         break;
 
     default:

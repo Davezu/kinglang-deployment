@@ -153,55 +153,6 @@
          ]
       },
       {
-         "description" : "Maligaya Elementary School, Quezon City, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 8,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJLwgAQGmwlzMRcEuu63QHI6A",
-         "reference" : "ChIJLwgAQGmwlzMRcEuu63QHI6A",
-         "structured_formatting" : 
-         {
-            "main_text" : "Maligaya Elementary School",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 8,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Quezon City, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Maligaya Elementary School"
-            },
-            {
-               "offset" : 28,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 41,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 55,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "establishment",
-            "point_of_interest",
-            "school"
-         ]
-      },
-      {
          "description" : "Maligaya, Tarlac City, Tarlac, Philippines",
          "matched_substrings" : 
          [
@@ -249,6 +200,55 @@
             "political",
             "sublocality",
             "sublocality_level_2"
+         ]
+      },
+      {
+         "description" : "Maligaya Elementary School, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJLwgAQGmwlzMRcEuu63QHI6A",
+         "reference" : "ChIJLwgAQGmwlzMRcEuu63QHI6A",
+         "structured_formatting" : 
+         {
+            "main_text" : "Maligaya Elementary School",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Maligaya Elementary School"
+            },
+            {
+               "offset" : 28,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 41,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 55,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "school"
          ]
       }
    ],

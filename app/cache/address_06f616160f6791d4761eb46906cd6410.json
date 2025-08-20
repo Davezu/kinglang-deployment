@@ -53,9 +53,9 @@
          ],
          "types" : 
          [
-            "shopping_mall",
+            "establishment",
             "point_of_interest",
-            "establishment"
+            "shopping_mall"
          ]
       },
       {
@@ -171,55 +171,6 @@
          ]
       },
       {
-         "description" : "SM Fairview, Quezon City, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 5,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJI_hl7miwlzMROWcHF9czfBc",
-         "reference" : "ChIJI_hl7miwlzMROWcHF9czfBc",
-         "structured_formatting" : 
-         {
-            "main_text" : "SM Fairview",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 5,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Quezon City, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "SM Fairview"
-            },
-            {
-               "offset" : 13,
-               "value" : "Quezon City"
-            },
-            {
-               "offset" : 26,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 40,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "establishment",
-            "transit_station",
-            "point_of_interest"
-         ]
-      },
-      {
          "description" : "SM fairview Jeep Terminal & Taxi, Regalado Highway, Novaliches, Quezon City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
@@ -273,6 +224,55 @@
          [
             "establishment",
             "point_of_interest"
+         ]
+      },
+      {
+         "description" : "SM Fairview, Quezon City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 5,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJI_hl7miwlzMROWcHF9czfBc",
+         "reference" : "ChIJI_hl7miwlzMROWcHF9czfBc",
+         "structured_formatting" : 
+         {
+            "main_text" : "SM Fairview",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 5,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Quezon City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "SM Fairview"
+            },
+            {
+               "offset" : 13,
+               "value" : "Quezon City"
+            },
+            {
+               "offset" : 26,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest",
+            "transit_station"
          ]
       }
    ],

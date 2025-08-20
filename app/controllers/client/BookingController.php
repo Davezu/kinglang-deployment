@@ -879,8 +879,14 @@ class BookingController {
             return;
         }
         
+        // Handle PayMongo payments differently
+        if ($payment_method === "PayMongo" || $payment_method === "GCash") {
+            $this->handlePayMongoPayment($booking_id, $client_id, $amount, $payment_method);
+            return;
+        }
+        
         // Validate proof of payment for payment methods that require it
-        $requiresProof = in_array($payment_method, ["Bank Transfer", "Online Payment", "GCash", "Maya"]);
+        $requiresProof = in_array($payment_method, ["Bank Transfer", "Online Payment", "Maya"]);
         $hasProofFile = isset($_FILES["proof_of_payment"]) && $_FILES["proof_of_payment"]["error"] === UPLOAD_ERR_OK;
         
         if ($requiresProof && !$hasProofFile) {
@@ -1417,6 +1423,78 @@ class BookingController {
         require_once __DIR__ . "/../../views/client/contract.php";
     }
 
+    /**
+     * Handle PayMongo payment processing
+     * 
+     * @param int $booking_id
+     * @param int $client_id
+     * @param float $amount
+     * @param string $payment_method
+     */
+    private function handlePayMongoPayment($booking_id, $client_id, $amount, $payment_method) {
+        try {
+            // Include PayMongo service
+            require_once __DIR__ . "/../../services/PayMongoService.php";
+            $payMongoService = new PayMongoService();
+            
+            // Validate amount
+            if (!PayMongoService::validateAmount($amount)) {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "Invalid payment amount"
+                ]);
+                return;
+            }
+            
+            // Get booking details for description
+            $booking = $this->bookingModel->getBooking($booking_id, $client_id);
+            if (!$booking) {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "Booking not found"
+                ]);
+                return;
+            }
+            
+            // Create checkout session
+            $result = $payMongoService->createCheckoutSession(
+                $booking_id, 
+                $client_id, 
+                $amount,
+                "Payment for booking to " . $booking['destination'] . " (Booking #" . $booking_id . ")"
+            );
+            
+            if ($result['success']) {
+                // Create notification for admin about new PayMongo payment
+                $clientName = $_SESSION["client_name"] ?? "Client";
+                $formattedAmount = PayMongoService::formatAmount($amount);
+                $message = "New PayMongo payment of {$formattedAmount} initiated by {$clientName} for booking #{$booking_id}";
+                $this->notificationModel->addNotification("payment_submitted", $message, $booking_id);
+                
+                echo json_encode([
+                    "success" => true,
+                    "payment_type" => "paymongo",
+                    "checkout_url" => $result['checkout_url'],
+                    "checkout_session_id" => $result['checkout_session_id'],
+                    "amount" => $result['amount'],
+                    "message" => "Redirecting to PayMongo payment gateway..."
+                ]);
+            } else {
+                echo json_encode([
+                    "success" => false,
+                    "message" => $result['message']
+                ]);
+            }
+            
+        } catch (Exception $e) {
+            error_log("PayMongo payment handler error: " . $e->getMessage());
+            echo json_encode([
+                "success" => false,
+                "message" => "Payment processing failed. Please try again."
+            ]);
+        }
+    }
+    
     /**
      * Get user information by user ID
      * @param int $user_id

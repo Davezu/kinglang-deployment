@@ -41,53 +41,8 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
-            "locality"
-         ]
-      },
-      {
-         "description" : "Caloocan City, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 8,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJl-gHlh6xlzMRavoq7zbxfRc",
-         "reference" : "ChIJl-gHlh6xlzMRavoq7zbxfRc",
-         "structured_formatting" : 
-         {
-            "main_text" : "Caloocan City",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 8,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Caloocan City"
-            },
-            {
-               "offset" : 15,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 29,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "administrative_area_level_3",
-            "geocode",
+            "locality",
             "political"
          ]
       },
@@ -143,10 +98,66 @@
          ],
          "types" : 
          [
-            "establishment",
             "city_hall",
+            "establishment",
+            "local_government_office",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Caloocan City Hall North, Zapote Road, Caloocan, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 8,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ_Rxk0j2wlzMR3VveIjxYjEM",
+         "reference" : "ChIJ_Rxk0j2wlzMR3VveIjxYjEM",
+         "structured_formatting" : 
+         {
+            "main_text" : "Caloocan City Hall North",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 8,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Zapote Road, Caloocan, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Caloocan City Hall North"
+            },
+            {
+               "offset" : 26,
+               "value" : "Zapote Road"
+            },
+            {
+               "offset" : 39,
+               "value" : "Caloocan"
+            },
+            {
+               "offset" : 49,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 63,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "establishment",
+            "finance",
+            "local_government_office",
             "point_of_interest",
-            "local_government_office"
+            "post_office"
          ]
       },
       {
@@ -202,7 +213,7 @@
          ]
       },
       {
-         "description" : "Caloocan City Hall North, Zapote Road, Caloocan, Metro Manila, Philippines",
+         "description" : "Caloocan City Medical Center (South), A. Mabini Street, Poblacion, Caloocan, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -210,11 +221,11 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJ_Rxk0j2wlzMR3VveIjxYjEM",
-         "reference" : "ChIJ_Rxk0j2wlzMR3VveIjxYjEM",
+         "place_id" : "ChIJgcgZwM-1lzMR3WYx4_3L1Vc",
+         "reference" : "ChIJgcgZwM-1lzMR3WYx4_3L1Vc",
          "structured_formatting" : 
          {
-            "main_text" : "Caloocan City Hall North",
+            "main_text" : "Caloocan City Medical Center (South)",
             "main_text_matched_substrings" : 
             [
                {
@@ -222,39 +233,41 @@
                   "offset" : 0
                }
             ],
-            "secondary_text" : "Zapote Road, Caloocan, Metro Manila, Philippines"
+            "secondary_text" : "A. Mabini Street, Poblacion, Caloocan, Metro Manila, Philippines"
          },
          "terms" : 
          [
             {
                "offset" : 0,
-               "value" : "Caloocan City Hall North"
+               "value" : "Caloocan City Medical Center (South)"
             },
             {
-               "offset" : 26,
-               "value" : "Zapote Road"
+               "offset" : 38,
+               "value" : "A. Mabini Street"
             },
             {
-               "offset" : 39,
+               "offset" : 56,
+               "value" : "Poblacion"
+            },
+            {
+               "offset" : 67,
                "value" : "Caloocan"
             },
             {
-               "offset" : 49,
+               "offset" : 77,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 63,
+               "offset" : 91,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
-            "finance",
             "establishment",
-            "local_government_office",
-            "city_hall",
-            "point_of_interest",
-            "post_office"
+            "health",
+            "hospital",
+            "point_of_interest"
          ]
       }
    ],

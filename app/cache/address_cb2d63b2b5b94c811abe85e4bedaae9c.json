@@ -41,157 +41,9 @@
          ],
          "types" : 
          [
-            "political",
             "geocode",
-            "locality"
-         ]
-      },
-      {
-         "description" : "Marilao Public Market, Marilao, Bulacan, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 7,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJyyvoameylzMR_W6aq75FHY4",
-         "reference" : "ChIJyyvoameylzMR_W6aq75FHY4",
-         "structured_formatting" : 
-         {
-            "main_text" : "Marilao Public Market",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 7,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Marilao, Bulacan, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Marilao Public Market"
-            },
-            {
-               "offset" : 23,
-               "value" : "Marilao"
-            },
-            {
-               "offset" : 32,
-               "value" : "Bulacan"
-            },
-            {
-               "offset" : 41,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "premise",
-            "geocode"
-         ]
-      },
-      {
-         "description" : "Marilao Bridge, Marilao, Bulacan, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 7,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "Ei1NYXJpbGFvIEJyaWRnZSwgTWFyaWxhbywgQnVsYWNhbiwgUGhpbGlwcGluZXMiLiosChQKEgk3IBdlZ7KXMxGAyIkls0fSexIUChIJQ3ee3IqylzMRNLO6UhTLb88",
-         "reference" : "Ei1NYXJpbGFvIEJyaWRnZSwgTWFyaWxhbywgQnVsYWNhbiwgUGhpbGlwcGluZXMiLiosChQKEgk3IBdlZ7KXMxGAyIkls0fSexIUChIJQ3ee3IqylzMRNLO6UhTLb88",
-         "structured_formatting" : 
-         {
-            "main_text" : "Marilao Bridge",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 7,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Marilao, Bulacan, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Marilao Bridge"
-            },
-            {
-               "offset" : 16,
-               "value" : "Marilao"
-            },
-            {
-               "offset" : 25,
-               "value" : "Bulacan"
-            },
-            {
-               "offset" : 34,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "route",
-            "geocode"
-         ]
-      },
-      {
-         "description" : "Marilao Bulacan, Novaliches, Marilao, Bulacan, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 7,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJpec8SwCvlzMROs9FYaF_Ra0",
-         "reference" : "ChIJpec8SwCvlzMROs9FYaF_Ra0",
-         "structured_formatting" : 
-         {
-            "main_text" : "Marilao Bulacan",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 7,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Novaliches, Marilao, Bulacan, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Marilao Bulacan"
-            },
-            {
-               "offset" : 17,
-               "value" : "Novaliches"
-            },
-            {
-               "offset" : 29,
-               "value" : "Marilao"
-            },
-            {
-               "offset" : 38,
-               "value" : "Bulacan"
-            },
-            {
-               "offset" : 47,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "point_of_interest",
-            "establishment"
+            "locality",
+            "political"
          ]
       },
       {
@@ -240,6 +92,158 @@
          [
             "establishment",
             "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Marilao Municipal Hall, Sandico, Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJc6gQO1yylzMR-VYP4r83zrk",
+         "reference" : "ChIJc6gQO1yylzMR-VYP4r83zrk",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marilao Municipal Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Sandico, Marilao, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marilao Municipal Hall"
+            },
+            {
+               "offset" : 24,
+               "value" : "Sandico"
+            },
+            {
+               "offset" : 33,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 42,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 51,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "establishment",
+            "finance",
+            "local_government_office",
+            "point_of_interest",
+            "post_office"
+         ]
+      },
+      {
+         "description" : "Marilao Public Market, Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJyyvoameylzMR_W6aq75FHY4",
+         "reference" : "ChIJyyvoameylzMR_W6aq75FHY4",
+         "structured_formatting" : 
+         {
+            "main_text" : "Marilao Public Market",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marilao, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Marilao Public Market"
+            },
+            {
+               "offset" : 23,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 32,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 41,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
+         ]
+      },
+      {
+         "description" : "marilao grand villas, Marilao, Bulacan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 7,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ7WKypRaulzMRN0VoaegQzXo",
+         "reference" : "ChIJ7WKypRaulzMRN0VoaegQzXo",
+         "structured_formatting" : 
+         {
+            "main_text" : "marilao grand villas",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 7,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Marilao, Bulacan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "marilao grand villas"
+            },
+            {
+               "offset" : 22,
+               "value" : "Marilao"
+            },
+            {
+               "offset" : 31,
+               "value" : "Bulacan"
+            },
+            {
+               "offset" : 40,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "premise"
          ]
       }
    ],

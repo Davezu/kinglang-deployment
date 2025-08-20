@@ -14,7 +14,8 @@ require_client_auth(); // Use helper function
     <link rel="stylesheet" href="/../../../public/css/assets/cancel_modal.css">
     <link rel="stylesheet" href="/../../../public/css/client/booking_requests.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>My Bookings | Kinglang Bus</title>
+    <link rel="stylesheet" href="/public/css/chat-widget.css">
+    <title>My Bookings | Kinglang Booking</title>
     <style>
         .content.collapsed {
             margin-left: 78px;
@@ -380,8 +381,8 @@ require_client_auth(); // Use helper function
                                 <label for="paymentMethod" class="form-label">Payment Method</label>
                                 <select name="payment_method" id="paymentMethod" class="form-select" aria-label="Payment method selection">
                                     <option value="Bank Transfer">Bank Transfer</option>
+                                    <option value="GCash">GCash (PayMongo)</option>
                                     <!-- <option value="Online Payment">Online Payment</option>
-                                    <option value="GCash">GCash</option>
                                     <option value="Maya">Maya</option> -->
                                 </select>
                             </div>
@@ -395,6 +396,28 @@ require_client_auth(); // Use helper function
                                         <p class="mb-1"><strong>Name:</strong> <span id="accountName">KINGLANG TOURS AND TRANSPORT SERVICES INC.</span></p>
                                         <p class="mb-1"><strong>Number:</strong> <span id="accountNumber">4091-0050-05</span></p>
                                         <p class="mb-0"><strong>Swift Code:</strong> <span id="swiftCode">BPOIPHMM</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PayMongo GCash Info -->
+                            <div id="paymongoSection" class="mt-3" style="display: none;">
+                                <div class="alert alert-success">
+                                    <h5 class="alert-heading"><i class="bi bi-shield-check me-2"></i>Secure PayMongo Payment</h5>
+                                    <div class="mt-2">
+                                        <p class="mb-2">Pay securely using GCash through PayMongo's encrypted payment gateway.</p>
+                                        <div class="d-flex align-items-center gap-2 mb-2">
+                                            <i class="bi bi-check-circle-fill text-success"></i>
+                                            <small>SSL Encrypted & PCI Compliant</small>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2 mb-2">
+                                            <i class="bi bi-check-circle-fill text-success"></i>
+                                            <small>Instant Payment Confirmation</small>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-check-circle-fill text-success"></i>
+                                            <small>No Upload Required</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -457,6 +480,11 @@ require_client_auth(); // Use helper function
         </div>
     </div>
 
+    <script>
+    // Set user login status for chat widget
+    var userLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
@@ -464,5 +492,7 @@ require_client_auth(); // Use helper function
     <script src="../../../public/js/client/booking_request.js"></script>
     <script src="../../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="../../../public/js/assets/sidebar.js"></script>
+    <script src="/public/js/chat-widget-core.js"></script>
+
 </body>
 </html>

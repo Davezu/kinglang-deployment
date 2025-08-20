@@ -560,15 +560,15 @@ async function renderMonthlyTrendsChart() {
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.4,
                         yAxisID: 'y'
-                    },
-                    {
-                        label: "Revenue",
-                        data: trendsData.revenues,
-                        fill: false,
-                        borderColor: 'rgb(255, 99, 132)',
-                        tension: 0.4,
-                        yAxisID: 'y1'
                     }
+                    // {
+                    //     label: "Revenue",
+                    //     data: trendsData.revenues,
+                    //     fill: false,
+                    //     borderColor: 'rgb(255, 99, 132)',
+                    //     tension: 0.4,
+                    //     yAxisID: 'y1'
+                    // }
                 ]
             },
             options: {
@@ -583,7 +583,7 @@ async function renderMonthlyTrendsChart() {
                     },
                     title: {
                         display: true,
-                        text: `Monthly Bookings (${trendsData.year})`,
+                        text: `Booking Trends`,
                         font: {
                             size: 16,
                             weight: 'bold'
@@ -942,24 +942,24 @@ async function renderRevenueTrendsChart() {
                         type: 'bar',
                         label: "Revenue",
                         data: revenueData.revenues,
-                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                        borderColor: 'rgb(75, 192, 192)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgb(255, 99, 132)',
                         borderWidth: 1,
                         yAxisID: 'y'
-                    },
-                    {
-                        type: 'line',
-                        label: "Bookings",
-                        data: revenueData.counts,
-                        fill: false,
-                        borderColor: 'rgb(255, 99, 132)',
-                        tension: 0.4,
-                        borderWidth: 2,
-                        pointStyle: 'circle',
-                        pointRadius: 5,
-                        pointHoverRadius: 8,
-                        yAxisID: 'y1'
                     }
+                    // {
+                    //     type: 'line',
+                    //     label: "Bookings",
+                    //     data: revenueData.counts,
+                    //     fill: false,
+                    //     borderColor: 'rgb(255, 99, 132)',
+                    //     tension: 0.4,
+                    //     borderWidth: 2,
+                    //     pointStyle: 'circle',
+                    //     pointRadius: 5,
+                    //     pointHoverRadius: 8,
+                    //     yAxisID: 'y1'
+                    // }
                 ]
             },
             options: {
@@ -974,7 +974,7 @@ async function renderRevenueTrendsChart() {
                     },
                     title: {
                         display: true,
-                        text: 'Revenue & Booking Trends',
+                        text: 'Revenue Trends',
                         font: {
                             size: 16,
                             weight: 'bold'

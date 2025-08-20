@@ -196,6 +196,12 @@
             margin-left: 4.5rem;
         }
 
+         @media (min-width: 1400px) {
+            .container-fluid {
+                max-width: 98%;
+            }
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 width: 4.5rem;
@@ -273,6 +279,11 @@
                     <i class="bi bi-gear"></i>
                     <span class="menu-text">Settings</span>
                 </a>
+                <a href="/admin/chat" class="sidebar-link <?= basename($_SERVER["PHP_SELF"]) == 'chat' ? 'active' : ''; ?>">
+                    <i class="bi bi-chat"></i>
+                    <span class="menu-text">Chats</span>
+                </a>
+
             </div>
 
             <!-- Sidebar Footer -->

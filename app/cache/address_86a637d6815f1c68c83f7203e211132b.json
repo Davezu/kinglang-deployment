@@ -2,7 +2,7 @@
    "predictions" : 
    [
       {
-         "description" : "Mandaluyong, Metro Manila, Philippines",
+         "description" : "Mandaluyong City, Metro Manila, Philippines",
          "matched_substrings" : 
          [
             {
@@ -14,7 +14,7 @@
          "reference" : "ChIJeZt7xzXIlzMR-DfSuchHSdw",
          "structured_formatting" : 
          {
-            "main_text" : "Mandaluyong",
+            "main_text" : "Mandaluyong City",
             "main_text_matched_substrings" : 
             [
                {
@@ -28,121 +28,22 @@
          [
             {
                "offset" : 0,
-               "value" : "Mandaluyong"
+               "value" : "Mandaluyong City"
             },
             {
-               "offset" : 13,
+               "offset" : 18,
                "value" : "Metro Manila"
             },
             {
-               "offset" : 27,
+               "offset" : 32,
                "value" : "Philippines"
             }
          ],
          "types" : 
          [
+            "geocode",
             "locality",
-            "political",
-            "geocode"
-         ]
-      },
-      {
-         "description" : "Mandaue, Cebu, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 4,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJ_e4MaImYqTMRcqXd9aER-ak",
-         "reference" : "ChIJ_e4MaImYqTMRcqXd9aER-ak",
-         "structured_formatting" : 
-         {
-            "main_text" : "Mandaue",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 4,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Cebu, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Mandaue"
-            },
-            {
-               "offset" : 9,
-               "value" : "Cebu"
-            },
-            {
-               "offset" : 15,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "political",
-            "locality",
-            "geocode"
-         ]
-      },
-      {
-         "description" : "Mandaluyong City Hall, Maysilo Circle, Mandaluyong, Metro Manila, Philippines",
-         "matched_substrings" : 
-         [
-            {
-               "length" : 4,
-               "offset" : 0
-            }
-         ],
-         "place_id" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
-         "reference" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
-         "structured_formatting" : 
-         {
-            "main_text" : "Mandaluyong City Hall",
-            "main_text_matched_substrings" : 
-            [
-               {
-                  "length" : 4,
-                  "offset" : 0
-               }
-            ],
-            "secondary_text" : "Maysilo Circle, Mandaluyong, Metro Manila, Philippines"
-         },
-         "terms" : 
-         [
-            {
-               "offset" : 0,
-               "value" : "Mandaluyong City Hall"
-            },
-            {
-               "offset" : 23,
-               "value" : "Maysilo Circle"
-            },
-            {
-               "offset" : 39,
-               "value" : "Mandaluyong"
-            },
-            {
-               "offset" : 52,
-               "value" : "Metro Manila"
-            },
-            {
-               "offset" : 66,
-               "value" : "Philippines"
-            }
-         ],
-         "types" : 
-         [
-            "local_government_office",
-            "point_of_interest",
-            "city_hall",
-            "establishment"
+            "political"
          ]
       },
       {
@@ -154,8 +55,8 @@
                "offset" : 0
             }
          ],
-         "place_id" : "ChIJjyGC0GiYqTMRqZFeD7xcKWo",
-         "reference" : "ChIJjyGC0GiYqTMRqZFeD7xcKWo",
+         "place_id" : "ChIJ_e4MaImYqTMRcqXd9aER-ak",
+         "reference" : "ChIJ_e4MaImYqTMRcqXd9aER-ak",
          "structured_formatting" : 
          {
             "main_text" : "Mandaue City",
@@ -185,9 +86,63 @@
          ],
          "types" : 
          [
-            "political",
-            "administrative_area_level_3",
-            "geocode"
+            "geocode",
+            "locality",
+            "political"
+         ]
+      },
+      {
+         "description" : "Mandaluyong City Hall, Maysilo Circle, Mandaluyong City, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
+         "reference" : "ChIJR4h9TUvIlzMResBVZL5HyTw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandaluyong City Hall",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Maysilo Circle, Mandaluyong City, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandaluyong City Hall"
+            },
+            {
+               "offset" : 23,
+               "value" : "Maysilo Circle"
+            },
+            {
+               "offset" : 39,
+               "value" : "Mandaluyong City"
+            },
+            {
+               "offset" : 57,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 71,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "city_hall",
+            "establishment",
+            "local_government_office",
+            "point_of_interest"
          ]
       },
       {
@@ -234,10 +189,60 @@
          ],
          "types" : 
          [
-            "sublocality",
-            "political",
             "geocode",
+            "political",
+            "sublocality",
             "sublocality_level_1"
+         ]
+      },
+      {
+         "description" : "Mandug, Davao City, Davao del Sur, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 4,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJwTe4FiZr-TIRlpc3NzyhTIU",
+         "reference" : "ChIJwTe4FiZr-TIRlpc3NzyhTIU",
+         "structured_formatting" : 
+         {
+            "main_text" : "Mandug",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 4,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Davao City, Davao del Sur, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Mandug"
+            },
+            {
+               "offset" : 8,
+               "value" : "Davao City"
+            },
+            {
+               "offset" : 20,
+               "value" : "Davao del Sur"
+            },
+            {
+               "offset" : 35,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "geocode",
+            "political",
+            "sublocality",
+            "sublocality_level_2"
          ]
       }
    ],

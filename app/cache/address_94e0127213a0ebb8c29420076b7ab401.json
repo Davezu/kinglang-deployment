@@ -1,0 +1,254 @@
+{
+   "predictions" : 
+   [
+      {
+         "description" : "Bataan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJiXiYAeMUljMRSD3hXo_L4Go",
+         "reference" : "ChIJiXiYAeMUljMRSD3hXo_L4Go",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bataan",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bataan"
+            },
+            {
+               "offset" : 8,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "administrative_area_level_2",
+            "geocode",
+            "political"
+         ]
+      },
+      {
+         "description" : "Bataan Transit Bus Terminal Avenida, Oroquieta Road, Santa Cruz, Manila, Metro Manila, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ27sQAyHLlzMRjvQ09FyZtAw",
+         "reference" : "ChIJ27sQAyHLlzMRjvQ09FyZtAw",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bataan Transit Bus Terminal Avenida",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Oroquieta Road, Santa Cruz, Manila, Metro Manila, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bataan Transit Bus Terminal Avenida"
+            },
+            {
+               "offset" : 37,
+               "value" : "Oroquieta Road"
+            },
+            {
+               "offset" : 53,
+               "value" : "Santa Cruz"
+            },
+            {
+               "offset" : 65,
+               "value" : "Manila"
+            },
+            {
+               "offset" : 73,
+               "value" : "Metro Manila"
+            },
+            {
+               "offset" : 87,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bataan Nuclear Power Plant, Morong, Bataan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJk88P4tsNljMRpmTNydn9jXI",
+         "reference" : "ChIJk88P4tsNljMRpmTNydn9jXI",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bataan Nuclear Power Plant",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Morong, Bataan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bataan Nuclear Power Plant"
+            },
+            {
+               "offset" : 28,
+               "value" : "Morong"
+            },
+            {
+               "offset" : 36,
+               "value" : "Bataan"
+            },
+            {
+               "offset" : 44,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bataan 2020 Helipad, Samal, Bataan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJVZ4SpYxpljMRBvXnvSksFRE",
+         "reference" : "ChIJVZ4SpYxpljMRBvXnvSksFRE",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bataan 2020 Helipad",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Samal, Bataan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bataan 2020 Helipad"
+            },
+            {
+               "offset" : 21,
+               "value" : "Samal"
+            },
+            {
+               "offset" : 28,
+               "value" : "Bataan"
+            },
+            {
+               "offset" : 36,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "airport",
+            "establishment",
+            "point_of_interest"
+         ]
+      },
+      {
+         "description" : "Bataan General Hospital And Medical Center, Manahan Street, Balanga City, Bataan, Philippines",
+         "matched_substrings" : 
+         [
+            {
+               "length" : 6,
+               "offset" : 0
+            }
+         ],
+         "place_id" : "ChIJ58XgTwBAljMRCBkXbTUAOpQ",
+         "reference" : "ChIJ58XgTwBAljMRCBkXbTUAOpQ",
+         "structured_formatting" : 
+         {
+            "main_text" : "Bataan General Hospital And Medical Center",
+            "main_text_matched_substrings" : 
+            [
+               {
+                  "length" : 6,
+                  "offset" : 0
+               }
+            ],
+            "secondary_text" : "Manahan Street, Balanga City, Bataan, Philippines"
+         },
+         "terms" : 
+         [
+            {
+               "offset" : 0,
+               "value" : "Bataan General Hospital And Medical Center"
+            },
+            {
+               "offset" : 44,
+               "value" : "Manahan Street"
+            },
+            {
+               "offset" : 60,
+               "value" : "Balanga City"
+            },
+            {
+               "offset" : 74,
+               "value" : "Bataan"
+            },
+            {
+               "offset" : 82,
+               "value" : "Philippines"
+            }
+         ],
+         "types" : 
+         [
+            "establishment",
+            "health",
+            "hospital",
+            "point_of_interest"
+         ]
+      }
+   ],
+   "status" : "OK"
+}

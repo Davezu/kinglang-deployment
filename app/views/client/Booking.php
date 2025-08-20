@@ -17,6 +17,8 @@ if (!isset($_SESSION["user_id"])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/public/css/chat-widget.css">
+
 
     <style>
         /* Custom scrollbar styling */
@@ -240,6 +242,14 @@ if (!isset($_SESSION["user_id"])) {
             </div>
         </div>
     </div>
+
+    <script>
+    // Set user login status for chat widget
+    var userLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+    </script>
+    <script src="/public/js/chat-widget-core.js"></script>
+
+    <script src="/public/js/chat-widget-core.js"></script>
 
 </body>
 </html>

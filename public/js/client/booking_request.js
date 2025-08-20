@@ -179,8 +179,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     const accountInfoSection = document.getElementById("accountInfoSection");
     const proofUploadSection = document.getElementById("proofUploadSection");
     const mobilePaymentSection = document.getElementById("mobilePaymentSection");
+    const paymongoSection = document.getElementById("paymongoSection");
     
-    if (paymentMethodSelect && accountInfoSection && proofUploadSection && mobilePaymentSection) {
+    if (paymentMethodSelect && accountInfoSection && proofUploadSection && mobilePaymentSection && paymongoSection) {
         // Show account info section by default when modal opens
         accountInfoSection.style.display = "block";
         proofUploadSection.style.display = "block";
@@ -192,6 +193,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             accountInfoSection.style.display = "none";
             proofUploadSection.style.display = "none";
             mobilePaymentSection.style.display = "none";
+            paymongoSection.style.display = "none";
             
             // Show relevant sections based on payment method
             if (selectedMethod === "Bank Transfer") {
@@ -200,7 +202,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             } else if (selectedMethod === "Online Payment") {
                 accountInfoSection.style.display = "block";
                 proofUploadSection.style.display = "block";
-            } else if (selectedMethod === "GCash" || selectedMethod === "Maya") {
+            } else if (selectedMethod === "GCash") {
+                paymongoSection.style.display = "block";
+                // No proof upload needed for PayMongo
+            } else if (selectedMethod === "Maya") {
                 mobilePaymentSection.style.display = "block";
                 proofUploadSection.style.display = "block";
                 
@@ -1006,12 +1011,12 @@ if (paymentForm) {
             return;
         }
         
-        // Validate proof of payment for bank transfer and online payment
+        // Validate proof of payment for methods that require it (excluding PayMongo GCash)
         const paymentMethod = document.getElementById("paymentMethod").value;
         const proofFile = document.getElementById("proofOfPayment").files[0];
         
         if ((paymentMethod === "Bank Transfer" || paymentMethod === "Online Payment" || 
-             paymentMethod === "GCash" || paymentMethod === "Maya") && !proofFile) {
+             paymentMethod === "Maya") && !proofFile) {
             Swal.fire({
                 icon: 'warning',
                 title: 'Proof of payment required',
@@ -1056,33 +1061,54 @@ if (paymentForm) {
                     data = { success: response.ok, message: "Payment submitted successfully!" };
                 }
                 
-                // Show success message
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'Payment submitted successfully!',
-                    timer: 2000,
-                    timerProgressBar: true
-                });
-                
-                // Set the status filter to "processing" to show the user their processing booking
-                filterStatus = "processing";
-                const statusSelect = document.getElementById("statusSelect");
-                if (statusSelect) {
-                    statusSelect.value = "processing";
+                // Handle PayMongo payment response
+                if (data.success && data.payment_type === "paymongo" && data.checkout_url) {
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Redirecting to PayMongo',
+                        text: 'You will be redirected to the secure payment gateway...',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    }).then(() => {
+                        // Redirect to PayMongo checkout
+                        window.location.href = data.checkout_url;
+                    });
+                    return;
                 }
                 
-                // Remove active class from all quick filter buttons
-                document.querySelectorAll(".quick-filter").forEach(btn => btn.classList.remove("active"));
-                
-                // Highlight the processing quick filter if it exists
-                const processingQuickFilter = document.querySelector('.quick-filter[data-status="processing"]');
-                if (processingQuickFilter) {
-                    processingQuickFilter.classList.add("active");
+                // Handle regular payment response
+                if (data.success) {
+                    // Show success message
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: data.message || 'Payment submitted successfully!',
+                        timer: 2000,
+                        timerProgressBar: true
+                    });
+                    
+                    // Set the status filter to "processing" to show the user their processing booking
+                    filterStatus = "processing";
+                    const statusSelect = document.getElementById("statusSelect");
+                    if (statusSelect) {
+                        statusSelect.value = "processing";
+                    }
+                    
+                    // Remove active class from all quick filter buttons
+                    document.querySelectorAll(".quick-filter").forEach(btn => btn.classList.remove("active"));
+                    
+                    // Highlight the processing quick filter if it exists
+                    const processingQuickFilter = document.querySelector('.quick-filter[data-status="processing"]');
+                    if (processingQuickFilter) {
+                        processingQuickFilter.classList.add("active");
+                    }
+                    
+                    // Refresh the bookings
+                    refreshBookings();
+                } else {
+                    throw new Error(data.message || "Payment submission failed");
                 }
-                
-                // Refresh the bookings
-                refreshBookings();
             } else {
                 // Show error message
                 Swal.fire({
