@@ -30,7 +30,35 @@ CREATE TABLE `admin_notifications` (
   `is_read` tinyint(1) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`notification_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=261 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=371 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `audit_trails`
+--
+
+DROP TABLE IF EXISTS `audit_trails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `audit_trails` (
+  `audit_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `user_role` enum('Client','Admin','Super Admin') DEFAULT NULL,
+  `action` varchar(100) NOT NULL,
+  `entity_type` varchar(50) NOT NULL,
+  `entity_id` int(11) DEFAULT NULL,
+  `old_values` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`old_values`)),
+  `new_values` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`new_values`)),
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`audit_id`),
+  KEY `user_id` (`user_id`),
+  KEY `entity_type_entity_id` (`entity_type`,`entity_id`),
+  KEY `action` (`action`),
+  KEY `created_at` (`created_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=326 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +73,7 @@ CREATE TABLE `booking_buses` (
   `booking_id` int(11) NOT NULL,
   `bus_id` int(11) NOT NULL,
   PRIMARY KEY (`booking_buses_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=373 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=453 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +97,7 @@ CREATE TABLE `booking_costs` (
   `discount_amount` decimal(10,2) DEFAULT NULL,
   `gross_price` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +126,7 @@ CREATE TABLE `booking_stops` (
   `location` varchar(255) DEFAULT NULL,
   `booking_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`booking_stops_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +145,7 @@ CREATE TABLE `bookings` (
   `number_of_days` int(11) NOT NULL,
   `number_of_buses` int(11) NOT NULL,
   `balance` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `status` enum('Pending','Completed','Confirmed','Rejected','Canceled','Processing') NOT NULL DEFAULT 'Pending',
+  `status` enum('Pending','Completed','Confirmed','Rejected','Canceled','Processing','Rebooking') NOT NULL DEFAULT 'Pending',
   `payment_status` enum('Paid','Unpaid','Partially Paid') NOT NULL DEFAULT 'Unpaid',
   `user_id` int(11) NOT NULL,
   `is_rebooking` tinyint(1) DEFAULT 0,
@@ -129,7 +157,30 @@ CREATE TABLE `bookings` (
   `completed_at` timestamp NULL DEFAULT NULL,
   `created_by` enum('Client','Admin','Super Admin') DEFAULT 'Client',
   PRIMARY KEY (`booking_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `bot_responses`
+--
+
+DROP TABLE IF EXISTS `bot_responses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bot_responses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `keyword` varchar(100) NOT NULL,
+  `response` text NOT NULL,
+  `category` varchar(50) DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `idx_keyword` (`keyword`),
+  KEY `idx_category` (`category`),
+  KEY `idx_is_active` (`is_active`),
+  KEY `idx_bot_responses_keyword_active` (`keyword`,`is_active`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +199,9 @@ CREATE TABLE `buses` (
   `model` varchar(100) DEFAULT NULL,
   `year` int(4) DEFAULT NULL,
   `last_maintenance` date DEFAULT NULL,
-  PRIMARY KEY (`bus_id`)
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`bus_id`),
+  KEY `idx_buses_deleted_at` (`deleted_at`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -168,7 +221,95 @@ CREATE TABLE `canceled_trips` (
   `amount_refunded` decimal(10,2) DEFAULT 0.00,
   `canceled_by` enum('Client','Admin','Super Admin') DEFAULT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `chat_bot_responses`
+--
+
+DROP TABLE IF EXISTS `chat_bot_responses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chat_bot_responses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `question_pattern` varchar(500) NOT NULL,
+  `response` text NOT NULL,
+  `category` varchar(100) DEFAULT NULL,
+  `priority` int(11) DEFAULT 0,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `idx_category` (`category`),
+  KEY `idx_is_active` (`is_active`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `chat_conversations`
+--
+
+DROP TABLE IF EXISTS `chat_conversations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chat_conversations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client_id` int(11) DEFAULT NULL,
+  `admin_id` int(11) DEFAULT NULL,
+  `status` enum('bot','human_assigned','ended') DEFAULT 'bot',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `ended_at` timestamp NULL DEFAULT NULL,
+  `ended_by` enum('client','admin','system') DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_client_id` (`client_id`),
+  KEY `idx_admin_id` (`admin_id`),
+  KEY `idx_status` (`status`),
+  KEY `idx_created_at` (`created_at`),
+  CONSTRAINT `fk_chat_conversations_admin` FOREIGN KEY (`admin_id`) REFERENCES `users` (`user_id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_chat_conversations_client` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `chat_messages`
+--
+
+DROP TABLE IF EXISTS `chat_messages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chat_messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `conversation_id` int(11) NOT NULL,
+  `sender_type` enum('client','admin','bot','system') NOT NULL,
+  `message` text NOT NULL,
+  `sent_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_read` tinyint(1) DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `idx_conversation_id` (`conversation_id`),
+  KEY `idx_sender_type` (`sender_type`),
+  KEY `idx_sent_at` (`sent_at`),
+  CONSTRAINT `fk_chat_messages_conversation` FOREIGN KEY (`conversation_id`) REFERENCES `chat_conversations` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `chatbot_messages`
+--
+
+DROP TABLE IF EXISTS `chatbot_messages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chatbot_messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `conversation_id` int(11) NOT NULL,
+  `sender_type` enum('bot','client','admin','system') NOT NULL,
+  `message` text NOT NULL,
+  `sent_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `conversation_id` (`conversation_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,7 +328,35 @@ CREATE TABLE `client_notifications` (
   `is_read` tinyint(1) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`notification_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=219 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `conversations`
+--
+
+DROP TABLE IF EXISTS `conversations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `conversations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client_id` int(11) NOT NULL,
+  `admin_id` int(11) DEFAULT NULL,
+  `status` enum('bot','human_requested','human_assigned','ended') NOT NULL DEFAULT 'bot',
+  `started_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `ended_at` timestamp NULL DEFAULT NULL,
+  `ended_by` enum('client','admin','system') DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_client_id` (`client_id`),
+  KEY `idx_admin_id` (`admin_id`),
+  KEY `idx_status` (`status`),
+  KEY `idx_started_at` (`started_at`),
+  KEY `idx_conversations_client_status` (`client_id`,`status`),
+  KEY `idx_conversations_admin_status` (`admin_id`,`status`),
+  CONSTRAINT `fk_conversations_admin` FOREIGN KEY (`admin_id`) REFERENCES `users` (`user_id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_conversations_client` FOREIGN KEY (`client_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,9 +393,37 @@ CREATE TABLE `drivers` (
   `license_expiry` date DEFAULT NULL,
   `profile_photo` varchar(255) DEFAULT NULL,
   `notes` text DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`driver_id`),
-  UNIQUE KEY `license_number` (`license_number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  UNIQUE KEY `license_number` (`license_number`),
+  KEY `idx_drivers_deleted_at` (`deleted_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `messages`
+--
+
+DROP TABLE IF EXISTS `messages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `conversation_id` int(11) NOT NULL,
+  `sender_type` enum('client','admin','bot','system') NOT NULL,
+  `sender_id` int(11) DEFAULT NULL,
+  `message` text NOT NULL,
+  `sent_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_read` tinyint(1) DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `idx_conversation_id` (`conversation_id`),
+  KEY `idx_sender_type` (`sender_type`),
+  KEY `idx_sender_id` (`sender_id`),
+  KEY `idx_sent_at` (`sent_at`),
+  KEY `idx_messages_conversation_sent` (`conversation_id`,`sent_at`),
+  CONSTRAINT `fk_messages_conversation` FOREIGN KEY (`conversation_id`) REFERENCES `conversations` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_messages_sender` FOREIGN KEY (`sender_id`) REFERENCES `users` (`user_id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +436,7 @@ DROP TABLE IF EXISTS `payments`;
 CREATE TABLE `payments` (
   `payment_id` int(11) NOT NULL AUTO_INCREMENT,
   `amount` decimal(10,2) NOT NULL,
-  `payment_method` enum('Cash','Bank Transfer','Online Payment') NOT NULL,
+  `payment_method` enum('Cash','Bank Transfer','Online Payment','GCash','Maya','PayMongo') NOT NULL DEFAULT 'Cash',
   `booking_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `is_canceled` tinyint(1) DEFAULT 0,
@@ -248,8 +445,45 @@ CREATE TABLE `payments` (
   `payment_date` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
   `notes` text DEFAULT NULL,
-  PRIMARY KEY (`payment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `paymongo_checkout_session_id` varchar(255) DEFAULT NULL,
+  `paymongo_payment_intent_id` varchar(255) DEFAULT NULL,
+  `paymongo_source_id` varchar(255) DEFAULT NULL,
+  `paymongo_reference_number` varchar(255) DEFAULT NULL,
+  `payment_gateway` enum('manual','paymongo') DEFAULT 'manual',
+  `gateway_response` text DEFAULT NULL,
+  PRIMARY KEY (`payment_id`),
+  KEY `idx_payments_checkout_session` (`paymongo_checkout_session_id`),
+  KEY `idx_payments_payment_intent` (`paymongo_payment_intent_id`),
+  KEY `idx_payments_gateway` (`payment_gateway`)
+) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `paymongo_webhook_events`
+--
+
+DROP TABLE IF EXISTS `paymongo_webhook_events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `paymongo_webhook_events` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` varchar(255) NOT NULL,
+  `event_type` varchar(100) NOT NULL,
+  `checkout_session_id` varchar(255) DEFAULT NULL,
+  `payment_intent_id` varchar(255) DEFAULT NULL,
+  `booking_id` int(11) DEFAULT NULL,
+  `payment_id` int(11) DEFAULT NULL,
+  `raw_payload` text NOT NULL,
+  `processed` tinyint(1) DEFAULT 0,
+  `processed_at` datetime DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_event_id` (`event_id`),
+  KEY `idx_checkout_session` (`checkout_session_id`),
+  KEY `idx_payment_intent` (`payment_intent_id`),
+  KEY `idx_booking_id` (`booking_id`),
+  KEY `idx_processed` (`processed`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -266,7 +500,7 @@ CREATE TABLE `rebooking_request` (
   `status` enum('Pending','Rejected','Confirmed','Canceled') DEFAULT 'Pending',
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`request_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,7 +518,7 @@ CREATE TABLE `rejected_trips` (
   `booking_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,7 +538,7 @@ CREATE TABLE `settings` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `setting_key` (`setting_key`)
-) ENGINE=InnoDB AUTO_INCREMENT=973789 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1914589 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -326,7 +560,35 @@ CREATE TABLE `terms_agreements` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `terms_agreements_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `bookings` (`booking_id`) ON DELETE CASCADE,
   CONSTRAINT `terms_agreements_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `testimonials`
+--
+
+DROP TABLE IF EXISTS `testimonials`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `testimonials` (
+  `testimonial_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `booking_id` int(11) NOT NULL,
+  `rating` int(1) NOT NULL CHECK (`rating` >= 1 and `rating` <= 5),
+  `title` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `is_approved` tinyint(1) DEFAULT 0,
+  `is_featured` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`testimonial_id`),
+  UNIQUE KEY `unique_testimonial_per_booking` (`user_id`,`booking_id`),
+  KEY `booking_id` (`booking_id`),
+  KEY `idx_testimonials_approved` (`is_approved`,`created_at`),
+  KEY `idx_testimonials_featured` (`is_featured`,`is_approved`,`created_at`),
+  CONSTRAINT `testimonials_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `testimonials_ibfk_2` FOREIGN KEY (`booking_id`) REFERENCES `bookings` (`booking_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -343,7 +605,7 @@ CREATE TABLE `trip_distances` (
   `distance` decimal(10,2) DEFAULT NULL,
   `booking_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=494 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=608 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -358,17 +620,22 @@ CREATE TABLE `users` (
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `contact_number` varchar(13) DEFAULT NULL,
+  `contact_number` varchar(16) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `role` enum('Client','Admin','Super Admin') NOT NULL DEFAULT 'Client',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `reset_token` varchar(100) DEFAULT NULL,
   `reset_expiry` datetime DEFAULT NULL,
   `company_name` varchar(50) DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `google_id` varchar(100) DEFAULT NULL,
+  `profile_picture` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `contact_number` (`contact_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  UNIQUE KEY `contact_number` (`contact_number`),
+  KEY `google_id_index` (`google_id`),
+  KEY `idx_users_deleted_at` (`deleted_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -380,4 +647,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-14 23:40:47
+-- Dump completed on 2025-08-20 19:03:23
